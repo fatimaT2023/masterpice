@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Find a Specialist | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="specialists.css">
+  <link
+  rel="stylesheet"
+  href="notifications.css"
+>
+</head>
+
+<body>
+
+<div class="app-shell">
+
+  <!-- =========================
+       SIDEBAR
+  ========================== -->
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+        <!-- <div class="brand-mark">R</div> -->
+        <span>RAFIQ</span>
+      </a>
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <!-- CURRENT CHILD -->
+
+    <div class="child-card">
+
+      <span class="small-label">
+        CURRENT CHILD
+      </span>
+
+      <div class="child-info">
+
+        <div
+          class="child-avatar"
+          id="childAvatar"
+        >
+          ?
+        </div>
+
+        <div>
+          <strong id="childName">
+            Child
+          </strong>
+
+          <span id="childAge">
+            Loading...
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+      <a
+        href="parent-dashboard.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">⌂</span> -->
+        Dashboard
+      </a>
+
+      <a
+        href="ai-assistant.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">✦</span> -->
+        Rafiq AI
+      </a>
+
+      <a
+        href="milestones.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">✓</span> -->
+        Milestones
+      </a>
+
+      <a
+        href="screening.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">◫</span> -->
+        Screening
+      </a>
+
+
+      <span class="nav-section-title second">
+        SUPPORT
+      </span>
+
+      <a
+        href="challenges.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">♡</span> -->
+        Challenges
+      </a>
+
+      <a
+        href="specialists.html"
+        class="nav-link active"
+      >
+        <!-- <span class="nav-icon">◎</span> -->
+        Find Specialist
+      </a>
+
+      <a
+        href="bookings.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">◷</span> -->
+        My Bookings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        Settings
+      </a>
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main class="main-content">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+        <div>
+          <!-- <span class="page-kicker">
+            PROFESSIONAL SUPPORT
+          </span> -->
+
+          <h1>
+            Find a Specialist
+          </h1>
+        </div>
+
+      </div>
+
+      <a
+        href="bookings.html"
+        class="booking-link"
+      >
+        My Bookings
+      </a>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- HERO -->
+
+      <section class="hero-card">
+
+        <div class="hero-copy">
+
+          <span class="hero-kicker">
+            WHEN YOU NEED MORE SUPPORT
+          </span>
+
+          <h2>
+            Find the right support for
+            <span id="heroChildName">
+              your child.
+            </span>
+          </h2>
+
+          <p id="heroDescription">
+            Browse specialists and choose the support
+            that best fits your child's needs.
+          </p>
+
+        </div>
+
+
+        <div class="hero-side">
+
+          <div
+            class="hero-avatar"
+            id="heroAvatar"
+          >
+            ?
+          </div>
+
+          <span>
+            FINDING SUPPORT FOR
+          </span>
+
+          <h3 id="heroProfileName">
+            Child
+          </h3>
+
+          <p id="heroProfileAge">
+            Age
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- INFO NOTE -->
+
+      <div class="info-note">
+
+        <span>i</span>
+
+        <p>
+          Specialist profiles shown in this frontend
+          prototype use sample data. In the full platform,
+          specialists would complete verification before
+          becoming visible to parents.
+        </p>
+
+      </div>
+
+
+      <!-- =========================
+           SEARCH + FILTERS
+      ========================== -->
+
+      <section class="search-panel">
+
+        <div class="search-box">
+
+          <span>⌕</span>
+
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search by specialist or specialty..."
+          >
+
+        </div>
+
+
+        <div class="filter-row">
+
+          <select id="specialtyFilter">
+
+            <option value="all">
+              All Specialties
+            </option>
+
+            <option value="pediatrician">
+              Pediatrician
+            </option>
+
+            <option value="speech">
+              Speech & Language
+            </option>
+
+            <option value="psychology">
+              Child Psychology
+            </option>
+
+            <option value="behavior">
+              Behavioral Support
+            </option>
+
+            <option value="learning">
+              Learning Difficulties
+            </option>
+
+            <option value="development">
+              Child Development
+            </option>
+
+          </select>
+
+
+          <div class="type-filters">
+
+            <button
+              type="button"
+              class="type-button active"
+              data-type="all"
+            >
+              All
+            </button>
+
+            <button
+              type="button"
+              class="type-button"
+              data-type="online"
+            >
+              Online
+            </button>
+
+            <button
+              type="button"
+              class="type-button"
+              data-type="in-person"
+            >
+              In-person
+            </button>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="clear-button"
+            id="clearFilters"
+          >
+            Clear Filters
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- RESULTS HEADER -->
+
+      <section class="results-heading">
+
+        <div>
+
+          <span class="section-kicker">
+            AVAILABLE SPECIALISTS
+          </span>
+
+          <h2>
+            Professionals you can explore
+          </h2>
+
+        </div>
+
+        <span id="resultCount">
+          0 specialists
+        </span>
+
+      </section>
+
+
+      <!-- =========================
+           SPECIALIST GRID
+      ========================== -->
+
+      <section
+        class="specialist-grid"
+        id="specialistGrid"
+      ></section>
+
+
+      <div
+        class="empty-state"
+        id="emptyState"
+        hidden
+      >
+        <div>⌕</div>
+
+        <h3>
+          No specialists found
+        </h3>
+
+        <p>
+          Try changing your filters or search.
+        </p>
+      </div>
+
+
+      <!-- BOTTOM CTA -->
+
+      <section class="support-banner">
+
+        <div class="support-icon">
+          ✦
+        </div>
+
+        <div>
+
+          <span>
+            NOT SURE WHO YOU NEED?
+          </span>
+
+          <h2>
+            Ask Rafiq AI first.
+          </h2>
+
+          <p>
+            Describe your concern and Rafiq can help
+            you think about what type of support may
+            be appropriate.
+          </p>
+
+        </div>
+
+        <a href="ai-assistant.html">
+          Ask Rafiq →
+        </a>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- =========================
+     PROFILE MODAL
+========================== -->
+
+<div
+  class="profile-overlay"
+  id="profileModal"
+  hidden
+>
+
+  <div
+    class="profile-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalName"
+  >
+
+    <button
+      type="button"
+      class="modal-close"
+      id="modalClose"
+    >
+      ✕
+    </button>
+
+
+    <div class="modal-profile-header">
+
+      <div
+        class="large-specialist-avatar"
+        id="modalAvatar"
+      >
+        LH
+      </div>
+
+      <div class="modal-profile-info">
+
+        <div class="verified-label">
+          ✓ Verified Specialist
+        </div>
+
+        <h2 id="modalName">
+          Specialist Name
+        </h2>
+
+        <p id="modalSpecialty">
+          Specialty
+        </p>
+
+        <div class="modal-meta">
+
+          <span id="modalRating">
+            ★ 4.9
+          </span>
+
+          <span id="modalExperience">
+            8 years experience
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="profile-section">
+
+      <h3>
+        About
+      </h3>
+
+      <p id="modalAbout"></p>
+
+    </div>
+
+
+    <div class="profile-section">
+
+      <h3>
+        Areas of Support
+      </h3>
+
+      <div
+        class="tag-list"
+        id="modalAreas"
+      ></div>
+
+    </div>
+
+
+    <div class="profile-info-grid">
+
+      <div>
+
+        <span>
+          Consultation
+        </span>
+
+        <strong id="modalConsultation">
+          Online
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span>
+          Languages
+        </span>
+
+        <strong id="modalLanguages">
+          Arabic, English
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span>
+          Next Available
+        </span>
+
+        <strong id="modalAvailability">
+          Tomorrow
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span>
+          Session Fee
+        </span>
+
+        <strong id="modalPrice">
+          30 JOD
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="profile-safety-note">
+
+      <span>i</span>
+
+      <p>
+        Choose a specialist based on your child's needs.
+        In a production platform, professional credentials
+        would be reviewed during the verification process.
+      </p>
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        type="button"
+        class="modal-secondary"
+        id="closeProfileButton"
+      >
+        Close
+      </button>
+
+      <button
+        type="button"
+        class="book-button"
+        id="bookSpecialistButton"
+      >
+        Book Appointment →
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script src="specialists.js"></script>
+<script src="notifications.js"></script>
+</body>
+</html>

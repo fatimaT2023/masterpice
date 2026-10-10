@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Book Appointment | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="booking.css">
+  <link
+  rel="stylesheet"
+  href="notifications.css"
+>
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+  <!-- =========================
+       SIDEBAR
+  ========================== -->
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+        <div class="brand-mark">R</div>
+        <span>RAFIQ</span>
+      </a>
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="child-card">
+
+      <span class="small-label">
+        CURRENT CHILD
+      </span>
+
+      <div class="child-info">
+
+        <div
+          class="child-avatar"
+          id="childAvatar"
+        >
+          ?
+        </div>
+
+        <div>
+          <strong id="childName">
+            Child
+          </strong>
+
+          <span id="childAge">
+            Loading...
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+      <a
+        href="parent-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        Dashboard
+      </a>
+
+      <a
+        href="ai-assistant.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">✦</span>
+        Rafiq AI
+      </a>
+
+      <a
+        href="milestones.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">✓</span>
+        Milestones
+      </a>
+
+      <a
+        href="screening.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◫</span>
+        Screening
+      </a>
+
+
+      <span class="nav-section-title second">
+        SUPPORT
+      </span>
+
+      <a
+        href="challenges.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">♡</span>
+        Challenges
+      </a>
+
+      <a
+        href="specialists.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">◎</span>
+        Find Specialist
+      </a>
+
+      <a
+        href="bookings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◷</span>
+        My Bookings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        Settings
+      </a>
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+        <div>
+          <span class="page-kicker">
+            APPOINTMENT
+          </span>
+
+          <h1>
+            Book Appointment
+          </h1>
+        </div>
+
+      </div>
+
+
+      <a
+        href="specialists.html"
+        class="back-link"
+      >
+        ← Back to Specialists
+      </a>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =========================
+           BOOKING VIEW
+      ========================== -->
+
+      <section
+        class="booking-view active"
+        id="bookingView"
+      >
+
+        <div class="booking-layout">
+
+          <!-- LEFT -->
+
+          <div class="booking-main">
+
+
+            <!-- SPECIALIST -->
+
+            <section class="section-card">
+
+              <span class="section-number">
+                01
+              </span>
+
+              <div class="section-title">
+
+                <span class="section-kicker">
+                  YOUR SPECIALIST
+                </span>
+
+                <h2>
+                  Review specialist
+                </h2>
+
+              </div>
+
+
+              <div class="selected-specialist">
+
+                <div
+                  class="specialist-avatar"
+                  id="specialistAvatar"
+                >
+                  DR
+                </div>
+
+                <div class="specialist-info">
+
+                  <span class="verified">
+                    ✓ Verified Specialist
+                  </span>
+
+                  <h3 id="specialistName">
+                    Specialist Name
+                  </h3>
+
+                  <p id="specialistSpecialty">
+                    Specialty
+                  </p>
+
+                </div>
+
+
+                <div class="specialist-price">
+
+                  <span>
+                    Session fee
+                  </span>
+
+                  <strong id="specialistPrice">
+                    —
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </section>
+
+
+
+            <!-- CONSULTATION TYPE -->
+
+            <section class="section-card">
+
+              <span class="section-number">
+                02
+              </span>
+
+              <div class="section-title">
+
+                <span class="section-kicker">
+                  CONSULTATION
+                </span>
+
+                <h2>
+                  How would you like to meet?
+                </h2>
+
+              </div>
+
+
+              <div
+                class="consultation-options"
+                id="consultationOptions"
+              ></div>
+
+            </section>
+
+
+
+            <!-- DATE -->
+
+            <section class="section-card">
+
+              <span class="section-number">
+                03
+              </span>
+
+              <div class="section-title">
+
+                <span class="section-kicker">
+                  DATE
+                </span>
+
+                <h2>
+                  Choose a date
+                </h2>
+
+              </div>
+
+
+              <div
+                class="date-options"
+                id="dateOptions"
+              ></div>
+
+            </section>
+
+
+
+            <!-- TIME -->
+
+            <section class="section-card">
+
+              <span class="section-number">
+                04
+              </span>
+
+              <div class="section-title">
+
+                <span class="section-kicker">
+                  TIME
+                </span>
+
+                <h2>
+                  Choose a time
+                </h2>
+
+              </div>
+
+
+              <div
+                class="time-options"
+                id="timeOptions"
+              >
+
+                <p class="placeholder-text">
+                  Select a date first to see
+                  available times.
+                </p>
+
+              </div>
+
+            </section>
+
+
+
+            <!-- CONCERN -->
+
+            <section class="section-card">
+
+              <span class="section-number">
+                05
+              </span>
+
+              <div class="section-title">
+
+                <span class="section-kicker">
+                  OPTIONAL NOTE
+                </span>
+
+                <h2>
+                  What would you like to discuss?
+                </h2>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="bookingReason">
+                  Reason for consultation
+                  <span>Optional</span>
+                </label>
+
+                <textarea
+                  id="bookingReason"
+                  maxlength="500"
+                  rows="5"
+                  placeholder="Example: I would like guidance about my child's speech development..."
+                ></textarea>
+
+                <div class="field-footer">
+
+                  <span>
+                    Keep it short. You can explain
+                    more during the appointment.
+                  </span>
+
+                  <span id="reasonCount">
+                    0 / 500
+                  </span>
+
+                </div>
+
+              </div>
+
+            </section>
+
+          </div>
+
+
+
+          <!-- =========================
+               SUMMARY
+          ========================== -->
+
+          <aside class="booking-summary">
+
+            <span class="summary-kicker">
+              BOOKING SUMMARY
+            </span>
+
+            <h2>
+              Your appointment
+            </h2>
+
+
+            <div class="summary-child">
+
+              <div
+                class="summary-child-avatar"
+                id="summaryChildAvatar"
+              >
+                ?
+              </div>
+
+              <div>
+
+                <span>
+                  Appointment for
+                </span>
+
+                <strong id="summaryChildName">
+                  Child
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <div class="summary-divider"></div>
+
+
+            <div class="summary-row">
+
+              <span>
+                Specialist
+              </span>
+
+              <strong id="summarySpecialist">
+                —
+              </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+              <span>
+                Consultation
+              </span>
+
+              <strong id="summaryType">
+                Not selected
+              </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+              <span>
+                Date
+              </span>
+
+              <strong id="summaryDate">
+                Not selected
+              </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+              <span>
+                Time
+              </span>
+
+              <strong id="summaryTime">
+                Not selected
+              </strong>
+
+            </div>
+
+
+            <div class="summary-divider"></div>
+
+
+            <div class="summary-row total">
+
+              <span>
+                Session Fee
+              </span>
+
+              <strong id="summaryPrice">
+                —
+              </strong>
+
+            </div>
+
+
+            <div
+              class="form-error"
+              id="bookingError"
+            ></div>
+
+
+            <button
+              type="button"
+              class="confirm-button"
+              id="confirmBookingButton"
+            >
+              Confirm Appointment
+            </button>
+
+
+            <p class="summary-note">
+              This is a prototype booking flow.
+              Payment processing is not connected.
+            </p>
+
+          </aside>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =========================
+           NO SPECIALIST
+      ========================== -->
+
+      <section
+        class="booking-view"
+        id="missingView"
+      >
+
+        <div class="missing-card">
+
+          <div class="missing-icon">
+            ◎
+          </div>
+
+          <span>
+            NO SPECIALIST SELECTED
+          </span>
+
+          <h2>
+            Choose a specialist first.
+          </h2>
+
+          <p>
+            Go back to the specialist directory,
+            view a profile and select Book Appointment.
+          </p>
+
+          <a href="specialists.html">
+            Browse Specialists →
+          </a>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =========================
+           SUCCESS
+      ========================== -->
+
+      <section
+        class="booking-view"
+        id="successView"
+      >
+
+        <div class="success-card">
+
+          <div class="success-icon">
+            ✓
+          </div>
+
+          <span class="success-kicker">
+            APPOINTMENT CONFIRMED
+          </span>
+
+          <h2>
+            Your booking is saved.
+          </h2>
+
+          <p id="successMessage">
+            Appointment confirmed.
+          </p>
+
+
+          <div class="confirmation-details">
+
+            <div>
+
+              <span>
+                Specialist
+              </span>
+
+              <strong id="confirmedSpecialist">
+                —
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Child
+              </span>
+
+              <strong id="confirmedChild">
+                —
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Date
+              </span>
+
+              <strong id="confirmedDate">
+                —
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Time
+              </span>
+
+              <strong id="confirmedTime">
+                —
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="booking-id-box">
+
+            <span>
+              Booking Reference
+            </span>
+
+            <strong id="bookingReference">
+              —
+            </strong>
+
+          </div>
+
+
+          <div class="success-actions">
+
+            <a
+              href="bookings.html"
+              class="view-bookings-button"
+            >
+              View My Bookings
+            </a>
+
+            <a
+              href="parent-dashboard.html"
+              class="dashboard-button"
+            >
+              Back to Dashboard
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<script src="booking.js"></script>
+<script src="notifications.js"></script>
+
+</body>
+</html>

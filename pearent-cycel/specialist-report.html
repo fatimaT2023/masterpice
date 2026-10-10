@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Specialist Report | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="specialist-report.css"
+  >
+  <link
+  rel="stylesheet"
+  href="notifications.css"
+>
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+
+  <!-- SIDEBAR -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+        <div class="brand-mark">
+          R
+        </div>
+
+        <span>
+          RAFIQ
+        </span>
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="child-card">
+
+      <span class="small-label">
+        CURRENT CHILD
+      </span>
+
+      <div class="child-info">
+
+        <div
+          class="child-avatar"
+          id="childAvatar"
+        >
+          ?
+        </div>
+
+        <div>
+
+          <strong id="childName">
+            Child
+          </strong>
+
+          <span id="childAge">
+            Age
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="parent-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">
+          ⌂
+        </span>
+
+        Dashboard
+      </a>
+
+
+      <a
+        href="ai-assistant.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">
+          ✦
+        </span>
+
+        Rafiq AI
+      </a>
+
+
+      <a
+        href="milestones.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">
+          ✓
+        </span>
+
+        Milestones
+      </a>
+
+
+      <a
+        href="screening.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">
+          ◫
+        </span>
+
+        Screening
+      </a>
+
+
+      <span class="nav-section-title second">
+        SUPPORT
+      </span>
+
+
+      <a
+        href="challenges.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">
+          ♡
+        </span>
+
+        Challenges
+      </a>
+
+
+      <a
+        href="specialists.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">
+          ◎
+        </span>
+
+        Find Specialist
+      </a>
+
+
+      <a
+        href="bookings.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">
+          ◷
+        </span>
+
+        My Bookings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">
+          ⚙
+        </span>
+
+        Settings
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>
+          ↪
+        </span>
+
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- MAIN -->
+
+  <main class="main-content">
+
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            CONSULTATION
+          </span>
+
+          <h1>
+            Specialist Report
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="bookings.html"
+        class="back-button"
+      >
+        ← My Bookings
+      </a>
+
+    </header>
+
+
+    <div class="page-body">
+
+
+      <!-- REPORT EXISTS -->
+
+      <section
+        id="reportView"
+        hidden
+      >
+
+
+        <!-- HEADER -->
+
+        <section class="report-hero">
+
+          <div>
+
+            <span class="hero-kicker">
+              CONSULTATION REPORT
+            </span>
+
+            <h2>
+              Follow-up guidance for
+              <span id="heroChildName">
+                your child
+              </span>
+            </h2>
+
+            <p>
+              Review the information documented by
+              your specialist after the consultation.
+            </p>
+
+          </div>
+
+
+          <div class="report-status">
+            <span>
+              ✓
+            </span>
+
+            Report Ready
+          </div>
+
+        </section>
+
+
+        <!-- APPOINTMENT INFO -->
+
+        <section class="appointment-card">
+
+          <div
+            class="specialist-avatar"
+            id="specialistAvatar"
+          >
+            DR
+          </div>
+
+
+          <div class="specialist-info">
+
+            <span>
+              REPORT FROM
+            </span>
+
+            <h3 id="specialistName">
+              Specialist
+            </h3>
+
+            <p id="specialty">
+              Specialty
+            </p>
+
+          </div>
+
+
+          <div class="appointment-meta">
+
+            <div>
+
+              <span>
+                Consultation Date
+              </span>
+
+              <strong id="consultationDate">
+                —
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Child
+              </span>
+
+              <strong id="reportChildName">
+                —
+              </strong>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- DISCLAIMER -->
+
+        <div class="report-note">
+
+          <span>
+            i
+          </span>
+
+          <p>
+            This page displays information provided
+            by the specialist. RAFIQ's AI does not
+            generate or modify professional consultation
+            findings.
+          </p>
+
+        </div>
+
+
+        <!-- REPORT SECTIONS -->
+
+        <div class="report-layout">
+
+
+          <div class="report-main">
+
+
+            <article class="report-section">
+
+              <div class="section-icon summary">
+                ◫
+              </div>
+
+              <div>
+
+                <span class="section-label">
+                  CONSULTATION SUMMARY
+                </span>
+
+                <h3>
+                  Summary
+                </h3>
+
+                <p id="reportSummary"></p>
+
+              </div>
+
+            </article>
+
+
+
+            <article class="report-section">
+
+              <div class="section-icon observations">
+                ◌
+              </div>
+
+              <div>
+
+                <span class="section-label">
+                  PROFESSIONAL OBSERVATIONS
+                </span>
+
+                <h3>
+                  Main observations
+                </h3>
+
+                <ul id="observationsList"></ul>
+
+              </div>
+
+            </article>
+
+
+
+            <article class="report-section">
+
+              <div class="section-icon recommendations">
+                ✓
+              </div>
+
+              <div>
+
+                <span class="section-label">
+                  RECOMMENDATIONS
+                </span>
+
+                <h3>
+                  Recommended next steps
+                </h3>
+
+                <ul id="recommendationsList"></ul>
+
+              </div>
+
+            </article>
+
+
+
+            <article class="report-section">
+
+              <div class="section-icon follow">
+                ↗
+              </div>
+
+              <div>
+
+                <span class="section-label">
+                  FOLLOW-UP
+                </span>
+
+                <h3>
+                  Follow-up plan
+                </h3>
+
+                <p id="followUpText"></p>
+
+              </div>
+
+            </article>
+
+
+          </div>
+
+
+          <!-- SIDE -->
+
+          <aside class="report-side">
+
+
+            <div class="side-card">
+
+              <span class="side-label">
+                REPORT DETAILS
+              </span>
+
+
+              <div class="detail-row">
+
+                <span>
+                  Booking
+                </span>
+
+                <strong id="bookingReference">
+                  —
+                </strong>
+
+              </div>
+
+
+              <div class="detail-row">
+
+                <span>
+                  Consultation
+                </span>
+
+                <strong id="consultationType">
+                  —
+                </strong>
+
+              </div>
+
+
+              <div class="detail-row">
+
+                <span>
+                  Report Date
+                </span>
+
+                <strong id="reportDate">
+                  —
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <div class="side-card specialist-note">
+
+              <span class="side-label">
+                SPECIALIST NOTE
+              </span>
+
+              <p id="specialistNote">
+              —
+              </p>
+
+            </div>
+
+
+            <a
+              href="specialists.html"
+              class="book-follow-button"
+            >
+              Book Follow-up
+              <span>
+                →
+              </span>
+            </a>
+
+          </aside>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- NO REPORT -->
+
+      <section
+        class="empty-report"
+        id="emptyReport"
+        hidden
+      >
+
+        <div class="empty-icon">
+          ◫
+        </div>
+
+        <span>
+          REPORT NOT AVAILABLE
+        </span>
+
+        <h2>
+          No specialist report is available yet.
+        </h2>
+
+        <p>
+          Reports become available after a completed
+          consultation and once the specialist submits
+          their notes.
+        </p>
+
+        <a href="bookings.html">
+          Back to My Bookings
+        </a>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<script src="specialist-report.js"></script>
+<script src="notifications.js"></script>
+</body>
+</html>

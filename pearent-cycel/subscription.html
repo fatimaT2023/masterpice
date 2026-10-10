@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Subscription | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="subscription.css"
+  >
+  <link
+  rel="stylesheet"
+  href="notifications.css"
+>
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+  <!-- =========================
+       SIDEBAR
+  ========================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+        <!-- <div class="brand-mark">
+          R
+        </div> -->
+
+        <span>
+          RAFIQ
+        </span>
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <!-- CHILD -->
+
+    <div class="child-card">
+
+      <span class="small-label">
+        CURRENT CHILD
+      </span>
+
+
+      <div class="child-info">
+
+        <div
+          class="child-avatar"
+          id="childAvatar"
+        >
+          ?
+        </div>
+
+
+        <div>
+
+          <strong id="childName">
+            Child
+          </strong>
+
+          <span id="childAge">
+            Age
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- NAV -->
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="parent-dashboard.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">⌂</span> -->
+        Dashboard
+      </a>
+
+
+      <a
+        href="ai-assistant.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">✦</span> -->
+        Rafiq AI
+      </a>
+
+
+      <a
+        href="milestones.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">✓</span> -->
+        Milestones
+      </a>
+
+
+      <a
+        href="screening.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">◫</span> -->
+        Screening
+      </a>
+
+
+      <span class="nav-section-title second">
+        SUPPORT
+      </span>
+
+
+      <a
+        href="challenges.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">♡</span> -->
+        Challenges
+      </a>
+
+
+      <a
+        href="specialists.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">◎</span> -->
+        Find Specialist
+      </a>
+
+
+      <a
+        href="bookings.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">◷</span> -->
+        My Bookings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="settings.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">⚙</span>
+        Settings
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            RAFIQ PLANS
+          </span>
+
+          <h1>
+            Subscription
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="settings.html"
+        class="back-button"
+      >
+        ← Settings
+      </a>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =========================
+           HERO
+      ========================== -->
+
+      <section class="subscription-hero">
+
+        <div class="hero-copy">
+
+          <span class="hero-kicker">
+            CHOOSE WHAT FITS YOUR FAMILY
+          </span>
+
+          <h2>
+            Start free.
+            <span>Upgrade when you need more.</span>
+          </h2>
+
+          <p>
+            RAFIQ Free gives parents the essential tools
+            to follow their child's development. RAFIQ Plus
+            adds enhanced AI and tracking features.
+          </p>
+
+        </div>
+
+
+        <div class="current-plan-box">
+
+          <span>
+            CURRENT PLAN
+          </span>
+
+          <h3 id="heroCurrentPlan">
+            RAFIQ Free
+          </h3>
+
+          <div
+            class="current-plan-badge"
+            id="heroPlanBadge"
+          >
+            Active
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- PROTOTYPE NOTE -->
+
+      <div class="prototype-note">
+
+        <span>i</span>
+
+        <p>
+          Subscription and payment features in this
+          frontend are simulated for demonstration.
+          No real billing is processed.
+        </p>
+
+      </div>
+
+
+      <!-- =========================
+           PLAN CARDS
+      ========================== -->
+
+      <section class="plans-section">
+
+        <div class="section-heading">
+
+          <span class="section-kicker">
+            MEMBERSHIP
+          </span>
+
+          <h2>
+            Choose your RAFIQ plan
+          </h2>
+
+          <p>
+            You can continue with the free experience
+            or unlock additional support with RAFIQ Plus.
+          </p>
+
+        </div>
+
+
+        <div class="plans-grid">
+
+
+          <!-- FREE -->
+
+          <article
+            class="plan-card"
+            id="freePlanCard"
+          >
+
+            <div class="plan-card-top">
+
+              <div>
+
+                <span class="plan-label">
+                  FREE
+                </span>
+
+                <h3>
+                  RAFIQ Free
+                </h3>
+
+              </div>
+
+
+              <span
+                class="plan-status"
+                id="freeStatus"
+              >
+                Current Plan
+              </span>
+
+            </div>
+
+
+            <p class="plan-description">
+              Essential parenting and child development
+              support for everyday use.
+            </p>
+
+
+            <div class="price">
+
+              <strong>
+                0
+              </strong>
+
+              <div>
+                <span>
+                  JOD
+                </span>
+
+                <small>
+                  forever
+                </small>
+              </div>
+
+            </div>
+
+
+            <div class="plan-divider"></div>
+
+
+            <ul class="features-list">
+
+              <li>
+                <span>✓</span>
+                Child profiles
+              </li>
+
+              <li>
+                <span>✓</span>
+                Development milestone tracking
+              </li>
+
+              <li>
+                <span>✓</span>
+                Parenting challenges library
+              </li>
+
+              <li>
+                <span>✓</span>
+                Basic screening flow
+              </li>
+
+              <li>
+                <span>✓</span>
+                Specialist directory
+              </li>
+
+              <li>
+                <span>✓</span>
+                Appointment booking
+              </li>
+
+              <li>
+                <span>✓</span>
+                Limited Rafiq AI support
+              </li>
+
+            </ul>
+
+
+            <button
+              type="button"
+              class="free-button"
+              id="freePlanButton"
+            >
+              Current Plan
+            </button>
+
+          </article>
+
+
+
+          <!-- PLUS -->
+
+          <article
+            class="plan-card featured"
+            id="plusPlanCard"
+          >
+
+            <div class="popular-badge">
+              MOST POPULAR
+            </div>
+
+
+            <div class="plan-card-top">
+
+              <div>
+
+                <span class="plan-label plus">
+                  PLUS
+                </span>
+
+                <h3>
+                  RAFIQ Plus
+                </h3>
+
+              </div>
+
+
+              <span
+                class="plan-status plus-status"
+                id="plusStatus"
+                hidden
+              >
+                Current Plan
+              </span>
+
+            </div>
+
+
+            <p class="plan-description">
+              More personalized tools for parents who
+              want deeper tracking and ongoing support.
+            </p>
+
+
+            <div class="price">
+
+              <strong>
+                5
+              </strong>
+
+              <div>
+
+                <span>
+                  JOD
+                </span>
+
+                <small>
+                  / month
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <div class="plan-divider"></div>
+
+
+            <ul class="features-list">
+
+              <li>
+                <span>✓</span>
+                Everything in RAFIQ Free
+              </li>
+
+              <li>
+                <span>✓</span>
+                Extended Rafiq AI support
+              </li>
+
+              <li>
+                <span>✓</span>
+                Advanced progress history
+              </li>
+
+              <li>
+                <span>✓</span>
+                Screening history
+              </li>
+
+              <li>
+                <span>✓</span>
+                Personalized developmental insights
+              </li>
+
+              <li>
+                <span>✓</span>
+                Priority specialist discovery features
+              </li>
+
+              <li>
+                <span>✓</span>
+                Enhanced parent experience
+              </li>
+
+            </ul>
+
+
+            <button
+              type="button"
+              class="plus-button"
+              id="plusPlanButton"
+            >
+              Upgrade to RAFIQ Plus
+            </button>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           COMPARISON
+      ========================== -->
+
+      <section class="comparison-section">
+
+        <div class="section-heading">
+
+          <span class="section-kicker">
+            COMPARE
+          </span>
+
+          <h2>
+            What's included?
+          </h2>
+
+        </div>
+
+
+        <div class="comparison-table">
+
+          <div class="comparison-row header-row">
+
+            <strong>
+              Feature
+            </strong>
+
+            <strong>
+              Free
+            </strong>
+
+            <strong>
+              Plus
+            </strong>
+
+          </div>
+
+
+          <div class="comparison-row">
+
+            <span>
+              Child Profiles
+            </span>
+
+            <strong>✓</strong>
+
+            <strong>✓</strong>
+
+          </div>
+
+
+          <div class="comparison-row">
+
+            <span>
+              Milestone Tracking
+            </span>
+
+            <strong>✓</strong>
+
+            <strong>✓</strong>
+
+          </div>
+
+
+          <div class="comparison-row">
+
+            <span>
+              Parenting Challenges
+            </span>
+
+            <strong>✓</strong>
+
+            <strong>✓</strong>
+
+          </div>
+
+
+          <div class="comparison-row">
+
+            <span>
+              Specialist Booking
+            </span>
+
+            <strong>✓</strong>
+
+            <strong>✓</strong>
+
+          </div>
+
+
+          <div class="comparison-row">
+
+            <span>
+              Rafiq AI Usage
+            </span>
+
+            <span>
+              Limited
+            </span>
+
+            <span class="plus-feature">
+              Extended
+            </span>
+
+          </div>
+
+
+          <div class="comparison-row">
+
+            <span>
+              Screening History
+            </span>
+
+            <span>
+              Basic
+            </span>
+
+            <span class="plus-feature">
+              Full History
+            </span>
+
+          </div>
+
+
+          <div class="comparison-row">
+
+            <span>
+              Development Insights
+            </span>
+
+            <span>
+              Basic
+            </span>
+
+            <span class="plus-feature">
+              Enhanced
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           FAQ
+      ========================== -->
+
+      <section class="faq-section">
+
+        <div class="section-heading">
+
+          <span class="section-kicker">
+            QUESTIONS
+          </span>
+
+          <h2>
+            Subscription FAQ
+          </h2>
+
+        </div>
+
+
+        <div class="faq-grid">
+
+          <article class="faq-card">
+
+            <h3>
+              Can I use RAFIQ for free?
+            </h3>
+
+            <p>
+              Yes. The Free plan includes the core
+              parenting and development tools.
+            </p>
+
+          </article>
+
+
+          <article class="faq-card">
+
+            <h3>
+              Does Plus include specialist sessions?
+            </h3>
+
+            <p>
+              No. Specialist consultation fees are
+              separate from the RAFIQ subscription.
+            </p>
+
+          </article>
+
+
+          <article class="faq-card">
+
+            <h3>
+              Is this real billing?
+            </h3>
+
+            <p>
+              No. Payment is simulated in the frontend
+              prototype. A production version would use
+              a secure payment provider.
+            </p>
+
+          </article>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<script src="subscription.js"></script>
+<script src="notifications.js"></script>
+</body>
+</html>

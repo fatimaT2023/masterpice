@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Screening | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="screening.css"
+  >
+  <link
+  rel="stylesheet"
+  href="notifications.css"
+>
+</head>
+
+<body>
+
+<div class="app-shell">
+
+  <!-- =========================
+       SIDEBAR
+  ========================== -->
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+        <!-- <div class="brand-mark">R</div> -->
+        <span>RAFIQ</span>
+      </a>
+
+      <button
+        class="sidebar-close"
+        id="sidebarClose"
+        type="button"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="child-card">
+
+      <span class="small-label">
+        CURRENT CHILD
+      </span>
+
+      <div class="child-info">
+
+        <div
+          class="child-avatar"
+          id="childAvatar"
+        >
+          ?
+        </div>
+
+        <div>
+          <strong id="childName">
+            Child
+          </strong>
+
+          <span id="childAge">
+            Loading...
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+      <a
+        href="parent-dashboard.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">⌂</span> -->
+        Dashboard
+      </a>
+
+      <a
+        href="ai-assistant.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">✦</span> -->
+        Rafiq AI
+      </a>
+
+      <a
+        href="milestones.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">✓</span> -->
+        Milestones
+      </a>
+
+      <a
+        href="screening.html"
+        class="nav-link active"
+      >
+        <!-- <span class="nav-icon">◫</span> -->
+        Screening
+      </a>
+
+
+      <span class="nav-section-title second">
+        SUPPORT
+      </span>
+
+      <a
+        href="challenges.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">♡</span> -->
+        Challenges
+      </a>
+
+      <a
+        href="health.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">＋</span> -->
+        Health
+      </a>
+
+      <a
+        href="specialists.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">◎</span> -->
+        Find Specialist
+      </a>
+
+      <a
+        href="bookings.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">◷</span> -->
+        My Bookings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        Settings
+      </a>
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+        <div>
+          <!-- <span class="page-kicker">
+            EARLY SUPPORT
+          </span> -->
+
+          <h1>
+            Screening
+          </h1>
+        </div>
+
+      </div>
+
+
+      <div class="safety-chip">
+        Screening ≠ Diagnosis
+      </div>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =========================
+           INTRO SCREEN
+      ========================== -->
+
+      <section
+        class="screening-view active"
+        id="introView"
+      >
+
+        <div class="hero-card">
+
+          <div class="hero-copy">
+
+            <span class="hero-kicker">
+              DEVELOPMENT CHECK-IN
+            </span>
+
+            <h2>
+              Take a closer look at
+              <span id="heroChildName">
+                your child's
+              </span>
+              development.
+            </h2>
+
+            <p id="heroDescription">
+              Answer a few simple questions based
+              on what you have noticed recently.
+            </p>
+
+
+            <button
+              type="button"
+              class="primary-button"
+              id="startScreeningButton"
+            >
+              Start Screening
+              <span>→</span>
+            </button>
+
+          </div>
+
+
+          <div class="screening-preview">
+
+            <div class="preview-icon">
+              ◫
+            </div>
+
+            <span>
+              ABOUT THIS CHECK-IN
+            </span>
+
+            <h3>
+              6 short questions
+            </h3>
+
+            <ul>
+              <li>
+                Based on the selected child's age
+              </li>
+
+              <li>
+                Takes about 2 minutes
+              </li>
+
+              <li>
+                Results saved for this child
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+
+
+        <div class="important-note">
+
+          <div class="note-icon">
+            i
+          </div>
+
+          <div>
+
+            <strong>
+              Important
+            </strong>
+
+            <p>
+              This prototype screening is designed
+              for educational demonstration only.
+              It does not diagnose developmental,
+              behavioral, psychological, or medical
+              conditions.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <section class="how-it-works">
+
+          <span class="section-kicker">
+            HOW IT WORKS
+          </span>
+
+          <h2>
+            Three simple steps
+          </h2>
+
+
+          <div class="steps-grid">
+
+            <article class="step-card">
+
+              <span class="step-number">
+                1
+              </span>
+
+              <h3>
+                Answer
+              </h3>
+
+              <p>
+                Tell Rafiq what you have noticed
+                recently.
+              </p>
+
+            </article>
+
+
+            <article class="step-card">
+
+              <span class="step-number">
+                2
+              </span>
+
+              <h3>
+                Review
+              </h3>
+
+              <p>
+                Rafiq summarizes your responses
+                without providing a diagnosis.
+              </p>
+
+            </article>
+
+
+            <article class="step-card">
+
+              <span class="step-number">
+                3
+              </span>
+
+              <h3>
+                Next Step
+              </h3>
+
+              <p>
+                Continue tracking or consider
+                professional support when needed.
+              </p>
+
+            </article>
+
+          </div>
+
+        </section>
+
+      </section>
+
+
+      <!-- =========================
+           QUESTIONS
+      ========================== -->
+
+      <section
+        class="screening-view"
+        id="questionsView"
+      >
+
+        <div class="question-layout">
+
+          <div class="question-main">
+
+            <div class="question-progress">
+
+              <div class="question-progress-top">
+
+                <span id="questionCounter">
+                  Question 1 of 6
+                </span>
+
+                <strong id="questionPercent">
+                  17%
+                </strong>
+
+              </div>
+
+              <div class="progress-track">
+
+                <div
+                  class="progress-fill"
+                  id="progressFill"
+                ></div>
+
+              </div>
+
+            </div>
+
+
+            <div
+              class="question-card"
+              id="questionCard"
+            >
+
+              <span
+                class="question-domain"
+                id="questionDomain"
+              >
+                COMMUNICATION
+              </span>
+
+              <h2 id="questionText">
+                Question
+              </h2>
+
+              <p class="question-helper">
+                Choose the option that best matches
+                what you have noticed recently.
+              </p>
+
+
+              <div class="answer-options">
+
+                <button
+                  type="button"
+                  class="answer-button"
+                  data-answer="yes"
+                >
+                  <span class="answer-icon yes">
+                    ✓
+                  </span>
+
+                  <span>
+                    <strong>Yes</strong>
+                    <small>
+                      I usually notice this
+                    </small>
+                  </span>
+                </button>
+
+
+                <button
+                  type="button"
+                  class="answer-button"
+                  data-answer="sometimes"
+                >
+                  <span class="answer-icon sometimes">
+                    ~
+                  </span>
+
+                  <span>
+                    <strong>Sometimes</strong>
+                    <small>
+                      I notice this occasionally
+                    </small>
+                  </span>
+                </button>
+
+
+                <button
+                  type="button"
+                  class="answer-button"
+                  data-answer="no"
+                >
+                  <span class="answer-icon no">
+                    ○
+                  </span>
+
+                  <span>
+                    <strong>Not Yet</strong>
+                    <small>
+                      I have not noticed this yet
+                    </small>
+                  </span>
+                </button>
+
+
+                <button
+                  type="button"
+                  class="answer-button"
+                  data-answer="unsure"
+                >
+                  <span class="answer-icon unsure">
+                    ?
+                  </span>
+
+                  <span>
+                    <strong>Not Sure</strong>
+                    <small>
+                      I am not sure
+                    </small>
+                  </span>
+                </button>
+
+              </div>
+
+
+              <div class="question-actions">
+
+                <button
+                  type="button"
+                  class="back-button"
+                  id="previousQuestionButton"
+                >
+                  ← Previous
+                </button>
+
+                <button
+                  type="button"
+                  class="next-button"
+                  id="nextQuestionButton"
+                  disabled
+                >
+                  Next →
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <aside class="question-side">
+
+            <div class="child-context-card">
+
+              <span>
+                SCREENING FOR
+              </span>
+
+              <div
+                class="context-avatar"
+                id="contextAvatar"
+              >
+                ?
+              </div>
+
+              <h3 id="contextChildName">
+                Child
+              </h3>
+
+              <p id="contextChildAge">
+                Age
+              </p>
+
+            </div>
+
+
+            <div class="side-note">
+
+              <strong>
+                Remember
+              </strong>
+
+              <p>
+                There are no “good” or “bad”
+                answers. Choose what best reflects
+                what you currently notice.
+              </p>
+
+            </div>
+
+          </aside>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           RESULT
+      ========================== -->
+
+      <section
+        class="screening-view"
+        id="resultView"
+      >
+
+        <div class="result-wrapper">
+
+          <div
+            class="result-card"
+            id="resultCard"
+          >
+
+            <div
+              class="result-icon"
+              id="resultIcon"
+            >
+              ✓
+            </div>
+
+            <span class="result-kicker">
+              SCREENING SUMMARY
+            </span>
+
+            <h2 id="resultTitle">
+              Result
+            </h2>
+
+            <p id="resultDescription">
+              Result description.
+            </p>
+
+
+            <div class="result-score">
+
+              <span>
+                Responses reviewed
+              </span>
+
+              <strong>
+                6 / 6
+              </strong>
+
+            </div>
+
+
+            <div class="result-disclaimer">
+
+              <strong>
+                Screening is not a diagnosis.
+              </strong>
+
+              <p>
+                This result cannot confirm or rule
+                out any developmental, behavioral,
+                psychological, or medical condition.
+              </p>
+
+            </div>
+
+
+            <div class="result-actions">
+
+              <a
+                href="milestones.html"
+                class="secondary-button"
+              >
+                View Milestones
+              </a>
+
+              <a
+                href="specialists.html"
+                class="primary-link"
+                id="specialistButton"
+              >
+                Find a Specialist →
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <section class="recommendations-card">
+
+            <span class="section-kicker">
+              RECOMMENDED NEXT STEPS
+            </span>
+
+            <h2>
+              What can you do next?
+            </h2>
+
+
+            <div
+              class="recommendations"
+              id="recommendations"
+            ></div>
+
+          </section>
+
+
+          <button
+            type="button"
+            class="retake-button"
+            id="retakeButton"
+          >
+            Retake Screening
+          </button>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<script src="screening.js"></script>
+<script src="notifications.js"></script>
+
+</body>
+</html>

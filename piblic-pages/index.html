@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rafiq</title>
+<meta name="description" content="Rafiq is an AI-powered parenting and child development platform: child profiles, milestones, early screening, AI guidance and verified specialists.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Icon sprite (Lucide-style 24px stroke icons, inlined so the page has no build step) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18"/><rect x="3" y="4" width="18" height="18" rx="2"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3M12 9v4M12 17h.01"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7ZM14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="M22 7 13.5 15.5 8.5 10.5 2 17M16 7h6v6"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><path d="m16 13 5.22 3.48a.5.5 0 0 0 .78-.41V7.93a.5.5 0 0 0-.78-.41L16 11"/><rect x="2" y="6" width="14" height="12" rx="2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+    <symbol id="i-dollar" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 16l.7 1.8L21.5 18.5l-1.8.7L19 21l-.7-1.8-1.8-.7 1.8-.7z"/></symbol>
+    <symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4ZM22 2 11 13"/></symbol>
+    <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></symbol>
+    <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M7 20h10M10 20c5.5-2.5.8-6.4 3-10M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8zM14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+<!-- Growth chip: the same child, growing as the page scrolls (filled by JS) -->
+<div class="grow-chip" id="growChip" aria-hidden="true">
+  <span class="gc-face" id="gcFace"></span>
+  <span class="gc-txt"><b id="gcAge">6 months</b><small>your child's journey</small></span>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#hero" data-scroll="hero" aria-label="Rafiq, back to top">
+      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><circle class="lm-a" cx="13" cy="14" r="10"/><circle class="lm-b" cx="24" cy="23" r="6"/><path class="lm-c" d="M8 14a5 5 0 0 1 5-5" fill="none"/></svg>
+      <span href="#hero" class="logo-word">RAFIQ</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <!--  logo ==>home -->
+      <!-- <a href="#hero" data-scroll="hero" data-sec="hero">Home</a> -->
+       <a href="about.html">About</a>
+      <a href="#features" data-scroll="features" data-sec="features">Features</a>
+      <a href="#how-it-works" data-scroll="how-it-works" data-sec="how-it-works">How It Works</a>
+      <a href="#parents" data-scroll="parents" data-sec="parents">For Parents</a>
+      <a href="#specialists" data-scroll="specialists" data-sec="specialists">For Specialists</a>
+      <a href="#safety" data-scroll="safety" data-sec="safety">Safety</a>
+      <a href="#faq" data-scroll="faq" data-sec="faq">FAQ</a>
+    </nav>
+
+    <div class="nav-right">
+      <a class="nav-login" href="login.html" data-route>Log In</a>
+      <a class="btn btn-primary btn-sm nav-cta" href="register.html" data-route data-magnetic>Get Started</a>
+      <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <svg class="i" id="burgerIcon"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu" hidden>
+    <div class="wrap mm-in">
+      <!-- <a href="#hero" data-scroll="hero">Home</a> -->
+      <a href="#features" data-scroll="features">Features</a>
+      <a href="about.html">About</a>
+      <a href="#how-it-works" data-scroll="how-it-works">How It Works</a>
+      <a href="#parents" data-scroll="parents">For Parents</a>
+      <a href="#specialists" data-scroll="specialists">For Specialists</a>
+      <a href="#safety" data-scroll="safety">Safety</a>
+      <a href="#faq" data-scroll="faq">FAQ</a>
+      <div class="mm-actions">
+        <a class="btn btn-ghost" href="login.html" data-route>Log In</a>
+        <a class="btn btn-primary" href="register.html" data-route>Get Started</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ 1. HERO: a parent holding a baby, where the journey starts ============ -->
+<section class="hero" id="hero">
+  <div class="shapes" aria-hidden="true">
+    <span class="dotfield d1"></span><span class="dotfield d2"></span><span class="dotfield d3"></span>
+    <span class="twinkle t1"></span><span class="twinkle t2"></span><span class="twinkle t3"></span><span class="twinkle t4"></span>
+  </div>
+
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow hero-in" style="--i:0"><svg class="i"><use href="#i-sprout"/></svg><span>AI-powered parenting &amp; child development</span></p>
+      <h1>
+        <span class="ln" style="--i:1">Parenting comes with questions.</span>
+        <span class="ln ln-2" style="--i:2">Rafiq helps you find the next step.</span>
+      </h1>
+      <p class="lead hero-in" style="--i:3">Understand your child, track their development, get personalized AI guidance, screen early concerns, and connect with verified specialists — all in one place.</p>
+      <div class="cta-row hero-in" style="--i:4">
+        <a class="btn btn-primary btn-lg" href="/register" data-route data-magnetic><span>Get Started Free</span><svg class="i arr"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost btn-lg" href="#how-it-works" data-scroll="how-it-works">Explore How It Works</a>
+      </div>
+      <p class="trust hero-in" style="--i:5"><svg class="i"><use href="#i-shield"/></svg><span>Designed for parents of children from birth to age 18.</span></p>
+    </div>
+
+    <div class="hero-art hero-in" style="--i:2" id="heroArt">
+      <span class="art-blob ab1"></span><span class="art-blob ab2"></span><span class="art-blob ab3"></span>
+      <svg class="art-svg" id="heroParent" viewBox="0 0 540 540" role="img" aria-label="Illustration of a parent holding a baby"></svg>
+      <svg class="art-svg art-toddler" id="heroToddler" viewBox="0 0 540 540" aria-hidden="true"></svg>
+      <p class="age-badge" id="heroBadge"><span class="ab-dot"></span><b id="heroAge">6 months</b><small id="heroAgeSub">The journey starts here</small></p>
+
+      <!-- Floating product cards (sample content) -->
+      <div class="ui ui-ai" style="--i:0"><div class="ui-in">
+        <span class="ui-ic lav"><svg class="i"><use href="#i-chat"/></svg></span>
+        <div><p class="ui-t">Rafiq AI</p><p class="ui-s">Try a calm, short bedtime routine tonight.</p></div>
+      </div></div>
+      <div class="ui ui-mile" style="--i:1"><div class="ui-in">
+        <span class="ui-ic mint"><svg class="i"><use href="#i-check"/></svg></span>
+        <div><p class="ui-t">Milestone achieved</p><p class="ui-s">First smile at 2 months</p></div>
+      </div></div>
+      <div class="ui ui-vac" style="--i:2"><div class="ui-in">
+        <span class="ui-ic sky"><svg class="i"><use href="#i-bell"/></svg></span>
+        <div><p class="ui-t">Vaccine reminder</p><p class="ui-s">Due Nov 14 · 10:00 AM</p></div>
+      </div></div>
+      <div class="ui ui-scr" style="--i:3"><div class="ui-in">
+        <span class="ui-ic peach"><svg class="i"><use href="#i-file"/></svg></span>
+        <div><p class="ui-t">Screening reminder</p><p class="ui-s">Speech check in 3 days</p></div>
+      </div></div>
+      <div class="ui ui-book" style="--i:4"><div class="ui-in">
+        <span class="avatar sm a1" aria-hidden="true">LH</span>
+        <div><p class="ui-t">Dr. Lina Haddad</p><p class="ui-s">Booked · Today, 4:30 PM</p></div>
+      </div></div>
+    </div>
+  </div>
+  <!-- <p class="sample-note hero-note">Illustration and cards show sample content</p> -->
+</section>
+
+<!-- What the product covers (facts about the product design, not usage claims) -->
+<section class="strip" aria-label="What Rafiq covers">
+  <div class="wrap strip-grid" data-stagger>
+    <div class="stat s1"><p class="stat-n"><span data-count="18">18</span></p><p class="stat-l">years of age covered, from birth</p></div>
+    <div class="stat s2"><p class="stat-n"><span data-count="6">6</span></p><p class="stat-l">development areas tracked</p></div>
+    <div class="stat s3"><p class="stat-n"><span data-count="6">6</span></p><p class="stat-l">early screening topics</p></div>
+    <div class="stat s4"><p class="stat-n"><span data-count="3">3</span></p><p class="stat-l">roles: parent, specialist, admin</p></div>
+  </div>
+</section>
+
+<!-- ============ 2. THE PARENT PROBLEM (scroll-driven) ============ -->
+<section class="problem" id="problem" aria-labelledby="problemTitle">
+  <div class="problem-stage">
+    <div class="wrap problem-grid">
+      <div class="problem-head">
+        <p class="eyebrow">The parent problem</p>
+        <h2 id="problemTitle">Every age brings new questions.</h2>
+        <p class="lead sm">The questions change as your child grows. The worry behind them does not.</p>
+      </div>
+      <div class="qs">
+        <ul class="q-list">
+          <li class="q"><span class="q-mark">0–3</span>My toddler isn't talking much yet. Should I worry?</li>
+          <li class="q q-r"><span class="q-mark">4–6</span>My child has frequent tantrums. How should I respond?</li>
+          <li class="q"><span class="q-mark">7–12</span>Is my child struggling with attention?</li>
+          <li class="q q-r"><span class="q-mark">7–12</span>My child is being bullied. What should I do?</li>
+          <li class="q"><span class="q-mark">13–18</span>How do I communicate with my teenager?</li>
+          <li class="q q-r"><span class="q-mark">Any age</span>Should I talk to a specialist?</li>
+        </ul>
+        <p class="q-end">You shouldn't have to search everywhere for answers.</p>
+        <div class="q-rafiq">
+          <svg class="logo-mark lg" viewBox="0 0 32 32" aria-hidden="true"><circle class="lm-a" cx="13" cy="14" r="10"/><circle class="lm-b" cx="24" cy="23" r="6"/><path class="lm-c" d="M8 14a5 5 0 0 1 5-5" fill="none"/></svg>
+          <div><p class="q-rafiq-t">Meet Rafiq</p><p class="q-rafiq-s">One place to understand, track, ask and connect.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. THE GROWING CHILD (sticky storyline) ============ -->
+<section class="growth" id="growth" aria-labelledby="growthTitle">
+  <div class="growth-stage">
+    <div class="wrap growth-grid">
+      <ol class="g-line" id="gLine" aria-label="Age timeline">
+        <li data-v="0"><b>Birth</b></li>
+        <li data-v="3"><b>3</b></li>
+        <li data-v="6"><b>6</b></li>
+        <li data-v="12"><b>12</b></li>
+        <li data-v="18"><b>18</b></li>
+        <span class="g-fill" id="gFill"></span>
+      </ol>
+
+      <div class="g-copy">
+        <p class="eyebrow">One child, every stage</p>
+        <h2 id="growthTitle">Rafiq grows with your child</h2>
+        <div class="g-panel" id="gPanel" aria-live="polite"></div>
+        <div class="g-hint"><svg class="i"><use href="#i-arrow"/></svg>Keep scrolling to watch your child grow</div>
+      </div>
+
+      <div class="g-scene" id="gScene">
+        <p class="g-age"><span id="gAgeNum">2</span><small id="gAgeUnit">years old</small></p>
+        <svg id="gSvg" viewBox="0 0 480 520" role="img" aria-label="An illustrated child who grows older as you scroll, from a toddler to an older teenager"></svg>
+      </div>
+    </div>
+
+    <!-- Simple stacked version for phones, tablets and reduced motion -->
+    <div class="wrap">
+      <div class="g-list" id="gList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. RAFIQ JOURNEY (sticky storytelling) ============ -->
+<section class="journey" id="how-it-works" aria-labelledby="journeyTitle">
+  <div class="wrap jhead">
+    <p class="eyebrow">How it works</p>
+    <h2>From the first question to the follow-up.</h2>
+  </div>
+
+  <div class="jstage">
+    <div class="wrap jgrid">
+      <div class="jleft">
+        <p class="eyebrow">How it works</p>
+        <h2 id="journeyTitle">From the first question to the follow-up.</h2>
+        <div class="jcard" id="jcard" aria-live="polite"></div>
+        <div class="jdots" id="jdots" role="group" aria-label="Jump to a step"></div>
+      </div>
+      <div class="jviz">
+        <svg id="jsvg" viewBox="-10 0 540 620" role="img" aria-label="A winding path connecting seven steps: concern, development, AI, screening, challenges, specialist and booking with follow-up">
+          <path id="jbase" class="jn-base"/>
+          <path id="jprog" class="jn-prog"/>
+          <g id="jnodes"></g>
+          <circle id="jdot" class="jn-dot" r="7"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <ol class="jlist" id="jlist"></ol>
+  </div>
+</section>
+
+<!-- ============ 5. FEATURES ============ -->
+<section class="sec features" id="features" aria-labelledby="featuresTitle">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Features</p>
+      <h2 id="featuresTitle">Everything parents need in one platform</h2>
+      <p class="lead sm">Eight tools that work together, all aware of which child you are looking at.</p>
+    </div>
+
+    <div class="bento" data-stagger>
+
+      <!-- Feature 1: AI Parent Assistant -->
+      <article class="fcard span-12 f-ai" id="feature-ai">
+        <div class="fc-copy">
+          <span class="tag lav"><svg class="i"><use href="#i-chat"/></svg>AI Parent Assistant</span>
+          <h3>Ask in your own words. Get an answer shaped around your child.</h3>
+          <p>A context-aware AI assistant that answers questions based on the currently selected child profile.</p>
+          <ul class="ticks">
+            <li><svg class="i"><use href="#i-check"/></svg>Personalized to child age</li>
+            <li><svg class="i"><use href="#i-check"/></svg>Arabic &amp; English</li>
+            <li><svg class="i"><use href="#i-check"/></svg>Parenting guidance</li>
+            <li><svg class="i"><use href="#i-check"/></svg>Suggested next steps</li>
+            <li><svg class="i"><use href="#i-check"/></svg>No medical diagnosis</li>
+          </ul>
+          <a class="btn btn-primary" href="register.html" data-route data-magnetic>Try the AI Assistant<svg class="i arr"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="chat-wrap">
+          <span class="bubble bb1" aria-hidden="true"></span><span class="bubble bb2" aria-hidden="true"></span><span class="bubble bb3" aria-hidden="true"></span>
+          <div class="chat" aria-label="Example conversation with Rafiq AI">
+            <div class="chat-top"><span class="avatar sm a2" aria-hidden="true">R</span><div><p class="m-strong">Rafiq AI</p><p class="m-meta">Selected child: 4 years old</p></div></div>
+            <div class="msg me">My son is 4 and keeps hitting other children. How should I respond?</div>
+            <div class="msg ai">
+              <p>Hitting is common at this age, when big feelings arrive faster than the words for them. Stay calm, name the feeling, and show what to do instead: "Hands are for gentle touches."</p>
+              <p class="msg-h">Suggested next steps</p>
+              <ul>
+                <li>Step in early and move him away from the situation.</li>
+                <li>Note when it happens for a week to spot triggers.</li>
+                <li>Open the 4–6 guide on Aggression.</li>
+              </ul>
+              <p class="msg-f"><svg class="i"><use href="#i-shield"/></svg>General guidance. Not a diagnosis.</p>
+            </div>
+          </div>
+          <!-- <div class="pop pop-1"><span class="ui-ic mint"><svg class="i"><use href="#i-check"/></svg></span>Milestone saved</div> -->
+          <!-- <div class="pop pop-2"><span class="ui-ic sun"><svg class="i"><use href="#i-bell"/></svg></span>Reminder set</div> -->
+        </div>
+      </article>
+
+      <!-- Feature 2: Child profiles -->
+      <article class="fcard span-5" id="feature-profiles">
+        <span class="tag mint"><svg class="i"><use href="#i-users"/></svg>Child Profiles</span>
+        <h3>Manage multiple children from one parent account.</h3>
+        <div class="profiles" id="profiles" role="tablist" aria-label="Example child profiles"></div>
+        <div class="profile-detail" id="profileDetail" aria-live="polite"></div>
+      </article>
+
+      <!-- Feature 3: Development -->
+      <article class="fcard span-7" id="feature-development">
+        <span class="tag peach"><svg class="i"><use href="#i-trend"/></svg>Development &amp; Milestones</span>
+        <h3>See where your child is across six areas.</h3>
+        <div class="dev" id="devRows"></div>
+        <div class="legend">
+          <span><i class="dot ok"></i>Achieved</span>
+          <span><i class="dot warn"></i>Not Yet</span>
+          <span><i class="dot crit"></i>Concern</span>
+          <small>Example for a 2-year-old</small>
+        </div>
+        <a class="btn btn-ghost btn-sm" href="register.html" data-route>Explore Development<svg class="i arr"><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <!-- Feature 4: Early screening -->
+      <article class="fcard span-7" id="feature-screening">
+        <span class="tag lav"><svg class="i"><use href="#i-file"/></svg>Early Screening</span>
+        <h3>Age-appropriate screening for early developmental and behavioral concerns.</h3>
+        <ul class="scr" id="scrRows"></ul>
+        <p class="disclaimer"><svg class="i"><use href="#i-shield"/></svg><span><strong>Screening is not a diagnosis.</strong> Results suggest what may deserve attention. A qualified professional decides what it means.</span></p>
+      </article>
+
+      <!-- Feature 6: Health -->
+      <article class="fcard span-5" id="feature-health">
+        <span class="tag mint"><svg class="i"><use href="#i-activity"/></svg>Health &amp; Vaccination Tracking</span>
+        <h3>Keep checkups, growth and reminders in one timeline.</h3>
+        <div class="vitals">
+          <div><p class="v-l">Weight</p><p class="v-n"><span data-count="12.4" data-decimals="1">12.4</span><small> kg</small></p></div>
+          <div class="v2"><p class="v-l">Height</p><p class="v-n"><span data-count="88">88</span><small> cm</small></p></div>
+        </div>
+        <ol class="tl" id="healthTl"></ol>
+        <p class="m-meta">Example data for Layan, 2 years. Follow your pediatrician's schedule.</p>
+      </article>
+
+      <!-- Feature 5: Challenges -->
+      <article class="fcard span-12" id="feature-challenges">
+        <div class="ch-head">
+          <div>
+            <span class="tag peach"><svg class="i"><use href="#i-book"/></svg>Parenting Challenges &amp; Guidance</span>
+            <h3>Practical guidance for each stage, from sleep to social media.</h3>
+          </div>
+          <a class="btn btn-ghost btn-sm" href="register.html" data-route>Explore Challenges<svg class="i arr"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="tabs" id="chTabs" role="tablist" aria-label="Age group"></div>
+        <div class="ch-body">
+          <div class="ch-list" id="chList" role="tablist" aria-label="Challenges"></div>
+          <div class="ch-detail" id="chDetail" aria-live="polite"></div>
+        </div>
+      </article>
+
+      <!-- Feature 7: Specialists -->
+      <article class="fcard span-12" id="feature-specialists">
+        <span class="tag lav"><svg class="i"><use href="#i-search"/></svg>Find &amp; Book Specialists</span>
+        <h3>Search by what your child needs, then book a time that works.</h3>
+        <form class="filters" id="spFilters" aria-label="Specialist filters" onsubmit="return false">
+          <label>Specialty
+            <select id="fSpec">
+              <option value="">Any specialty</option>
+              <option value="pediatrician">Pediatrician</option>
+              <option value="speech">Speech &amp; Language</option>
+              <option value="behavioral">Behavioral</option>
+              <option value="psychologist">Psychologist</option>
+              <option value="learning">Learning Difficulty</option>
+              <option value="development">Child Development</option>
+            </select>
+          </label>
+          <label>Age group
+            <select id="fAge">
+              <option value="">Any age</option>
+              <option value="0-3">0–3</option>
+              <option value="4-6">4–6</option>
+              <option value="7-12">7–12</option>
+              <option value="13-18">13–18</option>
+            </select>
+          </label>
+          <label>Session
+            <select id="fMode">
+              <option value="">Online or in-person</option>
+              <option value="online">Online</option>
+              <option value="in-person">In-person</option>
+            </select>
+          </label>
+          <label>Availability
+            <select id="fAvail">
+              <option value="">Any time</option>
+              <option value="today">Today</option>
+              <option value="week">This week</option>
+            </select>
+          </label>
+          <label>Price
+            <select id="fPrice">
+              <option value="">Any price</option>
+              <option value="low">$</option>
+              <option value="mid">$$</option>
+              <option value="high">$$$</option>
+            </select>
+          </label>
+        </form>
+        <p class="results-line" id="spCount" aria-live="polite"></p>
+        <div class="sp-grid" id="spGrid"></div>
+        <!-- <p class="m-meta">Sample profiles for preview. They are not real people.</p> -->
+      </article>
+
+      <!-- Feature 8: Safety -->
+      <article class="fcard span-12 f-safe" id="feature-safety">
+        <div class="fc-copy">
+          <span class="tag sky"><svg class="i"><use href="#i-shield"/></svg>Safety &amp; Emergency Guidance</span>
+          <h3>Rafiq includes a safety layer that detects possible red flags in AI conversations.</h3>
+          <ul class="ticks">
+            <li><svg class="i"><use href="#i-check"/></svg>AI does not diagnose</li>
+            <li><svg class="i"><use href="#i-check"/></svg>Emergency situations interrupt normal chatbot behavior</li>
+            <li><svg class="i"><use href="#i-check"/></svg>Parents are directed to emergency care when needed</li>
+          </ul>
+        </div>
+        <div class="chat safe-chat" id="safeChat" aria-label="Example of the safety layer">
+          <div class="msg me">My child is having difficulty breathing.</div>
+          <div class="safe-status" id="safeStatus"><svg class="i"><use href="#i-pause"/></svg>Normal answers paused</div>
+          <div class="alert-card" id="safeAlert" role="alert">
+            <p class="alert-t"><svg class="i"><use href="#i-alert"/></svg>Possible Emergency</p>
+            <p class="alert-b">Seek urgent medical attention. Contact your local emergency services or go to the nearest emergency room now.</p>
+            <a class="btn btn-primary btn-sm" href="/safety" data-route>How the safety layer works</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. FOR PARENTS ============ -->
+<section class="sec parents" id="parents" aria-labelledby="parentsTitle">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">For parents</p>
+      <h2 id="parentsTitle">A calm place for everything about your child.</h2>
+      <p class="lead sm">Your dashboard puts today's priorities first and keeps the rest one tap away.</p>
+    </div>
+
+    <div class="browser big reveal">
+      <div class="b-bar"><i></i><i></i><i></i><span class="b-url">rafiq.app/parent</span></div>
+      <div class="b-screen pd">
+        <aside class="pd-side" aria-hidden="true">
+          <span class="pd-s on"><svg class="i"><use href="#i-layout"/></svg>Home</span>
+          <span class="pd-s"><svg class="i"><use href="#i-trend"/></svg>Development</span>
+          <span class="pd-s"><svg class="i"><use href="#i-file"/></svg>Screening</span>
+          <span class="pd-s"><svg class="i"><use href="#i-book"/></svg>Challenges</span>
+          <span class="pd-s"><svg class="i"><use href="#i-activity"/></svg>Health</span>
+          <span class="pd-s"><svg class="i"><use href="#i-search"/></svg>Specialists</span>
+        </aside>
+        <div class="pd-main">
+          <div class="pd-top">
+            <div><h3 class="pd-hello">Good Morning, Fatima</h3><p class="m-meta">Current Child</p></div>
+            <span class="pd-child"><span class="avatar sm a3" aria-hidden="true">O</span>Omar — 8 Years</span>
+          </div>
+          <div class="pd-grid" data-stagger>
+            <button type="button" class="m-card lav pd-c" data-route="/register?role=parent">
+              <span class="m-label"><svg class="i"><use href="#i-sparkle"/></svg>Today's Tip</span>
+              <span class="m-text">Give a five-minute warning before screens go off. Predictable endings mean fewer battles.</span>
+            </button>
+            <button type="button" class="m-card pd-c" data-route="/register?role=parent">
+              <span class="m-label"><svg class="i"><use href="#i-trend"/></svg>Development Progress</span>
+              <span class="ring-row">
+                <svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle class="ring-bg" cx="32" cy="32" r="26" pathLength="100"/><circle class="ring-fg" data-ring="72" cx="32" cy="32" r="26" pathLength="100"/></svg>
+                <span class="ring-num"><span data-count="72">72</span><small>%</small></span>
+              </span>
+            </button>
+            <div class="m-card pd-c" id="checkin">
+              <p class="m-label"><svg class="i"><use href="#i-smile"/></svg>Daily Check-in</p>
+              <p class="m-text">How was Omar's day?</p>
+              <div class="moods" role="group" aria-label="Pick a mood">
+                <button type="button" class="mood" aria-pressed="false">Rough</button>
+                <button type="button" class="mood" aria-pressed="false">Okay</button>
+                <button type="button" class="mood on" aria-pressed="true">Good</button>
+              </div>
+            </div>
+            <button type="button" class="m-card peach pd-c" data-route="/register?role=parent">
+              <span class="m-label"><svg class="i"><use href="#i-book"/></svg>Recommended Challenge</span>
+              <span class="m-strong">Screen time</span>
+              <span class="m-meta">Age 7–12 guide · 4 min read</span>
+            </button>
+            <button type="button" class="m-card pd-c" data-route="/register?role=parent">
+              <span class="m-label"><svg class="i"><use href="#i-file"/></svg>Upcoming Screening</span>
+              <span class="m-strong">Attention check</span>
+              <span class="pill warn-p">Due in 6 days</span>
+            </button>
+            <button type="button" class="m-card mint pd-c" data-route="/register?role=parent">
+              <span class="m-label"><svg class="i"><use href="#i-bell"/></svg>Health Reminder</span>
+              <span class="m-strong">Annual checkup</span>
+              <span class="m-meta">Nov 14, 10:00 AM</span>
+            </button>
+            <div class="m-card ink pd-c">
+              <p class="m-label"><svg class="i"><use href="#i-chat"/></svg>Ask Rafiq AI</p>
+              <div class="ask"><span>How do I help Omar focus on homework?</span><a href="/register?role=parent" data-route class="ask-go" aria-label="Send question"><svg class="i"><use href="#i-send"/></svg></a></div>
+            </div>
+            <button type="button" class="m-card sky pd-c" data-route="/specialists">
+              <span class="m-label"><svg class="i"><use href="#i-search"/></svg>Find Specialist</span>
+              <span class="m-strong">3 available this week</span>
+              <span class="m-meta">Child psychology · Learning</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="sample-note center">Preview with sample data</p>
+
+    <div class="center-cta">
+      <a class="btn btn-primary btn-lg" href="register.html" data-route data-magnetic>Create Parent Account<svg class="i arr"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. SPECIALISTS ============ -->
+<section class="sec spec" id="specialists" aria-labelledby="specTitle">
+  <div class="wrap spec-grid">
+    <div class="spec-copy">
+      <p class="eyebrow">For specialists</p>
+      <h2 id="specTitle">Professional support when parents need more than guidance.</h2>
+      <p class="lead sm">Verified specialists can join Rafiq to offer sessions, share reports and follow up with families, all from one workspace.</p>
+      <ul class="role-chips" data-stagger>
+        <li>Pediatricians</li><li>Speech &amp; Language Specialists</li><li>Behavioral Specialists</li><li>Psychologists</li><li>Learning Difficulty Specialists</li><li>Child Development Specialists</li>
+      </ul>
+      <ul class="spec-feats" data-stagger>
+        <li><svg class="i"><use href="#i-user"/></svg>Professional profile</li>
+        <li><svg class="i"><use href="#i-badge"/></svg>Verification</li>
+        <li><svg class="i"><use href="#i-clock"/></svg>Availability management</li>
+        <li><svg class="i"><use href="#i-calendar"/></svg>Booking management</li>
+        <li><svg class="i"><use href="#i-file"/></svg>Consultation reports</li>
+        <li><svg class="i"><use href="#i-layout"/></svg>Schedule</li>
+        <li><svg class="i"><use href="#i-dollar"/></svg>Earnings</li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn btn-primary btn-lg" href="login.html" data-route data-magnetic>Join as a Specialist<svg class="i arr"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost btn-lg" href="login.html" data-route>Browse Specialists</a>
+      </div>
+    </div>
+
+    <div class="spec-visual reveal">
+      <div class="browser">
+        <div class="b-bar"><i></i><i></i><i></i><span class="b-url">rafiq.app/specialist</span></div>
+        <div class="b-screen sd">
+          <div class="sd-top"><div><p class="m-strong">Specialist workspace</p><p class="m-meta">Sample data</p></div><span class="pill ok"><svg class="i"><use href="#i-badge"/></svg>Verified</span></div>
+          <div class="sd-grid">
+            <div class="m-card sd-sched">
+              <p class="m-label"><svg class="i"><use href="#i-calendar"/></svg>Today's Schedule</p>
+              <ul class="sched">
+                <li><time>09:00</time><span>Follow-up · Omar</span><em class="pill ok">Online</em></li>
+                <li><time>11:30</time><span>First session · Layan</span><em class="pill lav-p">In-person</em></li>
+                <li><time>15:00</time><span>Report review</span><em class="pill warn-p">Draft</em></li>
+              </ul>
+            </div>
+            <div class="m-card"><p class="m-label">Upcoming Bookings</p><p class="big"><span data-count="9">9</span></p><p class="m-meta">next 7 days</p></div>
+            <div class="m-card"><p class="m-label">Consultations</p><p class="big"><span data-count="42">42</span></p><p class="m-meta">this month</p></div>
+            <div class="m-card"><p class="m-label">Reports</p><p class="big"><span data-count="3">3</span></p><p class="m-meta">to finish</p></div>
+            <div class="m-card mint"><p class="m-label"><svg class="i"><use href="#i-dollar"/></svg>Earnings</p><p class="big"><span data-count="1860" data-prefix="$">$1,860</span></p><p class="m-meta">this month</p></div>
+            <div class="m-card sd-avail">
+              <p class="m-label"><svg class="i"><use href="#i-clock"/></svg>Availability</p>
+              <div class="days" role="group" aria-label="Weekly availability (tap to toggle)">
+                <button type="button" class="day on" aria-pressed="true">S</button>
+                <button type="button" class="day on" aria-pressed="true">M</button>
+                <button type="button" class="day" aria-pressed="false">T</button>
+                <button type="button" class="day on" aria-pressed="true">W</button>
+                <button type="button" class="day on" aria-pressed="true">T</button>
+                <button type="button" class="day" aria-pressed="false">F</button>
+                <button type="button" class="day" aria-pressed="false">S</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. HOW BOOKING WORKS ============ -->
+<section class="sec booking" id="booking" aria-labelledby="bookTitle">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Booking</p>
+      <h2 id="bookTitle">How booking works</h2>
+    </div>
+
+    <ol class="bk reveal" id="bk">
+      <li class="bk-s"><span class="bk-ic c1"><svg class="i"><use href="#i-search"/></svg></span><h3>Search Specialist</h3><p>Filter by specialty, age group and session type.</p></li>
+      <li class="bk-s"><span class="bk-ic c2"><svg class="i"><use href="#i-user"/></svg></span><h3>View Profile</h3><p>Read their background and see their availability.</p></li>
+      <li class="bk-s"><span class="bk-ic c3"><svg class="i"><use href="#i-calendar"/></svg></span><h3>Choose Date &amp; Time</h3><p>Pick a slot that fits your family's week.</p></li>
+      <li class="bk-s"><span class="bk-ic c4"><svg class="i"><use href="#i-check"/></svg></span><h3>Confirm Booking</h3><p>Review the details and confirm the session.</p></li>
+    </ol>
+
+    <div class="flow reveal" aria-label="After the booking">
+      <div class="flow-i"><svg class="i"><use href="#i-video"/></svg><div><p class="m-strong">Consultation</p><p class="m-meta">Online or in-person</p></div></div>
+      <svg class="i arr flow-a"><use href="#i-arrow"/></svg>
+      <div class="flow-i"><svg class="i"><use href="#i-file"/></svg><div><p class="m-strong">Specialist Report</p><p class="m-meta">Written after the session</p></div></div>
+      <svg class="i arr flow-a"><use href="#i-arrow"/></svg>
+      <div class="flow-i"><svg class="i"><use href="#i-heart"/></svg><div><p class="m-strong">Parent Follow-Up</p><p class="m-meta">Reports saved in one place</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. TRUST & AI SAFETY ============ -->
+<section class="sec trust-sec" id="safety" aria-labelledby="trustTitle">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Trust &amp; AI safety</p>
+      <h2 id="trustTitle">Built with safety at the center.</h2>
+    </div>
+
+    <div class="trust-grid" data-stagger>
+      <article class="tcard"><span class="t-ic lav"><svg class="i"><use href="#i-shield"/></svg></span><h3>AI does not diagnose</h3><p>Rafiq explains and suggests. It never names a condition for your child.</p></article>
+      <article class="tcard"><span class="t-ic peach"><svg class="i"><use href="#i-file"/></svg></span><h3>Screening results are not medical diagnoses</h3><p>They point to what may need a closer look, nothing more.</p></article>
+      <article class="tcard"><span class="t-ic sky"><svg class="i"><use href="#i-alert"/></svg></span><h3>Urgent red flags trigger emergency guidance</h3><p>Normal answers pause and you are directed to urgent care.</p></article>
+      <article class="tcard"><span class="t-ic sun"><svg class="i"><use href="#i-lock"/></svg></span><h3>Child information is treated as sensitive data</h3><p>Profiles and health notes are handled with extra care.</p></article>
+    </div>
+
+    <div class="kb reveal">
+      <div class="kb-head">
+        <span class="t-ic mint"><svg class="i"><use href="#i-book"/></svg></span>
+        <div><h3>AI Knowledge &amp; Safety</h3><p>Rafiq is designed to use reviewed, trusted health and child-development information.</p></div>
+      </div>
+      <ul class="kb-list">
+        <li><strong>Reviewed content.</strong> Guidance comes from material that people on the team have reviewed, with admins managing what the AI can draw on.</li>
+        <li><strong>Clear limits.</strong> Every answer is general and educational. When a question needs a professional, Rafiq says so.</li>
+        <li><strong>Always a next step.</strong> Concerns lead to practical actions, a screening, or a specialist you can book.</li>
+      </ul>
+      <p class="m-meta">No AI system is perfect. Rafiq supports your judgment and does not replace a doctor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. PLATFORM USERS ============ -->
+<section class="sec users" id="users" aria-labelledby="usersTitle">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The platform</p>
+      <h2 id="usersTitle">One platform, three roles</h2>
+      <p class="lead sm">Each role gets a workspace built for its own job.</p>
+    </div>
+    <div class="cols" data-stagger>
+      <article class="col lav-c">
+        <header><span class="t-ic lav"><svg class="i"><use href="#i-heart"/></svg></span><h3>Parent</h3></header>
+        <ul><li>Child Profiles</li><li>AI Assistant</li><li>Milestones</li><li>Screening</li><li>Challenges</li><li>Health</li><li>Booking</li><li>Subscription</li></ul>
+      </article>
+      <article class="col mint-c">
+        <header><span class="t-ic mint"><svg class="i"><use href="#i-badge"/></svg></span><h3>Specialist</h3></header>
+        <ul><li>Professional Profile</li><li>Availability</li><li>Bookings</li><li>Consultations</li><li>Reports</li><li>Schedule</li><li>Earnings</li></ul>
+      </article>
+      <article class="col peach-c">
+        <header><span class="t-ic peach"><svg class="i"><use href="#i-layout"/></svg></span><h3>Admin</h3></header>
+        <ul><li>Users</li><li>Specialist Approvals</li><li>Content</li><li>AI Knowledge</li><li>AI Safety</li><li>Bookings</li><li>Payments</li><li>Analytics</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11. PLANS ============ -->
+<section class="sec plans" id="plans" aria-labelledby="plansTitle">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Plans</p>
+      <h2 id="plansTitle">Simple plans</h2>
+      <p class="lead sm">Start free. Move up when your family needs more.</p>
+    </div>
+    <div class="plan-grid" data-stagger>
+      <article class="plan">
+        <h3>Parent Free</h3>
+        <p class="plan-p">For getting started</p>
+        <ul class="ticks"><li><svg class="i"><use href="#i-check"/></svg>Child profile</li><li><svg class="i"><use href="#i-check"/></svg>Basic milestones</li><li><svg class="i"><use href="#i-check"/></svg>Limited AI guidance</li><li><svg class="i"><use href="#i-check"/></svg>Basic parenting content</li></ul>
+        <a class="btn btn-ghost" href="/register?plan=free" data-route>Start Free</a>
+      </article>
+      <article class="plan feat">
+        <span class="plan-badge">Most complete for parents</span>
+        <h3>Parent Premium</h3>
+        <p class="plan-p">For ongoing support</p>
+        <ul class="ticks"><li><svg class="i"><use href="#i-check"/></svg>Extended AI access</li><li><svg class="i"><use href="#i-check"/></svg>Advanced screening history</li><li><svg class="i"><use href="#i-check"/></svg>Reports</li><li><svg class="i"><use href="#i-check"/></svg>Additional guidance</li></ul>
+        <a class="btn btn-primary" href="/register?plan=premium" data-route data-magnetic>Upgrade</a>
+      </article>
+      <article class="plan">
+        <h3>Specialist</h3>
+        <p class="plan-p">For professionals</p>
+        <ul class="ticks"><li><svg class="i"><use href="#i-check"/></svg>Professional profile</li><li><svg class="i"><use href="#i-check"/></svg>Schedule</li><li><svg class="i"><use href="#i-check"/></svg>Booking management</li><li><svg class="i"><use href="#i-check"/></svg>Reports</li><li><svg class="i"><use href="#i-check"/></svg>Earnings dashboard</li></ul>
+        <a class="btn btn-ghost" href="/register?role=specialist" data-route>Join as Specialist</a>
+      </article>
+    </div>
+    <p class="m-meta center">Plans are a preview for this graduation project. No payments are processed.</p>
+  </div>
+</section>
+
+<!-- ============ 12. FAQ ============ -->
+<section class="sec faq" id="faq" aria-labelledby="faqTitle">
+  <div class="wrap faq-grid">
+    <div class="faq-head">
+      <p class="eyebrow">FAQ</p>
+      <h2 id="faqTitle">Questions parents ask</h2>
+      <p class="lead sm">Short answers about ages, safety, specialists and plans.</p>
+    </div>
+    <div class="acc" id="acc"></div>
+  </div>
+</section>
+
+<!-- ============ 13. FINAL CTA: the journey is complete ============ -->
+<section class="cta" id="cta" aria-labelledby="ctaTitle">
+  <div class="wrap cta-grid">
+    <div class="cta-copy">
+      <p class="eyebrow on-dark"><svg class="i"><use href="#i-heart"/></svg>The journey, completed</p>
+      <h2 id="ctaTitle">From their first milestones to their biggest challenges, Rafiq grows with your family.</h2>
+      <p class="lead">Track, understand, ask, and connect — with Rafiq beside you at every stage.</p>
+      <div class="cta-row">
+        <a class="btn btn-sun btn-lg" href="login.html" data-route data-magnetic><span>Start Your Journey</span><svg class="i arr"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-outline-light btn-lg" href="register.html" data-route>Join as a Specialist</a>
+      </div>
+    </div>
+    <div class="cta-scene">
+      <svg id="finalSvg" viewBox="0 0 640 520" role="img" aria-label="Illustration of a parent and their teenager standing together, smiling"></svg>
+    </div>
+  </div>
+  <div class="wrap">
+    <ol class="recap" id="recap" aria-label="The child's journey from birth to 18"></ol>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-brand">
+        <a class="logo" href="#hero" data-scroll="hero" aria-label="Rafiq, back to top">
+          <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><circle class="lm-a" cx="13" cy="14" r="10"/><circle class="lm-b" cx="24" cy="23" r="6"/><path class="lm-c" d="M8 14a5 5 0 0 1 5-5" fill="none"/></svg>
+          <span class="logo-word">RAFIQ</span>
+        </a>
+        <p>Your parenting &amp; child development companion.</p>
+      </div>
+      <nav class="f-col" aria-label="Platform">
+        <h4>Platform</h4>
+        <a href="#features" data-scroll="features">Features</a>
+        <a href="#how-it-works" data-scroll="how-it-works">How It Works</a>
+        <a href="#specialists" data-scroll="specialists">Specialists</a>
+        <a href="#safety" data-scroll="safety">Safety</a>
+      </nav>
+      <nav class="f-col" aria-label="For parents">
+        <h4>For Parents</h4>
+        <a href="#feature-development" data-scroll="feature-development">Development</a>
+        <a href="#feature-screening" data-scroll="feature-screening">Screening</a>
+        <a href="#feature-challenges" data-scroll="feature-challenges">Challenges</a>
+        <a href="#feature-health" data-scroll="feature-health">Health</a>
+      </nav>
+      <nav class="f-col" aria-label="For specialists">
+        <h4>For Specialists</h4>
+        <a href="/register?role=specialist" data-route>Join Rafiq</a>
+        <a href="#booking" data-scroll="booking">Bookings</a>
+        <a href="#specialists" data-scroll="specialists">Professional Profile</a>
+      </nav>
+      <nav class="f-col" aria-label="Legal">
+        <h4>Legal</h4>
+        <a href="/privacy" data-route>Privacy</a>
+        <a href="/terms" data-route>Terms</a>
+        <a href="/medical-disclaimer" data-route>Medical Disclaimer</a>
+      </nav>
+    </div>
+    <p class="f-disc">Rafiq provides educational and supportive information and does not replace professional medical advice, diagnosis, or emergency services.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="character.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

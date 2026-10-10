@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Parent Dashboard | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="parent-dashboard.css"
+  >
+  <link
+  rel="stylesheet"
+  href="notifications.css"
+>
+</head>
+
+<body>
+
+  <div class="app-shell">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+      <div class="sidebar-top">
+
+        <a href="../piblic-pages/index.html" class="brand">
+          <!-- <div class="brand-mark">
+            R
+          </div> -->
+
+          <span>
+            RAFIQ
+          </span>
+        </a>
+
+        <button
+          class="sidebar-close"
+          id="sidebarClose"
+          type="button"
+          aria-label="Close navigation"
+        >
+          ✕
+        </button>
+
+      </div>
+
+
+      <!-- Current child -->
+      <div class="child-switcher">
+
+        <span class="small-label">
+          CURRENT CHILD
+        </span>
+
+        <button
+          class="child-switcher-button"
+          id="childSwitcherButton"
+          type="button"
+        >
+
+          <div
+            class="child-avatar"
+            id="sidebarChildAvatar"
+          >
+            L
+          </div>
+
+          <div class="child-switcher-info">
+
+            <strong id="sidebarChildName">
+              Child
+            </strong>
+
+            <span id="sidebarChildAge">
+              Loading...
+            </span>
+
+          </div>
+
+          <span class="chevron">
+            ▾
+          </span>
+
+        </button>
+
+
+        <div
+          class="child-dropdown"
+          id="childDropdown"
+          hidden
+        >
+
+          <div id="childDropdownList"></div>
+
+          <a
+            href="onboarding.html"
+            class="add-child-link"
+          >
+            + Add another child
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- Navigation -->
+      <nav class="sidebar-nav">
+
+        <span class="nav-section-title">
+          OVERVIEW
+        </span>
+
+        <a
+          href="parent-dashboard.html"
+          class="nav-link active"
+        >
+          <!-- <span class="nav-icon">⌂</span> -->
+          <span>Dashboard</span>
+        </a>
+
+
+        <a
+          href="ai-assistant.html"
+          class="nav-link"
+        >
+          <!-- <span class="nav-icon">✦</span> -->
+          <span>Rafiq AI</span>
+        </a>
+
+
+        <a
+          href="milestones.html"
+          class="nav-link"
+        >
+          <!-- <span class="nav-icon">✓</span> -->
+          <span>Milestones</span>
+        </a>
+
+
+        <a
+          href="screening.html"
+          class="nav-link"
+        >
+          <!-- <span class="nav-icon">◫</span> -->
+          <span>Screening</span>
+        </a>
+
+
+        <span class="nav-section-title second">
+          SUPPORT
+        </span>
+
+        <a
+          href="challenges.html"
+          class="nav-link"
+        >
+          <!-- <span class="nav-icon">♡</span> -->
+          <span>Challenges</span>
+        </a>
+
+
+        <a
+          href="health.html"
+          class="nav-link"
+        >
+          <!-- <span class="nav-icon">＋</span> -->
+          <span>Health</span>
+        </a>
+
+
+        <a
+          href="specialists.html"
+          class="nav-link"
+        >
+          <!-- <span class="nav-icon">◎</span> -->
+          <span>Find Specialist</span>
+        </a>
+
+
+        <a
+          href="bookings.html"
+          class="nav-link"
+        >
+          <!-- <span class="nav-icon">◷</span> -->
+          <span>My Bookings</span>
+        </a>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <a
+          href="settings.html"
+          class="nav-link"
+        >
+          <span class="nav-icon">⚙</span>
+          <span>Settings</span>
+        </a>
+
+        <button
+          type="button"
+          class="logout-button"
+          id="logoutButton"
+        >
+          <span>↪</span>
+          Log Out
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <div
+      class="sidebar-overlay"
+      id="sidebarOverlay"
+    ></div>
+
+
+    <!-- =========================
+         MAIN AREA
+    ========================== -->
+
+    <main class="main-content">
+
+      <!-- Topbar -->
+      <header class="dashboard-topbar">
+
+        <div class="topbar-left">
+
+          <button
+            type="button"
+            class="menu-button"
+            id="menuButton"
+            aria-label="Open navigation"
+          >
+            ☰
+          </button>
+
+          <div>
+            <!-- <span class="topbar-eyebrow">
+              PARENT DASHBOARD
+            </span> -->
+
+            <h1 id="welcomeTitle">
+              Welcome back
+            </h1>
+          </div>
+
+        </div>
+
+
+        <div class="topbar-actions">
+
+          <button
+            class="icon-button"
+            type="button"
+            title="Notifications"
+          >
+            ♢
+
+            <span class="notification-dot"></span>
+          </button>
+
+
+          <div class="parent-profile">
+
+            <div class="parent-avatar">
+              P
+            </div>
+
+            <div>
+              <a href="settings.html">
+              <!-- <strong>Parent</strong> -->
+              <span><strong> My account</strong></span></a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </header>
+
+
+      <div class="dashboard-body">
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="welcome-card">
+
+          <div class="welcome-copy">
+
+            <span class="welcome-kicker">
+              TODAY WITH RAFIQ
+            </span>
+
+            <h2>
+              Let's support
+              <span id="heroChildName">
+                your child
+              </span>
+              today.
+            </h2>
+
+            <p id="heroDescription">
+              Your personalized child-development
+              dashboard is ready.
+            </p>
+
+
+            <div class="hero-actions">
+
+              <a
+                href="ai-assistant.html"
+                class="primary-button"
+              >
+                Ask Rafiq AI
+                <span>→</span>
+              </a>
+
+              <a
+                href="milestones.html"
+                class="secondary-button"
+              >
+                View Development
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div class="child-hero-card">
+
+            <div class="hero-decoration"></div>
+
+            <div
+              class="large-child-avatar"
+              id="largeChildAvatar"
+            >
+              L
+            </div>
+
+            <span class="child-label">
+              CURRENT PROFILE
+            </span>
+
+            <h3 id="heroProfileName">
+              Child
+            </h3>
+
+            <p id="heroProfileAge">
+              Loading age...
+            </p>
+
+            <div class="age-stage" id="ageStage">
+              Growing with Rafiq
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =========================
+             QUICK ACTIONS
+        ========================== -->
+
+        <section class="section-block">
+
+          <div class="section-heading">
+
+            <div>
+              <span class="section-kicker">
+                QUICK ACTIONS
+              </span>
+
+              <h2>
+                What would you like to do?
+              </h2>
+            </div>
+
+          </div>
+
+
+          <div class="quick-grid">
+
+            <a
+              href="ai-assistant.html"
+              class="feature-card ai-card"
+            >
+
+              <div class="feature-icon lavender">
+                ✦
+              </div>
+
+              <div class="feature-copy">
+
+                <span class="feature-tag">
+                  AI SUPPORT
+                </span>
+
+                <h3>
+                  Ask Rafiq AI
+                </h3>
+
+                <p>
+                  Get personalized parenting
+                  guidance based on your child's age.
+                </p>
+
+              </div>
+
+              <span class="card-arrow">
+                →
+              </span>
+
+            </a>
+
+
+            <a
+              href="milestones.html"
+              class="feature-card"
+            >
+
+              <div class="feature-icon mint">
+                ✓
+              </div>
+
+              <div class="feature-copy">
+
+                <span class="feature-tag">
+                  DEVELOPMENT
+                </span>
+
+                <h3>
+                  Milestones
+                </h3>
+
+                <p>
+                  Follow development and celebrate
+                  important progress.
+                </p>
+
+              </div>
+
+              <span class="card-arrow">
+                →
+              </span>
+
+            </a>
+
+
+            <a
+              href="screening.html"
+              class="feature-card"
+            >
+
+              <div class="feature-icon peach">
+                ◫
+              </div>
+
+              <div class="feature-copy">
+
+                <span class="feature-tag">
+                  EARLY SUPPORT
+                </span>
+
+                <h3>
+                  Screening
+                </h3>
+
+                <p>
+                  Complete age-appropriate
+                  developmental screening tools.
+                </p>
+
+              </div>
+
+              <span class="card-arrow">
+                →
+              </span>
+
+            </a>
+
+
+            <a
+              href="challenges.html"
+              class="feature-card"
+            >
+
+              <div class="feature-icon sun">
+                ♡
+              </div>
+
+              <div class="feature-copy">
+
+                <span class="feature-tag">
+                  PARENTING
+                </span>
+
+                <h3>
+                  Challenges
+                </h3>
+
+                <p>
+                  Find practical guidance for common
+                  parenting concerns.
+                </p>
+
+              </div>
+
+              <span class="card-arrow">
+                →
+              </span>
+
+            </a>
+
+
+            <a
+              href="health.html"
+              class="feature-card"
+            >
+
+              <div class="feature-icon sky">
+                ＋
+              </div>
+
+              <div class="feature-copy">
+
+                <span class="feature-tag">
+                  HEALTH
+                </span>
+
+                <h3>
+                  Health & Vaccines
+                </h3>
+
+                <p>
+                  Keep important health notes,
+                  visits and reminders together.
+                </p>
+
+              </div>
+
+              <span class="card-arrow">
+                →
+              </span>
+
+            </a>
+
+
+            <a
+              href="specialists.html"
+              class="feature-card"
+            >
+
+              <div class="feature-icon specialist">
+                ◎
+              </div>
+
+              <div class="feature-copy">
+
+                <span class="feature-tag">
+                  PROFESSIONAL SUPPORT
+                </span>
+
+                <h3>
+                  Find a Specialist
+                </h3>
+
+                <p>
+                  Connect with verified specialists
+                  when additional support is needed.
+                </p>
+
+              </div>
+
+              <span class="card-arrow">
+                →
+              </span>
+
+            </a>
+
+          </div>
+
+        </section>
+
+
+        <!-- =========================
+             DEVELOPMENT SNAPSHOT
+        ========================== -->
+
+        <section class="dashboard-columns">
+
+          <article class="dashboard-card development-card">
+
+            <div class="card-heading">
+
+              <div>
+                <span class="section-kicker">
+                  DEVELOPMENT
+                </span>
+
+                <h2>
+                  Today's snapshot
+                </h2>
+              </div>
+
+              <a href="milestones.html">
+                View all
+              </a>
+
+            </div>
+
+
+            <div class="development-progress">
+
+              <div class="progress-ring">
+                <span id="progressPercent">
+                  68%
+                </span>
+              </div>
+
+              <div class="development-copy">
+
+                <strong>
+                  You're making progress
+                </strong>
+
+                <p id="developmentMessage">
+                  Keep tracking milestones to build
+                  a clearer picture of development.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="mini-progress-list">
+
+              <div class="mini-progress-item">
+
+                <div class="mini-progress-top">
+                  <span>Communication</span>
+                  <strong>75%</strong>
+                </div>
+
+                <div class="mini-track">
+                  <span style="width: 75%"></span>
+                </div>
+
+              </div>
+
+
+              <div class="mini-progress-item">
+
+                <div class="mini-progress-top">
+                  <span>Social Skills</span>
+                  <strong>60%</strong>
+                </div>
+
+                <div class="mini-track">
+                  <span style="width: 60%"></span>
+                </div>
+
+              </div>
+
+
+              <div class="mini-progress-item">
+
+                <div class="mini-progress-top">
+                  <span>Daily Skills</span>
+                  <strong>70%</strong>
+                </div>
+
+                <div class="mini-track">
+                  <span style="width: 70%"></span>
+                </div>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- Next steps -->
+          <article class="dashboard-card">
+
+            <div class="card-heading">
+
+              <div>
+                <span class="section-kicker">
+                  NEXT STEPS
+                </span>
+
+                <h2>
+                  Recommended for you
+                </h2>
+              </div>
+
+            </div>
+
+
+            <div class="recommendation-list">
+
+              <a
+                href="screening.html"
+                class="recommendation-item"
+              >
+
+                <div class="recommendation-icon peach">
+                  ◫
+                </div>
+
+                <div>
+                  <strong>
+                    Developmental screening
+                  </strong>
+
+                  <p>
+                    Check age-appropriate areas
+                    that may need monitoring.
+                  </p>
+                </div>
+
+                <span>→</span>
+
+              </a>
+
+
+              <a
+                href="challenges.html"
+                class="recommendation-item"
+              >
+
+                <div class="recommendation-icon sun">
+                  ♡
+                </div>
+
+                <div>
+                  <strong>
+                    Explore parenting guidance
+                  </strong>
+
+                  <p>
+                    Practical support for everyday
+                    behavior and routines.
+                  </p>
+                </div>
+
+                <span>→</span>
+
+              </a>
+
+
+              <a
+                href="specialists.html"
+                class="recommendation-item"
+              >
+
+                <div class="recommendation-icon mint">
+                  ◎
+                </div>
+
+                <div>
+                  <strong>
+                    Professional support
+                  </strong>
+
+                  <p>
+                    Browse verified specialists
+                    when you need more help.
+                  </p>
+                </div>
+
+                <span>→</span>
+
+              </a>
+
+            </div>
+
+          </article>
+
+        </section>
+
+
+        <!-- =========================
+             AI PROMPT
+        ========================== -->
+
+        <section class="ai-banner">
+
+          <div class="ai-banner-icon">
+            ✦
+          </div>
+
+          <div class="ai-banner-copy">
+
+            <span>
+              RAFIQ AI
+            </span>
+
+            <h2>
+              Have a parenting question?
+            </h2>
+
+            <p id="aiPromptText">
+              Ask about sleep, behavior, development,
+              routines, school or everyday concerns.
+            </p>
+
+          </div>
+
+          <a
+            href="ai-assistant.html"
+            class="ai-banner-button"
+          >
+            Start a conversation
+            <span>→</span>
+          </a>
+
+        </section>
+
+
+        <!-- =========================
+             DISCLAIMER
+        ========================== -->
+
+        <div class="safety-note">
+
+          <div class="safety-icon">
+            i
+          </div>
+
+          <p>
+            Rafiq provides educational and supportive
+            guidance. AI guidance and screening results
+            do not replace professional medical advice,
+            diagnosis or emergency services.
+          </p>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <script src="parent-dashboard.js"></script>
+  <script src="notifications.js"></script>
+
+</body>
+</html>

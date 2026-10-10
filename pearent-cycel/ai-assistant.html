@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Rafiq AI | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="ai-assistant.css"
+  >
+  <link
+  rel="stylesheet"
+  href="notifications.css"
+>
+
+</head>
+
+<body>
+
+
+  <div class="app-shell">
+
+
+    <!-- =================================
+         SIDEBAR
+    ================================== -->
+
+    <aside
+      class="sidebar"
+      id="sidebar"
+    >
+
+      <div class="sidebar-top">
+
+        <a
+          href="../piblic-pages/index.html"
+          class="brand"
+        >
+
+          <!-- <div class="brand-mark">
+            R
+          </div> -->
+
+          <span>
+            RAFIQ
+          </span>
+
+        </a>
+
+
+        <button
+          class="sidebar-close"
+          id="sidebarClose"
+          type="button"
+          aria-label="Close navigation"
+        >
+          ✕
+        </button>
+
+      </div>
+
+
+      <!-- Current Child -->
+
+      <div class="child-card">
+
+        <span class="small-label">
+          CURRENT CHILD
+        </span>
+
+        <div class="child-info">
+
+          <div
+            class="child-avatar"
+            id="childAvatar"
+          >
+            ?
+          </div>
+
+          <div>
+
+            <strong id="childName">
+              Child
+            </strong>
+
+            <span id="childAge">
+              Loading...
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Navigation -->
+
+      <nav class="sidebar-nav">
+
+        <span class="nav-section-title">
+          OVERVIEW
+        </span>
+
+
+        <a
+          href="parent-dashboard.html"
+          class="nav-link"
+        >
+          <!-- <span class="nav-icon">
+            ⌂
+          </span> -->
+
+          Dashboard
+        </a>
+
+
+        <a
+          href="ai-assistant.html"
+          class="nav-link active"
+        >
+          <!-- <span class="nav-icon">
+            ✦
+          </span> -->
+
+          Rafiq AI
+        </a>
+
+
+        <a
+          href="milestones.html"
+          class="nav-link"
+        >
+          <!-- <span class="nav-icon">
+            ✓
+          </span> -->
+
+          Milestones
+        </a>
+
+
+        <a
+          href="screening.html"
+          class="nav-link"
+        >
+          <!-- <span class="nav-icon">
+            ◫
+          </span> -->
+
+          Screening
+        </a>
+
+
+        <span class="nav-section-title second">
+          SUPPORT
+        </span>
+
+
+        <a
+          href="challenges.html"
+          class="nav-link"
+        >
+          <!-- <span class="nav-icon">
+            ♡
+          </span> -->
+
+          Challenges
+        </a>
+
+
+        <a
+          href="health.html"
+          class="nav-link"
+        >
+          <!-- <span class="nav-icon">
+            ＋
+          </span> -->
+
+          Health
+        </a>
+
+
+        <a
+          href="specialists.html"
+          class="nav-link"
+        >
+          <!-- <span class="nav-icon">
+            ◎
+          </span> -->
+
+          Find Specialist
+        </a>
+
+
+        <a
+          href="bookings.html"
+          class="nav-link"
+        >
+          <!-- <span class="nav-icon">
+            ◷
+          </span> -->
+
+          My Bookings
+        </a>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <a
+          href="settings.html"
+          class="nav-link"
+        >
+          <span class="nav-icon">
+            ⚙
+          </span>
+
+          Settings
+        </a>
+        
+        <button
+          type="button"
+          class="logout-button"
+          id="logoutButton"
+        >
+          <span>↪</span>
+          Log Out
+        </button>
+        
+      </div>
+
+    </aside>
+
+
+    <div
+      class="sidebar-overlay"
+      id="sidebarOverlay"
+    ></div>
+
+
+    <!-- =================================
+         MAIN
+    ================================== -->
+
+    <main class="main-content">
+
+
+      <!-- Topbar -->
+
+      <header class="topbar">
+
+        <div class="topbar-left">
+
+          <button
+            type="button"
+            class="menu-button"
+            id="menuButton"
+          >
+            ☰
+          </button>
+
+
+          <div>
+
+            <!-- <span class="page-kicker">
+              RAFIQ AI
+            </span> -->
+
+            <h1>
+              Parent Assistant
+            </h1>
+
+          </div>
+
+        </div>
+
+
+        <!-- <div class="ai-status">
+
+          <span class="status-dot"></span>
+
+          AI Support Active
+
+        </div> -->
+
+      </header>
+
+
+      <!-- =================================
+           CHAT PAGE
+      ================================== -->
+
+      <section class="chat-layout">
+
+
+        <!-- LEFT INFO PANEL -->
+
+        <aside class="context-panel">
+
+
+          <div class="context-header">
+
+            <!-- <span class="context-icon">
+              ✦
+            </span> -->
+
+            <div>
+
+              <span class="context-label">
+                PERSONALIZED FOR
+              </span>
+
+              <h2 id="contextChildName">
+                Your child
+              </h2>
+
+            </div>
+
+          </div>
+
+
+          <p
+            class="context-description"
+            id="contextDescription"
+          >
+            Rafiq uses the selected child's age
+            to personalize guidance.
+          </p>
+
+
+          <div class="context-data">
+
+            <div>
+
+              <span>Age</span>
+
+              <strong id="contextAge">
+                —
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>Stage</span>
+
+              <strong id="contextStage">
+                —
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="divider"></div>
+
+
+          <span class="quick-title">
+            TRY ASKING
+          </span>
+
+
+          <div
+            class="quick-prompts"
+            id="quickPrompts"
+          ></div>
+
+
+          <div class="safety-mini-card">
+
+            <div class="safety-mini-icon">
+              i
+            </div>
+
+            <div>
+
+              <strong>
+                AI guidance only
+              </strong>
+
+              <p>
+                Rafiq does not provide medical
+                diagnosis or emergency services.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="clear-chat-button"
+            id="clearChatButton"
+          >
+            Clear conversation
+          </button>
+
+        </aside>
+
+
+        <!-- CHAT CARD -->
+
+        <section class="chat-card">
+
+
+          <!-- CHAT HEADER -->
+
+          <div class="chat-header">
+
+            <div class="assistant-profile">
+
+              <!-- <div class="assistant-avatar">
+                ✦
+              </div> -->
+
+              <div>
+
+                <strong>
+                  Rafiq AI
+                </strong>
+
+                <span>
+                  Parenting & child development support
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="child-context-chip">
+
+              <span id="headerChildInitial">
+                ?
+              </span>
+
+              <div>
+
+                <small>
+                  Talking about
+                </small>
+
+                <strong id="headerChildName">
+                  Child
+                </strong>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- MESSAGES -->
+
+          <div
+            class="messages"
+            id="messages"
+            aria-live="polite"
+          ></div>
+
+
+          <!-- TYPING -->
+
+          <div
+            class="typing-indicator"
+            id="typingIndicator"
+            hidden
+          >
+
+            <!-- <div class="message-avatar ai">
+              ✦
+            </div> -->
+
+            <div class="typing-bubble">
+
+              <span></span>
+              <span></span>
+              <span></span>
+
+            </div>
+
+          </div>
+
+
+          <!-- INPUT -->
+
+          <div class="chat-composer">
+
+            <form id="chatForm">
+
+              <div class="composer-wrapper">
+
+                <textarea
+                  id="messageInput"
+                  rows="1"
+                  maxlength="500"
+                  placeholder="Ask Rafiq about your child..."
+                ></textarea>
+
+
+                <button
+                  type="submit"
+                  id="sendButton"
+                  class="send-button"
+                  aria-label="Send message"
+                >
+                  ↑
+                </button>
+
+              </div>
+
+
+              <div class="composer-footer">
+
+                <span>
+                  Rafiq AI can make mistakes.
+                  Use professional support when needed.
+                </span>
+
+                <span id="characterCount">
+                  0 / 500
+                </span>
+
+              </div>
+
+            </form>
+
+          </div>
+
+        </section>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- =================================
+       EMERGENCY MODAL
+  ================================== -->
+
+  <div
+    class="emergency-overlay"
+    id="emergencyOverlay"
+    hidden
+  >
+
+    <div
+      class="emergency-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="emergencyTitle"
+    >
+
+      <div class="emergency-icon">
+        !
+      </div>
+
+
+      <span class="emergency-label">
+        URGENT SAFETY NOTICE
+      </span>
+
+
+      <h2 id="emergencyTitle">
+        This may need urgent medical attention.
+      </h2>
+
+
+      <p>
+        Rafiq cannot determine the seriousness
+        of an emergency through chat.
+      </p>
+
+
+      <div class="emergency-message">
+
+        If your child is having severe symptoms,
+        is in immediate danger, is unconscious,
+        cannot breathe normally, or you believe
+        this is an emergency, seek urgent medical
+        care or contact your local emergency
+        services now.
+
+      </div>
+
+
+      <p class="emergency-small">
+
+        Do not delay urgent care while waiting
+        for an AI response.
+
+      </p>
+
+
+      <button
+        type="button"
+        class="emergency-close"
+        id="emergencyClose"
+      >
+        I understand
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script src="ai-assistant.js"></script>
+<script src="notifications.js"></script>
+</body>
+</html>

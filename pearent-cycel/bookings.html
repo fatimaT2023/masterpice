@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>My Bookings | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="bookings.css">
+  <link
+  rel="stylesheet"
+  href="notifications.css"
+>
+</head>
+
+<body>
+
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+        <!-- <div class="brand-mark">
+          R
+        </div> -->
+
+        <span>
+          RAFIQ
+        </span>
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <!-- CHILD -->
+
+    <div class="child-card">
+
+      <span class="small-label">
+        CURRENT CHILD
+      </span>
+
+      <div class="child-info">
+
+        <div
+          class="child-avatar"
+          id="childAvatar"
+        >
+          ?
+        </div>
+
+        <div>
+
+          <strong id="childName">
+            Child
+          </strong>
+
+          <span id="childAge">
+            Loading...
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- NAV -->
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="parent-dashboard.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">⌂</span> -->
+        Dashboard
+      </a>
+
+
+      <a
+        href="ai-assistant.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">✦</span> -->
+        Rafiq AI
+      </a>
+
+
+      <a
+        href="milestones.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">✓</span> -->
+        Milestones
+      </a>
+
+
+      <a
+        href="screening.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">◫</span> -->
+        Screening
+      </a>
+
+
+      <span class="nav-section-title second">
+        SUPPORT
+      </span>
+
+
+      <a
+        href="challenges.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">♡</span> -->
+        Challenges
+      </a>
+
+
+      <a
+        href="specialists.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">◎</span> -->
+        Find Specialist
+      </a>
+
+
+      <a
+        href="bookings.html"
+        class="nav-link active"
+      >
+        <!-- <span class="nav-icon">◷</span> -->
+        My Bookings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        Settings
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- MAIN -->
+
+  <main class="main-content">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+        <div>
+
+          <span class="page-kicker">
+            APPOINTMENTS
+          </span>
+
+          <h1>
+            My Bookings
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="specialists.html"
+        class="new-booking-button"
+      >
+        + New Appointment
+      </a>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- HERO -->
+
+      <section class="hero-card">
+
+        <div>
+
+          <span class="hero-kicker">
+            YOUR APPOINTMENTS
+          </span>
+
+          <h2>
+            Keep track of your
+            <span>specialist sessions.</span>
+          </h2>
+
+          <p>
+            Review upcoming appointments,
+            previous sessions and cancelled bookings
+            in one place.
+          </p>
+
+        </div>
+
+
+        <div class="hero-icon">
+          ◷
+        </div>
+
+      </section>
+
+
+      <!-- SUMMARY -->
+
+      <section class="summary-grid">
+
+        <article class="summary-card">
+
+          <div class="summary-icon upcoming">
+            ◷
+          </div>
+
+          <div>
+
+            <span>
+              Upcoming
+            </span>
+
+            <strong id="upcomingCount">
+              0
+            </strong>
+
+          </div>
+
+        </article>
+
+
+        <article class="summary-card">
+
+          <div class="summary-icon completed">
+            ✓
+          </div>
+
+          <div>
+
+            <span>
+              Completed
+            </span>
+
+            <strong id="completedCount">
+              0
+            </strong>
+
+          </div>
+
+        </article>
+
+
+        <article class="summary-card">
+
+          <div class="summary-icon cancelled">
+            ✕
+          </div>
+
+          <div>
+
+            <span>
+              Cancelled
+            </span>
+
+            <strong id="cancelledCount">
+              0
+            </strong>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- FILTER TABS -->
+
+      <section class="booking-tools">
+
+        <div>
+
+          <span class="section-kicker">
+            BOOKING HISTORY
+          </span>
+
+          <h2>
+            Your appointments
+          </h2>
+
+        </div>
+
+
+        <div class="filter-tabs">
+
+          <button
+            type="button"
+            class="filter-button active"
+            data-filter="all"
+          >
+            All
+          </button>
+
+          <button
+            type="button"
+            class="filter-button"
+            data-filter="upcoming"
+          >
+            Upcoming
+          </button>
+
+          <button
+            type="button"
+            class="filter-button"
+            data-filter="completed"
+          >
+            Completed
+          </button>
+
+          <button
+            type="button"
+            class="filter-button"
+            data-filter="cancelled"
+          >
+            Cancelled
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- BOOKINGS -->
+
+      <section
+        class="bookings-list"
+        id="bookingsList"
+      ></section>
+
+
+      <!-- EMPTY -->
+
+      <section
+        class="empty-state"
+        id="emptyState"
+        hidden
+      >
+
+        <div class="empty-icon">
+          ◷
+        </div>
+
+        <h2>
+          No bookings here yet.
+        </h2>
+
+        <p id="emptyMessage">
+          When you book a specialist,
+          your appointments will appear here.
+        </p>
+
+        <a href="specialists.html">
+          Find a Specialist →
+        </a>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- =================================
+     DETAILS MODAL
+================================== -->
+
+<div
+  class="modal-overlay"
+  id="detailsModal"
+  hidden
+>
+
+  <div
+    class="details-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="detailsTitle"
+  >
+
+    <button
+      type="button"
+      class="modal-close"
+      id="modalClose"
+    >
+      ✕
+    </button>
+
+
+    <span class="modal-kicker">
+      APPOINTMENT DETAILS
+    </span>
+
+    <h2 id="detailsTitle">
+      Booking
+    </h2>
+
+
+    <div class="modal-specialist">
+
+      <div
+        class="modal-avatar"
+        id="modalAvatar"
+      >
+        DR
+      </div>
+
+      <div>
+
+        <strong id="modalSpecialistName">
+          Specialist
+        </strong>
+
+        <span id="modalSpecialty">
+          Specialty
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="details-grid">
+
+      <div>
+        <span>Child</span>
+        <strong id="modalChild">—</strong>
+      </div>
+
+      <div>
+        <span>Status</span>
+        <strong id="modalStatus">—</strong>
+      </div>
+
+      <div>
+        <span>Date</span>
+        <strong id="modalDate">—</strong>
+      </div>
+
+      <div>
+        <span>Time</span>
+        <strong id="modalTime">—</strong>
+      </div>
+
+      <div>
+        <span>Consultation</span>
+        <strong id="modalType">—</strong>
+      </div>
+
+      <div>
+        <span>Session Fee</span>
+        <strong id="modalPrice">—</strong>
+      </div>
+
+    </div>
+
+
+    <div class="reason-box">
+
+      <span>
+        REASON FOR CONSULTATION
+      </span>
+
+      <p id="modalReason">
+        No note added.
+      </p>
+
+    </div>
+
+
+    <div class="reference-box">
+
+      <span>
+        Booking Reference
+      </span>
+
+      <strong id="modalReference">
+        —
+      </strong>
+
+    </div>
+
+
+    <button
+      type="button"
+      class="done-button"
+      id="doneButton"
+    >
+      Done
+    </button>
+
+  </div>
+
+</div>
+
+
+<script src="bookings.js"></script>
+<script src="notifications.js"></script>
+
+</body>
+</html>

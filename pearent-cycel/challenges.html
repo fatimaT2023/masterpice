@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Parenting Challenges | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="challenges.css">
+  <link
+  rel="stylesheet"
+  href="notifications.css"
+>
+</head>
+
+<body>
+
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+        <!-- <div class="brand-mark">R</div> -->
+        <span>RAFIQ</span>
+      </a>
+
+      <button
+        class="sidebar-close"
+        id="sidebarClose"
+        type="button"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="child-card">
+
+      <span class="small-label">
+        CURRENT CHILD
+      </span>
+
+      <div class="child-info">
+
+        <div
+          class="child-avatar"
+          id="childAvatar"
+        >
+          ?
+        </div>
+
+        <div>
+          <strong id="childName">
+            Child
+          </strong>
+
+          <span id="childAge">
+            Loading...
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+      <a
+        href="parent-dashboard.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">⌂</span> -->
+        Dashboard
+      </a>
+
+      <a
+        href="ai-assistant.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">✦</span> -->
+        Rafiq AI
+      </a>
+
+      <a
+        href="milestones.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">✓</span> -->
+        Milestones
+      </a>
+
+      <a
+        href="screening.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">◫</span> -->
+        Screening
+      </a>
+
+
+      <span class="nav-section-title second">
+        SUPPORT
+      </span>
+
+      <a
+        href="challenges.html"
+        class="nav-link active"
+      >
+        <!-- <span class="nav-icon">♡</span> -->
+        Challenges
+      </a>
+
+      <a
+        href="health.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">＋</span> -->
+        Health
+      </a>
+
+      <a
+        href="specialists.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">◎</span> -->
+        Find Specialist
+      </a>
+
+      <a
+        href="bookings.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">◷</span> -->
+        My Bookings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        Settings
+      </a>
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          class="menu-button"
+          id="menuButton"
+          type="button"
+        >
+          ☰
+        </button>
+
+        <div>
+          <!-- <span class="page-kicker">
+            PARENTING SUPPORT
+          </span> -->
+
+          <h1>
+            Challenges
+          </h1>
+        </div>
+
+      </div>
+
+
+      <!-- <a
+        href="ai-assistant.html"
+        class="topbar-ai"
+      >
+        ✦ Ask Rafiq AI
+      </a> -->
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- HERO -->
+      <section class="hero-card">
+
+        <div class="hero-copy">
+
+          <span class="hero-kicker">
+            EVERYDAY PARENTING
+          </span>
+
+          <h2>
+            Support for the moments that feel
+            <span>hard.</span>
+          </h2>
+
+          <p id="heroDescription">
+            Explore practical guidance based on
+            your child's current age and stage.
+          </p>
+
+        </div>
+
+
+        <div class="hero-child-card">
+
+          <div
+            class="hero-avatar"
+            id="heroAvatar"
+          >
+            ?
+          </div>
+
+          <span>
+            PERSONALIZED FOR
+          </span>
+
+          <h3 id="heroChildName">
+            Child
+          </h3>
+
+          <p id="heroChildStage">
+            Age stage
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- SEARCH -->
+      <section class="tools-row">
+
+        <div class="search-box">
+
+          <span>⌕</span>
+
+          <input
+            type="search"
+            id="challengeSearch"
+            placeholder="Search challenges..."
+          >
+
+        </div>
+
+
+        <div class="filter-group">
+
+          <button
+            class="filter-button active"
+            type="button"
+            data-filter="all"
+          >
+            All
+          </button>
+
+          <button
+            class="filter-button"
+            type="button"
+            data-filter="behavior"
+          >
+            Behavior
+          </button>
+
+          <button
+            class="filter-button"
+            type="button"
+            data-filter="routine"
+          >
+            Routines
+          </button>
+
+          <button
+            class="filter-button"
+            type="button"
+            data-filter="emotions"
+          >
+            Emotions
+          </button>
+
+          <button
+            class="filter-button"
+            type="button"
+            data-filter="social"
+          >
+            Social
+          </button>
+
+          <button
+            class="filter-button"
+            type="button"
+            data-filter="school"
+          >
+            School
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- CONTENT -->
+      <section class="challenge-section">
+
+        <div class="section-heading">
+
+          <div>
+            <span class="section-kicker">
+              FOR THIS STAGE
+            </span>
+
+            <h2 id="sectionTitle">
+              Common challenges
+            </h2>
+          </div>
+
+          <span
+            class="result-count"
+            id="resultCount"
+          >
+            0 topics
+          </span>
+
+        </div>
+
+
+        <div
+          class="challenge-grid"
+          id="challengeGrid"
+        ></div>
+
+
+        <div
+          class="empty-state"
+          id="emptyState"
+          hidden
+        >
+          <div>⌕</div>
+
+          <h3>
+            No challenges found
+          </h3>
+
+          <p>
+            Try another search or category.
+          </p>
+        </div>
+
+      </section>
+
+
+      <!-- AI BANNER -->
+      <section class="ai-banner">
+
+        <div class="ai-icon">
+          ✦
+        </div>
+
+        <div>
+          <span>
+            NEED PERSONALIZED GUIDANCE?
+          </span>
+
+          <h2>
+            Ask Rafiq about what is happening.
+          </h2>
+
+          <p>
+            Describe the situation and get
+            age-aware supportive guidance.
+          </p>
+        </div>
+
+        <a href="ai-assistant.html">
+          Start Chat →
+        </a>
+
+      </section>
+
+
+      <!-- DISCLAIMER -->
+      <div class="support-note">
+
+        <!-- <span>i</span> -->
+
+        <!-- <p>
+          Parenting guidance on Rafiq is educational
+          and supportive. Persistent, severe, or
+          concerning changes may benefit from
+          professional evaluation.
+        </p> -->
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- DETAILS MODAL -->
+<div
+  class="modal-overlay"
+  id="challengeModal"
+  hidden
+>
+
+  <div
+    class="challenge-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
+
+    <button
+      type="button"
+      class="modal-close"
+      id="modalClose"
+      aria-label="Close"
+    >
+      ✕
+    </button>
+
+
+    <div class="modal-header">
+
+      <div
+        class="modal-icon"
+        id="modalIcon"
+      >
+        ♡
+      </div>
+
+      <div>
+
+        <span
+          class="modal-category"
+          id="modalCategory"
+        >
+          CHALLENGE
+        </span>
+
+        <h2 id="modalTitle">
+          Challenge title
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <p
+      class="modal-intro"
+      id="modalIntro"
+    ></p>
+
+
+    <div class="guidance-block">
+
+      <h3>
+        What it may look like
+      </h3>
+
+      <p id="modalSigns"></p>
+
+    </div>
+
+
+    <div class="guidance-block">
+
+      <h3>
+        Possible reasons
+      </h3>
+
+      <ul id="modalReasons"></ul>
+
+    </div>
+
+
+    <div class="guidance-block positive">
+
+      <h3>
+        What you can try
+      </h3>
+
+      <ul id="modalTry"></ul>
+
+    </div>
+
+
+    <div class="guidance-block avoid">
+
+      <h3>
+        What to avoid
+      </h3>
+
+      <ul id="modalAvoid"></ul>
+
+    </div>
+
+
+    <div class="guidance-block professional">
+
+      <h3>
+        When to consider professional support
+      </h3>
+
+      <p id="modalProfessional"></p>
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        type="button"
+        class="ask-ai-button"
+        id="askAIButton"
+      >
+        ✦ Ask Rafiq AI
+      </button>
+
+      <button
+        type="button"
+        class="done-button"
+        id="doneButton"
+      >
+        Done
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script src="challenges.js"></script>
+
+</body>
+</html>

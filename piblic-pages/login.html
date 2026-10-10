@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="Log in to Rafiq — an AI-powered parenting and child development platform."
+  />
+
+  <title>Login | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="login.css" />
+</head>
+
+<body>
+  <div class="page-background" aria-hidden="true">
+    <div class="background-grid"></div>
+
+    <div class="blob blob-one"></div>
+    <div class="blob blob-two"></div>
+    <div class="blob blob-three"></div>
+
+    <div class="background-dot dot-one"></div>
+    <div class="background-dot dot-two"></div>
+    <div class="background-dot dot-three"></div>
+  </div>
+
+  <div class="page-wrapper">
+    <!-- =========================
+         Minimal Navigation
+    ========================== -->
+    <header class="top-nav">
+      <a
+        class="brand brand-nav"
+        href="index.html"
+        aria-label="Rafiq home"
+      >
+        <span aria-hidden="true">
+          <svg
+            viewBox="0 0 48 48"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M24 5.5C14.3 5.5 6.5 12.7 6.5 21.6c0 5.6 3.1 10.6 8.1 13.5l-.7 6.3 6.5-3.5c1.2.2 2.4.3 3.6.3 9.7 0 17.5-7.2 17.5-16.6S33.7 5.5 24 5.5Z"
+              fill="currentColor"
+            />
+
+            <path
+              d="M17.2 22.1c2.1-4.1 5.1-6.2 8.8-6.2 3.4 0 6.2 1.6 8.2 4.9"
+              fill="none"
+              stroke="white"
+              stroke-width="2.6"
+              stroke-linecap="round"
+            />
+
+            <circle cx="18.2" cy="20.1" r="2.1" fill="white" />
+            <circle cx="30.2" cy="20.1" r="2.1" fill="white" />
+
+            <path
+              d="M19.4 27.4c1.4 1.4 3 2.1 4.8 2.1 1.8 0 3.4-.7 4.8-2.1"
+              fill="none"
+              stroke="white"
+              stroke-width="2.4"
+              stroke-linecap="round"
+            />
+          </svg>
+        </span>
+
+        <span class="brand-copy">
+          <strong>RAFIQ</strong>
+          <!-- <small>Parenting, with a little more clarity.</small> -->
+        </span>
+      </a>
+
+      <div class="nav-actions">
+        <div
+          class="language-switcher"
+          aria-label="Language selector"
+        >
+          <!-- <button
+            class="language-button active"
+            type="button"
+            data-language="en"
+            aria-pressed="true"
+          >
+            English
+          </button> -->
+
+          <span aria-hidden="true">|</span>
+
+          <!-- <button
+            class="language-button"
+            type="button"
+            data-language="ar"
+            aria-pressed="false"
+          >
+            العربية
+          </button> -->
+        </div>
+
+        <a class="home-link" href="index.html">
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15 18l-6-6 6-6"
+              stroke="currentColor"
+              stroke-width="1.9"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <span data-i18n="backHome">Back to Home</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- =========================
+         Main Layout
+    ========================== -->
+    <main class="login-layout">
+      <!-- =========================
+           Story / Illustration
+      ========================== -->
+      <section
+        class="story-panel"
+        aria-labelledby="story-title"
+      >
+        <div class="story-inner">
+          <div class="story-copy">
+            <div class="story-eyebrow">
+              <!-- <span class="eyebrow-icon"> -->
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 3l1.55 4.02L17.5 8.5l-3.95 1.48L12 14l-1.55-4.02L6.5 8.5l3.95-1.48L12 3Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M18.5 13.5l.78 2.02 2.02.78-2.02.78-.78 2.02-.78-2.02-2.02-.78 2.02-.78.78-2.02Z"
+                    fill="currentColor"
+                    opacity=".6"
+                  />
+                </svg>
+              </span>
+
+              <!-- <span data-i18n="storyEyebrow">
+                AI-powered support for every stage
+              </span> -->
+            </div>
+
+            <h1 id="story-title" data-i18n="welcomeTitle">
+              Welcome back to Rafiq.
+            </h1>
+
+            <p data-i18n="welcomeText">
+              Continue your parenting journey, manage your child profiles,
+              or access your specialist workspace.
+            </p>
+          </div>
+
+          <!-- =========================
+               CSS / SVG Illustration
+          ========================== -->
+          <div
+            class="family-illustration"
+            id="familyIllustration"
+            aria-hidden="true"
+          >
+            <div class="illustration-halo halo-one"></div>
+            <div class="illustration-halo halo-two"></div>
+
+            <div class="mini-star star-one">✦</div>
+            <div class="mini-star star-two">✦</div>
+            <div class="mini-star star-three">✦</div>
+
+            <!-- Background device/card -->
+            <div class="assistant-board">
+              <div class="assistant-board-head">
+                <div class="assistant-avatar">
+                  <svg
+                    viewBox="0 0 36 36"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="18" cy="18" r="18" fill="#075E5A" />
+                    <circle cx="13.2" cy="16" r="1.8" fill="#fff" />
+                    <circle cx="22.8" cy="16" r="1.8" fill="#fff" />
+                    <path
+                      d="M12.6 22c1.7 1.5 3.5 2.2 5.4 2.2 1.9 0 3.7-.7 5.4-2.2"
+                      fill="none"
+                      stroke="#fff"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+
+                <div>
+                  <strong>Rafiq AI</strong>
+                  <span>Here when you need support</span>
+                </div>
+
+                <span class="online-dot"></span>
+              </div>
+
+              <div class="assistant-message">
+                <!-- <div class="tiny-wave">👋</div> -->
+
+                <p>
+                  Need ideas for a calmer bedtime routine?
+                </p>
+              </div>
+
+              <div class="assistant-options">
+                <span>Routine ideas</span>
+                <span>Ask a question</span>
+              </div>
+            </div>
+
+            <!-- Family scene -->
+            <div class="family-scene">
+              <div class="floor-shadow"></div>
+
+              <div class="plant">
+                <div class="plant-pot"></div>
+                <span class="leaf leaf-one"></span>
+                <span class="leaf leaf-two"></span>
+                <span class="leaf leaf-three"></span>
+              </div>
+
+              <div class="parent-person">
+                <div class="person-head">
+                  <div class="parent-hair"></div>
+                  <div class="parent-ear"></div>
+                  <div class="face-eye eye-left"></div>
+                  <div class="face-eye eye-right"></div>
+                  <div class="face-smile"></div>
+                </div>
+
+                <div class="parent-neck"></div>
+
+                <div class="parent-body">
+                  <div class="shirt-detail"></div>
+                </div>
+
+                <div class="parent-arm parent-arm-left"></div>
+                <div class="parent-arm parent-arm-right"></div>
+              </div>
+
+              <div class="child-person">
+                <div class="person-head child-head">
+                  <div class="child-hair"></div>
+                  <div class="face-eye eye-left"></div>
+                  <div class="face-eye eye-right"></div>
+                  <div class="face-smile child-smile"></div>
+                </div>
+
+                <div class="child-body"></div>
+
+                <div class="child-arm child-arm-left"></div>
+                <div class="child-arm child-arm-right"></div>
+              </div>
+
+              <div class="book">
+                <div class="book-left">
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <div class="book-right">
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating UI Card 1 -->
+            <article class="float-card milestone-float floating-card">
+              <div class="float-card-icon mint-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 3l2.1 4.25L18.8 8l-3.4 3.3.8 4.7L12 13.8 7.8 16l.8-4.7L5.2 8l4.7-.75L12 3Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <span>Milestone achieved</span>
+                <strong>First full sentence</strong>
+              </div>
+
+              <span class="positive-badge">+1</span>
+            </article>
+
+            <!-- Floating UI Card 2 -->
+            <article class="float-card ask-float floating-card">
+              <div class="float-card-icon lavender-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 3.5a7.5 7.5 0 0 0-6.46 11.31L4.5 19.5l4.73-1.14A7.5 7.5 0 1 0 12 3.5Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M9.8 10a2.3 2.3 0 1 1 3.6 1.9c-.8.55-1.4.9-1.4 2"
+                    stroke="white"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="12" cy="16.25" r=".9" fill="white" />
+                </svg>
+              </div>
+
+              <div>
+                <span>Ask Rafiq AI</span>
+                <strong>Get guidance in seconds</strong>
+              </div>
+
+              <svg
+                class="float-arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M9 18l6-6-6-6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </article>
+
+            <!-- Floating UI Card 3 -->
+            <article class="float-card specialist-float floating-card">
+              <div class="float-card-icon sky-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="4"
+                    y="5.5"
+                    width="16"
+                    height="14"
+                    rx="3"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M8 3.5v4M16 3.5v4M7.5 11h9"
+                    stroke="white"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="9" cy="14.5" r="1" fill="white" />
+                  <circle cx="12" cy="14.5" r="1" fill="white" />
+                </svg>
+              </div>
+
+              <div>
+                <span>Upcoming specialist session</span>
+                <strong>Today · 4:30 PM</strong>
+              </div>
+
+              <span class="video-badge">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <rect
+                    x="4"
+                    y="6"
+                    width="11"
+                    height="12"
+                    rx="3"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M15 10l5-3v10l-5-3"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </article>
+
+            <div class="illustration-caption">
+              <div class="avatar-stack">
+                <span class="mini-avatar avatar-one">M</span>
+                <span class="mini-avatar avatar-two">S</span>
+                <span class="mini-avatar avatar-three">L</span>
+              </div>
+
+              <div>
+                <strong>Support that grows with your family.</strong>
+                <span>Guidance, milestones and specialists in one place.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+           Authentication Panel
+      ========================== -->
+      <section
+        class="auth-panel"
+        aria-labelledby="login-heading"
+      >
+        <div class="auth-panel-inner">
+          <div class="mobile-brand">
+            <a
+              href="index.html"
+              class="brand"
+              aria-label="Rafiq home"
+            >
+              <span class="brand-mark" aria-hidden="true">
+                <svg
+                  viewBox="0 0 48 48"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24 5.5C14.3 5.5 6.5 12.7 6.5 21.6c0 5.6 3.1 10.6 8.1 13.5l-.7 6.3 6.5-3.5c1.2.2 2.4.3 3.6.3 9.7 0 17.5-7.2 17.5-16.6S33.7 5.5 24 5.5Z"
+                    fill="currentColor"
+                  />
+
+                  <path
+                    d="M17.2 22.1c2.1-4.1 5.1-6.2 8.8-6.2 3.4 0 6.2 1.6 8.2 4.9"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2.6"
+                    stroke-linecap="round"
+                  />
+
+                  <circle cx="18.2" cy="20.1" r="2.1" fill="white" />
+                  <circle cx="30.2" cy="20.1" r="2.1" fill="white" />
+
+                  <path
+                    d="M19.4 27.4c1.4 1.4 3 2.1 4.8 2.1 1.8 0 3.4-.7 4.8-2.1"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2.4"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <strong>RAFIQ</strong>
+            </a>
+          </div>
+
+          <div class="auth-card" id="authCard">
+            <div class="auth-card-accent" aria-hidden="true"></div>
+
+            <div class="auth-header">
+              <!-- <span class="auth-kicker" data-i18n="secureSpace">
+                Your secure space
+              </span> -->
+
+              <h2 id="login-heading" data-i18n="loginTitle">
+                Log in to your account
+              </h2>
+
+              <p data-i18n="loginSubtitle">
+                Welcome back. Choose your role and continue.
+              </p>
+            </div>
+
+            <!-- =========================
+                 Role Selector
+            ========================== -->
+            <div class="role-section">
+              <span
+                class="field-label role-label"
+                id="role-label"
+                data-i18n="continueAs"
+              >
+                Continue as
+              </span>
+
+              <div
+                class="role-selector"
+                role="group"
+                aria-labelledby="role-label"
+                data-role="parent"
+              >
+                <span
+                  class="role-selector-highlight"
+                  aria-hidden="true"
+                ></span>
+
+                <button
+                  class="role-button active"
+                  type="button"
+                  data-role="parent"
+                  aria-pressed="true"
+                >
+                  <span class="role-icon role-icon-parent">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <circle
+                        cx="9"
+                        cy="8"
+                        r="3"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                      />
+
+                      <circle
+                        cx="16.5"
+                        cy="10"
+                        r="2"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                      />
+
+                      <path
+                        d="M3.5 19c.6-3.3 2.5-5 5.5-5s5 1.7 5.5 5"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+
+                      <path
+                        d="M14 15.2c.7-.8 1.6-1.2 2.7-1.2 2.1 0 3.4 1.4 3.8 4"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </span>
+
+                  <span data-role-label="parent">Parent</span>
+                </button>
+
+                <button
+                  class="role-button"
+                  type="button"
+                  data-role="specialist"
+                  aria-pressed="false"
+                >
+                  <span class="role-icon role-icon-specialist">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <circle
+                        cx="12"
+                        cy="7.5"
+                        r="3.25"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                      />
+
+                      <path
+                        d="M5.5 19c.65-3.7 2.8-5.55 6.5-5.55s5.85 1.85 6.5 5.55"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+
+                      <path
+                        d="M18 5v4M16 7h4"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </span>
+
+                  <span data-role-label="specialist">Specialist</span>
+                </button>
+              </div>
+
+              <p class="role-helper" id="roleHelper">
+                Access your family profiles, milestones and personalized guidance.
+              </p>
+            </div>
+
+            <!-- =========================
+                 Login Form
+            ========================== -->
+            <form
+              id="loginForm"
+              class="login-form"
+              novalidate
+            >
+              <!-- Email -->
+              <div class="form-field" id="emailField">
+                <label
+                  for="email"
+                  class="field-label"
+                  data-i18n="email"
+                >
+                  Email
+                </label>
+
+                <div class="field-control">
+                  <span class="input-leading-icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <rect
+                        x="3.5"
+                        y="5.5"
+                        width="17"
+                        height="13"
+                        rx="3"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                      />
+
+                      <path
+                        d="m5 8 7 5 7-5"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="email"
+                    inputmode="email"
+                    placeholder="you@example.com"
+                    aria-describedby="emailError"
+                    required
+                  />
+                </div>
+
+                <p
+                  class="field-error"
+                  id="emailError"
+                  aria-live="polite"
+                ></p>
+              </div>
+
+              <!-- Password -->
+              <div class="form-field" id="passwordField">
+                <label
+                  for="password"
+                  class="field-label"
+                  data-i18n="password"
+                >
+                  Password
+                </label>
+
+                <div class="field-control">
+                  <span class="input-leading-icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <rect
+                        x="5"
+                        y="10"
+                        width="14"
+                        height="10"
+                        rx="3"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                      />
+
+                      <path
+                        d="M8 10V7.5a4 4 0 0 1 8 0V10"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                      />
+
+                      <circle
+                        cx="12"
+                        cy="15"
+                        r="1.25"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    autocomplete="current-password"
+                    placeholder="Enter your password"
+                    minlength="6"
+                    aria-describedby="passwordError"
+                    required
+                  />
+
+                  <button
+                    class="password-toggle"
+                    type="button"
+                    id="passwordToggle"
+                    aria-label="Show password"
+                    aria-pressed="false"
+                  >
+                    <svg
+                      class="eye-open"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M2.5 12s3.3-5.5 9.5-5.5S21.5 12 21.5 12s-3.3 5.5-9.5 5.5S2.5 12 2.5 12Z"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linejoin="round"
+                      />
+
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="2.7"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                      />
+                    </svg>
+
+                    <svg
+                      class="eye-closed"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M3 4l18 16"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+
+                      <path
+                        d="M10.6 6.7c.45-.1.92-.2 1.4-.2 6.2 0 9.5 5.5 9.5 5.5a14.8 14.8 0 0 1-3 3.5M6.2 7.8C3.8 9.4 2.5 12 2.5 12s3.3 5.5 9.5 5.5c1.25 0 2.38-.22 3.4-.6"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+
+                      <path
+                        d="M9.8 9.8a3 3 0 0 0 4.2 4.2"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <p
+                  class="field-error"
+                  id="passwordError"
+                  aria-live="polite"
+                ></p>
+              </div>
+
+              <div class="form-options">
+                <label class="remember-option">
+                  <input
+                    type="checkbox"
+                    id="rememberMe"
+                    name="rememberMe"
+                  />
+
+                  <span class="custom-checkbox" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 16 16"
+                      fill="none"
+                    >
+                      <path
+                        d="m3.3 8.2 2.8 2.7 6.4-6.1"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+
+                  <span data-i18n="rememberMe">
+                    Remember me
+                  </span>
+                </label>
+
+                <a
+                  href="forgot-password.html"
+                  class="forgot-link"
+                  data-i18n="forgotPassword"
+                >
+                  Forgot Password?
+                </a>
+              </div>
+
+              <div
+                class="form-status"
+                id="formStatus"
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+              ></div>
+
+              <button
+                class="login-button"
+                id="loginButton"
+                type="submit"
+              >
+                <span class="button-content">
+                  <span
+                    class="button-text"
+                    id="loginButtonText"
+                  >
+                    Log In as Parent
+                  </span>
+
+                  <svg
+                    class="button-arrow"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M5 12h14M14 7l5 5-5 5"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+
+                <span
+                  class="button-loading"
+                  aria-hidden="true"
+                >
+                  <span class="spinner"></span>
+                  <span data-loading-label>Logging in...</span>
+                </span>
+
+                <span
+                  class="button-success"
+                  aria-hidden="true"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="9"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+
+                    <path
+                      d="m8 12.3 2.5 2.5L16.5 9"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  
+                  <span data-success-label>
+                    Welcome back!
+                  </span>
+                </span>
+              </button>
+            </form>
+
+            <div class="account-divider">
+              <span></span>
+
+              <p data-i18n="firstTime">
+                First time here?
+              </p>
+
+              <span></span>
+            </div>
+
+            <div class="account-actions">
+              <div class="register-row">
+                <span data-i18n="noAccount">
+                  Don't have an account?
+                </span>
+
+                <a
+                  class="create-account-link"
+                  href="register.html"
+                  data-i18n="createAccount"
+                >
+                  Create Account
+                </a>
+              </div>
+
+              <a
+                class="specialist-register-card"
+                href="register.html?role=specialist"
+              >
+                <span class="specialist-register-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <circle
+                      cx="10"
+                      cy="8"
+                      r="3"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+
+                    <path
+                      d="M4 18.5c.55-3.2 2.55-4.8 6-4.8 1.6 0 2.9.35 3.9 1.05"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+
+                    <circle
+                      cx="17"
+                      cy="16"
+                      r="4"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+
+                    <path
+                      d="M17 14v4M15 16h4"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </span>
+
+                <span class="specialist-register-copy">
+                  <small data-i18n="newSpecialist">
+                    New specialist?
+                  </small>
+
+                  <strong data-i18n="joinSpecialist">
+                    Join as a Specialist
+                  </strong>
+                </span>
+
+                <svg
+                  class="register-arrow"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M9 18l6-6-6-6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            <p class="privacy-note">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 3.5 19 6v5.4c0 4.5-2.8 7.7-7 9.1-4.2-1.4-7-4.6-7-9.1V6l7-2.5Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+
+                <path
+                  d="m9 12 2 2 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <span data-i18n="privacyText">
+                Your family information stays private and protected.
+              </span>
+            </p>
+          </div>
+
+          <div class="mobile-language">
+            <button
+              type="button"
+              class="mobile-language-button active"
+              data-mobile-language="en"
+            >
+              English
+            </button>
+
+            <span>•</span>
+
+            <button
+              type="button"
+              class="mobile-language-button"
+              data-mobile-language="ar"
+            >
+              العربية
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="login.js"></script>
+  <script src="language.js"></script>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Create Child Profile | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="onboarding.css"
+  >
+</head>
+
+<body>
+
+  <!-- Decorative background -->
+  <div class="background-decoration" aria-hidden="true">
+    <div class="blob blob-one"></div>
+    <div class="blob blob-two"></div>
+    <div class="blob blob-three"></div>
+  </div>
+
+
+  <!-- Top Bar -->
+  <header class="topbar">
+
+    <a href="index.html" class="brand">
+      <div class="brand-mark">R</div>
+      <span>RAFIQ</span>
+    </a>
+
+    <div class="topbar-text">
+      Parent Setup
+    </div>
+
+  </header>
+
+
+  <main class="onboarding-page">
+
+    <!-- Progress -->
+    <section class="progress-area">
+
+      <div class="progress-copy">
+        <span>Getting Started</span>
+        <strong>Step 1 of 1</strong>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-fill"></div>
+      </div>
+
+    </section>
+
+
+    <section class="onboarding-layout">
+
+      <!-- Left Side -->
+      <div class="intro-panel">
+
+        <div class="eyebrow">
+          YOUR CHILD'S JOURNEY
+        </div>
+
+        <h1>
+          Let's create your child's profile.
+        </h1>
+
+        <p class="intro-text">
+          Rafiq uses your child's age to personalize
+          milestones, guidance, screening tools and
+          recommendations.
+        </p>
+
+
+        <div class="journey-preview">
+
+          <article class="journey-card active">
+            <div class="journey-icon mint">
+              👶
+            </div>
+
+            <div>
+              <strong>Personalized by age</strong>
+
+              <p>
+                Content adapts as your child grows.
+              </p>
+            </div>
+          </article>
+
+
+          <article class="journey-card">
+            <div class="journey-icon lavender">
+              ✦
+            </div>
+
+            <div>
+              <strong>Track development</strong>
+
+              <p>
+                Follow milestones and important progress.
+              </p>
+            </div>
+          </article>
+
+
+          <article class="journey-card">
+            <div class="journey-icon peach">
+              ♡
+            </div>
+
+            <div>
+              <strong>Support when needed</strong>
+
+              <p>
+                Get guidance and connect with specialists.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+
+        <div class="privacy-note">
+          <div class="privacy-icon">
+            ✓
+          </div>
+
+          <p>
+            You can add more children later from your
+            Parent Dashboard.
+          </p>
+        </div>
+
+      </div>
+
+
+      <!-- Form Card -->
+      <div class="form-card">
+
+        <div class="form-heading">
+
+          <div class="child-avatar-preview" id="avatarPreview">
+            <span id="avatarInitial">+</span>
+          </div>
+
+          <div>
+            <span class="form-kicker">
+              CHILD PROFILE
+            </span>
+
+            <h2>
+              Tell us about your child
+            </h2>
+
+            <p>
+              Just a few details to personalize the experience.
+            </p>
+          </div>
+
+        </div>
+
+
+        <form id="childForm" novalidate>
+
+          <!-- Child Name -->
+          <div class="form-group" id="nameField">
+
+            <label for="childName">
+              Child's First Name
+            </label>
+
+            <div class="input-wrapper">
+              <input
+                type="text"
+                id="childName"
+                name="childName"
+                placeholder="e.g. Layan"
+                autocomplete="off"
+              >
+            </div>
+
+            <small
+              class="field-error"
+              id="nameError"
+            ></small>
+
+          </div>
+
+
+          <!-- Date of Birth -->
+          <div class="form-group" id="dobField">
+
+            <label for="dateOfBirth">
+              Date of Birth
+            </label>
+
+            <div class="input-wrapper">
+              <input
+                type="date"
+                id="dateOfBirth"
+                name="dateOfBirth"
+              >
+            </div>
+
+            <small
+              class="field-error"
+              id="dobError"
+            ></small>
+
+            <div
+              class="age-preview"
+              id="agePreview"
+              hidden
+            >
+              <span class="age-preview-icon">
+                ✦
+              </span>
+
+              <div>
+                <span>Your child's age</span>
+                <strong id="ageText"></strong>
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- Gender -->
+          <fieldset class="form-group">
+
+            <legend>
+              Gender
+            </legend>
+
+            <div class="choice-grid">
+
+              <label class="choice-card">
+                <input
+                  type="radio"
+                  name="gender"
+                  value="female"
+                >
+
+                <span class="choice-content">
+                  <span class="choice-icon">
+                    ♡
+                  </span>
+
+                  <span>Female</span>
+                </span>
+              </label>
+
+
+              <label class="choice-card">
+                <input
+                  type="radio"
+                  name="gender"
+                  value="male"
+                >
+
+                <span class="choice-content">
+                  <span class="choice-icon">
+                    ☆
+                  </span>
+
+                  <span>Male</span>
+                </span>
+              </label>
+
+            </div>
+
+            <small
+              class="field-error"
+              id="genderError"
+            ></small>
+
+          </fieldset>
+
+
+          <!-- Relationship -->
+          <div
+            class="form-group"
+            id="relationshipField"
+          >
+
+            <label for="relationship">
+              Your Relationship to the Child
+            </label>
+
+            <div class="input-wrapper">
+
+              <select
+                id="relationship"
+                name="relationship"
+              >
+                <option value="">
+                  Select relationship
+                </option>
+
+                <option value="mother">
+                  Mother
+                </option>
+
+                <option value="father">
+                  Father
+                </option>
+
+                <option value="guardian">
+                  Guardian
+                </option>
+
+                <option value="other">
+                  Other
+                </option>
+              </select>
+
+            </div>
+
+            <small
+              class="field-error"
+              id="relationshipError"
+            ></small>
+
+          </div>
+
+
+          <!-- Status -->
+          <div
+            class="form-status"
+            id="formStatus"
+            aria-live="polite"
+          ></div>
+
+
+          <!-- Submit -->
+          <button
+            type="submit"
+            class="primary-button"
+            id="createButton"
+          >
+
+            <span
+              class="button-default"
+              id="buttonDefault"
+            >
+              Create Child Profile
+              <span>→</span>
+            </span>
+
+            <span
+              class="button-loading"
+              id="buttonLoading"
+            >
+              <span class="spinner"></span>
+              Creating profile...
+            </span>
+
+            <span
+              class="button-success"
+              id="buttonSuccess"
+            >
+              ✓ Profile created
+            </span>
+
+          </button>
+
+
+          <p class="form-footer-text">
+            You can edit these details later from
+            your child's profile.
+          </p>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script src="onboarding.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Settings | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="settings.css"
+  >
+  <link
+  rel="stylesheet"
+  href="notifications.css"
+>
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+        <!-- <div class="brand-mark">
+          R
+        </div> -->
+
+        <span>
+          RAFIQ
+        </span>
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <!-- CURRENT CHILD -->
+
+    <div class="child-card">
+
+      <span class="small-label">
+        CURRENT CHILD
+      </span>
+
+      <div class="child-info">
+
+        <div
+          class="child-avatar"
+          id="childAvatar"
+        >
+          ?
+        </div>
+
+        <div>
+
+          <strong id="childName">
+            Child
+          </strong>
+
+          <span id="childAge">
+            Age
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- NAV -->
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="parent-dashboard.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">⌂</span> -->
+        Dashboard
+      </a>
+
+
+      <a
+        href="ai-assistant.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">✦</span> -->
+        Rafiq AI
+      </a>
+
+
+      <a
+        href="milestones.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">✓</span> -->
+        Milestones
+      </a>
+
+
+      <a
+        href="screening.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">◫</span> -->
+        Screening
+      </a>
+
+
+      <span class="nav-section-title second">
+        SUPPORT
+      </span>
+
+
+      <a
+        href="challenges.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">♡</span> -->
+        Challenges
+      </a>
+
+
+      <a
+        href="specialists.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">◎</span> -->
+        Find Specialist
+      </a>
+
+
+      <a
+        href="bookings.html"
+        class="nav-link"
+      >
+        <!-- <span class="nav-icon">◷</span> -->
+        My Bookings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="settings.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">⚙</span>
+        Settings
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+
+  <!-- MAIN -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <!-- <span class="page-kicker">
+            YOUR ACCOUNT
+          </span> -->
+
+          <h1>
+            Settings
+          </h1>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- HERO -->
+
+      <section class="settings-hero">
+
+        <div>
+
+          <!-- <span class="hero-kicker">
+            PERSONALIZE RAFIQ
+          </span> -->
+
+          <h2>
+            Manage your account,
+            children and preferences.
+          </h2>
+
+          <p>
+            Keep your parent profile, child profiles,
+            language and plan preferences organized.
+          </p>
+
+        </div>
+
+
+        <!-- <div class="settings-icon">
+          ⚙
+        </div> -->
+
+      </section>
+
+
+      <div class="settings-layout">
+
+
+        <!-- LEFT NAV -->
+
+        <aside class="settings-menu">
+
+          <button
+            type="button"
+            class="settings-tab active"
+            data-tab="account"
+          >
+            <!-- <span>◎</span> -->
+
+            <div>
+              <strong>Account</strong>
+              <small>Parent information</small>
+            </div>
+          </button>
+
+
+          <button
+            type="button"
+            class="settings-tab"
+            data-tab="children"
+          >
+            <!-- <span>♡</span> -->
+
+            <div>
+              <strong>Child Profiles</strong>
+              <small>Manage your children</small>
+            </div>
+          </button>
+
+
+          <!-- <button
+            type="button"
+            class="settings-tab"
+            data-tab="language"
+          >
+            <span>文</span>
+
+            <div>
+              <strong>Language</strong>
+              <small>Interface preference</small>
+            </div>
+          </button> -->
+
+
+          <button
+            type="button"
+            class="settings-tab"
+            data-tab="subscription"
+          >
+            <!-- <span>✦</span> -->
+
+            <div>
+              <strong>Subscription</strong>
+              <small>Your RAFIQ plan</small>
+            </div>
+          </button>
+
+
+          <button
+            type="button"
+            class="settings-tab"
+            data-tab="privacy"
+          >
+            <!-- <span>◇</span> -->
+
+            <div>
+              <strong>Privacy</strong>
+              <small>Data & legal information</small>
+            </div>
+          </button>
+
+        </aside>
+
+
+
+        <!-- CONTENT -->
+
+        <div class="settings-content">
+
+
+          <!-- ========================
+               ACCOUNT
+          ========================= -->
+
+          <section
+            class="settings-panel active"
+            id="accountPanel"
+          >
+
+            <div class="panel-heading">
+
+              <span class="panel-kicker">
+                PARENT PROFILE
+              </span>
+
+              <h2>
+                Account Information
+              </h2>
+
+              <p>
+                Update the basic information associated
+                with your RAFIQ parent account.
+              </p>
+
+            </div>
+
+
+            <form id="accountForm">
+
+              <div class="form-row">
+
+                <div class="form-group">
+
+                  <label for="parentName">
+                    Full Name
+                  </label>
+
+                  <input
+                    type="text"
+                    id="parentName"
+                    placeholder="Your name"
+                  >
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="parentEmail">
+                    Email Address
+                  </label>
+
+                  <input
+                    type="email"
+                    id="parentEmail"
+                    placeholder="parent@example.com"
+                  >
+
+                </div>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="parentPhone">
+                  Phone Number
+                  <span>Optional</span>
+                </label>
+
+                <input
+                  type="tel"
+                  id="parentPhone"
+                  placeholder="+962..."
+                >
+
+              </div>
+
+
+              <div
+                class="form-message"
+                id="accountMessage"
+              ></div>
+
+
+              <button
+                type="submit"
+                class="save-button"
+              >
+                Save Changes
+              </button>
+
+            </form>
+
+          </section>
+
+
+
+          <!-- ========================
+               CHILDREN
+          ========================= -->
+
+          <section
+            class="settings-panel"
+            id="childrenPanel"
+          >
+
+            <div class="panel-heading">
+
+              <span class="panel-kicker">
+                FAMILY
+              </span>
+
+              <h2>
+                Child Profiles
+              </h2>
+
+              <p>
+                Switch between children or add another
+                child profile to RAFIQ.
+              </p>
+
+            </div>
+
+
+            <div
+              class="children-list"
+              id="childrenList"
+            ></div>
+
+
+            <a
+              href="onboarding.html"
+              class="add-child-button"
+            >
+              + Add Another Child
+            </a>
+
+          </section>
+
+
+
+          <!-- ========================
+               LANGUAGE
+          ========================= -->
+
+          <section
+            class="settings-panel"
+            id="languagePanel"
+          >
+
+            <div class="panel-heading">
+
+              <span class="panel-kicker">
+                LANGUAGE
+              </span>
+
+              <h2>
+                Language Preference
+              </h2>
+
+              <p>
+                Choose your preferred RAFIQ interface
+                language.
+              </p>
+
+            </div>
+
+
+            <div class="language-options">
+
+              <button
+                type="button"
+                class="language-option"
+                data-language="en"
+              >
+
+                <div class="language-icon">
+                  EN
+                </div>
+
+                <div>
+
+                  <strong>
+                    English
+                  </strong>
+
+                  <span>
+                    Left-to-right interface
+                  </span>
+
+                </div>
+
+                <span class="language-check">
+                  ✓
+                </span>
+
+              </button>
+
+
+              <button
+                type="button"
+                class="language-option"
+                data-language="ar"
+              >
+
+                <div class="language-icon">
+                  ع
+                </div>
+
+                <div>
+
+                  <strong>
+                    العربية
+                  </strong>
+
+                  <span>
+                    Right-to-left interface
+                  </span>
+
+                </div>
+
+                <span class="language-check">
+                  ✓
+                </span>
+
+              </button>
+
+            </div>
+
+
+            <div class="language-note">
+
+              <span>i</span>
+
+              <p>
+                The shared language preference is saved.
+                Full Arabic localization can be applied
+                across all RAFIQ screens.
+              </p>
+
+            </div>
+
+          </section>
+
+
+
+          <!-- ========================
+               SUBSCRIPTION
+          ========================= -->
+
+          <section
+            class="settings-panel"
+            id="subscriptionPanel"
+          >
+
+            <div class="panel-heading">
+
+              <span class="panel-kicker">
+                PLAN
+              </span>
+
+              <h2>
+                Your Subscription
+              </h2>
+
+              <p>
+                Review your current plan and explore
+                RAFIQ Plus.
+              </p>
+
+            </div>
+
+
+            <div class="current-plan">
+
+              <div>
+
+                <span>
+                  CURRENT PLAN
+                </span>
+
+                <h3 id="currentPlanName">
+                  RAFIQ Free
+                </h3>
+
+                <p id="currentPlanDescription">
+                  Essential parenting and development
+                  support.
+                </p>
+
+              </div>
+
+
+              <div
+                class="plan-badge"
+                id="planBadge"
+              >
+                Free
+              </div>
+
+            </div>
+
+
+            <a
+              href="subscription.html"
+              class="manage-plan-button"
+            >
+              View Plans & Subscription
+              <span>→</span>
+            </a>
+
+          </section>
+
+
+
+          <!-- ========================
+               PRIVACY
+          ========================= -->
+
+          <section
+            class="settings-panel"
+            id="privacyPanel"
+          >
+
+            <div class="panel-heading">
+
+              <span class="panel-kicker">
+                PRIVACY & SAFETY
+              </span>
+
+              <h2>
+                Privacy
+              </h2>
+
+              <p>
+                Review how this RAFIQ prototype handles
+                stored information.
+              </p>
+
+            </div>
+
+
+            <div class="privacy-card">
+
+              <div class="privacy-icon">
+                ◇
+              </div>
+
+              <div>
+
+                <h3>
+                  Prototype Data Storage
+                </h3>
+
+                <p>
+                  This frontend prototype stores demo
+                  child profiles, bookings and tracking
+                  information locally in the browser.
+                  A production platform would use
+                  authenticated backend storage and
+                  appropriate security controls.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="privacy-links">
+
+              <a href="../piblic-pages/index.html">
+                Privacy Policy
+                <span>→</span>
+              </a>
+
+              <a href="../piblic-pages/index.html">
+                Terms of Use
+                <span>→</span>
+              </a>
+
+              <a href="../piblic-pages/index.html">
+                Medical Disclaimer
+                <span>→</span>
+              </a>
+
+            </div>
+
+
+            <div class="danger-zone">
+
+              <span>
+                SESSION
+              </span>
+
+              <h3>
+                Log out of RAFIQ
+              </h3>
+
+              <p>
+                End the current session on this browser.
+              </p>
+
+              <button
+                type="button"
+                id="privacyLogoutButton"
+              >
+                Log Out
+              </button>
+
+            </div>
+
+          </section>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<script src="settings.js"></script>
+<script src="notifications.js"></script>
+</body>
+</html>

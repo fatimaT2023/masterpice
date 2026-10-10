@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Payment | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="payment.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+        <div class="brand-mark">
+          R
+        </div>
+
+        <span>
+          RAFIQ
+        </span>
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="child-card">
+
+      <span class="small-label">
+        CURRENT CHILD
+      </span>
+
+      <div class="child-info">
+
+        <div
+          class="child-avatar"
+          id="childAvatar"
+        >
+          ?
+        </div>
+
+        <div>
+
+          <strong id="childName">
+            Child
+          </strong>
+
+          <span id="childAge">
+            Age
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="parent-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        Dashboard
+      </a>
+
+
+      <a
+        href="ai-assistant.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">✦</span>
+        Rafiq AI
+      </a>
+
+
+      <a
+        href="milestones.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">✓</span>
+        Milestones
+      </a>
+
+
+      <a
+        href="screening.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◫</span>
+        Screening
+      </a>
+
+
+      <span class="nav-section-title second">
+        SUPPORT
+      </span>
+
+
+      <a
+        href="challenges.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">♡</span>
+        Challenges
+      </a>
+
+
+      <a
+        href="specialists.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◎</span>
+        Find Specialist
+      </a>
+
+
+      <a
+        href="bookings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◷</span>
+        My Bookings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="settings.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">⚙</span>
+        Settings
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- MAIN -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            SUBSCRIPTION
+          </span>
+
+          <h1>
+            Payment
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="subscription.html"
+        class="back-button"
+      >
+        ← Back to Plans
+      </a>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- PAYMENT VIEW -->
+
+      <section
+        class="payment-view active"
+        id="paymentView"
+      >
+
+        <div class="payment-layout">
+
+
+          <!-- LEFT -->
+
+          <div class="payment-main">
+
+            <!-- HERO -->
+
+            <section class="payment-hero">
+
+              <span class="hero-kicker">
+                RAFIQ PLUS
+              </span>
+
+              <h2>
+                Complete your
+                <span>subscription.</span>
+              </h2>
+
+              <p>
+                Review your plan and complete the demo
+                payment to activate RAFIQ Plus.
+              </p>
+
+            </section>
+
+
+            <!-- DEMO NOTE -->
+
+            <div class="prototype-note">
+
+              <span>i</span>
+
+              <p>
+                This is a frontend prototype. No real
+                payment is processed and sensitive card
+                information is never stored.
+              </p>
+
+            </div>
+
+
+            <!-- PAYMENT METHOD -->
+
+            <section class="section-card">
+
+              <div class="section-heading">
+
+                <span class="section-number">
+                  01
+                </span>
+
+                <div>
+
+                  <span class="section-kicker">
+                    PAYMENT METHOD
+                  </span>
+
+                  <h2>
+                    Choose how to pay
+                  </h2>
+
+                </div>
+
+              </div>
+
+
+              <div class="payment-methods">
+
+                <button
+                  type="button"
+                  class="method-button active"
+                  data-method="card"
+                >
+                  <span class="method-icon">
+                    ▣
+                  </span>
+
+                  <span>
+                    <strong>
+                      Card
+                    </strong>
+
+                    <small>
+                      Demo card payment
+                    </small>
+                  </span>
+                </button>
+
+
+                <button
+                  type="button"
+                  class="method-button"
+                  data-method="wallet"
+                >
+                  <span class="method-icon">
+                    ◇
+                  </span>
+
+                  <span>
+                    <strong>
+                      Digital Wallet
+                    </strong>
+
+                    <small>
+                      Simulated wallet
+                    </small>
+                  </span>
+                </button>
+
+              </div>
+
+            </section>
+
+
+            <!-- CARD FORM -->
+
+            <section
+              class="section-card"
+              id="cardSection"
+            >
+
+              <div class="section-heading">
+
+                <span class="section-number">
+                  02
+                </span>
+
+                <div>
+
+                  <span class="section-kicker">
+                    CARD DETAILS
+                  </span>
+
+                  <h2>
+                    Enter demo payment details
+                  </h2>
+
+                </div>
+
+              </div>
+
+
+              <form id="paymentForm">
+
+                <div class="form-group">
+
+                  <label for="cardholderName">
+                    Cardholder Name
+                  </label>
+
+                  <input
+                    type="text"
+                    id="cardholderName"
+                    placeholder="Name on card"
+                    autocomplete="off"
+                  >
+
+                  <small
+                    class="field-error"
+                    id="nameError"
+                  ></small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="cardNumber">
+                    Card Number
+                  </label>
+
+                  <input
+                    type="text"
+                    id="cardNumber"
+                    inputmode="numeric"
+                    maxlength="19"
+                    placeholder="4242 4242 4242 4242"
+                    autocomplete="off"
+                  >
+
+                  <small
+                    class="field-error"
+                    id="cardError"
+                  ></small>
+
+                </div>
+
+
+                <div class="form-row">
+
+                  <div class="form-group">
+
+                    <label for="expiryDate">
+                      Expiry
+                    </label>
+
+                    <input
+                      type="text"
+                      id="expiryDate"
+                      inputmode="numeric"
+                      maxlength="5"
+                      placeholder="MM/YY"
+                      autocomplete="off"
+                    >
+
+                    <small
+                      class="field-error"
+                      id="expiryError"
+                    ></small>
+
+                  </div>
+
+
+                  <div class="form-group">
+
+                    <label for="cvv">
+                      CVV
+                    </label>
+
+                    <input
+                      type="password"
+                      id="cvv"
+                      inputmode="numeric"
+                      maxlength="4"
+                      placeholder="123"
+                      autocomplete="off"
+                    >
+
+                    <small
+                      class="field-error"
+                      id="cvvError"
+                    ></small>
+
+                  </div>
+
+                </div>
+
+
+                <div class="security-note">
+
+                  <span>◇</span>
+
+                  <p>
+                    Demo only. Card number and CVV are
+                    validated temporarily in this page
+                    and are not saved to localStorage
+                    or sessionStorage.
+                  </p>
+
+                </div>
+
+              </form>
+
+            </section>
+
+
+            <!-- WALLET -->
+
+            <section
+              class="section-card"
+              id="walletSection"
+              hidden
+            >
+
+              <div class="section-heading">
+
+                <span class="section-number">
+                  02
+                </span>
+
+                <div>
+
+                  <span class="section-kicker">
+                    DIGITAL WALLET
+                  </span>
+
+                  <h2>
+                    Demo wallet payment
+                  </h2>
+
+                </div>
+
+              </div>
+
+
+              <div class="wallet-box">
+
+                <div class="wallet-icon">
+                  ◇
+                </div>
+
+                <div>
+
+                  <h3>
+                    RAFIQ Demo Wallet
+                  </h3>
+
+                  <p>
+                    For this prototype, selecting a wallet
+                    simulates an approved digital payment.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </section>
+
+          </div>
+
+
+          <!-- RIGHT SUMMARY -->
+
+          <aside class="order-summary">
+
+            <span class="summary-kicker">
+              ORDER SUMMARY
+            </span>
+
+            <h2>
+              RAFIQ Plus
+            </h2>
+
+
+            <div class="plan-row">
+
+              <div>
+
+                <strong id="planName">
+                  RAFIQ Plus
+                </strong>
+
+                <span>
+                  Monthly subscription
+                </span>
+
+              </div>
+
+              <strong id="planPrice">
+                5 JOD
+              </strong>
+
+            </div>
+
+
+            <div class="summary-divider"></div>
+
+
+            <div class="summary-row">
+
+              <span>
+                Billing cycle
+              </span>
+
+              <strong id="billingCycle">
+                Monthly
+              </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+              <span>
+                Subscription
+              </span>
+
+              <strong>
+                RAFIQ Plus
+              </strong>
+
+            </div>
+
+
+            <div class="summary-divider"></div>
+
+
+            <div class="total-row">
+
+              <span>
+                Total
+              </span>
+
+              <strong id="totalPrice">
+                5 JOD
+              </strong>
+
+            </div>
+
+
+            <label class="terms-check">
+
+              <input
+                type="checkbox"
+                id="termsCheckbox"
+              >
+
+              <span>
+                I understand this is a demo payment
+                for the frontend prototype.
+              </span>
+
+            </label>
+
+
+            <div
+              class="payment-error"
+              id="paymentError"
+            ></div>
+
+
+            <button
+              type="button"
+              class="pay-button"
+              id="payButton"
+            >
+              Pay & Activate Plus
+            </button>
+
+
+            <p class="summary-note">
+              No real charge will be made.
+            </p>
+
+          </aside>
+
+        </div>
+
+      </section>
+
+
+      <!-- SUCCESS VIEW -->
+
+      <section
+        class="payment-view"
+        id="successView"
+      >
+
+        <div class="success-card">
+
+          <div class="success-icon">
+            ✓
+          </div>
+
+          <span class="success-kicker">
+            PAYMENT SUCCESSFUL
+          </span>
+
+          <h2>
+            RAFIQ Plus is now active.
+          </h2>
+
+          <p>
+            Your demo payment has been completed and
+            your parent account has been upgraded.
+          </p>
+
+
+          <div class="success-plan">
+
+            <div>
+
+              <span>
+                CURRENT PLAN
+              </span>
+
+              <strong>
+                RAFIQ Plus
+              </strong>
+
+            </div>
+
+            <div class="active-badge">
+              Active
+            </div>
+
+          </div>
+
+
+          <div class="success-details">
+
+            <div>
+
+              <span>
+                Payment Reference
+              </span>
+
+              <strong id="paymentReference">
+                —
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Amount
+              </span>
+
+              <strong id="successAmount">
+                5 JOD
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Payment Method
+              </span>
+
+              <strong id="successMethod">
+                Card
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Status
+              </span>
+
+              <strong class="success-status">
+                Paid
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="success-actions">
+
+            <a
+              href="subscription.html"
+              class="subscription-button"
+            >
+              View Subscription
+            </a>
+
+            <a
+              href="parent-dashboard.html"
+              class="dashboard-button"
+            >
+              Back to Dashboard
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- MISSING PLAN -->
+
+      <section
+        class="payment-view"
+        id="missingPlanView"
+      >
+
+        <div class="missing-card">
+
+          <div class="missing-icon">
+            ✦
+          </div>
+
+          <span>
+            NO PLAN SELECTED
+          </span>
+
+          <h2>
+            Choose your plan first.
+          </h2>
+
+          <p>
+            Go back to the subscription page and select
+            RAFIQ Plus before continuing to payment.
+          </p>
+
+          <a href="subscription.html">
+            View Subscription Plans →
+          </a>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<script src="payment.js"></script>
+
+</body>
+</html>
