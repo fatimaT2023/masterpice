@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Specialist Approvals | RAFIQ Admin</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="specialist-approvals.css"
+  >
+
+</head>
+
+
+<body>
+
+<div class="admin-shell">
+
+  <!-- =====================================
+       SIDEBAR
+  ====================================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+
+        <span class="brand-mark">
+          R
+        </span>
+
+        <div>
+
+          <strong>
+            RAFIQ
+          </strong>
+
+          <small>
+            Administration
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <section class="admin-card">
+
+      <div class="admin-avatar">
+        A
+      </div>
+
+      <div>
+
+        <span>
+          PLATFORM ADMIN
+        </span>
+
+        <strong id="adminSidebarName">
+          RAFIQ Admin
+        </strong>
+
+        <small>
+          Control Center
+        </small>
+
+      </div>
+
+    </section>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-label">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="admin-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+
+      <a
+        href="reports-analytics.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌁</span>
+        <span>Reports & Analytics</span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        SPECIALISTS
+      </span>
+
+
+      <a
+        href="specialist-approvals.html"
+        class="nav-link active"
+      >
+
+        <span class="nav-icon">✓</span>
+
+        <span>
+          Specialist Approvals
+        </span>
+
+        <span
+          class="nav-count"
+          id="approvalNavCount"
+          hidden
+        >
+          0
+        </span>
+
+      </a>
+
+
+      <a
+        href="specialists-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◎</span>
+
+        <span>
+          Specialists
+        </span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        PLATFORM
+      </span>
+
+
+      <a
+        href="content-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▤</span>
+
+        <span>
+          Content Management
+        </span>
+      </a>
+
+
+      <a
+        href="ai-governance.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">✦</span>
+
+        <span>
+          AI Governance
+        </span>
+      </a>
+
+
+      <a
+        href="bookings-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▦</span>
+
+        <span>
+          Bookings
+        </span>
+      </a>
+
+
+      <a
+        href="billing-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◇</span>
+
+        <span>
+          Billing & Subscriptions
+        </span>
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="admin-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+
+        <span>
+          Admin Settings
+        </span>
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+
+        <span>
+          Log Out
+        </span>
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =====================================
+       MAIN
+  ====================================== -->
+
+  <main class="main-content">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            SPECIALIST VERIFICATION
+          </span>
+
+          <h1>
+            Specialist Approvals
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="admin-dashboard.html"
+        class="dashboard-link"
+      >
+        ← Dashboard
+      </a>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =====================================
+           HERO
+      ====================================== -->
+
+      <section class="approval-hero">
+
+        <div>
+
+          <span class="hero-kicker">
+            PROFESSIONAL VERIFICATION
+          </span>
+
+          <h2>
+            Review before they
+            <span>join the practice.</span>
+          </h2>
+
+          <p>
+            Review submitted professional information
+            before granting a specialist access to RAFIQ
+            practice tools and parent discovery.
+          </p>
+
+        </div>
+
+
+        <div class="queue-stat">
+
+          <span>
+            PENDING QUEUE
+          </span>
+
+          <strong id="heroPendingCount">
+            0
+          </strong>
+
+          <small id="heroPendingText">
+            No applications waiting
+          </small>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
+           INFO
+      ====================================== -->
+
+      <div class="review-principle">
+
+        <span>
+          i
+        </span>
+
+        <p>
+          Approval is a human administrative decision.
+          RAFIQ AI should not independently verify
+          professional credentials or grant specialist
+          access.
+        </p>
+
+      </div>
+
+
+      <!-- =====================================
+           LAYOUT
+      ====================================== -->
+
+      <div class="approval-layout">
+
+        <!-- ===============================
+             QUEUE
+        ================================ -->
+
+        <aside class="queue-card">
+
+          <div class="queue-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                APPLICATION QUEUE
+              </span>
+
+              <h2>
+                Pending
+              </h2>
+
+            </div>
+
+
+            <span
+              class="queue-count"
+              id="queueCount"
+            >
+              0
+            </span>
+
+          </div>
+
+
+          <div class="queue-search">
+
+            <span>
+              ⌕
+            </span>
+
+            <input
+              type="search"
+              id="queueSearch"
+              placeholder="Search specialist..."
+            >
+
+          </div>
+
+
+          <div
+            class="application-list"
+            id="applicationList"
+          ></div>
+
+
+          <div
+            class="queue-empty"
+            id="queueEmpty"
+            hidden
+          >
+
+            <div>
+              ✓
+            </div>
+
+            <strong>
+              Queue is clear
+            </strong>
+
+            <p>
+              No specialist applications currently
+              require review.
+            </p>
+
+          </div>
+
+        </aside>
+
+
+        <!-- ===============================
+             DETAILS
+        ================================ -->
+
+        <section class="review-area">
+
+          <!-- NOTHING SELECTED -->
+
+          <div
+            class="select-state"
+            id="selectState"
+          >
+
+            <div class="select-icon">
+              ✓
+            </div>
+
+            <span>
+              VERIFICATION REVIEW
+            </span>
+
+            <h2>
+              Select an application
+            </h2>
+
+            <p>
+              Choose a pending specialist from the queue
+              to review their submitted professional
+              information.
+            </p>
+
+          </div>
+
+
+          <!-- APPLICATION -->
+
+          <div
+            class="application-detail"
+            id="applicationDetail"
+            hidden
+          >
+
+            <!-- PROFILE HEADER -->
+
+            <section class="detail-hero">
+
+              <div class="detail-profile">
+
+                <div
+                  class="specialist-avatar-large"
+                  id="detailAvatar"
+                >
+                  SP
+                </div>
+
+
+                <div>
+
+                  <span class="detail-kicker">
+                    SPECIALIST APPLICATION
+                  </span>
+
+                  <h2 id="detailName">
+                    Specialist
+                  </h2>
+
+                  <p id="detailSpecialty">
+                    Specialty
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <span
+                class="pending-badge"
+                id="detailStatus"
+              >
+                Pending Review
+              </span>
+
+            </section>
+
+
+            <!-- APPLICATION META -->
+
+            <section class="meta-grid">
+
+              <div>
+
+                <span>
+                  APPLICATION ID
+                </span>
+
+                <strong id="detailId">
+                  —
+                </strong>
+
+              </div>
+
+
+              <div>
+
+                <span>
+                  SUBMITTED
+                </span>
+
+                <strong id="detailCreated">
+                  —
+                </strong>
+
+              </div>
+
+
+              <div>
+
+                <span>
+                  VERIFICATION
+                </span>
+
+                <strong id="detailVerification">
+                  Pending
+                </strong>
+
+              </div>
+
+            </section>
+
+
+            <!-- IDENTITY -->
+
+            <section class="detail-card">
+
+              <div class="card-heading">
+
+                <div class="card-icon lavender">
+                  ◎
+                </div>
+
+
+                <div>
+
+                  <span class="section-kicker">
+                    PROFESSIONAL IDENTITY
+                  </span>
+
+                  <h3>
+                    Application information
+                  </h3>
+
+                </div>
+
+              </div>
+
+
+              <div class="field-grid">
+
+                <div class="review-field">
+
+                  <span>
+                    Full Name
+                  </span>
+
+                  <strong id="reviewFullName">
+                    —
+                  </strong>
+
+                </div>
+
+
+                <div class="review-field">
+
+                  <span>
+                    Email
+                  </span>
+
+                  <strong id="reviewEmail">
+                    —
+                  </strong>
+
+                </div>
+
+
+                <div class="review-field">
+
+                  <span>
+                    Phone
+                  </span>
+
+                  <strong id="reviewPhone">
+                    —
+                  </strong>
+
+                </div>
+
+
+                <div class="review-field">
+
+                  <span>
+                    Specialty
+                  </span>
+
+                  <strong id="reviewSpecialty">
+                    —
+                  </strong>
+
+                </div>
+
+
+                <div class="review-field">
+
+                  <span>
+                    Qualification
+                  </span>
+
+                  <strong id="reviewQualification">
+                    —
+                  </strong>
+
+                </div>
+
+
+                <div class="review-field">
+
+                  <span>
+                    Years of Experience
+                  </span>
+
+                  <strong id="reviewExperience">
+                    —
+                  </strong>
+
+                </div>
+
+
+                <div class="review-field full">
+
+                  <span>
+                    License / Professional Number
+                  </span>
+
+                  <strong id="reviewLicense">
+                    —
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </section>
+
+
+            <!-- SERVICES -->
+
+            <section class="detail-card">
+
+              <div class="card-heading">
+
+                <div class="card-icon mint">
+                  ◷
+                </div>
+
+
+                <div>
+
+                  <span class="section-kicker">
+                    PRACTICE INFORMATION
+                  </span>
+
+                  <h3>
+                    Services & profile
+                  </h3>
+
+                </div>
+
+              </div>
+
+
+              <div class="review-block">
+
+                <span>
+                  PROFESSIONAL BIO
+                </span>
+
+                <p id="reviewBio">
+                  —
+                </p>
+
+              </div>
+
+
+              <div class="field-grid service-grid">
+
+                <div class="review-field">
+
+                  <span>
+                    Consultation Types
+                  </span>
+
+                  <div
+                    class="tag-list"
+                    id="reviewConsultationTypes"
+                  ></div>
+
+                </div>
+
+
+                <div class="review-field">
+
+                  <span>
+                    Languages
+                  </span>
+
+                  <div
+                    class="tag-list"
+                    id="reviewLanguages"
+                  ></div>
+
+                </div>
+
+
+                <div class="review-field">
+
+                  <span>
+                    Session Fee
+                  </span>
+
+                  <strong id="reviewFee">
+                    —
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </section>
+
+
+            <!-- DOCUMENT -->
+
+            <section class="detail-card">
+
+              <div class="card-heading">
+
+                <div class="card-icon sky">
+                  ▤
+                </div>
+
+
+                <div>
+
+                  <span class="section-kicker">
+                    VERIFICATION DOCUMENT
+                  </span>
+
+                  <h3>
+                    Credential submission
+                  </h3>
+
+                </div>
+
+              </div>
+
+
+              <div
+                class="document-card"
+                id="documentCard"
+              >
+
+                <div class="document-icon">
+                  ▤
+                </div>
+
+
+                <div>
+
+                  <span>
+                    SUBMITTED FILE
+                  </span>
+
+                  <strong id="documentName">
+                    No file recorded
+                  </strong>
+
+                  <small>
+                    Prototype stores the filename only.
+                  </small>
+
+                </div>
+
+
+                <span
+                  class="document-state"
+                  id="documentState"
+                >
+                  Metadata Only
+                </span>
+
+              </div>
+
+
+              <div class="document-note">
+
+                <span>
+                  i
+                </span>
+
+                <p>
+                  Production verification documents
+                  should be stored securely and accessed
+                  through protected backend file storage,
+                  not localStorage.
+                </p>
+
+              </div>
+
+            </section>
+
+
+            <!-- DECLARATION -->
+
+            <section class="declaration-card">
+
+              <span>
+                ✓
+              </span>
+
+              <div>
+
+                <strong>
+                  Applicant declaration
+                </strong>
+
+                <p>
+                  The applicant confirmed that the
+                  submitted professional information is
+                  accurate during onboarding.
+                </p>
+
+              </div>
+
+            </section>
+
+
+            <!-- ACTIONS -->
+
+            <section class="review-actions">
+
+              <div>
+
+                <strong>
+                  Verification decision
+                </strong>
+
+                <span>
+                  Review the information before changing
+                  the specialist's platform status.
+                </span>
+
+              </div>
+
+
+              <div class="decision-buttons">
+
+                <button
+                  type="button"
+                  class="reject-button"
+                  id="rejectButton"
+                >
+                  Reject Application
+                </button>
+
+
+                <button
+                  type="button"
+                  class="approve-button"
+                  id="approveButton"
+                >
+                  Approve Specialist
+                </button>
+
+              </div>
+
+            </section>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- =====================================
+     APPROVE MODAL
+====================================== -->
+
+<div
+  class="modal-backdrop"
+  id="approveModal"
+  hidden
+>
+
+  <div class="decision-modal">
+
+    <div class="modal-icon approve">
+      ✓
+    </div>
+
+    <span>
+      APPROVE SPECIALIST
+    </span>
+
+    <h2>
+      Confirm professional approval?
+    </h2>
+
+    <p id="approveModalText">
+      This specialist will gain access to approved
+      practice features.
+    </p>
+
+
+    <div class="modal-actions">
+
+      <button
+        type="button"
+        class="modal-secondary"
+        id="cancelApprove"
+      >
+        Cancel
+      </button>
+
+
+      <button
+        type="button"
+        class="modal-approve"
+        id="confirmApprove"
+      >
+        Approve Specialist
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================
+     REJECT MODAL
+====================================== -->
+
+<div
+  class="modal-backdrop"
+  id="rejectModal"
+  hidden
+>
+
+  <div class="decision-modal rejection-modal">
+
+    <div class="modal-icon reject">
+      !
+    </div>
+
+    <span>
+      REJECT APPLICATION
+    </span>
+
+    <h2>
+      Why is this application being rejected?
+    </h2>
+
+    <p>
+      Add a clear administrative reason so the decision
+      is recorded in the prototype.
+    </p>
+
+
+    <div class="reason-field">
+
+      <label for="rejectionReason">
+        Rejection Reason
+      </label>
+
+      <textarea
+        id="rejectionReason"
+        rows="5"
+        maxlength="500"
+        placeholder="Example: Professional license information requires correction..."
+      ></textarea>
+
+      <div class="reason-footer">
+
+        <small id="reasonError"></small>
+
+        <span id="reasonCount">
+          0 / 500
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        type="button"
+        class="modal-secondary"
+        id="cancelReject"
+      >
+        Cancel
+      </button>
+
+
+      <button
+        type="button"
+        class="modal-reject"
+        id="confirmReject"
+      >
+        Reject Application
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================
+     SUCCESS STATE
+====================================== -->
+
+<div
+  class="toast"
+  id="decisionToast"
+  hidden
+>
+
+  <span id="toastIcon">
+    ✓
+  </span>
+
+  <div>
+
+    <strong id="toastTitle">
+      Application updated
+    </strong>
+
+    <p id="toastText">
+      Specialist status has been updated.
+    </p>
+
+  </div>
+
+</div>
+
+
+<script src="specialist-approvals.js"></script>
+
+</body>
+</html>

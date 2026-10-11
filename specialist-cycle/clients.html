@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Clients & Cases | RAFIQ Specialist</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="clients.css"
+  >
+  <link
+  rel="stylesheet"
+  href="specialist-notifications.css"
+>
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+  <!-- =========================
+       SIDEBAR
+  ========================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+        <div class="brand-mark">
+          R
+        </div>
+
+        <span>
+          RAFIQ
+        </span>
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="specialist-mini-card">
+
+      <div
+        class="specialist-avatar"
+        id="sidebarAvatar"
+      >
+        DR
+      </div>
+
+
+      <div class="specialist-info">
+
+        <span>
+          SPECIALIST
+        </span>
+
+        <strong id="sidebarName">
+          Specialist
+        </strong>
+
+        <small id="sidebarSpecialty">
+          Specialty
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="sidebar-status"
+      id="sidebarStatus"
+    >
+
+      <span class="status-dot"></span>
+
+      <span id="sidebarStatusText">
+        Approved
+      </span>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="specialist-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        Dashboard
+      </a>
+
+
+      <a
+        href="schedule.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▦</span>
+        Schedule
+      </a>
+
+
+      <span class="nav-section-title second">
+        PRACTICE
+      </span>
+
+
+      <a
+        href="specialist-bookings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◷</span>
+        Bookings
+      </a>
+
+
+      <a
+        href="clients.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">♡</span>
+        Clients / Cases
+      </a>
+
+
+      <a
+        href="availability.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◫</span>
+        Availability
+      </a>
+
+
+      <span class="nav-section-title second">
+        BUSINESS
+      </span>
+
+
+      <a
+        href="earnings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◇</span>
+        Earnings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="profile.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◎</span>
+        Profile
+      </a>
+
+
+      <a
+        href="specialist-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        Settings
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            PRACTICE
+          </span>
+
+          <h1>
+            Clients / Cases
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="specialist-bookings.html"
+        class="topbar-button"
+      >
+        View Bookings
+      </a>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- LOCKED -->
+
+      <section
+        class="state-card"
+        id="lockedView"
+        hidden
+      >
+
+        <div class="state-icon warning">
+          ◷
+        </div>
+
+        <span>
+          PROFILE APPROVAL REQUIRED
+        </span>
+
+        <h2>
+          Client cases are not active yet.
+        </h2>
+
+        <p>
+          Your specialist profile must be approved
+          before you can access consultation cases.
+        </p>
+
+        <a href="specialist-dashboard.html">
+          Back to Dashboard
+        </a>
+
+      </section>
+
+
+      <!-- MAIN -->
+
+      <section
+        id="clientsView"
+        hidden
+      >
+
+        <!-- HERO -->
+
+        <section class="clients-hero">
+
+          <div>
+
+            <span class="hero-kicker">
+              CASE MANAGEMENT
+            </span>
+
+            <h2>
+              Keep each child's
+              <span>consultation history together.</span>
+            </h2>
+
+            <p>
+              Cases are created automatically from your
+              RAFIQ bookings and consultation history.
+            </p>
+
+          </div>
+
+
+          <div class="hero-stat">
+
+            <span>
+              TOTAL CLIENTS
+            </span>
+
+            <strong id="heroClientCount">
+              0
+            </strong>
+
+          </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="summary-grid">
+
+          <article class="summary-card">
+
+            <div class="summary-icon mint">
+              ♡
+            </div>
+
+            <div>
+
+              <span>
+                Clients
+              </span>
+
+              <strong id="clientCount">
+                0
+              </strong>
+
+            </div>
+
+          </article>
+
+
+          <article class="summary-card">
+
+            <div class="summary-icon sky">
+              ◷
+            </div>
+
+            <div>
+
+              <span>
+                Active Cases
+              </span>
+
+              <strong id="activeCount">
+                0
+              </strong>
+
+            </div>
+
+          </article>
+
+
+          <article class="summary-card">
+
+            <div class="summary-icon lavender">
+              ✓
+            </div>
+
+            <div>
+
+              <span>
+                Completed Sessions
+              </span>
+
+              <strong id="sessionCount">
+                0
+              </strong>
+
+            </div>
+
+          </article>
+
+
+          <article class="summary-card">
+
+            <div class="summary-icon peach">
+              ◫
+            </div>
+
+            <div>
+
+              <span>
+                Reports
+              </span>
+
+              <strong id="reportCount">
+                0
+              </strong>
+
+            </div>
+
+          </article>
+
+        </section>
+
+
+        <!-- CONTROLS -->
+
+        <section class="controls-card">
+
+          <div
+            class="filter-tabs"
+            id="filterTabs"
+          >
+
+            <button
+              type="button"
+              class="filter-button active"
+              data-filter="all"
+            >
+              All Cases
+            </button>
+
+
+            <button
+              type="button"
+              class="filter-button"
+              data-filter="active"
+            >
+              Active
+            </button>
+
+
+            <button
+              type="button"
+              class="filter-button"
+              data-filter="history"
+            >
+              History
+            </button>
+
+          </div>
+
+
+          <div class="search-box">
+
+            <span>
+              ⌕
+            </span>
+
+            <input
+              type="search"
+              id="caseSearch"
+              placeholder="Search child..."
+            >
+
+          </div>
+
+        </section>
+
+
+        <!-- CASES -->
+
+        <section class="cases-section">
+
+          <div class="section-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                CLIENT CASES
+              </span>
+
+              <h2 id="casesTitle">
+                All cases
+              </h2>
+
+            </div>
+
+
+            <span id="resultCount">
+              0 cases
+            </span>
+
+          </div>
+
+
+          <div
+            class="cases-grid"
+            id="casesGrid"
+          ></div>
+
+
+          <div
+            class="empty-state"
+            id="emptyState"
+            hidden
+          >
+
+            <div class="empty-icon">
+              ♡
+            </div>
+
+            <strong id="emptyTitle">
+              No client cases yet
+            </strong>
+
+            <p id="emptyText">
+              Children from your bookings will appear
+              here automatically.
+            </p>
+
+          </div>
+
+        </section>
+
+
+        <div class="privacy-note">
+
+          <span>
+            i
+          </span>
+
+          <p>
+            RAFIQ shows consultation-related case
+            information only. In production, access to
+            child data should be permission-controlled
+            and retrieved securely from the backend.
+          </p>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<script src="clients.js"></script>
+<script src="specialist-notifications.js"></script>
+</body>
+</html>

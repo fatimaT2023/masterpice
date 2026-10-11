@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Specialist Onboarding | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="specialist-onboarding.css"
+  >
+  <link
+  rel="stylesheet"
+  href="specialist-notifications.css"
+>
+</head>
+
+
+<body>
+
+<main class="onboarding-page">
+
+  <!-- LEFT BRAND PANEL -->
+
+  <section class="brand-panel">
+
+    <a
+      href="../piblic-pages/index.html"
+      class="brand"
+    >
+      <div class="brand-mark">
+        R
+      </div>
+
+      <span>
+        RAFIQ
+      </span>
+    </a>
+
+
+    <div class="brand-content">
+
+      <span class="eyebrow">
+        SPECIALIST NETWORK
+      </span>
+
+      <h1>
+        Bring your expertise
+        <span>closer to families.</span>
+      </h1>
+
+      <p>
+        Create your professional profile and submit it
+        for RAFIQ verification before becoming visible
+        to parents.
+      </p>
+
+
+      <div class="steps-preview">
+
+        <div class="step-preview active">
+          <span>01</span>
+
+          <div>
+            <strong>
+              Professional Profile
+            </strong>
+
+            <small>
+              Tell us about your work
+            </small>
+          </div>
+        </div>
+
+
+        <div class="step-preview">
+          <span>02</span>
+
+          <div>
+            <strong>
+              Verification
+            </strong>
+
+            <small>
+              RAFIQ reviews your details
+            </small>
+          </div>
+        </div>
+
+
+        <div class="step-preview">
+          <span>03</span>
+
+          <div>
+            <strong>
+              Start Supporting Families
+            </strong>
+
+            <small>
+              Manage bookings and availability
+            </small>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="brand-note">
+
+      <span>◇</span>
+
+      <p>
+        Specialist profiles are not published to
+        parents until they are approved.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- RIGHT FORM PANEL -->
+
+  <section class="form-panel">
+
+    <!-- FORM VIEW -->
+
+    <div
+      class="form-container"
+      id="formView"
+    >
+
+      <div class="form-heading">
+
+        <span class="form-kicker">
+          GET STARTED
+        </span>
+
+        <h2>
+          Create your specialist profile
+        </h2>
+
+        <p>
+          Complete your professional information.
+          You can update these details later from
+          Specialist Settings.
+        </p>
+
+      </div>
+
+
+      <form
+        id="specialistForm"
+        novalidate
+      >
+
+        <!-- PERSONAL -->
+
+        <section class="form-section">
+
+          <div class="section-heading">
+
+            <div class="section-number">
+              01
+            </div>
+
+            <div>
+
+              <span>
+                BASIC INFORMATION
+              </span>
+
+              <h3>
+                Personal details
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <div class="form-grid two">
+
+            <div class="form-group">
+
+              <label for="fullName">
+                Full Name
+                <strong>*</strong>
+              </label>
+
+              <input
+                type="text"
+                id="fullName"
+                placeholder="Dr. Lina Haddad"
+              >
+
+              <small
+                class="field-error"
+                id="fullNameError"
+              ></small>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="email">
+                Email Address
+                <strong>*</strong>
+              </label>
+
+              <input
+                type="email"
+                id="email"
+                placeholder="specialist@example.com"
+              >
+
+              <small
+                class="field-error"
+                id="emailError"
+              ></small>
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="phone">
+              Phone Number
+              <strong>*</strong>
+            </label>
+
+            <input
+              type="tel"
+              id="phone"
+              placeholder="+962..."
+            >
+
+            <small
+              class="field-error"
+              id="phoneError"
+            ></small>
+
+          </div>
+
+        </section>
+
+
+        <!-- PROFESSIONAL -->
+
+        <section class="form-section">
+
+          <div class="section-heading">
+
+            <div class="section-number">
+              02
+            </div>
+
+            <div>
+
+              <span>
+                PROFESSIONAL PROFILE
+              </span>
+
+              <h3>
+                Tell families what you do
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <div class="form-grid two">
+
+            <div class="form-group">
+
+              <label for="specialty">
+                Specialty
+                <strong>*</strong>
+              </label>
+
+              <select id="specialty">
+
+                <option value="">
+                  Select specialty
+                </option>
+
+                <option value="pediatrician">
+                  Pediatrician
+                </option>
+
+                <option value="psychology">
+                  Child Psychologist
+                </option>
+
+                <option value="speech">
+                  Speech & Language Specialist
+                </option>
+
+                <option value="behavior">
+                  Behavioral Specialist
+                </option>
+
+                <option value="occupational">
+                  Occupational Therapist
+                </option>
+
+                <option value="learning">
+                  Learning Difficulties Specialist
+                </option>
+
+                <option value="development">
+                  Child Development Specialist
+                </option>
+
+                <option value="nutrition">
+                  Nutrition Specialist
+                </option>
+
+                <option value="family">
+                  Family Counselor
+                </option>
+
+              </select>
+
+              <small
+                class="field-error"
+                id="specialtyError"
+              ></small>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="experience">
+                Years of Experience
+                <strong>*</strong>
+              </label>
+
+              <input
+                type="number"
+                id="experience"
+                min="0"
+                max="60"
+                placeholder="5"
+              >
+
+              <small
+                class="field-error"
+                id="experienceError"
+              ></small>
+
+            </div>
+
+          </div>
+
+
+          <div class="form-grid two">
+
+            <div class="form-group">
+
+              <label for="licenseNumber">
+                Professional / License Number
+                <strong>*</strong>
+              </label>
+
+              <input
+                type="text"
+                id="licenseNumber"
+                placeholder="Professional registration number"
+              >
+
+              <small
+                class="field-error"
+                id="licenseError"
+              ></small>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="qualification">
+                Main Qualification
+                <strong>*</strong>
+              </label>
+
+              <input
+                type="text"
+                id="qualification"
+                placeholder="Example: MSc Speech Therapy"
+              >
+
+              <small
+                class="field-error"
+                id="qualificationError"
+              ></small>
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="bio">
+              Professional Bio
+              <strong>*</strong>
+            </label>
+
+            <textarea
+              id="bio"
+              maxlength="600"
+              rows="5"
+              placeholder="Briefly describe your professional background and the families you support..."
+            ></textarea>
+
+            <div class="field-footer">
+
+              <small
+                class="field-error"
+                id="bioError"
+              ></small>
+
+              <span id="bioCount">
+                0 / 600
+              </span>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- CONSULTATION -->
+
+        <section class="form-section">
+
+          <div class="section-heading">
+
+            <div class="section-number">
+              03
+            </div>
+
+            <div>
+
+              <span>
+                CONSULTATION SETTINGS
+              </span>
+
+              <h3>
+                How will you support families?
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Consultation Type
+              <strong>*</strong>
+            </label>
+
+
+            <div class="choice-grid">
+
+              <label class="choice-card">
+
+                <input
+                  type="checkbox"
+                  name="consultationType"
+                  value="online"
+                >
+
+                <span class="choice-icon">
+                  ◉
+                </span>
+
+                <span>
+
+                  <strong>
+                    Online
+                  </strong>
+
+                  <small>
+                    Video consultation
+                  </small>
+
+                </span>
+
+              </label>
+
+
+              <label class="choice-card">
+
+                <input
+                  type="checkbox"
+                  name="consultationType"
+                  value="in-person"
+                >
+
+                <span class="choice-icon">
+                  ⌂
+                </span>
+
+                <span>
+
+                  <strong>
+                    In-person
+                  </strong>
+
+                  <small>
+                    Clinic consultation
+                  </small>
+
+                </span>
+
+              </label>
+
+            </div>
+
+            <small
+              class="field-error"
+              id="consultationError"
+            ></small>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Languages
+              <strong>*</strong>
+            </label>
+
+
+            <div class="choice-grid">
+
+              <label class="choice-card">
+
+                <input
+                  type="checkbox"
+                  name="language"
+                  value="Arabic"
+                >
+
+                <span class="choice-icon">
+                  ع
+                </span>
+
+                <span>
+
+                  <strong>
+                    Arabic
+                  </strong>
+
+                  <small>
+                    Consultation language
+                  </small>
+
+                </span>
+
+              </label>
+
+
+              <label class="choice-card">
+
+                <input
+                  type="checkbox"
+                  name="language"
+                  value="English"
+                >
+
+                <span class="choice-icon">
+                  EN
+                </span>
+
+                <span>
+
+                  <strong>
+                    English
+                  </strong>
+
+                  <small>
+                    Consultation language
+                  </small>
+
+                </span>
+
+              </label>
+
+            </div>
+
+            <small
+              class="field-error"
+              id="languageError"
+            ></small>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="sessionFee">
+              Session Fee
+              <strong>*</strong>
+            </label>
+
+
+            <div class="price-input">
+
+              <input
+                type="number"
+                id="sessionFee"
+                min="1"
+                max="500"
+                placeholder="30"
+              >
+
+              <span>
+                JOD
+              </span>
+
+            </div>
+
+            <small
+              class="field-error"
+              id="feeError"
+            ></small>
+
+          </div>
+
+        </section>
+
+
+        <!-- VERIFICATION -->
+
+        <section class="form-section">
+
+          <div class="section-heading">
+
+            <div class="section-number">
+              04
+            </div>
+
+            <div>
+
+              <span>
+                VERIFICATION
+              </span>
+
+              <h3>
+                Professional credentials
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <div class="verification-note">
+
+            <span>i</span>
+
+            <p>
+              In the production platform, professional
+              documents would be securely uploaded and
+              reviewed by the RAFIQ administration team.
+              This prototype stores only the selected
+              file name for demonstration.
+            </p>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="credentialFile">
+              Credential Document
+              <span class="optional">
+                Optional in prototype
+              </span>
+            </label>
+
+
+            <label
+              for="credentialFile"
+              class="upload-box"
+              id="uploadBox"
+            >
+
+              <div class="upload-icon">
+                ↑
+              </div>
+
+              <strong>
+                Select verification document
+              </strong>
+
+              <span id="uploadText">
+                PDF or image — demo only
+              </span>
+
+            </label>
+
+
+            <input
+              type="file"
+              id="credentialFile"
+              class="hidden-file"
+              accept=".pdf,.png,.jpg,.jpeg"
+            >
+
+          </div>
+
+
+          <label class="confirmation-check">
+
+            <input
+              type="checkbox"
+              id="accuracyCheckbox"
+            >
+
+            <span>
+              I confirm that the professional information
+              provided above is accurate.
+            </span>
+
+          </label>
+
+
+          <small
+            class="field-error"
+            id="accuracyError"
+          ></small>
+
+        </section>
+
+
+        <!-- SUBMIT -->
+
+        <div class="form-actions">
+
+          <p>
+            Your profile will remain
+            <strong>Pending Review</strong>
+            until approved by RAFIQ administration.
+          </p>
+
+
+          <button
+            type="submit"
+            class="submit-button"
+            id="submitButton"
+          >
+            Submit Profile for Review
+            <span>→</span>
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+
+    <!-- SUCCESS VIEW -->
+
+    <div
+      class="success-container"
+      id="successView"
+      hidden
+    >
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+
+      <span class="success-kicker">
+        PROFILE SUBMITTED
+      </span>
+
+
+      <h2>
+        Your profile is under review.
+      </h2>
+
+
+      <p>
+        RAFIQ administration will review your
+        professional information before your profile
+        becomes visible to parents.
+      </p>
+
+
+      <div class="review-status">
+
+        <div>
+
+          <span>
+            PROFILE STATUS
+          </span>
+
+          <strong>
+            Pending Review
+          </strong>
+
+        </div>
+
+
+        <div class="pending-badge">
+          Pending
+        </div>
+
+      </div>
+
+
+      <div class="next-steps">
+
+        <h3>
+          What happens next?
+        </h3>
+
+
+        <div class="next-step">
+
+          <span>
+            1
+          </span>
+
+          <p>
+            RAFIQ Admin reviews your professional
+            details and credentials.
+          </p>
+
+        </div>
+
+
+        <div class="next-step">
+
+          <span>
+            2
+          </span>
+
+          <p>
+            Once approved, your profile can become
+            visible in the parent specialist directory.
+          </p>
+
+        </div>
+
+
+        <div class="next-step">
+
+          <span>
+            3
+          </span>
+
+          <p>
+            You can manage availability, bookings and
+            consultation reports from your dashboard.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="specialist-dashboard.html"
+        class="dashboard-button"
+      >
+        Continue to Specialist Dashboard
+        <span>→</span>
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<script src="specialist-onboarding.js"></script>
+<script src="specialist-notifications.js"></script>
+</body>
+</html>

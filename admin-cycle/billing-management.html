@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Billing & Subscriptions | RAFIQ Admin</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="billing-management.css"
+  >
+
+</head>
+
+
+<body>
+
+<div class="admin-shell">
+
+  <!-- =====================================
+       SIDEBAR
+  ====================================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+
+        <span class="brand-mark">
+          R
+        </span>
+
+        <div>
+
+          <strong>
+            RAFIQ
+          </strong>
+
+          <small>
+            Administration
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <section class="admin-card">
+
+      <div class="admin-avatar">
+        A
+      </div>
+
+      <div>
+
+        <span>
+          PLATFORM ADMIN
+        </span>
+
+        <strong id="adminSidebarName">
+          RAFIQ Admin
+        </strong>
+
+        <small>
+          Control Center
+        </small>
+
+      </div>
+
+    </section>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-label">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="admin-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+
+      <a
+        href="reports-analytics.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌁</span>
+        <span>Reports & Analytics</span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        SPECIALISTS
+      </span>
+
+
+      <a
+        href="specialist-approvals.html"
+        class="nav-link"
+      >
+
+        <span class="nav-icon">✓</span>
+
+        <span>
+          Specialist Approvals
+        </span>
+
+        <span
+          class="nav-count"
+          id="approvalNavCount"
+          hidden
+        >
+          0
+        </span>
+
+      </a>
+
+
+      <a
+        href="specialists-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◎</span>
+        <span>Specialists</span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        PLATFORM
+      </span>
+
+
+      <a
+        href="content-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▤</span>
+        <span>Content Management</span>
+      </a>
+
+
+      <a
+        href="ai-governance.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">✦</span>
+        <span>AI Governance</span>
+      </a>
+
+
+      <a
+        href="bookings-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▦</span>
+        <span>Bookings</span>
+      </a>
+
+
+      <a
+        href="billing-management.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">◇</span>
+        <span>Billing & Subscriptions</span>
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="admin-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        <span>Admin Settings</span>
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        <span>Log Out</span>
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =====================================
+       MAIN
+  ====================================== -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            PLATFORM FINANCE
+          </span>
+
+          <h1>
+            Billing & Subscriptions
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <div class="billing-pill">
+        Demo billing oversight
+      </div>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =====================================
+           HERO
+      ====================================== -->
+
+      <section class="hero">
+
+        <div>
+
+          <span class="hero-kicker">
+            SUBSCRIPTION OPERATIONS
+          </span>
+
+          <h2>
+            Keep platform billing
+            <span>clear and traceable.</span>
+          </h2>
+
+          <p>
+            Review subscription activity and payment records
+            created by the RAFIQ prototype. Real payments,
+            refunds and card processing require a secure
+            backend and payment provider.
+          </p>
+
+        </div>
+
+
+        <div class="hero-note">
+
+          <span>
+            DEMO ENVIRONMENT
+          </span>
+
+          <strong>
+            No real money is processed here.
+          </strong>
+
+          <p>
+            This page represents the administrative billing
+            workflow and reads locally stored prototype data.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
+           METRICS
+      ====================================== -->
+
+      <section class="metrics-grid">
+
+        <article class="metric-card">
+
+          <div class="metric-icon mint">
+            ✓
+          </div>
+
+          <div>
+
+            <span>
+              Active Subscriptions
+            </span>
+
+            <strong id="activeSubscriptionsMetric">
+              0
+            </strong>
+
+            <small>
+              Current active plans
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon lavender">
+            ◇
+          </div>
+
+          <div>
+
+            <span>
+              Subscription Records
+            </span>
+
+            <strong id="totalSubscriptionsMetric">
+              0
+            </strong>
+
+            <small>
+              Stored subscriptions
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon sky">
+            $
+          </div>
+
+          <div>
+
+            <span>
+              Payment Records
+            </span>
+
+            <strong id="totalPaymentsMetric">
+              0
+            </strong>
+
+            <small>
+              Prototype transactions
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon sun">
+            JOD
+          </div>
+
+          <div>
+
+            <span>
+              Recorded Revenue
+            </span>
+
+            <strong id="revenueMetric">
+              0
+            </strong>
+
+            <small>
+              Successful demo payments
+            </small>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- =====================================
+           PANEL
+      ====================================== -->
+
+      <section class="billing-panel">
+
+        <!-- TABS -->
+
+        <div class="tabs">
+
+          <button
+            type="button"
+            class="tab active"
+            data-tab="overview"
+          >
+            Overview
+          </button>
+
+
+          <button
+            type="button"
+            class="tab"
+            data-tab="subscriptions"
+          >
+            Subscriptions
+          </button>
+
+
+          <button
+            type="button"
+            class="tab"
+            data-tab="payments"
+          >
+            Payments
+          </button>
+
+        </div>
+
+
+        <!-- =================================
+             OVERVIEW
+        ================================== -->
+
+        <div
+          class="tab-view active"
+          id="overviewView"
+        >
+
+          <div class="section-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                BILLING SUMMARY
+              </span>
+
+              <h2>
+                Platform billing overview
+              </h2>
+
+              <p>
+                High-level subscription and payment activity.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="overview-grid">
+
+            <article class="overview-card">
+
+              <span class="card-kicker">
+                SUBSCRIPTION STATUS
+              </span>
+
+              <h3>
+                Plan distribution
+              </h3>
+
+
+              <div class="stat-list">
+
+                <div>
+
+                  <span>
+                    Active
+                  </span>
+
+                  <strong id="overviewActive">
+                    0
+                  </strong>
+
+                </div>
+
+
+                <div>
+
+                  <span>
+                    Cancelled
+                  </span>
+
+                  <strong id="overviewCancelled">
+                    0
+                  </strong>
+
+                </div>
+
+
+                <div>
+
+                  <span>
+                    Other
+                  </span>
+
+                  <strong id="overviewOther">
+                    0
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </article>
+
+
+            <article class="overview-card">
+
+              <span class="card-kicker">
+                PAYMENT HEALTH
+              </span>
+
+              <h3>
+                Recorded transactions
+              </h3>
+
+
+              <div class="stat-list">
+
+                <div>
+
+                  <span>
+                    Successful
+                  </span>
+
+                  <strong id="overviewSuccessful">
+                    0
+                  </strong>
+
+                </div>
+
+
+                <div>
+
+                  <span>
+                    Failed
+                  </span>
+
+                  <strong id="overviewFailed">
+                    0
+                  </strong>
+
+                </div>
+
+
+                <div>
+
+                  <span>
+                    Pending
+                  </span>
+
+                  <strong id="overviewPending">
+                    0
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </article>
+
+
+            <article class="overview-card wide">
+
+              <div class="overview-heading">
+
+                <div>
+
+                  <span class="card-kicker">
+                    RECENT ACTIVITY
+                  </span>
+
+                  <h3>
+                    Latest payment records
+                  </h3>
+
+                </div>
+
+
+                <button
+                  type="button"
+                  class="text-button"
+                  id="openPaymentsTab"
+                >
+                  View payments →
+                </button>
+
+              </div>
+
+
+              <div
+                class="recent-list"
+                id="recentPaymentsList"
+              ></div>
+
+
+              <div
+                class="mini-empty"
+                id="recentPaymentsEmpty"
+                hidden
+              >
+                No payment records are available yet.
+              </div>
+
+            </article>
+
+          </div>
+
+
+          <div class="billing-note">
+
+            <span>
+              i
+            </span>
+
+            <p>
+              Specialist earnings are managed separately from
+              parent subscription billing. A completed booking
+              should not automatically be treated as platform
+              subscription revenue.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================
+             SUBSCRIPTIONS
+        ================================== -->
+
+        <div
+          class="tab-view"
+          id="subscriptionsView"
+        >
+
+          <div class="section-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                SUBSCRIPTION RECORDS
+              </span>
+
+              <h2>
+                Parent subscriptions
+              </h2>
+
+              <p>
+                Review plan and subscription status.
+              </p>
+
+            </div>
+
+
+            <span
+              class="result-count"
+              id="subscriptionResultCount"
+            >
+              0 subscriptions
+            </span>
+
+          </div>
+
+
+          <div class="toolbar">
+
+            <div class="search-box">
+
+              <span>⌕</span>
+
+              <input
+                type="search"
+                id="subscriptionSearch"
+                placeholder="Search subscription, parent, plan..."
+              >
+
+            </div>
+
+
+            <div class="filters">
+
+              <select id="subscriptionStatusFilter">
+
+                <option value="all">
+                  All statuses
+                </option>
+
+                <option value="active">
+                  Active
+                </option>
+
+                <option value="cancelled">
+                  Cancelled
+                </option>
+
+                <option value="expired">
+                  Expired
+                </option>
+
+                <option value="pending">
+                  Pending
+                </option>
+
+              </select>
+
+
+              <button
+                type="button"
+                class="clear-button"
+                id="clearSubscriptionFilters"
+              >
+                Clear
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="table-wrap">
+
+            <table class="billing-table">
+
+              <thead>
+
+                <tr>
+
+                  <th>
+                    Subscription
+                  </th>
+
+                  <th>
+                    Parent
+                  </th>
+
+                  <th>
+                    Plan
+                  </th>
+
+                  <th>
+                    Amount
+                  </th>
+
+                  <th>
+                    Started
+                  </th>
+
+                  <th>
+                    Status
+                  </th>
+
+                  <th>
+                    Action
+                  </th>
+
+                </tr>
+
+              </thead>
+
+
+              <tbody id="subscriptionTableBody">
+              </tbody>
+
+            </table>
+
+          </div>
+
+
+          <div
+            class="mobile-list"
+            id="subscriptionMobileList"
+          ></div>
+
+
+          <div
+            class="empty-state"
+            id="subscriptionEmpty"
+            hidden
+          >
+
+            <div>
+              ◇
+            </div>
+
+            <strong>
+              No subscriptions found
+            </strong>
+
+            <p>
+              Subscription records from the parent flow
+              will appear here when available.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================
+             PAYMENTS
+        ================================== -->
+
+        <div
+          class="tab-view"
+          id="paymentsView"
+        >
+
+          <div class="section-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                PAYMENT HISTORY
+              </span>
+
+              <h2>
+                Payment records
+              </h2>
+
+              <p>
+                Review prototype payment transactions.
+              </p>
+
+            </div>
+
+
+            <span
+              class="result-count"
+              id="paymentResultCount"
+            >
+              0 payments
+            </span>
+
+          </div>
+
+
+          <div class="toolbar">
+
+            <div class="search-box">
+
+              <span>⌕</span>
+
+              <input
+                type="search"
+                id="paymentSearch"
+                placeholder="Search payment, parent, plan..."
+              >
+
+            </div>
+
+
+            <div class="filters">
+
+              <select id="paymentStatusFilter">
+
+                <option value="all">
+                  All statuses
+                </option>
+
+                <option value="successful">
+                  Successful
+                </option>
+
+                <option value="pending">
+                  Pending
+                </option>
+
+                <option value="failed">
+                  Failed
+                </option>
+
+              </select>
+
+
+              <button
+                type="button"
+                class="clear-button"
+                id="clearPaymentFilters"
+              >
+                Clear
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="table-wrap">
+
+            <table class="billing-table">
+
+              <thead>
+
+                <tr>
+
+                  <th>
+                    Payment
+                  </th>
+
+                  <th>
+                    Parent
+                  </th>
+
+                  <th>
+                    Description
+                  </th>
+
+                  <th>
+                    Amount
+                  </th>
+
+                  <th>
+                    Date
+                  </th>
+
+                  <th>
+                    Status
+                  </th>
+
+                  <th>
+                    Action
+                  </th>
+
+                </tr>
+
+              </thead>
+
+
+              <tbody id="paymentTableBody">
+              </tbody>
+
+            </table>
+
+          </div>
+
+
+          <div
+            class="mobile-list"
+            id="paymentMobileList"
+          ></div>
+
+
+          <div
+            class="empty-state"
+            id="paymentEmpty"
+            hidden
+          >
+
+            <div>
+              $
+            </div>
+
+            <strong>
+              No payments found
+            </strong>
+
+            <p>
+              Demo payment records will appear here once
+              the parent payment flow creates them.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- =====================================
+     DETAILS MODAL
+====================================== -->
+
+<div
+  class="modal-backdrop"
+  id="detailsModal"
+  hidden
+>
+
+  <div class="details-modal">
+
+    <div class="modal-header">
+
+      <div>
+
+        <span id="modalKicker">
+          BILLING RECORD
+        </span>
+
+        <h2 id="modalTitle">
+          Record Details
+        </h2>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="modal-close"
+        id="modalClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div
+      class="details-grid"
+      id="detailsGrid"
+    ></div>
+
+
+    <div class="security-note">
+
+      <span>
+        i
+      </span>
+
+      <p>
+        RAFIQ should never expose full card details,
+        CVV values or payment-provider secrets in the
+        Admin interface.
+      </p>
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        type="button"
+        class="close-button"
+        id="closeDetailsButton"
+      >
+        Close
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script src="billing-management.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Reports & Analytics | RAFIQ Admin</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="reports-analytics.css"
+  >
+
+</head>
+
+
+<body>
+
+<div class="admin-shell">
+
+  <!-- =====================================
+       SIDEBAR
+  ====================================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+
+        <span class="brand-mark">
+          R
+        </span>
+
+        <div>
+
+          <strong>
+            RAFIQ
+          </strong>
+
+          <small>
+            Administration
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <section class="admin-card">
+
+      <div class="admin-avatar">
+        A
+      </div>
+
+      <div>
+
+        <span>
+          PLATFORM ADMIN
+        </span>
+
+        <strong id="adminSidebarName">
+          RAFIQ Admin
+        </strong>
+
+        <small>
+          Control Center
+        </small>
+
+      </div>
+
+    </section>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-label">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="admin-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+
+      <a
+        href="reports-analytics.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">⌁</span>
+        <span>Reports & Analytics</span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        SPECIALISTS
+      </span>
+
+
+      <a
+        href="specialist-approvals.html"
+        class="nav-link"
+      >
+
+        <span class="nav-icon">✓</span>
+
+        <span>
+          Specialist Approvals
+        </span>
+
+        <span
+          class="nav-count"
+          id="approvalNavCount"
+          hidden
+        >
+          0
+        </span>
+
+      </a>
+
+
+      <a
+        href="specialists-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◎</span>
+        <span>Specialists</span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        PLATFORM
+      </span>
+
+
+      <a
+        href="content-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▤</span>
+        <span>Content Management</span>
+      </a>
+
+
+      <a
+        href="ai-governance.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">✦</span>
+        <span>AI Governance</span>
+      </a>
+
+
+      <a
+        href="bookings-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▦</span>
+        <span>Bookings</span>
+      </a>
+
+
+      <a
+        href="billing-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◇</span>
+        <span>Billing & Subscriptions</span>
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="admin-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        <span>Admin Settings</span>
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        <span>Log Out</span>
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =====================================
+       MAIN
+  ====================================== -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            PLATFORM INSIGHTS
+          </span>
+
+          <h1>
+            Reports & Analytics
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="refresh-button"
+        id="refreshButton"
+      >
+        ↻ Refresh Data
+      </button>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =====================================
+           HERO
+      ====================================== -->
+
+      <section class="hero">
+
+        <div>
+
+          <span class="hero-kicker">
+            PLATFORM PERFORMANCE
+          </span>
+
+          <h2>
+            Understand how RAFIQ
+            <span>is being used.</span>
+          </h2>
+
+          <p>
+            Review operational trends across specialists,
+            consultations, platform content, AI governance
+            and billing using the data currently available
+            in the RAFIQ prototype.
+          </p>
+
+        </div>
+
+
+        <div class="hero-note">
+
+          <span>
+            DATA SCOPE
+          </span>
+
+          <strong>
+            Aggregate insights only.
+          </strong>
+
+          <p>
+            Analytics summarizes platform activity. It does
+            not provide an Admin workspace for editing a
+            child's developmental records.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
+           PRIMARY METRICS
+      ====================================== -->
+
+      <section class="metrics-grid">
+
+        <article class="metric-card">
+
+          <div class="metric-icon mint">
+            ◎
+          </div>
+
+          <div>
+
+            <span>
+              Approved Specialists
+            </span>
+
+            <strong id="approvedSpecialistsMetric">
+              0
+            </strong>
+
+            <small id="approvedSpecialistsSubtext">
+              0 total applications
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon sky">
+            ▦
+          </div>
+
+          <div>
+
+            <span>
+              Total Bookings
+            </span>
+
+            <strong id="bookingsMetric">
+              0
+            </strong>
+
+            <small id="bookingCompletionSubtext">
+              0% completed
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon lavender">
+            ◫
+          </div>
+
+          <div>
+
+            <span>
+              Submitted Reports
+            </span>
+
+            <strong id="reportsMetric">
+              0
+            </strong>
+
+            <small>
+              Specialist consultation reports
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon sun">
+            JOD
+          </div>
+
+          <div>
+
+            <span>
+              Recorded Revenue
+            </span>
+
+            <strong id="revenueMetric">
+              0
+            </strong>
+
+            <small>
+              Successful demo payments
+            </small>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- =====================================
+           ANALYTICS GRID
+      ====================================== -->
+
+      <div class="analytics-grid">
+
+        <!-- SPECIALIST PIPELINE -->
+
+        <section class="analytics-card">
+
+          <div class="card-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                PROFESSIONAL NETWORK
+              </span>
+
+              <h2>
+                Specialist pipeline
+              </h2>
+
+            </div>
+
+
+            <a
+              href="specialists-management.html"
+              class="card-link"
+            >
+              Manage →
+            </a>
+
+          </div>
+
+
+          <div class="bar-list">
+
+            <div class="bar-item">
+
+              <div class="bar-label">
+
+                <span>
+                  Approved
+                </span>
+
+                <strong id="approvedValue">
+                  0
+                </strong>
+
+              </div>
+
+              <div class="bar-track">
+                <div
+                  class="bar-fill"
+                  id="approvedBar"
+                ></div>
+              </div>
+
+            </div>
+
+
+            <div class="bar-item">
+
+              <div class="bar-label">
+
+                <span>
+                  Pending
+                </span>
+
+                <strong id="pendingValue">
+                  0
+                </strong>
+
+              </div>
+
+              <div class="bar-track">
+                <div
+                  class="bar-fill"
+                  id="pendingBar"
+                ></div>
+              </div>
+
+            </div>
+
+
+            <div class="bar-item">
+
+              <div class="bar-label">
+
+                <span>
+                  Rejected
+                </span>
+
+                <strong id="rejectedValue">
+                  0
+                </strong>
+
+              </div>
+
+              <div class="bar-track">
+                <div
+                  class="bar-fill"
+                  id="rejectedBar"
+                ></div>
+              </div>
+
+            </div>
+
+
+            <div class="bar-item">
+
+              <div class="bar-label">
+
+                <span>
+                  Suspended
+                </span>
+
+                <strong id="suspendedValue">
+                  0
+                </strong>
+
+              </div>
+
+              <div class="bar-track">
+                <div
+                  class="bar-fill"
+                  id="suspendedBar"
+                ></div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- BOOKINGS -->
+
+        <section class="analytics-card">
+
+          <div class="card-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                CONSULTATION FLOW
+              </span>
+
+              <h2>
+                Booking outcomes
+              </h2>
+
+            </div>
+
+
+            <a
+              href="bookings-management.html"
+              class="card-link"
+            >
+              View →
+            </a>
+
+          </div>
+
+
+          <div class="donut-layout">
+
+            <div class="donut-shell">
+
+              <div
+                class="donut"
+                id="bookingDonut"
+              >
+
+                <div>
+
+                  <strong id="donutTotal">
+                    0
+                  </strong>
+
+                  <span>
+                    Bookings
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="legend-list">
+
+              <div>
+
+                <span class="legend-dot confirmed"></span>
+
+                <span>
+                  Confirmed
+                </span>
+
+                <strong id="confirmedValue">
+                  0
+                </strong>
+
+              </div>
+
+
+              <div>
+
+                <span class="legend-dot completed"></span>
+
+                <span>
+                  Completed
+                </span>
+
+                <strong id="completedValue">
+                  0
+                </strong>
+
+              </div>
+
+
+              <div>
+
+                <span class="legend-dot cancelled"></span>
+
+                <span>
+                  Cancelled
+                </span>
+
+                <strong id="cancelledValue">
+                  0
+                </strong>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- CONSULTATION TYPES -->
+
+        <section class="analytics-card">
+
+          <div class="card-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                SERVICE DELIVERY
+              </span>
+
+              <h2>
+                Consultation types
+              </h2>
+
+            </div>
+
+          </div>
+
+
+          <div class="type-grid">
+
+            <article class="type-card">
+
+              <div class="type-icon sky">
+                ◉
+              </div>
+
+              <span>
+                Online
+              </span>
+
+              <strong id="onlineValue">
+                0
+              </strong>
+
+              <small id="onlinePercent">
+                0%
+              </small>
+
+            </article>
+
+
+            <article class="type-card">
+
+              <div class="type-icon lavender">
+                ⌂
+              </div>
+
+              <span>
+                In-person
+              </span>
+
+              <strong id="inPersonValue">
+                0
+              </strong>
+
+              <small id="inPersonPercent">
+                0%
+              </small>
+
+            </article>
+
+          </div>
+
+
+          <div class="completion-box">
+
+            <div>
+
+              <span>
+                Booking completion rate
+              </span>
+
+              <strong id="completionRate">
+                0%
+              </strong>
+
+            </div>
+
+
+            <div class="progress-track">
+
+              <div
+                class="progress-fill"
+                id="completionProgress"
+              ></div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- CONTENT -->
+
+        <section class="analytics-card">
+
+          <div class="card-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                CONTENT LIBRARY
+              </span>
+
+              <h2>
+                Managed content
+              </h2>
+
+            </div>
+
+
+            <a
+              href="content-management.html"
+              class="card-link"
+            >
+              Content →
+            </a>
+
+          </div>
+
+
+          <div class="mini-grid">
+
+            <article>
+
+              <span>
+                Milestones
+              </span>
+
+              <strong id="milestoneContentValue">
+                0
+              </strong>
+
+            </article>
+
+
+            <article>
+
+              <span>
+                Screening
+              </span>
+
+              <strong id="screeningContentValue">
+                0
+              </strong>
+
+            </article>
+
+
+            <article>
+
+              <span>
+                Challenges
+              </span>
+
+              <strong id="challengeContentValue">
+                0
+              </strong>
+
+            </article>
+
+
+            <article>
+
+              <span>
+                Education
+              </span>
+
+              <strong id="educationContentValue">
+                0
+              </strong>
+
+            </article>
+
+          </div>
+
+
+          <div class="active-content-row">
+
+            <span>
+              Active / published content
+            </span>
+
+            <strong id="activeContentValue">
+              0
+            </strong>
+
+          </div>
+
+        </section>
+
+
+        <!-- AI GOVERNANCE -->
+
+        <section class="analytics-card">
+
+          <div class="card-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                RESPONSIBLE AI
+              </span>
+
+              <h2>
+                AI governance
+              </h2>
+
+            </div>
+
+
+            <a
+              href="ai-governance.html"
+              class="card-link"
+            >
+              Governance →
+            </a>
+
+          </div>
+
+
+          <div class="governance-stats">
+
+            <article>
+
+              <span>
+                Knowledge Entries
+              </span>
+
+              <strong id="knowledgeValue">
+                0
+              </strong>
+
+              <small id="activeKnowledgeValue">
+                0 active
+              </small>
+
+            </article>
+
+
+            <article>
+
+              <span>
+                Safety Rules
+              </span>
+
+              <strong id="safetyRulesValue">
+                0
+              </strong>
+
+              <small id="criticalRulesValue">
+                0 critical
+              </small>
+
+            </article>
+
+          </div>
+
+
+          <div class="governance-note">
+
+            <span>
+              !
+            </span>
+
+            <p>
+              Safety-rule counts describe configured
+              governance rules, not confirmed emergencies.
+            </p>
+
+          </div>
+
+        </section>
+
+
+        <!-- BILLING -->
+
+        <section class="analytics-card">
+
+          <div class="card-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                BILLING SNAPSHOT
+              </span>
+
+              <h2>
+                Subscription activity
+              </h2>
+
+            </div>
+
+
+            <a
+              href="billing-management.html"
+              class="card-link"
+            >
+              Billing →
+            </a>
+
+          </div>
+
+
+          <div class="billing-summary">
+
+            <div>
+
+              <span>
+                Active subscriptions
+              </span>
+
+              <strong id="activeSubscriptionsValue">
+                0
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Successful payments
+              </span>
+
+              <strong id="successfulPaymentsValue">
+                0
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Failed payments
+              </span>
+
+              <strong id="failedPaymentsValue">
+                0
+              </strong>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <!-- =====================================
+           RECENT ACTIVITY
+      ====================================== -->
+
+      <section class="activity-panel">
+
+        <div class="card-heading">
+
+          <div>
+
+            <span class="section-kicker">
+              PLATFORM TIMELINE
+            </span>
+
+            <h2>
+              Recent activity
+            </h2>
+
+            <p>
+              Latest operational events available in local
+              prototype storage.
+            </p>
+
+          </div>
+
+
+          <span id="lastUpdatedLabel">
+            Updated now
+          </span>
+
+        </div>
+
+
+        <div
+          class="activity-list"
+          id="activityList"
+        ></div>
+
+
+        <div
+          class="empty-state"
+          id="activityEmpty"
+          hidden
+        >
+
+          <div>
+            ⌁
+          </div>
+
+          <strong>
+            No recent activity
+          </strong>
+
+          <p>
+            New specialist, booking, report and payment
+            activity will appear here.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
+           ANALYTICS NOTE
+      ====================================== -->
+
+      <section class="analytics-note">
+
+        <span>
+          i
+        </span>
+
+        <div>
+
+          <strong>
+            Prototype analytics
+          </strong>
+
+          <p>
+            These analytics are generated from browser
+            storage used by the frontend prototype. A
+            production RAFIQ deployment would calculate
+            platform analytics from authenticated backend
+            data and audit logs.
+          </p>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<script src="reports-analytics.js"></script>
+
+</body>
+</html>

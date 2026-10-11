@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Consultation | RAFIQ Specialist</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="consultation.css"
+  >
+<link
+  rel="stylesheet"
+  href="specialist-notifications.css"
+>
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+  <!-- =========================
+       SIDEBAR
+  ========================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+
+        <div class="brand-mark">
+          R
+        </div>
+
+        <span>
+          RAFIQ
+        </span>
+
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="specialist-mini-card">
+
+      <div
+        class="specialist-avatar"
+        id="sidebarAvatar"
+      >
+        DR
+      </div>
+
+
+      <div class="specialist-info">
+
+        <span>
+          SPECIALIST
+        </span>
+
+        <strong id="sidebarName">
+          Specialist
+        </strong>
+
+        <small id="sidebarSpecialty">
+          Specialty
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="sidebar-status"
+      id="sidebarStatus"
+    >
+
+      <span class="status-dot"></span>
+
+      <span id="sidebarStatusText">
+        Approved
+      </span>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="specialist-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        Dashboard
+      </a>
+
+
+      <a
+        href="schedule.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▦</span>
+        Schedule
+      </a>
+
+
+      <span class="nav-section-title second">
+        PRACTICE
+      </span>
+
+
+      <a
+        href="specialist-bookings.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">◷</span>
+        Bookings
+      </a>
+
+
+      <a
+        href="clients.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">♡</span>
+        Clients / Cases
+      </a>
+
+
+      <a
+        href="availability.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◫</span>
+        Availability
+      </a>
+
+
+      <span class="nav-section-title second">
+        BUSINESS
+      </span>
+
+
+      <a
+        href="earnings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◇</span>
+        Earnings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="profile.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◎</span>
+        Profile
+      </a>
+
+
+      <a
+        href="specialist-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        Settings
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main class="main-content">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            CONSULTATION
+          </span>
+
+          <h1>
+            Consultation Workspace
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="booking-details.html"
+        class="back-button"
+      >
+        ← Booking Details
+      </a>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =========================
+           LOCKED
+      ========================== -->
+
+      <section
+        class="state-card"
+        id="lockedView"
+        hidden
+      >
+
+        <div class="state-icon warning">
+          ◷
+        </div>
+
+        <span>
+          PROFILE APPROVAL REQUIRED
+        </span>
+
+        <h2>
+          Consultation workspace is unavailable.
+        </h2>
+
+        <p>
+          Your specialist profile must be approved
+          before consultations can be managed.
+        </p>
+
+        <a href="specialist-dashboard.html">
+          Back to Dashboard
+        </a>
+
+      </section>
+
+
+      <!-- =========================
+           NOT FOUND
+      ========================== -->
+
+      <section
+        class="state-card"
+        id="emptyView"
+        hidden
+      >
+
+        <div class="state-icon lavender">
+          ◫
+        </div>
+
+        <span>
+          CONSULTATION NOT FOUND
+        </span>
+
+        <h2>
+          Select a booking first.
+        </h2>
+
+        <p>
+          Return to your bookings and select an
+          appointment before opening the consultation.
+        </p>
+
+        <a href="specialist-bookings.html">
+          View My Bookings
+        </a>
+
+      </section>
+
+
+      <!-- =========================
+           CANCELLED
+      ========================== -->
+
+      <section
+        class="state-card"
+        id="cancelledView"
+        hidden
+      >
+
+        <div class="state-icon cancelled">
+          ✕
+        </div>
+
+        <span>
+          BOOKING CANCELLED
+        </span>
+
+        <h2>
+          This consultation cannot be started.
+        </h2>
+
+        <p>
+          The related appointment has been cancelled.
+        </p>
+
+        <a href="specialist-bookings.html">
+          Back to My Bookings
+        </a>
+
+      </section>
+
+
+      <!-- =========================
+           CONSULTATION VIEW
+      ========================== -->
+
+      <section
+        id="consultationView"
+        hidden
+      >
+
+        <!-- HERO -->
+
+        <section class="consultation-hero">
+
+          <div class="hero-left">
+
+            <div
+              class="child-avatar-large"
+              id="childAvatar"
+            >
+              C
+            </div>
+
+
+            <div>
+
+              <span class="hero-kicker">
+                CONSULTATION WITH
+              </span>
+
+              <h2 id="childName">
+                Child
+              </h2>
+
+              <p id="consultationMeta">
+                —
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="hero-right">
+
+            <span>
+              SESSION STATUS
+            </span>
+
+            <strong
+              class="session-status"
+              id="sessionStatus"
+            >
+              Ready
+            </strong>
+
+          </div>
+
+        </section>
+
+
+        <!-- SESSION BAR -->
+
+        <section class="session-bar">
+
+          <div class="session-item">
+
+            <span>
+              Booking
+            </span>
+
+            <strong id="bookingReference">
+              —
+            </strong>
+
+          </div>
+
+
+          <div class="session-item">
+
+            <span>
+              Date
+            </span>
+
+            <strong id="bookingDate">
+              —
+            </strong>
+
+          </div>
+
+
+          <div class="session-item">
+
+            <span>
+              Time
+            </span>
+
+            <strong id="bookingTime">
+              —
+            </strong>
+
+          </div>
+
+
+          <div class="session-item">
+
+            <span>
+              Type
+            </span>
+
+            <strong id="bookingType">
+              —
+            </strong>
+
+          </div>
+
+        </section>
+
+
+        <!-- MAIN GRID -->
+
+        <div class="consultation-layout">
+
+          <!-- LEFT -->
+
+          <div class="consultation-main">
+
+            <!-- PARENT CONCERN -->
+
+            <section class="workspace-card">
+
+              <div class="card-heading">
+
+                <div class="card-icon lavender">
+                  ◫
+                </div>
+
+
+                <div>
+
+                  <span class="section-kicker">
+                    CONSULTATION CONTEXT
+                  </span>
+
+                  <h2>
+                    Parent concern
+                  </h2>
+
+                </div>
+
+              </div>
+
+
+              <div class="parent-concern">
+
+                <p id="parentConcern">
+                  No concern was provided.
+                </p>
+
+              </div>
+
+
+              <div class="context-note">
+
+                <span>
+                  i
+                </span>
+
+                <p>
+                  Parent-provided information is
+                  consultation context only and should
+                  not be treated as a clinical diagnosis.
+                </p>
+
+              </div>
+
+            </section>
+
+
+            <!-- PRIVATE NOTES -->
+
+            <section class="workspace-card">
+
+              <div class="card-heading">
+
+                <div class="card-icon sky">
+                  ✎
+                </div>
+
+
+                <div>
+
+                  <span class="section-kicker">
+                    PRIVATE WORKSPACE
+                  </span>
+
+                  <h2>
+                    Consultation notes
+                  </h2>
+
+                </div>
+
+              </div>
+
+
+              <p class="section-description">
+                Add notes you want to keep while
+                conducting or reviewing this consultation.
+                These notes are not shown to the parent.
+              </p>
+
+
+              <div class="form-group">
+
+                <label for="sessionNotes">
+                  Session Notes
+                </label>
+
+                <textarea
+                  id="sessionNotes"
+                  rows="7"
+                  maxlength="3000"
+                  placeholder="Write private consultation notes here..."
+                ></textarea>
+
+                <div class="field-footer">
+
+                  <span>
+                    Private specialist notes
+                  </span>
+
+                  <span id="notesCount">
+                    0 / 3000
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="observations">
+                  Key Observations
+                </label>
+
+                <textarea
+                  id="observations"
+                  rows="5"
+                  maxlength="2000"
+                  placeholder="Record key professional observations from the session..."
+                ></textarea>
+
+                <div class="field-footer">
+
+                  <span>
+                    Use objective, professional wording.
+                  </span>
+
+                  <span id="observationsCount">
+                    0 / 2000
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="nextSteps">
+                  Initial Next Steps
+                </label>
+
+                <textarea
+                  id="nextSteps"
+                  rows="4"
+                  maxlength="1500"
+                  placeholder="Add possible follow-up actions or recommendations..."
+                ></textarea>
+
+                <div class="field-footer">
+
+                  <span>
+                    These can later help you prepare the report.
+                  </span>
+
+                  <span id="nextStepsCount">
+                    0 / 1500
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="notes-actions">
+
+                <span id="saveStatus">
+                  Notes have not been saved yet.
+                </span>
+
+
+                <button
+                  type="button"
+                  class="secondary-button"
+                  id="saveNotesButton"
+                >
+                  Save Notes
+                </button>
+
+              </div>
+
+            </section>
+
+          </div>
+
+
+          <!-- RIGHT -->
+
+          <aside class="consultation-side">
+
+            <!-- CHILD -->
+
+            <section class="side-card">
+
+              <span class="side-kicker">
+                CLIENT
+              </span>
+
+
+              <div class="client-profile">
+
+                <div
+                  class="client-avatar"
+                  id="sideChildAvatar"
+                >
+                  C
+                </div>
+
+
+                <div>
+
+                  <strong id="sideChildName">
+                    Child
+                  </strong>
+
+                  <span id="childAge">
+                    Consultation client
+                  </span>
+
+                </div>
+
+              </div>
+
+            </section>
+
+
+            <!-- PROGRESS -->
+
+            <section class="side-card">
+
+              <span class="side-kicker">
+                SESSION WORKFLOW
+              </span>
+
+
+              <div class="progress-list">
+
+                <div class="progress-item completed">
+
+                  <span>
+                    ✓
+                  </span>
+
+                  <div>
+
+                    <strong>
+                      Booking received
+                    </strong>
+
+                    <small>
+                      Parent submitted consultation request
+                    </small>
+
+                  </div>
+
+                </div>
+
+
+                <div
+                  class="progress-item active"
+                  id="consultationProgress"
+                >
+
+                  <span>
+                    2
+                  </span>
+
+                  <div>
+
+                    <strong>
+                      Consultation
+                    </strong>
+
+                    <small id="consultationProgressText">
+                      Session workspace
+                    </small>
+
+                  </div>
+
+                </div>
+
+
+                <div
+                  class="progress-item"
+                  id="reportProgress"
+                >
+
+                  <span>
+                    3
+                  </span>
+
+                  <div>
+
+                    <strong>
+                      Consultation report
+                    </strong>
+
+                    <small id="reportProgressText">
+                      Available after completion
+                    </small>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </section>
+
+
+            <!-- COMPLETE -->
+
+            <section
+              class="side-card complete-card"
+              id="completeCard"
+            >
+
+              <span class="side-kicker">
+                COMPLETE SESSION
+              </span>
+
+              <h3>
+                Finished the consultation?
+              </h3>
+
+              <p>
+                Mark the session as completed when the
+                professional consultation has finished.
+              </p>
+
+
+              <button
+                type="button"
+                class="complete-button"
+                id="completeButton"
+              >
+                Complete Consultation
+              </button>
+
+            </section>
+
+
+            <!-- REPORT -->
+
+            <section
+              class="side-card report-card"
+              id="reportCard"
+            >
+
+              <span class="side-kicker">
+                CONSULTATION REPORT
+              </span>
+
+              <h3 id="reportTitle">
+                Report locked
+              </h3>
+
+              <p id="reportDescription">
+                Complete the consultation before
+                preparing the professional report.
+              </p>
+
+
+              <button
+                type="button"
+                class="report-button"
+                id="reportButton"
+                disabled
+              >
+                Write Consultation Report
+                <span>→</span>
+              </button>
+
+            </section>
+
+          </aside>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- =========================
+     COMPLETE CONFIRMATION
+========================== -->
+
+<div
+  class="modal-backdrop"
+  id="completeModal"
+  hidden
+>
+
+  <div class="confirmation-modal">
+
+    <div class="modal-icon">
+      ✓
+    </div>
+
+
+    <span>
+      COMPLETE CONSULTATION
+    </span>
+
+    <h2>
+      Mark this session as completed?
+    </h2>
+
+    <p>
+      The booking will move to completed consultations
+      and you will be able to prepare a professional
+      consultation report.
+    </p>
+
+
+    <div class="modal-actions">
+
+      <button
+        type="button"
+        class="modal-cancel"
+        id="cancelCompleteButton"
+      >
+        Not Yet
+      </button>
+
+
+      <button
+        type="button"
+        class="modal-confirm"
+        id="confirmCompleteButton"
+      >
+        Complete Session
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- SAVE TOAST -->
+
+<div
+  class="toast"
+  id="saveToast"
+  hidden
+>
+
+  <span>
+    ✓
+  </span>
+
+  <div>
+
+    <strong>
+      Consultation saved
+    </strong>
+
+    <p>
+      Your private notes have been updated.
+    </p>
+
+  </div>
+
+</div>
+
+
+<script src="consultation.js"></script>
+<script src="specialist-notifications.js"></script>
+</body>
+</html>

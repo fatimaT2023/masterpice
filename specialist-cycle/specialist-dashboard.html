@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Specialist Dashboard | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="specialist-dashboard.css"
+  >
+  <link
+  rel="stylesheet"
+  href="specialist-notifications.css"
+>
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+  <!-- =========================
+       SIDEBAR
+  ========================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+        <!-- <div class="brand-mark">
+          R
+        </div> -->
+
+        <span>
+          RAFIQ
+        </span>
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <!-- SPECIALIST PROFILE -->
+
+    <div class="specialist-mini-card">
+
+      <div
+        class="specialist-mini-avatar"
+        id="sidebarAvatar"
+      >
+        DR
+      </div>
+
+
+      <div class="specialist-mini-info">
+
+        <span class="mini-label">
+          SPECIALIST
+        </span>
+
+        <strong id="sidebarName">
+          Specialist
+        </strong>
+
+        <small id="sidebarSpecialty">
+          Specialty
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <!-- STATUS -->
+
+    <div
+      class="sidebar-status"
+      id="sidebarStatus"
+    >
+      <span class="status-dot"></span>
+
+      <span id="sidebarStatusText">
+        Pending Review
+      </span>
+    </div>
+
+
+    <!-- NAV -->
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="specialist-dashboard.html"
+        class="nav-link active"
+      >
+        <!-- <span class="nav-icon">
+          ⌂
+        </span> -->
+
+        Dashboard
+      </a>
+
+
+      <span class="nav-section-title second">
+        PRACTICE
+      </span>
+
+
+      <a
+        href="specialist-bookings.html"
+        class="nav-link practice-link"
+      >
+        <!-- <span class="nav-icon">
+          ◷
+        </span> -->
+
+        My Bookings
+      </a>
+
+
+      <a
+        href="availability.html"
+        class="nav-link practice-link"
+      >
+        <!-- <span class="nav-icon">
+          ◫
+        </span> -->
+
+        Availability
+      </a>
+
+
+      <span class="nav-section-title second">
+        BUSINESS
+      </span>
+
+
+      <a
+        href="earnings.html"
+        class="nav-link practice-link"
+      >
+        <!-- <span class="nav-icon">
+          ◇
+        </span> -->
+
+        Earnings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="specialist-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">
+          ⚙
+        </span>
+
+        Profile & Settings
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>
+          ↪
+        </span>
+
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main class="main-content">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            SPECIALIST PORTAL
+          </span>
+
+          <h1>
+            Dashboard
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="topbar-status"
+        id="topbarStatus"
+      >
+        <span class="status-dot"></span>
+
+        <span id="topbarStatusText">
+          Pending Review
+        </span>
+      </div>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =========================
+           PENDING / REJECTED NOTICE
+      ========================== -->
+
+      <section
+        class="approval-banner pending"
+        id="approvalBanner"
+      >
+
+        <div class="approval-icon">
+          ◷
+        </div>
+
+
+        <div class="approval-copy">
+
+          <span id="approvalKicker">
+            PROFILE UNDER REVIEW
+          </span>
+
+          <h2 id="approvalTitle">
+            Your specialist profile is pending approval.
+          </h2>
+
+          <p id="approvalDescription">
+            RAFIQ administration will review your
+            professional information before your profile
+            becomes visible to parents.
+          </p>
+
+        </div>
+
+
+        <a
+          href="specialist-settings.html"
+          class="approval-button"
+          id="approvalAction"
+        >
+          Review Profile
+        </a>
+
+      </section>
+
+
+      <!-- =========================
+           HERO
+      ========================== -->
+
+      <section class="hero-card">
+
+        <div class="hero-copy">
+
+          <span class="hero-kicker">
+            WELCOME BACK
+          </span>
+
+          <h2>
+            Good to see you,
+            <span id="heroName">
+              Specialist
+            </span>
+          </h2>
+
+          <p id="heroMessage">
+            Your dashboard gives you a clear view of
+            your appointments, availability and
+            consultation activity.
+          </p>
+
+        </div>
+
+
+        <div class="hero-profile">
+
+          <div
+            class="hero-avatar"
+            id="heroAvatar"
+          >
+            DR
+          </div>
+
+
+          <span>
+            PROFESSIONAL PROFILE
+          </span>
+
+          <h3 id="heroSpecialty">
+            Specialty
+          </h3>
+
+          <p id="heroExperience">
+            0 years experience
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           METRICS
+      ========================== -->
+
+      <section class="metrics-grid">
+
+        <article class="metric-card">
+
+          <div class="metric-icon sky">
+            ◷
+          </div>
+
+          <div>
+
+            <span>
+              Today's Appointments
+            </span>
+
+            <strong id="todayCount">
+              0
+            </strong>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon lavender">
+            ◫
+          </div>
+
+          <div>
+
+            <span>
+              Upcoming Bookings
+            </span>
+
+            <strong id="upcomingCount">
+              0
+            </strong>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon mint">
+            ✓
+          </div>
+
+          <div>
+
+            <span>
+              Completed Sessions
+            </span>
+
+            <strong id="completedCount">
+              0
+            </strong>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon sun">
+            ◇
+          </div>
+
+          <div>
+
+            <span>
+              Total Earnings
+            </span>
+
+            <strong id="earningsValue">
+              0 JOD
+            </strong>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- =========================
+           DASHBOARD GRID
+      ========================== -->
+
+      <section class="dashboard-grid">
+
+        <!-- TODAY -->
+
+        <div class="content-card">
+
+          <div class="card-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                TODAY
+              </span>
+
+              <h2>
+                Today's schedule
+              </h2>
+
+            </div>
+
+
+            <a
+              href="specialist-bookings.html"
+              class="text-link practice-link"
+            >
+              View all →
+            </a>
+
+          </div>
+
+
+          <div
+            class="schedule-list"
+            id="todaySchedule"
+          ></div>
+
+
+          <div
+            class="empty-state"
+            id="todayEmpty"
+            hidden
+          >
+
+            <div class="empty-icon">
+              ◷
+            </div>
+
+            <strong>
+              No appointments today
+            </strong>
+
+            <p>
+              Your confirmed appointments for today
+              will appear here.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <aside class="content-card quick-card">
+
+          <div class="card-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                QUICK ACTIONS
+              </span>
+
+              <h2>
+                Manage your practice
+              </h2>
+
+            </div>
+
+          </div>
+
+
+          <div class="quick-actions">
+
+            <a
+              href="availability.html"
+              class="quick-action practice-link"
+            >
+              <div class="quick-icon mint">
+                ◫
+              </div>
+
+              <div>
+
+                <strong>
+                  Set Availability
+                </strong>
+
+                <span>
+                  Manage your available days and times
+                </span>
+
+              </div>
+
+              <b>
+                →
+              </b>
+            </a>
+
+
+            <a
+              href="specialist-bookings.html"
+              class="quick-action practice-link"
+            >
+              <div class="quick-icon sky">
+                ◷
+              </div>
+
+              <div>
+
+                <strong>
+                  Review Bookings
+                </strong>
+
+                <span>
+                  See upcoming parent appointments
+                </span>
+
+              </div>
+
+              <b>
+                →
+              </b>
+            </a>
+
+
+            <a
+              href="earnings.html"
+              class="quick-action practice-link"
+            >
+              <div class="quick-icon sun">
+                ◇
+              </div>
+
+              <div>
+
+                <strong>
+                  View Earnings
+                </strong>
+
+                <span>
+                  Review completed consultation earnings
+                </span>
+
+              </div>
+
+              <b>
+                →
+              </b>
+            </a>
+
+
+            <a
+              href="specialist-settings.html"
+              class="quick-action"
+            >
+              <div class="quick-icon lavender">
+                ⚙
+              </div>
+
+              <div>
+
+                <strong>
+                  Edit Profile
+                </strong>
+
+                <span>
+                  Update professional information
+                </span>
+
+              </div>
+
+              <b>
+                →
+              </b>
+            </a>
+
+          </div>
+
+        </aside>
+
+      </section>
+
+
+      <!-- =========================
+           UPCOMING
+      ========================== -->
+
+      <section class="content-card upcoming-section">
+
+        <div class="card-heading">
+
+          <div>
+
+            <span class="section-kicker">
+              NEXT APPOINTMENTS
+            </span>
+
+            <h2>
+              Upcoming bookings
+            </h2>
+
+          </div>
+
+
+          <a
+            href="specialist-bookings.html"
+            class="text-link practice-link"
+          >
+            Manage Bookings →
+          </a>
+
+        </div>
+
+
+        <div
+          class="upcoming-list"
+          id="upcomingList"
+        ></div>
+
+
+        <div
+          class="empty-state"
+          id="upcomingEmpty"
+          hidden
+        >
+
+          <div class="empty-icon">
+            ◎
+          </div>
+
+          <strong>
+            No upcoming bookings
+          </strong>
+
+          <p id="upcomingEmptyText">
+            New parent bookings will appear here.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           PROFILE SUMMARY
+      ========================== -->
+
+      <section class="profile-summary">
+
+        <div>
+
+          <span class="section-kicker">
+            YOUR RAFIQ PROFILE
+          </span>
+
+          <h2>
+            Professional profile
+          </h2>
+
+          <p>
+            These details will be used across your
+            specialist workspace and, after approval,
+            in the parent specialist directory.
+          </p>
+
+        </div>
+
+
+        <div class="profile-details">
+
+          <div>
+
+            <span>
+              Specialty
+            </span>
+
+            <strong id="profileSpecialty">
+              —
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Consultation
+            </span>
+
+            <strong id="profileConsultation">
+              —
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Languages
+            </span>
+
+            <strong id="profileLanguages">
+              —
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Session Fee
+            </span>
+
+            <strong id="profileFee">
+              —
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <a
+          href="specialist-settings.html"
+          class="edit-profile-button"
+        >
+          Edit Professional Profile
+          <span>→</span>
+        </a>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- LOCK MESSAGE -->
+
+<div
+  class="toast"
+  id="lockedToast"
+  hidden
+>
+  <span>i</span>
+
+  <p>
+    Practice tools become available after your
+    specialist profile is approved.
+  </p>
+</div>
+
+
+<script src="specialist-dashboard.js"></script>
+<script src="specialist-notifications.js"></script>
+</body>
+</html>

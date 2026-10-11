@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Earnings | RAFIQ Specialist</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="earnings.css"
+  >
+  <link
+  rel="stylesheet"
+  href="specialist-notifications.css"
+>
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+  <!-- =========================
+       SIDEBAR
+  ========================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+        <div class="brand-mark">
+          R
+        </div>
+
+        <span>
+          RAFIQ
+        </span>
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="specialist-mini-card">
+
+      <div
+        class="specialist-avatar"
+        id="sidebarAvatar"
+      >
+        DR
+      </div>
+
+
+      <div class="specialist-info">
+
+        <span>
+          SPECIALIST
+        </span>
+
+        <strong id="sidebarName">
+          Specialist
+        </strong>
+
+        <small id="sidebarSpecialty">
+          Specialty
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="sidebar-status"
+      id="sidebarStatus"
+    >
+      <span class="status-dot"></span>
+
+      <span id="sidebarStatusText">
+        Approved
+      </span>
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="specialist-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        Dashboard
+      </a>
+
+
+      <a
+        href="schedule.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▦</span>
+        Schedule
+      </a>
+
+
+      <span class="nav-section-title second">
+        PRACTICE
+      </span>
+
+
+      <a
+        href="specialist-bookings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◷</span>
+        Bookings
+      </a>
+
+
+      <a
+        href="clients.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">♡</span>
+        Clients / Cases
+      </a>
+
+
+      <a
+        href="availability.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◫</span>
+        Availability
+      </a>
+
+
+      <span class="nav-section-title second">
+        BUSINESS
+      </span>
+
+
+      <a
+        href="earnings.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">◇</span>
+        Earnings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="profile.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◎</span>
+        Profile
+      </a>
+
+
+      <a
+        href="specialist-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        Settings
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            BUSINESS
+          </span>
+
+          <h1>
+            Earnings
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="specialist-bookings.html"
+        class="topbar-button"
+      >
+        View Bookings
+      </a>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =========================
+           LOCKED
+      ========================== -->
+
+      <section
+        class="state-card"
+        id="lockedView"
+        hidden
+      >
+
+        <div class="state-icon warning">
+          ◷
+        </div>
+
+        <span>
+          PROFILE APPROVAL REQUIRED
+        </span>
+
+        <h2>
+          Earnings are not active yet.
+        </h2>
+
+        <p>
+          Your specialist profile must be approved
+          before consultation earnings can be tracked.
+        </p>
+
+        <a href="specialist-dashboard.html">
+          Back to Dashboard
+        </a>
+
+      </section>
+
+
+      <!-- =========================
+           EARNINGS
+      ========================== -->
+
+      <section
+        id="earningsView"
+        hidden
+      >
+
+        <!-- HERO -->
+
+        <section class="earnings-hero">
+
+          <div>
+
+            <span class="hero-kicker">
+              PRACTICE EARNINGS
+            </span>
+
+            <h2>
+              Track your completed
+              <span>consultation earnings.</span>
+            </h2>
+
+            <p>
+              RAFIQ records session earnings after a
+              consultation is explicitly marked as
+              completed.
+            </p>
+
+          </div>
+
+
+          <div class="hero-total">
+
+            <span>
+              TOTAL EARNED
+            </span>
+
+            <strong id="heroTotal">
+              0.00 JOD
+            </strong>
+
+            <small id="heroSessions">
+              0 completed sessions
+            </small>
+
+          </div>
+
+        </section>
+
+
+        <!-- INFO -->
+
+        <div class="earnings-note">
+
+          <span>
+            i
+          </span>
+
+          <p>
+            Financial values on this prototype are
+            frontend records based on completed
+            consultations. Real payment collection,
+            refunds and specialist payouts would require
+            secure backend payment integration.
+          </p>
+
+        </div>
+
+
+        <!-- TABS -->
+
+        <section class="tabs-card">
+
+          <button
+            type="button"
+            class="tab-button active"
+            data-tab="overview"
+          >
+            Overview
+          </button>
+
+          <button
+            type="button"
+            class="tab-button"
+            data-tab="history"
+          >
+            Payment History
+          </button>
+
+        </section>
+
+
+        <!-- =========================
+             OVERVIEW TAB
+        ========================== -->
+
+        <section
+          class="tab-panel"
+          id="overviewPanel"
+        >
+
+          <!-- METRICS -->
+
+          <section class="summary-grid">
+
+            <article class="summary-card">
+
+              <div class="summary-icon mint">
+                ◇
+              </div>
+
+              <div>
+
+                <span>
+                  Total Earnings
+                </span>
+
+                <strong id="totalEarnings">
+                  0.00 JOD
+                </strong>
+
+              </div>
+
+            </article>
+
+
+            <article class="summary-card">
+
+              <div class="summary-icon sky">
+                ▦
+              </div>
+
+              <div>
+
+                <span>
+                  This Month
+                </span>
+
+                <strong id="monthEarnings">
+                  0.00 JOD
+                </strong>
+
+              </div>
+
+            </article>
+
+
+            <article class="summary-card">
+
+              <div class="summary-icon lavender">
+                ✓
+              </div>
+
+              <div>
+
+                <span>
+                  Completed Sessions
+                </span>
+
+                <strong id="completedSessions">
+                  0
+                </strong>
+
+              </div>
+
+            </article>
+
+
+            <article class="summary-card">
+
+              <div class="summary-icon peach">
+                ≈
+              </div>
+
+              <div>
+
+                <span>
+                  Average / Session
+                </span>
+
+                <strong id="averageSession">
+                  0.00 JOD
+                </strong>
+
+              </div>
+
+            </article>
+
+          </section>
+
+
+          <!-- BREAKDOWN -->
+
+          <div class="overview-layout">
+
+            <!-- RECENT -->
+
+            <section class="content-card">
+
+              <div class="section-heading">
+
+                <div>
+
+                  <span class="section-kicker">
+                    RECENT ACTIVITY
+                  </span>
+
+                  <h2>
+                    Recent earnings
+                  </h2>
+
+                </div>
+
+
+                <button
+                  type="button"
+                  class="text-button"
+                  id="viewHistoryButton"
+                >
+                  View all
+                </button>
+
+              </div>
+
+
+              <div
+                class="recent-list"
+                id="recentEarningsList"
+              ></div>
+
+
+              <div
+                class="mini-empty"
+                id="recentEmpty"
+                hidden
+              >
+
+                <span>
+                  ◇
+                </span>
+
+                <strong>
+                  No completed sessions yet
+                </strong>
+
+                <p>
+                  Earnings will appear after completed
+                  consultations.
+                </p>
+
+              </div>
+
+            </section>
+
+
+            <!-- BREAKDOWN -->
+
+            <aside class="content-card breakdown-card">
+
+              <span class="section-kicker">
+                BREAKDOWN
+              </span>
+
+              <h2>
+                Consultation types
+              </h2>
+
+
+              <div class="breakdown-item">
+
+                <div>
+
+                  <span class="breakdown-dot online"></span>
+
+                  <div>
+
+                    <strong>
+                      Online
+                    </strong>
+
+                    <small id="onlineSessions">
+                      0 sessions
+                    </small>
+
+                  </div>
+
+                </div>
+
+
+                <strong id="onlineEarnings">
+                  0.00 JOD
+                </strong>
+
+              </div>
+
+
+              <div class="breakdown-item">
+
+                <div>
+
+                  <span class="breakdown-dot inperson"></span>
+
+                  <div>
+
+                    <strong>
+                      In-person
+                    </strong>
+
+                    <small id="inPersonSessions">
+                      0 sessions
+                    </small>
+
+                  </div>
+
+                </div>
+
+
+                <strong id="inPersonEarnings">
+                  0.00 JOD
+                </strong>
+
+              </div>
+
+
+              <div class="breakdown-total">
+
+                <span>
+                  Total
+                </span>
+
+                <strong id="breakdownTotal">
+                  0.00 JOD
+                </strong>
+
+              </div>
+
+            </aside>
+
+          </div>
+
+        </section>
+
+
+        <!-- =========================
+             HISTORY TAB
+        ========================== -->
+
+        <section
+          class="tab-panel"
+          id="historyPanel"
+          hidden
+        >
+
+          <section class="history-card">
+
+            <div class="history-heading">
+
+              <div>
+
+                <span class="section-kicker">
+                  TRANSACTION HISTORY
+                </span>
+
+                <h2>
+                  Payment history
+                </h2>
+
+                <p>
+                  Completed consultation earnings
+                  recorded by RAFIQ.
+                </p>
+
+              </div>
+
+
+              <div class="search-box">
+
+                <span>
+                  ⌕
+                </span>
+
+                <input
+                  type="search"
+                  id="historySearch"
+                  placeholder="Search child or booking..."
+                >
+
+              </div>
+
+            </div>
+
+
+            <!-- DESKTOP TABLE -->
+
+            <div class="table-wrap">
+
+              <table class="payment-table">
+
+                <thead>
+
+                  <tr>
+
+                    <th>
+                      Date
+                    </th>
+
+                    <th>
+                      Client
+                    </th>
+
+                    <th>
+                      Booking
+                    </th>
+
+                    <th>
+                      Type
+                    </th>
+
+                    <th>
+                      Status
+                    </th>
+
+                    <th class="amount-column">
+                      Amount
+                    </th>
+
+                  </tr>
+
+                </thead>
+
+
+                <tbody id="paymentTableBody">
+                </tbody>
+
+              </table>
+
+            </div>
+
+
+            <!-- MOBILE CARDS -->
+
+            <div
+              class="payment-mobile-list"
+              id="paymentMobileList"
+            ></div>
+
+
+            <div
+              class="history-empty"
+              id="historyEmpty"
+              hidden
+            >
+
+              <div class="empty-icon">
+                ◇
+              </div>
+
+              <strong id="historyEmptyTitle">
+                No payment history yet
+              </strong>
+
+              <p id="historyEmptyText">
+                Completed session earnings will appear
+                here.
+              </p>
+
+            </div>
+
+          </section>
+
+        </section>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<script src="earnings.js"></script>
+<script src="specialist-notifications.js"></script>
+</body>
+</html>

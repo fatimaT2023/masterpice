@@ -1,0 +1,543 @@
+/* =========================================
+   RAFIQ SPECIALIST NOTIFICATIONS
+========================================= */
+
+.specialist-topbar-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+}
+
+
+.notification-center {
+  position: relative;
+
+  flex: 0 0 auto;
+}
+
+
+.notification-bell {
+  width: 42px;
+  height: 42px;
+
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--line, #F3E5CB);
+  border-radius: 12px;
+
+  color: var(--ink, #0F2F2E);
+  background: white;
+
+  cursor: pointer;
+
+  transition:
+    border-color .2s ease,
+    background .2s ease,
+    transform .2s ease;
+}
+
+
+.notification-bell:hover {
+  transform: translateY(-1px);
+
+  border-color:
+    var(--line-strong, #E6D1A8);
+
+  background:
+    var(--bg, #FFFAF0);
+}
+
+
+.notification-bell-icon {
+  font-size: 17px;
+
+  line-height: 1;
+}
+
+
+.notification-badge {
+  min-width: 17px;
+  height: 17px;
+
+  position: absolute;
+
+  top: -5px;
+  right: -5px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0 4px;
+
+  border: 2px solid white;
+  border-radius: 999px;
+
+  color: white;
+  background: #FF6F4D;
+
+  font-size: 7px;
+  font-weight: 800;
+}
+
+
+.notification-badge[hidden] {
+  display: none;
+}
+
+
+/* =========================================
+   DROPDOWN
+========================================= */
+
+.notification-dropdown {
+  width: min(390px, calc(100vw - 30px));
+  max-height: 560px;
+
+  position: absolute;
+
+  top: calc(100% + 10px);
+  right: 0;
+
+  z-index: 1200;
+
+  overflow: hidden;
+
+  border: 1px solid
+    var(--line, #F3E5CB);
+
+  border-radius: 18px;
+
+  background: white;
+
+  box-shadow:
+    0 2px 4px rgba(15,47,46,.05),
+    0 24px 54px rgba(15,47,46,.16);
+}
+
+
+.notification-dropdown[hidden] {
+  display: none;
+}
+
+
+/* HEADER */
+
+.notification-dropdown-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 16px;
+
+  border-bottom: 1px solid
+    var(--line, #F3E5CB);
+}
+
+
+.notification-dropdown-header > div {
+  display: grid;
+}
+
+
+.notification-dropdown-header span {
+  color:
+    var(--sage, #0B7A75);
+
+  font-size: 7px;
+  font-weight: 800;
+
+  letter-spacing: .11em;
+}
+
+
+.notification-dropdown-header h3 {
+  margin: 3px 0 0;
+
+  font-family:
+    var(
+      --font-display,
+      "Bricolage Grotesque",
+      sans-serif
+    );
+
+  font-size: 17px;
+}
+
+
+.notification-mark-all {
+  border: 0;
+
+  color:
+    var(--sage, #0B7A75);
+
+  background: transparent;
+
+  font-size: 7px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+
+.notification-mark-all:disabled {
+  opacity: .4;
+
+  cursor: default;
+}
+
+
+/* =========================================
+   LIST
+========================================= */
+
+.notification-list {
+  max-height: 390px;
+
+  overflow-y: auto;
+}
+
+
+.notification-item {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    auto minmax(0,1fr) auto;
+
+  gap: 10px;
+
+  align-items: flex-start;
+
+  padding: 13px 15px;
+
+  border: 0;
+  border-bottom: 1px solid
+    var(--line, #F3E5CB);
+
+  color:
+    var(--ink, #0F2F2E);
+
+  background: white;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+
+.notification-item:last-child {
+  border-bottom: 0;
+}
+
+
+.notification-item:hover {
+  background:
+    #FFFCF6;
+}
+
+
+.notification-item.unread {
+  background:
+    #F3FBF8;
+}
+
+
+.notification-item.unread:hover {
+  background:
+    #EAF8F3;
+}
+
+
+.notification-icon {
+  width: 36px;
+  height: 36px;
+
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 auto;
+
+  border-radius: 11px;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+
+.notification-icon.booking {
+  color: #0F5C94;
+  background: #D2EDFF;
+}
+
+
+.notification-icon.cancelled {
+  color: #A63A17;
+  background: #FFDCCB;
+}
+
+
+.notification-icon.reminder {
+  color: #6E4A00;
+  background: #FFE7A3;
+}
+
+
+.notification-icon.report {
+  color: #4330B0;
+  background: #E7DFFF;
+}
+
+
+.notification-icon.earning {
+  color: #0A6450;
+  background: #CDF3E4;
+}
+
+
+.notification-icon.approval {
+  color: #0A6450;
+  background: #CDF3E4;
+}
+
+
+.notification-copy {
+  min-width: 0;
+
+  display: grid;
+}
+
+
+.notification-copy strong {
+  font-size: 9px;
+}
+
+
+.notification-copy p {
+  margin: 3px 0 0;
+
+  color:
+    var(--ink-soft, #3F5C5A);
+
+  font-size: 8px;
+
+  line-height: 1.45;
+}
+
+
+.notification-time {
+  margin-top: 1px;
+
+  color: #7B8D8A;
+
+  font-size: 7px;
+
+  white-space: nowrap;
+}
+
+
+.notification-unread-dot {
+  width: 6px;
+  height: 6px;
+
+  position: absolute;
+
+  top: 10px;
+  left: 7px;
+
+  border-radius: 50%;
+
+  background:
+    var(--sage, #0B7A75);
+}
+
+
+/* =========================================
+   EMPTY
+========================================= */
+
+.notification-empty {
+  padding: 37px 22px;
+
+  text-align: center;
+}
+
+
+.notification-empty-icon {
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  margin: 0 auto 10px;
+
+  border-radius: 15px;
+
+  color: #4330B0;
+  background: #E7DFFF;
+
+  font-size: 17px;
+}
+
+
+.notification-empty strong {
+  display: block;
+
+  font-family:
+    var(
+      --font-display,
+      "Bricolage Grotesque",
+      sans-serif
+    );
+
+  font-size: 14px;
+}
+
+
+.notification-empty p {
+  max-width: 270px;
+
+  margin: 4px auto 0;
+
+  color:
+    var(--ink-soft, #3F5C5A);
+
+  font-size: 8px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   DISABLED
+========================================= */
+
+.notification-disabled {
+  padding: 31px 20px;
+
+  text-align: center;
+}
+
+
+.notification-disabled > span {
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  margin: 0 auto 10px;
+
+  border-radius: 15px;
+
+  color: #6E4A00;
+  background: #FFE7A3;
+
+  font-size: 17px;
+}
+
+
+.notification-disabled strong {
+  display: block;
+
+  font-family:
+    var(
+      --font-display,
+      "Bricolage Grotesque",
+      sans-serif
+    );
+
+  font-size: 14px;
+}
+
+
+.notification-disabled p {
+  margin: 5px 0 0;
+
+  color:
+    var(--ink-soft, #3F5C5A);
+
+  font-size: 8px;
+
+  line-height: 1.5;
+}
+
+
+.notification-settings-link {
+  display: inline-flex;
+
+  margin-top: 12px;
+
+  padding: 9px 12px;
+
+  border-radius: 9px;
+
+  color: white;
+  background:
+    var(--sage-deep, #075E5A);
+
+  font-size: 8px;
+  font-weight: 800;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.notification-dropdown-footer {
+  padding: 10px 14px;
+
+  border-top: 1px solid
+    var(--line, #F3E5CB);
+
+  color:
+    var(--ink-soft, #3F5C5A);
+
+  background:
+    var(--bg, #FFFAF0);
+
+  font-size: 7px;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+  .specialist-topbar-actions > a {
+    display: none;
+  }
+
+
+  .notification-dropdown {
+    position: fixed;
+
+    top: 74px;
+    left: 15px;
+    right: 15px;
+
+    width: auto;
+
+    max-height:
+      calc(100vh - 95px);
+  }
+
+
+  .notification-list {
+    max-height:
+      calc(100vh - 240px);
+  }
+
+}

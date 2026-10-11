@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Content Management | RAFIQ Admin</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="content-management.css"
+  >
+
+</head>
+
+
+<body>
+
+<div class="admin-shell">
+
+  <!-- =====================================
+       SIDEBAR
+  ====================================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+
+        <span class="brand-mark">
+          R
+        </span>
+
+
+        <div>
+
+          <strong>
+            RAFIQ
+          </strong>
+
+          <small>
+            Administration
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <section class="admin-card">
+
+      <div class="admin-avatar">
+        A
+      </div>
+
+
+      <div>
+
+        <span>
+          PLATFORM ADMIN
+        </span>
+
+        <strong id="adminSidebarName">
+          RAFIQ Admin
+        </strong>
+
+        <small>
+          Control Center
+        </small>
+
+      </div>
+
+    </section>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-label">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="admin-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+
+        <span>
+          Dashboard
+        </span>
+      </a>
+
+
+      <a
+        href="reports-analytics.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌁</span>
+
+        <span>
+          Reports & Analytics
+        </span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        SPECIALISTS
+      </span>
+
+
+      <a
+        href="specialist-approvals.html"
+        class="nav-link"
+      >
+
+        <span class="nav-icon">✓</span>
+
+        <span>
+          Specialist Approvals
+        </span>
+
+        <span
+          class="nav-count"
+          id="approvalNavCount"
+          hidden
+        >
+          0
+        </span>
+
+      </a>
+
+
+      <a
+        href="specialists-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◎</span>
+
+        <span>
+          Specialists
+        </span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        PLATFORM
+      </span>
+
+
+      <a
+        href="content-management.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">▤</span>
+
+        <span>
+          Content Management
+        </span>
+      </a>
+
+
+      <a
+        href="ai-governance.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">✦</span>
+
+        <span>
+          AI Governance
+        </span>
+      </a>
+
+
+      <a
+        href="bookings-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▦</span>
+
+        <span>
+          Bookings
+        </span>
+      </a>
+
+
+      <a
+        href="billing-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◇</span>
+
+        <span>
+          Billing & Subscriptions
+        </span>
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="admin-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+
+        <span>
+          Admin Settings
+        </span>
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+
+        <span>
+          Log Out
+        </span>
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =====================================
+       MAIN
+  ====================================== -->
+
+  <main class="main-content">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            PLATFORM CONTENT
+          </span>
+
+          <h1>
+            Content Management
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <div class="topbar-actions">
+
+        <div class="content-status-pill">
+
+          <span class="status-dot"></span>
+
+          Content Library
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =====================================
+           INTRO
+      ====================================== -->
+
+      <section class="page-intro">
+
+        <div>
+
+          <span class="intro-kicker">
+            CONTENT GOVERNANCE
+          </span>
+
+          <h2>
+            Manage what RAFIQ
+            <span>teaches and displays.</span>
+          </h2>
+
+          <p>
+            Maintain age-group definitions, developmental
+            milestones, screening questions, parenting
+            challenges and educational content used
+            throughout the platform.
+          </p>
+
+        </div>
+
+
+        <div class="intro-note">
+
+          <span>
+            i
+          </span>
+
+          <p>
+            Content definitions are different from a
+            child's personal progress or screening
+            results. Admin manages the template, not
+            the child's record.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
+           METRICS
+      ====================================== -->
+
+      <section class="metrics-grid">
+
+        <article class="metric-card">
+
+          <div class="metric-icon mint">
+            ▤
+          </div>
+
+          <div>
+
+            <span>
+              Current Library
+            </span>
+
+            <strong id="totalContentMetric">
+              0
+            </strong>
+
+            <small>
+              Managed content items
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon sky">
+            ✓
+          </div>
+
+          <div>
+
+            <span>
+              Active / Published
+            </span>
+
+            <strong id="activeContentMetric">
+              0
+            </strong>
+
+            <small>
+              Available content
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon peach">
+            ◌
+          </div>
+
+          <div>
+
+            <span>
+              Draft / Inactive
+            </span>
+
+            <strong id="inactiveContentMetric">
+              0
+            </strong>
+
+            <small>
+              Hidden from platform use
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon lavender">
+            ◎
+          </div>
+
+          <div>
+
+            <span>
+              Age Groups
+            </span>
+
+            <strong id="ageGroupMetric">
+              4
+            </strong>
+
+            <small>
+              Birth through age 18
+            </small>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- =====================================
+           CONTENT PANEL
+      ====================================== -->
+
+      <section class="content-panel">
+
+        <!-- TABS -->
+
+        <div class="content-tabs">
+
+          <button
+            type="button"
+            class="content-tab active"
+            data-tab="ageGroups"
+          >
+            <span>◎</span>
+            Age Groups
+          </button>
+
+
+          <button
+            type="button"
+            class="content-tab"
+            data-tab="milestones"
+          >
+            <span>◆</span>
+            Milestones
+          </button>
+
+
+          <button
+            type="button"
+            class="content-tab"
+            data-tab="screening"
+          >
+            <span>◫</span>
+            Screening
+          </button>
+
+
+          <button
+            type="button"
+            class="content-tab"
+            data-tab="challenges"
+          >
+            <span>△</span>
+            Challenges
+          </button>
+
+
+          <button
+            type="button"
+            class="content-tab"
+            data-tab="educational"
+          >
+            <span>▤</span>
+            Educational Content
+          </button>
+
+        </div>
+
+
+        <!-- SECTION HEADING -->
+
+        <div class="content-heading">
+
+          <div>
+
+            <span
+              class="section-kicker"
+              id="sectionKicker"
+            >
+              AGE PERSONALIZATION
+            </span>
+
+            <h2 id="sectionTitle">
+              Age Groups
+            </h2>
+
+            <p id="sectionDescription">
+              Core age ranges used to personalize RAFIQ content.
+            </p>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="add-button"
+            id="addContentButton"
+            hidden
+          >
+            <span>＋</span>
+
+            <span id="addButtonLabel">
+              Add Content
+            </span>
+          </button>
+
+        </div>
+
+
+        <!-- TOOLBAR -->
+
+        <div class="toolbar">
+
+          <div class="search-box">
+
+            <span>
+              ⌕
+            </span>
+
+            <input
+              type="search"
+              id="contentSearch"
+              placeholder="Search content..."
+            >
+
+          </div>
+
+
+          <div class="toolbar-filters">
+
+            <select
+              id="ageGroupFilter"
+              class="filter-select"
+            >
+              <option value="all">
+                All age groups
+              </option>
+            </select>
+
+
+            <select
+              id="statusFilter"
+              class="filter-select"
+            >
+              <option value="all">
+                All statuses
+              </option>
+
+              <option value="active">
+                Active
+              </option>
+
+              <option value="inactive">
+                Inactive
+              </option>
+            </select>
+
+
+            <button
+              type="button"
+              class="clear-button"
+              id="clearFilters"
+            >
+              Clear
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- RESULT INFO -->
+
+        <div class="result-row">
+
+          <span id="resultCount">
+            0 items
+          </span>
+
+          <small id="storageHint">
+            Platform definitions
+          </small>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="table-wrap">
+
+          <table class="content-table">
+
+            <thead id="contentTableHead">
+            </thead>
+
+            <tbody id="contentTableBody">
+            </tbody>
+
+          </table>
+
+        </div>
+
+
+        <!-- MOBILE -->
+
+        <div
+          class="mobile-content-list"
+          id="mobileContentList"
+        ></div>
+
+
+        <!-- EMPTY -->
+
+        <div
+          class="empty-state"
+          id="emptyState"
+          hidden
+        >
+
+          <div class="empty-icon">
+            ▤
+          </div>
+
+          <strong id="emptyTitle">
+            No content found
+          </strong>
+
+          <p id="emptyText">
+            Try changing your search or filters.
+          </p>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- =====================================
+     CONTENT MODAL
+====================================== -->
+
+<div
+  class="modal-backdrop"
+  id="contentModal"
+  hidden
+>
+
+  <div class="content-modal">
+
+    <div class="modal-header">
+
+      <div>
+
+        <span id="modalKicker">
+          CONTENT ITEM
+        </span>
+
+        <h2 id="modalTitle">
+          Add Content
+        </h2>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="modal-close"
+        id="modalClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <form
+      id="contentForm"
+      novalidate
+    >
+
+      <div
+        class="dynamic-fields"
+        id="dynamicFields"
+      ></div>
+
+
+      <p
+        class="form-error"
+        id="formError"
+      ></p>
+
+
+      <div class="modal-actions">
+
+        <button
+          type="button"
+          class="secondary-button"
+          id="cancelModal"
+        >
+          Cancel
+        </button>
+
+
+        <button
+          type="submit"
+          class="save-button"
+          id="saveContentButton"
+        >
+          Save Content
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================
+     DELETE MODAL
+====================================== -->
+
+<div
+  class="modal-backdrop"
+  id="deleteModal"
+  hidden
+>
+
+  <div class="delete-modal">
+
+    <div class="delete-icon">
+      !
+    </div>
+
+    <span>
+      REMOVE CONTENT
+    </span>
+
+    <h2>
+      Delete this content item?
+    </h2>
+
+    <p id="deleteMessage">
+      This action removes the item from the local
+      prototype content library.
+    </p>
+
+
+    <div class="delete-actions">
+
+      <button
+        type="button"
+        class="secondary-button"
+        id="cancelDelete"
+      >
+        Cancel
+      </button>
+
+
+      <button
+        type="button"
+        class="delete-button"
+        id="confirmDelete"
+      >
+        Delete
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================
+     TOAST
+====================================== -->
+
+<div
+  class="toast"
+  id="contentToast"
+  hidden
+>
+
+  <span>
+    ✓
+  </span>
+
+  <div>
+
+    <strong id="toastTitle">
+      Content updated
+    </strong>
+
+    <p id="toastMessage">
+      Your changes were saved.
+    </p>
+
+  </div>
+
+</div>
+
+
+<script src="content-management.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Availability | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="availability.css"
+  >
+  <link
+  rel="stylesheet"
+  href="specialist-notifications.css"
+>
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+        <div class="brand-mark">
+          R
+        </div>
+
+        <span>
+          RAFIQ
+        </span>
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="specialist-mini-card">
+
+      <div
+        class="specialist-mini-avatar"
+        id="sidebarAvatar"
+      >
+        DR
+      </div>
+
+      <div class="specialist-mini-info">
+
+        <span>
+          SPECIALIST
+        </span>
+
+        <strong id="sidebarName">
+          Specialist
+        </strong>
+
+        <small id="sidebarSpecialty">
+          Specialty
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="sidebar-status"
+      id="sidebarStatus"
+    >
+      <span class="status-dot"></span>
+
+      <span>
+        Approved
+      </span>
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="specialist-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        Dashboard
+      </a>
+
+
+      <span class="nav-section-title second">
+        PRACTICE
+      </span>
+
+
+      <a
+        href="specialist-bookings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◷</span>
+        My Bookings
+      </a>
+
+
+      <a
+        href="availability.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">◫</span>
+        Availability
+      </a>
+
+
+      <span class="nav-section-title second">
+        BUSINESS
+      </span>
+
+
+      <a
+        href="earnings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◇</span>
+        Earnings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="specialist-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        Profile & Settings
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- MAIN -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            PRACTICE
+          </span>
+
+          <h1>
+            Availability
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="specialist-dashboard.html"
+        class="back-button"
+      >
+        ← Dashboard
+      </a>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- LOCKED -->
+
+      <section
+        class="locked-view"
+        id="lockedView"
+        hidden
+      >
+
+        <div class="locked-icon">
+          ◷
+        </div>
+
+        <span>
+          PROFILE APPROVAL REQUIRED
+        </span>
+
+        <h2>
+          Availability is not active yet.
+        </h2>
+
+        <p>
+          RAFIQ practice tools become available once
+          your specialist profile has been approved.
+        </p>
+
+        <a href="specialist-dashboard.html">
+          Back to Dashboard
+        </a>
+
+      </section>
+
+
+      <!-- ACTIVE VIEW -->
+
+      <section
+        id="availabilityView"
+        hidden
+      >
+
+        <!-- HERO -->
+
+        <section class="availability-hero">
+
+          <div>
+
+            <span class="hero-kicker">
+              YOUR WORKING HOURS
+            </span>
+
+            <h2>
+              Decide when families
+              <span>can book you.</span>
+            </h2>
+
+            <p>
+              Set your weekly schedule and session
+              duration. RAFIQ will use these settings
+              to generate available appointment slots.
+            </p>
+
+          </div>
+
+
+          <div class="hero-status">
+
+            <span>
+              AVAILABILITY
+            </span>
+
+            <strong id="availabilityStatus">
+              Not configured
+            </strong>
+
+          </div>
+
+        </section>
+
+
+        <div class="info-note">
+
+          <span>i</span>
+
+          <p>
+            This prototype uses recurring weekly
+            availability. In production, specialists
+            could also manage holidays, breaks,
+            blocked dates and calendar synchronization.
+          </p>
+
+        </div>
+
+
+        <!-- SETTINGS -->
+
+        <section class="settings-card">
+
+          <div class="card-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                SESSION SETTINGS
+              </span>
+
+              <h2>
+                Appointment duration
+              </h2>
+
+              <p>
+                Choose how long each bookable
+                consultation slot should be.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="duration-options">
+
+            <label class="duration-option">
+
+              <input
+                type="radio"
+                name="duration"
+                value="30"
+              >
+
+              <span>
+                <strong>30</strong>
+                minutes
+              </span>
+
+            </label>
+
+
+            <label class="duration-option">
+
+              <input
+                type="radio"
+                name="duration"
+                value="45"
+              >
+
+              <span>
+                <strong>45</strong>
+                minutes
+              </span>
+
+            </label>
+
+
+            <label class="duration-option">
+
+              <input
+                type="radio"
+                name="duration"
+                value="60"
+                checked
+              >
+
+              <span>
+                <strong>60</strong>
+                minutes
+              </span>
+
+            </label>
+
+          </div>
+
+        </section>
+
+
+        <!-- WEEK -->
+
+        <section class="schedule-card">
+
+          <div class="card-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                WEEKLY SCHEDULE
+              </span>
+
+              <h2>
+                Working days
+              </h2>
+
+              <p>
+                Enable the days you accept appointments
+                and choose your available hours.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div
+            class="week-list"
+            id="weekList"
+          ></div>
+
+        </section>
+
+
+        <!-- PREVIEW -->
+
+        <section class="preview-card">
+
+          <div class="card-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                PREVIEW
+              </span>
+
+              <h2>
+                Next available slots
+              </h2>
+
+              <p>
+                A preview of what RAFIQ can make
+                available to parents.
+              </p>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="refresh-button"
+              id="refreshPreview"
+            >
+              Refresh Preview
+            </button>
+
+          </div>
+
+
+          <div
+            class="slots-preview"
+            id="slotsPreview"
+          ></div>
+
+
+          <div
+            class="preview-empty"
+            id="previewEmpty"
+            hidden
+          >
+
+            <span>◷</span>
+
+            <strong>
+              No available slots yet
+            </strong>
+
+            <p>
+              Enable at least one day and choose valid
+              working hours.
+            </p>
+
+          </div>
+
+        </section>
+
+
+        <!-- SAVE -->
+
+        <section class="save-bar">
+
+          <div>
+
+            <strong>
+              Ready to update your schedule?
+            </strong>
+
+            <span id="lastUpdated">
+              Changes have not been saved yet.
+            </span>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="save-button"
+            id="saveButton"
+          >
+            Save Availability
+          </button>
+
+        </section>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<div
+  class="save-toast"
+  id="saveToast"
+  hidden
+>
+  <span>✓</span>
+
+  <div>
+
+    <strong>
+      Availability saved
+    </strong>
+
+    <p>
+      Your weekly schedule has been updated.
+    </p>
+
+  </div>
+</div>
+
+
+<script src="availability.js"></script>
+<script src="specialist-notifications.js"></script>
+</body>
+</html>

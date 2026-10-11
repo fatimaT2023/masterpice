@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Schedule | RAFIQ Specialist</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="schedule.css"
+  >
+<link
+  rel="stylesheet"
+  href="specialist-notifications.css"
+>
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+  <!-- =========================
+       SIDEBAR
+  ========================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+
+        <div class="brand-mark">
+          R
+        </div>
+
+        <span>
+          RAFIQ
+        </span>
+
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="specialist-mini-card">
+
+      <div
+        class="specialist-avatar"
+        id="sidebarAvatar"
+      >
+        DR
+      </div>
+
+
+      <div class="specialist-info">
+
+        <span>
+          SPECIALIST
+        </span>
+
+        <strong id="sidebarName">
+          Specialist
+        </strong>
+
+        <small id="sidebarSpecialty">
+          Specialty
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="sidebar-status"
+      id="sidebarStatus"
+    >
+
+      <span class="status-dot"></span>
+
+      <span id="sidebarStatusText">
+        Approved
+      </span>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="specialist-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        Dashboard
+      </a>
+
+
+      <a
+        href="schedule.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">▦</span>
+        Schedule
+      </a>
+
+
+      <span class="nav-section-title second">
+        PRACTICE
+      </span>
+
+
+      <a
+        href="specialist-bookings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◷</span>
+        Bookings
+      </a>
+
+
+      <a
+        href="clients.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">♡</span>
+        Clients / Cases
+      </a>
+
+
+      <a
+        href="availability.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◫</span>
+        Availability
+      </a>
+
+
+      <span class="nav-section-title second">
+        BUSINESS
+      </span>
+
+
+      <a
+        href="earnings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◇</span>
+        Earnings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="profile.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◎</span>
+        Profile
+      </a>
+
+
+      <a
+        href="specialist-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        Settings
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main class="main-content">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            OVERVIEW
+          </span>
+
+          <h1>
+            Schedule
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="availability.html"
+        class="availability-button"
+      >
+        Manage Availability
+      </a>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =========================
+           LOCKED VIEW
+      ========================== -->
+
+      <section
+        class="state-card"
+        id="lockedView"
+        hidden
+      >
+
+        <div class="state-icon warning">
+          ◷
+        </div>
+
+        <span>
+          PROFILE APPROVAL REQUIRED
+        </span>
+
+        <h2>
+          Schedule is not active yet.
+        </h2>
+
+        <p>
+          Your specialist profile must be approved
+          before scheduled appointments become
+          available.
+        </p>
+
+        <a href="specialist-dashboard.html">
+          Back to Dashboard
+        </a>
+
+      </section>
+
+
+      <!-- =========================
+           SCHEDULE VIEW
+      ========================== -->
+
+      <section
+        id="scheduleView"
+        hidden
+      >
+
+        <!-- HERO -->
+
+        <section class="schedule-hero">
+
+          <div>
+
+            <span class="hero-kicker">
+              YOUR PRACTICE SCHEDULE
+            </span>
+
+            <h2>
+              See what's happening
+              <span>this week.</span>
+            </h2>
+
+            <p>
+              Review booked consultations by date and
+              open the relevant booking or consultation
+              workspace.
+            </p>
+
+          </div>
+
+
+          <div class="today-box">
+
+            <span>
+              TODAY
+            </span>
+
+            <strong id="todayLabel">
+              —
+            </strong>
+
+          </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="summary-grid">
+
+          <article class="summary-card">
+
+            <div class="summary-icon sky">
+              ◷
+            </div>
+
+            <div>
+
+              <span>
+                Today
+              </span>
+
+              <strong id="todayCount">
+                0
+              </strong>
+
+            </div>
+
+          </article>
+
+
+          <article class="summary-card">
+
+            <div class="summary-icon lavender">
+              ▦
+            </div>
+
+            <div>
+
+              <span>
+                Next 7 Days
+              </span>
+
+              <strong id="weekCount">
+                0
+              </strong>
+
+            </div>
+
+          </article>
+
+
+          <article class="summary-card">
+
+            <div class="summary-icon mint">
+              ✓
+            </div>
+
+            <div>
+
+              <span>
+                Completed
+              </span>
+
+              <strong id="completedCount">
+                0
+              </strong>
+
+            </div>
+
+          </article>
+
+
+          <article class="summary-card">
+
+            <div class="summary-icon peach">
+              ✕
+            </div>
+
+            <div>
+
+              <span>
+                Cancelled
+              </span>
+
+              <strong id="cancelledCount">
+                0
+              </strong>
+
+            </div>
+
+          </article>
+
+        </section>
+
+
+        <!-- WEEK -->
+
+        <section class="week-card">
+
+          <div class="section-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                WEEK VIEW
+              </span>
+
+              <h2>
+                Select a day
+              </h2>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="today-button"
+              id="goTodayButton"
+            >
+              Today
+            </button>
+
+          </div>
+
+
+          <div
+            class="week-strip"
+            id="weekStrip"
+          ></div>
+
+        </section>
+
+
+        <!-- SELECTED DAY -->
+
+        <section class="appointments-card">
+
+          <div class="appointments-heading">
+
+            <div>
+
+              <span class="section-kicker">
+                APPOINTMENTS
+              </span>
+
+              <h2 id="selectedDateTitle">
+                Today's appointments
+              </h2>
+
+            </div>
+
+
+            <span
+              class="appointment-count"
+              id="selectedDateCount"
+            >
+              0 appointments
+            </span>
+
+          </div>
+
+
+          <div
+            class="appointments-list"
+            id="appointmentsList"
+          ></div>
+
+
+          <!-- EMPTY -->
+
+          <div
+            class="empty-state"
+            id="emptyState"
+            hidden
+          >
+
+            <div class="empty-icon">
+              ◷
+            </div>
+
+            <strong>
+              No appointments scheduled
+            </strong>
+
+            <p>
+              There are no booked consultations for
+              this date.
+            </p>
+
+          </div>
+
+        </section>
+
+
+        <!-- FOOT NOTE -->
+
+        <section class="schedule-note">
+
+          <span>
+            i
+          </span>
+
+          <p>
+            Schedule displays actual parent bookings.
+            Availability controls which times can be
+            offered for future bookings.
+          </p>
+
+        </section>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<script src="schedule.js"></script>
+<script src="specialist-notifications.js"></script>
+</body>
+</html>

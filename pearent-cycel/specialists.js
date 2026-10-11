@@ -2,9 +2,9 @@ document.addEventListener(
   "DOMContentLoaded",
   () => {
 
-    // =========================
+    // =====================================
     // ELEMENTS
-    // =========================
+    // =====================================
 
     const childAvatar =
       document.getElementById(
@@ -85,7 +85,9 @@ document.addEventListener(
       );
 
 
-    // Modal
+    // =====================================
+    // PROFILE MODAL
+    // =====================================
 
     const profileModal =
       document.getElementById(
@@ -163,7 +165,9 @@ document.addEventListener(
       );
 
 
-    // Sidebar
+    // =====================================
+    // SIDEBAR
+    // =====================================
 
     const sidebar =
       document.getElementById(
@@ -191,19 +195,28 @@ document.addEventListener(
       );
 
 
-    // =========================
-    // CHILD
-    // =========================
+    // =====================================
+    // STORAGE HELPERS
+    // =====================================
 
-    function getChildren() {
+    function readArray(
+      key
+    ) {
 
       try {
 
-        return JSON.parse(
-          localStorage.getItem(
-            "rafiqChildren"
-          )
-        ) || [];
+        const value =
+          JSON.parse(
+            localStorage.getItem(
+              key
+            )
+          );
+
+        return Array.isArray(
+          value
+        )
+          ? value
+          : [];
 
       } catch (error) {
 
@@ -212,11 +225,38 @@ document.addEventListener(
     }
 
 
+    function readObject(
+      key
+    ) {
+
+      try {
+
+        return JSON.parse(
+          localStorage.getItem(
+            key
+          )
+        );
+
+      } catch (error) {
+
+        return null;
+      }
+    }
+
+
+    // =====================================
+    // CHILD
+    // =====================================
+
     const children =
-      getChildren();
+      readArray(
+        "rafiqChildren"
+      );
 
 
-    if (children.length === 0) {
+    if (
+      children.length === 0
+    ) {
 
       window.location.href =
         "onboarding.html";
@@ -236,22 +276,50 @@ document.addEventListener(
         child =>
           child.id ===
           currentChildId
-      ) || children[0];
+      ) ||
+      children[0];
 
 
-    // =========================
-    // AGE
-    // =========================
+    // =====================================
+    // CHILD AGE
+    // =====================================
 
     function calculateAge(
       dateString
     ) {
+
+      if (
+        !dateString
+      ) {
+
+        return {
+          years: 0,
+          months: 0,
+          totalMonths: 0
+        };
+      }
+
 
       const birthDate =
         new Date(
           dateString +
           "T00:00:00"
         );
+
+
+      if (
+        Number.isNaN(
+          birthDate.getTime()
+        )
+      ) {
+
+        return {
+          years: 0,
+          months: 0,
+          totalMonths: 0
+        };
+      }
+
 
       const today =
         new Date();
@@ -271,13 +339,17 @@ document.addEventListener(
         today.getDate() <
         birthDate.getDate()
       ) {
+
         months--;
       }
 
 
-      if (months < 0) {
+      if (
+        months < 0
+      ) {
 
         years--;
+
         months += 12;
       }
 
@@ -291,52 +363,67 @@ document.addEventListener(
     }
 
 
-    function formatAge(age) {
+    function formatAge(
+      age
+    ) {
 
-      if (age.totalMonths < 12) {
+      if (
+        age.totalMonths < 12
+      ) {
 
         return (
           age.totalMonths +
-          (age.totalMonths === 1
-            ? " month"
-            : " months")
+          (
+            age.totalMonths === 1
+              ? " month"
+              : " months"
+          )
         );
       }
 
 
       return (
         age.years +
-        (age.years === 1
-          ? " year old"
-          : " years old")
+        (
+          age.years === 1
+            ? " year old"
+            : " years old"
+        )
       );
     }
 
 
     const age =
       calculateAge(
-        currentChild.dateOfBirth
+        currentChild.dateOfBirth ||
+        currentChild.dob ||
+        currentChild.birthDate
       );
 
 
-    const initial =
-      currentChild.name
+    const childInitial =
+      String(
+        currentChild.name ||
+        "C"
+      )
         .charAt(0)
         .toUpperCase();
 
 
     childAvatar.textContent =
-      initial;
+      childInitial;
 
     childName.textContent =
       currentChild.name;
 
     childAge.textContent =
-      formatAge(age);
+      formatAge(
+        age
+      );
 
 
     heroAvatar.textContent =
-      initial;
+      childInitial;
 
     heroChildName.textContent =
       currentChild.name;
@@ -345,321 +432,1180 @@ document.addEventListener(
       currentChild.name;
 
     heroProfileAge.textContent =
-      formatAge(age);
+      formatAge(
+        age
+      );
 
 
     heroDescription.textContent =
-      `Browse professionals and choose the type of support that best fits ${currentChild.name}'s needs.`;
+      `Browse verified professionals and choose the type of support that best fits ${currentChild.name}'s needs.`;
 
 
-    // =========================
-    // DEMO SPECIALISTS
-    // =========================
+    // =====================================
+    // SPECIALIST HELPERS
+    // =====================================
 
-    const specialists = [
+    function getInitials(
+      fullName
+    ) {
 
-      {
-        id: "sp_001",
+      const cleaned =
+        String(
+          fullName ||
+          ""
+        )
+          .replace(
+            /^(Dr\.?|Mr\.?|Mrs\.?|Ms\.?)\s+/i,
+            ""
+          )
+          .trim();
 
-        name:
-          "Dr. Lina Haddad",
 
-        initials:
-          "LH",
+      const parts =
+        cleaned
+          .split(/\s+/)
+          .filter(Boolean);
 
-        specialtyKey:
-          "speech",
 
-        specialty:
-          "Speech & Language Specialist",
+      if (
+        parts.length === 0
+      ) {
 
-        rating:
-          4.9,
+        return "SP";
+      }
 
-        experience:
-          8,
 
-        consultationTypes: [
-          "online",
-          "in-person"
+      if (
+        parts.length === 1
+      ) {
+
+        return parts[0]
+          .slice(
+            0,
+            2
+          )
+          .toUpperCase();
+      }
+
+
+      return (
+        parts[0][0] +
+        parts[
+          parts.length - 1
+        ][0]
+      ).toUpperCase();
+    }
+
+
+    function normalizeSpecialtyKey(
+      profile
+    ) {
+
+      if (
+        profile.specialtyKey
+      ) {
+
+        return String(
+          profile.specialtyKey
+        ).toLowerCase();
+      }
+
+
+      const specialty =
+        String(
+          profile.specialty ||
+          ""
+        ).toLowerCase();
+
+
+      if (
+        specialty.includes(
+          "speech"
+        )
+      ) {
+
+        return "speech";
+      }
+
+
+      if (
+        specialty.includes(
+          "psych"
+        )
+      ) {
+
+        return "psychology";
+      }
+
+
+      if (
+        specialty.includes(
+          "behavior"
+        )
+      ) {
+
+        return "behavior";
+      }
+
+
+      if (
+        specialty.includes(
+          "pediatric"
+        )
+      ) {
+
+        return "pediatrician";
+      }
+
+
+      if (
+        specialty.includes(
+          "occupational"
+        )
+      ) {
+
+        return "occupational";
+      }
+
+
+      if (
+        specialty.includes(
+          "learning"
+        )
+      ) {
+
+        return "learning";
+      }
+
+
+      if (
+        specialty.includes(
+          "development"
+        )
+      ) {
+
+        return "development";
+      }
+
+
+      if (
+        specialty.includes(
+          "nutrition"
+        )
+      ) {
+
+        return "nutrition";
+      }
+
+
+      if (
+        specialty.includes(
+          "family"
+        )
+      ) {
+
+        return "family";
+      }
+
+
+      return "other";
+    }
+
+
+    function formatConsultationType(
+      type
+    ) {
+
+      const value =
+        String(
+          type ||
+          ""
+        )
+          .trim()
+          .toLowerCase();
+
+
+      if (
+        value === "online"
+      ) {
+
+        return "Online";
+      }
+
+
+      if (
+        value === "in-person" ||
+        value === "inperson"
+      ) {
+
+        return "In-person";
+      }
+
+
+      return String(
+        type ||
+        ""
+      );
+    }
+
+
+    function getConsultationLabel(
+      consultationTypes
+    ) {
+
+      const types =
+        Array.isArray(
+          consultationTypes
+        )
+          ? consultationTypes
+          : [];
+
+
+      if (
+        types.length === 0
+      ) {
+
+        return "Not specified";
+      }
+
+
+      return types
+        .map(
+          formatConsultationType
+        )
+        .join(" & ");
+    }
+
+
+    function getLanguageList(
+      languages
+    ) {
+
+      if (
+        Array.isArray(
+          languages
+        )
+      ) {
+
+        return languages;
+      }
+
+
+      if (
+        typeof languages ===
+        "string"
+      ) {
+
+        return languages
+          .split(",")
+          .map(
+            item =>
+              item.trim()
+          )
+          .filter(Boolean);
+      }
+
+
+      return [];
+    }
+
+
+    function formatLanguage(
+      language
+    ) {
+
+      const value =
+        String(
+          language ||
+          ""
+        ).toLowerCase();
+
+
+      if (
+        value === "arabic"
+      ) {
+
+        return "Arabic";
+      }
+
+
+      if (
+        value === "english"
+      ) {
+
+        return "English";
+      }
+
+
+      return String(
+        language ||
+        ""
+      );
+    }
+
+
+    function getLanguagesLabel(
+      languages
+    ) {
+
+      const list =
+        getLanguageList(
+          languages
+        );
+
+
+      if (
+        list.length === 0
+      ) {
+
+        return "Not specified";
+      }
+
+
+      return list
+        .map(
+          formatLanguage
+        )
+        .join(", ");
+    }
+
+
+    function getSpecialtyAreas(
+      specialtyKey,
+      profileAreas
+    ) {
+
+      if (
+        Array.isArray(
+          profileAreas
+        ) &&
+        profileAreas.length > 0
+      ) {
+
+        return profileAreas;
+      }
+
+
+      const areasBySpecialty = {
+
+        pediatrician: [
+          "Child Health",
+          "Growth",
+          "Development"
         ],
 
-        consultationLabel:
-          "Online & In-person",
-
-        languages:
-          "Arabic, English",
-
-        availability:
-          "Tomorrow",
-
-        price:
-          "30 JOD",
-
-        areas: [
-          "Speech Delay",
-          "Language Development",
-          "Communication",
-          "Early Childhood"
-        ],
-
-        about:
-          "Supports children and families with speech, language and communication concerns through age-appropriate assessment and parent guidance."
-      },
-
-
-      {
-        id: "sp_002",
-
-        name:
-          "Dr. Omar Khalil",
-
-        initials:
-          "OK",
-
-        specialtyKey:
-          "psychology",
-
-        specialty:
-          "Child Psychologist",
-
-        rating:
-          4.8,
-
-        experience:
-          10,
-
-        consultationTypes: [
-          "online"
-        ],
-
-        consultationLabel:
-          "Online",
-
-        languages:
-          "Arabic, English",
-
-        availability:
-          "Mon, 4:00 PM",
-
-        price:
-          "35 JOD",
-
-        areas: [
+        psychology: [
           "Emotional Wellbeing",
           "Behavior",
-          "Parent Guidance",
-          "Adolescence"
+          "Parent Guidance"
         ],
 
-        about:
-          "Works with children, teenagers and parents around emotional wellbeing, behavior, communication and family concerns."
-      },
-
-
-      {
-        id: "sp_003",
-
-        name:
-          "Sara Nasser",
-
-        initials:
-          "SN",
-
-        specialtyKey:
-          "behavior",
-
-        specialty:
-          "Behavioral Specialist",
-
-        rating:
-          4.7,
-
-        experience:
-          6,
-
-        consultationTypes: [
-          "online",
-          "in-person"
+        speech: [
+          "Speech",
+          "Language Development",
+          "Communication"
         ],
 
-        consultationLabel:
-          "Online & In-person",
-
-        languages:
-          "Arabic",
-
-        availability:
-          "Today, 6:00 PM",
-
-        price:
-          "25 JOD",
-
-        areas: [
+        behavior: [
           "Behavior",
           "Daily Routines",
-          "Parent Coaching",
-          "Early Childhood"
+          "Parent Coaching"
         ],
 
-        about:
-          "Helps families understand behavioral patterns and build practical routines, boundaries and supportive parenting strategies."
-      },
-
-
-      {
-        id: "sp_004",
-
-        name:
-          "Dr. Yazan Saleh",
-
-        initials:
-          "YS",
-
-        specialtyKey:
-          "pediatrician",
-
-        specialty:
-          "Pediatrician",
-
-        rating:
-          4.9,
-
-        experience:
-          12,
-
-        consultationTypes: [
-          "in-person"
+        occupational: [
+          "Daily Skills",
+          "Sensory Support",
+          "Motor Development"
         ],
 
-        consultationLabel:
-          "In-person",
-
-        languages:
-          "Arabic, English",
-
-        availability:
-          "Tue, 11:00 AM",
-
-        price:
-          "40 JOD",
-
-        areas: [
-          "Child Health",
-          "Development",
-          "Growth",
-          "Parent Concerns"
-        ],
-
-        about:
-          "Provides general pediatric consultation and supports families with child health, growth and developmental concerns."
-      },
-
-
-      {
-        id: "sp_005",
-
-        name:
-          "Maya Abu Ali",
-
-        initials:
-          "MA",
-
-        specialtyKey:
-          "learning",
-
-        specialty:
-          "Learning Difficulties Specialist",
-
-        rating:
-          4.8,
-
-        experience:
-          7,
-
-        consultationTypes: [
-          "online",
-          "in-person"
-        ],
-
-        consultationLabel:
-          "Online & In-person",
-
-        languages:
-          "Arabic, English",
-
-        availability:
-          "Wed, 3:30 PM",
-
-        price:
-          "28 JOD",
-
-        areas: [
+        learning: [
           "Learning Difficulties",
           "School Support",
-          "Attention",
           "Study Skills"
         ],
 
-        about:
-          "Supports school-age children and families with learning challenges, study routines and educational support strategies."
-      },
-
-
-      {
-        id: "sp_006",
-
-        name:
-          "Rana Mahmoud",
-
-        initials:
-          "RM",
-
-        specialtyKey:
-          "development",
-
-        specialty:
-          "Child Development Specialist",
-
-        rating:
-          4.9,
-
-        experience:
-          9,
-
-        consultationTypes: [
-          "online"
-        ],
-
-        consultationLabel:
-          "Online",
-
-        languages:
-          "Arabic, English",
-
-        availability:
-          "Tomorrow, 1:00 PM",
-
-        price:
-          "32 JOD",
-
-        areas: [
+        development: [
           "Development",
           "Milestones",
-          "Early Concerns",
           "Parent Support"
         ],
 
-        about:
-          "Supports parents in understanding developmental progress, milestones, early concerns and appropriate next steps."
+        nutrition: [
+          "Child Nutrition",
+          "Healthy Eating",
+          "Family Guidance"
+        ],
+
+        family: [
+          "Parent Guidance",
+          "Family Support",
+          "Communication"
+        ],
+
+        other: [
+          "Child Development",
+          "Parent Support"
+        ]
+      };
+
+
+      return (
+        areasBySpecialty[
+          specialtyKey
+        ] ||
+        areasBySpecialty.other
+      );
+    }
+
+
+    function getPriceValue(
+      profile
+    ) {
+
+      const price =
+        Number(
+          profile.price
+        );
+
+
+      return Number.isFinite(
+        price
+      )
+        ? price
+        : 0;
+    }
+
+
+    function formatPrice(
+      price
+    ) {
+
+      const numeric =
+        Number(
+          price
+        );
+
+
+      if (
+        !Number.isFinite(
+          numeric
+        )
+      ) {
+
+        return "Not specified";
       }
 
-    ];
+
+      return (
+        Number.isInteger(
+          numeric
+        )
+          ? `${numeric} JOD`
+          : `${numeric.toFixed(2)} JOD`
+      );
+    }
 
 
-    // =========================
+    function getRatingLabel(
+      rating
+    ) {
+
+      const value =
+        Number(
+          rating
+        );
+
+
+      if (
+        !Number.isFinite(
+          value
+        ) ||
+        value <= 0
+      ) {
+
+        return "New";
+      }
+
+
+      return `★ ${value.toFixed(1)}`;
+    }
+
+
+    // =====================================
+    // AVAILABILITY
+    // =====================================
+
+    const dayIndexes = {
+
+      sunday: 0,
+      sun: 0,
+
+      monday: 1,
+      mon: 1,
+
+      tuesday: 2,
+      tue: 2,
+      tues: 2,
+
+      wednesday: 3,
+      wed: 3,
+
+      thursday: 4,
+      thu: 4,
+      thur: 4,
+      thurs: 4,
+
+      friday: 5,
+      fri: 5,
+
+      saturday: 6,
+      sat: 6
+    };
+
+
+    function formatClockTime(
+      value
+    ) {
+
+      if (
+        !value
+      ) {
+
+        return "";
+      }
+
+
+      const parts =
+        String(
+          value
+        )
+          .split(":")
+          .map(Number);
+
+
+      if (
+        !Number.isFinite(
+          parts[0]
+        )
+      ) {
+
+        return String(
+          value
+        );
+      }
+
+
+      const hour24 =
+        parts[0];
+
+      const minutes =
+        Number.isFinite(
+          parts[1]
+        )
+          ? parts[1]
+          : 0;
+
+
+      const period =
+        hour24 >= 12
+          ? "PM"
+          : "AM";
+
+
+      const hour12 =
+        hour24 % 12 ||
+        12;
+
+
+      return (
+        `${hour12}:` +
+        `${String(
+          minutes
+        ).padStart(
+          2,
+          "0"
+        )} ${period}`
+      );
+    }
+
+
+    function getAvailabilityEntries(
+      specialistId
+    ) {
+
+      const availability =
+        readObject(
+          `rafiqAvailability_${specialistId}`
+        );
+
+
+      if (
+        !availability ||
+        !availability.weeklySchedule
+      ) {
+
+        return [];
+      }
+
+
+      const weekly =
+        availability.weeklySchedule;
+
+
+      if (
+        Array.isArray(
+          weekly
+        )
+      ) {
+
+        return weekly.map(
+          item => ({
+            ...item,
+            dayName:
+              item.dayName ||
+              item.day ||
+              item.name ||
+              item.dayKey ||
+              ""
+          })
+        );
+      }
+
+
+      if (
+        typeof weekly ===
+        "object"
+      ) {
+
+        return Object.entries(
+          weekly
+        )
+          .map(
+            ([key, value]) => ({
+
+              ...(
+                typeof value ===
+                "object"
+                  ? value
+                  : {}
+              ),
+
+              dayName:
+                value?.dayName ||
+                value?.day ||
+                value?.name ||
+                key
+            })
+          );
+      }
+
+
+      return [];
+    }
+
+
+    function getNextAvailability(
+      specialistId
+    ) {
+
+      const entries =
+        getAvailabilityEntries(
+          specialistId
+        )
+          .filter(
+            entry =>
+              entry.enabled !== false &&
+              entry.active !== false
+          );
+
+
+      if (
+        entries.length === 0
+      ) {
+
+        return "Not configured";
+      }
+
+
+      const today =
+        new Date();
+
+
+      const todayIndex =
+        today.getDay();
+
+
+      const candidates =
+        entries
+          .map(
+            entry => {
+
+              const key =
+                String(
+                  entry.dayName ||
+                  ""
+                )
+                  .trim()
+                  .toLowerCase();
+
+
+              const dayIndex =
+                dayIndexes[key];
+
+
+              if (
+                dayIndex === undefined
+              ) {
+
+                return null;
+              }
+
+
+              const offset =
+                (
+                  dayIndex -
+                  todayIndex +
+                  7
+                ) % 7;
+
+
+              return {
+                ...entry,
+                dayIndex,
+                offset
+              };
+            }
+          )
+          .filter(Boolean)
+          .sort(
+            (a, b) =>
+              a.offset -
+              b.offset
+          );
+
+
+      if (
+        candidates.length === 0
+      ) {
+
+        return "Available by request";
+      }
+
+
+      const next =
+        candidates[0];
+
+
+      const startTime =
+        next.start ||
+        next.startTime ||
+        next.from ||
+        "";
+
+
+      const date =
+        new Date(
+          today
+        );
+
+
+      date.setDate(
+        today.getDate() +
+        next.offset
+      );
+
+
+      const dayLabel =
+        next.offset === 0
+          ? "Today"
+          : next.offset === 1
+            ? "Tomorrow"
+            : date.toLocaleDateString(
+                undefined,
+                {
+                  weekday: "short"
+                }
+              );
+
+
+      const formattedTime =
+        formatClockTime(
+          startTime
+        );
+
+
+      return formattedTime
+        ? `${dayLabel}, ${formattedTime}`
+        : dayLabel;
+    }
+
+
+    // =====================================
+    // NORMALIZE APPROVED SPECIALIST
+    // =====================================
+
+    function normalizeSpecialist(
+      profile
+    ) {
+
+      const specialtyKey =
+        normalizeSpecialtyKey(
+          profile
+        );
+
+
+      const consultationTypes =
+        Array.isArray(
+          profile.consultationTypes
+        )
+          ? profile.consultationTypes
+          : [];
+
+
+      const languagesList =
+        getLanguageList(
+          profile.languages
+        );
+
+
+      const price =
+        getPriceValue(
+          profile
+        );
+
+
+      return {
+
+        // IMPORTANT:
+        // Same exact ID created by
+        // specialist onboarding / admin approval.
+        id:
+          profile.id,
+
+
+        name:
+          profile.fullName ||
+          profile.name ||
+          "Specialist",
+
+
+        fullName:
+          profile.fullName ||
+          profile.name ||
+          "Specialist",
+
+
+        initials:
+          profile.initials ||
+          getInitials(
+            profile.fullName ||
+            profile.name
+          ),
+
+
+        specialtyKey,
+
+
+        specialty:
+          profile.specialty ||
+          "Specialist",
+
+
+        rating:
+          profile.rating ??
+          null,
+
+
+        reviews:
+          Number(
+            profile.reviews ||
+            0
+          ),
+
+
+        experience:
+          Number(
+            profile.experience ||
+            0
+          ),
+
+
+        consultationTypes,
+
+
+        consultationLabel:
+          profile.consultationLabel ||
+          getConsultationLabel(
+            consultationTypes
+          ),
+
+
+        languages:
+          getLanguagesLabel(
+            languagesList
+          ),
+
+
+        languagesList,
+
+
+        availability:
+          getNextAvailability(
+            profile.id
+          ),
+
+
+        // Keep numeric price.
+        // This is better for booking /
+        // earnings calculations.
+        price,
+
+
+        priceLabel:
+          formatPrice(
+            price
+          ),
+
+
+        areas:
+          getSpecialtyAreas(
+            specialtyKey,
+            profile.areas
+          ),
+
+
+        about:
+          profile.bio ||
+          "Professional profile information is available through RAFIQ.",
+
+
+        qualification:
+          profile.qualification ||
+          "",
+
+
+        licenseNumber:
+          profile.licenseNumber ||
+          "",
+
+
+        status:
+          profile.status,
+
+
+        verificationStatus:
+          profile.verificationStatus,
+
+
+        approvedAt:
+          profile.approvedAt ||
+          null
+      };
+    }
+
+
+    // =====================================
+    // LOAD APPROVED SPECIALISTS
+    // =====================================
+
+    function loadApprovedSpecialists() {
+
+      const sharedProfiles =
+        readArray(
+          "rafiqSpecialists"
+        );
+
+
+      /*
+        rafiqSpecialists is the main shared
+        directory used by Admin + Parent.
+
+        We also support the current stored
+        specialist profile only if for some
+        reason it is missing from the shared
+        collection.
+      */
+
+      const currentProfile =
+        readObject(
+          "rafiqSpecialistProfile"
+        );
+
+
+      const map =
+        new Map();
+
+
+      sharedProfiles.forEach(
+        profile => {
+
+          if (
+            profile?.id
+          ) {
+
+            map.set(
+              profile.id,
+              profile
+            );
+          }
+        }
+      );
+
+
+      if (
+        currentProfile?.id &&
+        !map.has(
+          currentProfile.id
+        )
+      ) {
+
+        map.set(
+          currentProfile.id,
+          currentProfile
+        );
+      }
+
+
+      return Array
+        .from(
+          map.values()
+        )
+        .filter(
+          profile =>
+            profile.status ===
+            "approved"
+        )
+        .map(
+          normalizeSpecialist
+        )
+        .sort(
+          (a, b) =>
+            a.name.localeCompare(
+              b.name
+            )
+        );
+    }
+
+
+    let specialists =
+      loadApprovedSpecialists();
+
+
+    // =====================================
+    // BUILD SPECIALTY FILTER
+    // =====================================
+
+    function populateSpecialtyFilter() {
+
+      if (
+        !specialtyFilter
+      ) {
+
+        return;
+      }
+
+
+      const currentValue =
+        specialtyFilter.value;
+
+
+      specialtyFilter.innerHTML =
+        "";
+
+
+      const allOption =
+        document.createElement(
+          "option"
+        );
+
+
+      allOption.value =
+        "all";
+
+      allOption.textContent =
+        "All specialties";
+
+
+      specialtyFilter.appendChild(
+        allOption
+      );
+
+
+      const specialties =
+        new Map();
+
+
+      specialists.forEach(
+        specialist => {
+
+          if (
+            !specialties.has(
+              specialist.specialtyKey
+            )
+          ) {
+
+            specialties.set(
+              specialist.specialtyKey,
+              specialist.specialty
+            );
+          }
+        }
+      );
+
+
+      Array.from(
+        specialties.entries()
+      )
+        .sort(
+          (a, b) =>
+            a[1].localeCompare(
+              b[1]
+            )
+        )
+        .forEach(
+          ([key, label]) => {
+
+            const option =
+              document.createElement(
+                "option"
+              );
+
+
+            option.value =
+              key;
+
+            option.textContent =
+              label;
+
+
+            specialtyFilter.appendChild(
+              option
+            );
+          }
+        );
+
+
+      const stillExists =
+        Array.from(
+          specialtyFilter.options
+        )
+          .some(
+            option =>
+              option.value ===
+              currentValue
+          );
+
+
+      specialtyFilter.value =
+        stillExists
+          ? currentValue
+          : "all";
+    }
+
+
+    // =====================================
     // FILTERING
-    // =========================
+    // =====================================
 
     let consultationFilter =
       "all";
@@ -668,13 +1614,17 @@ document.addEventListener(
     function getFilteredSpecialists() {
 
       const search =
-        searchInput.value
+        String(
+          searchInput?.value ||
+          ""
+        )
           .trim()
           .toLowerCase();
 
 
       const specialty =
-        specialtyFilter.value;
+        specialtyFilter?.value ||
+        "all";
 
 
       return specialists.filter(
@@ -682,29 +1632,43 @@ document.addEventListener(
 
           const matchesSearch =
             !search ||
+
             specialist.name
               .toLowerCase()
-              .includes(search) ||
+              .includes(
+                search
+              ) ||
+
             specialist.specialty
               .toLowerCase()
-              .includes(search) ||
-            specialist.areas
-              .some(
-                area =>
+              .includes(
+                search
+              ) ||
+
+            specialist.areas.some(
+              area =>
+                String(
                   area
-                    .toLowerCase()
-                    .includes(search)
-              );
+                )
+                  .toLowerCase()
+                  .includes(
+                    search
+                  )
+            );
 
 
           const matchesSpecialty =
-            specialty === "all" ||
+            specialty ===
+              "all" ||
+
             specialist.specialtyKey ===
               specialty;
 
 
           const matchesType =
-            consultationFilter === "all" ||
+            consultationFilter ===
+              "all" ||
+
             specialist
               .consultationTypes
               .includes(
@@ -722,9 +1686,34 @@ document.addEventListener(
     }
 
 
-    // =========================
-    // RENDER
-    // =========================
+    // =====================================
+    // ESCAPE HTML
+    // =====================================
+
+    function escapeHTML(
+      value
+    ) {
+
+      const element =
+        document.createElement(
+          "div"
+        );
+
+
+      element.textContent =
+        String(
+          value ??
+          ""
+        );
+
+
+      return element.innerHTML;
+    }
+
+
+    // =====================================
+    // RENDER SPECIALISTS
+    // =====================================
 
     function renderSpecialists() {
 
@@ -761,12 +1750,36 @@ document.addEventListener(
             "specialist-card";
 
 
+          const ratingLabel =
+            getRatingLabel(
+              specialist.rating
+            );
+
+
+          const areaTags =
+            specialist.areas
+              .slice(
+                0,
+                3
+              )
+              .map(
+                area =>
+                  `<span class="specialist-tag">${escapeHTML(
+                    area
+                  )}</span>`
+              )
+              .join("");
+
+
           card.innerHTML = `
             <div class="specialist-top">
 
               <div class="specialist-avatar">
-                ${specialist.initials}
+                ${escapeHTML(
+                  specialist.initials
+                )}
               </div>
+
 
               <div class="specialist-main">
 
@@ -775,78 +1788,97 @@ document.addEventListener(
                 </span>
 
                 <h3>
-                  ${specialist.name}
+                  ${escapeHTML(
+                    specialist.name
+                  )}
                 </h3>
 
                 <p>
-                  ${specialist.specialty}
+                  ${escapeHTML(
+                    specialist.specialty
+                  )}
                 </p>
 
               </div>
 
+
               <span class="rating">
-                ★ ${specialist.rating}
+                ${escapeHTML(
+                  ratingLabel
+                )}
               </span>
 
             </div>
 
 
             <div class="specialist-tags">
-
-              ${specialist.areas
-                .slice(0,3)
-                .map(
-                  area =>
-                    `<span class="specialist-tag">${area}</span>`
-                )
-                .join("")}
-
+              ${areaTags}
             </div>
 
 
             <div class="specialist-details">
 
               <div class="detail-box">
+
                 <span>
                   Experience
                 </span>
 
                 <strong>
-                  ${specialist.experience} years
+                  ${escapeHTML(
+                    specialist.experience
+                  )} ${
+                    specialist.experience === 1
+                      ? "year"
+                      : "years"
+                  }
                 </strong>
+
               </div>
 
 
               <div class="detail-box">
+
                 <span>
                   Consultation
                 </span>
 
                 <strong>
-                  ${specialist.consultationLabel}
+                  ${escapeHTML(
+                    specialist.consultationLabel
+                  )}
                 </strong>
+
               </div>
 
 
               <div class="detail-box">
+
                 <span>
                   Next Available
                 </span>
 
                 <strong class="available">
-                  ${specialist.availability}
+                  ${escapeHTML(
+                    specialist.availability
+                  )}
                 </strong>
+
               </div>
 
 
               <div class="detail-box">
+
                 <span>
                   Session Fee
                 </span>
 
                 <strong>
-                  ${specialist.price}
+                  ${escapeHTML(
+                    specialist.priceLabel
+                  )}
                 </strong>
+
               </div>
 
             </div>
@@ -857,15 +1889,20 @@ document.addEventListener(
               <button
                 type="button"
                 class="view-button"
-                data-id="${specialist.id}"
+                data-id="${escapeHTML(
+                  specialist.id
+                )}"
               >
                 View Profile
               </button>
 
+
               <button
                 type="button"
                 class="card-book-button"
-                data-id="${specialist.id}"
+                data-id="${escapeHTML(
+                  specialist.id
+                )}"
               >
                 Book
               </button>
@@ -885,9 +1922,9 @@ document.addEventListener(
     }
 
 
-    // =========================
+    // =====================================
     // CARD LISTENERS
-    // =========================
+    // =====================================
 
     function addCardListeners() {
 
@@ -910,9 +1947,14 @@ document.addEventListener(
                   );
 
 
-                openProfile(
+                if (
                   specialist
-                );
+                ) {
+
+                  openProfile(
+                    specialist
+                  );
+                }
               }
             );
           }
@@ -938,9 +1980,14 @@ document.addEventListener(
                   );
 
 
-                goToBooking(
+                if (
                   specialist
-                );
+                ) {
+
+                  goToBooking(
+                    specialist
+                  );
+                }
               }
             );
           }
@@ -948,9 +1995,9 @@ document.addEventListener(
     }
 
 
-    // =========================
+    // =====================================
     // PROFILE MODAL
-    // =========================
+    // =====================================
 
     let activeSpecialist =
       null;
@@ -967,32 +2014,47 @@ document.addEventListener(
       modalAvatar.textContent =
         specialist.initials;
 
+
       modalName.textContent =
         specialist.name;
+
 
       modalSpecialty.textContent =
         specialist.specialty;
 
+
       modalRating.textContent =
-        `★ ${specialist.rating}`;
+        getRatingLabel(
+          specialist.rating
+        );
+
 
       modalExperience.textContent =
-        `${specialist.experience} years experience`;
+        `${specialist.experience} ${
+          specialist.experience === 1
+            ? "year"
+            : "years"
+        } experience`;
+
 
       modalAbout.textContent =
         specialist.about;
 
+
       modalConsultation.textContent =
         specialist.consultationLabel;
+
 
       modalLanguages.textContent =
         specialist.languages;
 
+
       modalAvailability.textContent =
         specialist.availability;
 
+
       modalPrice.textContent =
-        specialist.price;
+        specialist.priceLabel;
 
 
       modalAreas.innerHTML =
@@ -1007,11 +2069,14 @@ document.addEventListener(
               "span"
             );
 
+
           tag.className =
             "modal-tag";
 
+
           tag.textContent =
             area;
+
 
           modalAreas.appendChild(
             tag
@@ -1028,7 +2093,7 @@ document.addEventListener(
         "hidden";
 
 
-      modalClose.focus();
+      modalClose?.focus();
     }
 
 
@@ -1037,27 +2102,29 @@ document.addEventListener(
       profileModal.hidden =
         true;
 
+
       document.body.style.overflow =
         "";
+
 
       activeSpecialist =
         null;
     }
 
 
-    modalClose.addEventListener(
+    modalClose?.addEventListener(
       "click",
       closeProfile
     );
 
 
-    closeProfileButton.addEventListener(
+    closeProfileButton?.addEventListener(
       "click",
       closeProfile
     );
 
 
-    profileModal.addEventListener(
+    profileModal?.addEventListener(
       "click",
       event => {
 
@@ -1072,17 +2139,21 @@ document.addEventListener(
     );
 
 
-    // =========================
+    // =====================================
     // BOOKING
-    // =========================
+    // =====================================
 
     function goToBooking(
       specialist
     ) {
 
       /*
-        Save selected specialist temporarily
-        for the booking page.
+        Save both the full normalized
+        specialist object and the exact
+        approved specialist ID.
+
+        The ID is the important integration:
+        Parent booking → Specialist account.
       */
 
       sessionStorage.setItem(
@@ -1093,16 +2164,25 @@ document.addEventListener(
       );
 
 
+      sessionStorage.setItem(
+        "rafiqSelectedSpecialistId",
+        specialist.id
+      );
+
+
       window.location.href =
         "booking.html";
     }
 
 
-    bookSpecialistButton.addEventListener(
+    bookSpecialistButton?.addEventListener(
       "click",
       () => {
 
-        if (!activeSpecialist) {
+        if (
+          !activeSpecialist
+        ) {
+
           return;
         }
 
@@ -1114,17 +2194,17 @@ document.addEventListener(
     );
 
 
-    // =========================
+    // =====================================
     // FILTER EVENTS
-    // =========================
+    // =====================================
 
-    searchInput.addEventListener(
+    searchInput?.addEventListener(
       "input",
       renderSpecialists
     );
 
 
-    specialtyFilter.addEventListener(
+    specialtyFilter?.addEventListener(
       "change",
       renderSpecialists
     );
@@ -1138,7 +2218,8 @@ document.addEventListener(
           () => {
 
             consultationFilter =
-              button.dataset.type;
+              button.dataset.type ||
+              "all";
 
 
             typeButtons.forEach(
@@ -1163,15 +2244,27 @@ document.addEventListener(
     );
 
 
-    clearFilters.addEventListener(
+    clearFilters?.addEventListener(
       "click",
       () => {
 
-        searchInput.value =
-          "";
+        if (
+          searchInput
+        ) {
 
-        specialtyFilter.value =
-          "all";
+          searchInput.value =
+            "";
+        }
+
+
+        if (
+          specialtyFilter
+        ) {
+
+          specialtyFilter.value =
+            "all";
+        }
+
 
         consultationFilter =
           "all";
@@ -1194,17 +2287,18 @@ document.addEventListener(
     );
 
 
-    // =========================
+    // =====================================
     // SIDEBAR
-    // =========================
+    // =====================================
 
     function openSidebar() {
 
-      sidebar.classList.add(
+      sidebar?.classList.add(
         "open"
       );
 
-      sidebarOverlay.classList.add(
+
+      sidebarOverlay?.classList.add(
         "show"
       );
     }
@@ -1212,46 +2306,54 @@ document.addEventListener(
 
     function closeSidebar() {
 
-      sidebar.classList.remove(
+      sidebar?.classList.remove(
         "open"
       );
 
-      sidebarOverlay.classList.remove(
+
+      sidebarOverlay?.classList.remove(
         "show"
       );
     }
 
 
-    menuButton.addEventListener(
+    menuButton?.addEventListener(
       "click",
       openSidebar
     );
 
 
-    sidebarClose.addEventListener(
+    sidebarClose?.addEventListener(
       "click",
       closeSidebar
     );
 
 
-    sidebarOverlay.addEventListener(
+    sidebarOverlay?.addEventListener(
       "click",
       closeSidebar
     );
 
+
+    // =====================================
+    // ESCAPE KEY
+    // =====================================
 
     document.addEventListener(
       "keydown",
       event => {
 
         if (
-          event.key !== "Escape"
+          event.key !==
+          "Escape"
         ) {
+
           return;
         }
 
 
         if (
+          profileModal &&
           !profileModal.hidden
         ) {
 
@@ -1265,15 +2367,16 @@ document.addEventListener(
     );
 
 
-    // =========================
+    // =====================================
     // LOGOUT
-    // =========================
+    // =====================================
 
-    logoutButton.addEventListener(
+    logoutButton?.addEventListener(
       "click",
       () => {
 
         sessionStorage.clear();
+
 
         window.location.href =
           "../piblic-pages/login.html";
@@ -1281,9 +2384,11 @@ document.addEventListener(
     );
 
 
-    // =========================
+    // =====================================
     // INIT
-    // =========================
+    // =====================================
+
+    populateSpecialtyFilter();
 
     renderSpecialists();
 

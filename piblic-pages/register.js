@@ -1567,7 +1567,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const destination =
               selectedRole === "parent"
                 ? "../pearent-cycel/onboarding.html"
-                : "specialist-onboarding.html";
+                : "../specialist-cycle/specialist-onboarding.html";
 
             window.location.href =
               destination;

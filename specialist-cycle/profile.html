@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Professional Profile | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="profile.css"
+  >
+  <link
+  rel="stylesheet"
+  href="specialist-notifications.css"
+>
+
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+  <!-- =================================
+       SIDEBAR
+  ================================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+
+        <div class="brand-mark">
+          R
+        </div>
+
+        <span>
+          RAFIQ
+        </span>
+
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="specialist-mini-card">
+
+      <div
+        class="specialist-avatar"
+        id="sidebarAvatar"
+      >
+        DR
+      </div>
+
+
+      <div class="specialist-info">
+
+        <span>
+          SPECIALIST
+        </span>
+
+        <strong id="sidebarName">
+          Specialist
+        </strong>
+
+        <small id="sidebarSpecialty">
+          Specialty
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="sidebar-status"
+      id="sidebarStatus"
+    >
+
+      <span class="status-dot"></span>
+
+      <span id="sidebarStatusText">
+        Profile Status
+      </span>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="specialist-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        Dashboard
+      </a>
+
+
+      <a
+        href="schedule.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▦</span>
+        Schedule
+      </a>
+
+
+      <span class="nav-section-title second">
+        PRACTICE
+      </span>
+
+
+      <a
+        href="specialist-bookings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◷</span>
+        Bookings
+      </a>
+
+
+      <a
+        href="clients.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">♡</span>
+        Clients / Cases
+      </a>
+
+
+      <a
+        href="availability.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◫</span>
+        Availability
+      </a>
+
+
+      <span class="nav-section-title second">
+        BUSINESS
+      </span>
+
+
+      <a
+        href="earnings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◇</span>
+        Earnings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="profile.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">◎</span>
+        Profile
+      </a>
+
+
+      <a
+        href="specialist-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        Settings
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =================================
+       MAIN
+  ================================== -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            ACCOUNT
+          </span>
+
+          <h1>
+            Professional Profile
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="specialist-dashboard.html"
+        class="back-button"
+      >
+        ← Dashboard
+      </a>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =================================
+           HERO
+      ================================== -->
+
+      <section class="profile-hero">
+
+        <div class="hero-profile">
+
+          <div
+            class="hero-avatar"
+            id="heroAvatar"
+          >
+            DR
+          </div>
+
+
+          <div>
+
+            <span class="hero-kicker">
+              PROFESSIONAL PROFILE
+            </span>
+
+            <h2 id="heroName">
+              Specialist
+            </h2>
+
+            <p id="heroSpecialty">
+              Specialty
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="hero-verification">
+
+          <span>
+            VERIFICATION
+          </span>
+
+          <strong
+            class="verification-badge"
+            id="verificationBadge"
+          >
+            Pending
+          </strong>
+
+        </div>
+
+      </section>
+
+
+      <!-- STATUS MESSAGE -->
+
+      <section
+        class="status-banner"
+        id="statusBanner"
+      >
+
+        <div
+          class="status-banner-icon"
+          id="statusBannerIcon"
+        >
+          i
+        </div>
+
+
+        <div>
+
+          <strong id="statusBannerTitle">
+            Profile under review
+          </strong>
+
+          <p id="statusBannerText">
+            Your professional information is being
+            reviewed by RAFIQ administration.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================
+           LAYOUT
+      ================================== -->
+
+      <div class="profile-layout">
+
+        <!-- LEFT -->
+
+        <div class="profile-main">
+
+          <!-- VERIFIED DATA -->
+
+          <section class="profile-card">
+
+            <div class="card-heading">
+
+              <div class="card-icon lavender">
+                ✓
+              </div>
+
+
+              <div>
+
+                <span class="section-kicker">
+                  VERIFIED INFORMATION
+                </span>
+
+                <h2>
+                  Professional identity
+                </h2>
+
+                <p>
+                  These fields come from your submitted
+                  verification profile.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="verified-note">
+
+              <span>
+                🔒
+              </span>
+
+              <p>
+                Verified professional information cannot
+                be changed directly from this page.
+                Changes would require administrative
+                review.
+              </p>
+
+            </div>
+
+
+            <div class="form-grid">
+
+              <div class="form-group">
+
+                <label for="fullName">
+                  Full Name
+                </label>
+
+                <input
+                  type="text"
+                  id="fullName"
+                  readonly
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="specialty">
+                  Specialty
+                </label>
+
+                <input
+                  type="text"
+                  id="specialty"
+                  readonly
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="qualification">
+                  Qualification
+                </label>
+
+                <input
+                  type="text"
+                  id="qualification"
+                  readonly
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="licenseNumber">
+                  License / Professional Number
+                </label>
+
+                <input
+                  type="text"
+                  id="licenseNumber"
+                  readonly
+                >
+
+              </div>
+
+            </div>
+
+
+            <div class="credential-row">
+
+              <div>
+
+                <span>
+                  VERIFICATION DOCUMENT
+                </span>
+
+                <strong id="credentialFile">
+                  No file name recorded
+                </strong>
+
+              </div>
+
+
+              <span
+                class="credential-status"
+                id="credentialStatus"
+              >
+                Pending Review
+              </span>
+
+            </div>
+
+          </section>
+
+
+          <!-- PUBLIC PROFILE -->
+
+          <section class="profile-card">
+
+            <div class="card-heading">
+
+              <div class="card-icon mint">
+                ◎
+              </div>
+
+
+              <div>
+
+                <span class="section-kicker">
+                  PUBLIC PROFILE
+                </span>
+
+                <h2>
+                  Profile details
+                </h2>
+
+                <p>
+                  These details help parents understand
+                  your experience and services.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="bio">
+                Professional Bio
+                <strong>*</strong>
+              </label>
+
+              <textarea
+                id="bio"
+                rows="7"
+                maxlength="1200"
+                placeholder="Tell families about your professional experience and approach..."
+              ></textarea>
+
+
+              <div class="field-footer">
+
+                <small
+                  class="field-error"
+                  id="bioError"
+                ></small>
+
+                <span id="bioCount">
+                  0 / 1200
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="experience">
+                Years of Experience
+                <strong>*</strong>
+              </label>
+
+              <input
+                type="number"
+                id="experience"
+                min="0"
+                max="60"
+              >
+
+              <small
+                class="field-error"
+                id="experienceError"
+              ></small>
+
+            </div>
+
+          </section>
+
+
+          <!-- CONSULTATION -->
+
+          <section class="profile-card">
+
+            <div class="card-heading">
+
+              <div class="card-icon sky">
+                ◷
+              </div>
+
+
+              <div>
+
+                <span class="section-kicker">
+                  SERVICES
+                </span>
+
+                <h2>
+                  Consultation preferences
+                </h2>
+
+                <p>
+                  Choose the consultation formats and
+                  languages displayed on your profile.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="option-section">
+
+              <label class="option-title">
+                Consultation Types
+              </label>
+
+
+              <div class="choice-grid">
+
+                <label class="choice-card">
+
+                  <input
+                    type="checkbox"
+                    name="consultationType"
+                    value="online"
+                  >
+
+                  <span>
+
+                    <strong>
+                      Online
+                    </strong>
+
+                    <small>
+                      Remote consultation
+                    </small>
+
+                  </span>
+
+                </label>
+
+
+                <label class="choice-card">
+
+                  <input
+                    type="checkbox"
+                    name="consultationType"
+                    value="in-person"
+                  >
+
+                  <span>
+
+                    <strong>
+                      In-person
+                    </strong>
+
+                    <small>
+                      Physical consultation
+                    </small>
+
+                  </span>
+
+                </label>
+
+              </div>
+
+
+              <small
+                class="field-error"
+                id="consultationTypeError"
+              ></small>
+
+            </div>
+
+
+            <div class="option-section">
+
+              <label class="option-title">
+                Languages
+              </label>
+
+
+              <div class="choice-grid">
+
+                <label class="choice-card">
+
+                  <input
+                    type="checkbox"
+                    name="language"
+                    value="arabic"
+                  >
+
+                  <span>
+
+                    <strong>
+                      Arabic
+                    </strong>
+
+                    <small>
+                      Consultation language
+                    </small>
+
+                  </span>
+
+                </label>
+
+
+                <label class="choice-card">
+
+                  <input
+                    type="checkbox"
+                    name="language"
+                    value="english"
+                  >
+
+                  <span>
+
+                    <strong>
+                      English
+                    </strong>
+
+                    <small>
+                      Consultation language
+                    </small>
+
+                  </span>
+
+                </label>
+
+              </div>
+
+
+              <small
+                class="field-error"
+                id="languageError"
+              ></small>
+
+            </div>
+
+
+            <div class="form-group fee-group">
+
+              <label for="sessionFee">
+                Session Fee
+                <strong>*</strong>
+              </label>
+
+
+              <div class="fee-input">
+
+                <input
+                  type="number"
+                  id="sessionFee"
+                  min="1"
+                  max="500"
+                  step="1"
+                >
+
+                <span>
+                  JOD
+                </span>
+
+              </div>
+
+
+              <small
+                class="field-error"
+                id="feeError"
+              ></small>
+
+            </div>
+
+          </section>
+
+
+          <!-- SAVE -->
+
+          <section class="save-bar">
+
+            <div>
+
+              <strong>
+                Update your public profile
+              </strong>
+
+              <span id="saveStatus">
+                No unsaved changes.
+              </span>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="save-button"
+              id="saveProfileButton"
+            >
+              Save Profile
+            </button>
+
+          </section>
+
+        </div>
+
+
+        <!-- =================================
+             PREVIEW
+        ================================== -->
+
+        <aside class="profile-side">
+
+          <section class="preview-card">
+
+            <span class="side-kicker">
+              PARENT PREVIEW
+            </span>
+
+
+            <div
+              class="preview-avatar"
+              id="previewAvatar"
+            >
+              DR
+            </div>
+
+
+            <h3 id="previewName">
+              Specialist
+            </h3>
+
+
+            <p
+              class="preview-specialty"
+              id="previewSpecialty"
+            >
+              Specialty
+            </p>
+
+
+            <div
+              class="preview-verified"
+              id="previewVerified"
+            >
+              ✓ Verified Specialist
+            </div>
+
+
+            <p
+              class="preview-bio"
+              id="previewBio"
+            >
+              Professional bio will appear here.
+            </p>
+
+
+            <div class="preview-stats">
+
+              <div>
+
+                <span>
+                  Experience
+                </span>
+
+                <strong id="previewExperience">
+                  —
+                </strong>
+
+              </div>
+
+
+              <div>
+
+                <span>
+                  Session
+                </span>
+
+                <strong id="previewPrice">
+                  —
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <div class="preview-section">
+
+              <span>
+                CONSULTATION
+              </span>
+
+              <div
+                class="tag-list"
+                id="previewConsultationTypes"
+              ></div>
+
+            </div>
+
+
+            <div class="preview-section">
+
+              <span>
+                LANGUAGES
+              </span>
+
+              <div
+                class="tag-list"
+                id="previewLanguages"
+              ></div>
+
+            </div>
+
+
+            <div class="preview-footnote">
+
+              <span>
+                i
+              </span>
+
+              <p>
+                Approved profiles can later be displayed
+                in the Parent Specialist Directory.
+              </p>
+
+            </div>
+
+          </section>
+
+        </aside>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+  class="toast"
+  id="saveToast"
+  hidden
+>
+
+  <span>
+    ✓
+  </span>
+
+  <div>
+
+    <strong>
+      Profile updated
+    </strong>
+
+    <p>
+      Your professional profile has been saved.
+    </p>
+
+  </div>
+
+</div>
+
+
+<script src="profile.js"></script>
+<script src="specialist-notifications.js"></script>
+</body>
+</html>

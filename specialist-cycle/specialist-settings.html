@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Settings | RAFIQ Specialist</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="specialist-settings.css"
+  >
+  <link
+  rel="stylesheet"
+  href="specialist-notifications.css"
+>
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+  <!-- =========================
+       SIDEBAR
+  ========================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+
+        <div class="brand-mark">
+          R
+        </div>
+
+        <span>
+          RAFIQ
+        </span>
+
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="specialist-mini-card">
+
+      <div
+        class="specialist-avatar"
+        id="sidebarAvatar"
+      >
+        DR
+      </div>
+
+
+      <div class="specialist-info">
+
+        <span>
+          SPECIALIST
+        </span>
+
+        <strong id="sidebarName">
+          Specialist
+        </strong>
+
+        <small id="sidebarSpecialty">
+          Specialty
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="sidebar-status"
+      id="sidebarStatus"
+    >
+
+      <span class="status-dot"></span>
+
+      <span id="sidebarStatusText">
+        Profile Status
+      </span>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="specialist-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        Dashboard
+      </a>
+
+
+      <a
+        href="schedule.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▦</span>
+        Schedule
+      </a>
+
+
+      <span class="nav-section-title second">
+        PRACTICE
+      </span>
+
+
+      <a
+        href="specialist-bookings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◷</span>
+        Bookings
+      </a>
+
+
+      <a
+        href="clients.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">♡</span>
+        Clients / Cases
+      </a>
+
+
+      <a
+        href="availability.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◫</span>
+        Availability
+      </a>
+
+
+      <span class="nav-section-title second">
+        BUSINESS
+      </span>
+
+
+      <a
+        href="earnings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◇</span>
+        Earnings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="profile.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◎</span>
+        Profile
+      </a>
+
+
+      <a
+        href="specialist-settings.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">⚙</span>
+        Settings
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            ACCOUNT
+          </span>
+
+          <h1>
+            Settings
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="profile.html"
+        class="profile-button"
+      >
+        View Profile
+      </a>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =========================
+           HERO
+      ========================== -->
+
+      <section class="settings-hero">
+
+        <div>
+
+          <span class="hero-kicker">
+            ACCOUNT PREFERENCES
+          </span>
+
+          <h2>
+            Make RAFIQ work
+            <span>the way you prefer.</span>
+          </h2>
+
+          <p>
+            Manage your account contact information,
+            notification preferences and basic
+            application settings.
+          </p>
+
+        </div>
+
+
+        <div class="hero-account">
+
+          <div
+            class="hero-avatar"
+            id="heroAvatar"
+          >
+            DR
+          </div>
+
+          <strong id="heroName">
+            Specialist
+          </strong>
+
+          <span id="heroEmail">
+            email@example.com
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <div class="settings-layout">
+
+        <!-- =========================
+             SETTINGS NAV
+        ========================== -->
+
+        <aside class="settings-nav-card">
+
+          <span class="nav-kicker">
+            SETTINGS
+          </span>
+
+
+          <button
+            type="button"
+            class="settings-nav-button active"
+            data-section="account"
+          >
+            <span>◎</span>
+
+            <div>
+              <strong>
+                Account
+              </strong>
+
+              <small>
+                Contact information
+              </small>
+            </div>
+          </button>
+
+
+          <button
+            type="button"
+            class="settings-nav-button"
+            data-section="preferences"
+          >
+            <span>◫</span>
+
+            <div>
+              <strong>
+                Preferences
+              </strong>
+
+              <small>
+                Language and display
+              </small>
+            </div>
+          </button>
+
+
+          <button
+            type="button"
+            class="settings-nav-button"
+            data-section="notifications"
+          >
+            <span>♢</span>
+
+            <div>
+              <strong>
+                Notifications
+              </strong>
+
+              <small>
+                Alerts and reminders
+              </small>
+            </div>
+          </button>
+
+
+          <button
+            type="button"
+            class="settings-nav-button"
+            data-section="security"
+          >
+            <span>⌾</span>
+
+            <div>
+              <strong>
+                Security
+              </strong>
+
+              <small>
+                Password settings
+              </small>
+            </div>
+          </button>
+
+        </aside>
+
+
+        <!-- =========================
+             PANELS
+        ========================== -->
+
+        <div class="settings-content">
+
+          <!-- =========================
+               ACCOUNT
+          ========================== -->
+
+          <section
+            class="settings-panel active"
+            id="accountPanel"
+          >
+
+            <div class="panel-heading">
+
+              <div class="panel-icon mint">
+                ◎
+              </div>
+
+
+              <div>
+
+                <span class="section-kicker">
+                  ACCOUNT
+                </span>
+
+                <h2>
+                  Account information
+                </h2>
+
+                <p>
+                  Manage basic contact information for
+                  your RAFIQ specialist account.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="account-status-card">
+
+              <div>
+
+                <span>
+                  ACCOUNT STATUS
+                </span>
+
+                <strong id="accountStatusText">
+                  Pending Review
+                </strong>
+
+              </div>
+
+
+              <span
+                class="status-badge"
+                id="accountStatusBadge"
+              >
+                Pending
+              </span>
+
+            </div>
+
+
+            <div class="form-grid">
+
+              <div class="form-group">
+
+                <label for="accountName">
+                  Full Name
+                </label>
+
+                <input
+                  type="text"
+                  id="accountName"
+                  readonly
+                >
+
+                <small>
+                  Managed from your professional
+                  verification profile.
+                </small>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="accountEmail">
+                  Email Address
+                </label>
+
+                <input
+                  type="email"
+                  id="accountEmail"
+                  readonly
+                >
+
+                <small>
+                  Used as your specialist account
+                  identity.
+                </small>
+
+              </div>
+
+
+              <div class="form-group full">
+
+                <label for="accountPhone">
+                  Phone Number
+                  <strong>*</strong>
+                </label>
+
+                <input
+                  type="tel"
+                  id="accountPhone"
+                  maxlength="25"
+                  placeholder="+962 ..."
+                >
+
+                <small
+                  class="field-error"
+                  id="phoneError"
+                ></small>
+
+              </div>
+
+            </div>
+
+
+            <div class="panel-action-bar">
+
+              <div>
+
+                <strong>
+                  Contact settings
+                </strong>
+
+                <span id="accountSaveStatus">
+                  No unsaved changes.
+                </span>
+
+              </div>
+
+
+              <button
+                type="button"
+                class="primary-button"
+                id="saveAccountButton"
+              >
+                Save Account
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- =========================
+               PREFERENCES
+          ========================== -->
+
+          <section
+            class="settings-panel"
+            id="preferencesPanel"
+            hidden
+          >
+
+            <div class="panel-heading">
+
+              <div class="panel-icon lavender">
+                ◫
+              </div>
+
+
+              <div>
+
+                <span class="section-kicker">
+                  PREFERENCES
+                </span>
+
+                <h2>
+                  Application preferences
+                </h2>
+
+                <p>
+                  Choose how you prefer to use RAFIQ.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="setting-block">
+
+              <div class="setting-copy">
+
+                <strong>
+                  Interface Language
+                </strong>
+
+                <span>
+                  Choose your preferred RAFIQ language.
+                </span>
+
+              </div>
+
+
+              <select id="languageSelect">
+
+                <option value="en">
+                  English
+                </option>
+
+                <option value="ar">
+                  العربية
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="preference-note">
+
+              <span>
+                i
+              </span>
+
+              <p>
+                Language preference is saved in this
+                prototype. Full Arabic interface
+                switching will be connected with the
+                platform language system later.
+              </p>
+
+            </div>
+
+
+            <div class="panel-action-bar">
+
+              <div>
+
+                <strong>
+                  Application preferences
+                </strong>
+
+                <span id="preferencesSaveStatus">
+                  No unsaved changes.
+                </span>
+
+              </div>
+
+
+              <button
+                type="button"
+                class="primary-button"
+                id="savePreferencesButton"
+              >
+                Save Preferences
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- =========================
+               NOTIFICATIONS
+          ========================== -->
+
+          <section
+            class="settings-panel"
+            id="notificationsPanel"
+            hidden
+          >
+
+            <div class="panel-heading">
+
+              <div class="panel-icon sky">
+                ♢
+              </div>
+
+
+              <div>
+
+                <span class="section-kicker">
+                  NOTIFICATIONS
+                </span>
+
+                <h2>
+                  Notification preferences
+                </h2>
+
+                <p>
+                  Choose the specialist events you want
+                  RAFIQ to alert you about.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="notification-list">
+
+              <!-- NEW BOOKING -->
+
+              <div class="notification-row">
+
+                <div>
+
+                  <strong>
+                    New Bookings
+                  </strong>
+
+                  <span>
+                    Receive an alert when a parent books
+                    a consultation with you.
+                  </span>
+
+                </div>
+
+
+                <label class="switch">
+
+                  <input
+                    type="checkbox"
+                    id="newBookingNotification"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+
+              <!-- CHANGES -->
+
+              <div class="notification-row">
+
+                <div>
+
+                  <strong>
+                    Booking Changes
+                  </strong>
+
+                  <span>
+                    Receive alerts for cancellations or
+                    appointment updates.
+                  </span>
+
+                </div>
+
+
+                <label class="switch">
+
+                  <input
+                    type="checkbox"
+                    id="bookingChangesNotification"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+
+              <!-- REMINDER -->
+
+              <div class="notification-row">
+
+                <div>
+
+                  <strong>
+                    Consultation Reminders
+                  </strong>
+
+                  <span>
+                    Get reminders before upcoming
+                    consultations.
+                  </span>
+
+                </div>
+
+
+                <label class="switch">
+
+                  <input
+                    type="checkbox"
+                    id="reminderNotification"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+
+              <!-- REPORT -->
+
+              <div class="notification-row">
+
+                <div>
+
+                  <strong>
+                    Report Follow-up
+                  </strong>
+
+                  <span>
+                    Receive reminders when a completed
+                    session still needs a report.
+                  </span>
+
+                </div>
+
+
+                <label class="switch">
+
+                  <input
+                    type="checkbox"
+                    id="reportNotification"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+
+              <!-- EARNINGS -->
+
+              <div class="notification-row">
+
+                <div>
+
+                  <strong>
+                    Earnings Updates
+                  </strong>
+
+                  <span>
+                    Receive updates when a completed
+                    consultation is recorded in earnings.
+                  </span>
+
+                </div>
+
+
+                <label class="switch">
+
+                  <input
+                    type="checkbox"
+                    id="earningsNotification"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+            </div>
+
+
+            <div class="channel-section">
+
+              <span class="channel-title">
+                NOTIFICATION CHANNELS
+              </span>
+
+
+              <label class="channel-card">
+
+                <input
+                  type="checkbox"
+                  id="inAppChannel"
+                >
+
+                <div>
+
+                  <strong>
+                    In-app notifications
+                  </strong>
+
+                  <span>
+                    Show notifications inside RAFIQ.
+                  </span>
+
+                </div>
+
+              </label>
+
+
+              <label class="channel-card">
+
+                <input
+                  type="checkbox"
+                  id="emailChannel"
+                >
+
+                <div>
+
+                  <strong>
+                    Email notifications
+                  </strong>
+
+                  <span>
+                    Save preference for email alerts.
+                    Actual email delivery requires backend
+                    integration.
+                  </span>
+
+                </div>
+
+              </label>
+
+            </div>
+
+
+            <div class="panel-action-bar">
+
+              <div>
+
+                <strong>
+                  Notification settings
+                </strong>
+
+                <span id="notificationSaveStatus">
+                  No unsaved changes.
+                </span>
+
+              </div>
+
+
+              <button
+                type="button"
+                class="primary-button"
+                id="saveNotificationsButton"
+              >
+                Save Notifications
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- =========================
+               SECURITY
+          ========================== -->
+
+          <section
+            class="settings-panel"
+            id="securityPanel"
+            hidden
+          >
+
+            <div class="panel-heading">
+
+              <div class="panel-icon peach">
+                ⌾
+              </div>
+
+
+              <div>
+
+                <span class="section-kicker">
+                  SECURITY
+                </span>
+
+                <h2>
+                  Password & security
+                </h2>
+
+                <p>
+                  This frontend demonstrates the account
+                  security interface only.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="security-warning">
+
+              <span>
+                !
+              </span>
+
+              <p>
+                RAFIQ's current frontend prototype does
+                not provide secure password
+                authentication. Password changes require
+                backend authentication and must never be
+                stored in localStorage.
+              </p>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="currentPassword">
+                Current Password
+              </label>
+
+              <div class="password-field">
+
+                <input
+                  type="password"
+                  id="currentPassword"
+                  autocomplete="current-password"
+                  placeholder="Enter current password"
+                >
+
+                <button
+                  type="button"
+                  class="password-toggle"
+                  data-target="currentPassword"
+                >
+                  Show
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div class="form-grid security-grid">
+
+              <div class="form-group">
+
+                <label for="newPassword">
+                  New Password
+                </label>
+
+                <div class="password-field">
+
+                  <input
+                    type="password"
+                    id="newPassword"
+                    autocomplete="new-password"
+                    placeholder="At least 8 characters"
+                  >
+
+                  <button
+                    type="button"
+                    class="password-toggle"
+                    data-target="newPassword"
+                  >
+                    Show
+                  </button>
+
+                </div>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="confirmPassword">
+                  Confirm New Password
+                </label>
+
+                <div class="password-field">
+
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    autocomplete="new-password"
+                    placeholder="Repeat new password"
+                  >
+
+                  <button
+                    type="button"
+                    class="password-toggle"
+                    data-target="confirmPassword"
+                  >
+                    Show
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <small
+              class="field-error"
+              id="passwordError"
+            ></small>
+
+
+            <div class="panel-action-bar">
+
+              <div>
+
+                <strong>
+                  Password change
+                </strong>
+
+                <span>
+                  Demonstration only — no password is
+                  stored.
+                </span>
+
+              </div>
+
+
+              <button
+                type="button"
+                class="primary-button"
+                id="updatePasswordButton"
+              >
+                Update Password
+              </button>
+
+            </div>
+
+
+            <!-- SESSION -->
+
+            <div class="session-section">
+
+              <div>
+
+                <span class="section-kicker">
+                  SESSION
+                </span>
+
+                <h3>
+                  Sign out of RAFIQ
+                </h3>
+
+                <p>
+                  End the current specialist session on
+                  this browser.
+                </p>
+
+              </div>
+
+
+              <button
+                type="button"
+                class="danger-button"
+                id="securityLogoutButton"
+              >
+                Log Out
+              </button>
+
+            </div>
+
+          </section>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- =========================
+     TOAST
+========================== -->
+
+<div
+  class="toast"
+  id="settingsToast"
+  hidden
+>
+
+  <span id="toastIcon">
+    ✓
+  </span>
+
+  <div>
+
+    <strong id="toastTitle">
+      Settings saved
+    </strong>
+
+    <p id="toastMessage">
+      Your preferences have been updated.
+    </p>
+
+  </div>
+
+</div>
+
+
+<script src="specialist-settings.js"></script>
+<script src="specialist-notifications.js"></script>
+</body>
+</html>

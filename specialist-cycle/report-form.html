@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Consultation Report | RAFIQ Specialist</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="report-form.css"
+  >
+<link
+  rel="stylesheet"
+  href="specialist-notifications.css"
+>
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+  <!-- =========================
+       SIDEBAR
+  ========================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+
+        <div class="brand-mark">
+          R
+        </div>
+
+        <span>
+          RAFIQ
+        </span>
+
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="specialist-mini-card">
+
+      <div
+        class="specialist-avatar"
+        id="sidebarAvatar"
+      >
+        DR
+      </div>
+
+
+      <div class="specialist-info">
+
+        <span>
+          SPECIALIST
+        </span>
+
+        <strong id="sidebarName">
+          Specialist
+        </strong>
+
+        <small id="sidebarSpecialty">
+          Specialty
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <div class="sidebar-status">
+
+      <span class="status-dot"></span>
+
+      <span>
+        Approved
+      </span>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-section-title">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="specialist-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        Dashboard
+      </a>
+
+
+      <a
+        href="schedule.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▦</span>
+        Schedule
+      </a>
+
+
+      <span class="nav-section-title second">
+        PRACTICE
+      </span>
+
+
+      <a
+        href="specialist-bookings.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">◷</span>
+        Bookings
+      </a>
+
+
+      <a
+        href="clients.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">♡</span>
+        Clients / Cases
+      </a>
+
+
+      <a
+        href="availability.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◫</span>
+        Availability
+      </a>
+
+
+      <span class="nav-section-title second">
+        BUSINESS
+      </span>
+
+
+      <a
+        href="earnings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◇</span>
+        Earnings
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="profile.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◎</span>
+        Profile
+      </a>
+
+
+      <a
+        href="specialist-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        Settings
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            PROFESSIONAL REPORT
+          </span>
+
+          <h1>
+            Consultation Report
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="consultation.html"
+        class="back-button"
+      >
+        ← Consultation
+      </a>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =========================
+           APPROVAL LOCK
+      ========================== -->
+
+      <section
+        class="state-card"
+        id="lockedView"
+        hidden
+      >
+
+        <div class="state-icon warning">
+          ◷
+        </div>
+
+        <span>
+          PROFILE APPROVAL REQUIRED
+        </span>
+
+        <h2>
+          Reports are not available yet.
+        </h2>
+
+        <p>
+          Your specialist profile must be approved
+          before consultation reports can be created.
+        </p>
+
+        <a href="specialist-dashboard.html">
+          Back to Dashboard
+        </a>
+
+      </section>
+
+
+      <!-- =========================
+           NOT FOUND
+      ========================== -->
+
+      <section
+        class="state-card"
+        id="emptyView"
+        hidden
+      >
+
+        <div class="state-icon lavender">
+          ◫
+        </div>
+
+        <span>
+          CONSULTATION NOT FOUND
+        </span>
+
+        <h2>
+          Select a completed consultation first.
+        </h2>
+
+        <p>
+          Return to your bookings and open a completed
+          consultation before preparing its report.
+        </p>
+
+        <a href="specialist-bookings.html">
+          View My Bookings
+        </a>
+
+      </section>
+
+
+      <!-- =========================
+           NOT COMPLETED
+      ========================== -->
+
+      <section
+        class="state-card"
+        id="notCompletedView"
+        hidden
+      >
+
+        <div class="state-icon warning">
+          !
+        </div>
+
+        <span>
+          CONSULTATION IN PROGRESS
+        </span>
+
+        <h2>
+          Complete the consultation first.
+        </h2>
+
+        <p>
+          A professional report can only be submitted
+          after the consultation has been marked as
+          completed.
+        </p>
+
+        <a href="consultation.html">
+          Return to Consultation
+        </a>
+
+      </section>
+
+
+      <!-- =========================
+           REPORT VIEW
+      ========================== -->
+
+      <section
+        id="reportView"
+        hidden
+      >
+
+        <!-- HERO -->
+
+        <section class="report-hero">
+
+          <div>
+
+            <span class="hero-kicker">
+              SPECIALIST-AUTHORED REPORT
+            </span>
+
+            <h2>
+              Prepare a clear follow-up
+              <span>for the family.</span>
+            </h2>
+
+            <p>
+              Summarize the consultation using
+              professional, family-friendly language.
+              This report will become visible to the
+              parent after submission.
+            </p>
+
+          </div>
+
+
+          <div class="report-status-card">
+
+            <span>
+              REPORT STATUS
+            </span>
+
+            <strong
+              class="report-status draft"
+              id="reportStatus"
+            >
+              Draft
+            </strong>
+
+          </div>
+
+        </section>
+
+
+        <!-- DISCLAIMER -->
+
+        <div class="important-note">
+
+          <span>
+            i
+          </span>
+
+          <p>
+            The consultation report is written and
+            submitted by the specialist. RAFIQ AI does
+            not generate or modify professional findings
+            in this prototype.
+          </p>
+
+        </div>
+
+
+        <!-- SUMMARY BAR -->
+
+        <section class="booking-summary">
+
+          <div>
+
+            <span>
+              Child
+            </span>
+
+            <strong id="summaryChild">
+              —
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Date
+            </span>
+
+            <strong id="summaryDate">
+              —
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Consultation
+            </span>
+
+            <strong id="summaryType">
+              —
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Booking Reference
+            </span>
+
+            <strong id="summaryReference">
+              —
+            </strong>
+
+          </div>
+
+        </section>
+
+
+        <div class="report-layout">
+
+          <!-- =========================
+               FORM
+          ========================== -->
+
+          <div class="report-main">
+
+            <section class="report-card">
+
+              <div class="card-heading">
+
+                <div class="card-number">
+                  01
+                </div>
+
+
+                <div>
+
+                  <span class="section-kicker">
+                    CONSULTATION SUMMARY
+                  </span>
+
+                  <h2>
+                    Professional summary
+                  </h2>
+
+                </div>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="reportSummary">
+                  Summary
+                  <strong>*</strong>
+                </label>
+
+                <textarea
+                  id="reportSummary"
+                  maxlength="1800"
+                  rows="6"
+                  placeholder="Summarize the consultation, the main concern discussed, and the overall professional impression..."
+                ></textarea>
+
+                <div class="field-footer">
+
+                  <small
+                    class="field-error"
+                    id="summaryError"
+                  ></small>
+
+                  <span id="summaryCount">
+                    0 / 1800
+                  </span>
+
+                </div>
+
+              </div>
+
+            </section>
+
+
+            <!-- OBSERVATIONS -->
+
+            <section class="report-card">
+
+              <div class="card-heading">
+
+                <div class="card-number">
+                  02
+                </div>
+
+
+                <div>
+
+                  <span class="section-kicker">
+                    PROFESSIONAL FINDINGS
+                  </span>
+
+                  <h2>
+                    Key observations
+                  </h2>
+
+                </div>
+
+              </div>
+
+
+              <p class="helper-text">
+                Write one observation per line. These
+                items will appear as a list in the
+                parent's report.
+              </p>
+
+
+              <div class="form-group">
+
+                <label for="reportObservations">
+                  Observations
+                  <strong>*</strong>
+                </label>
+
+                <textarea
+                  id="reportObservations"
+                  maxlength="2200"
+                  rows="7"
+                  placeholder="Example:
+Good engagement during structured activities
+Expressive vocabulary was appropriate for the task
+Some difficulty was observed with..."
+                ></textarea>
+
+                <div class="field-footer">
+
+                  <small
+                    class="field-error"
+                    id="observationsError"
+                  ></small>
+
+                  <span id="observationsCount">
+                    0 / 2200
+                  </span>
+
+                </div>
+
+              </div>
+
+            </section>
+
+
+            <!-- RECOMMENDATIONS -->
+
+            <section class="report-card">
+
+              <div class="card-heading">
+
+                <div class="card-number">
+                  03
+                </div>
+
+
+                <div>
+
+                  <span class="section-kicker">
+                    NEXT STEPS
+                  </span>
+
+                  <h2>
+                    Recommendations
+                  </h2>
+
+                </div>
+
+              </div>
+
+
+              <p class="helper-text">
+                Add one recommendation per line. Keep
+                the wording practical and clear for
+                parents.
+              </p>
+
+
+              <div class="form-group">
+
+                <label for="reportRecommendations">
+                  Recommendations
+                  <strong>*</strong>
+                </label>
+
+                <textarea
+                  id="reportRecommendations"
+                  maxlength="2200"
+                  rows="7"
+                  placeholder="Example:
+Practice short language activities at home
+Allow extra response time during conversation
+Schedule a follow-up consultation in..."
+                ></textarea>
+
+                <div class="field-footer">
+
+                  <small
+                    class="field-error"
+                    id="recommendationsError"
+                  ></small>
+
+                  <span id="recommendationsCount">
+                    0 / 2200
+                  </span>
+
+                </div>
+
+              </div>
+
+            </section>
+
+
+            <!-- FOLLOW UP -->
+
+            <section class="report-card">
+
+              <div class="card-heading">
+
+                <div class="card-number">
+                  04
+                </div>
+
+
+                <div>
+
+                  <span class="section-kicker">
+                    FOLLOW-UP
+                  </span>
+
+                  <h2>
+                    Follow-up plan
+                  </h2>
+
+                </div>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="followUp">
+                  Follow-up
+                  <strong>*</strong>
+                </label>
+
+                <textarea
+                  id="followUp"
+                  maxlength="1000"
+                  rows="4"
+                  placeholder="Describe whether follow-up is recommended and the suggested next step..."
+                ></textarea>
+
+                <div class="field-footer">
+
+                  <small
+                    class="field-error"
+                    id="followUpError"
+                  ></small>
+
+                  <span id="followUpCount">
+                    0 / 1000
+                  </span>
+
+                </div>
+
+              </div>
+
+            </section>
+
+
+            <!-- NOTE -->
+
+            <section class="report-card">
+
+              <div class="card-heading">
+
+                <div class="card-number">
+                  05
+                </div>
+
+
+                <div>
+
+                  <span class="section-kicker">
+                    FAMILY NOTE
+                  </span>
+
+                  <h2>
+                    Specialist note
+                  </h2>
+
+                </div>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="specialistNote">
+                  Note to Parent
+                  <span class="optional">
+                    Optional
+                  </span>
+                </label>
+
+                <textarea
+                  id="specialistNote"
+                  maxlength="1000"
+                  rows="4"
+                  placeholder="Add a short closing note for the parent..."
+                ></textarea>
+
+                <div class="field-footer">
+
+                  <small></small>
+
+                  <span id="specialistNoteCount">
+                    0 / 1000
+                  </span>
+
+                </div>
+
+              </div>
+
+            </section>
+
+
+            <!-- ACTION BAR -->
+
+            <section class="action-bar">
+
+              <div>
+
+                <strong id="actionTitle">
+                  Report is not submitted yet.
+                </strong>
+
+                <span id="draftStatus">
+                  You can save a draft and continue later.
+                </span>
+
+              </div>
+
+
+              <div class="action-buttons">
+
+                <button
+                  type="button"
+                  class="draft-button"
+                  id="saveDraftButton"
+                >
+                  Save Draft
+                </button>
+
+
+                <button
+                  type="button"
+                  class="submit-button"
+                  id="submitReportButton"
+                >
+                  Submit Report
+                  <span>→</span>
+                </button>
+
+              </div>
+
+            </section>
+
+          </div>
+
+
+          <!-- =========================
+               REFERENCE PANEL
+          ========================== -->
+
+          <aside class="report-side">
+
+            <section class="side-card">
+
+              <span class="side-kicker">
+                CLIENT
+              </span>
+
+
+              <div class="client-row">
+
+                <div
+                  class="client-avatar"
+                  id="childAvatar"
+                >
+                  C
+                </div>
+
+
+                <div>
+
+                  <strong id="childName">
+                    Child
+                  </strong>
+
+                  <span id="childAge">
+                    Consultation client
+                  </span>
+
+                </div>
+
+              </div>
+
+            </section>
+
+
+            <!-- PRIVATE REFERENCE -->
+
+            <section class="side-card reference-card">
+
+              <span class="side-kicker">
+                PRIVATE REFERENCE
+              </span>
+
+              <h3>
+                Consultation notes
+              </h3>
+
+              <p>
+                These notes are shown only here as a
+                drafting reference. They are not
+                automatically copied into the parent
+                report.
+              </p>
+
+
+              <div class="reference-section">
+
+                <span>
+                  Key observations
+                </span>
+
+                <p id="privateObservations">
+                  No observations recorded.
+                </p>
+
+              </div>
+
+
+              <div class="reference-section">
+
+                <span>
+                  Initial next steps
+                </span>
+
+                <p id="privateNextSteps">
+                  No initial next steps recorded.
+                </p>
+
+              </div>
+
+            </section>
+
+
+            <!-- WORKFLOW -->
+
+            <section class="side-card">
+
+              <span class="side-kicker">
+                REPORT WORKFLOW
+              </span>
+
+
+              <div class="workflow-item complete">
+
+                <span>
+                  ✓
+                </span>
+
+                <div>
+
+                  <strong>
+                    Consultation completed
+                  </strong>
+
+                  <small>
+                    Professional session finished
+                  </small>
+
+                </div>
+
+              </div>
+
+
+              <div
+                class="workflow-item active"
+                id="draftWorkflow"
+              >
+
+                <span>
+                  2
+                </span>
+
+                <div>
+
+                  <strong>
+                    Prepare report
+                  </strong>
+
+                  <small>
+                    Specialist-authored summary
+                  </small>
+
+                </div>
+
+              </div>
+
+
+              <div
+                class="workflow-item"
+                id="submitWorkflow"
+              >
+
+                <span>
+                  3
+                </span>
+
+                <div>
+
+                  <strong>
+                    Share with parent
+                  </strong>
+
+                  <small id="submitWorkflowText">
+                    Submit when ready
+                  </small>
+
+                </div>
+
+              </div>
+
+            </section>
+
+          </aside>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- =========================
+     SUBMIT CONFIRMATION
+========================== -->
+
+<div
+  class="modal-backdrop"
+  id="submitModal"
+  hidden
+>
+
+  <div class="confirmation-modal">
+
+    <div class="modal-icon">
+      ✓
+    </div>
+
+    <span>
+      SUBMIT PROFESSIONAL REPORT
+    </span>
+
+    <h2>
+      Share this report with the parent?
+    </h2>
+
+    <p>
+      Once submitted, the report becomes available in
+      the parent's RAFIQ account. Review the information
+      carefully before continuing.
+    </p>
+
+
+    <div class="modal-actions">
+
+      <button
+        type="button"
+        class="modal-cancel"
+        id="cancelSubmitButton"
+      >
+        Review Again
+      </button>
+
+
+      <button
+        type="button"
+        class="modal-confirm"
+        id="confirmSubmitButton"
+      >
+        Submit Report
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+  class="toast"
+  id="saveToast"
+  hidden
+>
+
+  <span>
+    ✓
+  </span>
+
+  <div>
+
+    <strong id="toastTitle">
+      Draft saved
+    </strong>
+
+    <p id="toastMessage">
+      Your report draft has been saved.
+    </p>
+
+  </div>
+
+</div>
+
+
+<script src="report-form.js"></script>
+<script src="specialist-notifications.js"></script>
+</body>
+</html>

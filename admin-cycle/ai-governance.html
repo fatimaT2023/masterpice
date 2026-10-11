@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>AI Governance | RAFIQ Admin</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="ai-governance.css"
+  >
+
+</head>
+
+
+<body>
+
+<div class="admin-shell">
+
+  <!-- =====================================
+       SIDEBAR
+  ====================================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+
+        <span class="brand-mark">
+          R
+        </span>
+
+        <div>
+
+          <strong>
+            RAFIQ
+          </strong>
+
+          <small>
+            Administration
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <section class="admin-card">
+
+      <div class="admin-avatar">
+        A
+      </div>
+
+      <div>
+
+        <span>
+          PLATFORM ADMIN
+        </span>
+
+        <strong id="adminSidebarName">
+          RAFIQ Admin
+        </strong>
+
+        <small>
+          Control Center
+        </small>
+
+      </div>
+
+    </section>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-label">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="admin-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+
+      <a
+        href="reports-analytics.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌁</span>
+        <span>Reports & Analytics</span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        SPECIALISTS
+      </span>
+
+
+      <a
+        href="specialist-approvals.html"
+        class="nav-link"
+      >
+
+        <span class="nav-icon">✓</span>
+
+        <span>
+          Specialist Approvals
+        </span>
+
+        <span
+          class="nav-count"
+          id="approvalNavCount"
+          hidden
+        >
+          0
+        </span>
+
+      </a>
+
+
+      <a
+        href="specialists-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◎</span>
+        <span>Specialists</span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        PLATFORM
+      </span>
+
+
+      <a
+        href="content-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▤</span>
+        <span>Content Management</span>
+      </a>
+
+
+      <a
+        href="ai-governance.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">✦</span>
+        <span>AI Governance</span>
+      </a>
+
+
+      <a
+        href="bookings-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▦</span>
+        <span>Bookings</span>
+      </a>
+
+
+      <a
+        href="billing-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◇</span>
+        <span>Billing & Subscriptions</span>
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="admin-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        <span>Admin Settings</span>
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        <span>Log Out</span>
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =====================================
+       MAIN
+  ====================================== -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            AI OVERSIGHT
+          </span>
+
+          <h1>
+            AI Governance
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <div class="governance-pill">
+
+        <span></span>
+
+        Human-supervised rules
+
+      </div>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =====================================
+           HERO
+      ====================================== -->
+
+      <section class="hero">
+
+        <div>
+
+          <span class="hero-kicker">
+            RESPONSIBLE AI
+          </span>
+
+          <h2>
+            Control what the AI
+            <span>knows and how it responds.</span>
+          </h2>
+
+          <p>
+            Maintain reviewed guidance and safety rules
+            used to support the RAFIQ parent assistant.
+            The AI provides supportive information and
+            does not diagnose children.
+          </p>
+
+        </div>
+
+
+        <div class="hero-safety-card">
+
+          <div class="hero-safety-icon">
+            !
+          </div>
+
+          <span>
+            SAFETY PRINCIPLE
+          </span>
+
+          <strong>
+            Human review stays in control.
+          </strong>
+
+          <p>
+            Critical safety rules should interrupt normal
+            assistant behavior and direct families toward
+            appropriate professional or emergency support.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
+           METRICS
+      ====================================== -->
+
+      <section class="metrics-grid">
+
+        <article class="metric-card">
+
+          <div class="metric-icon mint">
+            ▤
+          </div>
+
+          <div>
+
+            <span>
+              Knowledge Entries
+            </span>
+
+            <strong id="knowledgeCount">
+              0
+            </strong>
+
+            <small>
+              Curated AI guidance
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon lavender">
+            ✓
+          </div>
+
+          <div>
+
+            <span>
+              Active Knowledge
+            </span>
+
+            <strong id="activeKnowledgeCount">
+              0
+            </strong>
+
+            <small>
+              Available to the prototype
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon sun">
+            !
+          </div>
+
+          <div>
+
+            <span>
+              Safety Rules
+            </span>
+
+            <strong id="safetyCount">
+              0
+            </strong>
+
+            <small>
+              Red-flag rules
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon peach">
+            ⚑
+          </div>
+
+          <div>
+
+            <span>
+              Critical Rules
+            </span>
+
+            <strong id="criticalCount">
+              0
+            </strong>
+
+            <small>
+              Highest urgency
+            </small>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- =====================================
+           GOVERNANCE PANEL
+      ====================================== -->
+
+      <section class="governance-panel">
+
+        <!-- TABS -->
+
+        <div class="tabs">
+
+          <button
+            type="button"
+            class="tab active"
+            data-tab="knowledge"
+          >
+            <span>▤</span>
+
+            Knowledge Base
+          </button>
+
+
+          <button
+            type="button"
+            class="tab"
+            data-tab="safety"
+          >
+            <span>!</span>
+
+            Safety & Red Flags
+          </button>
+
+        </div>
+
+
+        <!-- HEADING -->
+
+        <div class="section-heading">
+
+          <div>
+
+            <span
+              class="section-kicker"
+              id="sectionKicker"
+            >
+              CURATED GUIDANCE
+            </span>
+
+            <h2 id="sectionTitle">
+              AI Knowledge Base
+            </h2>
+
+            <p id="sectionDescription">
+              Reviewed guidance that can support the parent assistant.
+            </p>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="add-button"
+            id="addButton"
+          >
+            <span>＋</span>
+
+            <span id="addButtonText">
+              Add Knowledge
+            </span>
+          </button>
+
+        </div>
+
+
+        <!-- NOTICE -->
+
+        <div
+          class="governance-notice"
+          id="governanceNotice"
+        >
+
+          <span>
+            i
+          </span>
+
+          <p id="governanceNoticeText">
+            Knowledge entries should be educational,
+            cautious and suitable for parent guidance.
+          </p>
+
+        </div>
+
+
+        <!-- TOOLBAR -->
+
+        <div class="toolbar">
+
+          <div class="search-box">
+
+            <span>
+              ⌕
+            </span>
+
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="Search knowledge..."
+            >
+
+          </div>
+
+
+          <div class="filters">
+
+            <select
+              id="categoryFilter"
+            >
+              <option value="all">
+                All categories
+              </option>
+            </select>
+
+
+            <select
+              id="statusFilter"
+            >
+              <option value="all">
+                All statuses
+              </option>
+
+              <option value="active">
+                Active
+              </option>
+
+              <option value="inactive">
+                Inactive
+              </option>
+            </select>
+
+
+            <button
+              type="button"
+              class="clear-button"
+              id="clearFilters"
+            >
+              Clear
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- COUNT -->
+
+        <div class="result-row">
+
+          <span id="resultCount">
+            0 items
+          </span>
+
+          <small id="storageLabel">
+            RAFIQ AI governance
+          </small>
+
+        </div>
+
+
+        <!-- DESKTOP TABLE -->
+
+        <div class="table-wrap">
+
+          <table class="governance-table">
+
+            <thead id="tableHead">
+            </thead>
+
+            <tbody id="tableBody">
+            </tbody>
+
+          </table>
+
+        </div>
+
+
+        <!-- MOBILE -->
+
+        <div
+          class="mobile-list"
+          id="mobileList"
+        ></div>
+
+
+        <!-- EMPTY -->
+
+        <div
+          class="empty-state"
+          id="emptyState"
+          hidden
+        >
+
+          <div>
+            ✦
+          </div>
+
+          <strong>
+            No matching items
+          </strong>
+
+          <p>
+            Try changing the current filters.
+          </p>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- =====================================
+     EDIT / ADD MODAL
+====================================== -->
+
+<div
+  class="modal-backdrop"
+  id="editorModal"
+  hidden
+>
+
+  <div class="editor-modal">
+
+    <div class="modal-header">
+
+      <div>
+
+        <span id="modalKicker">
+          AI GOVERNANCE
+        </span>
+
+        <h2 id="modalTitle">
+          Add Knowledge
+        </h2>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="modal-close"
+        id="modalClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <form
+      id="editorForm"
+      novalidate
+    >
+
+      <div
+        class="form-grid"
+        id="formFields"
+      ></div>
+
+
+      <p
+        class="form-error"
+        id="formError"
+      ></p>
+
+
+      <div class="modal-actions">
+
+        <button
+          type="button"
+          class="secondary-button"
+          id="cancelEditor"
+        >
+          Cancel
+        </button>
+
+
+        <button
+          type="submit"
+          class="save-button"
+        >
+          Save
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================
+     DELETE MODAL
+====================================== -->
+
+<div
+  class="modal-backdrop"
+  id="deleteModal"
+  hidden
+>
+
+  <div class="confirm-modal">
+
+    <div class="confirm-icon">
+      !
+    </div>
+
+    <span>
+      REMOVE ITEM
+    </span>
+
+    <h2>
+      Delete this governance item?
+    </h2>
+
+    <p id="deleteText">
+      This item will be removed from the prototype.
+    </p>
+
+
+    <div class="confirm-actions">
+
+      <button
+        type="button"
+        class="secondary-button"
+        id="cancelDelete"
+      >
+        Cancel
+      </button>
+
+
+      <button
+        type="button"
+        class="delete-button"
+        id="confirmDelete"
+      >
+        Delete
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================
+     TOAST
+====================================== -->
+
+<div
+  class="toast"
+  id="toast"
+  hidden
+>
+
+  <span>
+    ✓
+  </span>
+
+  <div>
+
+    <strong id="toastTitle">
+      Updated
+    </strong>
+
+    <p id="toastMessage">
+      Changes were saved.
+    </p>
+
+  </div>
+
+</div>
+
+
+<script src="ai-governance.js"></script>
+
+</body>
+</html>

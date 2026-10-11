@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Bookings Management | RAFIQ Admin</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="bookings-management.css"
+  >
+
+</head>
+
+
+<body>
+
+<div class="admin-shell">
+
+  <!-- =====================================
+       SIDEBAR
+  ====================================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+
+        <span class="brand-mark">
+          R
+        </span>
+
+        <div>
+          <strong>RAFIQ</strong>
+          <small>Administration</small>
+        </div>
+
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <section class="admin-card">
+
+      <div class="admin-avatar">
+        A
+      </div>
+
+      <div>
+
+        <span>
+          PLATFORM ADMIN
+        </span>
+
+        <strong id="adminSidebarName">
+          RAFIQ Admin
+        </strong>
+
+        <small>
+          Control Center
+        </small>
+
+      </div>
+
+    </section>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-label">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="admin-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+
+      <a
+        href="reports-analytics.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌁</span>
+        <span>Reports & Analytics</span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        SPECIALISTS
+      </span>
+
+
+      <a
+        href="specialist-approvals.html"
+        class="nav-link"
+      >
+
+        <span class="nav-icon">✓</span>
+
+        <span>
+          Specialist Approvals
+        </span>
+
+        <span
+          class="nav-count"
+          id="approvalNavCount"
+          hidden
+        >
+          0
+        </span>
+
+      </a>
+
+
+      <a
+        href="specialists-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◎</span>
+        <span>Specialists</span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        PLATFORM
+      </span>
+
+
+      <a
+        href="content-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▤</span>
+        <span>Content Management</span>
+      </a>
+
+
+      <a
+        href="ai-governance.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">✦</span>
+        <span>AI Governance</span>
+      </a>
+
+
+      <a
+        href="bookings-management.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">▦</span>
+        <span>Bookings</span>
+      </a>
+
+
+      <a
+        href="billing-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◇</span>
+        <span>Billing & Subscriptions</span>
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="admin-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        <span>Admin Settings</span>
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        <span>Log Out</span>
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =====================================
+       MAIN
+  ====================================== -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            PLATFORM OPERATIONS
+          </span>
+
+          <h1>
+            Bookings Management
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <div class="operations-pill">
+
+        <span></span>
+
+        Booking oversight
+
+      </div>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =====================================
+           HERO
+      ====================================== -->
+
+      <section class="hero">
+
+        <div>
+
+          <span class="hero-kicker">
+            CONSULTATION OPERATIONS
+          </span>
+
+          <h2>
+            Monitor bookings across
+            <span>the RAFIQ platform.</span>
+          </h2>
+
+          <p>
+            Review appointment activity, specialist assignments,
+            consultation types and booking status without changing
+            clinical notes or professional reports.
+          </p>
+
+        </div>
+
+
+        <div class="hero-card">
+
+          <span>
+            OPERATIONAL PRINCIPLE
+          </span>
+
+          <strong>
+            Admin monitors the booking flow.
+          </strong>
+
+          <p>
+            Consultation content remains owned by the specialist
+            and family workflow.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
+           METRICS
+      ====================================== -->
+
+      <section class="metrics-grid">
+
+        <article class="metric-card">
+
+          <div class="metric-icon sky">
+            ▦
+          </div>
+
+          <div>
+
+            <span>
+              Total Bookings
+            </span>
+
+            <strong id="totalMetric">
+              0
+            </strong>
+
+            <small>
+              Platform appointments
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon sun">
+            ◷
+          </div>
+
+          <div>
+
+            <span>
+              Confirmed
+            </span>
+
+            <strong id="confirmedMetric">
+              0
+            </strong>
+
+            <small>
+              Scheduled appointments
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon mint">
+            ✓
+          </div>
+
+          <div>
+
+            <span>
+              Completed
+            </span>
+
+            <strong id="completedMetric">
+              0
+            </strong>
+
+            <small>
+              Finished consultations
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon peach">
+            ×
+          </div>
+
+          <div>
+
+            <span>
+              Cancelled
+            </span>
+
+            <strong id="cancelledMetric">
+              0
+            </strong>
+
+            <small>
+              Cancelled appointments
+            </small>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- =====================================
+           BOOKING PANEL
+      ====================================== -->
+
+      <section class="bookings-panel">
+
+        <div class="panel-heading">
+
+          <div>
+
+            <span class="section-kicker">
+              BOOKING DIRECTORY
+            </span>
+
+            <h2>
+              Platform appointments
+            </h2>
+
+            <p>
+              Search and review consultation bookings.
+            </p>
+
+          </div>
+
+
+          <span
+            class="result-count"
+            id="resultCount"
+          >
+            0 bookings
+          </span>
+
+        </div>
+
+
+        <!-- TOOLBAR -->
+
+        <div class="toolbar">
+
+          <div class="search-box">
+
+            <span>
+              ⌕
+            </span>
+
+            <input
+              type="search"
+              id="bookingSearch"
+              placeholder="Search booking, child, specialist..."
+            >
+
+          </div>
+
+
+          <div class="filters">
+
+            <select id="statusFilter">
+
+              <option value="all">
+                All statuses
+              </option>
+
+              <option value="confirmed">
+                Confirmed
+              </option>
+
+              <option value="completed">
+                Completed
+              </option>
+
+              <option value="cancelled">
+                Cancelled
+              </option>
+
+            </select>
+
+
+            <select id="typeFilter">
+
+              <option value="all">
+                All consultation types
+              </option>
+
+              <option value="online">
+                Online
+              </option>
+
+              <option value="in-person">
+                In-person
+              </option>
+
+            </select>
+
+
+            <button
+              type="button"
+              class="clear-button"
+              id="clearFilters"
+            >
+              Clear
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="table-wrap">
+
+          <table class="bookings-table">
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  Booking
+                </th>
+
+                <th>
+                  Child
+                </th>
+
+                <th>
+                  Specialist
+                </th>
+
+                <th>
+                  Appointment
+                </th>
+
+                <th>
+                  Type
+                </th>
+
+                <th>
+                  Fee
+                </th>
+
+                <th>
+                  Status
+                </th>
+
+                <th>
+                  Action
+                </th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody id="bookingTableBody">
+            </tbody>
+
+          </table>
+
+        </div>
+
+
+        <!-- MOBILE -->
+
+        <div
+          class="mobile-list"
+          id="mobileList"
+        ></div>
+
+
+        <!-- EMPTY -->
+
+        <div
+          class="empty-state"
+          id="emptyState"
+          hidden
+        >
+
+          <div>
+            ▦
+          </div>
+
+          <strong>
+            No bookings found
+          </strong>
+
+          <p>
+            Booking activity matching your current filters
+            will appear here.
+          </p>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- =====================================
+     BOOKING DETAILS MODAL
+====================================== -->
+
+<div
+  class="modal-backdrop"
+  id="bookingModal"
+  hidden
+>
+
+  <div class="booking-modal">
+
+    <div class="modal-header">
+
+      <div>
+
+        <span>
+          BOOKING DETAILS
+        </span>
+
+        <h2 id="modalBookingId">
+          Booking
+        </h2>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="modal-close"
+        id="modalClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="modal-status-row">
+
+      <span
+        class="status-badge confirmed"
+        id="modalStatus"
+      >
+        Confirmed
+      </span>
+
+      <span id="modalCreated">
+        —
+      </span>
+
+    </div>
+
+
+    <div class="detail-grid">
+
+      <article class="detail-card">
+
+        <span>
+          CHILD
+        </span>
+
+        <strong id="modalChild">
+          —
+        </strong>
+
+        <small id="modalChildId">
+          —
+        </small>
+
+      </article>
+
+
+      <article class="detail-card">
+
+        <span>
+          SPECIALIST
+        </span>
+
+        <strong id="modalSpecialist">
+          —
+        </strong>
+
+        <small id="modalSpecialty">
+          —
+        </small>
+
+      </article>
+
+
+      <article class="detail-card">
+
+        <span>
+          DATE
+        </span>
+
+        <strong id="modalDate">
+          —
+        </strong>
+
+        <small id="modalTime">
+          —
+        </small>
+
+      </article>
+
+
+      <article class="detail-card">
+
+        <span>
+          CONSULTATION
+        </span>
+
+        <strong id="modalType">
+          —
+        </strong>
+
+        <small id="modalFee">
+          —
+        </small>
+
+      </article>
+
+    </div>
+
+
+    <div class="privacy-note">
+
+      <span>
+        i
+      </span>
+
+      <p>
+        This admin view intentionally does not expose
+        consultation notes, screening information or
+        specialist report content.
+      </p>
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        type="button"
+        class="secondary-button"
+        id="closeModalButton"
+      >
+        Close
+      </button>
+
+
+      <button
+        type="button"
+        class="specialist-button"
+        id="openSpecialistButton"
+      >
+        View Specialist
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script src="bookings-management.js"></script>
+
+</body>
+</html>

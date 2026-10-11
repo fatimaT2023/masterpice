@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Specialists Management | RAFIQ Admin</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="specialists-management.css"
+  >
+</head>
+
+
+<body>
+
+<div class="admin-shell">
+
+  <!-- ======================================
+       SIDEBAR
+  ======================================= -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+
+        <span class="brand-mark">
+          R
+        </span>
+
+        <div>
+          <strong>RAFIQ</strong>
+          <small>Administration</small>
+        </div>
+
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <section class="admin-card">
+
+      <div class="admin-avatar">
+        A
+      </div>
+
+      <div>
+
+        <span>
+          PLATFORM ADMIN
+        </span>
+
+        <strong id="adminSidebarName">
+          RAFIQ Admin
+        </strong>
+
+        <small>
+          Control Center
+        </small>
+
+      </div>
+
+    </section>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-label">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="admin-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        Dashboard
+      </a>
+
+
+      <a
+        href="reports-analytics.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌁</span>
+        Reports & Analytics
+      </a>
+
+
+      <span class="nav-label section-gap">
+        SPECIALISTS
+      </span>
+
+
+      <a
+        href="specialist-approvals.html"
+        class="nav-link"
+      >
+
+        <span class="nav-icon">✓</span>
+
+        Specialist Approvals
+
+        <span
+          class="nav-count"
+          id="approvalNavCount"
+          hidden
+        >
+          0
+        </span>
+
+      </a>
+
+
+      <a
+        href="specialists-management.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">◎</span>
+        Specialists
+      </a>
+
+
+      <span class="nav-label section-gap">
+        PLATFORM
+      </span>
+
+
+      <a
+        href="content-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▤</span>
+        Content Management
+      </a>
+
+
+      <a
+        href="ai-governance.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">✦</span>
+        AI Governance
+      </a>
+
+
+      <a
+        href="bookings-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▦</span>
+        Bookings
+      </a>
+
+
+      <a
+        href="billing-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◇</span>
+        Billing & Subscriptions
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="admin-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        Admin Settings
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Log Out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- ======================================
+       MAIN
+  ======================================= -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            PROFESSIONAL NETWORK
+          </span>
+
+          <h1>
+            Specialists Management
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="specialist-approvals.html"
+        class="topbar-action"
+      >
+        Review Applications
+      </a>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- ======================================
+           HERO
+      ======================================= -->
+
+      <section class="page-hero">
+
+        <div>
+
+          <span class="hero-kicker">
+            VERIFIED PROFESSIONALS
+          </span>
+
+          <h2>
+            Manage specialist
+            <span>platform access.</span>
+          </h2>
+
+          <p>
+            Review approved, suspended and rejected
+            specialist accounts while keeping
+            professional profile ownership with the
+            specialist.
+          </p>
+
+        </div>
+
+
+        <div class="hero-stat">
+
+          <span>
+            ACTIVE SPECIALISTS
+          </span>
+
+          <strong id="heroApprovedCount">
+            0
+          </strong>
+
+          <small>
+            Approved professional accounts
+          </small>
+
+        </div>
+
+      </section>
+
+
+      <!-- ======================================
+           METRICS
+      ======================================= -->
+
+      <section class="metrics-grid">
+
+        <article class="metric-card">
+
+          <div class="metric-icon mint">
+            ✓
+          </div>
+
+          <div>
+            <span>Approved</span>
+
+            <strong id="approvedCount">
+              0
+            </strong>
+
+            <small>
+              Active specialists
+            </small>
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon sun">
+            ◷
+          </div>
+
+          <div>
+            <span>Pending</span>
+
+            <strong id="pendingCount">
+              0
+            </strong>
+
+            <small>
+              Awaiting verification
+            </small>
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon peach">
+            !
+          </div>
+
+          <div>
+            <span>Suspended</span>
+
+            <strong id="suspendedCount">
+              0
+            </strong>
+
+            <small>
+              Access restricted
+            </small>
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon lavender">
+            ×
+          </div>
+
+          <div>
+            <span>Rejected</span>
+
+            <strong id="rejectedCount">
+              0
+            </strong>
+
+            <small>
+              Applications declined
+            </small>
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- ======================================
+           DIRECTORY
+      ======================================= -->
+
+      <section class="directory-card">
+
+        <div class="directory-heading">
+
+          <div>
+
+            <span class="section-kicker">
+              SPECIALIST DIRECTORY
+            </span>
+
+            <h2>
+              Professional accounts
+            </h2>
+
+            <p>
+              Search and review specialist access
+              across RAFIQ.
+            </p>
+
+          </div>
+
+
+          <span id="resultCount">
+            0 specialists
+          </span>
+
+        </div>
+
+
+        <!-- FILTER BAR -->
+
+        <div class="filter-bar">
+
+          <div class="search-box">
+
+            <span>⌕</span>
+
+            <input
+              type="search"
+              id="specialistSearch"
+              placeholder="Search name, specialty or email..."
+            >
+
+          </div>
+
+
+          <select id="specialtyFilter">
+            <option value="all">
+              All specialties
+            </option>
+          </select>
+
+
+          <div class="status-tabs">
+
+            <button
+              type="button"
+              class="status-filter active"
+              data-status="all"
+            >
+              All
+            </button>
+
+            <button
+              type="button"
+              class="status-filter"
+              data-status="approved"
+            >
+              Approved
+            </button>
+
+            <button
+              type="button"
+              class="status-filter"
+              data-status="pending"
+            >
+              Pending
+            </button>
+
+            <button
+              type="button"
+              class="status-filter"
+              data-status="suspended"
+            >
+              Suspended
+            </button>
+
+            <button
+              type="button"
+              class="status-filter"
+              data-status="rejected"
+            >
+              Rejected
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Specialist</th>
+                <th>Specialty</th>
+                <th>Experience</th>
+                <th>Fee</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            <tbody id="specialistsTableBody"></tbody>
+
+          </table>
+
+        </div>
+
+
+        <!-- MOBILE CARDS -->
+
+        <div
+          class="mobile-list"
+          id="mobileList"
+        ></div>
+
+
+        <!-- EMPTY -->
+
+        <div
+          class="empty-state"
+          id="emptyState"
+          hidden
+        >
+
+          <div>
+            ◎
+          </div>
+
+          <strong>
+            No specialists found
+          </strong>
+
+          <p>
+            Try changing the search or status filter.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- GOVERNANCE NOTE -->
+
+      <section class="governance-note">
+
+        <span>i</span>
+
+        <p>
+          Admin controls verification and platform
+          access. Professional details such as
+          qualification, specialty, bio and session fee
+          remain specialist-owned information.
+        </p>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- ======================================
+     PROFILE MODAL
+======================================= -->
+
+<div
+  class="modal-backdrop"
+  id="profileModal"
+  hidden
+>
+
+  <div class="profile-modal">
+
+    <div class="modal-header">
+
+      <div>
+
+        <span>
+          PROFESSIONAL ACCOUNT
+        </span>
+
+        <h2>
+          Specialist Details
+        </h2>
+
+      </div>
+
+
+      <button
+        type="button"
+        id="closeProfileModal"
+        class="modal-close"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <section class="modal-profile">
+
+      <div
+        class="modal-avatar"
+        id="modalAvatar"
+      >
+        SP
+      </div>
+
+
+      <div>
+
+        <h3 id="modalName">
+          Specialist
+        </h3>
+
+        <p id="modalSpecialty">
+          —
+        </p>
+
+      </div>
+
+
+      <span
+        class="status-badge"
+        id="modalStatus"
+      >
+        Approved
+      </span>
+
+    </section>
+
+
+    <div class="details-grid">
+
+      <div class="detail-box">
+        <span>Email</span>
+        <strong id="modalEmail">—</strong>
+      </div>
+
+      <div class="detail-box">
+        <span>Phone</span>
+        <strong id="modalPhone">—</strong>
+      </div>
+
+      <div class="detail-box">
+        <span>Qualification</span>
+        <strong id="modalQualification">—</strong>
+      </div>
+
+      <div class="detail-box">
+        <span>Experience</span>
+        <strong id="modalExperience">—</strong>
+      </div>
+
+      <div class="detail-box">
+        <span>License Number</span>
+        <strong id="modalLicense">—</strong>
+      </div>
+
+      <div class="detail-box">
+        <span>Session Fee</span>
+        <strong id="modalFee">—</strong>
+      </div>
+
+      <div class="detail-box">
+        <span>Consultation Types</span>
+        <strong id="modalTypes">—</strong>
+      </div>
+
+      <div class="detail-box">
+        <span>Languages</span>
+        <strong id="modalLanguages">—</strong>
+      </div>
+
+    </div>
+
+
+    <section class="bio-section">
+
+      <span>
+        PROFESSIONAL BIO
+      </span>
+
+      <p id="modalBio">
+        —
+      </p>
+
+    </section>
+
+
+    <section class="account-section">
+
+      <div>
+        <span>Specialist ID</span>
+        <strong id="modalId">—</strong>
+      </div>
+
+      <div>
+        <span>Joined</span>
+        <strong id="modalCreated">—</strong>
+      </div>
+
+      <div>
+        <span>Reviewed</span>
+        <strong id="modalReviewed">—</strong>
+      </div>
+
+    </section>
+
+
+    <div
+      class="rejection-box"
+      id="rejectionBox"
+      hidden
+    >
+
+      <strong>
+        Rejection reason
+      </strong>
+
+      <p id="modalRejectionReason">
+        —
+      </p>
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        type="button"
+        class="secondary-button"
+        id="closeProfileButton"
+      >
+        Close
+      </button>
+
+
+      <button
+        type="button"
+        class="suspend-button"
+        id="modalAccountAction"
+        hidden
+      >
+        Suspend Specialist
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ======================================
+     STATUS CONFIRMATION MODAL
+======================================= -->
+
+<div
+  class="modal-backdrop"
+  id="statusModal"
+  hidden
+>
+
+  <div class="decision-modal">
+
+    <div
+      class="decision-icon"
+      id="decisionIcon"
+    >
+      !
+    </div>
+
+
+    <span id="decisionKicker">
+      PLATFORM ACCESS
+    </span>
+
+
+    <h2 id="decisionTitle">
+      Suspend specialist?
+    </h2>
+
+
+    <p id="decisionText">
+      Access to specialist practice tools will be
+      restricted.
+    </p>
+
+
+    <div
+      class="reason-group"
+      id="suspensionReasonGroup"
+    >
+
+      <label for="suspensionReason">
+        Administrative reason
+      </label>
+
+      <textarea
+        id="suspensionReason"
+        maxlength="300"
+        rows="4"
+        placeholder="Reason for restricting platform access..."
+      ></textarea>
+
+      <small id="reasonError"></small>
+
+    </div>
+
+
+    <div class="decision-actions">
+
+      <button
+        type="button"
+        class="secondary-button"
+        id="cancelStatusAction"
+      >
+        Cancel
+      </button>
+
+
+      <button
+        type="button"
+        class="confirm-status-button"
+        id="confirmStatusAction"
+      >
+        Confirm
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div
+  class="toast"
+  id="toast"
+  hidden
+>
+
+  <span>✓</span>
+
+  <div>
+    <strong id="toastTitle">
+      Account updated
+    </strong>
+
+    <p id="toastText">
+      Specialist status has been updated.
+    </p>
+  </div>
+
+</div>
+
+
+<script src="specialists-management.js"></script>
+
+</body>
+</html>

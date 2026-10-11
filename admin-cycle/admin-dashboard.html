@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Admin Dashboard | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="admin-dashboard.css"
+  >
+
+</head>
+
+
+<body>
+
+<div class="admin-shell">
+
+  <!-- =====================================
+       SIDEBAR
+  ====================================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+
+        <span class="brand-mark">
+          R
+        </span>
+
+        <div>
+
+          <strong>
+            RAFIQ
+          </strong>
+
+          <small>
+            Administration
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <!-- ADMIN IDENTITY -->
+
+    <section class="admin-card">
+
+      <div class="admin-avatar">
+        A
+      </div>
+
+
+      <div>
+
+        <span>
+          PLATFORM ADMIN
+        </span>
+
+        <strong id="adminSidebarName">
+          RAFIQ Admin
+        </strong>
+
+        <small>
+          Control Center
+        </small>
+
+      </div>
+
+    </section>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-label">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="admin-dashboard.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">⌂</span>
+
+        <span>
+          Dashboard
+        </span>
+      </a>
+
+
+      <a
+        href="reports-analytics.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌁</span>
+
+        <span>
+          Reports & Analytics
+        </span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        SPECIALISTS
+      </span>
+
+
+      <a
+        href="specialist-approvals.html"
+        class="nav-link"
+      >
+
+        <span class="nav-icon">✓</span>
+
+        <span>
+          Specialist Approvals
+        </span>
+
+
+        <span
+          class="nav-count"
+          id="approvalNavCount"
+          hidden
+        >
+          0
+        </span>
+
+      </a>
+
+
+      <a
+        href="specialists-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◎</span>
+
+        <span>
+          Specialists
+        </span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        PLATFORM
+      </span>
+
+
+      <a
+        href="content-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▤</span>
+
+        <span>
+          Content Management
+        </span>
+      </a>
+
+
+      <a
+        href="ai-governance.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">✦</span>
+
+        <span>
+          AI Governance
+        </span>
+      </a>
+
+
+      <a
+        href="bookings-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▦</span>
+
+        <span>
+          Bookings
+        </span>
+      </a>
+
+
+      <a
+        href="billing-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◇</span>
+
+        <span>
+          Billing & Subscriptions
+        </span>
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="admin-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+
+        <span>
+          Admin Settings
+        </span>
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+
+        <span>
+          Log Out
+        </span>
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =====================================
+       MAIN
+  ====================================== -->
+
+  <main class="main-content">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            PLATFORM OVERVIEW
+          </span>
+
+          <h1>
+            Admin Dashboard
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <div class="topbar-actions">
+
+        <!-- Notifications will later use this -->
+
+        <button
+          type="button"
+          class="icon-button"
+          aria-label="Admin notifications"
+        >
+          ♢
+
+          <span
+            class="topbar-dot"
+            id="notificationDot"
+            hidden
+          ></span>
+
+        </button>
+
+
+        <div class="admin-pill">
+
+          <span class="admin-pill-avatar">
+            A
+          </span>
+
+          <div>
+
+            <strong id="topbarAdminName">
+              RAFIQ Admin
+            </strong>
+
+            <span>
+              Administrator
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =====================================
+           HERO
+      ====================================== -->
+
+      <section class="dashboard-hero">
+
+        <div class="hero-content">
+
+          <span class="hero-kicker">
+            RAFIQ CONTROL CENTER
+          </span>
+
+          <h2>
+            Platform oversight,
+            <span>without overreach.</span>
+          </h2>
+
+          <p>
+            Review professional applications, monitor
+            platform operations, maintain trusted
+            content and supervise RAFIQ AI safety.
+          </p>
+
+
+          <div class="hero-actions">
+
+            <a
+              href="specialist-approvals.html"
+              class="primary-action"
+            >
+              Review Applications
+              <span>→</span>
+            </a>
+
+
+            <a
+              href="reports-analytics.html"
+              class="secondary-action"
+            >
+              View Analytics
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="hero-review-card">
+
+          <div class="hero-review-top">
+
+            <span>
+              ACTION REQUIRED
+            </span>
+
+            <div class="pulse-dot"></div>
+
+          </div>
+
+
+          <strong id="heroPendingCount">
+            0
+          </strong>
+
+
+          <h3>
+            Pending specialist reviews
+          </h3>
+
+
+          <p id="heroPendingMessage">
+            No applications currently require review.
+          </p>
+
+
+          <a href="specialist-approvals.html">
+            Open Approval Queue
+            <span>→</span>
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
+           CORE METRICS
+      ====================================== -->
+
+      <section class="metrics-grid">
+
+        <article class="metric-card">
+
+          <div class="metric-icon sun">
+            ◷
+          </div>
+
+          <div>
+
+            <span>
+              Pending Approvals
+            </span>
+
+            <strong id="pendingMetric">
+              0
+            </strong>
+
+            <small>
+              Awaiting admin review
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon mint">
+            ✓
+          </div>
+
+          <div>
+
+            <span>
+              Approved Specialists
+            </span>
+
+            <strong id="specialistsMetric">
+              0
+            </strong>
+
+            <small>
+              Active professionals
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon sky">
+            ▦
+          </div>
+
+          <div>
+
+            <span>
+              Platform Bookings
+            </span>
+
+            <strong id="bookingsMetric">
+              0
+            </strong>
+
+            <small>
+              All consultation bookings
+            </small>
+
+          </div>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-icon lavender">
+            ◫
+          </div>
+
+          <div>
+
+            <span>
+              Submitted Reports
+            </span>
+
+            <strong id="reportsMetric">
+              0
+            </strong>
+
+            <small>
+              Professional reports
+            </small>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- =====================================
+           MAIN GRID
+      ====================================== -->
+
+      <div class="dashboard-grid">
+
+        <!-- LEFT -->
+
+        <div class="dashboard-primary">
+
+          <!-- APPROVAL QUEUE -->
+
+          <section class="panel">
+
+            <div class="panel-heading">
+
+              <div>
+
+                <span class="panel-kicker">
+                  VERIFICATION QUEUE
+                </span>
+
+                <h2>
+                  Specialist applications
+                </h2>
+
+                <p>
+                  Applications requiring a human
+                  verification decision.
+                </p>
+
+              </div>
+
+
+              <a
+                href="specialist-approvals.html"
+                class="panel-link"
+              >
+                View all
+              </a>
+
+            </div>
+
+
+            <div
+              class="approval-list"
+              id="approvalList"
+            ></div>
+
+
+            <div
+              class="empty-panel"
+              id="approvalEmpty"
+              hidden
+            >
+
+              <div class="empty-icon mint">
+                ✓
+              </div>
+
+              <strong>
+                Approval queue is clear
+              </strong>
+
+              <p>
+                New specialist applications will appear
+                here when verification is required.
+              </p>
+
+            </div>
+
+          </section>
+
+
+          <!-- RECENT BOOKINGS -->
+
+          <section class="panel">
+
+            <div class="panel-heading">
+
+              <div>
+
+                <span class="panel-kicker">
+                  OPERATIONS
+                </span>
+
+                <h2>
+                  Recent bookings
+                </h2>
+
+                <p>
+                  A high-level view of the latest
+                  appointments across RAFIQ.
+                </p>
+
+              </div>
+
+
+              <a
+                href="bookings-management.html"
+                class="panel-link"
+              >
+                View bookings
+              </a>
+
+            </div>
+
+
+            <div
+              class="booking-list"
+              id="recentBookings"
+            ></div>
+
+
+            <div
+              class="empty-panel"
+              id="bookingsEmpty"
+              hidden
+            >
+
+              <div class="empty-icon sky">
+                ▦
+              </div>
+
+              <strong>
+                No bookings yet
+              </strong>
+
+              <p>
+                Platform booking activity will appear
+                here.
+              </p>
+
+            </div>
+
+          </section>
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <aside class="dashboard-secondary">
+
+          <!-- GOVERNANCE -->
+
+          <section class="panel governance-panel">
+
+            <span class="panel-kicker">
+              PLATFORM GOVERNANCE
+            </span>
+
+            <h2>
+              System areas
+            </h2>
+
+
+            <a
+              href="content-management.html"
+              class="governance-row"
+            >
+
+              <span class="governance-icon mint">
+                ▤
+              </span>
+
+              <div>
+
+                <strong>
+                  Content Management
+                </strong>
+
+                <small>
+                  Milestones, screening, challenges and
+                  education
+                </small>
+
+              </div>
+
+              <span class="row-arrow">
+                →
+              </span>
+
+            </a>
+
+
+            <a
+              href="ai-governance.html"
+              class="governance-row"
+            >
+
+              <span class="governance-icon lavender">
+                ✦
+              </span>
+
+              <div>
+
+                <strong>
+                  AI Governance
+                </strong>
+
+                <small>
+                  Knowledge base, safety and red flags
+                </small>
+
+              </div>
+
+              <span class="row-arrow">
+                →
+              </span>
+
+            </a>
+
+
+            <a
+              href="billing-management.html"
+              class="governance-row"
+            >
+
+              <span class="governance-icon sun">
+                ◇
+              </span>
+
+              <div>
+
+                <strong>
+                  Billing
+                </strong>
+
+                <small>
+                  Subscriptions and payment records
+                </small>
+
+              </div>
+
+              <span class="row-arrow">
+                →
+              </span>
+
+            </a>
+
+
+            <a
+              href="reports-analytics.html"
+              class="governance-row"
+            >
+
+              <span class="governance-icon sky">
+                ⌁
+              </span>
+
+              <div>
+
+                <strong>
+                  Analytics
+                </strong>
+
+                <small>
+                  Platform performance and usage
+                </small>
+
+              </div>
+
+              <span class="row-arrow">
+                →
+              </span>
+
+            </a>
+
+          </section>
+
+
+          <!-- BOOKING HEALTH -->
+
+          <section class="panel">
+
+            <span class="panel-kicker">
+              BOOKING HEALTH
+            </span>
+
+            <h2>
+              Consultation activity
+            </h2>
+
+
+            <div class="mini-stat-list">
+
+              <div class="mini-stat">
+
+                <span>
+                  Upcoming
+                </span>
+
+                <strong id="upcomingMetric">
+                  0
+                </strong>
+
+              </div>
+
+
+              <div class="mini-stat">
+
+                <span>
+                  Completed
+                </span>
+
+                <strong id="completedMetric">
+                  0
+                </strong>
+
+              </div>
+
+
+              <div class="mini-stat">
+
+                <span>
+                  Cancelled
+                </span>
+
+                <strong id="cancelledMetric">
+                  0
+                </strong>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- PRIVACY -->
+
+          <section class="panel principle-panel">
+
+            <span class="panel-kicker">
+              ACCESS PRINCIPLE
+            </span>
+
+            <h2>
+              Admin manages the platform.
+            </h2>
+
+            <p>
+              Parent and child developmental records are
+              not treated as general admin-editable
+              content. Administrative access stays
+              limited to what is required for platform
+              operation, governance and support.
+            </p>
+
+          </section>
+
+        </aside>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<script src="admin-dashboard.js"></script>
+
+</body>
+</html>

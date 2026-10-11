@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Admin Settings | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="admin-settings.css"
+  >
+
+</head>
+
+
+<body>
+
+<div class="admin-shell">
+
+  <!-- =====================================
+       SIDEBAR
+  ====================================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+
+        <span class="brand-mark">
+          R
+        </span>
+
+        <div>
+
+          <strong>
+            RAFIQ
+          </strong>
+
+          <small>
+            Administration
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <section class="admin-card">
+
+      <div
+        class="admin-avatar"
+        id="adminAvatar"
+      >
+        A
+      </div>
+
+      <div>
+
+        <span>
+          PLATFORM ADMIN
+        </span>
+
+        <strong id="adminSidebarName">
+          RAFIQ Admin
+        </strong>
+
+        <small>
+          Control Center
+        </small>
+
+      </div>
+
+    </section>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-label">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="admin-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+
+      <a
+        href="reports-analytics.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌁</span>
+        <span>Reports & Analytics</span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        SPECIALISTS
+      </span>
+
+
+      <a
+        href="specialist-approvals.html"
+        class="nav-link"
+      >
+
+        <span class="nav-icon">✓</span>
+
+        <span>
+          Specialist Approvals
+        </span>
+
+        <span
+          class="nav-count"
+          id="approvalNavCount"
+          hidden
+        >
+          0
+        </span>
+
+      </a>
+
+
+      <a
+        href="specialists-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◎</span>
+        <span>Specialists</span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        PLATFORM
+      </span>
+
+
+      <a
+        href="content-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▤</span>
+        <span>Content Management</span>
+      </a>
+
+
+      <a
+        href="ai-governance.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">✦</span>
+        <span>AI Governance</span>
+      </a>
+
+
+      <a
+        href="bookings-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▦</span>
+        <span>Bookings</span>
+      </a>
+
+
+      <a
+        href="billing-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◇</span>
+        <span>Billing & Subscriptions</span>
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a
+        href="admin-settings.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">⚙</span>
+        <span>Admin Settings</span>
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        <span>Log Out</span>
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =====================================
+       MAIN
+  ====================================== -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          type="button"
+          class="menu-button"
+          id="menuButton"
+        >
+          ☰
+        </button>
+
+
+        <div>
+
+          <span class="page-kicker">
+            ADMIN ACCOUNT
+          </span>
+
+          <h1>
+            Admin Settings
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <div class="settings-pill">
+        ⚙ Platform configuration
+      </div>
+
+    </header>
+
+
+    <div class="page-body">
+
+      <!-- =====================================
+           HERO
+      ====================================== -->
+
+      <section class="hero">
+
+        <div>
+
+          <span class="hero-kicker">
+            CONTROL CENTER
+          </span>
+
+          <h2>
+            Configure your
+            <span>admin workspace.</span>
+          </h2>
+
+          <p>
+            Manage administrator identity, platform display
+            preferences, operational notifications and
+            frontend security settings for the RAFIQ
+            prototype.
+          </p>
+
+        </div>
+
+
+        <div class="hero-note">
+
+          <span>
+            SECURITY NOTE
+          </span>
+
+          <strong>
+            Sensitive credentials are not stored here.
+          </strong>
+
+          <p>
+            Production authentication, password management
+            and access controls require a secure backend.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
+           SETTINGS LAYOUT
+      ====================================== -->
+
+      <div class="settings-layout">
+
+        <!-- SETTINGS NAV -->
+
+        <aside class="settings-nav">
+
+          <button
+            type="button"
+            class="settings-nav-button active"
+            data-section="profile"
+          >
+            <span>◎</span>
+
+            <div>
+              <strong>Admin Profile</strong>
+              <small>Identity & contact</small>
+            </div>
+          </button>
+
+
+          <button
+            type="button"
+            class="settings-nav-button"
+            data-section="platform"
+          >
+            <span>◇</span>
+
+            <div>
+              <strong>Platform</strong>
+              <small>RAFIQ preferences</small>
+            </div>
+          </button>
+
+
+          <button
+            type="button"
+            class="settings-nav-button"
+            data-section="notifications"
+          >
+            <span>◉</span>
+
+            <div>
+              <strong>Notifications</strong>
+              <small>Operational alerts</small>
+            </div>
+          </button>
+
+
+          <button
+            type="button"
+            class="settings-nav-button"
+            data-section="security"
+          >
+            <span>◆</span>
+
+            <div>
+              <strong>Security</strong>
+              <small>Session & password demo</small>
+            </div>
+          </button>
+
+        </aside>
+
+
+        <!-- =================================
+             PROFILE
+        ================================== -->
+
+        <section
+          class="settings-section active"
+          id="profileSection"
+        >
+
+          <div class="section-heading">
+
+            <span class="section-kicker">
+              ADMIN IDENTITY
+            </span>
+
+            <h2>
+              Admin Profile
+            </h2>
+
+            <p>
+              Information displayed inside the RAFIQ
+              administration workspace.
+            </p>
+
+          </div>
+
+
+          <form
+            id="profileForm"
+            class="settings-form"
+            novalidate
+          >
+
+            <div class="profile-preview">
+
+              <div
+                class="large-avatar"
+                id="profileAvatar"
+              >
+                A
+              </div>
+
+              <div>
+
+                <span>
+                  PLATFORM ADMINISTRATOR
+                </span>
+
+                <strong id="profilePreviewName">
+                  RAFIQ Admin
+                </strong>
+
+                <small>
+                  Administrative workspace
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+              <div class="form-field">
+
+                <label for="adminNameInput">
+                  Display Name
+                </label>
+
+                <input
+                  type="text"
+                  id="adminNameInput"
+                  maxlength="80"
+                  placeholder="RAFIQ Admin"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-field">
+
+                <label for="adminEmailInput">
+                  Admin Email
+                </label>
+
+                <input
+                  type="email"
+                  id="adminEmailInput"
+                  maxlength="120"
+                  placeholder="admin@rafiq.com"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-field">
+
+                <label for="adminRoleInput">
+                  Role
+                </label>
+
+                <input
+                  type="text"
+                  id="adminRoleInput"
+                  value="Platform Administrator"
+                  disabled
+                >
+
+                <small>
+                  Role changes require backend authorization
+                  in production.
+                </small>
+
+              </div>
+
+
+              <div class="form-field">
+
+                <label for="adminDepartmentInput">
+                  Department
+                </label>
+
+                <input
+                  type="text"
+                  id="adminDepartmentInput"
+                  maxlength="100"
+                  placeholder="Platform Operations"
+                >
+
+              </div>
+
+            </div>
+
+
+            <p
+              class="form-message error"
+              id="profileError"
+            ></p>
+
+
+            <div class="form-actions">
+
+              <button
+                type="submit"
+                class="primary-button"
+              >
+                Save Profile
+              </button>
+
+            </div>
+
+          </form>
+
+        </section>
+
+
+        <!-- =================================
+             PLATFORM
+        ================================== -->
+
+        <section
+          class="settings-section"
+          id="platformSection"
+        >
+
+          <div class="section-heading">
+
+            <span class="section-kicker">
+              PLATFORM PREFERENCES
+            </span>
+
+            <h2>
+              RAFIQ Platform
+            </h2>
+
+            <p>
+              General administrative preferences for the
+              prototype workspace.
+            </p>
+
+          </div>
+
+
+          <form
+            id="platformForm"
+            class="settings-form"
+          >
+
+            <div class="form-grid">
+
+              <div class="form-field">
+
+                <label for="platformNameInput">
+                  Platform Name
+                </label>
+
+                <input
+                  type="text"
+                  id="platformNameInput"
+                  maxlength="80"
+                  value="RAFIQ"
+                >
+
+              </div>
+
+
+              <div class="form-field">
+
+                <label for="supportEmailInput">
+                  Support Email
+                </label>
+
+                <input
+                  type="email"
+                  id="supportEmailInput"
+                  maxlength="120"
+                  placeholder="support@rafiq.com"
+                >
+
+              </div>
+
+
+              <div class="form-field">
+
+                <label for="defaultLanguageSelect">
+                  Default Language
+                </label>
+
+                <select id="defaultLanguageSelect">
+
+                  <option value="en">
+                    English
+                  </option>
+
+                  <option value="ar">
+                    العربية
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-field">
+
+                <label for="currencySelect">
+                  Platform Currency
+                </label>
+
+                <select id="currencySelect">
+
+                  <option value="JOD">
+                    JOD — Jordanian Dinar
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-field full">
+
+                <label for="platformDisclaimerInput">
+                  Platform Disclaimer
+                </label>
+
+                <textarea
+                  id="platformDisclaimerInput"
+                  maxlength="700"
+                ></textarea>
+
+                <small>
+                  Keep the wording clear that RAFIQ does not
+                  replace professional medical advice,
+                  diagnosis or emergency services.
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <div class="settings-callout">
+
+              <span>
+                i
+              </span>
+
+              <p>
+                Changing these prototype settings does not
+                automatically rewrite text already hard-coded
+                in other RAFIQ pages.
+              </p>
+
+            </div>
+
+
+            <p
+              class="form-message error"
+              id="platformError"
+            ></p>
+
+
+            <div class="form-actions">
+
+              <button
+                type="submit"
+                class="primary-button"
+              >
+                Save Platform Settings
+              </button>
+
+            </div>
+
+          </form>
+
+        </section>
+
+
+        <!-- =================================
+             NOTIFICATIONS
+        ================================== -->
+
+        <section
+          class="settings-section"
+          id="notificationsSection"
+        >
+
+          <div class="section-heading">
+
+            <span class="section-kicker">
+              OPERATIONAL ALERTS
+            </span>
+
+            <h2>
+              Admin Notifications
+            </h2>
+
+            <p>
+              Choose which platform events should be
+              highlighted to the administrator.
+            </p>
+
+          </div>
+
+
+          <form
+            id="notificationForm"
+            class="settings-form"
+          >
+
+            <div class="toggle-list">
+
+              <label class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <strong>
+                    New specialist applications
+                  </strong>
+
+                  <span>
+                    Alert when a specialist submits a new
+                    application for review.
+                  </span>
+
+                </div>
+
+
+                <input
+                  type="checkbox"
+                  id="notifySpecialistApplications"
+                >
+
+                <span class="switch"></span>
+
+              </label>
+
+
+              <label class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <strong>
+                    Booking activity
+                  </strong>
+
+                  <span>
+                    Include new booking activity in the
+                    administrative notification layer.
+                  </span>
+
+                </div>
+
+
+                <input
+                  type="checkbox"
+                  id="notifyBookings"
+                >
+
+                <span class="switch"></span>
+
+              </label>
+
+
+              <label class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <strong>
+                    Billing events
+                  </strong>
+
+                  <span>
+                    Alert for stored subscription and payment
+                    events.
+                  </span>
+
+                </div>
+
+
+                <input
+                  type="checkbox"
+                  id="notifyBilling"
+                >
+
+                <span class="switch"></span>
+
+              </label>
+
+
+              <label class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <strong>
+                    AI governance changes
+                  </strong>
+
+                  <span>
+                    Highlight updates to AI knowledge and
+                    safety rules.
+                  </span>
+
+                </div>
+
+
+                <input
+                  type="checkbox"
+                  id="notifyAIChanges"
+                >
+
+                <span class="switch"></span>
+
+              </label>
+
+            </div>
+
+
+            <div class="form-actions">
+
+              <button
+                type="submit"
+                class="primary-button"
+              >
+                Save Notification Preferences
+              </button>
+
+            </div>
+
+          </form>
+
+        </section>
+
+
+        <!-- =================================
+             SECURITY
+        ================================== -->
+
+        <section
+          class="settings-section"
+          id="securitySection"
+        >
+
+          <div class="section-heading">
+
+            <span class="section-kicker">
+              ACCOUNT SECURITY
+            </span>
+
+            <h2>
+              Security
+            </h2>
+
+            <p>
+              Frontend-only security controls for the
+              graduation project prototype.
+            </p>
+
+          </div>
+
+
+          <div class="security-grid">
+
+            <article class="security-card">
+
+              <div class="security-icon">
+                ◆
+              </div>
+
+              <div>
+
+                <span>
+                  CURRENT SESSION
+                </span>
+
+                <h3>
+                  Admin session active
+                </h3>
+
+                <p>
+                  The current role is stored in
+                  <code>sessionStorage</code> for prototype
+                  routing only.
+                </p>
+
+              </div>
+
+            </article>
+
+
+            <article class="security-card">
+
+              <div class="security-icon lavender">
+                ◎
+              </div>
+
+              <div>
+
+                <span>
+                  ROLE
+                </span>
+
+                <h3 id="currentRoleLabel">
+                  Admin
+                </h3>
+
+                <p>
+                  Production role authorization must be
+                  validated by the backend.
+                </p>
+
+              </div>
+
+            </article>
+
+          </div>
+
+
+          <form
+            id="passwordForm"
+            class="settings-form password-form"
+            novalidate
+          >
+
+            <div class="subsection-heading">
+
+              <h3>
+                Change Password Demo
+              </h3>
+
+              <p>
+                Validation only. Password values are never
+                written to localStorage.
+              </p>
+
+            </div>
+
+
+            <div class="form-grid">
+
+              <div class="form-field">
+
+                <label for="currentPasswordInput">
+                  Current Password
+                </label>
+
+                <input
+                  type="password"
+                  id="currentPasswordInput"
+                  autocomplete="current-password"
+                >
+
+              </div>
+
+
+              <div class="form-field">
+
+                <label for="newPasswordInput">
+                  New Password
+                </label>
+
+                <input
+                  type="password"
+                  id="newPasswordInput"
+                  autocomplete="new-password"
+                >
+
+              </div>
+
+
+              <div class="form-field">
+
+                <label for="confirmPasswordInput">
+                  Confirm New Password
+                </label>
+
+                <input
+                  type="password"
+                  id="confirmPasswordInput"
+                  autocomplete="new-password"
+                >
+
+              </div>
+
+            </div>
+
+
+            <p
+              class="form-message error"
+              id="passwordError"
+            ></p>
+
+
+            <div class="form-actions split-actions">
+
+              <button
+                type="submit"
+                class="primary-button"
+              >
+                Validate Password Change
+              </button>
+
+
+              <button
+                type="button"
+                class="danger-outline-button"
+                id="endSessionButton"
+              >
+                End Current Session
+              </button>
+
+            </div>
+
+          </form>
+
+        </section>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- =====================================
+     SESSION CONFIRM MODAL
+====================================== -->
+
+<div
+  class="modal-backdrop"
+  id="sessionModal"
+  hidden
+>
+
+  <div class="confirm-modal">
+
+    <div class="confirm-icon">
+      ↪
+    </div>
+
+    <span>
+      END SESSION
+    </span>
+
+    <h2>
+      Log out of Admin?
+    </h2>
+
+    <p>
+      Your local prototype content will remain stored.
+      Only the current session will be cleared.
+    </p>
+
+
+    <div class="modal-actions">
+
+      <button
+        type="button"
+        class="secondary-button"
+        id="cancelSessionEnd"
+      >
+        Cancel
+      </button>
+
+
+      <button
+        type="button"
+        class="danger-button"
+        id="confirmSessionEnd"
+      >
+        Log Out
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================
+     TOAST
+====================================== -->
+
+<div
+  class="toast"
+  id="toast"
+  hidden
+>
+
+  <span>
+    ✓
+  </span>
+
+  <div>
+
+    <strong id="toastTitle">
+      Saved
+    </strong>
+
+    <p id="toastMessage">
+      Settings updated.
+    </p>
+
+  </div>
+
+</div>
+
+
+<script src="admin-settings.js"></script>
+
+</body>
+</html>
