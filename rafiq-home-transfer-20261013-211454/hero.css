@@ -1,0 +1,69 @@
+/* Only the pinned opening hero. Other homepage sections retain cinematic.css. */
+.hero-scroll{position:relative;height:235svh;background:#dff3ff;color:var(--ink);z-index:1}
+.hero-scroll .hero-sticky{position:sticky;top:0;height:100svh;min-height:0;overflow:clip;padding:0;background:#dff3ff;isolation:isolate}
+.hero-scroll .studio-light{background:radial-gradient(ellipse at 55% 60%,rgba(232,246,255,.9),transparent 70%),radial-gradient(ellipse at 85% 85%,rgba(255,250,240,.25),transparent 65%)}
+.hero-scroll .hero-character-position{left:50%;top:54%;width:60svh;height:75svh;transform:translate(-50%,-50%);z-index:3;perspective:1000px}
+.hero-character-intro{width:100%;height:100%;animation:hero-character-enter .65s .15s var(--cinema-ease) both}
+.hero-character-depth{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:50% 82%;mix-blend-mode:multiply;mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent),linear-gradient(to bottom,transparent,#000 5%,#000 86%,transparent);mask-composite:intersect;animation:hero-breath 4.8s ease-in-out infinite alternate}
+.hero-sitting-group,.hero-crawling-group,.hero-pose,.hero-wave-hand,.hero-eye-layer{position:absolute;inset:0;transform-origin:50% 65%}
+.hero-pose img,.hero-wave-hand img,.hero-eye-layer img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none}
+.hero-pose{opacity:0}.pose-front,.pose-crawl-a{opacity:1}
+.pose-left,.pose-right{mask-image:radial-gradient(ellipse 33% 26% at 49% 32%,#000 70%,transparent 98%);transform-origin:50% 45%}
+.hero-eye-layer{opacity:0;clip-path:polygon(34% 32%,64% 32%,64% 42%,34% 42%);pointer-events:none}
+.hero-crawling-group{opacity:0;transform-origin:50% 82%}
+.hero-wave-hand{opacity:0;clip-path:polygon(10% 41%,29% 41%,34% 62%,18% 66%,10% 55%);transform-origin:29% 61%;pointer-events:none}
+.hero-blink{position:absolute;inset:0;opacity:0;pointer-events:none}.hero-blink span{position:absolute;top:34.1%;left:35.8%;width:10%;height:6.5%;border-radius:55%;background:#eab089;transform:scaleY(.02)}.hero-blink span+span{left:53.8%;top:33.5%}
+.hero-blink.is-blinking{animation:hero-blink-fade .19s ease-in-out}.hero-blink.is-blinking span{animation:hero-blink-shape .19s ease-in-out}
+.hero-scroll .floor-shadow{left:18%;right:18%;bottom:14%;height:4%;opacity:.10;filter:blur(20px);z-index:-1}
+.hero-scroll .hero-panel-position{left:clamp(40px,5vw,90px);width:min(370px,30vw);z-index:5}
+.hero-scroll .hero-content{padding:28px 29px;background:rgba(255,255,255,.29)}
+.hero-scroll #hero-title{font-size:clamp(29px,2.5vw,38px);line-height:1.15}
+.hero-scroll .hero-description{font-size:13px;line-height:1.75}.hero-scroll .hero-actions .button{font-size:11px;padding:13px 12px;gap:7px}
+.hero-scroll .hero-actions{animation-delay:1.25s}
+.hero-scroll .scene-caption{right:7%;top:26%;font-size:11px}
+.hero-scroll-progress{position:absolute;left:40px;right:40px;bottom:0;height:2px;background:rgba(7,94,90,.08)}.hero-scroll-progress>span{display:block;height:100%;background:rgba(7,94,90,.35);transform:scaleX(0);transform-origin:left}
+.hero-scroll.is-moving .hero-character-depth{animation:none}.hero-scroll.is-moving .hero-wave-hand,.hero-scroll.is-moving .hero-eye-layer,.hero-scroll.is-moving .hero-blink{visibility:hidden}
+.hero-scroll.is-active .hero-character-position{will-change:transform}.hero-scroll:not(.is-active) .hero-character-depth,body.tab-hidden .hero-character-depth{animation-play-state:paused}
+@keyframes hero-character-enter{from{opacity:0;filter:blur(8px);transform:scale(.96)}to{opacity:1;filter:blur(0);transform:scale(1)}}
+@keyframes hero-breath{from{scale:1}to{scale:1.006}}
+@keyframes hero-blink-fade{0%,100%{opacity:0}45%,55%{opacity:.65}}
+@keyframes hero-blink-shape{0%,100%{transform:scaleY(.02)}45%,55%{transform:scaleY(.6)}}
+@media(min-width:1600px){.hero-scroll .hero-character-position{width:60svh}.hero-scroll .hero-panel-position{width:370px}}
+@media(max-width:1050px) and (min-width:601px){.hero-scroll .hero-panel-position{left:4vw;width:35vw}.hero-scroll .hero-character-position{left:57%;width:52svh;height:65svh}.hero-scroll .scene-caption{right:4%;font-size:10px}}
+@media(max-width:600px){.hero-scroll{height:205svh}.hero-scroll .hero-character-position{left:50%;top:30%;height:44svh;width:35.2svh}.hero-scroll .hero-panel-position{left:18px;right:18px;top:auto;bottom:65px;width:auto}.hero-scroll .hero-content{padding:21px 24px}.hero-scroll #hero-title{font-size:29px}.hero-scroll .hero-description{font-size:12px;line-height:1.65}.hero-scroll .hero-actions .button{font-size:10px;padding:12px 10px}.hero-scroll .scene-caption{right:20px;top:105px;font-size:9px}.hero-scroll .hero-bottom{bottom:23px;font-size:10px}.hero-scroll-progress{left:18px;right:18px}.hero-scroll .intro-label{font-size:8px!important;letter-spacing:.12em}.hero-scroll .hero-actions{flex-wrap:nowrap}}
+@media(max-width:600px) and (max-height:740px){.hero-scroll .hero-character-position{top:28%;height:37svh;width:29.6svh}.hero-scroll .hero-content{padding:16px 20px}.hero-scroll #hero-title{font-size:25px}.hero-scroll .hero-description{font-size:11px}.hero-scroll .hero-panel-position{bottom:56px}.hero-scroll .scene-caption{display:none}}
+@media(prefers-reduced-motion:reduce){.hero-scroll{height:180svh}.hero-character-intro,.hero-character-depth{animation:none;filter:none;opacity:1}.hero-eye-layer,.hero-blink,.hero-wave-hand{display:none}.hero-scroll .hero-character-position{will-change:auto}.hero-scroll .hero-character-depth{transform:none!important}}
+
+/* The raised arm is isolated so its wave does not rotate the body. */
+.pose-wave img{clip-path:polygon(0 0,100% 0,100% 100%,0 100%,0 66%,34% 66%,34% 40%,0 40%)}
+
+
+/* True alpha cutouts preserve fine hair and finger edges. */
+.hero-character-depth{mix-blend-mode:normal;mask-image:none}
+
+/* Keep the complete greeting face; only the small arm overlay moves. */
+.pose-wave img{clip-path:none}.hero-wave-hand{clip-path:polygon(9% 44%,22% 44%,22% 49%,29% 49%,34% 66%,15% 66%,9% 55%)}
+
+/* Clear frosted glass, with light catching the top and inside edges. */
+.rafiq-home .navbar,
+.rafiq-home .navbar.scrolled {
+  background: linear-gradient(115deg, rgba(255,255,255,.30), rgba(255,255,255,.08) 48%, rgba(232,246,255,.18));
+  border: 1px solid rgba(255,255,255,.65);
+  -webkit-backdrop-filter: blur(22px) saturate(155%);
+  backdrop-filter: blur(22px) saturate(155%);
+  box-shadow: 0 16px 45px rgba(15,47,46,.07), inset 0 1px 0 rgba(255,255,255,.85), inset 0 -1px 0 rgba(255,255,255,.20);
+}
+
+.hero-scroll .hero-content.glass {
+  background: linear-gradient(135deg, rgba(255,255,255,.24), rgba(255,255,255,.06) 48%, rgba(232,246,255,.15));
+  border: 1px solid rgba(255,255,255,.60);
+  -webkit-backdrop-filter: blur(26px) saturate(150%);
+  backdrop-filter: blur(26px) saturate(150%);
+  box-shadow: 0 24px 65px rgba(15,47,46,.07), inset 0 1px 0 rgba(255,255,255,.82), inset 1px 0 0 rgba(255,255,255,.25), inset 0 -1px 0 rgba(255,255,255,.18);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .rafiq-home .navbar,
+  .rafiq-home .navbar.scrolled,
+  .hero-scroll .hero-content.glass { background: rgba(239,249,255,.88); }
+}

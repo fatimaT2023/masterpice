@@ -32,12 +32,22 @@
   rel="stylesheet"
   href="specialist-notifications.css"
 >
+  <link rel="stylesheet" href="specialist-cycle-glass.css">
+  <link rel="stylesheet" href="specialist-sidebar.css">
+  <link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
 </head>
 
 
-<body>
+<body class="parent-cycle-video specialist-cycle-video">
+  <div class="dashboard-video-background" aria-hidden="true">
+    <video id="dashboardBackgroundVideo" muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true">
+      <source src="../pearent-cycel/assets/dashboard/background.mp4" type="video/mp4">
+    </video>
+    <div class="dashboard-video-tint"></div>
+  </div>
+  <button class="background-playback-toggle" id="backgroundPlaybackToggle" type="button" aria-controls="dashboardBackgroundVideo" aria-pressed="true">▶ Play background</button>
 
-<main class="onboarding-page">
+<div class="app-shell"><div id="specialistSidebarMount"></div><script src="specialist-sidebar.js"></script><div class="sidebar-overlay" id="sidebarOverlay"></div><div class="main-content"><button type="button" class="menu-button onboarding-sidebar-toggle" id="menuButton" aria-label="Open navigation">☰ Menu</button><main class="onboarding-page">
 
   <!-- LEFT BRAND PANEL -->
 
@@ -909,10 +919,11 @@
 
   </section>
 
-</main>
+</main></div></div>
 
 
 <script src="specialist-onboarding.js"></script>
 <script src="specialist-notifications.js"></script>
+  <script src="../pearent-cycel/parent-dashboard-background.js"></script>
 </body>
 </html>

@@ -1542,6 +1542,7 @@ document.addEventListener("DOMContentLoaded", () => {
         submitButton.classList.add(
           "is-success"
         );
+        document.dispatchEvent(new CustomEvent('rafiq:registration-success'));
 
         successText.textContent =
           translations[currentLanguage]

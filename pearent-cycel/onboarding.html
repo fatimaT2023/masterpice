@@ -22,9 +22,19 @@
     rel="stylesheet"
     href="onboarding.css"
   >
+  <link rel="stylesheet" href="onboarding-glass.css">
+  <link rel="stylesheet" href="parent-cycle-glass.css">
+  <link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
 </head>
 
-<body>
+<body class="parent-cycle-video">
+  <div class="dashboard-video-background" aria-hidden="true">
+    <video id="dashboardBackgroundVideo" muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true">
+      <source src="assets/dashboard/background.mp4" type="video/mp4">
+    </video>
+    <div class="dashboard-video-tint"></div>
+  </div>
+  <button class="background-playback-toggle" id="backgroundPlaybackToggle" type="button" aria-controls="dashboardBackgroundVideo" aria-pressed="true">▶ Play background</button>
 
   <!-- Decorative background -->
   <div class="background-decoration" aria-hidden="true">
@@ -37,7 +47,7 @@
   <!-- Top Bar -->
   <header class="topbar">
 
-    <a href="index.html" class="brand">
+    <a href="../rafiq-home-transfer-20261013-211454/index.html" class="brand">
       <div class="brand-mark">R</div>
       <span>RAFIQ</span>
     </a>
@@ -52,18 +62,18 @@
   <main class="onboarding-page">
 
     <!-- Progress -->
-    <section class="progress-area">
+    <!-- <section class="progress-area"> -->
 
-      <div class="progress-copy">
+      <!-- <div class="progress-copy">
         <span>Getting Started</span>
         <strong>Step 1 of 1</strong>
-      </div>
+      </div> -->
 
-      <div class="progress-track">
+      <!-- <div class="progress-track">
         <div class="progress-fill"></div>
       </div>
 
-    </section>
+    </section> -->
 
 
     <section class="onboarding-layout">
@@ -71,12 +81,12 @@
       <!-- Left Side -->
       <div class="intro-panel">
 
-        <div class="eyebrow">
+        <!-- <div class="eyebrow">
           YOUR CHILD'S JOURNEY
-        </div>
+        </div> -->
 
         <h1>
-          Let's create your child's profile.
+          A little profile.<br>A <em>big beginning.</em>
         </h1>
 
         <p class="intro-text">
@@ -86,12 +96,15 @@
         </p>
 
 
+                <figure class="setup-companion" id="setupCompanion" data-gender="male" aria-label="Your RAFIQ companion">
+          <img class="companion-boy" src="../rafiq-home-transfer-20261013-211454/assets/hero/sit-front-cutout.png" alt="The RAFIQ baby boy smiling, ready for a new journey" width="1122" height="1402">
+          <img class="companion-girl" src="assets/onboarding/baby-girl.png" alt="The RAFIQ baby girl smiling, ready for a new journey" aria-hidden="true" width="1122" height="1402">
+          <!-- <figcaption class="companion-label">Every little detail matters.<span>A companion for every stage.</span></figcaption> -->
+        </figure>
         <div class="journey-preview">
 
-          <article class="journey-card active">
-            <div class="journey-icon mint">
-              👶
-            </div>
+          <!-- <article class="journey-card active">
+            <div class="journey-icon mint"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M8 9h.01M16 9h.01M8 14c2 3 6 3 8 0M10 4c0-3 4-3 3 0"/></svg></div>
 
             <div>
               <strong>Personalized by age</strong>
@@ -100,13 +113,11 @@
                 Content adapts as your child grows.
               </p>
             </div>
-          </article>
+          </article> -->
 
 
-          <article class="journey-card">
-            <div class="journey-icon lavender">
-              ✦
-            </div>
+          <!-- <article class="journey-card">
+            <div class="journey-icon lavender"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 17 6-6 4 3 8-10M16 4h5v5"/></svg></div>
 
             <div>
               <strong>Track development</strong>
@@ -115,13 +126,11 @@
                 Follow milestones and important progress.
               </p>
             </div>
-          </article>
+          </article> -->
 
 
-          <article class="journey-card">
-            <div class="journey-icon peach">
-              ♡
-            </div>
+          <!-- <article class="journey-card">
+            <div class="journey-icon peach"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 5c-3-3-7-1-8 1-1-2-5-4-8-1-5 5 8 14 8 14S25 10 20 5Z"/></svg></div>
 
             <div>
               <strong>Support when needed</strong>
@@ -130,20 +139,20 @@
                 Get guidance and connect with specialists.
               </p>
             </div>
-          </article>
+          </article> -->
 
         </div>
 
 
         <div class="privacy-note">
-          <div class="privacy-icon">
+          <!-- <div class="privacy-icon">
             ✓
-          </div>
+          </div> -->
 
-          <p>
+          <h3>
             You can add more children later from your
             Parent Dashboard.
-          </p>
+          </h3>
         </div>
 
       </div>
@@ -159,9 +168,9 @@
           </div>
 
           <div>
-            <span class="form-kicker">
+            <!-- <span class="form-kicker">
               CHILD PROFILE
-            </span>
+            </span> -->
 
             <h2>
               Tell us about your child
@@ -395,6 +404,8 @@
 
 
   <script src="onboarding.js"></script>
+  <script src="onboarding-character.js"></script>
 
+  <script src="parent-dashboard-background.js"></script>
 </body>
 </html>

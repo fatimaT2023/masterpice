@@ -31,10 +31,19 @@
   href="notifications.css"
 >
 
+  <link rel="stylesheet" href="parent-cycle-glass.css">
+  <link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
 </head>
 
 
-<body>
+<body class="parent-cycle-video">
+  <div class="dashboard-video-background" aria-hidden="true">
+    <video id="dashboardBackgroundVideo" muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true">
+      <source src="assets/dashboard/background.mp4" type="video/mp4">
+    </video>
+    <div class="dashboard-video-tint"></div>
+  </div>
+  <button class="background-playback-toggle" id="backgroundPlaybackToggle" type="button" aria-controls="dashboardBackgroundVideo" aria-pressed="true">▶ Play background</button>
 
 <div class="app-shell">
 
@@ -48,7 +57,7 @@
     <div class="sidebar-top">
 
       <a
-        href="../piblic-pages/index.html"
+        href="../rafiq-home-transfer-20261013-211454/index.html"
         class="brand"
       >
 
@@ -1254,5 +1263,6 @@
 <script src="health.js"></script>
 <script src="notifications.js"></script>
 
+  <script src="parent-dashboard-background.js"></script>
 </body>
 </html>

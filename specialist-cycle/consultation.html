@@ -33,10 +33,20 @@
   rel="stylesheet"
   href="specialist-notifications.css"
 >
+  <link rel="stylesheet" href="specialist-cycle-glass.css">
+  <link rel="stylesheet" href="specialist-sidebar.css">
+  <link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
 </head>
 
 
-<body>
+<body class="parent-cycle-video specialist-cycle-video">
+  <div class="dashboard-video-background" aria-hidden="true">
+    <video id="dashboardBackgroundVideo" muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true">
+      <source src="../pearent-cycel/assets/dashboard/background.mp4" type="video/mp4">
+    </video>
+    <div class="dashboard-video-tint"></div>
+  </div>
+  <button class="background-playback-toggle" id="backgroundPlaybackToggle" type="button" aria-controls="dashboardBackgroundVideo" aria-pressed="true">▶ Play background</button>
 
 <div class="app-shell">
 
@@ -44,188 +54,7 @@
        SIDEBAR
   ========================== -->
 
-  <aside
-    class="sidebar"
-    id="sidebar"
-  >
-
-    <div class="sidebar-top">
-
-      <a
-        href="../piblic-pages/index.html"
-        class="brand"
-      >
-
-        <div class="brand-mark">
-          R
-        </div>
-
-        <span>
-          RAFIQ
-        </span>
-
-      </a>
-
-
-      <button
-        type="button"
-        class="sidebar-close"
-        id="sidebarClose"
-      >
-        ✕
-      </button>
-
-    </div>
-
-
-    <div class="specialist-mini-card">
-
-      <div
-        class="specialist-avatar"
-        id="sidebarAvatar"
-      >
-        DR
-      </div>
-
-
-      <div class="specialist-info">
-
-        <span>
-          SPECIALIST
-        </span>
-
-        <strong id="sidebarName">
-          Specialist
-        </strong>
-
-        <small id="sidebarSpecialty">
-          Specialty
-        </small>
-
-      </div>
-
-    </div>
-
-
-    <div
-      class="sidebar-status"
-      id="sidebarStatus"
-    >
-
-      <span class="status-dot"></span>
-
-      <span id="sidebarStatusText">
-        Approved
-      </span>
-
-    </div>
-
-
-    <nav class="sidebar-nav">
-
-      <span class="nav-section-title">
-        OVERVIEW
-      </span>
-
-
-      <a
-        href="specialist-dashboard.html"
-        class="nav-link"
-      >
-        <span class="nav-icon">⌂</span>
-        Dashboard
-      </a>
-
-
-      <a
-        href="schedule.html"
-        class="nav-link"
-      >
-        <span class="nav-icon">▦</span>
-        Schedule
-      </a>
-
-
-      <span class="nav-section-title second">
-        PRACTICE
-      </span>
-
-
-      <a
-        href="specialist-bookings.html"
-        class="nav-link active"
-      >
-        <span class="nav-icon">◷</span>
-        Bookings
-      </a>
-
-
-      <a
-        href="clients.html"
-        class="nav-link"
-      >
-        <span class="nav-icon">♡</span>
-        Clients / Cases
-      </a>
-
-
-      <a
-        href="availability.html"
-        class="nav-link"
-      >
-        <span class="nav-icon">◫</span>
-        Availability
-      </a>
-
-
-      <span class="nav-section-title second">
-        BUSINESS
-      </span>
-
-
-      <a
-        href="earnings.html"
-        class="nav-link"
-      >
-        <span class="nav-icon">◇</span>
-        Earnings
-      </a>
-
-    </nav>
-
-
-    <div class="sidebar-bottom">
-
-      <a
-        href="profile.html"
-        class="nav-link"
-      >
-        <span class="nav-icon">◎</span>
-        Profile
-      </a>
-
-
-      <a
-        href="specialist-settings.html"
-        class="nav-link"
-      >
-        <span class="nav-icon">⚙</span>
-        Settings
-      </a>
-
-
-      <button
-        type="button"
-        class="logout-button"
-        id="logoutButton"
-      >
-        <span>↪</span>
-        Log Out
-      </button>
-
-    </div>
-
-  </aside>
+  <div id="specialistSidebarMount"></div><script src="specialist-sidebar.js"></script>
 
 
   <div
@@ -989,5 +818,6 @@
 
 <script src="consultation.js"></script>
 <script src="specialist-notifications.js"></script>
+  <script src="../pearent-cycel/parent-dashboard-background.js"></script>
 </body>
 </html>

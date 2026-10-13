@@ -1,0 +1,13 @@
+﻿/* Shared RAFIQ type system. Loaded last on every application page. */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Figtree:wght@400;500;600;700;800&display=swap');
+:root {
+  --font-display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif !important;
+  --font-heading: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif !important;
+  --font-body: 'Figtree', 'Segoe UI', system-ui, sans-serif !important;
+}
+body, button, input, select, textarea {
+  font-family: var(--font-body) !important;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display) !important;
+}
