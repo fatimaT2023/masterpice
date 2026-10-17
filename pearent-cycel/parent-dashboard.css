@@ -1,8 +1,8 @@
 :root {
   color-scheme: light;
 
-  --bg: #FFFAF0;
-  --bg-alt: #FFF1DC;
+  --bg: var(--theme-background,#fffaf0);
+  --bg-alt: var(--theme-background-alt,#fff1dc);
   --surface: #FFFFFF;
 
   --ink: #0F2F2E;
@@ -11,18 +11,18 @@
   --line: #F3E5CB;
   --line-strong: #E6D1A8;
 
-  --sage: #0B7A75;
-  --sage-deep: #075E5A;
+  --sage: var(--theme-primary,#0b7a75);
+  --sage-deep: var(--theme-primary-deep,#075e5a);
   --on-sage: #FFFFFF;
-  --sage-tint: #D4F3EA;
+  --sage-tint: var(--theme-primary-tint,#d4f3ea);
 
   --coral: #FF6F4D;
   --peach: #FFDCCB;
   --peach-ink: #A63A17;
 
-  --lav-deep: #8F7AF2;
-  --lav: #E7DFFF;
-  --lav-ink: #4330B0;
+  --lav-deep: var(--theme-secondary,#8f7af2);
+  --lav: var(--theme-secondary-tint,#e7dfff);
+  --lav-ink: var(--theme-secondary-deep,#4330b0);
 
   --sky-deep: #4FB4F3;
   --sky: #D2EDFF;
@@ -32,8 +32,8 @@
   --sun: #FFE7A3;
   --sun-ink: #6E4A00;
 
-  --mint: #CDF3E4;
-  --mint-ink: #0A6450;
+  --mint: var(--theme-primary-tint,#cdf3e4);
+  --mint-ink: var(--theme-primary-deep,#0a6450);
 
   --shadow-sm:
     0 1px 2px rgba(15, 47, 46, .05),
@@ -510,7 +510,7 @@ button {
 
   border-bottom: 1px solid rgba(243,229,203,.85);
 
-  background: rgba(255,250,240,.88);
+  background: rgba(var(--theme-background-rgb,255,250,240),.88);
 
   backdrop-filter: blur(15px);
 }

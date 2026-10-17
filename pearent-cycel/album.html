@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Child Album | RAFIQ</title>
+  <script src="../piblic-pages/rafiq-theme.js"></script>
+  <link rel="stylesheet" href="health.css">
+  <link rel="stylesheet" href="parent-cycle-glass.css">
+  <link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
+  <link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
+  <link rel="stylesheet" href="parent-sidebar.css">
+  <link rel="stylesheet" href="album.css">
+</head>
+<body class="parent-cycle-video">
+  <div class="dashboard-video-background" aria-hidden="true"><video id="dashboardBackgroundVideo" muted loop playsinline preload="metadata" tabindex="-1"><source src="assets/dashboard/background.mp4" type="video/mp4"></video><div class="dashboard-video-tint"></div></div>
+  <button class="background-playback-toggle" id="backgroundPlaybackToggle" type="button" aria-controls="dashboardBackgroundVideo" aria-pressed="true">Play background</button>
+  <div class="app-shell">
+    <div id="parentSidebarMount"></div><script src="parent-sidebar.js"></script>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button type="button" class="menu-button" id="menuButton" aria-label="Open navigation"></button>
+          <div><span class="page-kicker">LITTLE MOMENTS, KEPT CLOSE</span>
+            <h1 id="albumTitle" dir="auto">Child Album</h1>
+          </div></div>
+          <button class="album-primary" type="button" id="openUpload" disabled>+ Add photos</button>
+        </header>
+      <div class="page-body album-body">
+        <section class="album-hero">
+          <div><span class="album-kicker">YOUR FAMILY MEMORIES</span>
+            <h2>A little moment.<br>A memory to keep.</h2>
+            <p>First smiles, small adventures and the everyday moments you love. A separate album for each child.</p>
+            <button class="album-primary" type="button" id="heroUpload" disabled>+ Upload photos</button>
+            <p class="album-upload-hint">Choose photos from your phone or computer, then save them to this album.</p></div>
+            <div class="album-count"><strong id="photoCount">0</strong>
+              <span>photos in this album</span>
+              <small id="albumSize">0 MB stored locally</small>
+            </div></section>
+        <aside class="album-storage"><div><strong>Saved on this browser · Cloud storage is not connected</strong><p>These photos stay in this browser on this device. Clearing site data or losing the device can remove them. Download copies to keep a backup. There is no account-based privacy protection in this prototype.</p></div><button type="button" id="protectStorage">Request persistent storage</button></aside>
+        <p id="albumStatus" role="status" aria-live="polite"></p>
+        <section id="noChild" class="album-empty" hidden>
+          <h2>Start with a child profile</h2>
+          <p>Add a child to create their own album.</p>
+          <a class="album-primary" href="onboarding.html">Add a child</a>
+        </section>
+        <div class="album-toolbar" id="albumToolbar" hidden><label class="album-search">Search memories<input type="search" id="albumSearch" placeholder="Search title or description…"></label><label>Sort by<select id="albumSort"><option value="newest">Newest memory</option><option value="oldest">Oldest memory</option><option value="added">Recently added</option></select></label></div>
+        <section class="album-empty" id="albumEmpty" hidden>
+          <span class="album-empty-icon" aria-hidden="true">♡</span>
+          <h2>Your story starts here</h2>
+          <p>Add the first photo to this child's album.</p>
+        </section>
+        <div class="album-grid" id="albumGrid" aria-label="Photo memories"></div>
+      </div>
+    </main>
+  </div>
+  <dialog id="uploadDialog" class="album-dialog"><form id="uploadForm"><div class="album-dialog-heading"><h2>Add memories</h2><button type="button" data-close="uploadDialog" aria-label="Close upload">×</button></div><p>Original photos are saved locally. JPEG, PNG, WebP or GIF, up to 15 MB each; 20 photos per upload.</p><label class="album-drop">Choose photos<input id="photoFiles" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple required></label><div id="uploadPreview" class="album-preview"></div><label>Date of the memories<input id="uploadDate" type="date" required></label><label>Description (optional)<textarea id="uploadDescription" maxlength="1000" rows="3" placeholder="What made this moment special?"></textarea></label><p id="uploadStatus" role="status"></p><button class="album-primary" id="savePhotos" type="submit">Save to this browser</button></form></dialog>
+  <dialog id="memoryDialog" class="album-dialog album-memory"><div class="album-dialog-heading"><h2>Memory details</h2><button type="button" data-close="memoryDialog" aria-label="Close memory">×</button></div><img id="memoryImage" alt=""><form id="memoryForm"><label>Title<input id="memoryTitle" maxlength="120" required></label><label>Memory date<input id="memoryDate" type="date" required></label><label>Description<textarea id="memoryDescription" maxlength="1000" rows="3"></textarea></label><p id="memoryStatus" role="status"></p><div class="album-actions"><button class="album-primary" type="submit">Save details</button><a id="downloadPhoto" class="album-secondary" download>Download original</a><button type="button" id="deletePhoto" class="album-danger">Delete photo</button></div></form></dialog>
+  <dialog id="deleteDialog" class="album-dialog"><h2>Delete this photo?</h2><p>This removes the local copy from this album. Download it first if you want to keep a backup.</p><p id="deleteStatus" role="status"></p><div class="album-actions"><button type="button" data-close="deleteDialog">Keep photo</button><button class="album-danger" id="confirmDelete" type="button">Delete from this browser</button></div></dialog>
+  <script src="album.js"></script>
+  <script src="parent-dashboard-background.js"></script>
+</body>
+</html>

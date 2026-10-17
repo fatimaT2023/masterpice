@@ -233,13 +233,13 @@
 }
 
 .notification-icon.subscription {
-  color: #4330B0;
-  background: #E7DFFF;
+  color: var(--theme-secondary-deep,#4330b0);
+  background: var(--theme-secondary-tint,#e7dfff);
 }
 
 .notification-icon.report {
-  color: #0A6450;
-  background: #CDF3E4;
+  color: var(--theme-primary-deep,#0a6450);
+  background: var(--theme-primary-tint,#cdf3e4);
 }
 
 .notification-icon.cancelled {
@@ -253,8 +253,8 @@
 }
 
 .notification-icon.default {
-  color: #075E5A;
-  background: #D4F3EA;
+  color: var(--theme-primary-deep,#075e5a);
+  background: var(--theme-primary-tint,#d4f3ea);
 }
 
 
@@ -329,8 +329,8 @@
 
   border-radius: 15px;
 
-  color: #4330B0;
-  background: #E7DFFF;
+  color: var(--theme-secondary-deep,#4330b0);
+  background: var(--theme-secondary-tint,#e7dfff);
 
   font-size: 20px;
 }

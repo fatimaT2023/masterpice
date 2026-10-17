@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="../piblic-pages/rafiq-theme.js"></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appearance | RAFIQ</title>
+<link rel="stylesheet" href="admin-settings.css">
+<link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
+<link rel="stylesheet" href="admin-cycle-glass.css">
+<link rel="stylesheet" href="admin-sidebar.css">
+<link rel="stylesheet" href="appearance.css">
+<link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
+</head>
+<body class="admin-cycle-video">
+<div class="dashboard-video-background" aria-hidden="true"><video id="dashboardBackgroundVideo" muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true"><source src="../pearent-cycel/assets/dashboard/background.mp4" type="video/mp4"></video><div class="dashboard-video-tint"></div></div>
+<button class="background-playback-toggle" id="backgroundPlaybackToggle" type="button" aria-controls="dashboardBackgroundVideo" aria-pressed="true">Play background</button>
+<div class="admin-shell">
+<aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+
+        <span class="brand-mark">
+          R
+        </span>
+
+        <div>
+
+          <strong>
+            RAFIQ
+          </strong>
+
+          <small>
+            Administration
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <!-- ADMIN IDENTITY -->
+
+    <section class="admin-card">
+
+      <div class="admin-avatar">
+        A
+      </div>
+
+
+      <div>
+
+        <span>
+          PLATFORM ADMIN
+        </span>
+
+        <strong id="adminSidebarName">
+          RAFIQ Admin
+        </strong>
+
+        <small>
+          Control Center
+        </small>
+
+      </div>
+
+    </section>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-label">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="admin-dashboard.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">⌂</span>
+
+        <span>
+          Dashboard
+        </span>
+      </a>
+
+
+      <a
+        href="reports-analytics.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌁</span>
+
+        <span>
+          Reports & Analytics
+        </span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        SPECIALISTS
+      </span>
+
+
+      <a
+        href="specialist-approvals.html"
+        class="nav-link"
+      >
+
+        <span class="nav-icon">✓</span>
+
+        <span>
+          Specialist Approvals
+        </span>
+
+
+        <span
+          class="nav-count"
+          id="approvalNavCount"
+          hidden
+        >
+          0
+        </span>
+
+      </a>
+
+
+      <a
+        href="specialists-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◎</span>
+
+        <span>
+          Specialists
+        </span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        PLATFORM
+      </span>
+
+
+      <a
+        href="content-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▤</span>
+
+        <span>
+          Content Management
+        </span>
+      </a>
+
+
+      <a
+        href="ai-governance.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">✦</span>
+
+        <span>
+          AI Governance
+        </span>
+      </a>
+
+
+      <a
+        href="bookings-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▦</span>
+
+        <span>
+          Bookings
+        </span>
+      </a>
+
+
+      <a
+        href="billing-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◇</span>
+
+        <span>
+          Billing & Subscriptions
+        </span>
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+<a href="appearance.html" class="nav-link"><span class="nav-icon" aria-hidden="true"></span><span>Appearance</span></a>
+
+      <a
+        href="admin-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+
+        <span>
+          Admin Settings
+        </span>
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+
+        <span>
+          Log Out
+        </span>
+      </button>
+
+    </div>
+
+  </aside>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<main class="main-content">
+<header class="topbar"><div class="topbar-left"><button class="menu-button" id="menuButton" type="button" aria-label="Open navigation">&#9776;</button><div><span class="page-kicker">PLATFORM IDENTITY</span><h1>Appearance</h1></div></div><a href="admin-settings.html" class="secondary-button">Admin Settings</a></header>
+<div class="page-body" lang="en" dir="ltr">
+<div class="appearance-heading"><div><h2>Platform appearance</h2><p>Make the platform your own. Choose a preset or customize the colors, preview your changes, then save to apply them across all pages.</p></div></div>
+<div class="appearance-layout">
+<section class="panel appearance-panel" aria-labelledby="appearanceTitle">
+<h3 id="appearanceTitle">Colors and background</h3>
+<div class="theme-presets" role="group" aria-label="Theme presets">
+<button type="button" class="theme-preset" data-preset="rafiq" aria-pressed="false"><span class="preset-swatches"><i style="--swatch:#0b7a75"></i><i style="--swatch:#8f7af2"></i><i style="--swatch:#fffaf0"></i></span>RAFIQ</button>
+<button type="button" class="theme-preset" data-preset="ocean" aria-pressed="false"><span class="preset-swatches"><i style="--swatch:#1769aa"></i><i style="--swatch:#00a6a0"></i><i style="--swatch:#f1f7ff"></i></span>Ocean</button>
+<button type="button" class="theme-preset" data-preset="lavender" aria-pressed="false"><span class="preset-swatches"><i style="--swatch:#7052b5"></i><i style="--swatch:#c46a96"></i><i style="--swatch:#faf5ff"></i></span>Lavender</button>
+</div>
+<form id="appearanceForm">
+<div class="appearance-field"><div><label for="primary">Primary color</label><small>Buttons, links, and active navigation</small></div><input id="primary" name="primary" type="color" value="#0b7a75"></div>
+<div class="appearance-field"><div><label for="secondary">Secondary color</label><small>Accents and highlighted cards</small></div><input id="secondary" name="secondary" type="color" value="#8f7af2"></div>
+<div class="appearance-field"><div><label for="background">Background color</label><small>Page backgrounds and the overlay above the video</small></div><input id="background" name="background" type="color" value="#fffaf0"></div>
+<div class="appearance-field"><div><label for="video">Dashboard background</label><small>Admin, parent, and specialist dashboards</small></div><select id="video" name="video"><option value="video">Current video</option><option value="solid">Solid color</option></select></div>
+<div class="appearance-field"><div><label for="glass">Glass opacity</label><small>Higher values make cards less transparent</small></div><div class="appearance-range"><input id="glass" name="glass" type="range" min="20" max="85" value="36"><output id="glassValue" for="glass">36%</output></div></div>
+<div class="appearance-actions"><button class="primary-button" type="submit">Save and apply theme</button><button class="secondary-button" id="cancelAppearance" type="button">Cancel preview</button><button class="secondary-button" id="resetAppearance" type="button">Restore defaults</button></div>
+<p class="appearance-status" id="appearanceStatus" role="status" aria-live="polite"></p>
+<p class="appearance-note">Settings are saved locally in this browser and apply to public, parent, specialist, and admin pages on the same site address. Button text color adjusts automatically to your chosen color.</p>
+</form></section>
+<section class="panel appearance-panel appearance-preview" aria-labelledby="previewTitle"><h3 id="previewTitle">Live preview</h3><p class="preview-caption">Changes are temporary until you save.</p><div class="preview-window"><div class="preview-nav"><strong>RAFIQ</strong><span class="preview-pill">Your platform identity</span></div><div class="preview-card"><span class="page-kicker">GROWING TOGETHER, STEP BY STEP</span><h4>Welcome to RAFIQ</h4><p>See how your colors look on cards and buttons with a consistent platform identity.</p><div class="preview-progress"><span></span></div><button type="button" class="primary-button">Sample button</button></div></div><p class="appearance-note">Cancel your preview or restore the original RAFIQ design at any time.</p></section>
+</div></div></main></div>
+<script src="../pearent-cycel/parent-dashboard-background.js"></script>
+<script src="admin-sidebar.js"></script>
+<script src="appearance.js"></script>
+</body></html>

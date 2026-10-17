@@ -1,0 +1,15 @@
+/* Only saved/custom previews override the original RAFIQ appearance. */
+html[data-rafiq-theme]{--sage:var(--theme-primary)!important;--green:var(--theme-primary)!important;--sage-deep:var(--theme-primary-deep)!important;--sage-tint:var(--theme-primary-tint)!important;--mint:var(--theme-primary-tint)!important;--on-sage:var(--theme-on-primary)!important;--lav-deep:var(--theme-secondary)!important;--lav:var(--theme-secondary-tint)!important;--lav-ink:var(--theme-secondary-deep)!important;--bg:var(--theme-background)!important;--bg-alt:var(--theme-background-alt)!important}
+html[data-rafiq-theme] body{background-color:var(--theme-background)}
+html[data-rafiq-theme] .dashboard-video-background{background:var(--theme-background)}
+html[data-rafiq-theme] .dashboard-video-tint{background:rgba(var(--theme-background-rgb),.42)}
+html[data-rafiq-theme] :is(.sidebar,.dashboard-topbar,.topbar,.dashboard-card,.feature-card,.panel,.metric-card,.settings-section,.settings-nav,.directory-card,.queue-card,.content-panel,.bookings-panel,.billing-panel,.analytics-card,.section-card,.form-card,.settings-panel,.profile-card,.client-card,.schedule-card,.content-card,.workspace-card,.plan-card,.specialist-card,.booking-card,.chat-card){background-color:rgba(255,255,255,var(--theme-glass))}
+html[data-theme-no-video] .dashboard-video-background video,html[data-theme-no-video] .background-playback-toggle{display:none!important}
+html[data-theme-no-video] .dashboard-video-tint{background:transparent}
+html[data-rafiq-theme] :is(.primary-button,.primary-action,.save-button,.add-button,.confirm-button,.pay-button,.book-button,.next-button,.submit-button){background:var(--theme-primary);color:var(--theme-on-primary)}
+html[data-rafiq-theme] :is(.primary-button,.primary-action,.save-button,.add-button,.confirm-button,.pay-button,.book-button,.next-button,.submit-button):hover{background:var(--theme-primary);color:var(--theme-on-primary);filter:brightness(.94)}
+html[data-rafiq-theme] .cinematic-hero{background-color:var(--theme-background)}
+html[data-rafiq-theme] :is(.hero-scroll,.hero-scroll .hero-sticky){background:var(--theme-background)}
+html[data-rafiq-theme] .hero-scroll .studio-light{background:radial-gradient(ellipse at 55% 60%,rgba(255,255,255,.5),transparent 70%)}
+html[data-rafiq-theme] :is(.button.primary,.button.cta,.login-submit,.submit-button){background:var(--theme-primary);color:var(--theme-on-primary)}
+html[data-rafiq-theme] :is(.navbar,.hero-content.glass,.rf-feature,.rf-mini,.rf-chat){background-color:rgba(255,255,255,var(--theme-glass))}

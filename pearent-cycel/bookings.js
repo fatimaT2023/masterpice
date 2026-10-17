@@ -903,6 +903,8 @@ document.addEventListener(
 
 
       saveBookings();
+      window.RafiqFinance?.reconcile();
+      window.dispatchEvent(new Event('rafiq-finance-change'));
 if (
   window.createRafiqNotification
 ) {

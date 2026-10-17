@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script src="../piblic-pages/rafiq-theme.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RAFIQ â€” Every stage, together</title>
@@ -93,6 +94,8 @@
 <link rel="stylesheet" href="completion.css">
 <link rel="stylesheet" href="footer.css">
   <link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
+<link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
+<link rel="stylesheet" href="specialists-preview.css">
 </head>
 <body class="rafiq-home">
   <a class="skip-link" href="#studio">Skip to content</a>
@@ -156,7 +159,7 @@
                                 <article class="growth-copy" data-growth-copy="0" >
                                   <span class="age-label">AGE 0-2</span><h2>The beginning of everything.</h2>
                                   <p>Sleep, feeding, growth and the little questions that feel very big.</p>
-                                  <p class="growth-topics">Sleep · Feeding Â· Growth</p></article>
+                                  <p class="growth-topics">Sleep · Feeding · Growth</p></article>
                                   <article class="growth-copy" data-growth-copy="1" aria-hidden="true" inert>
                                     <span class="age-label">AGE 3-4</span><h2>A world of discovery.</h2>
                                     <p>Small discoveries. Big feelings. A little more independence every day.</p>
@@ -226,90 +229,359 @@
     <section id="labs" class="home-section rf-features" aria-labelledby="labs-title">
       <div class="rf-stage">
         <div class="rf-light" aria-hidden="true"></div>
-        <header class="rf-header"><h2 id="labs-title">Everything RAFIQ brings together.</h2><p>Explore the tools designed to support every stage of your child's journey.</p></header>
-        <div class="rf-showcase" role="region" aria-roledescription="carousel" aria-label="RAFIQ features"><div class="rf-viewport" tabindex="0" aria-label="Feature carousel. Use left and right arrow keys to explore."><div class="rf-demo" id="rf-track">
-            <article class="rf-feature" id="rf-ai" data-tint="231,223,255"><span class="rf-eyebrow">01 / AI GUIDANCE</span><h3>AI Guidance</h3><p class="rf-short">Ask what's on your mind.</p><div class="rf-chat"><small>PARENT</small><p>â€œBedtime has become a struggle.â€</p></div><div class="rf-chat rf-response"><small>RAFIQ</small><p>â€œTry a predictable three-step routine tonight.â€</p></div><a class="rf-link" href="#process">Suggested next step <span aria-hidden="true">></span></a></article>
-            <article class="rf-feature" id="rf-profiles" data-tint="205,243,228"><span class="rf-eyebrow">02 / CHILD PROFILES</span><h3>Child Profiles</h3><p class="rf-short">Every child has their own journey.</p><div class="rf-profiles" role="group" aria-label="Example child profiles"><button type="button" aria-pressed="true"><span class="rf-avatar">L</span><span>Layan<small>2 years</small></span></button><button type="button" aria-pressed="false"><span class="rf-avatar">O</span><span>Omar<small>8 years</small></span></button></div></article>
-            <article class="rf-feature" id="rf-development" data-tint="255,220,203"><span class="rf-eyebrow">03 / DEVELOPMENT &amp; MILESTONES</span><h3>Development</h3><p class="rf-short">See progress as they grow.</p><div class="rf-metrics"><div style="--value:.72"><span>Language</span><i><b></b></i></div><div style="--value:.58"><span>Social</span><i><b></b></i></div><div style="--value:.64"><span>Emotional</span><i><b></b></i></div></div><p class="rf-note">Illustrative indicators. Every child develops at their own pace.</p></article>
-            <article class="rf-feature" id="rf-screening" data-tint="231,223,255"><span class="rf-eyebrow">04 / EARLY SCREENING</span><h3>Early Screening</h3><p class="rf-short">Know when to look closer.</p><div class="rf-mini"><h4>Speech &amp; Language</h4><p>8 / 10 complete</p><span class="rf-status">Review suggested</span></div><p class="rf-note">Not a diagnosis.</p></article>
-            <article class="rf-feature" id="rf-health" data-tint="210,237,255"><span class="rf-eyebrow">05 / HEALTH TRACKING</span><h3>Health Tracking</h3><p class="rf-short">Keep important moments together.</p><ol class="rf-timeline"><li>Growth</li><li>Checkup</li><li>Vaccination</li></ol></article>
-            <article class="rf-feature" id="rf-challenges" data-tint="255,220,203"><span class="rf-eyebrow">06 / PARENTING CHALLENGES</span><h3>Parenting Challenges</h3><p class="rf-short">Help for the moments that feel difficult.</p><div class="rf-topics"><span>Sleep</span><span>Tantrums</span><span>Screen Time</span><span>Bullying</span><span>Teen Communication</span></div></article>
-            <article class="rf-feature" id="rf-specialists" data-tint="205,243,228"><span class="rf-eyebrow">07 / VERIFIED SPECIALISTS</span><h3>Verified Specialists</h3><p class="rf-short">Expert support when you need it.</p><div class="rf-mini rf-specialist"><span class="rf-avatar">LH</span><div><h4>Dr. Lina Haddad</h4><p>Child Development Specialist</p><span class="rf-verified">âœ“ Verified</span><p>Available this week</p></div></div><a class="button primary rf-cta" href="#process">View Specialist <span aria-hidden="true"></span></a><p class="rf-note">Illustrative specialist profile</p></article>
-            <article class="rf-feature" id="rf-safety" data-tint="210,237,255"><span class="rf-eyebrow">08 / SAFETY</span><h3>Safety</h3><p class="rf-short">Guidance that knows its limits.</p><div class="rf-safety-message"><svg class="rf-shield" viewBox="0 0 64 72" fill="none" aria-hidden="true"><path d="M32 5 56 14v21c0 15-15 26-24 32C23 61 8 50 8 35V14L32 5Z" fill="rgba(255,220,203,.3)" stroke="rgba(15,47,46,.3)" stroke-width="1.5"/><path d="m23 35 6 6 13-14" stroke="#0b7a75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h4>AI guidance paused</h4><p>Professional help recommended.</p></div></div><p class="rf-note">An example of how RAFIQ responds to an urgent concern.</p></article>
+        <header class="rf-header">
+          <h2 id="labs-title">Real tools for your everyday parenting.</h2>
+          <p>Follow development, find specialist support and keep family memories. Explore what you can do inside RAFIQ.</p>
+        </header>
+        <div class="rf-showcase" role="region" aria-roledescription="carousel" aria-label="RAFIQ features">
+          <div class="rf-viewport" tabindex="0" aria-label="Feature carousel. Use left and right arrow keys to explore.">
+            <div class="rf-demo" id="rf-track">
+            <article class="rf-feature" id="rf-ai" data-tint="231,223,255">
+              <span class="rf-eyebrow">1 / AI GUIDANCE</span>
+              <h3>AI guidance for everyday questions</h3>
+              <p class="rf-short">Explore parenting questions in the context of your child's age, with practical next steps for daily routines and behaviour.</p>
+              <div class="rf-chat"><small>PARENT</small><p>Bedtime has become a struggle.</p></div>
+              <div class="rf-chat rf-response"><small>RAFIQ</small><p>Try a predictable three-step routine tonight.</p></div>
+              <a class="rf-link" href="#">Explore this tool &rarr;</a>
+            </article>
+
+            <article class="rf-feature" id="rf-profiles" data-tint="205,243,228">
+              <span class="rf-eyebrow">2 / CHILD PROFILES</span>
+              <h3>One family. Individual journeys.</h3>
+              <p class="rf-short">Create a profile for each child and switch between their milestones, health records, appointments and photo album.</p>
+              <div class="rf-profiles" role="group" aria-label="Example child profiles">
+                <button type="button" aria-pressed="true">
+                  <span class="rf-avatar">L</span>
+                  <span>Layan<small>2 years</small></span>
+                </button>
+                <button type="button" aria-pressed="false">
+                  <span class="rf-avatar">O</span><span>Omar<small>8 years</small></span>
+                </button>
+              </div><a class="rf-link" href="#">Explore this tool &rarr;</a>
+            </article>
+
+            <article class="rf-feature" id="rf-development" data-tint="255,220,203">
+              <span class="rf-eyebrow">3 / DEVELOPMENT &amp; MILESTONES</span>
+              <h3>Notice every step forward.</h3>
+              <p class="rf-short">Explore age-related milestones and record achievements across areas of your child's development.</p>
+              <div class="rf-metrics">
+                <div style="--value:.72"><span>Language</span><i><b></b></i></div>
+                <div style="--value:.58"><span>Social</span><i><b></b></i></div>
+                <div style="--value:.64"><span>Emotional</span><i><b></b></i></div>
+              </div>
+              <p class="rf-note">Illustrative indicators. Every child develops at their own pace.</p>
+              <a class="rf-link" href="#">Explore this tool &rarr;</a>
+            </article>
+
+            <article class="rf-feature" id="rf-screening" data-tint="231,223,255">
+              <span class="rf-eyebrow">4 / EARLY SCREENING</span>
+              <h3>Turn observations into next steps.</h3>
+              <p class="rf-short">Answer structured questions, review a screening summary and explore whether specialist support could help. Screening is not a diagnosis.</p>
+              <div class="rf-mini"><h4>Speech &amp; Language</h4><p>8 / 10 complete</p><span class="rf-status">Review suggested</span></div>
+              <p class="rf-note">Not a diagnosis.</p>
+              <a class="rf-link" href="#">Explore this tool &rarr;</a>
+            </article>
+
+            <article class="rf-feature" id="rf-health" data-tint="210,237,255">
+              <span class="rf-eyebrow">5 / HEALTH TRACKING</span>
+              <h3>Their health history, together.</h3>
+              <p class="rf-short">Keep health notes and vaccination records organised for each child and review them before appointments.</p>
+              <ol class="rf-timeline">
+                <li>Growth</li>
+                <li>Checkup</li>
+                <li>Vaccination</li>
+              </ol>
+              <a class="rf-link" href="#">Explore this tool &rarr;</a>
+            </article>
+            <article class="rf-feature" id="rf-challenges" data-tint="255,220,203">
+              <span class="rf-eyebrow">6 / PARENTING CHALLENGES</span>
+              <h3>Support for today's challenge.</h3>
+              <p class="rf-short">Explore parenting topics such as sleep, tantrums and screen time, with practical guidance for everyday situations.</p>
+              <div class="rf-topics">
+                <span>Sleep</span>
+                <span>Tantrums</span>
+                <span>Screen Time</span>
+                <span>Bullying</span>
+                <span>Teen Communication</span>
+              </div>
+              <a class="rf-link" href="#">Explore this tool &rarr;</a>
+            </article>
+
+            <article class="rf-feature" id="rf-specialists" data-tint="205,243,228">
+              <span class="rf-eyebrow">7 / VERIFIED SPECIALISTS</span>
+              <h3>Find the right person to talk to.</h3>
+              <p class="rf-short">Browse approved specialist profiles, review specialties and session prices, then choose an appointment.</p>
+              <div class="rf-mini rf-specialist">
+                <span class="rf-avatar">LH</span>
+                <div>
+                  <h4>Dr. Lina Haddad</h4>
+                  <p>Child Development Specialist</p>
+                  <span class="rf-verified"> Verified</span>
+                  <p>Available this week</p>
+                </div>
+              </div>
+              <p class="rf-note">Illustrative specialist profile</p>
+              <a class="rf-link" href="#">Explore this tool &rarr;</a>
+            </article>
+
+            <article class="rf-feature" id="rf-safety" data-tint="210,237,255">
+              <span class="rf-eyebrow">8 / SAFETY</span>
+              <h3>Guidance with clear boundaries.</h3>
+              <p class="rf-short">Understand when AI guidance should give way to professional support. Screening and AI tools do not replace a professional.</p>
+              <div class="rf-safety-message">
+                <svg class="rf-shield" viewBox="0 0 64 72" fill="none" aria-hidden="true">
+                  <path d="M32 5 56 14v21c0 15-15 26-24 32C23 61 8 50 8 35V14L32 5Z" fill="rgba(255,220,203,.3)" stroke="rgba(15,47,46,.3)" stroke-width="1.5"/>
+                  <path d="m23 35 6 6 13-14" stroke="var(--theme-primary,#0b7a75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div>
+                  <h4>AI guidance paused</h4>
+                  <p>Professional help recommended.</p>
+                </div>
+              </div>
+              <p class="rf-note">An example of how RAFIQ responds to an urgent concern.</p>
+              <a class="rf-link" href="#">Explore this tool &rarr;</a>
+            </article>
+
+<article class="rf-feature" id="rf-booking" data-tint="210,237,255">
+  <span class="rf-eyebrow">9 / APPOINTMENTS</span>
+  <h3>Book support. Follow every step.</h3>
+  <p class="rf-short">Choose a specialist and time, review the session fee, then return to My Bookings to manage your appointment and access available reports.</p>
+  <div class="rf-workflow">
+    <span>Choose a time</span>
+    <b>&rarr;</b><span>Review &amp; pay</span>
+    <b>&rarr;</b><span>Track booking</span></div>
+    <div class="rf-mini">
+      <h4>One place for your appointments</h4>
+      <p>Upcoming sessions, cancellations and payment status.</p>
+    </div>
+      <p class="rf-note">Checkout is currently a demo. No real payments are collected.</p>
+      <a class="rf-link" href="../pearent-cycel/bookings.html">Explore My Bookings &rarr;</a>
+    </article>
+
+<article class="rf-feature" id="rf-album" data-tint="255,220,203">
+  <span class="rf-eyebrow">10 / YOUR CHILD'S ALBUM</span>
+  <h3>Keep the moments between milestones.</h3>
+  <p class="rf-short">Create a separate photo album for each child. Add dates and descriptions, search your memories and download the original photos.</p>
+  <div class="rf-memory-preview">
+    <div>
+      <span aria-hidden="true">&#9788;</span>
+      <strong>First adventure</strong><small>A date. A story. A little memory.</small></div>
+      <div><span aria-hidden="true">&#9825;</span><strong>Everyday joy</strong><small>In an album of their own.</small></div></div>
+      <p class="rf-note">Photos are stored in your browser. Cloud backup is not connected yet.</p>
+      <a class="rf-link" href="../pearent-cycel/album.html">Explore the child album &rarr;</a>
+    </article>
+
           </div>
         </div>
-        </div><div class="rf-controls"><button class="rf-prev" type="button" aria-label="Previous feature" aria-controls="rf-track"><<</button><span class="rf-position" role="status" aria-live="polite" aria-atomic="true">01 / 08</span><button class="rf-next" type="button" aria-label="Next feature" aria-controls="rf-track">>></button><span class="rf-drag-hint"></span></div><footer class="rf-final"><h3>Everything works together.</h3><p>So you never have to piece it together yourself.</p><div><a class="button primary rf-cta" href="../piblic-pages/register.html">Get Started Free <span aria-hidden="true"></span></a><a class="button primary rf-cta" href="#process">Find a Specialist</a></div></footer>
+        </div>
+        <div class="rf-controls">
+          <button class="rf-prev" type="button" aria-label="Previous feature" aria-controls="rf-track"><<</button>
+          <span class="rf-position" role="status" aria-live="polite" aria-atomic="true">01 / 10</span>
+          <button class="rf-next" type="button" aria-label="Next feature" aria-controls="rf-track">>></button>
+          <span class="rf-drag-hint"></span></div>
+          <footer class="rf-final">
+            <h3>Everything works together.</h3><p>So you never have to piece it together yourself.</p>
+            <div>
+              <a class="button primary rf-cta" href="../piblic-pages/register.html">Get Started Free <span aria-hidden="true"></span></a>
+              <a class="button primary rf-cta" href="#process">Find a Specialist</a></div>
+            </footer>
       </div>
     </section>
 
     <section id="process" class="home-section rafiq-journey" aria-labelledby="process-title">
-      <div class="rj-stage">
-        <div class="rj-atmosphere" aria-hidden="true"></div>
-        <header class="rj-opening"><p class="section-label">HOW RAFIQ WORKS</p><h2 id="process-title">From the first question<br>to the follow-up.</h2></header>
-        <div class="rj-path" aria-hidden="true"><span class="rj-path-fill"></span><i></i></div>
-        <div class="rj-scenes">
-          <article class="rj-scene"><div class="rj-copy"><span>1 / ASK</span><h3>Start with the question on your mind.</h3></div><div class="rj-glass rj-question"><small>YOUR QUESTION</small><p>â€œMy child is 4 and keeps hitting other children. How should I respond?â€</p><span class="rj-caption">A place to begin. Without judgment.</span></div></article>
-          <article class="rj-scene"><div class="rj-copy"><span>2 / UNDERSTAND</span><h3>Get guidance shaped around your child.</h3></div><div class="rj-glass rj-guidance"><small>RAFIQ / AI GUIDANCE</small><p>â€œBig feelings often arrive before children have the words for them. Stay calm, name the feeling, and show what they can do instead.â€</p><a href="#labs" class="rj-next">See suggested next steps <span aria-hidden="true">â†’</span></a></div></article>
-          <article class="rj-scene"><div class="rj-copy"><span>3 / TRACK</span><h3>See development in context.</h3></div><div class="rj-glass rj-development"><small>THE BIGGER PICTURE</small><p class="rj-panel-title">Every milestone has a story.</p><div class="rj-metric" style="--level:.72"><span>Language</span><i><b></b></i></div><div class="rj-metric" style="--level:.58"><span>Social</span><i><b></b></i></div><div class="rj-metric" style="--level:.64"><span>Emotional</span><i><b></b></i></div><span class="rj-caption">Illustrative journey · every child develops differently.</span></div></article>
-          <article class="rj-scene"><div class="rj-copy"><span>4 / CHECK</span><h3>Know when something deserves a closer look.</h3></div><div class="rj-glass rj-screening"><small>A THOUGHTFUL CHECK-IN</small><p class="rj-panel-title">Speech &amp; Language</p><p class="rj-detail">Age-appropriate check</p><span class="rj-status">Review suggested</span><span class="rj-caption">Screening is guidance, not a diagnosis.</span></div></article>
-          <article class="rj-scene"><div class="rj-copy"><span>5 / CONNECT</span><h3>Bring in the right specialist when you need one.</h3></div><div class="rj-glass rj-specialist"><small>SPECIALIST SUPPORT</small><div class="rj-profile"><span class="rj-avatar" aria-hidden="true">LH</span><div><p class="rj-panel-title">Dr. Lina Haddad</p><p class="rj-detail">Child Development Specialist</p></div></div><span class="rj-verified">âœ“ Verified</span><p class="rj-detail">Available this week</p><span class="rj-caption">Illustrative specialist profile</span></div></article>
-          <article class="rj-scene"><div class="rj-copy"><span>6 / BOOK</span><h3>Choose a time that works for your family.</h3></div><div class="rj-glass rj-booking"><small>YOUR NEXT CONVERSATION</small><p class="rj-panel-title">A little time. A clearer next step.</p><div class="rj-times" role="group" aria-label="Illustrative appointment times"><button type="button" aria-pressed="false">10:00 AM</button><button type="button" aria-pressed="false">1:30 PM</button><button type="button" aria-pressed="false">4:30 PM</button></div><p class="rj-confirmation">âœ“ Session booked</p><span class="rj-caption">Journey preview Â· no appointment is booked.</span></div></article>
-          <article class="rj-scene"><div class="rj-copy"><span>7 / FOLLOW UP</span><h3>Keep everything connected after the session.</h3></div><div class="rj-glass rj-followup"><small>YOUR JOURNEY, TOGETHER</small><p class="rj-panel-title">Consultation complete</p><p class="rj-detail">âœ“ Report saved</p><p class="rj-detail">Next check-in: <strong>2 weeks</strong></p><span class="rj-connected"> <span>Connected in RAFIQ</span></span></div></article>
-        </div>
-        <nav class="rj-indicator" aria-label="RAFIQ journey steps"><button type="button" aria-label="Step 1: Ask">01</button><button type="button" aria-label="Step 2: Understand">02</button><button type="button" aria-label="Step 3: Track">03</button><button type="button" aria-label="Step 4: Check">04</button><button type="button" aria-label="Step 5: Connect">05</button><button type="button" aria-label="Step 6: Book">06</button><button type="button" aria-label="Step 7: Follow up">07</button></nav>
-        <div class="rj-finale"><span class="rj-wordmark">RAFIQ / EVERY STAGE. TOGETHER.</span><h3>Everything connects.<br>Nothing gets lost between steps.</h3><p>From the first question to ongoing support,<br>RAFIQ keeps your child's journey in one place.</p><div class="rj-actions"><a class="button primary" href="../piblic-pages/register.html">Get Started Free <span aria-hidden="true"></span></a><a class="button secondary" href="#labs">Explore Features</a></div></div>
-      </div>
-    </section>
+ <div class="rj-stage">
+  <header class="rj-opening">
+    <!-- <p class="section-label">HOW IT WORKS / YOUR FAMILY, AT THE CENTRE</p> -->
+    <h2 id="process-title">A little clarity.<br>One step at a time.</h2>
+    <p>Start with your child. Find guidance. Keep moving forward together.</p>
+  </header>
 
-<section id="parents" class="home-section parent-section" aria-labelledby="parents-title">
-  <header class="pd-header"><p class="section-label">FOR PARENTS</p><h2 id="parents-title">One calm place for everything about your child.</h2><p>Track progress, get guidance, remember what matters, and know when to ask for help.</p></header>
-  <div class="pd-dashboard">
-    <div class="pd-top"><div><span class="pd-eyebrow">YOUR FAMILY / TODAY</span><h3>A little clarity for your day.</h3></div><div class="pd-child"><span>Current child</span><div class="pd-profile-options" role="group" aria-label="Example child profiles"><button type="button" aria-pressed="true" data-child="omar">Omar <small>8 years</small></button><button type="button" aria-pressed="false" data-child="layan">Layan <small>2 years</small></button></div></div></div>
-    <div class="pd-grid">
-      <article class="pd-module pd-tip"><span class="pd-eyebrow">01 / TODAY'S TIP</span><h4>Connection before correction.</h4><p>Take a quiet moment to listen before offering a solution. Sometimes feeling heard is the first step.</p><span class="pd-footnote">One small moment can change the day.</span></article>
-      <article class="pd-module pd-progress"><span class="pd-eyebrow">02 / DEVELOPMENT PROGRESS</span><h4>Growing, in their own way.</h4><div class="pd-progress-row"><span>Milestones explored</span><strong>6 of 8</strong></div><div class="pd-bar"><span></span></div><p class="pd-footnote">Example progress through your saved milestones.</p></article>
-      <article class="pd-module pd-checkin"><span class="pd-eyebrow">03 / DAILY CHECK-IN</span><h4>How is today feeling?</h4><div class="pd-moods" role="group" aria-label="Example daily mood"><button type="button" aria-pressed="false">â˜€ <span>Bright</span></button><button type="button" aria-pressed="false">â—¡ <span>Calm</span></button><button type="button" aria-pressed="false">â˜ <span>A little hard</span></button></div><p class="pd-mood-status" role="status">A small pause to notice how things are going.</p></article>
-      <article class="pd-module pd-challenge"><span class="pd-eyebrow">RECOMMENDED CHALLENGE</span><h4>Ten minutes, just together.</h4><p>Let your child choose a screen-free activity. Follow their lead and enjoy a little undivided attention.</p><button type="button" class="pd-text-button pd-challenge-button" aria-pressed="false">Try today's challenge <span aria-hidden="true">â†’</span></button></article>
-      <article class="pd-module pd-screening"><span class="pd-eyebrow">04 / UPCOMING SCREENING</span><h4>A thoughtful check-in.</h4><p>Review your child's development questions when you have a quiet moment.</p><span class="pd-badge">Next check-in ready</span><p class="pd-footnote">Screening is guidance, not a diagnosis.</p></article>
-      <article class="pd-module pd-health"><span class="pd-eyebrow">05 / HEALTH REMINDER</span><h4>Remember what matters.</h4><ol class="pd-health-line"><li>Growth update saved</li><li>Review checkup notes</li><li>Check vaccination reminders</li></ol></article>
-      <article class="pd-module pd-ai"><span class="pd-eyebrow">06 / ASK RAFIQ AI</span><h4>A next step, when you need one.</h4><div class="pd-typing" aria-hidden="true"><i></i><i></i><i></i></div><p class="pd-suggestion">Try asking: â€œHow can I make our evening routine a little calmer?â€</p><a class="pd-text-button" href="#rf-ai">Explore AI guidance <span aria-hidden="true">â†’</span></a></article>
-      <article class="pd-module pd-specialist"><span class="pd-eyebrow">07 / FIND SPECIALIST</span><h4>Support is within reach.</h4><span class="pd-availability"><i></i>3 available this week</span><p class="pd-footnote">Example availability</p><a class="pd-text-button" href="#rf-specialists">Find a specialist <span aria-hidden="true">â†’</span></a></article>
-    </div>
-    <div class="pd-dashboard-bottom"><span>RAFIQ / EVERY STAGE. TOGETHER.</span><span>Illustrative parent dashboard</span></div>
+  <div class="rj-experience">
+   <div class="rj-steps">
+
+    <article class="rj-step is-active" data-step="0">
+      <button class="rj-step-button" type="button" aria-current="step" aria-controls="rj-preview-0">
+        <span class="rj-number">1</span><span>MAKE IT THEIRS</span>
+      </button>
+        <h3>Start with your little person.</h3>
+        <p>Add your child's name and birthday. Their profile brings age-related tools, health records and memories into one place.</p>
+        <span class="rj-step-tag">One profile for each child</span>
+      </article>
+
+    <article class="rj-step" data-step="1">
+      <button class="rj-step-button" type="button" aria-controls="rj-preview-1">
+        <span class="rj-number">2</span>
+        <span>FIND YOUR NEXT STEP</span></button>
+        <h3>Bring the questions. Explore the possibilities.</h3>
+        <p>Explore Rafiq AI, parenting topics and screening tools to make sense of everyday concerns and prepare for a conversation.</p>
+        <span class="rj-step-tag">Guidance, not a diagnosis</span>
+      </article>
+    <article class="rj-step" data-step="2">
+      <button class="rj-step-button" type="button" aria-controls="rj-preview-2">
+        <span class="rj-number">3</span>
+        <span>CONNECT WITH SUPPORT</span></button>
+        <h3>Find someone to talk it through.</h3>
+        <p>Browse specialist profiles, review session details and choose a time. Follow the appointment from booking to available reports.</p>
+        <span class="rj-step-tag">Booking and checkout are currently a demo</span>
+      </article>
+    <article class="rj-step" data-step="3">
+      <button class="rj-step-button" type="button" aria-controls="rj-preview-3">
+        <span class="rj-number">4</span>
+        <span>KEEP YOUR STORY</span></button>
+        <h3>Watch the little moments add up.</h3>
+        <p>Record milestones, keep health notes and add photos to your child's own album. Return whenever you need the bigger picture.</p>
+        <span class="rj-step-tag">Album photos are currently saved in your browser</span>
+      </article>
+   </div>
+   <div class="rj-preview-wrap">
+    <div class="rj-orbit" aria-hidden="true"></div>
+    <div class="rj-device">
+     <div class="rj-device-bar"><span>R / RAFIQ</span>
+      <span class="rj-live">YOUR FAMILY SPACE</span></div>
+     <div class="rj-preview is-active" id="rj-preview-0">
+      <span class="rj-panel-kicker">A JOURNEY OF THEIR OWN</span>
+      <div class="rj-child-avatar">L<span>&#10022;</span></div>
+      <h4>Meet Layan.</h4><p>2 years old. A world to discover.</p>
+      <div class="rj-preview-row"><span>Milestones</span><b>Small steps, noticed</b></div>
+      <div class="rj-preview-row"><span>Health</span><b>Records, together</b></div>
+      <div class="rj-preview-row"><span>Memories</span><b>Her own little album</b></div></div>
+     <div class="rj-preview" id="rj-preview-1" hidden>
+      <span class="rj-panel-kicker">ROOM FOR YOUR QUESTIONS</span>
+      <div class="rj-bubble">How can we make bedtime calmer?</div>
+      <div class="rj-bubble rj-bubble-response"><small>EXPLORE WITH RAFIQ</small>
+        <p>Routines. Big feelings. Everyday changes.</p><span>Find guidance shaped around their stage.</span></div>
+        <div class="rj-preview-row"><span>Your next step</span><b>Explore practical guidance &rarr;</b></div></div>
+     <div class="rj-preview" id="rj-preview-2" hidden>
+      <span class="rj-panel-kicker">SUPPORT THAT FITS YOUR FAMILY</span>
+      <div class="rj-specialist-avatar">DR</div><h4>A clearer next conversation.</h4><p>Explore profiles. Review the session fee.</p><div class="rj-slot-row"><span>10:00 AM</span><span class="selected">2:30 PM &#10003;</span><span>4:00 PM</span></div><div class="rj-preview-row"><span>Appointment</span><b>Choose &rarr; Review &rarr; Book</b></div><small class="rj-example">Illustrative appointment preview</small></div>
+     <div class="rj-preview" id="rj-preview-3" hidden><span class="rj-panel-kicker">THE LITTLE THINGS BECOME THE STORY</span><h4>Layan's little world.</h4><div class="rj-memory-tiles"><div><span>&#9788;</span><b>First adventure</b><small>A memory to keep</small></div><div><span>&#9825;</span><b>Everyday joy</b><small>A little milestone</small></div></div><div class="rj-preview-row"><span>Growing together</span><b>Memories + milestones</b></div></div>
+     <div class="rj-preview-footer">
+      <span id="rj-step-count">01 / 04</span><div class="rj-progress-track"><i></i></div><span>Made for your journey</span></div>
+    </div><span class="rj-floating-note">Little steps. More confidence.</span>
+   </div>
   </div>
-  <footer class="pd-final"><h3>Everything about your child.<br>One calm place.</h3><p>RAFIQ keeps guidance, progress, reminders and support connected.</p><a class="button primary pd-cta" href="#contact">Create Parent Account <span aria-hidden="true"></span></a></footer>
+  <footer class="rj-finish"><p>Your next chapter starts with one little step.</p><a class="button primary" href="../piblic-pages/register.html">Start your family's journey &rarr;</a></footer>
+ </div>
 </section>
 
-    <section id="openings" class="home-section completion specialist-section" aria-labelledby="openings-title">
-      <div class="rc-split">
-        <div id="specialist-tools" class="rc-workspace rc-glass">
-          <div class="rc-work-profile rc-reveal"><span class="rc-avatar">LH</span><div><small>SPECIALIST WORKSPACE / PREVIEW</small><h3>Dr. Lina Haddad</h3><p>Child Development Specialist</p></div></div>
-          <span class="rc-verified rc-reveal">âœ“ Verified profile</span>
-          <div class="rc-work-grid">
-            <article class="rc-glass rc-schedule rc-reveal"><small>TODAY'S SCHEDULE</small><h4>A little room to focus.</h4><p><strong>10:00</strong> Â· Family consultation</p><p><strong>13:30</strong> Â· Follow-up session</p><span class="rc-note">Example sessions</span></article>
-            <article class="rc-glass rc-reveal"><small>UPCOMING BOOKINGS</small><strong class="rc-count" data-count="3">3</strong><p>Families to support this week</p></article>
-            <article class="rc-glass rc-reveal"><small>REPORTS &amp; FOLLOW-UPS</small><h4>Every next step, connected.</h4><p>Consultation report saved</p><p>Next check-in Â· 2 weeks</p></article>
-            <article class="rc-glass rc-reveal"><small>AVAILABILITY</small><h4>Make space for your practice.</h4><button class="rc-toggle" type="button" aria-pressed="true">Accepting appointments <span>On</span></button><p class="rc-note">Example availability control</p></article>
-            <article class="rc-glass rc-earnings rc-reveal"><small>EARNINGS</small><h4>A clear view of your work.</h4><div><span>Sessions Â· Reports Â· Earnings</span><span>All together</span></div><p class="rc-note">Your practice overview, without switching tools.</p></article>
-          </div>
+<section id="parents" class="home-section" aria-labelledby="parents-title">
+ <div class="pd-layout">
+  <header class="pd-header">
+    <!-- <span class="pd-kicker">FOR PARENTS / A LITTLE LESS OVERWHELM</span> -->
+    <h2 id="parents-title">Their world.<br>Your calm corner.</h2>
+    <p>Parenting comes with a thousand little things. Bring your child's progress, support and favourite memories into one family space.</p>
+    <div class="pd-promises"><span><b>1</b> A space for every child</span>
+      <span><b>2</b> Tools for the stage they're in</span>
+      <span><b>3</b> Support when you need it</span></div>
+      <a class="button primary" href="../piblic-pages/register.html">Create your family space &rarr;</a>
+      <small class="pd-disclaimer">Explore the interactive preview. Example records are not saved.</small>
+    </header>
+  <div class="pd-dashboard">
+   <div class="pd-window-top">
+    <span class="pd-window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span>YOUR FAMILY SPACE</span><span>R /</span>
+  </div>
+   <div class="pd-family-top"><div>
+    <small>A LITTLE CLARITY, EVERY DAY</small>
+    <h3 id="pd-child-title">Layan's little world.</h3></div>
+    <div class="pd-profile-options" role="group" aria-label="Example child">
+      <button type="button" data-child="layan" aria-pressed="true"><span>L</span>Layan</button>
+      <button type="button" data-child="omar" aria-pressed="false"><span>O</span>Omar</button>
+    </div>
+  </div>
+   <div class="pd-tabs" role="tablist" aria-label="Explore parent tools">
+    <button type="button" role="tab" id="pd-tab-day" aria-selected="true" aria-controls="pd-day" tabindex="0">My day</button>
+    <button type="button" role="tab" id="pd-tab-growth" aria-selected="false" aria-controls="pd-growth" tabindex="-1">Their growth</button>
+    <button type="button" role="tab" id="pd-tab-memories" aria-selected="false" aria-controls="pd-memories" tabindex="-1">Little memories</button>
+  </div>
+   <div class="pd-panel" id="pd-day" role="tabpanel" aria-labelledby="pd-tab-day">
+    <div class="pd-welcome-card"><span>TODAY'S LITTLE REMINDER</span><h4>Connection before correction.</h4>
+      <p>Make room for a quiet moment together. Listening can be a good place to start.</p>
+      <span class="pd-welcome-spark" aria-hidden="true">&#10022;</span></div>
+      <div class="pd-card-grid"><a class="pd-tool-card" href="../pearent-cycel/ai-assistant.html">
+        <span class="pd-tool-icon">&#10022;</span><h4>A question on your mind?</h4>
+        <p>Explore everyday parenting guidance with Rafiq AI.</p>
+        <b>Ask RAFIQ &rarr;</b></a><a class="pd-tool-card" href="../pearent-cycel/bookings.html">
+          <span class="pd-tool-icon">&#9719;</span><h4>Your next conversation.</h4><p>Keep upcoming appointments and available reports together.</p>
+          <b>My Bookings &rarr;</b></a>
         </div>
-        <div class="rc-specialist-copy"><p class="section-label rc-reveal">FOR SPECIALISTS</p><h2 id="openings-title" class="rc-reveal">Built for specialists<br>who want to focus on families.</h2><p class="rc-lead rc-reveal">Manage your profile, availability, sessions, reports and follow-ups from one connected workspace.</p><div class="rc-reveal"><h3>Grow your practice.<br>Support more families.</h3><a class="button primary rc-cta" href="../piblic-pages/register.html?role=specialist">Join as a Specialist </a><a class="rc-link" href="#specialist-tools">See how specialists use RAFIQ </a></div></div>
-      </div>
-    </section>
+        </div>
+   <div class="pd-panel" id="pd-growth" role="tabpanel" aria-labelledby="pd-tab-growth" hidden>
+    <div class="pd-welcome-card pd-growth-card">
+      <span id="pd-age-label">LAYAN / 2 YEARS</span><h4>Small steps worth noticing.</h4>
+      <p id="pd-growth-copy">Explore milestones for the toddler years and record each little achievement.</p>
+      <div class="pd-growth-path" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
+      <div class="pd-card-grid"><a class="pd-tool-card" href="../pearent-cycel/milestones.html">
+        <span class="pd-tool-icon">&#10003;</span><h4>Every child, their own pace.</h4>
+        <p>Explore milestones and keep track of achievements.</p><b>View milestones &rarr;</b></a>
+        <a class="pd-tool-card" href="../pearent-cycel/health.html"><span class="pd-tool-icon">+</span>
+          <h4>Keep the details close.</h4><p>Review health notes and vaccination records.</p><b>Health records &rarr;</b></a>
+        </div>
+        </div>
+   <div class="pd-panel" id="pd-memories" role="tabpanel" aria-labelledby="pd-tab-memories" hidden>
+    <div class="pd-album-heading">
+      <span>A STORY ONLY YOUR FAMILY CAN TELL</span>
+      <h4 id="pd-album-name">Layan's Album</h4></div>
+      <div class="pd-memory-grid"><div><span aria-hidden="true">&#9788;</span>
+        <h4>First adventure</h4><p>A day to remember.</p></div>
+        <div><span aria-hidden="true">&#9825;</span>
+          <h4>Everyday magic</h4><p>The little things, kept close.</p></div></div>
+          <a class="pd-album-link" href="../pearent-cycel/album.html">Explore your child's album &rarr;</a>
+          <p class="pd-local-note">Album photos currently stay in your browser. Cloud backup is not connected yet.</p>
+        </div>
+   <div class="pd-bottom"><span>EVERY STAGE. TOGETHER.</span><span>Interactive preview</span>
+  </div>
+  </div>
+ </div>
+</section>
+
+    <section id="openings" class="home-section specialist-section" aria-labelledby="openings-title">
+ <div class="sw-layout">
+  <div class="sw-workspace" id="specialist-tools">
+   <div class="sw-bar"><span>R / RAFIQ</span><span>YOUR PRACTICE, CONNECTED</span><i aria-hidden="true"></i></div>
+   <div class="sw-profile"><span class="sw-avatar">DR</span><div><small>SPECIALIST WORKSPACE / PREVIEW</small><h3>A little space to focus.</h3><p>Less scattered information. More connected care.</p></div></div>
+   <div class="sw-tabs" role="tablist" aria-label="Specialist workspace preview"><button role="tab" type="button" id="sw-tab-schedule" aria-controls="sw-schedule" aria-selected="true" tabindex="0">Schedule</button><button role="tab" type="button" id="sw-tab-reports" aria-controls="sw-reports" aria-selected="false" tabindex="-1">Reports</button><button role="tab" type="button" id="sw-tab-earnings" aria-controls="sw-earnings" aria-selected="false" tabindex="-1">Earnings</button></div>
+   <div class="sw-panel" id="sw-schedule" role="tabpanel" aria-labelledby="sw-tab-schedule"><div class="sw-panel-heading"><h4>Make room for your next session.</h4><span>EXAMPLE WEEK</span></div><div class="sw-days" role="group" aria-label="Example day"><button type="button" aria-pressed="true" data-day="Monday">Mon<b>12</b></button><button type="button" aria-pressed="false" data-day="Tuesday">Tue<b>13</b></button><button type="button" aria-pressed="false" data-day="Wednesday">Wed<b>14</b></button><button type="button" aria-pressed="false" data-day="Thursday">Thu<b>15</b></button><button type="button" aria-pressed="false" data-day="Friday">Fri<b>16</b></button></div><div class="sw-appointment"><span>10:00</span><div><small id="sw-day-label">MONDAY / EXAMPLE SESSION</small><h4>Family consultation</h4><p>Session details and child context, together.</p></div><b>Upcoming</b></div><div class="sw-next"><span>YOUR NEXT STEP</span><p>Review the booking. Prepare for the conversation.</p><a href="../specialist-cycle/schedule.html">Explore your schedule &rarr;</a></div></div>
+   <div class="sw-panel" id="sw-reports" role="tabpanel" aria-labelledby="sw-tab-reports" hidden><div class="sw-panel-heading"><h4>Give every session a next step.</h4><span>EXAMPLE WORKFLOW</span></div><div class="sw-report"><span>CONSULTATION NOTES</span><h4>Keep the bigger picture in view.</h4><div><i></i><i></i><i></i></div><ul><li>Document session observations</li><li>Add recommendations</li><li>Keep follow-up guidance connected</li></ul></div><div class="sw-next"><span>FROM CONVERSATION TO FOLLOW-UP</span><a href="../specialist-cycle/clients.html">Explore clients &amp; cases &rarr;</a></div></div>
+   <div class="sw-panel" id="sw-earnings" role="tabpanel" aria-labelledby="sw-tab-earnings" hidden><div class="sw-panel-heading"><h4>A clearer view of your earnings.</h4><span>ILLUSTRATIVE AMOUNTS</span></div><div class="sw-net"><span>NET SESSION EARNINGS</span><strong>18.00 <small>JOD</small></strong><p>After a completed session</p></div><div class="sw-money-row"><span>Session fee</span><b>20.00 JOD</b></div><div class="sw-money-row"><span>Example platform commission / 10%</span><b>2.00 JOD</b></div><div class="sw-money-row"><span>Settlement</span><b class="sw-pending">Awaiting transfer</b></div><p class="sw-note">Demo records only. Real collection and payouts are not connected.</p><a class="sw-link" href="../specialist-cycle/earnings.html">Explore earnings &rarr;</a></div>
+   <footer class="sw-bottom"><span>FOCUS ON FAMILIES.</span><span>Interactive preview</span></footer>
+  </div>
+  <div class="sw-copy">
+    <!-- <span class="sw-kicker">FOR SPECIALISTS / MORE ROOM FOR CARE</span> -->
+    <h2 id="openings-title">Your expertise.<br>A calmer workflow.</h2>
+    <p>Bring the practical side of your work together, so you can give families your full attention.</p>
+    <div class="sw-benefits">
+      <div><span>1</span><div><h3>A schedule that makes sense.</h3><p>Set availability and review appointments in one workspace.</p>
+      </div></div>
+      <div><span>2</span><div>
+        <h3>Care that stays connected.</h3>
+        <p>Keep client context, consultations and follow-up reports within reach.</p>
+      </div></div>
+      <div><span>3</span><div><h3>Know where your earnings stand.</h3><p>See net session earnings and distinguish pending settlements from recorded transfers.</p></div>
+    </div></div>
+    <a class="button primary" href="../piblic-pages/register.html">Join as a specialist &rarr;</a>
+    <small class="sw-copy-note">Create your profile and follow the approval process.</small>
+  </div>
+ </div>
+</section>
     <section id="booking" class="home-section completion rc-booking" aria-labelledby="booking-title">
-      <header class="rc-header rc-reveal"><p class="section-label">A CONNECTED CARE JOURNEY</p><h2 id="booking-title">From finding help<br>to staying connected.</h2></header>
+      <header class="rc-header rc-reveal">
+        <!-- <p class="section-label">A CONNECTED CARE JOURNEY</p> -->
+        <h2 id="booking-title">From finding help<br>to staying connected.</h2>
+      </header>
       <ol class="rc-booking-track">
-        <li class="rc-reveal"><small>01 / SEARCH</small><h3>The right support.</h3><div class="rc-glass rc-book-visual"><label for="rc-specialty">Specialty</label><select id="rc-specialty"><option>Child Development</option><option>Speech &amp; Language</option><option>Family Support</option></select></div></li>
-        <li class="rc-reveal"><small>02 / PROFILE</small><h3>A trusted connection.</h3><div class="rc-glass rc-book-visual">Dr. Lina Haddad<span class="rc-verified">âœ“ Verified</span></div></li>
-        <li class="rc-reveal"><small>03 / BOOK</small><h3>Time for your family.</h3><div class="rc-times" role="group" aria-label="Example appointment times"><button type="button" aria-pressed="false">10:00</button><button type="button" aria-pressed="true">13:30</button><button type="button" aria-pressed="false">16:30</button></div></li>
-        <li class="rc-reveal"><small>04 / CONSULTATION</small><h3>A real conversation.</h3><div class="rc-glass rc-book-visual"><button class="rc-mode" type="button" aria-pressed="true">Online</button><button class="rc-mode" type="button" aria-pressed="false">In person</button></div></li>
-        <li class="rc-reveal"><small>05 / REPORT</small><h3>Clarity to keep.</h3><div class="rc-glass rc-book-visual">âœ“ Report saved</div></li>
-        <li class="rc-reveal"><small>06 / FOLLOW-UP</small><h3>The next small step.</h3><div class="rc-glass rc-book-visual">Next check-in<span>In 2 weeks</span></div></li>
-      </ol><p class="rc-note rc-centered">An illustrative booking journey. No appointment is created here.</p>
+        <li class="rc-reveal"><small>1 / SEARCH</small><h3>The right support.</h3><div class="rc-glass rc-book-visual"><label for="rc-specialty">Specialty</label><select id="rc-specialty"><option>Child Development</option><option>Speech &amp; Language</option><option>Family Support</option></select></div></li>
+        <li class="rc-reveal"><small>2 / PROFILE</small><h3>A trusted connection.</h3><div class="rc-glass rc-book-visual">Dr. Lina Haddad<span class="rc-verified">Verified</span></div></li>
+        <li class="rc-reveal"><small>3 / BOOK</small><h3>Time for your family.</h3><div class="rc-times" role="group" aria-label="Example appointment times"><button type="button" aria-pressed="false">10:00</button><button type="button" aria-pressed="true">13:30</button><button type="button" aria-pressed="false">16:30</button></div></li>
+        <li class="rc-reveal"><small>4 / CONSULTATION</small><h3>A real conversation.</h3><div class="rc-glass rc-book-visual"><button class="rc-mode" type="button" aria-pressed="true">Online</button><button class="rc-mode" type="button" aria-pressed="false">In person</button></div></li>
+        <li class="rc-reveal"><small>5 / REPORT</small><h3>Clarity to keep.</h3><div class="rc-glass rc-book-visual">Report saved</div></li>
+        <li class="rc-reveal"><small>6 / FOLLOW-UP</small><h3>The next small step.</h3><div class="rc-glass rc-book-visual">Next check-in<span>In 2 weeks</span></div></li>
+      </ol>
+      <p class="rc-note rc-centered">An illustrative booking journey. No appointment is created here.</p>
     </section>
     <section id="safety" class="home-section completion rc-safety" aria-labelledby="safety-title">
       <header class="rc-header rc-reveal"><h2 id="safety-title">Built with safety<br>at the center.</h2><p>RAFIQ is designed to guide,<br>not diagnose.</p></header>
-      <div class="rc-trust"><svg class="rc-shield" viewBox="0 0 180 210" fill="none" aria-hidden="true"><path d="M90 10 165 40v66c0 44-48 76-75 94-27-18-75-50-75-94V40L90 10Z" fill="rgba(210,237,255,.3)" stroke="rgba(255,255,255,.8)" stroke-width="2"/><path d="m61 101 21 22 42-46" stroke="#0b7a75" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><ol><li class="rc-reveal"><span>1</span><h3>AI does not diagnose</h3></li><li class="rc-reveal"><span>2</span><h3>Screening is not a medical diagnosis</h3></li><li class="rc-reveal"><span>3</span><h3>Urgent red flags pause normal AI guidance</h3></li><li class="rc-reveal"><span>4</span><h3>Child information is treated as sensitive data</h3></li></ol></div><p class="rc-trust-end rc-reveal">Guidance when it helps.<br>Professional care when it matters.</p>
+      <div class="rc-trust"><svg class="rc-shield" viewBox="0 0 180 210" fill="none" aria-hidden="true"><path d="M90 10 165 40v66c0 44-48 76-75 94-27-18-75-50-75-94V40L90 10Z" fill="rgba(210,237,255,.3)" stroke="rgba(255,255,255,.8)" stroke-width="2"/><path d="m61 101 21 22 42-46" stroke="var(--theme-primary,#0b7a75)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><ol><li class="rc-reveal"><span>1</span><h3>AI does not diagnose</h3></li><li class="rc-reveal"><span>2</span><h3>Screening is not a medical diagnosis</h3></li><li class="rc-reveal"><span>3</span><h3>Urgent red flags pause normal AI guidance</h3></li><li class="rc-reveal"><span>4</span><h3>Child information is treated as sensitive data</h3></li></ol></div><p class="rc-trust-end rc-reveal">Guidance when it helps.<br>Professional care when it matters.</p>
     </section>
     <section id="plans" class="home-section completion rc-plans" aria-labelledby="plans-title">
       <header class="rc-header rc-reveal"><h2 id="plans-title">Start where you are.<br>Grow when you need more.</h2><p>Simple options for families and professionals.</p></header>
@@ -325,7 +597,7 @@
     </section>
     <footer id="rafiq-footer" class="site-footer green-footer" aria-label="RAFIQ footer">
   <div class="gf-columns">
-    <div class="gf-brand gf-reveal"><a class="brand" href="#home" aria-label="RAFIQ home"><span class="rafiq-mark" aria-hidden="true">r.</span><span class="brand-text">RAFIQ</span></a><h2>Parenting support that grows with your family.</h2><p>Guidance, development, screening and professional support â€” all in one place.</p><span class="gf-trust">For families from birth to age 18.</span></div>
+    <div class="gf-brand gf-reveal"><a class="brand" href="#home" aria-label="RAFIQ home"><span class="rafiq-mark" aria-hidden="true">r.</span><span class="brand-text">RAFIQ</span></a><h2>Parenting support that grows with your family.</h2><p>Guidance, development, screening and professional support  all in one place.</p><span class="gf-trust">For families from birth to age 18.</span></div>
     <nav class="gf-column gf-reveal" aria-labelledby="gf-explore"><h2 id="gf-explore">Explore</h2><a href="#studio">About</a><a href="#labs">Features</a><a href="#process">How It Works</a><a href="#safety">Safety</a><a href="#faq">FAQ</a><a href="../piblic-pages/register.html">Log In</a><a href="../piblic-pages/register.html">Get Started</a></nav>
     <nav class="gf-column gf-reveal" aria-labelledby="gf-parents"><h2 id="gf-parents"><a href="#parents">For Parents</a></h2><a href="#rf-ai">AI Guidance</a><a href="#rf-profiles">Child Profiles</a><a href="#rf-development">Development</a><a href="#rf-screening">Early Screening</a><a href="#rf-health">Health Tracking</a><a href="#rf-challenges">Parenting Challenges</a><a href="#rf-specialists">Find Specialists</a></nav>
     <nav class="gf-column gf-reveal" aria-labelledby="gf-specialists"><h2 id="gf-specialists"><a href="#openings">For Specialists</a></h2><a href="../piblic-pages/register.html?role=specialist">Join RAFIQ</a><a href="#specialist-tools">Professional Profile</a><a href="#specialist-tools">Availability</a><a href="#booking">Bookings</a><a href="#booking">Consultations</a><a href="#specialist-tools">Reports</a><a href="#specialist-tools">Earnings</a></nav>
@@ -336,5 +608,5 @@
   <dialog class="gf-info-dialog" aria-labelledby="gf-info-title"><button type="button" class="gf-close" aria-label="Close information">Ã—</button><h2 id="gf-info-title"></h2><p id="gf-info-copy"></p><a href="mailto:support@rafiq.com">Contact support â†—</a></dialog>
 </footer>
 
-<div id="copyToast" class="copy-toast" role="status"></div></main><dialog id="loginDialog" class="login-dialog"><button class="dialog-close" type="button" aria-label="Close dialog">Ã—</button><p class="section-label">RAFIQ / Account access</p><h2>Your next chapter.</h2><p>Account sign-in isnâ€™t connected in this homepage preview yet. You can explore the journey or contact the team using the existing contact links.</p><a class="button primary" href="#contact">Get in touch â†—</a></dialog><script src="script.js" defer></script><script src="hero.js" defer></script><script src="growth.js" defer></script><script src="solution.js" defer></script><script src="rafiq-journey.js" defer></script><script src="features.js" defer></script><script src="parents.js" defer></script><script src="completion.js" defer></script><script src="footer.js" defer></script></body></html>
+<div id="copyToast" class="copy-toast" role="status"></div></main><dialog id="loginDialog" class="login-dialog"><button class="dialog-close" type="button" aria-label="Close dialog">Ã—</button><p class="section-label">RAFIQ / Account access</p><h2>Your next chapter.</h2><p>Account sign-in isnâ€™t connected in this homepage preview yet. You can explore the journey or contact the team using the existing contact links.</p><a class="button primary" href="#contact">Get in touch â†—</a></dialog><script src="script.js" defer></script><script src="hero.js" defer></script><script src="growth.js" defer></script><script src="solution.js" defer></script><script src="rafiq-journey.js" defer></script><script src="features.js" defer></script><script src="parents.js" defer></script><script src="completion.js" defer></script><script src="footer.js" defer></script><script src="specialists-preview.js" defer></script></body></html>
 

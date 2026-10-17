@@ -1,7 +1,7 @@
 /* Growth journey only. The opening hero and lower sections keep their styles. */
 .growth-story{height:600svh;position:relative;z-index:2;background:#dff3ff;color:var(--ink)}
 .growth-stage{position:sticky;top:0;height:100svh;overflow:clip;background:#dff3ff;isolation:isolate}
-.growth-light{position:absolute;inset:0;background:radial-gradient(ellipse at 55% 60%,rgba(232,246,255,.9),transparent 70%),radial-gradient(ellipse at 85% 85%,rgba(255,250,240,.25),transparent 65%);pointer-events:none}
+.growth-light{position:absolute;inset:0;background:radial-gradient(ellipse at 55% 60%,rgba(232,246,255,.9),transparent 70%),radial-gradient(ellipse at 85% 85%,rgba(var(--theme-background-rgb,255,250,240),.25),transparent 65%);pointer-events:none}
 .growth-topline{position:absolute;left:7vw;right:7vw;top:140px;display:flex;justify-content:space-between;font-size:10px;letter-spacing:.16em;color:var(--ink-soft);z-index:4}
 .character-track{position:absolute;left:0;top:58.5%;width:60svh;height:75svh;transform:translate(-50%,-50%) translateX(-20vw);z-index:3;pointer-events:none;perspective:1000px}
 .growth-gait,.growth-age{position:absolute;inset:0;transform-origin:50% 85%}

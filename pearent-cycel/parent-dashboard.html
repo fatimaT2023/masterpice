@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="../piblic-pages/rafiq-theme.js"></script>
   <meta charset="UTF-8">
 
   <meta
@@ -28,16 +29,13 @@
 >
   <link rel="stylesheet" href="parent-cycle-glass.css">
   <link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
+<link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
+<link rel="stylesheet" href="parent-sidebar.css">
+<link rel="stylesheet" href="parent-dashboard-photo.css">
 </head>
 
-<body class="parent-cycle-video">
-  <div class="dashboard-video-background" aria-hidden="true">
-    <video id="dashboardBackgroundVideo" muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true">
-      <source src="assets/dashboard/background.mp4" type="video/mp4">
-    </video>
-    <div class="dashboard-video-tint"></div>
-  </div>
-  <button class="background-playback-toggle" id="backgroundPlaybackToggle" type="button" aria-controls="dashboardBackgroundVideo" aria-pressed="true">▶ Play background</button>
+<body class="parent-cycle-video parent-dashboard-photo">
+  <div class="dashboard-photo-background" aria-hidden="true"></div>
 
   <div class="app-shell">
 
@@ -45,198 +43,8 @@
          SIDEBAR
     ========================== -->
 
-    <aside class="sidebar" id="sidebar">
-
-      <div class="sidebar-top">
-
-        <a href="../rafiq-home-transfer-20261013-211454/index.html" class="brand">
-          <!-- <div class="brand-mark">
-            R
-          </div> -->
-
-          <span>
-            RAFIQ
-          </span>
-        </a>
-
-        <button
-          class="sidebar-close"
-          id="sidebarClose"
-          type="button"
-          aria-label="Close navigation"
-        >
-          ✕
-        </button>
-
-      </div>
-
-
-      <!-- Current child -->
-      <div class="child-switcher">
-
-        <span class="small-label">
-          CURRENT CHILD
-        </span>
-
-        <button
-          class="child-switcher-button"
-          id="childSwitcherButton"
-          type="button"
-        >
-
-          <div
-            class="child-avatar"
-            id="sidebarChildAvatar"
-          >
-            L
-          </div>
-
-          <div class="child-switcher-info">
-
-            <strong id="sidebarChildName">
-              Child
-            </strong>
-
-            <span id="sidebarChildAge">
-              Loading...
-            </span>
-
-          </div>
-
-          <span class="chevron">
-            ▾
-          </span>
-
-        </button>
-
-
-        <div
-          class="child-dropdown"
-          id="childDropdown"
-          hidden
-        >
-
-          <div id="childDropdownList"></div>
-
-          <a
-            href="onboarding.html"
-            class="add-child-link"
-          >
-            + Add another child
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <!-- Navigation -->
-      <nav class="sidebar-nav">
-
-        <span class="nav-section-title">
-          OVERVIEW
-        </span>
-
-        <a
-          href="parent-dashboard.html"
-          class="nav-link active"
-        >
-          <!-- <span class="nav-icon">⌂</span> -->
-          <span>Dashboard</span>
-        </a>
-
-
-        <a
-          href="ai-assistant.html"
-          class="nav-link"
-        >
-          <!-- <span class="nav-icon">✦</span> -->
-          <span>Rafiq AI</span>
-        </a>
-
-
-        <a
-          href="milestones.html"
-          class="nav-link"
-        >
-          <!-- <span class="nav-icon">✓</span> -->
-          <span>Milestones</span>
-        </a>
-
-
-        <a
-          href="screening.html"
-          class="nav-link"
-        >
-          <!-- <span class="nav-icon">◫</span> -->
-          <span>Screening</span>
-        </a>
-
-
-        <span class="nav-section-title second">
-          SUPPORT
-        </span>
-
-        <a
-          href="challenges.html"
-          class="nav-link"
-        >
-          <!-- <span class="nav-icon">♡</span> -->
-          <span>Challenges</span>
-        </a>
-
-
-        <a
-          href="health.html"
-          class="nav-link"
-        >
-          <!-- <span class="nav-icon">＋</span> -->
-          <span>Health</span>
-        </a>
-
-
-        <a
-          href="specialists.html"
-          class="nav-link"
-        >
-          <!-- <span class="nav-icon">◎</span> -->
-          <span>Find Specialist</span>
-        </a>
-
-
-        <a
-          href="bookings.html"
-          class="nav-link"
-        >
-          <!-- <span class="nav-icon">◷</span> -->
-          <span>My Bookings</span>
-        </a>
-
-      </nav>
-
-
-      <div class="sidebar-bottom">
-
-        <a
-          href="settings.html"
-          class="nav-link"
-        >
-          <span class="nav-icon">⚙</span>
-          <span>Settings</span>
-        </a>
-
-        <button
-          type="button"
-          class="logout-button"
-          id="logoutButton"
-        >
-          <span>↪</span>
-          Log Out
-        </button>
-
-      </div>
-
-    </aside>
+    <div id="parentSidebarMount"></div>
+<script src="parent-sidebar.js"></script>
 
 
     <div

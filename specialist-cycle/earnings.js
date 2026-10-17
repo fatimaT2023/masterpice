@@ -389,7 +389,7 @@ document.addEventListener(
             booking.specialistId ===
               specialist.id &&
             booking.status ===
-              "completed"
+              "completed" && booking.sessionPayment?.status === "paid"
         )
         .sort(
           (a,b) =>
@@ -408,7 +408,7 @@ document.addEventListener(
 
       const value =
         Number(
-          booking.price
+          booking.sessionPayment?.specialistNet ?? 0
         );
 
 

@@ -3,7 +3,7 @@
    ========================================================= */
 
 :root {
-  --legal-bg: #FFFAF0;
+  --legal-bg: var(--theme-background,#fffaf0);
   --legal-surface: #FFFFFF;
 
   --legal-ink: #0F2F2E;
@@ -11,12 +11,12 @@
 
   --legal-line: #F3E5CB;
 
-  --legal-sage: #0B7A75;
-  --legal-sage-deep: #075E5A;
+  --legal-sage: var(--theme-primary,#0b7a75);
+  --legal-sage-deep: var(--theme-primary-deep,#075e5a);
 
-  --legal-mint: #CDF3E4;
+  --legal-mint: var(--theme-primary-tint,#cdf3e4);
   --legal-peach: #FFDCCB;
-  --legal-lavender: #E7DFFF;
+  --legal-lavender: var(--theme-secondary-tint,#e7dfff);
 
   --legal-shadow:
     0 2px 4px rgba(15, 47, 46, .05),
@@ -261,7 +261,7 @@ body.legal-modal-open {
   color: var(--legal-ink-soft);
 
   background:
-    #FFFAF0;
+    var(--theme-background,#fffaf0);
 
   border:
     1px solid
@@ -309,7 +309,7 @@ body.legal-modal-open {
   overflow-x: auto;
 
   background:
-    rgba(255, 250, 240, .72);
+    rgba(var(--theme-background-rgb,255,250,240), .72);
 
   border-bottom:
     1px solid
@@ -393,7 +393,7 @@ body.legal-modal-open {
 
   scrollbar-width: thin;
   scrollbar-color:
-    rgba(11, 122, 117, .25)
+    rgba(var(--theme-primary-rgb,11,122,117), .25)
     transparent;
 }
 
@@ -407,7 +407,7 @@ body.legal-modal-open {
 
 .legal-modal__content::-webkit-scrollbar-thumb {
   background:
-    rgba(11, 122, 117, .2);
+    rgba(var(--theme-primary-rgb,11,122,117), .2);
 
   border-radius: 999px;
 }
@@ -443,13 +443,13 @@ body.legal-modal-open {
 }
 
 .legal-modal__section-label--mint {
-  color: #0A6450;
-  background: #CDF3E4;
+  color: var(--theme-primary-deep,#0a6450);
+  background: var(--theme-primary-tint,#cdf3e4);
 }
 
 .legal-modal__section-label--lavender {
-  color: #4330B0;
-  background: #E7DFFF;
+  color: var(--theme-secondary-deep,#4330b0);
+  background: var(--theme-secondary-tint,#e7dfff);
 }
 
 .legal-modal__section-label--peach {
@@ -559,7 +559,7 @@ body.legal-modal-open {
 }
 
 .legal-modal__note--mint {
-  color: #0A6450;
+  color: var(--theme-primary-deep,#0a6450);
 
   background:
     #E4F8EF;
@@ -570,7 +570,7 @@ body.legal-modal-open {
 }
 
 .legal-modal__note--lavender {
-  color: #4330B0;
+  color: var(--theme-secondary-deep,#4330b0);
 
   background:
     #F1ECFF;
@@ -694,7 +694,7 @@ body.legal-modal-open {
   gap: 15px;
 
   background:
-    rgba(255, 250, 240, .72);
+    rgba(var(--theme-background-rgb,255,250,240), .72);
 
   border-top:
     1px solid

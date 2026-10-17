@@ -1783,7 +1783,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // CREATE BOOKING
   // =====================================================
 
-  function createBooking() {
+  function createBooking(sessionPayment) {
 
     /*
       Pull the latest approved profile again
@@ -1823,6 +1823,10 @@ document.addEventListener("DOMContentLoaded", () => {
           )
         : specialist.price;
 
+    if (Number(latestPrice) !== sessionPayment.amount) {
+      return null;
+    }
+
 
     const bookingId =
       "RFQ-" +
@@ -1832,6 +1836,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const booking = {
+      sessionPayment,
 
       id:
         bookingId,
@@ -1893,7 +1898,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       price:
-        latestPrice,
+        sessionPayment.amount,
 
 
       currency:
@@ -1964,9 +1969,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // CONFIRM
   // =====================================================
 
-  confirmBookingButton.addEventListener(
-    "click",
-    () => {
+  confirmBookingButton.addEventListener("click", async () => {
 
       clearError();
 
@@ -1979,8 +1982,24 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 
-      const confirmedBooking =
-        createBooking();
+      confirmBookingButton.disabled = true;
+      let sessionPayment;
+      try {
+        const latest = getApprovedSpecialistProfile();
+        if (!latest) {
+          bookingError.textContent = 'The specialist is no longer available.';
+          return;
+        }
+        const price = Number.isFinite(Number(latest.price)) ? Number(latest.price) : specialist.price;
+        sessionPayment = await window.RafiqFinance.checkout(price);
+      } catch (error) {
+        bookingError.textContent = 'Demo payment could not be completed. Please try again.';
+        return;
+      } finally {
+        confirmBookingButton.disabled = false;
+      }
+      if (!sessionPayment) return;
+      const confirmedBooking = createBooking(sessionPayment);
 
 
       if (

@@ -1,4 +1,4 @@
-﻿#studio {
+#studio {
   overflow: hidden;
   isolation: isolate;
   padding: clamp(72px, 8vw, 120px) clamp(24px, 5vw, 80px);
@@ -27,16 +27,16 @@
 #studio .section-title { font-size: clamp(32px, 3.65vw, 56px); line-height: 1.13; letter-spacing: -.055em; }
 #studio .solution-line { display: block; }
 #studio .solution-closing { margin: 30px 0 0; font-size: clamp(21px, 2vw, 27px); line-height: 1.5; color: #667b74; }
-#studio .solution-closing span { color: #0b7a75; }
+#studio .solution-closing span { color: var(--theme-primary,#0b7a75); }
 #studio .solution-action { margin-top: 28px; }
 #studio .solution-cta {
-  background: rgba(11,122,117,.18); border: 1px solid rgba(11,122,117,.30); color: #075e5a;
+  background: rgba(var(--theme-primary-rgb,11,122,117),.18); border: 1px solid rgba(var(--theme-primary-rgb,11,122,117),.30); color: var(--theme-primary-deep,#075e5a);
   backdrop-filter: blur(16px) saturate(145%); -webkit-backdrop-filter: blur(16px) saturate(145%);
-  box-shadow: 0 10px 30px rgba(11,122,117,.12), inset 0 1px 0 rgba(255,255,255,.45);
+  box-shadow: 0 10px 30px rgba(var(--theme-primary-rgb,11,122,117),.12), inset 0 1px 0 rgba(255,255,255,.45);
   border-radius: 999px; transition: background .3s, border-color .3s, transform .3s;
 }
-#studio .solution-cta:hover { background: rgba(11,122,117,.26); border-color: rgba(11,122,117,.40); transform: translateY(-2px); }
-#studio .solution-cta:focus-visible { outline: 2px solid #0b7a75; outline-offset: 5px; }
+#studio .solution-cta:hover { background: rgba(var(--theme-primary-rgb,11,122,117),.26); border-color: rgba(var(--theme-primary-rgb,11,122,117),.40); transform: translateY(-2px); }
+#studio .solution-cta:focus-visible { outline: 2px solid var(--theme-primary,#0b7a75); outline-offset: 5px; }
 #studio .solution-conversation { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
 #studio .solution-bubble {
   position: relative; width: 86%; box-sizing: border-box; padding: 19px 25px; border-radius: 28px 28px 28px 8px;
@@ -47,7 +47,7 @@
 }
 #studio .solution-bubble:nth-child(even) {
   align-self: flex-end; border-radius: 28px 28px 8px 28px;
-  background: rgba(231,223,255,.32); border-color: rgba(143,122,242,.18);
+  background: rgba(231,223,255,.32); border-color: rgba(var(--theme-secondary-rgb,143,122,242),.18);
 }
 #studio .solution-bubble-label { display: block; font-size: 13px; font-weight: 600; color: #35635c; margin-bottom: 6px; }
 #studio .solution-bubble:nth-child(even) .solution-bubble-label { color: #75639c; }

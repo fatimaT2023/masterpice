@@ -11,7 +11,7 @@
     button.setAttribute('aria-pressed', String(video.paused));
   }
   function syncPlayback() {
-    if (document.hidden || userPaused) {video.pause();syncButton();return;}
+    if (document.hidden || userPaused || document.documentElement.hasAttribute('data-theme-no-video')) {video.pause();syncButton();return;}
     video.play().then(syncButton, syncButton);
   }
   button.addEventListener('click', () => {userPaused = !video.paused;syncPlayback();});
@@ -19,6 +19,7 @@
   video.addEventListener('pause',syncButton);
   video.addEventListener('error',() => {video.hidden = true;button.hidden = true;});
   document.addEventListener('visibilitychange',syncPlayback);
+  document.addEventListener('rafiq-theme-change',syncPlayback);
   reduced.addEventListener('change',event => {userPaused = event.matches;syncPlayback();});
   syncPlayback();
 })();

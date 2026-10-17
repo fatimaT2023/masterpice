@@ -1,5 +1,5 @@
 :root {
-  --bg: #FFFAF0;
+  --bg: var(--theme-background,#fffaf0);
   --surface: #FFFFFF;
 
   --ink: #0F2F2E;
@@ -8,18 +8,18 @@
   --line: #F3E5CB;
   --line-strong: #E6D1A8;
 
-  --sage: #0B7A75;
-  --sage-deep: #075E5A;
-  --sage-tint: #D4F3EA;
+  --sage: var(--theme-primary,#0b7a75);
+  --sage-deep: var(--theme-primary-deep,#075e5a);
+  --sage-tint: var(--theme-primary-tint,#d4f3ea);
 
-  --mint: #CDF3E4;
-  --mint-ink: #0A6450;
+  --mint: var(--theme-primary-tint,#cdf3e4);
+  --mint-ink: var(--theme-primary-deep,#0a6450);
 
   --peach: #FFDCCB;
   --peach-ink: #A63A17;
 
-  --lav: #E7DFFF;
-  --lav-ink: #4330B0;
+  --lav: var(--theme-secondary-tint,#e7dfff);
+  --lav-ink: var(--theme-secondary-deep,#4330b0);
 
   --sky: #D2EDFF;
   --sky-ink: #0F5C94;
@@ -334,7 +334,7 @@ button {
 
   border-bottom: 1px solid var(--line);
 
-  background: rgba(255,250,240,.9);
+  background: rgba(var(--theme-background-rgb,255,250,240),.9);
 
   backdrop-filter: blur(16px);
 }

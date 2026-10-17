@@ -1,0 +1,19 @@
+/* Consistent navigation across every admin page. */
+.admin-cycle-video .sidebar{height:100dvh;padding:24px 18px 18px;gap:0;overflow:hidden;background:rgba(var(--theme-background-rgb,255,250,240),.52);border-right:1px solid rgba(255,255,255,.72);box-shadow:12px 0 40px rgba(15,47,46,.06)}
+.admin-cycle-video .sidebar-top{flex-shrink:0;margin-bottom:22px}
+.admin-cycle-video .brand-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:rgba(var(--theme-primary-rgb,11,122,117),.15);color:var(--sage-deep);border:1px solid rgba(var(--theme-primary-rgb,11,122,117),.2)}
+.admin-cycle-video .admin-card{flex-shrink:0;margin:0;padding:14px;border-radius:18px}
+.admin-cycle-video .sidebar-nav{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:rgba(var(--theme-primary-rgb,11,122,117),.25) transparent;margin-top:20px;padding:0 2px 14px}
+.admin-cycle-video .sidebar .nav-label{font-size:9px;letter-spacing:.14em;margin:0 0 8px 12px;color:var(--ink-soft)}
+.admin-cycle-video .sidebar .nav-label.section-gap{margin-top:18px}
+.admin-cycle-video .sidebar .nav-link{min-height:43px;gap:11px;padding:10px 12px;margin-bottom:4px;border:1px solid transparent;border-radius:13px;font-size:12px;font-weight:600;transition:background .18s ease,border-color .18s ease}
+.admin-cycle-video .sidebar .nav-link:hover{background:rgba(255,255,255,.48);border-color:rgba(255,255,255,.7)}
+.admin-cycle-video .sidebar .nav-link.active{background:rgba(205,243,228,.62);border-color:rgba(var(--theme-primary-rgb,11,122,117),.2);color:var(--sage-deep);box-shadow:inset 0 1px 0 rgba(255,255,255,.65)}
+.admin-cycle-video .sidebar .nav-icon{display:grid;place-items:center;width:21px;height:21px;flex-shrink:0}
+.admin-cycle-video .sidebar svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.admin-cycle-video .sidebar-bottom{flex-shrink:0;margin-top:auto;padding-top:12px;border-top:1px solid rgba(15,47,46,.12)}
+.admin-cycle-video .sidebar .logout-button{display:flex;align-items:center;gap:11px;min-height:44px;width:100%;margin-top:8px;padding:11px 12px;border:1px solid rgba(166,58,23,.18);border-radius:13px;background:rgba(255,220,203,.45);color:var(--peach-ink);font-size:12px;font-weight:700;cursor:pointer}
+.admin-cycle-video .sidebar .logout-button:hover{background:rgba(255,220,203,.78);border-color:rgba(166,58,23,.32)}
+.admin-cycle-video .sidebar :is(a,button):focus-visible{outline:3px solid var(--sage);outline-offset:2px}
+@media(max-width:950px){.admin-cycle-video .sidebar{width:min(var(--sidebar-w),calc(100vw - 40px));background:rgba(var(--theme-background-rgb,255,250,240),.88)}.admin-cycle-video.admin-navigation-open{overflow:hidden}}
+@media(prefers-reduced-motion:reduce){.admin-cycle-video .sidebar,.admin-cycle-video .sidebar .nav-link{transition:none}}

@@ -1,0 +1,22 @@
+/* Still image experiment for the parent dashboard only. */
+body.parent-dashboard-photo { background: #d1e9f3; }
+.parent-dashboard-photo .dashboard-photo-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: #d1e9f3;
+  background-image: url('assets/dashboard/parent-dashboard-background.jpg');
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.parent-dashboard-photo .dashboard-photo-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, .08);
+}
+@media print {
+  .parent-dashboard-photo .dashboard-photo-background { display: none; }
+}

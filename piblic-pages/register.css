@@ -5,8 +5,8 @@
 :root {
   color-scheme: light;
 
-  --bg: #FFFAF0;
-  --bg-alt: #FFF1DC;
+  --bg: var(--theme-background,#fffaf0);
+  --bg-alt: var(--theme-background-alt,#fff1dc);
   --surface: #FFFFFF;
 
   --ink: #0F2F2E;
@@ -15,19 +15,19 @@
   --line: #F3E5CB;
   --line-strong: #E6D1A8;
 
-  --sage: #0B7A75;
-  --sage-deep: #075E5A;
+  --sage: var(--theme-primary,#0b7a75);
+  --sage-deep: var(--theme-primary-deep,#075e5a);
   --on-sage: #FFFFFF;
-  --sage-tint: #D4F3EA;
+  --sage-tint: var(--theme-primary-tint,#d4f3ea);
 
   --coral: #FF6F4D;
   --peach: #FFDCCB;
   --peach-ink: #A63A17;
   --peach-deep: #FF8A68;
 
-  --lav-deep: #8F7AF2;
-  --lav: #E7DFFF;
-  --lav-ink: #4330B0;
+  --lav-deep: var(--theme-secondary,#8f7af2);
+  --lav: var(--theme-secondary-tint,#e7dfff);
+  --lav-ink: var(--theme-secondary-deep,#4330b0);
 
   --sky-deep: #4FB4F3;
   --sky: #D2EDFF;
@@ -37,8 +37,8 @@
   --sun: #FFE7A3;
   --sun-ink: #6E4A00;
 
-  --mint: #CDF3E4;
-  --mint-ink: #0A6450;
+  --mint: var(--theme-primary-tint,#cdf3e4);
+  --mint-ink: var(--theme-primary-deep,#0a6450);
 
   --tint-peach: #FFEEDF;
   --tint-sky: #E8F6FF;
@@ -46,14 +46,14 @@
   --tint-mint: #E4F8EF;
   --tint-sun: #FFF4D2;
 
-  --ok-bg: #CDF3E4;
-  --ok-ink: #0A6450;
+  --ok-bg: var(--theme-primary-tint,#cdf3e4);
+  --ok-ink: var(--theme-primary-deep,#0a6450);
   --warn-bg: #FFE7A3;
   --warn-ink: #6E4A00;
   --crit-bg: #FFDCCB;
   --crit-ink: #A63A17;
 
-  --cta-bg: #075E5A;
+  --cta-bg: var(--theme-primary-deep,#075e5a);
   --cta-ink: #FFF8EC;
 
   --shadow-sm:
@@ -64,7 +64,7 @@
     0 2px 4px rgba(15, 47, 46, .05),
     0 24px 54px rgba(15, 47, 46, .13);
 
-  --glass: rgba(255, 250, 240, .82);
+  --glass: rgba(var(--theme-background-rgb,255,250,240), .82);
 
   --font-display:
     "Bricolage Grotesque",
@@ -191,7 +191,7 @@ select:focus-visible {
   background:
     linear-gradient(
       180deg,
-      #FFFAF0 0%,
+      var(--theme-background,#fffaf0) 0%,
       #FFF8ED 48%,
       #FFFAF3 100%
     );
@@ -205,12 +205,12 @@ select:focus-visible {
 
   background-image:
     linear-gradient(
-      rgba(11, 122, 117, .035) 1px,
+      rgba(var(--theme-primary-rgb,11,122,117), .035) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      rgba(11, 122, 117, .035) 1px,
+      rgba(var(--theme-primary-rgb,11,122,117), .035) 1px,
       transparent 1px
     );
 
@@ -490,7 +490,7 @@ select:focus-visible {
 
   border:
     1px solid
-    rgba(11, 122, 117, .1);
+    rgba(var(--theme-primary-rgb,11,122,117), .1);
 
   border-radius: 999px;
 
@@ -1460,11 +1460,11 @@ body.specialist-mode
     );
 
   border-color:
-    rgba(11, 122, 117, .28);
+    rgba(var(--theme-primary-rgb,11,122,117), .28);
 
   box-shadow:
     0 8px 24px
-    rgba(11, 122, 117, .08);
+    rgba(var(--theme-primary-rgb,11,122,117), .08);
 }
 
 .role-card.selected[data-role="specialist"] {
@@ -1476,7 +1476,7 @@ body.specialist-mode
     );
 
   border-color:
-    rgba(143, 122, 242, .28);
+    rgba(var(--theme-secondary-rgb,143,122,242), .28);
 
   box-shadow:
     0 8px 24px
@@ -1686,7 +1686,7 @@ body.specialist-mode
 
   box-shadow:
     0 0 0 4px
-    rgba(11, 122, 117, .08);
+    rgba(var(--theme-primary-rgb,11,122,117), .08);
 
   transform: translateY(-1px);
 }
@@ -1893,7 +1893,7 @@ input,
 .form-field.is-valid
 select {
   border-color:
-    rgba(11, 122, 117, .42);
+    rgba(var(--theme-primary-rgb,11,122,117), .42);
 }
 
 /* =========================================================
@@ -1909,7 +1909,7 @@ select {
   padding: 13px;
 
   background:
-    rgba(255, 250, 240, .78);
+    rgba(var(--theme-background-rgb,255,250,240), .78);
 
   border:
     1px solid
@@ -2395,7 +2395,7 @@ li.met
 
 .specialist-mode
 .submit-btn {
-  background: #4330B0;
+  background: var(--theme-secondary-deep,#4330b0);
 
   box-shadow:
     0 10px 24px

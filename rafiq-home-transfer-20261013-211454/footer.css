@@ -1,6 +1,6 @@
-﻿#rafiq-footer{display:block;position:relative;isolation:isolate;overflow:hidden;padding:66px max(24px,5vw) 24px;background:rgba(7,94,90,.72);color:#fff8ec;border:1px solid rgba(255,255,255,.16);border-bottom:0;backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);box-shadow:0 -20px 60px rgba(7,94,90,.16),inset 0 1px 0 rgba(255,255,255,.14);border-radius:32px 32px 0 0;font-size:13px}
+#rafiq-footer{display:block;position:relative;isolation:isolate;overflow:hidden;padding:66px max(24px,5vw) 24px;background:rgba(7,94,90,.72);color:#fff8ec;border:1px solid rgba(255,255,255,.16);border-bottom:0;backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);box-shadow:0 -20px 60px rgba(7,94,90,.16),inset 0 1px 0 rgba(255,255,255,.14);border-radius:32px 32px 0 0;font-size:13px}
 #rafiq-footer::before,#rafiq-footer::after{content:'';position:absolute;z-index:-1;pointer-events:none;width:480px;height:480px;border-radius:50%;filter:blur(90px);opacity:.075}
-#rafiq-footer::before{background:#d4f3ea;top:-240px;left:-170px}#rafiq-footer::after{background:linear-gradient(#d2edff,#e7dfff);right:-150px;bottom:-270px}
+#rafiq-footer::before{background:var(--theme-primary-tint,#d4f3ea);top:-240px;left:-170px}#rafiq-footer::after{background:linear-gradient(#d2edff,#e7dfff);right:-150px;bottom:-270px}
 #rafiq-footer .gf-columns{display:grid;grid-template-columns:1.5fr .7fr 1fr 1fr 1.05fr;gap:clamp(22px,3vw,48px);max-width:1400px;margin:auto}
 #rafiq-footer h2{font-weight:500;font-size:14px;line-height:1.4;margin:0 0 22px;color:#fff8ec;letter-spacing:0}
 #rafiq-footer .brand{display:inline-flex;align-items:center;gap:10px;color:#fff8ec;margin-bottom:28px}
@@ -32,14 +32,14 @@
 #rafiq-footer .gf-bottom{max-width:1400px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid rgba(255,255,255,.12);padding-top:24px;color:rgba(255,248,236,.68);font-size:11px}
 #rafiq-footer .gf-bottom nav{display:flex;gap:22px;flex-wrap:wrap}
 #rafiq-footer .gf-bottom button{background:none;border:0;font:inherit;font-size:11px;padding:8px 0;cursor:pointer}
-#rafiq-footer :focus-visible{outline:2px solid #d4f3ea;outline-offset:5px}
+#rafiq-footer :focus-visible{outline:2px solid var(--theme-primary-tint,#d4f3ea);outline-offset:5px}
 #rafiq-footer .gf-sr-only{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden}
-#rafiq-footer .gf-info-dialog{background:#fffaf0;color:#0f2f2e;border:1px solid rgba(7,94,90,.2);border-radius:24px;padding:36px;width:min(460px,calc(100vw - 40px));box-shadow:0 20px 60px rgba(15,47,46,.18)}
+#rafiq-footer .gf-info-dialog{background:var(--theme-background,#fffaf0);color:#0f2f2e;border:1px solid rgba(7,94,90,.2);border-radius:24px;padding:36px;width:min(460px,calc(100vw - 40px));box-shadow:0 20px 60px rgba(15,47,46,.18)}
 #rafiq-footer .gf-info-dialog::backdrop{background:rgba(15,47,46,.35);backdrop-filter:blur(4px)}
 #rafiq-footer .gf-info-dialog h2{color:#0f2f2e;font-size:24px;margin:12px 0 20px}
 #rafiq-footer .gf-info-dialog p{line-height:1.7;color:#4c6a5e;font-size:14px}
-#rafiq-footer .gf-info-dialog a{color:#075e5a;font-size:13px}
-#rafiq-footer .gf-close{position:absolute;right:16px;top:12px;background:none;border:0;color:#075e5a;font-size:26px;width:44px;height:44px;cursor:pointer}
+#rafiq-footer .gf-info-dialog a{color:var(--theme-primary-deep,#075e5a);font-size:13px}
+#rafiq-footer .gf-close{position:absolute;right:16px;top:12px;background:none;border:0;color:var(--theme-primary-deep,#075e5a);font-size:26px;width:44px;height:44px;cursor:pointer}
 #rafiq-footer.gf-motion .gf-reveal{opacity:0;transform:translateY(20px);filter:blur(5px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1),filter .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--gf-delay,0ms)}
 #rafiq-footer.gf-motion .gf-reveal.gf-visible{opacity:1;transform:none;filter:none}
 @media(max-width:1100px){#rafiq-footer .gf-columns{grid-template-columns:1.4fr 1fr 1fr}#rafiq-footer .gf-contact{grid-column:span 2}#rafiq-footer .gf-newsletter{padding:26px;gap:25px}}

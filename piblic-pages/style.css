@@ -10,35 +10,35 @@
 :root {
   color-scheme: light;
   /* Surfaces and ink */
-  --bg: #FFFAF0;            /* warm ivory */
-  --bg-alt: #FFF1DC;        /* deeper cream band */
+  --bg: var(--theme-background,#fffaf0);            /* warm ivory */
+  --bg-alt: var(--theme-background-alt,#fff1dc);        /* deeper cream band */
   --surface: #FFFFFF;
   --ink: #0F2F2E;
   --ink-soft: #3F5C5A;
   --line: #F3E5CB;
   --line-strong: #E6D1A8;
   /* Brand: deep teal */
-  --sage: #0B7A75;
-  --sage-deep: #075E5A;
+  --sage: var(--theme-primary,#0b7a75);
+  --sage-deep: var(--theme-primary-deep,#075e5a);
   --on-sage: #FFFFFF;
-  --sage-tint: #D4F3EA;
+  --sage-tint: var(--theme-primary-tint,#d4f3ea);
   /* Accents (balanced, none saturated to rainbow level) */
   --coral: #FF6F4D;      --peach: #FFDCCB;  --peach-ink: #A63A17;  --peach-deep: #FF8A68;
-  --lav-deep: #8F7AF2;   --lav: #E7DFFF;    --lav-ink: #4330B0;
+  --lav-deep: var(--theme-secondary,#8f7af2);   --lav: var(--theme-secondary-tint,#e7dfff);    --lav-ink: var(--theme-secondary-deep,#4330b0);
   --sky-deep: #4FB4F3;   --sky: #D2EDFF;    --sky-ink: #0F5C94;
   --sun-deep: #F7C242;   --sun: #FFE7A3;    --sun-ink: #6E4A00;
-  --mint: #CDF3E4;       --mint-ink: #0A6450;
+  --mint: var(--theme-primary-tint,#cdf3e4);       --mint-ink: var(--theme-primary-deep,#0a6450);
   /* Section tints */
   --tint-peach: #FFEEDF; --tint-sky: #E8F6FF; --tint-lav: #F1ECFF; --tint-mint: #E4F8EF; --tint-sun: #FFF4D2;
   /* Status */
-  --ok-bg: #CDF3E4;   --ok-ink: #0A6450;
+  --ok-bg: var(--theme-primary-tint,#cdf3e4);   --ok-ink: var(--theme-primary-deep,#0a6450);
   --warn-bg: #FFE7A3; --warn-ink: #6E4A00;
   --crit-bg: #FFDCCB; --crit-ink: #A63A17;
   /* Dark teal band for the closing section */
-  --cta-bg: #075E5A;  --cta-ink: #FFF8EC;
+  --cta-bg: var(--theme-primary-deep,#075e5a);  --cta-ink: #FFF8EC;
   --shadow-sm: 0 1px 2px rgba(15, 47, 46, .05), 0 8px 22px rgba(15, 47, 46, .06);
   --shadow-md: 0 2px 4px rgba(15, 47, 46, .05), 0 24px 54px rgba(15, 47, 46, .13);
-  --glass: rgba(255, 250, 240, .82);
+  --glass: rgba(var(--theme-background-rgb,255,250,240), .82);
   /* Type */
   --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
   --font-body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -147,7 +147,7 @@ article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
 .ln-2 { color: var(--sage); }
 
 /* ---------- 1. Hero ---------- */
-.hero { position: relative; overflow: hidden; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; flex-direction: column; justify-content: center; padding-block: calc(var(--nav-h) + 28px) 48px; margin-top: calc(var(--nav-h) * -1); background: radial-gradient(70% 70% at 78% 42%, #FFE7BE 0%, rgba(255, 231, 190, 0) 70%), radial-gradient(45% 50% at 6% 92%, #E7DFFF 0%, rgba(231, 223, 255, 0) 70%), var(--bg); }
+.hero { position: relative; overflow: hidden; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; flex-direction: column; justify-content: center; padding-block: calc(var(--nav-h) + 28px) 48px; margin-top: calc(var(--nav-h) * -1); background: radial-gradient(70% 70% at 78% 42%, #FFE7BE 0%, rgba(255, 231, 190, 0) 70%), radial-gradient(45% 50% at 6% 92%, var(--theme-secondary-tint,#e7dfff) 0%, rgba(231, 223, 255, 0) 70%), var(--bg); }
 .shapes { position: absolute; inset: 0; pointer-events: none; }
 .dotfield { position: absolute; width: 14px; height: 14px; border-radius: 50%; animation: drift 11s ease-in-out infinite; }
 .d1 { background: var(--sky-deep); inset-inline-start: 6%; top: 24%; opacity: .7; }
@@ -613,7 +613,7 @@ button.m-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm);
 .cta .lead { color: rgba(255, 248, 236, .85); }
 .cta-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
 .cta-copy { display: flex; flex-direction: column; gap: 22px; align-items: flex-start; }
-.cta-scene { position: relative; width: 100%; max-width: 560px; justify-self: center; aspect-ratio: 640 / 520; border-radius: 40px; background: linear-gradient(160deg, #FFE7BE 0%, #E7DFFF 100%); box-shadow: 0 30px 70px rgba(0, 0, 0, .28); overflow: hidden; }
+.cta-scene { position: relative; width: 100%; max-width: 560px; justify-self: center; aspect-ratio: 640 / 520; border-radius: 40px; background: linear-gradient(160deg, #FFE7BE 0%, var(--theme-secondary-tint,#e7dfff) 100%); box-shadow: 0 30px 70px rgba(0, 0, 0, .28); overflow: hidden; }
 #finalSvg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .recap { margin-top: 56px; display: flex; justify-content: space-between; gap: 10px; position: relative; }
 .recap::before { content: ""; position: absolute; left: 6%; right: 6%; top: 36px; height: 3px; background: repeating-linear-gradient(90deg, rgba(255, 248, 236, .5) 0 6px, transparent 6px 14px); }

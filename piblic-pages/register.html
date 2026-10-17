@@ -3,6 +3,7 @@
 <html lang="en" dir="ltr">
 
 <head>
+<script src="rafiq-theme.js"></script>
 
   <meta charset="UTF-8">
 
@@ -54,16 +55,16 @@
 
 <style id="rafiqLegalModalStyles">
   :root {
-    --legal-bg: #FFFAF0;
+    --legal-bg: var(--theme-background,#fffaf0);
     --legal-surface: #FFFFFF;
     --legal-ink: #0F2F2E;
     --legal-ink-soft: #3F5C5A;
     --legal-line: #F3E5CB;
-    --legal-sage: #0B7A75;
-    --legal-sage-deep: #075E5A;
-    --legal-mint: #CDF3E4;
+    --legal-sage: var(--theme-primary,#0b7a75);
+    --legal-sage-deep: var(--theme-primary-deep,#075e5a);
+    --legal-mint: var(--theme-primary-tint,#cdf3e4);
     --legal-peach: #FFDCCB;
-    --legal-lavender: #E7DFFF;
+    --legal-lavender: var(--theme-secondary-tint,#e7dfff);
     --legal-shadow: 0 2px 4px rgba(15,47,46,.05), 0 28px 70px rgba(15,47,46,.18);
     --legal-ease: cubic-bezier(.2,.7,.2,1);
   }
@@ -183,7 +184,7 @@
     place-items: center;
     cursor: pointer;
     color: var(--legal-ink-soft);
-    background: #FFFAF0;
+    background: var(--theme-background,#fffaf0);
     border: 1px solid var(--legal-line);
     border-radius: 11px;
     transition: color .18s ease, background .18s ease, transform .18s var(--legal-ease);
@@ -204,7 +205,7 @@
     align-items: center;
     gap: 5px;
     overflow-x: auto;
-    background: rgba(255,250,240,.72);
+    background: rgba(var(--theme-background-rgb,255,250,240),.72);
     border-bottom: 1px solid var(--legal-line);
     scrollbar-width: none;
   }
@@ -243,12 +244,12 @@
     padding: 24px;
     overscroll-behavior: contain;
     scrollbar-width: thin;
-    scrollbar-color: rgba(11,122,117,.25) transparent;
+    scrollbar-color: rgba(var(--theme-primary-rgb,11,122,117),.25) transparent;
   }
 
   .legal-modal__content::-webkit-scrollbar { width: 7px; }
   .legal-modal__content::-webkit-scrollbar-track { background: transparent; }
-  .legal-modal__content::-webkit-scrollbar-thumb { background: rgba(11,122,117,.2); border-radius: 999px; }
+  .legal-modal__content::-webkit-scrollbar-thumb { background: rgba(var(--theme-primary-rgb,11,122,117),.2); border-radius: 999px; }
 
   .legal-modal__panel { animation: legal-panel-enter .2s var(--legal-ease) both; }
 
@@ -264,8 +265,8 @@
     text-transform: uppercase;
   }
 
-  .legal-modal__section-label--mint { color: #0A6450; background: #CDF3E4; }
-  .legal-modal__section-label--lavender { color: #4330B0; background: #E7DFFF; }
+  .legal-modal__section-label--mint { color: var(--theme-primary-deep,#0a6450); background: var(--theme-primary-tint,#cdf3e4); }
+  .legal-modal__section-label--lavender { color: var(--theme-secondary-deep,#4330b0); background: var(--theme-secondary-tint,#e7dfff); }
   .legal-modal__section-label--peach { color: #A63A17; background: #FFDCCB; }
 
   .legal-modal__panel h3 {
@@ -322,13 +323,13 @@
   }
 
   .legal-modal__note--mint {
-    color: #0A6450;
+    color: var(--theme-primary-deep,#0a6450);
     background: #E4F8EF;
     border: 1px solid rgba(10,100,80,.1);
   }
 
   .legal-modal__note--lavender {
-    color: #4330B0;
+    color: var(--theme-secondary-deep,#4330b0);
     background: #F1ECFF;
     border: 1px solid rgba(67,48,176,.1);
   }
@@ -380,7 +381,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    background: rgba(255,250,240,.72);
+    background: rgba(var(--theme-background-rgb,255,250,240),.72);
     border-top: 1px solid var(--legal-line);
   }
 
@@ -468,6 +469,7 @@
 </style>
 
   <link rel="stylesheet" href="rafiq-typography.css">
+<link rel="stylesheet" href="rafiq-theme.css">
 </head>
 
 
@@ -2947,9 +2949,9 @@
 
               d="M16 3.8 25 7v7.1c0 5.8-3.6 9.9-9 11.8-5.4-1.9-9-6-9-11.8V7l9-3.2Z"
 
-              fill="#CDF3E4"
+              fill="var(--theme-primary-tint,#cdf3e4)"
 
-              stroke="#075E5A"
+              stroke="var(--theme-primary-deep,#075e5a)"
 
               stroke-width="1.7"
 
@@ -2963,7 +2965,7 @@
 
               d="m11.5 15.5 3 3 6-6"
 
-              stroke="#075E5A"
+              stroke="var(--theme-primary-deep,#075e5a)"
 
               stroke-width="1.8"
 
