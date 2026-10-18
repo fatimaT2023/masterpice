@@ -10,7 +10,7 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Book Appointment | RAFIQ</title>
+  <title>Choose a session | RAFIQ</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,17 +31,19 @@
 <link rel="stylesheet" href="../session-finance.css">
 <script src="../session-finance.js"></script>
 <link rel="stylesheet" href="parent-sidebar.css">
+<link rel="stylesheet" href="booking-journey.css">
+<script src="parent-setup-utils.js"></script>
+<script src="age-content.js"></script>
+<script src="age-context.js"></script>
+<link rel="stylesheet" href="age-context.css">
+<link rel="stylesheet" href="parent-background.css">
+<link rel="stylesheet" href="parent-layout.css">
 </head>
 
 
 <body class="parent-cycle-video">
-  <div class="dashboard-video-background" aria-hidden="true">
-    <video id="dashboardBackgroundVideo" muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true">
-      <source src="assets/dashboard/background.mp4" type="video/mp4">
-    </video>
-    <div class="dashboard-video-tint"></div>
-  </div>
-  <button class="background-playback-toggle" id="backgroundPlaybackToggle" type="button" aria-controls="dashboardBackgroundVideo" aria-pressed="true">▶ Play background</button>
+  <div class="parent-static-background" aria-hidden="true"></div>
+
 
 <div class="app-shell">
 
@@ -83,7 +85,7 @@
           </span>
 
           <h1>
-            Book Appointment
+            Choose a session
           </h1>
         </div>
 
@@ -111,6 +113,8 @@
         id="bookingView"
       >
 
+        <nav class="booking-steps" aria-label="Booking steps"><a href="specialists.html">1 · Choose a specialist</a><span aria-current="step">2 · Choose a session</span><span>3 · Review &amp; pay</span></nav>
+        <p class="booking-intro">Choose how and when to meet. Review all details before continuing to demo payment.</p>
         <div class="booking-layout">
 
           <!-- LEFT -->
@@ -236,7 +240,7 @@
 
               <div
                 class="date-options"
-                id="dateOptions"
+                id="dateOptions" aria-label="Available appointment dates"
               ></div>
 
             </section>
@@ -266,7 +270,7 @@
 
               <div
                 class="time-options"
-                id="timeOptions"
+                id="timeOptions" aria-live="polite"
               >
 
                 <p class="placeholder-text">
@@ -318,7 +322,7 @@
                 <div class="field-footer">
 
                   <span>
-                    Keep it short. You can explain
+                    This note will be shared with your specialist after confirmation. You can explain
                     more during the appointment.
                   </span>
 
@@ -448,7 +452,7 @@
 
             <div
               class="form-error"
-              id="bookingError"
+              id="bookingError" role="alert" tabindex="-1"
             ></div>
 
 
@@ -457,7 +461,7 @@
               class="confirm-button"
               id="confirmBookingButton"
             >
-              Continue to Demo Payment
+              Review appointment
             </button>
 
 
@@ -499,7 +503,7 @@
 
           <p>
             Go back to the specialist directory,
-            view a profile and select Book Appointment.
+            view a profile and select Choose a session.
           </p>
 
           <a href="specialists.html">
@@ -615,14 +619,14 @@
               href="bookings.html"
               class="view-bookings-button"
             >
-              View My Bookings
+              View my appointments
             </a>
 
             <a
               href="parent-dashboard.html"
               class="dashboard-button"
             >
-              Back to Dashboard
+              Back to Today
             </a>
 
           </div>
@@ -638,9 +642,16 @@
 </div>
 
 
-<script src="booking.js"></script>
+<dialog id="appointmentReview" class="appointment-review" aria-labelledby="reviewHeading">
+  <h2 id="reviewHeading" tabindex="-1">Review your appointment</h2>
+  <p>Check these details before continuing.</p>
+  <dl id="reviewDetails"></dl>
+  <h3>Note shared with your specialist</h3><p id="reviewReason" class="review-reason"></p>
+  <p class="review-demo">Demo payment only. No real money is collected. Your appointment is saved after successful demo payment.</p>
+  <div class="review-actions"><button type="button" id="reviewEdit">Back to edit</button><button type="button" id="reviewContinue">Continue to demo payment</button></div>
+</dialog>
+<script src="booking-review.js"></script>
+<script src="concern-booking.js"></script><script src="booking.js"></script>
 <script src="notifications.js"></script>
-
-  <script src="parent-dashboard-background.js"></script>
 </body>
 </html>

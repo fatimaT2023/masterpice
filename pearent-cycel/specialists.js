@@ -284,113 +284,10 @@ document.addEventListener(
     // CHILD AGE
     // =====================================
 
-    function calculateAge(
-      dateString
-    ) {
-
-      if (
-        !dateString
-      ) {
-
-        return {
-          years: 0,
-          months: 0,
-          totalMonths: 0
-        };
-      }
+    function calculateAge(dateString) { return window.RafiqSetup.ageFromBirth(dateString) || {years:NaN,months:NaN,totalMonths:NaN,days:NaN}; }
 
 
-      const birthDate =
-        new Date(
-          dateString +
-          "T00:00:00"
-        );
-
-
-      if (
-        Number.isNaN(
-          birthDate.getTime()
-        )
-      ) {
-
-        return {
-          years: 0,
-          months: 0,
-          totalMonths: 0
-        };
-      }
-
-
-      const today =
-        new Date();
-
-
-      let years =
-        today.getFullYear() -
-        birthDate.getFullYear();
-
-
-      let months =
-        today.getMonth() -
-        birthDate.getMonth();
-
-
-      if (
-        today.getDate() <
-        birthDate.getDate()
-      ) {
-
-        months--;
-      }
-
-
-      if (
-        months < 0
-      ) {
-
-        years--;
-
-        months += 12;
-      }
-
-
-      return {
-        years,
-        months,
-        totalMonths:
-          years * 12 + months
-      };
-    }
-
-
-    function formatAge(
-      age
-    ) {
-
-      if (
-        age.totalMonths < 12
-      ) {
-
-        return (
-          age.totalMonths +
-          (
-            age.totalMonths === 1
-              ? " month"
-              : " months"
-          )
-        );
-      }
-
-
-      return (
-        age.years +
-        (
-          age.years === 1
-            ? " year old"
-            : " years old"
-        )
-      );
-    }
+    function formatAge(age) { return window.RafiqSetup.formatAge(age); }
 
 
     const age =
@@ -438,7 +335,7 @@ document.addEventListener(
 
 
     heroDescription.textContent =
-      `Browse verified professionals and choose the type of support that best fits ${currentChild.name}'s needs.`;
+      `Compare areas of support, session fees and languages for ${currentChild.name}'s needs.`;
 
 
     // =====================================
@@ -858,23 +755,11 @@ document.addEventListener(
     }
 
 
-    function getPriceValue(
-      profile
-    ) {
-
-      const price =
-        Number(
-          profile.price
-        );
-
-
-      return Number.isFinite(
-        price
-      )
-        ? price
-        : 0;
+    function getPriceValue(profile) {
+      if (profile.price === null || profile.price === undefined || String(profile.price).trim() === '') return null;
+      const value = Number(profile.price);
+      return Number.isFinite(value) && value >= 0 ? value : null;
     }
-
 
     function formatPrice(
       price
@@ -886,11 +771,7 @@ document.addEventListener(
         );
 
 
-      if (
-        !Number.isFinite(
-          numeric
-        )
-      ) {
+      if (price === null || !Number.isFinite(numeric)) {
 
         return "Not specified";
       }
@@ -1123,7 +1004,7 @@ document.addEventListener(
         entries.length === 0
       ) {
 
-        return "Not configured";
+        return "Choose a session to check";
       }
 
 
@@ -1188,7 +1069,7 @@ document.addEventListener(
         candidates.length === 0
       ) {
 
-        return "Available by request";
+        return "Check session availability";
       }
 
 
@@ -1627,6 +1508,7 @@ document.addEventListener(
         "all";
 
 
+      const requestedId=new URLSearchParams(location.search).get('specialist');
       return specialists.filter(
         specialist => {
 
@@ -1677,7 +1559,7 @@ document.addEventListener(
 
 
           return (
-            matchesSearch &&
+            (!requestedId||specialist.id===requestedId) && matchesSearch &&
             matchesSpecialty &&
             matchesType
           );
@@ -1811,6 +1693,8 @@ document.addEventListener(
             </div>
 
 
+            <p class="directory-age-note">Age experience: confirm for your child before booking.</p>
+            <p class="directory-languages">Languages: ${escapeHTML(specialist.languages)}</p>
             <div class="specialist-tags">
               ${areaTags}
             </div>
@@ -1855,7 +1739,7 @@ document.addEventListener(
               <div class="detail-box">
 
                 <span>
-                  Next Available
+                  Published hours
                 </span>
 
                 <strong class="available">
@@ -1870,7 +1754,7 @@ document.addEventListener(
               <div class="detail-box">
 
                 <span>
-                  Session Fee
+                  Fee per session
                 </span>
 
                 <strong>
@@ -1893,7 +1777,7 @@ document.addEventListener(
                   specialist.id
                 )}"
               >
-                View Profile
+                View profile
               </button>
 
 
@@ -1903,9 +1787,7 @@ document.addEventListener(
                 data-id="${escapeHTML(
                   specialist.id
                 )}"
-              >
-                Book
-              </button>
+              >Choose a session</button>
 
             </div>
           `;
@@ -2388,7 +2270,29 @@ document.addEventListener(
     // INIT
     // =====================================
 
+    try {
+      if (window.RafiqConcernBooking?.read(currentChild.id)?.text.trim()) document.getElementById('directoryConcern').hidden = false;
+    } catch (_) { /* A malformed draft must not block browsing. */ }
+    document.getElementById('emptyReset')?.addEventListener('click', () => {
+      if (new URLSearchParams(location.search).has('specialist')) { window.location.href='specialists.html'; return; }
+      clearFilters.click();
+    });
     populateSpecialtyFilter();
+    const followupId=new URLSearchParams(location.search).get('specialist');
+    if(followupId){const notice=document.createElement('div');notice.className='rafiq-age-context';const text=document.createElement('p');text.textContent='Showing the specialist from your report, if still listed. Confirm their age experience, availability and fees before booking.';const all=document.createElement('a');all.href='specialists.html';all.textContent='Browse all specialists';notice.append(text,all);specialistGrid?.before(notice);}
+    const requestedName=new URLSearchParams(location.search).get('search');
+    if(requestedName&&searchInput)searchInput.value=requestedName.slice(0,120);
+
+    // A directory topic requested by the parent, not a clinical matching score.
+    const requestedTopic=new URLSearchParams(location.search).get('specialty');
+    if(['speech','occupational','development','psychology','pediatrician'].includes(requestedTopic)&&specialtyFilter){
+      const available=Array.from(specialtyFilter.options).some(option=>option.value===requestedTopic);
+      specialtyFilter.value=available?requestedTopic:'all';
+      const notice=document.createElement('p');notice.className='rafiq-age-context';
+      notice.textContent=available?'Showing your selected directory topic. Confirm the specialist’s experience with your child’s age, consultation details and fees before booking.':'No listed specialist has the selected directory topic. Showing all listed specialists; you can also contact your usual clinician. Confirm age experience before booking.';
+      specialistGrid?.before(notice);
+    }
+
 
     renderSpecialists();
 

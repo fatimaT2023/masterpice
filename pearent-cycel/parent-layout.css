@@ -1,0 +1,40 @@
+
+/* Shared content geometry, loaded after individual parent-page styles. */
+body.parent-cycle-video{--parent-content-width:1240px;--parent-gutter:32px;--parent-section-gap:24px}
+body.parent-cycle-video .main-content{
+ width:100%;max-width:var(--parent-content-width);min-width:0;box-sizing:border-box;
+ margin:0 auto!important;padding:32px var(--parent-gutter) 64px;
+}
+body.parent-cycle-video .main-content>.page-body,
+body.parent-cycle-video .main-content>.page-content,
+body.parent-cycle-video .main-content>.dashboard-body{width:100%;max-width:none;margin:0;padding:0;box-sizing:border-box}
+body.parent-cycle-video .main-content>.topbar{
+ position:relative;inset:auto;min-height:0;padding:0 0 24px;margin:0;
+ background:transparent;border:0;box-shadow:none;backdrop-filter:none;
+ display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+}
+body.parent-cycle-video .main-content>.topbar h1{margin:0;line-height:1.2;font-size:clamp(28px,3vw,38px)}
+body.parent-cycle-video .main-content>.topbar p{margin-top:8px}
+body.parent-cycle-video .main-content .rafiq-age-context,
+body.parent-cycle-video .main-content .rafiq-age-panel{margin-left:0;margin-right:0}
+body.parent-cycle-video .main-content :is(.screen-flow-card,.today-card,.section-card,.hero-card,.search-panel,.support-banner){box-sizing:border-box;min-width:0}
+body.parent-cycle-video .screen-flow-card{padding:28px;margin-bottom:var(--parent-section-gap)}
+body.parent-cycle-video .main-content :is(.booking-main,.booking-summary,.specialist-grid,.screen-flow-heading,.profile-section-heading){min-width:0}
+body.parent-cycle-video .child-profile-hero{gap:24px}
+body.parent-cycle-video .child-profile-hero h1{margin:4px 0 12px}
+body.parent-cycle-video .child-profile-hero p{margin-bottom:0}
+body.parent-cycle-video .child-profile-details{align-items:baseline;row-gap:18px}
+body.parent-cycle-video .main-content :is(input,select,textarea){max-width:100%;box-sizing:border-box}
+body.parent-cycle-video .main-content :is(h1,h2,h3,p,dd){overflow-wrap:anywhere}
+@media(max-width:800px){
+ body.parent-cycle-video{--parent-gutter:22px;--parent-section-gap:20px}
+ body.parent-cycle-video .main-content{padding-top:26px}
+}
+@media(max-width:600px){
+ body.parent-cycle-video{--parent-gutter:16px;--parent-section-gap:18px}
+ body.parent-cycle-video .main-content{padding-top:22px;padding-bottom:40px}
+ body.parent-cycle-video .screen-flow-card{padding:22px}
+ body.parent-cycle-video .main-content>.topbar{padding-bottom:20px;gap:12px}
+ body.parent-cycle-video .child-profile-hero{gap:16px}
+}
+@media print{body.parent-cycle-video .main-content{max-width:none;padding:0;margin:0!important}}

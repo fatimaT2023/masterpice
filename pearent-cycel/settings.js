@@ -132,87 +132,10 @@ document.addEventListener(
     // AGE
     // ===========================
 
-    function calculateAge(
-      dateString
-    ) {
-
-      const birthDate =
-        new Date(
-          dateString +
-          "T00:00:00"
-        );
+    function calculateAge(dateString) { return window.RafiqSetup.ageFromBirth(dateString) || {years:NaN,months:NaN,totalMonths:NaN,days:NaN}; }
 
 
-      const today =
-        new Date();
-
-
-      let years =
-        today.getFullYear() -
-        birthDate.getFullYear();
-
-
-      let months =
-        today.getMonth() -
-        birthDate.getMonth();
-
-
-      if (
-        today.getDate() <
-        birthDate.getDate()
-      ) {
-
-        months--;
-      }
-
-
-      if (
-        months < 0
-      ) {
-
-        years--;
-
-        months += 12;
-      }
-
-
-      return {
-        years,
-        months,
-        totalMonths:
-          years * 12 + months
-      };
-    }
-
-
-    function formatAge(
-      age
-    ) {
-
-      if (
-        age.totalMonths < 12
-      ) {
-
-        return (
-          age.totalMonths +
-          (
-            age.totalMonths === 1
-              ? " month"
-              : " months"
-          )
-        );
-      }
-
-
-      return (
-        age.years +
-        (
-          age.years === 1
-            ? " year old"
-            : " years old"
-        )
-      );
-    }
+    function formatAge(age) { return window.RafiqSetup.formatAge(age); }
 
 
     function renderSidebarChild() {

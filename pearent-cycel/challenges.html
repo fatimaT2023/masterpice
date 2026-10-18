@@ -28,16 +28,17 @@
   <link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
 <link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
 <link rel="stylesheet" href="parent-sidebar.css">
+<script src="parent-setup-utils.js"></script>
+<script src="age-content.js"></script>
+<script src="age-context.js"></script>
+<link rel="stylesheet" href="age-context.css">
+<link rel="stylesheet" href="parent-background.css">
+<link rel="stylesheet" href="parent-layout.css">
 </head>
 
 <body class="parent-cycle-video">
-  <div class="dashboard-video-background" aria-hidden="true">
-    <video id="dashboardBackgroundVideo" muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true">
-      <source src="assets/dashboard/background.mp4" type="video/mp4">
-    </video>
-    <div class="dashboard-video-tint"></div>
-  </div>
-  <button class="background-playback-toggle" id="backgroundPlaybackToggle" type="button" aria-controls="dashboardBackgroundVideo" aria-pressed="true">▶ Play background</button>
+  <div class="parent-static-background" aria-hidden="true"></div>
+
 
 <div class="app-shell">
 
@@ -449,7 +450,5 @@
 
 
 <script src="challenges.js"></script>
-
-  <script src="parent-dashboard-background.js"></script>
 </body>
 </html>

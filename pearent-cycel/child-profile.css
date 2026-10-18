@@ -1,0 +1,25 @@
+
+.child-profile-hero{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.child-profile-hero h1{margin:5px 0;font-size:clamp(30px,5vw,48px)}
+.child-profile-hero>a{margin-left:auto;text-decoration:none}
+.child-profile-avatar{display:grid;place-items:center;width:84px;height:84px;border-radius:26px;background:#d7eee4;color:#155e56;font-size:36px}
+.child-profile-details{display:grid;grid-template-columns:minmax(160px,1fr) 2fr;gap:16px}
+.child-profile-details dt{color:#50665d}.child-profile-details dd{margin:0;font-weight:600;overflow-wrap:anywhere}
+.child-profile-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.child-profile-links a{display:grid;gap:8px;padding:20px;border:1px solid #c9ddd4;border-radius:18px;background:#ffffff80;color:#254e42;text-decoration:none}
+.child-profile-links a:hover{background:#e3f1e9}.child-profile-links span{font-size:14px;line-height:1.6}
+@media(max-width:600px){.child-profile-links{grid-template-columns:1fr}.child-profile-details{grid-template-columns:1fr;gap:8px}.child-profile-details dd{margin-bottom:14px}.child-profile-hero>a{margin-left:0}}
+
+.profile-section-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.profile-measurement-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:22px 0}
+.profile-measurement-grid>div{padding:22px;border-radius:20px;background:#e2f0e980;border:1px solid #c9ddd4}
+.profile-measurement-grid h3{font-size:16px;margin:0 0 12px;color:#4b6558}
+.profile-measurement-grid strong{font-size:clamp(23px,4vw,34px);color:#254e42}
+.profile-measurement-grid p{font-size:14px;line-height:1.5}
+.profile-record-section{border-top:1px solid #c9ddd4;margin-top:18px;padding-top:16px}
+.profile-record-section>summary{cursor:pointer;font-weight:700;padding:8px 0;min-height:44px}
+.profile-record-section>summary span{font-weight:400;margin-left:8px}
+.profile-health-entry{padding:16px 0;border-bottom:1px solid #c9ddd4}
+.profile-health-entry h3{font-size:18px;margin:0 0 8px}
+.profile-health-body{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7}
+@media(max-width:520px){.profile-measurement-grid{grid-template-columns:1fr}}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script src="../piblic-pages/rafiq-theme.js"></script>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Child profile | RAFIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="health.css">
+  <link
+  rel="stylesheet"
+  href="notifications.css"
+>
+
+  <link rel="stylesheet" href="parent-cycle-glass.css">
+  <link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
+<link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
+<link rel="stylesheet" href="parent-sidebar.css">
+<script src="parent-setup-utils.js"></script>
+<script src="age-content.js"></script>
+<script src="age-context.js"></script>
+<link rel="stylesheet" href="age-context.css">
+<link rel="stylesheet" href="screening-flow.css"><link rel="stylesheet" href="child-profile.css">
+<link rel="stylesheet" href="parent-background.css">
+<link rel="stylesheet" href="parent-layout.css">
+</head>
+
+
+<body class="parent-cycle-video screening-flow">
+<div class="parent-static-background" aria-hidden="true"></div>
+
+<div id="parentSidebarMount"></div><script src="parent-sidebar.js"></script>
+<main class="main-content screening-flow-main">
+<p id="profileError" role="alert" hidden></p>
+<div id="profileContent" hidden>
+<section class="screen-flow-card child-profile-hero"><div class="child-profile-avatar" id="profileAvatar"></div><div><p class="screen-flow-eyebrow">CHILD PROFILE</p><h1 id="profileName"></h1><p id="profileAge"></p></div><a id="editChildProfile" class="screen-flow-secondary">Edit child details</a></section>
+<section class="screen-flow-card"><h2>About your child</h2><dl id="childDetails" class="child-profile-details"></dl><p class="screen-flow-small">These details help Rafiq show content for your child’s age. You can update them at any time.</p></section>
+<section class="screen-flow-card" aria-labelledby="profileMeasurementsHeading"><div class="profile-section-heading"><h2 id="profileMeasurementsHeading">Height &amp; weight</h2><a href="health.html" class="screen-flow-link">Add or update a measurement</a></div><p>Latest recorded values, with the date each was measured.</p><div class="profile-measurement-grid"><div><h3>Weight</h3><strong id="profileWeight">Not recorded yet</strong><p id="profileWeightDate"></p></div><div><h3>Height / length</h3><strong id="profileHeight">Not recorded yet</strong><p id="profileHeightDate"></p></div></div><p class="screen-flow-small">Measurements are parent-entered records. A single value does not describe your child’s growth.</p><details class="profile-record-section"><summary>All measurements <span id="profileGrowthCount"></span></summary><div id="profileGrowthRecords"></div></details></section>
+<section class="screen-flow-card"><h2>Health details</h2><p>Records saved for this child. Add or edit details in <a href="health.html">Health &amp; vaccinations</a>.</p><details class="profile-record-section"><summary>Vaccines received <span id="profileVaccineCount"></span></summary><div id="profileVaccineRecords"></div></details><details class="profile-record-section"><summary>Health notes <span id="profileNoteCount"></span></summary><div id="profileNoteRecords"></div></details><p class="screen-flow-small">An empty vaccine list does not mean a dose was missed. Medication notes are records you entered, not prescribing instructions.</p></section>
+<section class="screen-flow-card"><h2>Your child’s story</h2><p>Open the records and support saved for this child.</p><div class="child-profile-links">
+<a href="milestones.html"><strong>Growth &amp; observations</strong><span>Revisit notes and moments you have recorded.</span></a>
+<a href="health.html"><strong>Health &amp; vaccinations</strong><span>Find measurements, vaccines and health notes.</span></a>
+<a href="bookings.html"><strong>Appointments &amp; reports</strong><span>Review visits and specialist reports.</span></a>
+<a href="album.html"><strong>Memories</strong><span>Keep photos and special moments together.</span></a>
+<a href="screening.html"><strong>Development questions</strong><span>Describe a concern and record your observations.</span></a>
+<a href="parent-dashboard.html"><strong>Today</strong><span>Return to your child’s next step.</span></a>
+</div></section><p class="screen-flow-small">Profile details are saved in this browser.</p></div>
+<a href="parent-dashboard.html" class="screen-flow-link">Back to Today</a>
+</main><script src="health-records.js"></script><script src="child-profile-health.js"></script><script src="child-profile.js"></script></body></html>

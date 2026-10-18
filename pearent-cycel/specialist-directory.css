@@ -1,0 +1,21 @@
+
+/* Directory clarity, using the existing RAFIQ palette and glass cards. */
+.directory-steps{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0;color:#42544c}
+.directory-steps span{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:18px;background:rgba(255,255,255,.6)}
+.directory-steps [aria-current]{background:#e1eee5;font-weight:700}
+.directory-steps b{display:grid;place-items:center;border:1px solid currentColor;border-radius:50%;width:25px;height:25px}
+.directory-context{padding:20px 24px;border-radius:22px;background:rgba(232,241,232,.9);margin:18px 0}
+.directory-context h2{font-size:20px;margin:0 0 8px}
+.directory-context p{margin:0;line-height:1.6}
+.directory-label{display:block;font-size:14px;font-weight:700;color:#384e43;margin:0 0 8px}
+.filter-row{flex-wrap:wrap}
+.filter-row .directory-label{margin:0}
+.directory-age-note,.directory-languages{font-size:14px;line-height:1.5;color:#45594d;margin:12px 0}
+.specialist-actions button{white-space:normal;min-height:44px}
+.specialist-card{display:flex;flex-direction:column}
+.specialist-actions{margin-top:auto;padding-top:18px}
+.specialist-details{margin-bottom:16px}
+[hidden]{display:none!important}
+.profile-overlay{overflow-y:auto}
+:where(.search-panel,.profile-modal,.specialist-card) :is(button,input,select,a):focus-visible{outline:3px solid #416952;outline-offset:3px}
+@media(max-width:650px){.booking-link{display:inline-flex}.directory-steps{gap:6px}.directory-steps span{font-size:13px;padding:8px}.filter-row .directory-label{width:100%}.specialist-actions{flex-wrap:wrap}.specialist-actions button{flex:1}}

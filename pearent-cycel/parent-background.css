@@ -1,0 +1,6 @@
+
+/* Shared still background for parent pages. Keep the original image proportions. */
+html body.parent-cycle-video{background:#d0e8f4;isolation:isolate}
+body.parent-cycle-video>.parent-static-background{position:fixed;inset:0;z-index:-1;pointer-events:none;background-color:#d0e8f4;background-image:url('assets/dashboard/parent-background.jpg');background-position:center;background-size:auto 100%;background-repeat:no-repeat}
+body.parent-cycle-video .background-playback-toggle{display:none!important}
+@media print{body.parent-cycle-video>.parent-static-background{display:none}html body.parent-cycle-video{background:white}}

@@ -191,112 +191,13 @@ document.addEventListener(
     // AGE
     // =====================================
 
-    function calculateAge(
-      dateString
-    ) {
-
-      const birthDate =
-        new Date(
-          dateString +
-          "T00:00:00"
-        );
+    function calculateAge(dateString) { return window.RafiqSetup.ageFromBirth(dateString) || {years:NaN,months:NaN,totalMonths:NaN,days:NaN}; }
 
 
-      const today =
-        new Date();
+    function formatAge(age) { return window.RafiqSetup.formatAge(age); }
 
 
-      let years =
-        today.getFullYear() -
-        birthDate.getFullYear();
-
-
-      let months =
-        today.getMonth() -
-        birthDate.getMonth();
-
-
-      if (
-        today.getDate() <
-        birthDate.getDate()
-      ) {
-        months--;
-      }
-
-
-      if (months < 0) {
-
-        years--;
-
-        months += 12;
-      }
-
-
-      return {
-        years,
-        months,
-        totalMonths:
-          years * 12 + months
-      };
-    }
-
-
-    function formatAge(age) {
-
-      if (age.totalMonths < 12) {
-
-        return (
-          age.totalMonths +
-          (age.totalMonths === 1
-            ? " month"
-            : " months")
-        );
-      }
-
-
-      if (
-        age.years < 3 &&
-        age.months > 0
-      ) {
-
-        return (
-          age.years +
-          (age.years === 1
-            ? " year, "
-            : " years, ") +
-          age.months +
-          (age.months === 1
-            ? " month"
-            : " months")
-        );
-      }
-
-
-      return (
-        age.years +
-        (age.years === 1
-          ? " year old"
-          : " years old")
-      );
-    }
-
-
-    function getStage(age) {
-
-      if (age.years <= 3) {
-        return "Early Years";
-      }
-
-      if (age.years <= 6) {
-        return "Early Childhood";
-      }
-
-      if (age.years <= 12) {
-        return "School Age";
-      }
-
-      return "Adolescence";
-    }
+    function getStage(age) { return window.RafiqSetup.bandForAge(age)?.label || 'Outside the current 0–6 age range'; }
 
 
     const age =
@@ -343,7 +244,7 @@ document.addEventListener(
 
 
     contextDescription.textContent =
-      `Rafiq uses ${currentChild.name}'s age and development stage to personalize guidance.`;
+      'Age context: '+formatAge(age)+'. This preview can help organize your questions; it does not provide an age-specific assessment.';
 
 
     // =====================================
@@ -351,47 +252,16 @@ document.addEventListener(
     // =====================================
 
     function getPrompts() {
-
-      if (age.years <= 3) {
-
-        return [
-          "How can I support early speech development?",
-          "How can I improve our bedtime routine?",
-          "What activities can I do at home?",
-          "How can I encourage communication?"
-        ];
-      }
-
-
-      if (age.years <= 6) {
-
-        return [
-          "How should I handle frequent tantrums?",
-          "How can I encourage independence?",
-          "How can I support social skills?",
-          "How can I prepare my child for school?"
-        ];
-      }
-
-
-      if (age.years <= 12) {
-
-        return [
-          "How can I help with school stress?",
-          "How should I handle too much screen time?",
-          "How can I support better attention?",
-          "How can I talk about bullying?"
-        ];
-      }
-
-
-      return [
-        "How can I communicate better with my teenager?",
-        "How should I handle social media boundaries?",
-        "How can I support school pressure?",
-        "How can I encourage healthy independence?"
-      ];
-    }
+ const context=window.RafiqSetup.childContext(currentChild),m=context.development?.totalMonths;
+ if(!context.supported)return ['Help me organize questions for a specialist','How do I find my saved records?'];
+ if(context.needsDueDate||context.beforeDueDate)return ['What should I ask my care team about corrected age?','Help me describe what I have noticed'];
+ if(m<2)return ['Help me describe a question about my newborn','What should I note before our next visit?','How can I record a moment together?'];
+ if(m<6)return ['Help me describe my baby’s responses during play','What should I ask about my baby’s current stage?','Help me organize a feeding or sleep question'];
+ if(m<12)return ['Help me describe what my baby explores','Help me record a communication observation','What should I ask at our next visit?'];
+ if(m<24)return ['Help me describe my toddler’s communication','Help me organize a question about play','Help me record a daily routine observation'];
+ if(m<48)return ['Help me describe a play or conversation moment','Help me organize a question about routines','What would I like to discuss with a specialist?'];
+ return ['Help me describe a friendship or play observation','Help me organize a question about school routines','Help me record a moment of independence'];
+ }
 
 
     function renderPrompts() {
@@ -757,92 +627,11 @@ document.addEventListener(
     // MOCK AI RESPONSE
     // =====================================
 
-    function generateMockResponse(
-      question
-    ) {
-
-      const lower =
-        question.toLowerCase();
-
-
-      if (
-        lower.includes("sleep") ||
-        lower.includes("bedtime")
-      ) {
-
-        return (
-          `For ${currentChild.name}, a consistent bedtime routine can help. ` +
-          `Try keeping the same general sleep schedule, reducing stimulating activities before bed, and using a short calming routine such as washing up, reading, and quiet time. ` +
-          `If sleep difficulties are persistent or affecting daily wellbeing, consider discussing them with a qualified professional.`
-        );
-      }
-
-
-      if (
-        lower.includes("tantrum") ||
-        lower.includes("behavior")
-      ) {
-
-        return (
-          `Big emotions can be difficult for both children and parents. ` +
-          `Try staying calm, naming the emotion, keeping boundaries short and clear, and discussing what happened after everyone is calmer. ` +
-          `Patterns such as hunger, tiredness, transitions, or frustration can also help explain when behaviors happen.`
-        );
-      }
-
-
-      if (
-        lower.includes("speech") ||
-        lower.includes("communication")
-      ) {
-
-        return (
-          `You can support communication by talking during everyday activities, following ${currentChild.name}'s interests, reading together, and giving enough time to respond. ` +
-          `If you are concerned about communication development, Rafiq can help you review milestones or connect with an appropriate specialist.`
-        );
-      }
-
-
-      if (
-        lower.includes("screen time")
-      ) {
-
-        return (
-          `A useful approach is to create predictable screen-time boundaries rather than negotiating each time. ` +
-          `Try agreeing on when screens are used, keeping some routines screen-free, and offering another activity before the transition.`
-        );
-      }
-
-
-      if (
-        lower.includes("school") ||
-        lower.includes("study")
-      ) {
-
-        return (
-          `Start by finding out what part of school feels difficult for ${currentChild.name}. ` +
-          `It may help to break tasks into smaller steps, create a predictable homework routine, and focus on effort rather than only results.`
-        );
-      }
-
-
-      if (
-        lower.includes("bully")
-      ) {
-
-        return (
-          `Listen carefully without blaming ${currentChild.name}, and let them know they can continue talking to you. ` +
-          `Write down what happened and consider involving the school or another responsible adult if the behavior continues.`
-        );
-      }
-
-
-      return (
-        `Thanks for sharing that. Because ${currentChild.name} is in the ${getStage(age).toLowerCase()} stage, context matters. ` +
-        `Try observing when the concern happens, what usually happens before it, and what seems to help. ` +
-        `You can also use Rafiq's milestones, screening, or specialist support if you want to explore the concern further.`
-      );
-    }
+    function generateMockResponse(question) {
+ const context=window.RafiqSetup.childContext(currentChild);
+ const label=context.basis==='corrected'?'corrected age '+window.RafiqSetup.formatAge(context.development):window.RafiqSetup.formatAge(context.chronological);
+ return 'For '+currentChild.name+' ('+label+'), let’s organize what you’ve noticed. What happened, when did you first notice it, and what would you like help understanding? You can save an observation under Growth & milestones or discuss it with a specialist. This preview does not assess development or generate age-specific medical advice.';
+ }
 
 
     // =====================================

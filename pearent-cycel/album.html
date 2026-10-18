@@ -11,10 +11,16 @@
   <link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
   <link rel="stylesheet" href="parent-sidebar.css">
   <link rel="stylesheet" href="album.css">
+<script src="parent-setup-utils.js"></script>
+<script src="age-content.js"></script>
+<script src="age-context.js"></script>
+<link rel="stylesheet" href="age-context.css">
+<link rel="stylesheet" href="parent-background.css">
+<link rel="stylesheet" href="parent-layout.css">
 </head>
 <body class="parent-cycle-video">
-  <div class="dashboard-video-background" aria-hidden="true"><video id="dashboardBackgroundVideo" muted loop playsinline preload="metadata" tabindex="-1"><source src="assets/dashboard/background.mp4" type="video/mp4"></video><div class="dashboard-video-tint"></div></div>
-  <button class="background-playback-toggle" id="backgroundPlaybackToggle" type="button" aria-controls="dashboardBackgroundVideo" aria-pressed="true">Play background</button>
+  <div class="parent-static-background" aria-hidden="true"></div>
+
   <div class="app-shell">
     <div id="parentSidebarMount"></div><script src="parent-sidebar.js"></script>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -59,6 +65,5 @@
   <dialog id="memoryDialog" class="album-dialog album-memory"><div class="album-dialog-heading"><h2>Memory details</h2><button type="button" data-close="memoryDialog" aria-label="Close memory">×</button></div><img id="memoryImage" alt=""><form id="memoryForm"><label>Title<input id="memoryTitle" maxlength="120" required></label><label>Memory date<input id="memoryDate" type="date" required></label><label>Description<textarea id="memoryDescription" maxlength="1000" rows="3"></textarea></label><p id="memoryStatus" role="status"></p><div class="album-actions"><button class="album-primary" type="submit">Save details</button><a id="downloadPhoto" class="album-secondary" download>Download original</a><button type="button" id="deletePhoto" class="album-danger">Delete photo</button></div></form></dialog>
   <dialog id="deleteDialog" class="album-dialog"><h2>Delete this photo?</h2><p>This removes the local copy from this album. Download it first if you want to keep a backup.</p><p id="deleteStatus" role="status"></p><div class="album-actions"><button type="button" data-close="deleteDialog">Keep photo</button><button class="album-danger" id="confirmDelete" type="button">Delete from this browser</button></div></dialog>
   <script src="album.js"></script>
-  <script src="parent-dashboard-background.js"></script>
 </body>
 </html>

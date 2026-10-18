@@ -28,16 +28,18 @@
   <link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
 <link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
 <link rel="stylesheet" href="parent-sidebar.css">
+<link rel="stylesheet" href="specialist-directory.css">
+<script src="parent-setup-utils.js"></script>
+<script src="age-content.js"></script>
+<script src="age-context.js"></script>
+<link rel="stylesheet" href="age-context.css">
+<link rel="stylesheet" href="parent-background.css">
+<link rel="stylesheet" href="parent-layout.css">
 </head>
 
 <body class="parent-cycle-video">
-  <div class="dashboard-video-background" aria-hidden="true">
-    <video id="dashboardBackgroundVideo" muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true">
-      <source src="assets/dashboard/background.mp4" type="video/mp4">
-    </video>
-    <div class="dashboard-video-tint"></div>
-  </div>
-  <button class="background-playback-toggle" id="backgroundPlaybackToggle" type="button" aria-controls="dashboardBackgroundVideo" aria-pressed="true">▶ Play background</button>
+  <div class="parent-static-background" aria-hidden="true"></div>
+
 
 <div class="app-shell">
 
@@ -91,7 +93,7 @@
         href="bookings.html"
         class="booking-link"
       >
-        My Bookings
+        My appointments
       </a>
 
     </header>
@@ -150,6 +152,8 @@
       </section>
 
 
+      <nav class="directory-steps" aria-label="Booking steps"><span aria-current="step"><b>1</b> Choose a specialist</span><span><b>2</b> Choose a session</span><span><b>3</b> Review &amp; pay</span></nav>
+      <section id="directoryConcern" class="directory-context" hidden aria-label="Your booking note"><h2>Your booking note is ready</h2><p>You can review and edit it when choosing a session. Nothing is shared until you confirm your booking.</p></section>
       <!-- INFO NOTE -->
 
       <div class="info-note">
@@ -157,10 +161,7 @@
         <span>i</span>
 
         <p>
-          Specialist profiles shown in this frontend
-          prototype use sample data. In the full platform,
-          specialists would complete verification before
-          becoming visible to parents.
+          This prototype lists profiles approved in RAFIQ. Confirm the specialist’s experience with your child’s age before choosing a session.
         </p>
 
       </div>
@@ -172,6 +173,7 @@
 
       <section class="search-panel">
 
+        <label class="directory-label" for="searchInput">Search by name or area of support</label>
         <div class="search-box">
 
           <span>⌕</span>
@@ -187,7 +189,7 @@
 
         <div class="filter-row">
 
-          <select id="specialtyFilter">
+          <label class="directory-label" for="specialtyFilter">Area of support</label><select id="specialtyFilter">
 
             <option value="all">
               All Specialties
@@ -273,12 +275,12 @@
           </span>
 
           <h2>
-            Professionals you can explore
+            Choose who you’d like to meet
           </h2>
 
         </div>
 
-        <span id="resultCount">
+        <span id="resultCount" role="status" aria-live="polite">
           0 specialists
         </span>
 
@@ -307,8 +309,9 @@
         </h3>
 
         <p>
-          Try changing your filters or search.
+          Try a different name, area of support or session type.
         </p>
+<button type="button" class="clear-button" id="emptyReset">Show all specialists</button>
       </div>
 
 
@@ -371,7 +374,7 @@
     <button
       type="button"
       class="modal-close"
-      id="modalClose"
+      id="modalClose" aria-label="Close specialist profile"
     >
       ✕
     </button>
@@ -473,7 +476,7 @@
       <div>
 
         <span>
-          Next Available
+          Published hours
         </span>
 
         <strong id="modalAvailability">
@@ -503,9 +506,7 @@
       <span>i</span>
 
       <p>
-        Choose a specialist based on your child's needs.
-        In a production platform, professional credentials
-        would be reviewed during the verification process.
+        Confirm experience with your child’s age before booking. Published hours are a guide; you will choose an available date and time on the next page.
       </p>
 
     </div>
@@ -526,7 +527,7 @@
         class="book-button"
         id="bookSpecialistButton"
       >
-        Book Appointment →
+        Choose a session →
       </button>
 
     </div>
@@ -536,8 +537,8 @@
 </div>
 
 
+<script src="concern-booking.js"></script>
 <script src="specialists.js"></script>
 <script src="notifications.js"></script>
-  <script src="parent-dashboard-background.js"></script>
 </body>
 </html>

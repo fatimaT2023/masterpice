@@ -243,102 +243,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // CHILD AGE
   // =====================================================
 
-  function calculateAge(dateString) {
-
-    if (!dateString) {
-
-      return {
-        years: 0,
-        months: 0,
-        totalMonths: 0
-      };
-    }
+  function calculateAge(dateString) { return window.RafiqSetup.ageFromBirth(dateString) || {years:NaN,months:NaN,totalMonths:NaN,days:NaN}; }
 
 
-    const birthDate =
-      new Date(
-        `${dateString}T00:00:00`
-      );
-
-
-    if (
-      Number.isNaN(
-        birthDate.getTime()
-      )
-    ) {
-
-      return {
-        years: 0,
-        months: 0,
-        totalMonths: 0
-      };
-    }
-
-
-    const today =
-      new Date();
-
-
-    let years =
-      today.getFullYear() -
-      birthDate.getFullYear();
-
-
-    let months =
-      today.getMonth() -
-      birthDate.getMonth();
-
-
-    if (
-      today.getDate() <
-      birthDate.getDate()
-    ) {
-
-      months--;
-    }
-
-
-    if (months < 0) {
-
-      years--;
-
-      months += 12;
-    }
-
-
-    return {
-      years,
-      months,
-      totalMonths:
-        years * 12 + months
-    };
-  }
-
-
-  function formatAge(age) {
-
-    if (age.totalMonths < 12) {
-
-      return (
-        age.totalMonths +
-        (
-          age.totalMonths === 1
-            ? " month"
-            : " months"
-        )
-      );
-    }
-
-
-    return (
-      age.years +
-      (
-        age.years === 1
-          ? " year old"
-          : " years old"
-      )
-    );
-  }
+  function formatAge(age) { return window.RafiqSetup.formatAge(age); }
 
 
   const age =
@@ -347,7 +255,20 @@ document.addEventListener("DOMContentLoaded", () => {
       currentChild.dob ||
       currentChild.birthDate
     );
-
+  // Keep an included note available while the parent compares specialists.
+  let concernDraftApplied=false;
+  try {
+    const draft=window.RafiqConcernBooking.read(currentChild.id);
+    if(draft&&!bookingReason.value){
+      bookingReason.value=draft.text;reasonCount.textContent=bookingReason.value.length+' / 500';concernDraftApplied=true;
+      const notice=document.createElement('div');notice.className='booking-concern-note';
+      const copy=document.createElement('p');copy.textContent='Included from your concern summary. Edit it below; it will be shared only when you confirm this booking.';
+      const remove=document.createElement('button');remove.type='button';remove.textContent='Remove included note';
+      remove.addEventListener('click',()=>{try{window.RafiqConcernBooking.clear(currentChild.id);bookingReason.value='';reasonCount.textContent='0 / 500';concernDraftApplied=false;notice.remove();}catch{bookingError.textContent='We could not remove the saved draft. Please try again.';}});
+      notice.append(copy,remove);bookingReason.before(notice);
+    }
+  } catch { /* A saved draft never blocks the booking form. */ }
+  bookingReason.addEventListener('input',()=>{if(concernDraftApplied){try{window.RafiqConcernBooking.write(currentChild.id,bookingReason.value);}catch{bookingError.textContent='Your edited note could not be saved for another visit. It is still visible in this form.';}}});
 
   const childInitial =
     String(
@@ -1982,6 +1903,24 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 
+      const reviewProfile = getApprovedSpecialistProfile();
+      const reviewPrice = reviewProfile?.price;
+      if (reviewPrice === null || reviewPrice === undefined || String(reviewPrice).trim() === '' || !Number.isFinite(Number(reviewPrice)) || Number(reviewPrice) < 0) {
+        bookingError.textContent = 'The session fee is not available. Please choose another specialist or check again later.';
+        bookingError.focus(); return;
+      }
+      const reviewedFee=Number(reviewPrice);
+      const accepted=await window.RafiqBookingReview.open({
+        Child: currentChild.name,
+        Specialist: reviewProfile.fullName || reviewProfile.name || specialist.name,
+        Session: formatConsultationType(selectedType),
+        Date: selectedDateLabel,
+        Time: selectedTime,
+        'Total session fee': formatPrice(reviewedFee)
+      }, bookingReason.value);
+      if(!accepted)return;
+      if(!validateBooking()){bookingError.focus();return;}
+
       confirmBookingButton.disabled = true;
       let sessionPayment;
       try {
@@ -1990,7 +1929,11 @@ document.addEventListener("DOMContentLoaded", () => {
           bookingError.textContent = 'The specialist is no longer available.';
           return;
         }
-        const price = Number.isFinite(Number(latest.price)) ? Number(latest.price) : specialist.price;
+        const price = Number(latest.price);
+        if (latest.price === null || latest.price === undefined || String(latest.price).trim() === '' || !Number.isFinite(price) || price !== reviewedFee) {
+          bookingError.textContent = 'The session fee changed. Please review your appointment again before payment.';
+          bookingError.focus();return;
+        }
         sessionPayment = await window.RafiqFinance.checkout(price);
       } catch (error) {
         bookingError.textContent = 'Demo payment could not be completed. Please try again.';
@@ -2000,6 +1943,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       if (!sessionPayment) return;
       const confirmedBooking = createBooking(sessionPayment);
+      if(confirmedBooking){try{window.RafiqConcernBooking.clear(currentChild.id);}catch{/* Confirmed booking already holds the reviewed note. */}}
+
 
 
       if (
