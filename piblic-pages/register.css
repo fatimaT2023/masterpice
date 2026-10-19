@@ -3322,3 +3322,10 @@ html[dir="rtl"]
     transform: none !important;
   }
 }
+/* Registration assistance is available without an account. */
+.registration-help{margin-top:18px;border:1px solid rgba(var(--theme-primary-rgb,11,122,117),.18);border-radius:16px;background:rgba(var(--theme-primary-rgb,11,122,117),.04);text-align:start}
+.registration-help summary{display:flex;align-items:center;gap:9px;cursor:pointer;padding:15px 16px;color:var(--theme-primary-deep,#075e5a);font-size:14px;font-weight:600;list-style:none}
+.registration-help summary::-webkit-details-marker{display:none}.registration-help summary>svg{flex-shrink:0}.registration-help summary::after{content:'+';margin-inline-start:auto;font-size:20px;font-weight:400}.registration-help[open] summary::after{content:'−'}
+.registration-help-content{padding:0 16px 17px;font-size:13px;line-height:1.7;color:var(--ink-soft,#3f5c5a)}.registration-help-content p{margin:0 0 10px}.registration-help-content ul{padding-inline-start:19px;margin:0 0 16px}.registration-help-content li+li{margin-top:5px}
+.registration-help-link{display:flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:11px 15px;border-radius:12px;background:var(--theme-primary,#0b7a75);color:white;text-decoration:none;font-weight:600;font-size:13px}.registration-help-link:hover{filter:brightness(1.08)}.registration-help-content small{display:block;margin-top:10px;font-size:12px;line-height:1.6}
+.registration-help :is(summary,a):focus-visible{outline:3px solid var(--theme-primary,#0b7a75);outline-offset:3px}

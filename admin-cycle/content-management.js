@@ -102,57 +102,12 @@ document.addEventListener(
     // STARTER CONTENT
     // =====================================
 
-    const defaultAgeGroups = [
-
-      {
-        id: "age_0_3",
-        label: "0–3 years",
-        shortLabel: "0–3",
-        minAge: 0,
-        maxAge: 3,
-        description:
-          "Early development, communication, movement, attachment and daily routines.",
-        status: "active",
-        system: true
-      },
-
-      {
-        id: "age_4_6",
-        label: "4–6 years",
-        shortLabel: "4–6",
-        minAge: 4,
-        maxAge: 6,
-        description:
-          "Preschool and early school development, behavior, language and social skills.",
-        status: "active",
-        system: true
-      },
-
-      {
-        id: "age_7_12",
-        label: "7–12 years",
-        shortLabel: "7–12",
-        minAge: 7,
-        maxAge: 12,
-        description:
-          "School-age learning, relationships, attention, routines and emotional development.",
-        status: "active",
-        system: true
-      },
-
-      {
-        id: "age_13_18",
-        label: "13–18 years",
-        shortLabel: "13–18",
-        minAge: 13,
-        maxAge: 18,
-        description:
-          "Adolescent wellbeing, independence, communication, school pressure and peer relationships.",
-        status: "active",
-        system: true
-      }
-
-    ];
+    const defaultAgeGroups = window.RafiqSetup.bands.map(band => ({
+      id:band.id,label:band.label,shortLabel:band.label,
+      minMonths:band.minMonths,maxMonthsExclusive:band.maxMonthsExclusive,
+      description:'Organizational age band: '+band.minMonths+' to under '+band.maxMonthsExclusive+' months. Not a clinical milestone classification.',
+      status:'active',system:true
+    }));
 
 
     const defaultMilestones = [
@@ -405,6 +360,14 @@ document.addEventListener(
     // =====================================
 
     function initializeContent() {
+      // Preserve legacy definitions; never reassign old content to a new age band.
+      const oldGroups=readArray(STORAGE.ageGroups);
+      if(oldGroups.some(group=>!group.id?.startsWith('months-')) && !hasStorageKey('rafiqContentAgeGroupsLegacy')) writeArray('rafiqContentAgeGroupsLegacy',oldGroups);
+      const canonical=defaultAgeGroups.map(group=>{
+        const existing=oldGroups.find(item=>item.id===group.id);
+        return {...group,description:existing?.description||group.description,status:existing?.status||group.status};
+      });
+      writeArray(STORAGE.ageGroups,canonical);
 
       if (
         !hasStorageKey(
@@ -754,7 +717,7 @@ document.addEventListener(
           "Age Groups",
 
         description:
-          "Core age ranges used to personalize RAFIQ content.",
+          "23 organizational age bands from birth to under 7 years, shared with parent pages. Boundaries use months; the upper limit is excluded.",
 
         singular:
           "Age Group",
@@ -908,7 +871,7 @@ document.addEventListener(
 
       return group
         ? group.label
-        : "Unknown age group";
+        : "Legacy age group — review required";
     }
 
 
@@ -1627,11 +1590,7 @@ document.addEventListener(
 
           <td>
             <span class="age-pill">
-              ${escapeHTML(
-                item.minAge
-              )}–${escapeHTML(
-                item.maxAge
-              )}
+              ${escapeHTML(item.minMonths)} to under ${escapeHTML(item.maxMonthsExclusive)} months
             </span>
           </td>
 
@@ -1874,11 +1833,7 @@ document.addEventListener(
               : `
                 <span class="age-pill">
                   Ages
-                  ${escapeHTML(
-                    item.minAge
-                  )}–${escapeHTML(
-                    item.maxAge
-                  )}
+                  ${escapeHTML(item.minMonths)} to under ${escapeHTML(item.maxMonthsExclusive)} months
                 </span>
               `
           }
@@ -2308,7 +2263,7 @@ document.addEventListener(
               <input
                 type="text"
                 value="${escapeHTML(
-                  `${item?.minAge ?? ""}–${item?.maxAge ?? ""} years`
+                  `${item?.minMonths ?? ""} to under ${item?.maxMonthsExclusive ?? ""} months`
                 )}"
                 disabled
               >

@@ -3,7 +3,20 @@
   'use strict';
   const sidebar = document.getElementById('sidebar');
   if (!sidebar) return;
+  const nav = sidebar.querySelector('nav');
+  if (nav && !nav.querySelector('a[href="users-management.html"]')) {
+    const link = document.createElement('a');
+    link.href = 'users-management.html'; link.className = 'nav-link';
+    link.innerHTML = '<span class="nav-icon"></span><span>Users</span>';
+    const dashboard = nav.querySelector('a[href="admin-dashboard.html"]');
+    if (dashboard) dashboard.after(link); else nav.prepend(link);
+  }
+  if (nav && !nav.querySelector('a[href="support-requests.html"]')) {
+    const help = document.createElement('a'); help.className = 'nav-link'; help.href = 'support-requests.html';
+    help.innerHTML = '<span class="nav-icon">?</span><span>Support Requests</span>'; nav.append(help);
+  }
   const icons = {
+    'users-management.html':'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8m8 1a4 4 0 0 1 0 8m1 3a4 4 0 0 1 4 4v2',
     'admin-dashboard.html':'M3 10 12 3l9 7v11h-6v-7H9v7H3Z',
     'reports-analytics.html':'M4 3v18h17M8 16v-5m5 5V7m5 9v-8',
     'specialist-approvals.html':'M9 3H5v18h14V3h-4M9 2h6v4H9Zm-1 12 3 3 5-6',

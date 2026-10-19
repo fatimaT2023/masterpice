@@ -1512,6 +1512,24 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   function startRegistration() {
+    // Preview directory: explicit profile fields only; passwords stay out of storage.
+    try {
+      const stored = JSON.parse(localStorage.getItem('rafiqUsers') || '[]');
+      if (!Array.isArray(stored)) throw new Error('Invalid user directory');
+      const email = emailInput.value.trim().toLowerCase();
+      const existing = stored.find(user => user && user.email === email && user.role === selectedRole);
+      const profile = {
+        id: existing?.id || ('user_' + (globalThis.crypto?.randomUUID?.() || Date.now() + '_' + Math.random().toString(36).slice(2))),
+        fullName: fullNameInput.value.trim(), email, phone: phoneInput.value.trim(),
+        role: selectedRole, createdAt: existing?.createdAt || new Date().toISOString()
+      };
+      const users = stored.filter(user => !(user && user.email === email && user.role === selectedRole));
+      users.push(profile);
+      localStorage.setItem('rafiqUsers', JSON.stringify(users));
+    } catch {
+      setStatus(currentLanguage === 'ar' ? 'تعذر حفظ الحساب في هذا المتصفح. تحقق من مساحة التخزين وحاول مجددًا.' : 'Could not save your account in this browser. Check browser storage and try again.', 'error');
+      return;
+    }
     isSubmitting = true;
 
     clearStatus();

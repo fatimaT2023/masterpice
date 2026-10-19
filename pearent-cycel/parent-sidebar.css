@@ -86,3 +86,24 @@
 .parent-navigation .parent-child-toggle{display:grid;place-items:center;flex:0 0 34px;min-height:46px;border:0;border-left:1px solid #163e3b15;border-radius:0 16px 16px 0;background:transparent;color:inherit;font:inherit;cursor:pointer}
 .parent-navigation .parent-child-toggle:hover{background:#ffffff80}
 @media(max-width:520px){.parent-navigation .parent-child-toggle{flex-basis:28px;min-height:44px}}
+
+/* Refined shared navigation and consistent vector chevrons. */
+.parent-navigation{background:linear-gradient(120deg,rgba(255,255,255,.88),rgba(var(--theme-background-rgb,255,250,240),.82));box-shadow:0 4px 24px #163e3b06}
+.parent-navigation .parent-brand{letter-spacing:.1em}
+.parent-navigation .parent-brand>span{border-radius:13px;box-shadow:0 4px 12px rgba(var(--theme-primary-rgb,11,122,117),.14)}
+.parent-navigation .parent-primary-nav{gap:6px}
+.parent-navigation .parent-today,.parent-navigation summary{gap:8px;border:1px solid transparent;transition:background .18s ease,color .18s ease,border-color .18s ease}
+.parent-navigation .parent-nav-group>summary:hover,.parent-navigation .parent-account>summary:hover{background:rgba(var(--theme-primary-rgb,11,122,117),.06)}
+.parent-navigation .is-active>summary,.parent-navigation .parent-today.is-active{background:rgba(var(--theme-primary-rgb,11,122,117),.09);border-color:rgba(var(--theme-primary-rgb,11,122,117),.12)}
+.parent-navigation details[open]>summary{background:rgba(var(--theme-primary-rgb,11,122,117),.08);border-color:rgba(var(--theme-primary-rgb,11,122,117),.16)}
+.parent-navigation .parent-chevron{display:block;flex:0 0 14px;width:14px;height:14px;opacity:.65;transition:transform .2s ease,opacity .2s ease}
+.parent-navigation details[open]>summary .parent-chevron,.parent-navigation .parent-child-toggle[aria-expanded="true"] .parent-chevron{transform:rotate(180deg);opacity:1}
+.parent-navigation .parent-child-control{border-color:rgba(var(--theme-primary-rgb,11,122,117),.16);border-radius:14px;background:rgba(255,255,255,.55)}
+.parent-navigation .parent-child-button{border-radius:14px 0 0 14px}
+.parent-navigation .parent-child-toggle{flex-basis:32px;border:0;border-radius:0 14px 14px 0;color:var(--theme-primary,#0b7a75)}
+.parent-navigation .parent-child-toggle:hover{background:rgba(var(--theme-primary-rgb,11,122,117),.07)}
+.parent-navigation .parent-ask{background:var(--theme-primary,#0b7a75);border-color:transparent;color:#fff;border-radius:12px;box-shadow:0 3px 10px rgba(var(--theme-primary-rgb,11,122,117),.12)}
+.parent-navigation .parent-ask:hover{filter:brightness(1.08)}
+.parent-navigation .parent-nav-panel,.parent-navigation .parent-child-dropdown{border-color:rgba(var(--theme-primary-rgb,11,122,117),.14);box-shadow:0 16px 40px #163e3b16,0 3px 8px #163e3b06;border-radius:16px}
+@media(max-width:520px){.parent-navigation .parent-primary-nav{gap:2px}.parent-navigation .parent-primary-nav summary{gap:4px}.parent-navigation .parent-child-toggle{flex-basis:28px}}
+@media(prefers-reduced-motion:reduce){.parent-navigation .parent-chevron,.parent-navigation summary,.parent-navigation .parent-today{transition:none}}

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script src="../piblic-pages/rafiq-theme.js"></script>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Users | RAFIQ Admin</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="bookings-management.css"
+  >
+
+  <link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
+  <link rel="stylesheet" href="admin-cycle-glass.css">
+  <link rel="stylesheet" href="admin-sidebar.css">
+<link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
+<link rel="stylesheet" href="users-management.css"></head>
+
+
+<body class="admin-cycle-video">
+  <div class="dashboard-video-background" aria-hidden="true">
+    <video id="dashboardBackgroundVideo" muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true">
+      <source src="../pearent-cycel/assets/dashboard/background.mp4" type="video/mp4">
+    </video>
+    <div class="dashboard-video-tint"></div>
+  </div>
+  <button class="background-playback-toggle" id="backgroundPlaybackToggle" type="button" aria-controls="dashboardBackgroundVideo" aria-pressed="true">&#9654; Play background</button>
+
+<div class="admin-shell">
+
+  <!-- =====================================
+       SIDEBAR
+  ====================================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-top">
+
+      <a
+        href="../piblic-pages/index.html"
+        class="brand"
+      >
+
+        <span class="brand-mark">
+          R
+        </span>
+
+        <div>
+          <strong>RAFIQ</strong>
+          <small>Administration</small>
+        </div>
+
+      </a>
+
+
+      <button
+        type="button"
+        class="sidebar-close"
+        id="sidebarClose"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <section class="admin-card">
+
+      <div class="admin-avatar">
+        A
+      </div>
+
+      <div>
+
+        <span>
+          PLATFORM ADMIN
+        </span>
+
+        <strong id="adminSidebarName">
+          RAFIQ Admin
+        </strong>
+
+        <small>
+          Control Center
+        </small>
+
+      </div>
+
+    </section>
+
+
+    <nav class="sidebar-nav">
+
+      <span class="nav-label">
+        OVERVIEW
+      </span>
+
+
+      <a
+        href="admin-dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+
+      <a
+        href="reports-analytics.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌁</span>
+        <span>Reports & Analytics</span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        SPECIALISTS
+      </span>
+
+
+      <a
+        href="specialist-approvals.html"
+        class="nav-link"
+      >
+
+        <span class="nav-icon">✓</span>
+
+        <span>
+          Specialist Approvals
+        </span>
+
+        <span
+          class="nav-count"
+          id="approvalNavCount"
+          hidden
+        >
+          0
+        </span>
+
+      </a>
+
+
+      <a
+        href="specialists-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◎</span>
+        <span>Specialists</span>
+      </a>
+
+
+      <span class="nav-label section-gap">
+        PLATFORM
+      </span>
+
+
+      <a
+        href="content-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▤</span>
+        <span>Content Management</span>
+      </a>
+
+
+      <a
+        href="ai-governance.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">✦</span>
+        <span>AI Governance</span>
+      </a>
+
+
+      <a
+        href="bookings-management.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">▦</span>
+        <span>Bookings</span>
+      </a>
+
+
+      <a
+        href="billing-management.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">◇</span>
+        <span>Billing & Subscriptions</span>
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+<a href="appearance.html" class="nav-link"><span class="nav-icon" aria-hidden="true"></span><span>Appearance</span></a>
+
+      <a
+        href="admin-settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        <span>Admin Settings</span>
+      </a>
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        <span>Log Out</span>
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =====================================
+       MAIN
+  ====================================== -->
+
+<main class="main-content">
+<header class="topbar"><div class="topbar-left"><button type="button" class="menu-button" id="menuButton" aria-label="Open navigation">&#9776;</button><div><span class="page-kicker">PLATFORM COMMUNITY</span><h1>Users</h1></div></div></header>
+<div class="page-body">
+<p class="users-intro">View registered parent accounts and their contact details. This preview shows parent registrations saved in this browser.</p>
+<div id="directoryError" role="alert" hidden>We couldn't load the saved directory. Check browser storage and try Refresh.</div>
+<section class="users-summary" aria-label="Parent total"><article><span>Registered parents</span><strong id="parentCount">0</strong></article></section>
+<section class="users-directory invite-panel" aria-labelledby="inviteTitle">
+<h2 id="inviteTitle">Invite a parent</h2>
+<p class="users-intro">Prepare a registration invitation for someone who needs help. They choose their own password. This preview opens an email draft; it does not create or activate an account.</p>
+<form id="parentInviteForm" class="users-tools"><label for="inviteName">Parent name<input id="inviteName" autocomplete="name" maxlength="100" required></label><label for="inviteEmail">Email address<input id="inviteEmail" type="email" autocomplete="email" maxlength="254" required></label><button type="submit">Prepare invitation</button></form>
+<div id="invitePreview" hidden><p id="inviteStatus" role="status" aria-live="polite"></p><label class="invite-message-label" for="inviteMessage">Invitation message</label><textarea id="inviteMessage" rows="7" readonly></textarea><div class="invite-actions"><a id="inviteEmailDraft" class="invite-action">Open email draft</a><button id="copyInvite" type="button" class="invite-action">Copy message</button></div><small id="inviteHostingNote">Use a hosted site address so the recipient can open the registration page.</small></div>
+</section>
+<section class="users-directory" aria-label="Parent directory">
+<div class="users-tools"><label for="userSearch">Search parents<input type="search" id="userSearch" placeholder="Name, email or phone"></label><button id="refreshUsers" type="button">Refresh</button></div>
+<p id="userResults" role="status" aria-live="polite"></p>
+<div class="users-table-wrap" tabindex="0" role="region" aria-label="Parents table"><table><thead><tr><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Phone</th><th scope="col">Joined</th></tr></thead><tbody id="userRows"></tbody></table></div><p id="usersEmpty" hidden></p>
+</section></div></main>
+</div>
+<script src="../pearent-cycel/parent-dashboard-background.js"></script><script src="admin-sidebar.js"></script><script src="users-management.js"></script><script src="parent-invitations.js"></script>
+</body></html>
