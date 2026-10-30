@@ -1,0 +1,174 @@
+/* Final visual refinements for the existing cinematic homepage.
+   Keep scene positioning and animation hooks in their original stylesheets. */
+.rafiq-home {
+  --refine-line: rgba(15, 47, 46, .12);
+  --refine-shadow: 0 16px 48px rgba(15, 47, 46, .065);
+  -webkit-font-smoothing: antialiased;
+}
+.rafiq-home :where(h1, h2, h3) { text-wrap: balance; }
+.rafiq-home :where(p) { text-wrap: pretty; }
+.rafiq-home :where(a, button, input, select, summary) {
+  -webkit-tap-highlight-color: transparent;
+}
+.rafiq-home :where(a, button, input, select, summary):focus-visible {
+  outline: 3px solid var(--sage, #0b7a75);
+  outline-offset: 5px;
+}
+.rafiq-home .skip-link { border-radius: 10px; }
+
+/* A quieter navigation surface, with clearer click and focus targets. */
+.rafiq-home .navbar,
+.rafiq-home .navbar.scrolled {
+  background: linear-gradient(115deg, rgba(255,255,255,.86), rgba(244,250,249,.76));
+  border-color: rgba(255,255,255,.9);
+  box-shadow: 0 8px 32px rgba(15,47,46,.075), inset 0 1px 0 #fff;
+}
+.rafiq-home .desktop-nav { gap: clamp(12px, 1.35vw, 22px); }
+.rafiq-home .desktop-nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  transition: color .2s ease;
+}
+.rafiq-home .desktop-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  inset-inline: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--sage);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .2s ease;
+}
+.rafiq-home .desktop-nav a:hover { color: var(--sage-deep); }
+.rafiq-home .desktop-nav a:hover::after,
+.rafiq-home .desktop-nav a:focus-visible::after { transform: scaleX(1); }
+.rafiq-home .nav-actions .login-link { min-height: 44px; display: inline-flex; align-items: center; }
+.rafiq-home .button {
+  min-height: 46px;
+  font-weight: 600;
+  letter-spacing: .005em;
+  transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.rafiq-home .button.primary {
+  background: var(--sage-deep);
+  color: var(--theme-on-primary, #fff);
+  border: 1px solid transparent;
+  box-shadow: 0 4px 12px rgba(15,47,46,.08);
+}
+.rafiq-home .button.primary:hover {
+  background: var(--sage);
+  box-shadow: 0 8px 22px rgba(15,47,46,.15);
+}
+.rafiq-home .button.secondary { background: rgba(255,255,255,.65); }
+.rafiq-home .button.secondary:hover { background: rgba(255,255,255,.95); }
+.rafiq-home .button:active { transform: translateY(0); }
+
+/* Retain the central character and glass panel; make the message legible. */
+.hero-scroll .hero-content.glass {
+  background: linear-gradient(135deg, rgba(255,255,255,.72), rgba(245,252,255,.48));
+  border-color: rgba(255,255,255,.9);
+  box-shadow: 0 20px 60px rgba(15,47,46,.075), inset 0 1px 0 #fff;
+  padding: 30px;
+}
+.hero-scroll #hero-title { font-size: clamp(32px, 2.7vw, 42px); line-height: 1.16; }
+.hero-scroll .hero-description { font-size: 15px; line-height: 1.8; }
+.hero-scroll .hero-actions { gap: 10px; }
+.hero-scroll .hero-actions .button { font-size: 12px; padding: 13px 14px; }
+.hero-scroll .hero-bottom a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  color: var(--sage-deep);
+  font-size: 12px;
+}
+.hero-scroll .hero-bottom a::before { content: '↓'; font-size: 17px; }
+
+/* Give the final sections a shared rhythm without altering their layouts. */
+.completion .rc-header { margin-bottom: clamp(34px, 4vw, 56px); }
+.completion .rc-header > p { max-width: 48ch; margin-inline: auto; font-size: 16px; }
+.completion .rc-note { font-size: 12px; line-height: 1.8; }
+.completion .rc-glass {
+  border-color: rgba(15,47,46,.09);
+  background-color: rgba(255,255,255,.52);
+  box-shadow: var(--refine-shadow), inset 0 1px 0 rgba(255,255,255,.9);
+}
+.completion .rc-plan-stack { gap: 20px; align-items: stretch; }
+.completion .rc-plan-stack article {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  min-width: 0;
+}
+.completion .rc-plan-stack article + article { margin-left: 0; }
+.completion .rc-plan-stack .rc-premium {
+  padding: 32px;
+  border: 1px solid rgba(var(--theme-primary-rgb,11,122,117),.28);
+  background: linear-gradient(145deg, rgba(212,243,234,.65), rgba(231,223,255,.38));
+}
+.completion .rc-plan-stack h3 { margin-block: 18px 12px; }
+.completion .rc-plan-stack p { min-height: 0; margin-bottom: 28px; }
+.completion .rc-plan-stack .button { margin-top: auto; width: 100%; }
+.completion .rc-booking-track { gap: 16px; }
+.completion .rc-book-visual { overflow-wrap: anywhere; }
+#faq.rc-faq details {
+  border-color: var(--refine-line);
+  background: rgba(255,255,255,.52);
+  transition: background .2s ease, border-color .2s ease;
+}
+#faq.rc-faq details[open] { background: rgba(255,255,255,.82); }
+#faq.rc-faq summary { min-height: 72px; font-size: 18px; }
+#faq.rc-faq details p { line-height: 1.9; font-size: 15px; }
+.rafiq-home .green-footer .gf-form-row input { min-width: 0; }
+.rafiq-home .green-footer .gf-column a { text-underline-offset: 5px; }
+.rafiq-home .green-footer .gf-column a:hover { text-decoration: underline; }
+
+@media (min-width: 1051px) and (max-width: 1190px) {
+  .rafiq-home .navbar { gap: 12px; padding-inline: 16px; }
+  .rafiq-home .desktop-nav { gap: 10px; }
+  .rafiq-home .desktop-nav a { font-size: 12px; }
+  .rafiq-home .nav-actions { gap: 12px; }
+  .rafiq-home .nav-start { font-size: 12px; padding-inline: 13px; }
+}
+@media (max-width: 1050px) {
+  .completion .rc-booking-track { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 28px; }
+}
+@media (min-width: 601px) and (max-width: 850px) {
+  .hero-scroll .hero-content.glass { padding: 24px; }
+  .hero-scroll .hero-description { font-size: 14px; }
+  .hero-scroll .hero-actions .button { width: 100%; }
+  .completion .rc-plan-stack { flex-direction: column; }
+  .completion .rc-plan-stack article { width: 100%; }
+}
+@media (max-width: 600px) {
+  .hero-scroll .hero-content.glass { padding: 22px 24px; }
+  .hero-scroll #hero-title { font-size: 29px; }
+  .hero-scroll .hero-description { font-size: 14px; line-height: 1.7; margin-bottom: 18px; }
+  .hero-scroll .hero-actions { flex-wrap: wrap; }
+  .hero-scroll .hero-actions .button { font-size: 12px; padding: 12px 10px; min-height: 46px; }
+  .rafiq-home .menu-button { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+  .completion .rc-plan-stack { gap: 18px; }
+  .completion .rc-plan-stack article,
+  .completion .rc-plan-stack .rc-premium { padding: 28px; }
+  .completion .rc-booking-track { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; }
+  #faq.rc-faq details { padding-inline: 18px; }
+  #faq.rc-faq summary { font-size: 16px; line-height: 1.55; gap: 18px; }
+}
+@media (max-width: 600px) and (max-height: 740px) {
+  .hero-scroll .hero-content.glass { padding: 17px 20px; }
+  .hero-scroll #hero-title { font-size: 25px; margin-bottom: 12px; }
+  .hero-scroll .hero-description { font-size: 12px; line-height: 1.65; margin-bottom: 12px; }
+  .hero-scroll .intro-label { margin-bottom: 12px !important; }
+  .hero-scroll .hero-actions .button { min-height: 44px; font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rafiq-home :where(a, button, summary),
+  .rafiq-home .desktop-nav a::after { transition: none; }
+  .rafiq-home .button:hover { transform: none; }
+}

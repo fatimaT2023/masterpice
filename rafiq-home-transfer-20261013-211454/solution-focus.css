@@ -1,0 +1,84 @@
+/* A clear pause after the cinematic growth story. Scoped to the solution section. */
+#studio {
+  padding: clamp(75px, 8vw, 130px) clamp(24px, 6vw, 110px) 0;
+  background: #fffaf0 !important;
+  color: #123f38;
+}
+#studio .solution-layout {
+  max-width: 1320px;
+  grid-template-columns: 1.02fr 1fr;
+  gap: clamp(35px, 6vw, 95px);
+  align-items: center;
+}
+#studio .solution-copy {
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+#studio .section-label { font-size: 10px; letter-spacing: .14em; color: #557264; margin-bottom: 26px; }
+#studio .section-title { font-size: clamp(42px, 4.6vw, 72px); line-height: 1.06; letter-spacing: -.055em; font-weight: 500; }
+#studio .section-title em { font-style: normal; color: #378775; }
+#studio .solution-intro { color: #526c60; font-size: 16px; line-height: 1.85; margin: 28px 0 0; max-width: 43ch; }
+#studio .solution-action { margin-top: 30px; }
+#studio .solution-cta { background: #123f38; color: #fffaf0; border-color: #123f38; box-shadow: 0 8px 24px #123f3812; }
+#studio .solution-cta:hover { background: #21624f; color: #fffaf0; }
+#studio .solution-scope { font-size: 11px; line-height: 1.7; color: #5c7568; margin: 16px 0 0; }
+#studio .solution-experience {
+  position: relative;
+  min-width: 0;
+  padding: 27px;
+  background: #fffefa;
+  border: 1px solid #dce5d9;
+  border-radius: 26px;
+  box-shadow: 0 26px 70px #123f380d, 8px 10px 0 -3px #e2ebe0;
+}
+#studio .solution-window-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid #e4e9dd; }
+#studio .solution-window-brand { display: flex; align-items: center; gap: 10px; font-size: 9px; letter-spacing: .12em; color: #567567; }
+#studio .solution-window-brand b { display: grid; place-items: center; width: 29px; height: 29px; background: #123f38; color: #fffaf0; font-size: 23px; letter-spacing: -.06em; border-radius: 9px; }
+#studio .solution-demo-tag { font-size: 9px; color: #526b60; background: #eef2e8; border: 1px solid #e0e7d9; border-radius: 20px; padding: 5px 9px; white-space: nowrap; }
+#studio .solution-question { margin-top: 24px; }
+#studio .solution-question-label { font-size: 9px; letter-spacing: .14em; color: #68816e; }
+#studio .solution-question h3 { font-size: clamp(23px, 2.2vw, 31px); line-height: 1.25; font-weight: 500; letter-spacing: -.035em; margin: 12px 0 8px; }
+#studio .solution-question > p { font-size: 12px; color: #5c7365; line-height: 1.7; margin: 0; }
+#studio .solution-choices { display: flex; gap: 7px; flex-wrap: wrap; margin: 20px 0; }
+#studio .solution-choices button { cursor: pointer; min-height: 44px; padding: 9px 12px; border-radius: 22px; border: 1px solid #d9e2d4; color: #3a5a4b; background: #f7f8f1; font: inherit; font-size: 11px; transition: background .2s, border-color .2s; }
+#studio .solution-choices button[aria-pressed=true] { background: #123f38; color: #fffaf0; border-color: #123f38; }
+#studio .solution-choices button:hover:not([aria-pressed=true]) { background: #e4eee1; border-color: #a8c2af; }
+#studio .solution-parent-voice { position: relative; background: #e8f2f8; border: 1px solid #d9e9f0; padding: 16px 20px; border-radius: 15px 15px 15px 4px; color: #33596a; font-size: 14px; line-height: 1.6; margin: 0 0 22px; }
+#studio .solution-path { list-style: none; padding: 0; margin: 0; display: grid; gap: 21px; }
+#studio .solution-path li { display: flex; gap: 15px; position: relative; }
+#studio .solution-path li:not(:last-child)::after { content: ''; position: absolute; top: 34px; bottom: -17px; left: 15px; border-left: 1px solid #d7e3d4; }
+#studio .solution-step-mark { display: grid; place-items: center; width: 32px; height: 32px; flex-shrink: 0; border: 1px solid #cbdcc8; border-radius: 50%; background: #eff4e9; font-size: 9px; color: #3b6f53; }
+#studio .solution-path h4 { margin: 2px 0 5px; font-size: 15px; line-height: 1.35; font-weight: 600; letter-spacing: -.015em; }
+#studio .solution-path p { color: #617769; line-height: 1.7; font-size: 12px; margin: 0; max-width: 40ch; }
+#studio .solution-answer { min-height: 299px; }
+#studio .solution-preview-footer { border-top: 1px solid #e4e9dd; padding-top: 18px; margin-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 10px; }
+#studio .solution-preview-footer > span { color: #5f7869; }
+#studio .solution-preview-footer i { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: #588966; margin-right: 5px; }
+#studio .solution-preview-footer a { color: #1c644e; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+#studio .solution-example-note { font-size: 10px; line-height: 1.7; color: #687c6f; margin: 14px 0 0; }
+#studio .solution-bottom-line { max-width: 1320px; margin: 72px auto 0; padding: 26px 0; border-top: 1px solid #d7e1d2; display: flex; align-items: center; gap: 10px; font-size: clamp(18px, 2vw, 27px); letter-spacing: -.025em; }
+#studio .solution-bottom-line > span:first-child { color: #738373; }
+#studio .solution-bottom-line em { font-style: normal; color: #378775; }
+#studio .solution-bottom-line a { margin-left: auto; font-size: 12px; letter-spacing: 0; color: #3b6852; padding: 10px 0; }
+@media(max-width:900px) {
+  #studio .solution-layout { grid-template-columns: 1fr; gap: 38px; max-width: 650px; }
+  #studio .section-title { font-size: clamp(40px, 7vw, 60px); }
+  #studio .solution-intro { max-width: 48ch; }
+  #studio .solution-bottom-line { max-width: 650px; margin-top: 45px; flex-wrap: wrap; }
+}
+@media(max-width:480px) {
+  #studio { padding-inline: 20px; }
+  #studio .solution-experience { padding: 20px; border-radius: 20px; }
+  #studio .solution-demo-tag { font-size: 8px; }
+  #studio .solution-window-brand { gap: 7px; letter-spacing: .06em; font-size: 8px; }
+  #studio .solution-intro { font-size: 14px; }
+  #studio .solution-choices { gap: 6px; }
+  #studio .solution-choices button { font-size: 10px; padding-inline: 10px; }
+  #studio .solution-answer { min-height: 335px; }
+  #studio .solution-bottom-line a { width: 100%; margin: 0; }
+}
+@media(prefers-reduced-motion:reduce) { #studio .solution-choices button { transition: none; } }

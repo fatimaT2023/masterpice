@@ -1,0 +1,38 @@
+/* Explicit coverage labels: older illustrations describe a roadmap only. */
+#journey .growth-planned {
+  display: block;
+  align-self: flex-start;
+  width: fit-content;
+  padding: 7px 12px;
+  margin: -8px 0 16px;
+  border: 1px solid #e4cd9566;
+  border-radius: 8px;
+  background: #f8e4b514;
+  color: #f3dba5;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: .01em;
+}
+#journey .growth-timeline button { flex-wrap: wrap; gap: 10px; }
+#journey .growth-future-tag {
+  font-size: 9px;
+  line-height: 1.4;
+  color: #f3dba5;
+  border-bottom: 1px dotted #f3dba566;
+}
+#journey .growth-topline > span:first-child {
+  color: #bdebd6;
+  font-weight: 600;
+  line-height: 1.6;
+}
+#journey .growth-bottom {
+  max-width: 640px;
+  line-height: 1.7;
+  font-size: 12px;
+  color: #d5e5dc;
+}
+@media(max-width:600px) {
+  #journey .growth-planned { font-size: 10px; padding: 5px 9px; margin-bottom: 10px; align-self: center; }
+  #journey .growth-bottom { font-size: 10px; bottom: 18px; }
+  #journey .growth-topline > span:first-child { max-width: 75%; font-size: 9px; }
+}

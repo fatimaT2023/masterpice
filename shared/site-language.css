@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
+.rafiq-unified-brand{display:inline-flex!important;align-items:center!important;gap:9px!important;letter-spacing:0!important;text-decoration:none!important;white-space:nowrap;flex-shrink:0}
+.rafiq-unified-brand .rafiq-unified-mark{display:grid!important;place-items:center!important;width:33px!important;height:33px!important;min-width:33px;border:0!important;border-radius:11px!important;background:var(--theme-primary-deep,#075e5a)!important;color:#fffaf0!important;font:700 26px/1 'Figtree','Segoe UI',sans-serif!important;letter-spacing:-1px!important;direction:ltr!important;box-shadow:none!important;transform:none!important}
+.rafiq-unified-brand .rafiq-unified-name{font:600 20px/1.4 'Figtree','Noto Sans Arabic','Segoe UI',sans-serif!important;letter-spacing:.04em;color:inherit!important;width:auto!important;height:auto!important;min-width:0!important;padding:0!important;display:inline!important;background:transparent!important;border:0!important;border-radius:0!important}
+.site-languages{display:inline-flex;direction:ltr;align-items:center;gap:2px;padding:3px;border:1px solid #163e3b30;background:#fffaf0c9;border-radius:99px;flex-shrink:0;margin-inline-start:10px}
+.site-languages button{font:500 11px/1.4 'Noto Sans Arabic','Segoe UI',sans-serif;min-height:36px;min-width:42px;border:0;border-radius:99px;padding:6px 9px;color:#245344;background:transparent;cursor:pointer}
+.site-languages button[aria-pressed=true]{background:#123f38;color:#fffaf0}
+.site-languages button:focus-visible{outline:3px solid #0b7a75;outline-offset:3px}
+.site-languages-floating{position:fixed;bottom:20px;right:20px;z-index:140;box-shadow:0 8px 25px #123f3820}
+.sidebar-top:has(.site-languages){flex-wrap:wrap;gap:12px}.sidebar-top .site-languages{margin:0;width:100%;justify-content:center}
+html[lang=ar]{--font-body:'Noto Sans Arabic','Segoe UI',sans-serif!important;--font-heading:'Noto Sans Arabic','Segoe UI',sans-serif!important;--font-display:'Noto Sans Arabic','Segoe UI',sans-serif!important}
+html[lang=ar] :is(body,button,input,select,textarea){font-family:var(--font-body)!important}
+html[lang=ar] :is(h1,h2,h3,h4,h5,h6){font-family:var(--font-display)!important;letter-spacing:0!important;line-height:1.5}
+html[lang=ar] :is(p,label,button,a,legend,summary,th,td){letter-spacing:0}
+html[lang=ar] p{line-height:1.9}
+html[lang=ar] :is(input[type=email],input[type=tel],input[autocomplete=cc-number],input[autocomplete=cc-exp],input[autocomplete=cc-csc],.fc,.calendar-grid,.calendar,.chart,canvas){direction:ltr;unicode-bidi:isolate}
+html[lang=ar] :is(input[type=email],input[type=tel]){text-align:left}
+html[lang=ar] .rafiq-unified-brand{direction:ltr}
+html[lang=ar] .rafiq-unified-name{font-family:'Noto Sans Arabic','Segoe UI',sans-serif!important;letter-spacing:0}
+html[lang=ar] :is(.admin-cycle-video,.specialist-cycle-video) #sidebar{left:auto;right:0;inset-inline-start:0;border-right:0;border-left:1px solid #d5dfd2;box-shadow:-12px 0 40px #123f380d}
+html[lang=ar] :is(.admin-cycle-video,.specialist-cycle-video) .main-content{margin-left:0!important;margin-right:var(--sidebar-width,var(--sidebar-w,280px))!important}
+html[lang=ar] .specialist-cycle-video #sidebar{border-radius:24px 0 0 24px}
+html[lang=ar] :is(.admin-cycle-video,.specialist-cycle-video) .sidebar-close{margin-left:0;margin-right:auto}
+html[lang=ar] .parent-header-actions{margin-left:0;margin-right:auto}
+html[lang=ar] .parent-nav-panel,html[lang=ar] .parent-child-dropdown{left:auto;right:0;text-align:right}
+html[lang=ar] .parent-account>.parent-nav-panel{left:0;right:auto}
+html[lang=ar] .parent-primary-nav .parent-nav-panel{left:12px;right:12px}
+html[lang=ar] .parent-navigation .parent-child-toggle{border-left:0;border-right:1px solid #163e3b15;border-radius:16px 0 0 16px}
+html[lang=ar] .sidebar :is(.nav-link,.logout-button){text-align:right}
+html[lang=ar] .site-languages{direction:ltr}
+html[lang=ar] .site-languages-floating{right:auto;left:20px}
+html[lang=ar] .auth-room :is(.login-layout,.register-layout){direction:ltr}
+html[lang=ar] .auth-room :is(.form-panel,.register-panel,.visual-copy,.world-copy){direction:rtl}
+@media(max-width:950px){html[lang=ar] :is(.admin-cycle-video,.specialist-cycle-video) #sidebar{transform:translateX(105%)}html[lang=ar] :is(.admin-cycle-video,.specialist-cycle-video) #sidebar.open{transform:translateX(0)}html[lang=ar] :is(.admin-cycle-video,.specialist-cycle-video) .main-content{margin-right:0!important}}
+@media(max-width:760px){.site-languages{margin-inline-start:0}.site-languages button{padding-inline:7px;min-width:36px}.rafiq-unified-name{font-size:17px!important}.rafiq-unified-brand .rafiq-unified-mark{width:29px!important;height:29px!important;min-width:29px;font-size:23px!important}.parent-header-actions:has(.site-languages){flex-wrap:wrap;justify-content:flex-end;gap:8px}}
+@media print{.site-languages{display:none!important}html[lang=ar] :is(.admin-cycle-video,.specialist-cycle-video) .main-content{margin:0!important}}

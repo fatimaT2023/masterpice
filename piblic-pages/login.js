@@ -94,6 +94,7 @@
     location.href = role === 'parent' ? '../pearent-cycel/parent-dashboard.html' : '../specialist-cycle/specialist-dashboard.html';
   });
   reduced.addEventListener('change', () => { clearTimeout(poseTimer); if (assetsReady) showPose(privatePoses.has(targetState) ? targetState : 'idle'); });
-  document.getElementById('year').textContent = new Date().getFullYear();
+  const year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
   syncState();
 })();

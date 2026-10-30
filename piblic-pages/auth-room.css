@@ -1,0 +1,251 @@
+/* Shared auth identity. Existing pose layers, state attributes and timing remain intact. */
+body.auth-room {
+  background: #eee8e2;
+  color: #173f38;
+  --ink: #173f38;
+  --ink-soft: #536e63;
+  --muted: #536e63;
+  --green: var(--theme-primary,#0b7a75);
+  min-width: 320px;
+  isolation: isolate;
+}
+body.auth-room::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: url('../rafiq-home-transfer-20261013-211454/assets/hero/pink-room.jpg') center bottom / 100% 100% no-repeat;
+  pointer-events: none;
+}
+body.auth-room::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg,#fffaf01a,#fffaf038 50%,#fffaf00d);
+  pointer-events: none;
+}
+.auth-room .page-background { display: none; }
+.auth-room :is(.topbar,.top-nav) {
+  width: min(1380px,calc(100% - 72px));
+  max-width: none;
+  min-height: 88px;
+  height: auto;
+  margin: auto;
+  padding: 22px 0;
+  border-bottom: 1px solid #cddbc9;
+}
+.auth-room .wordmark { font-size: 25px; letter-spacing: .045em; text-transform: uppercase; }
+.auth-room .brand-copy strong { font-size: 22px; letter-spacing: .045em; }
+.auth-room :is(.back-link,.back-home) { color: #365d4e; font-size: 13px; min-height: 44px; }
+.auth-room :is(.login-layout,.register-layout) {
+  width: min(1300px,calc(100% - 80px));
+  max-width: none;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  align-items: start;
+  gap: clamp(35px,5vw,75px);
+  padding: 46px 0 60px;
+  margin: auto;
+  min-height: calc(100svh - 100px);
+}
+.auth-room :is(.visual-panel,.story-panel) { padding: 0; min-width: 0; overflow: visible; align-self: start; }
+.auth-room .visual-panel { display: block; }
+.auth-room .register-world { top: 24px; max-width: none; }
+.auth-room :is(.visual-copy,.world-copy) { padding: 0; }
+.auth-room :is(.visual-copy h1,.world-copy h1) {
+  font-size: clamp(38px,4vw,60px);
+  line-height: 1.12;
+  font-weight: 500;
+  letter-spacing: -.045em;
+  margin: 0 0 20px;
+  color: #173f38;
+}
+.auth-room :is(.visual-copy h1 em,.world-copy h1 em) { color: #2d7b63; }
+.auth-room :is(.visual-copy>p:last-child,.world-copy>p:last-child) { font-size: 15px; line-height: 1.85; color: #536e63; max-width: 43ch; margin: 0; }
+.auth-room .visual-copy .eyebrow:empty { display: none; }
+.auth-room :is(.character-scene,.world-stage) {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.12 / 1;
+  margin: 28px 0 0;
+  isolation: isolate;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.auth-room .character-scene::before,.auth-room .world-stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: none;
+  pointer-events: none;
+}
+.auth-room :is(.halo,.world-aura) { display: none; }
+.auth-room .world-bubble {
+  inset: 0;
+  border: 0;
+  border-radius: 26px;
+  background: none;
+  box-shadow: none;
+  overflow: visible;
+}
+.auth-room .world-bubble::before { display: none; }
+.auth-room :is(.baby,.world-baby) {
+  width: 65%;
+  max-width: 360px;
+  bottom: 4%;
+  left: 50%;
+  transform-origin: 50% 94%;
+  filter: saturate(.96);
+}
+.auth-room .floor-shadow {
+  left: 27%;
+  width: 46%;
+  bottom: 6%;
+  height: 13px;
+  filter: blur(5px);
+  background: radial-gradient(ellipse,#62462d66,transparent 72%);
+  z-index: -1;
+}
+.auth-room .world-stage::after {
+  content: '';
+  position: absolute;
+  left: 27%;
+  right: 27%;
+  bottom: 6%;
+  height: 13px;
+  background: radial-gradient(ellipse,#62462d66,transparent 72%);
+  filter: blur(5px);
+  z-index: -1;
+  pointer-events: none;
+}
+.auth-room .world-ring { inset: auto 14px 14px auto; width: 52px; height: 52px; z-index: 4; }
+.auth-room .world-ring circle { stroke-width: 2; }
+.auth-room .world-name { top: 18px; left: 18px; padding: 11px 14px; border-radius: 13px; max-width: 55%; background: #fffdf4e8; }
+.auth-room .world-mail { top: 28%; right: 16px; width: 55px; height: 49px; border-radius: 13px; }
+.auth-room .world-ready { bottom: 18px; right: auto; left: 18px; padding: 9px 13px; font-size: 10px; }
+.auth-room .world-stage>.world-frost { inset: 0; border-radius: 26px; }
+.auth-room .world-status { font-size: 13px; line-height: 1.8; margin-top: 16px; color: #4d6b5a; }
+.auth-room .world-steps { font-size: 10px; gap: 20px; }
+.auth-room .form-panel { width: 100%; max-width: 560px; padding: 0; justify-self: center; }
+.auth-room .register-panel { padding: 0; }
+.auth-room .register-panel-inner { width: 100%; max-width: 560px; }
+.auth-room :is(.auth-card,.register-card) {
+  background: linear-gradient(135deg,rgba(255,255,255,.39),rgba(255,250,240,.22));
+  border: 1px solid rgba(255,255,255,.78);
+  border-radius: 24px;
+  box-shadow: 0 24px 65px #153f3814,inset 0 1px 0 #ffffffd9,inset 0 -1px 0 #ffffff40;
+  padding: clamp(26px,3vw,42px);
+  -webkit-backdrop-filter: blur(24px) saturate(125%);
+  backdrop-filter: blur(24px) saturate(125%);
+}
+.auth-room .register-card-accent { height: 3px; background: #21624e; }
+.auth-room .card-brand { font-size: 15px; color: #316c54; letter-spacing: .12em; }
+.auth-room .form-heading { margin: 26px 0; }
+.auth-room .form-heading h2 { font-size: clamp(31px,3vw,42px); margin-top: 0; line-height: 1.2; }
+.auth-room .field>label,.auth-room .field-label { font-size: 13px; }
+.auth-room .field input,.auth-room .field-control input,.auth-room .select-control select {
+  background: rgba(255,255,255,.44);
+  border-color: rgba(61,98,75,.25);
+  border-radius: 12px;
+  min-height: 52px;
+  font-size: 14px;
+}
+.auth-room .field input:focus,.auth-room .field-control input:focus,.auth-room .select-control select:focus {
+  background: #fff;
+  border-color: #3d8569;
+  box-shadow: 0 0 0 3px #3d856915;
+}
+.auth-room .field input[aria-invalid=true],.auth-room .field-control input[aria-invalid=true] { border-color: #b04b3d; }
+.auth-room .role-selector { background: #eaf0e380; border: 1px solid #ffffffa6; }
+.auth-room .role-selector button.active { background: #fffdf8c9; color: #1b5d47; }
+.auth-room .register-card .role-card { background: #fffdf84d; border-color: #ffffffa6; }
+.auth-room .register-card .role-card.selected { background: #dcefd9a6; border-color: #93bca3; }
+.auth-room.specialist-mode .register-card .role-card.selected { background: #e9e0f4a6; border-color: #bbadd2; }
+.auth-room :is(.login-button,.register-card .submit-btn) {
+  min-height: 52px;
+  background: #123f38;
+  color: #fffaf0;
+  border: 1px solid #123f38;
+  box-shadow: 0 7px 18px #123f3812;
+  font-size: 14px;
+}
+.auth-room :is(.login-button,.register-card .submit-btn):hover:not(:disabled) { background: #23604b; color: #fffaf0; }
+.auth-room .create-account { background: transparent; border-color: #bacdb7; font-size: 13px; }
+.auth-room .create-account:hover { background: #edf3e6; }
+.auth-room .form-options { font-size: 12px; }
+.auth-room :is(.privacy-note,.form-footer) { font-size: 12px; line-height: 1.8; color: #5c7464; }
+@media(max-width:1000px) and (min-width:761px) {
+  .auth-room :is(.login-layout,.register-layout) { width: calc(100% - 48px); gap: 28px; grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr); }
+  .auth-room :is(.visual-copy h1,.world-copy h1) { font-size: 38px; }
+  .auth-room .world-steps { gap: 10px; font-size: 9px; }
+}
+@media(max-width:760px) {
+  .auth-room :is(.topbar,.top-nav) { width: calc(100% - 36px); padding-block: 16px; min-height: 76px; }
+  .auth-room :is(.login-layout,.register-layout) { display: flex; flex-direction: column; width: calc(100% - 36px); padding-top: 25px; gap: 25px; }
+  .auth-room :is(.visual-panel,.story-panel) { width: 100%; max-width: 560px; margin: auto; }
+  .auth-room .visual-copy { display: block; text-align: center; }
+  .auth-room .register-world { position: relative; top: auto; max-width: none; }
+  .auth-room :is(.visual-copy h1,.world-copy h1) { font-size: 32px; text-align: center; margin-bottom: 12px; }
+  .auth-room :is(.visual-copy>p:last-child,.world-copy>p:last-child) { font-size: 13px; margin-inline: auto; text-align: center; }
+  .auth-room :is(.character-scene,.world-stage) { width: min(360px,100%); max-width: none; aspect-ratio: 1.2/1; margin: 22px auto 0; border-radius: 22px; }
+  .auth-room :is(.baby,.world-baby) { width: 62%; max-width: 230px; bottom: 3%; }
+  .auth-room .world-copy h1 br { display: none; }
+  .auth-room :is(.auth-card,.register-card) { padding: 27px 24px; }
+  .auth-room :is(.register-panel,.form-panel) { width: 100%; max-width: 560px; margin-inline: auto; }
+  .auth-room .world-name { top: 12px; left: 12px; padding: 8px 10px; }
+  .auth-room .world-name strong { max-width: 100px; }
+  .auth-room .world-mail { top: 31%; right: 12px; width: 43px; height: 40px; }
+  .auth-room .world-ring { right: 9px; bottom: 9px; width: 42px; height: 42px; }
+  .auth-room .world-ready { left: 10px; bottom: 10px; }
+  .auth-room .world-status { font-size: 11px; margin-block: 10px; min-height: 20px; }
+  .auth-room .world-steps { gap: 13px; font-size: 9px; }
+}
+@media(prefers-reduced-motion:reduce) { .auth-room :is(.login-button,.submit-btn):hover { transform: none; } }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .auth-room :is(.auth-card,.register-card) { background: rgba(255,250,240,.9); }
+}
+
+/* Keep the seated body planted; pose images still cover/peek at passwords. */
+.auth-room .baby,
+.auth-room .baby[data-state],
+.auth-room .register-world .world-baby,
+.auth-room .register-world[data-state] .world-baby {
+  transform: translateX(-50%);
+  transition: none;
+  animation: none;
+}
+
+/* The desktop room is viewport-fixed, so its character uses the same anchor. */
+@media(min-width:761px) {
+  .auth-room :is(.character-scene,.world-stage) {
+    position: fixed;
+    left: max(40px,calc((100vw - 1300px)/2));
+    right: auto;
+    top: auto;
+    bottom: 2svh;
+    width: min(38vw,580px);
+    height: min(58svh,560px);
+    aspect-ratio: auto;
+    margin: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+}
+/* On stacked screens, let the room leave with the character instead of
+   leaving a fixed wall behind a scrolling baby or covering the form. */
+@media(max-width:760px) {
+  body.auth-room::before {
+    position: absolute;
+    top: 0;
+    bottom: auto;
+    height: 640px;
+    background-position: center bottom;
+  }
+  body.auth-room::after { position: absolute; height: 640px; bottom: auto; }
+  body.auth-room { position: relative; }
+}

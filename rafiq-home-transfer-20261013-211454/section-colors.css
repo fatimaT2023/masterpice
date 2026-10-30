@@ -1,0 +1,146 @@
+/* Alternating chapter colors. Scene geometry and motion stay in their own files.
+   Light: home, studio, process, openings, safety, FAQ.
+   Dark: journey, features, parents, booking, plans, contact. */
+body.rafiq-home {
+  --chapter-dark: #102f30;
+  --chapter-light: #fffaf0;
+  --chapter-text: #f5f6ec;
+  --chapter-muted: #c0d5cf;
+  --chapter-accent: #bdebd6;
+}
+.rafiq-home :is(#journey, #labs, #parents, #booking, #plans, #contact) {
+  background: var(--chapter-dark) !important;
+  color: var(--chapter-text) !important;
+  --ink: var(--chapter-text);
+  --ink-soft: var(--chapter-muted);
+}
+.rafiq-home :is(#studio, #process, #openings, #safety, #faq) {
+  background: var(--theme-background, var(--chapter-light)) !important;
+}
+.rafiq-home :is(#journey, #labs, #parents, #booking, #plans, #contact)::before {
+  background: radial-gradient(ellipse at 15% 0%, rgba(95, 179, 149, .12), transparent 65%);
+}
+
+/* The pinned growth stage is painted by JS, so its surface is explicit. */
+#journey .growth-stage {
+  background: var(--chapter-dark) !important;
+  color: var(--chapter-text);
+}
+#journey .growth-light {
+  background: radial-gradient(ellipse at 60% 55%, rgba(85, 156, 141, .18), transparent 65%);
+}
+#journey :is(.growth-topline, .growth-bottom, .growth-copy > p) { color: var(--chapter-muted); }
+#journey :is(.age-label, .growth-topics) {
+  color: var(--chapter-accent);
+  background-color: rgba(189, 235, 214, .08);
+  border-color: rgba(189, 235, 214, .22);
+}
+#journey .growth-timeline button { color: var(--chapter-muted); }
+#journey .growth-timeline button[aria-current] { color: var(--chapter-accent); }
+#journey .timeline-dot { border-color: var(--chapter-muted); }
+#journey .growth-timeline button[aria-current] .timeline-dot { background: var(--chapter-accent); }
+#journey .growth-floor-shadow { background: #000; opacity: .25; }
+
+/* Keep previews as light product surfaces inside the dark chapters. */
+#labs .rf-light { opacity: .18; }
+#labs .rf-header :is(h2, p),
+#labs .rf-header .section-label { color: var(--chapter-text); }
+#labs .rf-header > p:last-child { color: var(--chapter-muted); }
+#labs .rf-feature {
+  background: #f6f7f0;
+  color: #0f2f2e;
+  --ink: #0f2f2e;
+  --ink-soft: #3f5c5a;
+  border-color: rgba(255,255,255,.8);
+  box-shadow: 0 24px 60px rgba(0,0,0,.18);
+}
+#labs .rf-controls button {
+  color: var(--chapter-accent);
+  background: rgba(255,255,255,.06);
+  border-color: rgba(189,235,214,.3);
+}
+#labs .rf-controls button:hover { background: rgba(189,235,214,.15); }
+#parents .pd-header :is(h2, .pd-promises) { color: var(--chapter-text); }
+#parents .pd-header :is(p, .pd-kicker, .pd-disclaimer) { color: var(--chapter-muted); }
+#parents .pd-promises b { background: rgba(189,235,214,.12); color: var(--chapter-accent); }
+#parents .pd-dashboard {
+  background: #f6f7ef;
+  color: #153d36;
+  border-color: rgba(255,255,255,.85);
+  box-shadow: 0 30px 80px rgba(0,0,0,.18);
+  --ink: #153d36;
+  --ink-soft: #3f5c5a;
+}
+
+/* Booking, plans and final call to action use dark glass with readable controls. */
+.rafiq-home :is(#booking, #plans, #contact) :is(h2, h3, h4) { color: var(--chapter-text); }
+.rafiq-home :is(#booking, #plans, #contact) :is(p, small, .rc-note, .rc-link) { color: var(--chapter-muted); }
+.rafiq-home :is(#booking, #plans, #contact) .rc-glass,
+.rafiq-home #plans .rc-plan-stack .rc-premium {
+  background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(189,235,214,.035));
+  border: 1px solid rgba(189,235,214,.2);
+  color: var(--chapter-text);
+  box-shadow: 0 18px 45px rgba(0,0,0,.1), inset 0 1px 0 rgba(255,255,255,.04);
+}
+.rafiq-home #plans .rc-plan-stack .rc-premium {
+  border-color: rgba(189,235,214,.55);
+  background: linear-gradient(145deg, rgba(128,205,173,.17), rgba(182,165,226,.08));
+}
+#booking :is(select, .rc-times button, .rc-mode) {
+  color: var(--chapter-text);
+  background: #1d4140;
+  border-color: rgba(189,235,214,.25);
+}
+#booking select option { background: #1d4140; color: var(--chapter-text); }
+#booking :is(.rc-times button, .rc-mode)[aria-pressed=true] {
+  color: #102f30;
+  background: var(--chapter-accent);
+  border-color: var(--chapter-accent);
+}
+#booking :is(.rc-verified, label) { color: var(--chapter-accent); }
+#booking .rc-booking-track::before { background: rgba(189,235,214,.2); }
+#booking .rc-booking-track::after { background: var(--chapter-accent); }
+.rafiq-home :is(#journey, #parents, #booking, #plans, #contact) .button.primary {
+  background: var(--chapter-accent);
+  color: #102f30;
+  border-color: var(--chapter-accent);
+}
+.rafiq-home :is(#journey, #parents, #booking, #plans, #contact) .button.primary:hover {
+  background: #d7f6e6;
+  border-color: #d7f6e6;
+}
+#contact .rc-contact-links :is(a, button) { color: var(--chapter-accent); border-color: rgba(189,235,214,.4); }
+.rafiq-home :is(#journey, #labs, #parents, #booking, #plans, #contact) :is(a, button, input, select):focus-visible {
+  outline-color: var(--chapter-accent);
+}
+#labs .rf-feature :is(a, button, input, select):focus-visible,
+#parents .pd-dashboard :is(a, button, input, select):focus-visible { outline-color: #0b7a75; }
+
+/* End on a light footer after the dark final chapter. */
+.rafiq-home #rafiq-footer.green-footer {
+  background: #e5efe6;
+  color: #153d36;
+}
+.rafiq-home #rafiq-footer :is(h2, a, button, dt, dd) { color: #153d36; }
+.rafiq-home #rafiq-footer :is(p, small, .gf-trust, .gf-placeholder, .gf-social, .gf-bottom) { color: #435f54; }
+.rafiq-home #rafiq-footer :is(.gf-newsletter, .gf-bottom) { border-color: rgba(21,61,54,.18); }
+.rafiq-home #rafiq-footer .gf-form-row input { color: #153d36; background: #fffaf0; border-color: rgba(21,61,54,.25); }
+.rafiq-home #rafiq-footer .gf-form-row input::placeholder { color: #526c60; }
+.rafiq-home #rafiq-footer .gf-form-row button { background: #153d36; color: #fffaf0; }
+.rafiq-home #rafiq-footer .gf-column h2 a,
+.rafiq-home #rafiq-footer .gf-brand h2,
+.rafiq-home #rafiq-footer .brand,
+.rafiq-home #rafiq-footer .brand-text { color: #153d36; }
+.rafiq-home #rafiq-footer .gf-brand p,
+.rafiq-home #rafiq-footer .gf-newsletter p { color: #435f54; }
+.rafiq-home #rafiq-footer .rafiq-mark { color: #fffaf0; background: #153d36; }
+.rafiq-home #rafiq-footer a:hover,
+.rafiq-home #rafiq-footer .gf-bottom button:hover { color: #0b7a75; }
+.rafiq-home #rafiq-footer #gf-newsletter-status {
+  color: #304f43;
+  opacity: 1;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.8;
+  margin-top: 10px;
+}

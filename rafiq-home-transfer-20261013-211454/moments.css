@@ -1,0 +1,48 @@
+/* A single visual interlude. Existing homepage sections stay unchanged. */
+#family-moments {
+  position: relative;
+  isolation: isolate;
+  min-height: 620px;
+  height: min(94svh, 1040px);
+  overflow: hidden;
+  background: #3b453a;
+  color: #fffaf0;
+}
+#family-moments .moments-poster,
+#family-moments video,
+#family-moments .moments-shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+#family-moments .moments-poster,
+#family-moments video { object-fit: cover; object-position: 50% 55%; }
+#family-moments video { opacity: 0; transition: opacity .45s ease; }
+#family-moments.is-playing video { opacity: 1; }
+#family-moments .moments-shade { background: linear-gradient(90deg, #102d2bd9, #102d2b75 48%, #102d2b0d), linear-gradient(0deg, #102d2b75, transparent 45%); pointer-events: none; }
+#family-moments .moments-copy { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 100px clamp(24px,7vw,130px); pointer-events: none; }
+#family-moments .moments-about { pointer-events: auto; margin-top: 30px; display: inline-flex; align-items: center; gap: 18px; min-height: 50px; padding: 13px 24px; border: 1px solid #e4f3e6; border-radius: 999px; color: #153f38; background: #e4f3e6; font-size: 14px; font-weight: 600; }
+#family-moments .moments-about:hover { background: #fffaf0; }
+#family-moments .moments-about:focus-visible { outline: 3px solid #fffaf0; outline-offset: 5px; }
+#family-moments .moments-eyebrow { font-size: 11px; letter-spacing: .16em; color: #deeddf; margin: 0 0 25px; }
+#family-moments h2 { font-size: clamp(40px,5.3vw,82px); font-weight: 400; line-height: 1.1; letter-spacing: -.055em; max-width: 18ch; margin: 0; color: #fffaf0; text-wrap: balance; }
+#family-moments h2 span { display: block; }
+#family-moments h2 em { font-style: normal; color: #c2e6d1; }
+#family-moments .moments-bottom { position: absolute; z-index: 2; left: clamp(24px,7vw,130px); right: clamp(24px,7vw,130px); bottom: 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+#family-moments .moments-bottom p { margin: 0; color: #f1f5e8; font-size: 12px; line-height: 1.7; }
+#family-moments .moments-play { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 11px 17px; min-height: 46px; border: 1px solid #fffaf080; border-radius: 999px; color: #fffaf0; background: #143a328c; backdrop-filter: blur(10px); font: inherit; font-size: 12px; cursor: pointer; white-space: nowrap; }
+#family-moments .moments-play:hover { background: #143a32d9; }
+#family-moments .moments-play:focus-visible { outline: 3px solid #d8f4e3; outline-offset: 5px; }
+#family-moments .moments-credit { position: absolute; z-index: 2; right: 18px; top: 18px; padding: 5px 9px; border-radius: 5px; font-size: 9px; color: #fffaf0; background: #102d2ba6; text-decoration: underline; text-underline-offset: 3px; }
+#family-moments .moments-play[hidden] { display: none; }
+html[lang=ar] #family-moments { direction: ltr; }
+html[lang=ar] #family-moments h2 { direction: rtl; text-align: right; line-height: 1.5; max-width: 13ch; font-size: clamp(35px,4.2vw,64px); }
+html[lang=ar] #family-moments .moments-eyebrow { direction: rtl; letter-spacing: 0; }
+@media(max-width:600px) {
+  #family-moments { height: 88svh; min-height: 620px; max-height: 820px; }
+  #family-moments .moments-poster,#family-moments video { object-position: 56% 50%; }
+  #family-moments .moments-shade { background: linear-gradient(0deg,#102d2bea,#102d2b66 65%,#102d2b0d); }
+  #family-moments .moments-copy { justify-content: flex-end; padding: 40px 26px 145px; }
+  #family-moments h2 { font-size: 45px; }
+  #family-moments .moments-eyebrow { font-size: 9px; margin-bottom: 18px; }
+  #family-moments .moments-bottom { bottom: 23px; left: 26px; right: 26px; align-items: flex-start; flex-direction: column; gap: 12px; }
+  #family-moments .moments-bottom p { font-size: 11px; }
+  html[lang=ar] #family-moments h2 { font-size: 34px; }
+}
+@media(prefers-reduced-motion:reduce) { #family-moments video { transition: none; } }

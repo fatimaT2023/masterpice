@@ -15,6 +15,7 @@
   const hand = section.querySelector('.hero-wave-hand');
   const eyes = section.querySelector('.hero-eye-layer');
   const blink = section.querySelector('.hero-blink');
+  const crawlA = section.querySelector('.pose-crawl-a');
   const crawlB = section.querySelector('.pose-crawl-b');
   const panel = section.querySelector('.hero-content');
   const light = section.querySelector('.studio-light');
@@ -29,6 +30,7 @@
   let targetX=0,targetY=0,currentX=0,currentY=0,pointerX=0,pointerY=0;
   let raf=0,active=true,ready=false,waveFinished=reduced.matches,introStart=performance.now();
   let blinkTimer,blinkEnd,pressed=false,lastProgress=-1;
+  let lastFrame=0, displayedProgress=null;
   const canFollow = () => ready && waveFinished && !reduced.matches && fine.matches && innerWidth>600;
   function measure(){
     geometry={top:section.getBoundingClientRect().top+scrollY,distance:Math.max(1,section.offsetHeight-stage.offsetHeight),width:innerWidth,charWidth:character.offsetWidth,height:stage.offsetHeight};
@@ -45,9 +47,16 @@
   }
   function render(now){
     raf=0;if(!active || document.hidden)return;
-    const p=clamp((scrollY-geometry.top)/geometry.distance);
+    // Time-based damping behaves consistently on 60 Hz and high-refresh screens.
+    const dt=Math.min(.05,Math.max(0,(now-(lastFrame||now-16.67))/1000));
+    lastFrame=now;
+    const rawProgress=clamp((scrollY-geometry.top)/geometry.distance);
+    if(displayedProgress===null || reduced.matches) displayedProgress=rawProgress;
+    else displayedProgress+=(rawProgress-displayedProgress)*(1-Math.exp(-dt/0.085));
+    if(Math.abs(rawProgress-displayedProgress)<.00008)displayedProgress=rawProgress;
+    const p=displayedProgress;
     const transition=smooth((p-.20)/.25);
-    const travel=clamp((p-.45)/.55);
+    const travel=smooth((p-.45)/.55);
     const moving=p>.2;
     if(moving){waveFinished=true;targetX=targetY=0;} // scrolling takes priority over the one-time greeting
     const elapsed=(now-introStart)/1000;
@@ -55,43 +64,60 @@
     const greeting=ready&&!waveFinished&&!reduced.matches?smooth((elapsed-.25)/.20)*(1-smooth((elapsed-1.15)/.30)):0;
     front.style.opacity=String(1-greeting);wave.style.opacity=String(greeting);hand.style.opacity=String(greeting);
     hand.style.transform='rotate('+(greeting*Math.sin((elapsed-.25)*Math.PI*4.5)*3)+'deg)';
-    if(canFollow()&&!moving){currentX+=(targetX-currentX)*.14;currentY+=(targetY-currentY)*.14;}else{currentX+=(0-currentX)*.18;currentY+=(0-currentY)*.18;}
-    depth.style.transform='translate3d('+currentX*2+'px,'+currentY*2+'px,0)';
-    left.style.opacity=String(Math.max(0,-currentX)*(1-greeting));right.style.opacity=String(Math.max(0,currentX)*(1-greeting));
+    const follow=1-Math.exp(-dt/(moving?.08:.05));
+    const desiredX=canFollow()&&!moving?targetX:0;
+    const desiredY=canFollow()&&!moving?targetY:0;
+    currentX+=(desiredX-currentX)*follow;currentY+=(desiredY-currentY)*follow;
+    depth.style.transform='translate3d('+currentX*1.5+'px,0,0)';
+    left.style.opacity=String(smooth(Math.max(0,-currentX))*(1-greeting));right.style.opacity=String(smooth(Math.max(0,currentX))*(1-greeting));
     const headTransform='rotateY('+currentX*5+'deg) rotateX('+(-currentY*2.5)+'deg)';
     left.style.transform=headTransform;right.style.transform=headTransform;
+    // Restore the original mouse-following eye layer while the baby is seated.
     eyes.style.opacity=String((1-clamp(Math.abs(currentX)*2))*(1-greeting)*.65);
     eyes.style.transform='translate('+currentX*7+'px,'+currentY*4+'px)';
     if(p!==lastProgress){
       lastProgress=p;
       // Never fade the crawling character out. It leaves by translating RIGHT.
       const distance=geometry.width*(reduced.matches?.38:.55)+geometry.charWidth*.06;
-      const gait=reduced.matches?0:Math.sin(travel*Math.PI*12);
-      const x=travel*distance;
-      const y=transition*geometry.height*.045+(travel>0?gait*2.3:0);
+      const gaitEnvelope=smooth(travel/.1)*(1-smooth((travel-.9)/.1));
+      const phase=travel*Math.PI*8;
+      const gait=reduced.matches?0:Math.sin(phase)*gaitEnvelope;
+      // Each push accelerates, then the body settles over the planted hands.
+      // The displacement stays monotonic, including when scrolling backwards.
+      const stride=reduced.matches?travel:travel-.55*Math.sin(phase)/(Math.PI*8);
+      const x=stride*distance;
+      const lift=reduced.matches?0:Math.sin(phase*2)*2.8*gaitEnvelope;
+      const y=transition*geometry.height*.045+lift;
       character.style.transform='translate(-50%,-50%) translate3d('+x+'px,'+y+'px,0)';
       sitting.style.opacity=String(1-transition);crawling.style.opacity=String(transition);
       const morphBlur=reduced.matches?0:Math.sin(transition*Math.PI)*3;
       sitting.style.filter='blur('+morphBlur+'px)';crawling.style.filter='blur('+morphBlur+'px)';
       sitting.style.transform=reduced.matches?'none':'perspective(900px) rotateX('+transition*12+'deg) translateY('+transition*10+'px) scale('+(1-transition*.035)+')';
-      crawling.style.transform=reduced.matches?'none':'rotate('+(travel>0?gait*.55:0)+'deg)';
-      crawlB.style.opacity=String(reduced.matches?0:travel>0?smooth((Math.sin(travel*Math.PI*12)+.12)/.24):0);
-      shadow.style.transform='scaleX('+(1+transition*.16)+')';
+      crawling.style.transform=reduced.matches?'none':'rotate('+gait*.8+'deg) scaleY('+(1-Math.abs(gait)*.008)+')';
+      // Do not paint an alternate body on top of a fully opaque first pose.
+      const alternate=reduced.matches||travel===0?0:smooth((Math.sin(phase)+.16)/.32)*gaitEnvelope;
+      crawlA.style.opacity=String(1-alternate);
+      crawlB.style.opacity=String(alternate);
+      shadow.style.transform='scale('+(1+transition*.16)+','+(1-Math.abs(gait)*.08)+')';
+      shadow.style.opacity=String(.10-Math.abs(gait)*.015);
       section.classList.toggle('is-moving',moving);
       character.dataset.pose=p<.2?'sitting':p<.45?'leaning':p<.9?'crawling-right':'exiting-right';
       character.dataset.progress=p.toFixed(4);
       progressBar.style.transform='scaleX('+p+')';
       panel.style.opacity=String(1-smooth((p-.35)/.65)*.35);
     }
-    panel.style.transform='translate3d('+currentX*3+'px,'+currentY*3+'px,0)';
+    panel.style.transform='translate3d('+currentX*1.25+'px,'+currentY*1.25+'px,0)';
     light.style.transform='translate3d('+currentX*8+'px,'+currentY*8+'px,0)';
     if(ring.classList.contains('visible'))ring.style.transform='translate('+(pointerX-16)+'px,'+(pointerY-16)+'px) scale('+(pressed?.88:1)+')';
-    if((ready&&!waveFinished)||Math.abs(targetX-currentX)+Math.abs(targetY-currentY)>.0002) schedule();
+    if((ready&&!waveFinished)||Math.abs(desiredX-currentX)+Math.abs(desiredY-currentY)>.0002||Math.abs(rawProgress-displayedProgress)>.00001) schedule();
+    else lastFrame=0;
   }
   stage.addEventListener('pointermove',event=>{
     if(!canFollow()||lastProgress>.2)return;
-    targetX=clamp(event.clientX/geometry.width*2-1,-1,1);
-    targetY=clamp(event.clientY/geometry.height*2-1,-1,1);
+    // Follow relative to the face instead of the viewport center.
+    const bounds=character.getBoundingClientRect();
+    targetX=clamp((event.clientX-(bounds.left+bounds.width*.5))/(geometry.width*.30),-1,1);
+    targetY=clamp((event.clientY-(bounds.top+bounds.height*.35))/(geometry.height*.48),-1,1);
     pointerX=event.clientX;pointerY=event.clientY;schedule();
   },{passive:true});
   stage.addEventListener('pointerleave',()=>{targetX=targetY=0;ring.classList.remove('visible');schedule();});
@@ -100,9 +126,9 @@
   stage.addEventListener('pointerdown',()=>{pressed=true;schedule();});window.addEventListener('pointerup',()=>{pressed=false;schedule();});
   window.addEventListener('scroll',()=>{if(lastProgress>.2)ring.classList.remove('visible');schedule();},{passive:true});
   window.addEventListener('resize',measure,{passive:true});
-  reduced.addEventListener('change',()=>{targetX=targetY=currentX=currentY=0;waveFinished=true;lastProgress=-1;ring.classList.remove('visible');planBlink();measure();window.dispatchEvent(new Event('resize'));});
+  reduced.addEventListener('change',()=>{targetX=targetY=currentX=currentY=0;displayedProgress=null;lastFrame=0;waveFinished=true;lastProgress=-1;ring.classList.remove('visible');planBlink();measure();window.dispatchEvent(new Event('resize'));});
   fine.addEventListener('change',()=>{targetX=targetY=0;ring.classList.remove('visible');schedule();});
-  document.addEventListener('visibilitychange',()=>{document.body.classList.toggle('tab-hidden',document.hidden);if(document.hidden){cancelAnimationFrame(raf);raf=0;clearTimeout(blinkTimer);}else{planBlink();schedule();}});
+  document.addEventListener('visibilitychange',()=>{document.body.classList.toggle('tab-hidden',document.hidden);if(document.hidden){cancelAnimationFrame(raf);raf=0;lastFrame=0;clearTimeout(blinkTimer);}else{planBlink();schedule();}});
   new IntersectionObserver(entries=>{active=entries[0].isIntersecting;section.classList.toggle('is-active',active);if(active){planBlink();schedule();}else{cancelAnimationFrame(raf);raf=0;clearTimeout(blinkTimer);ring.classList.remove('visible');}},{threshold:0}).observe(section);
   const images=[...section.querySelectorAll('.hero-pose img')];
   // Measure alpha once to match the floor and scale across extracted poses.

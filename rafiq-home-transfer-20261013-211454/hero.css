@@ -24,8 +24,8 @@
 .hero-scroll-progress{position:absolute;left:40px;right:40px;bottom:0;height:2px;background:rgba(7,94,90,.08)}.hero-scroll-progress>span{display:block;height:100%;background:rgba(7,94,90,.35);transform:scaleX(0);transform-origin:left}
 .hero-scroll.is-moving .hero-character-depth{animation:none}.hero-scroll.is-moving .hero-wave-hand,.hero-scroll.is-moving .hero-eye-layer,.hero-scroll.is-moving .hero-blink{visibility:hidden}
 .hero-scroll.is-active .hero-character-position{will-change:transform}.hero-scroll:not(.is-active) .hero-character-depth,body.tab-hidden .hero-character-depth{animation-play-state:paused}
-@keyframes hero-character-enter{from{opacity:0;filter:blur(8px);transform:scale(.96)}to{opacity:1;filter:blur(0);transform:scale(1)}}
-@keyframes hero-breath{from{scale:1}to{scale:1.006}}
+@keyframes hero-character-enter{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes hero-breath{from{scale:1 1}to{scale:1.002 1.006}}
 @keyframes hero-blink-fade{0%,100%{opacity:0}45%,55%{opacity:.65}}
 @keyframes hero-blink-shape{0%,100%{transform:scaleY(.02)}45%,55%{transform:scaleY(.6)}}
 @media(min-width:1600px){.hero-scroll .hero-character-position{width:60svh}.hero-scroll .hero-panel-position{width:370px}}

@@ -1724,6 +1724,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!isSubmitting) {
       clearStatus();
     }
+    window.RafiqLanguage?.setLanguage(language);
   }
 
   function updateTranslations() {
@@ -1991,7 +1992,9 @@ document.addEventListener("DOMContentLoaded", () => {
      Initialize
      ======================================================= */
 
-  setLanguage("en");
+  let preferredLanguage = "en";
+  try { preferredLanguage = localStorage.getItem("rafiqLanguage") || "en"; } catch {}
+  setLanguage(preferredLanguage);
   applyRoleFromURL();
   updatePasswordStrength();
 });

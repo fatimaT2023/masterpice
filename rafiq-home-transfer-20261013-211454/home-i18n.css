@@ -1,0 +1,78 @@
+/* Language changes text direction, never scene coordinates or image orientation. */
+.home-language {
+  display: inline-flex;
+  direction: ltr;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid rgba(15,47,46,.18);
+  border-radius: 999px;
+  background: rgba(255,255,255,.3);
+  flex-shrink: 0;
+}
+.home-language button {
+  font: inherit;
+  font-size: 11px;
+  line-height: 1.4;
+  min-height: 36px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  background: transparent;
+  color: #244c43;
+}
+.home-language button[aria-pressed=true] { background: #123f38; color: #fffaf0; }
+.home-language button:focus-visible { outline: 2px solid #0b7a75; outline-offset: 3px; }
+.rafiq-home .desktop-nav .nav-help { padding-inline: 12px; border: 1px solid #0b7a7530; border-radius: 999px; background: #e4efdf70; color: #1b5a49; white-space: nowrap; }
+@media(min-width:1051px) and (max-width:1200px) {
+  .rafiq-home .desktop-nav { display: none; }
+  .rafiq-home .menu-button { display: flex; }
+  .rafiq-home .mobile-menu { display: flex; }
+  .rafiq-home .nav-actions { margin-left: auto; }
+}
+html[lang=ar] {
+  --font-display: 'Noto Sans Arabic','Segoe UI',sans-serif !important;
+  --font-heading: 'Noto Sans Arabic','Segoe UI',sans-serif !important;
+  --font-body: 'Noto Sans Arabic','Segoe UI',sans-serif !important;
+}
+/* Preserve left/right art, timeline, carousel and flex order in both languages. */
+html[lang=ar] :is(.page-shell,.navbar,.mobile-menu,.solution-layout,.solution-experience,.rf-demo,.rf-feature,.rj-experience,.rj-device,.pd-layout,.pd-dashboard,.sw-layout,.sw-workspace,.rc-plan-stack,.rc-paths,.rc-booking-track,.gf-columns,.gf-newsletter,.gf-form-row,.gf-bottom) { direction: ltr; }
+html[lang=ar] :is(h1,h2,h3,h4,h5,h6,p,a,button,label,summary,dt,dd,small,strong,.age-label,.section-label,.solution-window-brand,.solution-demo-tag,.solution-question-label,.solution-preview-footer>span,.growth-topline,.growth-bottom,.pd-kicker,.pd-disclaimer,.pd-promises,.gf-trust,.gf-social,.rc-book-visual) { direction: rtl; letter-spacing: 0 !important; }
+html[lang=ar] :is(h1,h2,h3,h4,h5,h6) { line-height: 1.45; }
+html[lang=ar] :is(p,summary) { line-height: 1.9; }
+html[lang=ar] .home-language { direction: ltr; }
+html[lang=ar] .home-language button { letter-spacing: 0; }
+html[lang=ar] .brand-text { font-size: 22px; }
+html[lang=ar] .rafiq-mark { direction: ltr; font-family: 'Figtree',sans-serif !important; }
+html[lang=ar] #home #hero-title { line-height: 1.35; letter-spacing: -.015em; }
+html[lang=ar] #home .intro-label { letter-spacing: 0; }
+html[lang=ar] #studio .section-title { line-height: 1.35; }
+html[lang=ar] #studio .solution-choices button { font-size: 12px; }
+html[lang=ar] #studio .solution-answer { min-height: 330px; }
+html[lang=ar] .growth-copy h2 { font-size: clamp(30px,3.6vw,52px); line-height: 1.4; }
+html[lang=ar] .growth-copy-wrap { height: 420px; }
+html[lang=ar] .growth-entry-copy p { line-height: 1.5; }
+html[lang=ar] .growth-timeline button { direction: ltr; }
+html[lang=ar] .growth-planned { direction: rtl; }
+html[lang=ar] :is(input[type=email],input[type=tel],.rc-times,.rc-count,.sw-net strong,.sw-money-row b) { direction: ltr; unicode-bidi: isolate; }
+@media(min-width:1051px) and (max-width:1380px) {
+  .rafiq-home .navbar { gap: 12px; padding-inline: 16px; }
+  .rafiq-home .desktop-nav { gap: 10px; }
+  .rafiq-home .desktop-nav a { font-size: 11px; }
+  .rafiq-home .nav-actions { gap: 10px; }
+  .rafiq-home .nav-start { font-size: 11px; padding-inline: 12px; }
+  .home-language button { padding-inline: 8px; }
+}
+@media(max-width:600px) {
+  .rafiq-home .nav-actions { gap: 7px; }
+  .home-language button { min-height: 36px; font-size: 10px; padding-inline: 7px; }
+  .home-language { position: absolute; right: 0; top: calc(100% + 8px); background: #f6faf5f2; box-shadow: 0 6px 18px #123f3810; }
+  .rafiq-home .navbar { gap: 8px; }
+  html[lang=ar] .brand-text { font-size: 17px; }
+  html[lang=ar] .navbar .nav-start { font-size: 10px; padding-inline: 10px; }
+  html[lang=ar] .growth-copy h2 { font-size: 28px; }
+  html[lang=ar] .growth-copy-wrap { height: 290px; }
+  html[lang=ar] #studio .solution-answer { min-height: 380px; }
+  html[lang=ar] #home #hero-title { font-size: 28px; }
+}
