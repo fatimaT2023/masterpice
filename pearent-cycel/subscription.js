@@ -74,11 +74,7 @@ document.addEventListener(
 
       try {
 
-        return JSON.parse(
-          localStorage.getItem(
-            "rafiqChildren"
-          )
-        ) || [];
+        return window.RafiqSetup.readChildren() || [];
 
       } catch (error) {
 
@@ -150,16 +146,7 @@ document.addEventListener(
     // PLAN
     // ===========================
 
-    function getCurrentPlan() {
-
-      return (
-        localStorage.getItem(
-          "rafiqSubscriptionPlan"
-        ) ||
-        "free"
-      );
-    }
-
+    function getCurrentPlan(){return window.RafiqMembership.state().plan;}
 
     function renderCurrentPlan() {
 
@@ -296,7 +283,7 @@ document.addEventListener(
             "RAFIQ Plus",
 
           price:
-            5,
+            window.RafiqMembership.config.price,
 
           currency:
             "JOD",
@@ -339,7 +326,7 @@ document.addEventListener(
 
         const confirmed =
           window.confirm(
-            "Switch back to RAFIQ Free?"
+            "Switch to Free now? Plus features will stop immediately. Your existing records and reports will stay available."
           );
 
 
@@ -366,6 +353,7 @@ document.addEventListener(
         );
 
 
+        window.RafiqMembership.downgrade();
         renderCurrentPlan();
 
       }
@@ -468,6 +456,8 @@ document.addEventListener(
     // ===========================
 
     renderCurrentPlan();
+    window.addEventListener('focus',renderCurrentPlan);
+    window.addEventListener('storage',event=>{if(event.key==='rafiqParentMemberships')renderCurrentPlan();});
 
   }
 );

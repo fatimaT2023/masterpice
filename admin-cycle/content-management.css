@@ -1878,3 +1878,22 @@ textarea {
   }
 
 }
+/* Reveal guidance and long lists only when requested. */
+body.content-workspace .page-body{padding-top:22px}
+body.content-workspace .content-guide{padding:0 18px;margin-bottom:12px;border:1px solid #d8e5de;border-radius:12px;background:#ffffff85}
+body.content-workspace .content-guide summary{padding:15px 0;cursor:pointer;color:#245b50;font-size:14px;font-weight:600}
+body.content-workspace .content-guide>div{display:block;padding:0 0 18px;max-width:950px}
+body.content-workspace .content-guide :is(p,strong){font-size:14px;line-height:1.8}
+body.content-workspace .content-guide h3{font-size:17px;line-height:1.5}
+body.content-workspace .content-guide .intro-note{padding:14px;margin-top:12px}
+body.content-workspace .metrics-grid{gap:12px;margin:20px 0}
+body.content-workspace .metric-card{padding:16px;border-radius:14px;box-shadow:none}
+body.content-workspace .content-panel{margin-top:18px;min-width:0}
+.content-display-controls{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:14px 22px;border-bottom:1px solid #dce7e1}
+.content-display-controls button{min-height:38px;padding:8px 14px;border:1px solid #bdd4c8;border-radius:9px;background:#edf6f1;color:#075e5a;font:inherit;font-size:13px;cursor:pointer}
+.content-display-controls span{font-size:12px;color:#6b8076;margin-inline-start:auto}
+.content-display-controls button[hidden]{display:none!important}
+body.content-workspace .content-collapsed{display:none!important}
+body.content-workspace .content-table :is(td,th){padding:13px 12px;line-height:1.6}
+body.content-workspace .content-table td{max-width:300px;overflow-wrap:anywhere}
+@media(max-width:700px){.content-display-controls{padding:14px}.content-display-controls span{flex-basis:100%;margin:0}}

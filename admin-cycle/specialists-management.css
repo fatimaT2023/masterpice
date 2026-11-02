@@ -1896,4 +1896,4 @@ tbody tr:hover {
     grid-template-columns: 1fr;
   }
 
-}
+}.status-badge.needs_changes{background:#fff0d4;color:#77551a}

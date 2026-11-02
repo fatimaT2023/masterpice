@@ -186,6 +186,23 @@ document.addEventListener(
     // EXISTING PROFILE
     // ==================================
 
+    // Resolve only the specialist registered in this tab; never use another account.
+    function readRegistrationAccount() {
+      try {
+        const id = sessionStorage.getItem('rafiqSpecialistRegistrationUserId');
+        if (!id) return null;
+        const users = JSON.parse(localStorage.getItem('rafiqUsers') || '[]');
+        return Array.isArray(users) ? users.find(user => user?.id === id && user.role === 'specialist') || null : null;
+      } catch { return null; }
+    }
+    const registrationAccount = readRegistrationAccount();
+    if (registrationAccount) {
+      fullName.value = registrationAccount.fullName || '';
+      email.value = registrationAccount.email || '';
+      phone.value = registrationAccount.phone || '';
+      email.readOnly = !!email.value;
+      document.getElementById('registrationDetailsNote').hidden = false;
+    }
     function getExistingProfile() {
 
       try {
@@ -203,20 +220,24 @@ document.addEventListener(
     }
 
 
-    const existingProfile =
-      getExistingProfile();
+    const savedProfile = window.RafiqSpecialistAccess?.profile || getExistingProfile();
+    const existingProfile = registrationAccount && savedProfile?.email?.toLowerCase() !== registrationAccount.email.toLowerCase() ? null : savedProfile;
 
 
+    if (existingProfile?.status === 'needs_changes') {
+      const fields={fullName:'fullName',email:'email',phone:'phone',specialty:'specialtyKey',experience:'experience',licenseNumber:'licenseNumber',qualification:'qualification',bio:'bio',sessionFee:'price',notificationEmail:'notificationEmail'};
+      for(const [id,key] of Object.entries(fields)){const input=document.getElementById(id);if(existingProfile[key]!=null)input.value=existingProfile[key];}
+      document.querySelectorAll('input[name="consultationType"]').forEach(input=>input.checked=existingProfile.consultationTypes?.includes(input.value)||false);
+      document.querySelectorAll('input[name="language"]').forEach(input=>input.checked=existingProfile.languages?.includes(input.value)||false);
+      bioCount.textContent=bio.value.length+' / 600';
+    }
     /*
       If onboarding was already submitted,
       show success state instead of form.
     */
 
     if (
-      existingProfile &&
-      localStorage.getItem(
-        "rafiqSpecialistOnboardingComplete"
-      ) === "true"
+      existingProfile && ["pending", "rejected", "suspended"].includes(existingProfile.status)
     ) {
 
       showSuccessView();
@@ -229,6 +250,7 @@ document.addEventListener(
     // BIO COUNT
     // ==================================
 
+    window.RafiqValidateSpecialistStep = validateForm;
     bio.addEventListener(
       "input",
       () => {
@@ -332,6 +354,7 @@ document.addEventListener(
     // ==================================
 
     function clearErrors() {
+      document.getElementById('notificationEmailError').textContent = '';
 
       [
         fullNameError,
@@ -360,7 +383,7 @@ document.addEventListener(
     // VALIDATION
     // ==================================
 
-    function validateForm() {
+    function validateForm(section = null) {
 
       clearErrors();
 
@@ -561,6 +584,14 @@ document.addEventListener(
       }
 
 
+      if (section) {
+        document.querySelectorAll(".field-error").forEach(error => { if (!section.contains(error)) error.textContent = ""; });
+        return !Array.from(section.querySelectorAll(".field-error")).some(error => error.textContent.trim());
+      }
+      const updatesEmail = document.getElementById("notificationEmail");
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(updatesEmail.value.trim())) {
+        document.getElementById("notificationEmailError").textContent = "Please enter a valid email address."; valid = false;
+      }
       return valid;
     }
 
@@ -587,9 +618,7 @@ document.addEventListener(
         credentialFile.files[0];
 
 
-      const specialistId =
-        "specialist_" +
-        Date.now();
+      const specialistId = existingProfile?.status === 'needs_changes' ? existingProfile.id : 'specialist_' + Date.now();
 
 
       return {
@@ -610,6 +639,10 @@ document.addEventListener(
           phone.value.trim(),
 
 
+        notificationEmail: document.getElementById("notificationEmail").value.trim(),
+        registrationUserId: registrationAccount?.id || existingProfile?.registrationUserId || null,
+        reviewHistory: existingProfile?.reviewHistory || [],
+        resubmittedAt: existingProfile?.status === 'needs_changes' ? new Date().toISOString() : null,
         specialtyKey:
           specialty.value,
 
@@ -666,7 +699,7 @@ document.addEventListener(
         credentialFileName:
           file
             ? file.name
-            : null,
+            : existingProfile?.credentialFileName || null,
 
 
         /*
@@ -692,7 +725,7 @@ document.addEventListener(
 
 
         createdAt:
-          new Date().toISOString(),
+          existingProfile?.createdAt || new Date().toISOString(),
 
 
         approvedAt:
@@ -760,9 +793,8 @@ document.addEventListener(
       }
 
 
-      specialists.push(
-        profile
-      );
+      specialists = specialists.filter(item => item.id !== profile.id && item.email?.toLowerCase() !== profile.email.toLowerCase());
+      specialists.push(profile);
 
 
       localStorage.setItem(
@@ -843,12 +875,14 @@ document.addEventListener(
               createSpecialistProfile();
 
 
-            saveSpecialist(
-              profile
-            );
-
-
-            showSuccessView();
+            try {
+              saveSpecialist(profile);
+              showSuccessView();
+            } catch {
+              submitButton.disabled = false;
+              submitButton.textContent = 'Submit Profile for Review';
+              document.getElementById('notificationEmailError').textContent = 'We couldn’t save your application. Check browser storage and try again.';
+            }
 
           },
           600
@@ -869,6 +903,7 @@ document.addEventListener(
 
       successView.hidden =
         false;
+      document.dispatchEvent(new Event('rafiq:application-submitted'));
 
 
       window.scrollTo({

@@ -1025,7 +1025,7 @@ document.addEventListener(
           <span
             class="status-badge ${status}"
           >
-            ${escapeHTML(status)}
+            ${escapeHTML(status === 'needs_changes' ? 'Needs information' : status)}
           </span>
 
         </td>
@@ -1204,7 +1204,7 @@ document.addEventListener(
           <span
             class="status-badge ${status}"
           >
-            ${escapeHTML(status)}
+            ${escapeHTML(status === 'needs_changes' ? 'Needs information' : status)}
           </span>
 
         </div>
@@ -1408,8 +1408,7 @@ document.addEventListener(
         "Not recorded";
 
 
-      modalStatus.textContent =
-        status;
+      modalStatus.textContent = status === 'needs_changes' ? 'Needs information' : status;
 
 
       modalStatus.className =

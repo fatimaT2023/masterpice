@@ -819,34 +819,8 @@ document.addEventListener(
 
       const recent =
         bookings
-          .slice()
-          .sort(
-            (a,b) => {
-
-              const aDate =
-                a.createdAt
-                  ? new Date(
-                      a.createdAt
-                    )
-                  : getBookingDateTime(
-                      a
-                    );
-
-
-              const bDate =
-                b.createdAt
-                  ? new Date(
-                      b.createdAt
-                    )
-                  : getBookingDateTime(
-                      b
-                    );
-
-
-              return bDate - aDate;
-
-            }
-          )
+          .filter(item => { const date = getBookingDateTime(item); return date && date.toDateString() === new Date().toDateString(); })
+          .sort((a,b) => getBookingDateTime(a) - getBookingDateTime(b))
           .slice(
             0,
             6

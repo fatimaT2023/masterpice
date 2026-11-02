@@ -1511,22 +1511,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-  function startRegistration() {
-    // Preview directory: explicit profile fields only; passwords stay out of storage.
+  async function startRegistration() {
+    if(isSubmitting)return;
+    isSubmitting=true;
+    // Store a salted preview verifier, never the password itself.
     try {
       const stored = JSON.parse(localStorage.getItem('rafiqUsers') || '[]');
       if (!Array.isArray(stored)) throw new Error('Invalid user directory');
       const email = emailInput.value.trim().toLowerCase();
-      const existing = stored.find(user => user && user.email === email && user.role === selectedRole);
+      const existing = stored.find(user => user && user.email?.toLowerCase() === email && user.role === selectedRole);
+      if(existing){
+        setStatus(currentLanguage==='ar'?'هذا البريد مسجّل مسبقًا. سجّل الدخول، أو استخدم بريدًا آخر لإنشاء حساب جديد.':'This email is already registered. Log in, or use another email to create a new account.','error');
+        emailInput.focus();isSubmitting=false;return;
+      }
       const profile = {
         id: existing?.id || ('user_' + (globalThis.crypto?.randomUUID?.() || Date.now() + '_' + Math.random().toString(36).slice(2))),
         fullName: fullNameInput.value.trim(), email, phone: phoneInput.value.trim(),
+        previewCredential: await window.RafiqPreviewCredentials.create(passwordInput.value),
         role: selectedRole, createdAt: existing?.createdAt || new Date().toISOString()
       };
       const users = stored.filter(user => !(user && user.email === email && user.role === selectedRole));
       users.push(profile);
       localStorage.setItem('rafiqUsers', JSON.stringify(users));
+      ['rafiqParentUserId','rafiqSpecialistRegistrationUserId','rafiqSpecialistId','rafiqAdminEmail','rafiqRole','rafiqBookingConcernDraft','rafiqSelectedReportBooking'].forEach(key=>sessionStorage.removeItem(key));
+      sessionStorage.setItem('rafiqRole',selectedRole);
+      if(selectedRole==='parent'){
+        ['rafiqCurrentChildId','rafiqSetupPendingChildId','rafiqParentOnboardingComplete'].forEach(key=>localStorage.removeItem(key));
+      }
+      if (selectedRole === 'specialist') sessionStorage.setItem('rafiqSpecialistRegistrationUserId', profile.id);
+      if (selectedRole === 'parent') sessionStorage.setItem('rafiqParentUserId', profile.id);
     } catch {
+      isSubmitting=false;
       setStatus(currentLanguage === 'ar' ? 'تعذر حفظ الحساب في هذا المتصفح. تحقق من مساحة التخزين وحاول مجددًا.' : 'Could not save your account in this browser. Check browser storage and try again.', 'error');
       return;
     }

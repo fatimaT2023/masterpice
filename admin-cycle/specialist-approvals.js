@@ -1039,6 +1039,7 @@ document.addEventListener(
     // =====================================
 
     function renderSelectedSpecialist() {
+      renderVerificationChecklist();
 
       const specialist =
         specialists.find(
@@ -1249,6 +1250,40 @@ document.addEventListener(
     // APPROVE
     // =====================================
 
+    const verificationItems=[['identity','Identity matches the professional documents'],['qualification','Qualifications support the stated specialty'],['license','License checked with the issuer, or an explained exemption verified'],['contact','Contact details checked and experience evidence reviewed']];
+    function renderVerificationChecklist(){
+      const specialist=getSelectedSpecialist();if(!specialist)return;
+      const mount=document.getElementById('reviewChecklist');mount.replaceChildren();
+      for(const [key,title] of verificationItems){const label=document.createElement('label'),input=document.createElement('input'),text=document.createElement('span');input.type='checkbox';input.dataset.verification=key;input.checked=!!specialist.reviewChecklist?.[key];text.textContent=title;label.append(input,text);mount.append(label);}
+      document.getElementById('reviewEvidence').value=specialist.reviewEvidence||'';
+      document.getElementById('reviewEvidence').removeAttribute('aria-invalid');
+      document.getElementById('reviewContactEmail').textContent='Application updates email: '+(specialist.notificationEmail||specialist.email||'Not recorded');
+      document.getElementById('reviewChecklistError').textContent='';document.getElementById('changesRequestForm').hidden=true;
+    }
+    function reviewRecord(){return {reviewChecklist:Object.fromEntries([...document.querySelectorAll('[data-verification]')].map(input=>[input.dataset.verification,input.checked])),reviewEvidence:document.getElementById('reviewEvidence').value.trim(),reviewedBy:sessionStorage.getItem('rafiqAdminEmail')||'Preview administrator'};}
+    function reviewIsComplete(){
+      const record=reviewRecord(),evidence=document.getElementById('reviewEvidence');
+      const incomplete=[...document.querySelectorAll('[data-verification]')].find(input=>!input.checked);
+      const checklistComplete=Object.keys(record.reviewChecklist).length===4&&!incomplete;
+      const evidenceComplete=record.reviewEvidence.length>=10;
+      const complete=checklistComplete&&evidenceComplete;
+      const message=complete?'':!checklistComplete?'Approval has not been submitted. Complete all four verification items first.':'Approval has not been submitted. Add verification notes explaining what you checked and the source used (at least 10 characters).';
+      document.getElementById('reviewChecklistError').textContent=message;
+      evidence.setAttribute('aria-invalid',String(!evidenceComplete));
+      if(!complete){const target=incomplete||evidence;target.focus();target.scrollIntoView({behavior:'smooth',block:'center'});}
+      return complete;
+    }
+    document.getElementById('reviewEvidence').addEventListener('input',event=>{
+      if(event.target.value.trim().length>=10){event.target.removeAttribute('aria-invalid');document.getElementById('reviewChecklistError').textContent='';}
+    });
+    document.getElementById('requestChangesButton').addEventListener('click',()=>{document.getElementById('changesRequestForm').hidden=false;document.getElementById('changesRequestReason').value='';document.getElementById('changesRequestReason').focus();});
+    document.getElementById('cancelRequestChanges').addEventListener('click',()=>document.getElementById('changesRequestForm').hidden=true);
+    document.getElementById('confirmRequestChanges').addEventListener('click',()=>{
+      const specialist=getSelectedSpecialist(),reason=document.getElementById('changesRequestReason').value.trim();if(!specialist)return;
+      if(reason.length<10){document.getElementById('reviewChecklistError').textContent='Explain the requested changes in at least 10 characters.';return;}
+      updateSpecialistDecision(specialist.id,{...reviewRecord(),status:'needs_changes',verificationStatus:'needs_changes',changesRequestedAt:new Date().toISOString(),changesRequestReason:reason,reviewedAt:new Date().toISOString()});
+      showToast('i','More information requested','The applicant can read your request after signing in. Automatic email is not enabled.');afterDecision();
+    });
     approveButton.addEventListener(
       "click",
       () => {
@@ -1263,6 +1298,7 @@ document.addEventListener(
         }
 
 
+        if (!reviewIsComplete()) return;
         approveModalText.textContent =
           `${specialist.fullName || "This specialist"} will be marked as verified and approved for RAFIQ practice access.`;
 
@@ -1299,6 +1335,7 @@ document.addEventListener(
         }
 
 
+        if (!reviewIsComplete()) return;
         const now =
           new Date()
             .toISOString();
@@ -1308,6 +1345,7 @@ document.addEventListener(
           specialist.id,
           {
 
+            ...reviewRecord(),
             status:
               "approved",
 
@@ -1449,6 +1487,7 @@ document.addEventListener(
           specialist.id,
           {
 
+            ...reviewRecord(),
             status:
               "rejected",
 
@@ -1523,7 +1562,8 @@ document.addEventListener(
             specialistId
               ? {
                   ...specialist,
-                  ...changes
+                  ...changes,
+                  reviewHistory:[...(specialist.reviewHistory||[]),{status:changes.status,reason:changes.changesRequestReason||changes.rejectionReason||null,at:new Date().toISOString(),by:changes.reviewedBy||sessionStorage.getItem('rafiqAdminEmail')||'Preview administrator'}]
                 }
               : specialist
         );

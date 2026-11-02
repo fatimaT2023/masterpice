@@ -32,21 +32,15 @@
   >
 
   <link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
-  <link rel="stylesheet" href="admin-cycle-glass.css">
+  <link rel="stylesheet" href="admin-cycle-glass.css"><link rel="stylesheet" href="admin-overview.css">
   <link rel="stylesheet" href="admin-sidebar.css">
 <link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
 <link rel="stylesheet" href="../shared/site-language.css">
 </head>
 
 
-<body class="admin-cycle-video">
-  <div class="dashboard-video-background" aria-hidden="true">
-    <video id="dashboardBackgroundVideo" muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true">
-      <source src="../pearent-cycel/assets/dashboard/background.mp4" type="video/mp4">
-    </video>
-    <div class="dashboard-video-tint"></div>
-  </div>
-  <button class="background-playback-toggle" id="backgroundPlaybackToggle" type="button" aria-controls="dashboardBackgroundVideo" aria-pressed="true">&#9654; Play background</button>
+<body class="admin-cycle-video admin-operations">
+  <div class="admin-static-background" aria-hidden="true"></div>
 
 <div class="admin-shell">
 
@@ -377,92 +371,14 @@
            HERO
       ====================================== -->
 
-      <section class="dashboard-hero">
-
-        <div class="hero-content">
-
-          <span class="hero-kicker">
-            RAFIQ CONTROL CENTER
-          </span>
-
-          <h2>
-            Platform oversight,
-            <span>without overreach.</span>
-          </h2>
-
-          <p>
-            Review professional applications, monitor
-            platform operations, maintain trusted
-            content and supervise RAFIQ AI safety.
-          </p>
-
-
-          <div class="hero-actions">
-
-            <a
-              href="specialist-approvals.html"
-              class="primary-action"
-            >
-              Review Applications
-              <span>→</span>
-            </a>
-
-
-            <a
-              href="reports-analytics.html"
-              class="secondary-action"
-            >
-              View Analytics
-            </a>
-
-          </div>
-
-        </div>
-
-
-        <div class="hero-review-card">
-
-          <div class="hero-review-top">
-
-            <span>
-              ACTION REQUIRED
-            </span>
-
-            <div class="pulse-dot"></div>
-
-          </div>
-
-
-          <strong id="heroPendingCount">
-            0
-          </strong>
-
-
-          <h3>
-            Pending specialist reviews
-          </h3>
-
-
-          <p id="heroPendingMessage">
-            No applications currently require review.
-          </p>
-
-
-          <a href="specialist-approvals.html">
-            Open Approval Queue
-            <span>→</span>
-          </a>
-
-        </div>
-
-      </section>
+      <section class="operations-intro"><h2>Your daily workspace</h2><p>Review requests and outstanding actions. Open reports for trends and comparisons.</p><a href="reports-analytics.html">View performance reports →</a></section><div hidden><span id="heroPendingCount"></span><span id="heroPendingMessage"></span></div><section id="operationsActions" class="operations-actions" aria-label="Actions waiting for review"></section>
 
 
       <!-- =====================================
            CORE METRICS
       ====================================== -->
 
-      <section class="metrics-grid">
+      <section class="metrics-grid" hidden>
 
         <article class="metric-card">
 
@@ -653,12 +569,11 @@
                 </span>
 
                 <h2>
-                  Recent bookings
+                  Today’s appointments
                 </h2>
 
                 <p>
-                  A high-level view of the latest
-                  appointments across RAFIQ.
+                  Appointments scheduled for today across RAFIQ.
                 </p>
 
               </div>
@@ -691,12 +606,11 @@
               </div>
 
               <strong>
-                No bookings yet
+                No appointments today
               </strong>
 
               <p>
-                Platform booking activity will appear
-                here.
+                Today’s scheduled appointments will appear here.
               </p>
 
             </div>
@@ -708,7 +622,7 @@
 
         <!-- RIGHT -->
 
-        <aside class="dashboard-secondary">
+        <aside class="dashboard-secondary" hidden>
 
           <!-- GOVERNANCE -->
 
@@ -929,9 +843,7 @@
 </div>
 
 
-<script src="admin-dashboard.js"></script>
-
-  <script src="../pearent-cycel/parent-dashboard-background.js"></script>
+<script src="admin-overview.js"></script><script src="admin-dashboard.js"></script>
   <script src="admin-sidebar.js"></script>
 <script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="../shared/site-language.js" defer></script>
 </body>

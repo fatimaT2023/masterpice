@@ -2090,3 +2090,12 @@ textarea {
   }
 
 }
+.review-checklist-card{padding:24px;margin:20px 0;border:1px solid #cbded5;border-radius:18px;background:#ffffffa6}
+.review-checklist-card h3{margin:0 0 12px}.review-checklist-card p{font-size:14px;line-height:1.7;color:#49645e}
+#reviewChecklist{display:grid;gap:10px;margin:18px 0}#reviewChecklist label{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.6}#reviewChecklist input{margin-top:4px;width:18px;height:18px;accent-color:#0b7a75}
+.review-checklist-card textarea{display:block;width:100%;box-sizing:border-box;margin:10px 0;padding:12px;border:1px solid #b7cec3;border-radius:10px;font:inherit}
+#reviewChecklistError{color:#a63a17}#changesRequestForm{margin-top:18px;padding-top:18px;border-top:1px solid #163e3b20}#changesRequestForm[hidden]{display:none}
+.review-checklist-card button{padding:10px 16px;min-height:42px;border-radius:10px;margin:6px 8px 0 0;cursor:pointer}
+#reviewEvidenceHelp{font-size:13px;color:#49645e;margin:8px 0}
+#reviewEvidence[aria-invalid=true]{border:2px solid #b74725;background:#fff8f3}
+#reviewChecklistError:not(:empty){padding:12px 14px;border:1px solid #e6b6a5;border-radius:10px;background:#fff4ed;font-size:14px;line-height:1.6}

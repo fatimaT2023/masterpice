@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+<script src="specialist-access.js"></script>
 <script src="../piblic-pages/rafiq-theme.js"></script>
   <meta charset="UTF-8">
 
@@ -41,122 +42,23 @@
 </head>
 
 
-<body class="parent-cycle-video specialist-cycle-video">
-  <div class="dashboard-video-background" aria-hidden="true">
-    <video id="dashboardBackgroundVideo" muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true">
-      <source src="../pearent-cycel/assets/dashboard/background.mp4" type="video/mp4">
-    </video>
-    <div class="dashboard-video-tint"></div>
-  </div>
-  <button class="background-playback-toggle" id="backgroundPlaybackToggle" type="button" aria-controls="dashboardBackgroundVideo" aria-pressed="true">▶ Play background</button>
+<body class="parent-cycle-video specialist-cycle-video specialist-setup-page">
+  <div class="specialist-static-background" aria-hidden="true"></div>
 
-<div class="app-shell"><div id="specialistSidebarMount"></div><script src="specialist-sidebar.js"></script><div class="sidebar-overlay" id="sidebarOverlay"></div><div class="main-content"><button type="button" class="menu-button onboarding-sidebar-toggle" id="menuButton" aria-label="Open navigation">☰ Menu</button><main class="onboarding-page">
-
-  <!-- LEFT BRAND PANEL -->
-
-  <section class="brand-panel">
-
-    <a
-      href="../piblic-pages/index.html"
-      class="brand"
-    >
-      <div class="brand-mark">
-        R
-      </div>
-
-      <span>
-        RAFIQ
-      </span>
-    </a>
-
-
-    <div class="brand-content">
-
-      <span class="eyebrow">
-        SPECIALIST NETWORK
-      </span>
-
-      <h1>
-        Bring your expertise
-        <span>closer to families.</span>
-      </h1>
-
-      <p>
-        Create your professional profile and submit it
-        for RAFIQ verification before becoming visible
-        to parents.
-      </p>
-
-
-      <div class="steps-preview">
-
-        <div class="step-preview active">
-          <span>01</span>
-
-          <div>
-            <strong>
-              Professional Profile
-            </strong>
-
-            <small>
-              Tell us about your work
-            </small>
-          </div>
-        </div>
-
-
-        <div class="step-preview">
-          <span>02</span>
-
-          <div>
-            <strong>
-              Verification
-            </strong>
-
-            <small>
-              RAFIQ reviews your details
-            </small>
-          </div>
-        </div>
-
-
-        <div class="step-preview">
-          <span>03</span>
-
-          <div>
-            <strong>
-              Start Supporting Families
-            </strong>
-
-            <small>
-              Manage bookings and availability
-            </small>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="brand-note">
-
-      <span>◇</span>
-
-      <p>
-        Specialist profiles are not published to
-        parents until they are approved.
-      </p>
-
-    </div>
-
-  </section>
-
+<header class="setup-header"><a href="../piblic-pages/index.html" class="brand">RAFIQ</a><div class="setup-header-actions"><a href="../piblic-pages/help-center.html?from=specialist">Help Center</a><button type="button" id="setupLogout">Log out</button></div></header><div class="app-shell"><div class="main-content"><main class="onboarding-page">
 
   <!-- RIGHT FORM PANEL -->
 
   <section class="form-panel">
 
+<section id="setupWelcome" class="setup-welcome">
+<span class="form-kicker">WELCOME TO RAFIQ</span><h1>Your expertise, closer to families.</h1>
+<p>Let’s complete your professional profile. Our administration team reviews each application before specialist workspace access is enabled.</p>
+<ol class="setup-overview"><li>Confirm your personal details</li><li>Add your professional and consultation information</li><li>Review your application and submit it for approval</li></ol>
+<p>You can sign in at any time to check your application status. Your workspace becomes available after approval.</p>
+<button type="button" id="setupBegin" class="submit-button">Complete my profile</button>
+</section>
+<nav id="setupProgress" class="setup-progress" aria-label="Profile setup progress" hidden></nav>
     <!-- FORM VIEW -->
 
     <div
@@ -164,20 +66,16 @@
       id="formView"
     >
 
-      <div class="form-heading">
+      <div class="form-heading" id="setupFormHeading">
 
         <span class="form-kicker">
           GET STARTED
         </span>
 
-        <h2>
-          Create your specialist profile
-        </h2>
+        <h1>Complete your professional profile</h1>
 
         <p>
-          Complete your professional information.
-          You can update these details later from
-          Specialist Settings.
+          Add your professional details to submit your profile for review.
         </p>
 
       </div>
@@ -189,6 +87,7 @@
       >
 
         <!-- PERSONAL -->
+<p id="registrationDetailsNote" class="registration-details-note" hidden>Your account details are ready from registration. You can edit your name and phone below.</p>
 
         <section class="form-section">
 
@@ -780,6 +679,8 @@
         </section>
 
 
+<section class="form-section" id="setupReview"><div class="section-heading"><div><span>FINAL REVIEW</span><h3>Review and submit your application</h3></div></div><div id="setupSummary"></div><label for="notificationEmail">Email for application updates</label><input type="email" id="notificationEmail" required autocomplete="email"><small class="field-error" id="notificationEmailError"></small><p class="setup-email-note">We’ll keep this email with your application. Automatic email updates are not enabled in this preview; sign in to check the decision.</p></section>
+<div class="setup-navigation"><button type="button" id="setupBack" class="draft-button">Back</button><button type="button" id="setupNext" class="submit-button">Next</button></div>
         <!-- SUBMIT -->
 
         <div class="form-actions">
@@ -815,109 +716,7 @@
       hidden
     >
 
-      <div class="success-icon">
-        ✓
-      </div>
-
-
-      <span class="success-kicker">
-        PROFILE SUBMITTED
-      </span>
-
-
-      <h2>
-        Your profile is under review.
-      </h2>
-
-
-      <p>
-        RAFIQ administration will review your
-        professional information before your profile
-        becomes visible to parents.
-      </p>
-
-
-      <div class="review-status">
-
-        <div>
-
-          <span>
-            PROFILE STATUS
-          </span>
-
-          <strong>
-            Pending Review
-          </strong>
-
-        </div>
-
-
-        <div class="pending-badge">
-          Pending
-        </div>
-
-      </div>
-
-
-      <div class="next-steps">
-
-        <h3>
-          What happens next?
-        </h3>
-
-
-        <div class="next-step">
-
-          <span>
-            1
-          </span>
-
-          <p>
-            RAFIQ Admin reviews your professional
-            details and credentials.
-          </p>
-
-        </div>
-
-
-        <div class="next-step">
-
-          <span>
-            2
-          </span>
-
-          <p>
-            Once approved, your profile can become
-            visible in the parent specialist directory.
-          </p>
-
-        </div>
-
-
-        <div class="next-step">
-
-          <span>
-            3
-          </span>
-
-          <p>
-            You can manage availability, bookings and
-            consultation reports from your dashboard.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <a
-        href="specialist-dashboard.html"
-        class="dashboard-button"
-      >
-        Continue to Specialist Dashboard
-        <span>→</span>
-      </a>
-
+<div class="success-icon" aria-hidden="true">✓</div><span class="success-kicker">APPLICATION STATUS</span><h1 id="applicationStatusTitle">Your application is under review</h1><p id="applicationStatusCopy">Thank you for completing your profile. Our administration team will review your professional information. Your workspace will be available after approval.</p><div class="review-status"><strong id="applicationStatusLabel">Pending Review</strong></div><p id="applicationEmail"></p><p>Automatic email updates are not enabled in this preview. Sign in to check your application status.</p><div class="setup-status-actions"><a href="../piblic-pages/help-center.html?from=specialist" class="dashboard-button">Contact Help Center</a><button type="button" id="checkApplicationStatus" class="draft-button">Check status</button></div>
     </div>
 
   </section>
@@ -925,9 +724,8 @@
 </main></div></div>
 
 
-<script src="specialist-onboarding.js"></script>
+<script src="specialist-onboarding.js"></script><script src="specialist-setup-wizard.js"></script>
 <script src="specialist-notifications.js"></script>
-  <script src="../pearent-cycel/parent-dashboard-background.js"></script>
 <script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="../shared/site-language.js" defer></script>
 </body>
 </html>

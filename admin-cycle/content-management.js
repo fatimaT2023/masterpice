@@ -1294,18 +1294,21 @@ document.addEventListener(
     // RENDER CONTENT
     // =====================================
 
+    const contentDisplayState={};
+    function displayState(){return contentDisplayState[activeTab]||(contentDisplayState[activeTab]={expanded:false,collapsed:false});}
+    document.getElementById('contentShowAll').addEventListener('click',()=>{const state=displayState();state.expanded=!state.expanded;state.collapsed=false;renderContent();});
     function renderContent() {
 
       const items =
         getFilteredItems();
+      const state=displayState(),visible=state.expanded?items:items.slice(0,5);
+      const showAll=document.getElementById('contentShowAll');
+      showAll.textContent=state.expanded?'Show less':'Show all';showAll.hidden=items.length<=5;showAll.setAttribute('aria-expanded',String(state.expanded));
+      document.getElementById('contentTableWrap').classList.toggle('content-collapsed',state.collapsed);
+      mobileContentList.classList.toggle('content-collapsed',state.collapsed);
 
 
-      resultCount.textContent =
-        `${items.length} ${
-          items.length === 1
-            ? "item"
-            : "items"
-        }`;
+      resultCount.textContent = state.collapsed ? items.length+' records hidden' : 'Showing '+visible.length+' of '+items.length+' items';
 
 
       contentTableHead.innerHTML =
@@ -1324,8 +1327,7 @@ document.addEventListener(
         items.length === 0
       ) {
 
-        emptyState.hidden =
-          false;
+        emptyState.hidden = state.collapsed;
 
 
         emptyTitle.textContent =
@@ -1347,7 +1349,7 @@ document.addEventListener(
       renderTableHeader();
 
 
-      items.forEach(
+      visible.forEach(
         item => {
 
           renderDesktopRow(

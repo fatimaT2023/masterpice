@@ -321,7 +321,7 @@ document.addEventListener(
 
     const topbar =
       document.querySelector(
-        ".topbar"
+        ".parent-header-actions, .topbar"
       );
 
 

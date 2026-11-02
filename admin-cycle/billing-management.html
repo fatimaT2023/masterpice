@@ -32,7 +32,7 @@
   >
 
   <link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
-  <link rel="stylesheet" href="admin-cycle-glass.css">
+  <link rel="stylesheet" href="admin-cycle-glass.css"><link rel="stylesheet" href="finance-workspace.css">
   <link rel="stylesheet" href="admin-sidebar.css">
 <link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
 <link rel="stylesheet" href="../session-finance.css">
@@ -41,14 +41,8 @@
 </head>
 
 
-<body class="admin-cycle-video">
-  <div class="dashboard-video-background" aria-hidden="true">
-    <video id="dashboardBackgroundVideo" muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true">
-      <source src="../pearent-cycel/assets/dashboard/background.mp4" type="video/mp4">
-    </video>
-    <div class="dashboard-video-tint"></div>
-  </div>
-  <button class="background-playback-toggle" id="backgroundPlaybackToggle" type="button" aria-controls="dashboardBackgroundVideo" aria-pressed="true">&#9654; Play background</button>
+<body class="admin-cycle-video finance-workspace">
+  <div class="admin-static-background" aria-hidden="true"></div>
 
 <div class="admin-shell">
 
@@ -284,18 +278,14 @@
             PLATFORM FINANCE
           </span>
 
-          <h1>
-            Billing & Subscriptions
-          </h1>
+          <h1>Finance</h1>
 
         </div>
 
       </div>
 
 
-      <div class="billing-pill">
-        Demo billing oversight
-      </div>
+      <details class="finance-settings"><summary>Finance settings</summary><form id="financeCommissionForm"><label for="financeCommission">Commission for new bookings (%)</label><input id="financeCommission" type="number" min="0" max="100" step="0.1" required><button type="submit">Save commission</button><p>Changes apply to new bookings only. Existing payment records keep their original rate.</p><p id="financeSettingsStatus" role="status"></p></form></details>
 
     </header>
 
@@ -306,54 +296,14 @@
            HERO
       ====================================== -->
 
-      <section class="hero">
 
-        <div>
-
-          <span class="hero-kicker">
-            SUBSCRIPTION OPERATIONS
-          </span>
-
-          <h2>
-            Keep platform billing
-            <span>clear and traceable.</span>
-          </h2>
-
-          <p>
-            Review subscription activity and payment records
-            created by the RAFIQ prototype. Real payments,
-            refunds and card processing require a secure
-            backend and payment provider.
-          </p>
-
-        </div>
-
-
-        <div class="hero-note">
-
-          <span>
-            DEMO ENVIRONMENT
-          </span>
-
-          <strong>
-            No real money is processed here.
-          </strong>
-
-          <p>
-            This page represents the administrative billing
-            workflow and reads locally stored prototype data.
-          </p>
-
-        </div>
-
-      </section>
 
 
       <!-- =====================================
            METRICS
       ====================================== -->
 
-      <section class="metrics-grid">
+      <section class="metrics-grid" hidden>
 
         <article class="metric-card">
 
@@ -463,6 +413,12 @@
 
       <section class="billing-panel">
 
+<section class="finance-intro"><p>Review session payments, specialist settlements and parent subscriptions.</p><p class="finance-demo">Preview records only. No real payments, transfers or emails are sent.</p></section>
+<div class="finance-period"><label for="financePeriod">Reporting period</label><select id="financePeriod"><option value="all">All time</option><option value="month">This month</option><option value="custom">Custom dates</option></select><label>From date<input id="financeFrom" type="date"></label><label>To date<input id="financeTo" type="date"></label><span id="financePeriodNote">Session date · subscription start date · payment date</span></div>
+<div id="financeAlerts" class="finance-alerts" aria-label="Actions required"></div><p id="financeNotice" role="status" hidden></p>
+<section class="finance-metrics" aria-label="Session totals for the selected period"><article><span>Collected session payments</span><strong id="financeCollected">0.00 JOD</strong><small>Selected period · excludes refunded payments</small></article><article><span>Specialist amounts due</span><strong id="financeDue">0.00 JOD</strong><small>Completed sessions awaiting transfer</small></article><article><span>Earned platform commission</span><strong id="financeEarned">0.00 JOD</strong><small>Paid, completed sessions</small></article></section>
+<nav class="finance-tabs" aria-label="Finance sections"><button type="button" data-finance-tab="sessions" aria-pressed="true">Session payments</button><button type="button" data-finance-tab="settlements" aria-pressed="false">Specialist settlements</button><button type="button" data-finance-tab="subscriptions" aria-pressed="false">Parent subscriptions</button><button type="button" data-finance-tab="payments" aria-pressed="false">Subscription payment history</button></nav>
+<section id="financeSessions" class="finance-session-panel"><div class="finance-section-heading"><div><h2 id="financeSessionTitle">Session payments</h2><p id="financeActionSummary" role="status"></p></div></div><div class="finance-filters"><label>Search<input id="financeSearch" type="search" placeholder="Booking or specialist"></label><label>Status<select id="financeStatus"><option value="all">All records</option><option value="action">Needs action</option><option value="paid">Paid</option><option value="refund_pending">Refund pending</option><option value="refunded">Refunded</option><option value="pending">Awaiting transfer</option><option value="transferred">Transferred</option></select></label></div><p id="financeEmpty" hidden>No matching session records.</p><div class="finance-table-scroll"><table><thead><tr><th>Booking / specialist</th><th>Session</th><th>Payment</th><th>Total</th><th>Commission</th><th>Specialist net</th><th>Settlement</th><th>Action</th></tr></thead><tbody id="financeSessionRows"></tbody></table></div></section>
         <!-- TABS -->
 
         <div class="tabs">
@@ -894,9 +850,7 @@
                 PAYMENT HISTORY
               </span>
 
-              <h2>
-                Payment records
-              </h2>
+              <h2>Subscription payment history</h2>
 
               <p>
                 Review prototype payment transactions.
@@ -1129,9 +1083,7 @@
 </div>
 
 
-<script src="billing-management.js"></script>
-
-  <script src="../pearent-cycel/parent-dashboard-background.js"></script>
+<dialog id="financeConfirm" class="finance-confirm"><form method="dialog"><h2 id="financeConfirmTitle"></h2><p id="financeConfirmDescription"></p><dl id="financeConfirmDetails"></dl><p>Demo record only. No money will be moved.</p><p id="financeConfirmError" role="alert"></p><div><button value="cancel">Cancel</button><button type="button" id="financeConfirmSave">Confirm demo action</button></div></form></dialog><script src="billing-management.js"></script><script src="finance-workspace.js"></script>
   <script src="admin-sidebar.js"></script>
 <script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="../shared/site-language.js" defer></script>
 </body>

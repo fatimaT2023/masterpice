@@ -17,3 +17,28 @@
 .admin-cycle-video .sidebar :is(a,button):focus-visible{outline:3px solid var(--sage);outline-offset:2px}
 @media(max-width:950px){.admin-cycle-video .sidebar{width:min(var(--sidebar-w),calc(100vw - 40px));background:rgba(var(--theme-background-rgb,255,250,240),.88)}.admin-cycle-video.admin-navigation-open{overflow:hidden}}
 @media(prefers-reduced-motion:reduce){.admin-cycle-video .sidebar,.admin-cycle-video .sidebar .nav-link{transition:none}}
+
+/* Compact admin workspace navigation, with preferences beside Settings. */
+body.admin-cycle-video #sidebar{padding:20px 14px 14px;gap:0;background:rgba(250,253,252,.76);border-radius:0;border-inline-end:1px solid #ffffffcc;box-shadow:6px 0 30px #163e3b06;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+body.admin-cycle-video #sidebar .sidebar-top{flex-wrap:nowrap;gap:10px;margin-bottom:20px;padding-inline:8px}
+body.admin-cycle-video #sidebar .admin-card{padding:12px;gap:10px;border-radius:16px;background:#ffffff85;border-color:#ffffffcc;box-shadow:none}
+body.admin-cycle-video #sidebar .admin-avatar{width:38px;height:38px;min-width:38px;border-radius:12px;font-size:16px}
+body.admin-cycle-video #sidebar .sidebar-nav{margin-top:16px;padding:0 0 8px;scrollbar-gutter:auto;scrollbar-color:#adc8bf70 transparent}
+body.admin-cycle-video #sidebar .nav-label{font-size:9px;letter-spacing:.12em;color:#748b86;margin:8px 10px 5px}
+body.admin-cycle-video #sidebar .nav-label.section-gap{margin-top:14px}
+body.admin-cycle-video #sidebar .nav-link{position:relative;min-height:38px;padding:8px 11px;margin-bottom:3px;gap:10px;font-size:13px;font-weight:500;color:#49645e;border-radius:10px;line-height:1.4}
+body.admin-cycle-video #sidebar .nav-link:hover{background:#ffffff9c;color:#075e5a}
+body.admin-cycle-video #sidebar .nav-link.active{background:#dcefe9;color:#075e5a;border-color:#0b7a7514;font-weight:700;box-shadow:none}
+body.admin-cycle-video #sidebar .nav-link.active::before{content:'';position:absolute;inset-inline-start:0;top:10px;bottom:10px;width:3px;border-radius:4px;background:#0b7a75}
+body.admin-cycle-video #sidebar .nav-icon{width:20px;height:20px;flex:0 0 20px}
+body.admin-cycle-video #sidebar .nav-icon svg{width:18px;height:18px}
+body.admin-cycle-video #sidebar .sidebar-bottom{padding-top:10px;margin-top:auto;border-color:#163e3b12}
+body.admin-cycle-video #sidebar .logout-button{min-height:38px;margin-top:6px;padding:8px 11px;border-color:transparent;border-radius:10px;background:transparent;color:#7a5146;font-size:13px;font-weight:500}
+body.admin-cycle-video #sidebar .logout-button:hover{background:#fff0e9;border-color:#a63a171a}
+.admin-language-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:4px 11px 9px;padding-inline-start:41px}
+.admin-language-row>span{font-size:11px;color:#647b75}
+body.admin-cycle-video #sidebar .admin-language-row .site-languages{width:auto;margin:0;padding:2px;gap:1px;border:1px solid #163e3b14;border-radius:9px;background:#ffffff70}
+body.admin-cycle-video #sidebar .admin-language-row .site-languages button{min-height:28px;min-width:0;padding:4px 7px;font-size:10px;border-radius:7px}
+body.admin-cycle-video #sidebar .admin-language-row .site-languages button[aria-pressed=true]{background:#145b4e;color:white}
+html[lang=ar] body.admin-cycle-video #sidebar{border-radius:0}
+@media(max-height:760px){body.admin-cycle-video #sidebar{padding-top:14px}body.admin-cycle-video #sidebar .sidebar-top{margin-bottom:12px}body.admin-cycle-video #sidebar .sidebar-nav{margin-top:10px}body.admin-cycle-video #sidebar .nav-link{min-height:34px}}

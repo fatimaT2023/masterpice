@@ -28,13 +28,17 @@
     if (changed) save('rafiqBookings', bookings);
     return bookings;
   }
-  function checkout(amount) {
+  function checkout(amount, details = {}) {
     return new Promise(resolve => {
       const price = Number(amount);
       if (!Number.isFinite(price) || price < 0) { resolve(null); return; }
       const dialog = document.createElement('dialog');
       dialog.className = 'sf-dialog';
       dialog.innerHTML = `<form method="dialog"><h2>Pay before your session</h2><p>Orange Money · Demo checkout</p><strong class="sf-amount">${money(price)}</strong><p>Your appointment is confirmed after demo payment. No money will leave your wallet.</p><label><input type="checkbox" required> I understand this payment is simulated.</label><p role="status" class="sf-message">Awaiting payment</p><div class="sf-actions"><button type="button" data-cancel>Back</button><button type="button" data-fail>Simulate failure</button><button type="submit">Pay ${money(price)} · Demo</button></div></form>`;
+      dialog.setAttribute('aria-label','Confirm demo payment');
+      const summary=document.createElement('dl');summary.className='sf-checkout-summary';
+      for(const [label,value] of Object.entries(details)){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=String(value);dd.setAttribute('data-user-content','');summary.append(dt,dd);}
+      dialog.querySelector('.sf-amount').after(summary);
       let settled = false;
       const finish = value => { if (settled) return; settled = true; clearTimeout(timeout); dialog.close(); dialog.remove(); resolve(value); };
       const timeout = setTimeout(() => finish(null), 10 * 60 * 1000);
@@ -60,6 +64,7 @@
   function panel() {
     reconcile();
     const admin = location.pathname.endsWith('/billing-management.html');
+    if (admin) return; // Admin finance has its own unified workspace.
     const doctor = location.pathname.endsWith('/earnings.html');
     const parent = location.pathname.endsWith('/bookings.html');
     if (!admin && !doctor && !parent) return;

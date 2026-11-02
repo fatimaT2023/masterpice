@@ -3,7 +3,7 @@
 'use strict';
 document.addEventListener('DOMContentLoaded',()=>{
  const page=location.pathname.split('/').pop();
- if(['onboarding.html','getting-started.html','screening.html','milestones.html','health.html','child-profile.html'].includes(page))return;
+ if(['daily-activity.html','onboarding.html','getting-started.html','screening.html','milestones.html','health.html','child-profile.html'].includes(page))return;
  let child,context;
  try{const children=window.RafiqSetup.readChildren();child=children.find(item=>item.id===localStorage.getItem('rafiqCurrentChildId'))||children[0];if(!child)return;context=window.RafiqSetup.childContext(child);}catch{return;}
  if(page==='parent-dashboard.html'&&context.supported)return;
@@ -18,6 +18,10 @@ document.addEventListener('DOMContentLoaded',()=>{
  if(!gated)return;
  document.body.classList.add('age-content-gated','age-page-'+page.split('.')[0]);
  const panel=document.createElement('section');panel.className='rafiq-age-panel';
+ if(page==='challenges.html'&&context.supported){
+  const activity=document.createElement('a');activity.href='parent-dashboard.html#dailyMoment';activity.textContent='Open today’s activity';activity.className='screen-flow-primary';
+  panel.append(activity);
+ }
  const heading=document.createElement('h2');heading.textContent=page==='milestones.html'?'Growth observations, at your child’s pace':page==='challenges.html'?'Activities matched to your child’s stage':'Development questions for the right age';
  const explanation=document.createElement('p');explanation.textContent=!context.supported?'This child is outside the current age range. You can still access their saved records and specialist support.':page==='screening.html'?'An age-validated developmental screening tool has not been configured for this stage. The earlier demo questions do not provide a reliable screening result. You can discuss your observations with a specialist.':page==='challenges.html'?'Age-specific activities for this stage are being prepared for review. We won’t show a different age group’s activities in their place. You can save an observation or ask for support.':'Keep your own observations here. The earlier broad age-group templates are not used to assess your child. Where available, an original CDC checklist is linked below.';
  panel.append(heading,explanation);

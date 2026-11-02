@@ -1,5 +1,6 @@
 /* Review is local; only the existing booking handler can submit. */
 (()=>{'use strict';
+window.RafiqBookingJourney={step(index){document.querySelectorAll('[data-booking-step]').forEach(item=>{const step=Number(item.dataset.bookingStep);if(step===index)item.setAttribute('aria-current','step');else item.removeAttribute('aria-current');item.classList.toggle('is-complete',step<index);});}};
 window.RafiqBookingReview = {
   open(details, reason) {
     const dialog=document.getElementById('appointmentReview');

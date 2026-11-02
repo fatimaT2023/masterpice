@@ -481,6 +481,7 @@ document.addEventListener("DOMContentLoaded", () => {
         item.startDate ||
         item.createdAt ||
         item.subscribedAt ||
+        item.activatedAt ||
         null,
 
 
@@ -1023,6 +1024,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
+  window.RafiqAdminBilling = {selectTab,refresh(){subscriptions=loadSubscriptions();payments=loadPayments();renderSubscriptions();renderPayments();}};
   tabs.forEach(tab => {
 
     tab.addEventListener(
@@ -1165,6 +1167,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     return subscriptions
+      .filter(item => !window.RafiqFinancePeriod || window.RafiqFinancePeriod.includes(item.startedAt))
       .filter(item => {
 
         const haystack =
@@ -1445,6 +1448,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     return payments
+      .filter(item => !window.RafiqFinancePeriod || window.RafiqFinancePeriod.includes(item.createdAt))
       .filter(item => {
 
         const haystack =
@@ -1793,6 +1797,12 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
 
+    const history=document.createElement('section');history.className='finance-subscription-history';
+    const heading=document.createElement('h3');heading.textContent='Subscription payment history';history.append(heading);
+    const related=payments.filter(payment=>payment.subscriptionId===item.id||payment.subscriptionReference===item.id||item.paymentReference&&payment.id===item.paymentReference).sort((a,b)=>String(b.createdAt||'').localeCompare(String(a.createdAt||'')));
+    if(!related.length){const p=document.createElement('p');p.textContent='No payments explicitly linked to this subscription. Older records may not contain a subscription reference.';history.append(p);}
+    for(const payment of related){const row=document.createElement('div');row.className='finance-history-row';const description=document.createElement('p');description.textContent=payment.id+' · '+formatDate(payment.createdAt)+' · '+formatMoney(payment.amount,payment.currency)+' · '+capitalize(payment.status);const open=document.createElement('button');open.type='button';open.textContent='View payment details';open.addEventListener('click',()=>openPaymentDetails(payment));row.append(description,open);history.append(row);}
+    detailsGrid.append(history);
     openModal();
   }
 

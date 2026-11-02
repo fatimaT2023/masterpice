@@ -240,3 +240,110 @@
 @media(max-width:1200px){.specialist-cycle-video .main-content>.onboarding-page{grid-template-columns:1fr;max-width:750px;width:calc(100% - 32px)}}
 @media(max-width:950px){#sidebar{transform:translateX(-105%);transition:transform .3s ease;background:rgba(var(--theme-background-rgb,255,250,240),.82)}#sidebar.open{transform:translateX(0)}#sidebar .sidebar-close,.specialist-cycle-video .menu-button{display:grid;place-items:center}.specialist-cycle-video .main-content{margin-left:0}}
 @media(prefers-reduced-motion:reduce){#sidebar{transition:none}}
+
+/* Compact shared specialist navigation; one content column alongside it. */
+:root{--sidebar-width:248px!important}
+body.specialist-cycle-video #sidebar{width:var(--sidebar-width);padding:18px 14px;border-radius:0 20px 20px 0}
+body.specialist-cycle-video #sidebar .sidebar-top{margin-bottom:16px}
+body.specialist-cycle-video #sidebar .sidebar-status{margin-bottom:14px}
+body.specialist-cycle-video #sidebar .sidebar-nav{gap:2px;scrollbar-gutter:stable}
+body.specialist-cycle-video #sidebar .nav-link{min-height:40px;padding:8px 10px}
+body.specialist-cycle-video #sidebar .nav-section-title{margin-top:10px;margin-bottom:4px;font-size:10px}
+body.specialist-cycle-video #sidebar .nav-section-title.second{margin-top:14px}
+body.specialist-cycle-video #sidebar .sidebar-bottom{margin-top:10px;padding-top:10px;gap:2px}
+body.specialist-cycle-video .main-content{margin-left:var(--sidebar-width);width:calc(100% - var(--sidebar-width));min-width:0;box-sizing:border-box}
+body.specialist-cycle-video #sidebar .site-languages{width:auto;max-width:100%;margin:0;padding:2px;justify-content:flex-start}
+body.specialist-cycle-video #sidebar .site-languages button{min-height:30px;padding:4px 8px;font-size:10px}
+html[lang=ar] body.specialist-cycle-video #sidebar{border-radius:20px 0 0 20px}
+
+/* Profile setup is a focused form, without a second branding column. */
+body.specialist-setup-page .main-content{padding:36px 32px 64px}
+body.specialist-setup-page .main-content>.onboarding-page{display:block;width:100%;max-width:940px;min-height:0;margin:0 auto;background:transparent}
+body.specialist-setup-page .form-panel{display:block;padding:0;background:transparent;border:0;box-shadow:none;min-width:0;min-height:0}
+body.specialist-setup-page .form-container{width:100%;max-width:none;margin:0}
+body.specialist-setup-page .form-heading{margin-bottom:26px}
+body.specialist-setup-page .form-heading h1{font-family:var(--font-display);font-size:clamp(28px,3vw,40px);line-height:1.2;letter-spacing:-.03em;margin:10px 0 12px}
+body.specialist-setup-page .form-heading p{max-width:650px;font-size:15px;line-height:1.7;margin:0;color:var(--ink-soft)}
+body.specialist-setup-page .form-section{padding:26px;margin-bottom:18px;border:1px solid #ffffffb3;background:rgba(255,255,255,.65);border-radius:22px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 10px 32px #163e3b0a}
+body.specialist-setup-page .form-grid{gap:20px}
+body.specialist-setup-page .form-actions{gap:18px;flex-wrap:wrap}
+@media(max-width:950px){
+ body.specialist-cycle-video .main-content{margin-left:0;width:100%}
+ body.specialist-setup-page .main-content{padding:16px 22px 40px}
+ body.specialist-setup-page .onboarding-sidebar-toggle{margin:0 0 22px}
+}
+@media(max-width:600px){
+ body.specialist-setup-page .main-content{padding:14px 14px 32px}
+ body.specialist-setup-page .form-section{padding:20px;border-radius:18px}
+ body.specialist-setup-page .form-grid.two{grid-template-columns:minmax(0,1fr)}
+ body.specialist-setup-page .form-heading h1{font-size:28px}
+}
+
+/* Workspace navigation: quiet hierarchy, compact rows and profile preferences. */
+body.specialist-cycle-video #sidebar{padding:20px 14px 14px;background:rgba(250,253,252,.76);border-inline-end:1px solid #ffffffcc;box-shadow:6px 0 30px #163e3b06;border-radius:0;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+html[lang=ar] body.specialist-cycle-video #sidebar{border-radius:0}
+body.specialist-cycle-video #sidebar .sidebar-top{flex-wrap:nowrap;margin-bottom:20px;padding-inline:8px}
+body.specialist-cycle-video #sidebar .specialist-mini-card{padding:12px;gap:10px;border-radius:16px;background:#ffffff85;border-color:#ffffffcc;box-shadow:none}
+body.specialist-cycle-video #sidebar .specialist-avatar{width:38px;height:38px;border-radius:12px;font-size:16px}
+body.specialist-cycle-video #sidebar .specialist-info>span{font-size:9px;letter-spacing:.08em}
+body.specialist-cycle-video #sidebar .specialist-info strong{font-size:13px}
+body.specialist-cycle-video #sidebar .specialist-info small{font-size:11px}
+body.specialist-cycle-video #sidebar .sidebar-status{padding:7px 10px;margin:8px 0 14px;font-size:10px;border-radius:8px;background:#dff2eb99}
+body.specialist-cycle-video #sidebar .sidebar-nav{gap:3px;scrollbar-width:thin;scrollbar-color:#adc8bf70 transparent;scrollbar-gutter:auto}
+body.specialist-cycle-video #sidebar .nav-section-title{font-size:9px;letter-spacing:.12em;color:#748b86;margin:8px 10px 4px}
+body.specialist-cycle-video #sidebar .nav-section-title.second{margin-top:13px}
+body.specialist-cycle-video #sidebar .nav-link{position:relative;min-height:39px;padding:8px 11px;gap:10px;font-size:13px;font-weight:500;color:#49645e;border-radius:10px}
+body.specialist-cycle-video #sidebar .nav-link:hover{background:#ffffff9c;color:#075e5a}
+body.specialist-cycle-video #sidebar .nav-link.active{background:#dcefe9;color:#075e5a;border-color:#0b7a7514;font-weight:700}
+body.specialist-cycle-video #sidebar .nav-link.active::before{content:'';position:absolute;inset-inline-start:0;top:11px;bottom:11px;width:3px;border-radius:4px;background:#0b7a75}
+body.specialist-cycle-video #sidebar .nav-icon{width:20px;flex-basis:20px}
+body.specialist-cycle-video #sidebar .nav-icon svg{width:18px;height:18px}
+body.specialist-cycle-video #sidebar .sidebar-bottom{padding-top:10px;margin-top:10px;gap:2px;border-top:1px solid #163e3b12}
+body.specialist-cycle-video #sidebar .logout-button{min-height:38px;padding:8px 11px;gap:10px;font-size:13px;font-weight:500}
+body.specialist-cycle-video #sidebar .logout-button>span{width:20px;font-size:18px}
+.specialist-profile-language{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:4px 10px 8px 41px}
+html[lang=ar] .specialist-profile-language{padding:4px 41px 8px 10px}
+.specialist-language-label{font-size:11px;color:#647b75}
+body.specialist-cycle-video #sidebar .specialist-profile-language .site-languages{width:auto;gap:1px;padding:2px;border:1px solid #163e3b14;border-radius:9px;background:#ffffff70}
+body.specialist-cycle-video #sidebar .specialist-profile-language .site-languages button{min-height:28px;min-width:0;padding:4px 6px;font-size:10px;border-radius:7px}
+body.specialist-cycle-video #sidebar .specialist-profile-language .site-languages button[aria-pressed=true]{background:#145b4e;color:white}
+@media(max-height:760px){body.specialist-cycle-video #sidebar{padding-top:14px}body.specialist-cycle-video #sidebar .sidebar-top{margin-bottom:12px}body.specialist-cycle-video #sidebar .nav-link{min-height:35px}body.specialist-cycle-video #sidebar .sidebar-status{margin-bottom:8px}}
+
+body.specialist-setup-page .registration-details-note{padding:12px 16px;margin:0 0 16px;border:1px solid #0b7a7520;border-radius:12px;background:#e5f4ee99;color:#245b50;font-size:14px;line-height:1.6}
+body.specialist-setup-page input[readonly]{background:#edf3f180;color:#49645e;cursor:default}
+
+/* Standalone application flow, before workspace approval. */
+.specialist-access-redirect body{visibility:hidden}
+body.specialist-setup-page .main-content{margin:0!important;width:100%;padding:32px 24px 64px}
+html[lang=ar] body.specialist-setup-page .main-content{margin:0!important}
+body.specialist-setup-page .onboarding-page{max-width:860px!important;width:100%!important}
+.setup-header{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1160px;margin:auto;padding:22px 28px;border-bottom:1px solid #163e3b10}
+.setup-header .brand{color:#075e5a;font-size:22px;font-weight:700;text-decoration:none}
+.setup-header-actions{display:flex;align-items:center;gap:18px;margin-inline-start:auto}
+.setup-header-actions a,.setup-header-actions button{font:inherit;font-size:13px;color:#365e56;text-decoration:none;background:transparent;border:0;cursor:pointer;padding:8px}
+.setup-header .site-languages{margin:0}.setup-header .site-languages button{min-height:28px}
+.specialist-setup-page [hidden]{display:none!important}
+.setup-welcome{max-width:720px;margin:32px auto;padding:40px;border:1px solid #ffffffcc;border-radius:26px;background:#ffffff9c;box-shadow:0 16px 45px #163e3b08;backdrop-filter:blur(18px)}
+.setup-welcome h1{font-family:var(--font-display);font-size:clamp(30px,4vw,44px);line-height:1.2;margin:12px 0 20px}
+.setup-welcome p{font-size:16px;line-height:1.8;color:#49645e}
+.setup-overview{padding-inline-start:24px;margin:24px 0;line-height:2.2;font-size:15px;color:#245b50}
+.setup-progress{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;counter-reset:step}
+.setup-progress span{flex:1;min-width:120px;padding:10px 12px;border-bottom:3px solid #163e3b12;color:#6b807a;font-size:12px;line-height:1.5}
+.setup-progress span[aria-current]{color:#075e5a;border-color:#0b7a75;font-weight:700;background:#e2f2ec80;border-radius:8px 8px 0 0}
+.setup-progress .is-complete{border-color:#85b9a7;color:#346e5b}
+.setup-navigation{display:flex;align-items:center;justify-content:space-between;margin-top:20px;gap:16px}
+.setup-navigation button,.setup-status-actions button{padding:12px 22px;border:1px solid #0b7a7529;border-radius:12px;min-height:44px;cursor:pointer;font:inherit}
+.setup-navigation .draft-button,.setup-status-actions .draft-button{background:#ffffff8c;color:#245b50}
+body.specialist-setup-page .form-actions{margin-top:18px}
+#setupReview>label{display:block;font-size:14px;font-weight:600;margin:24px 0 8px}
+#notificationEmail{width:100%;box-sizing:border-box;min-height:48px;border:1px solid #163e3b30;border-radius:12px;padding:12px;font:inherit}
+.setup-email-note{font-size:13px;line-height:1.7;color:#49645e}
+#setupSummary>section{position:relative;border-bottom:1px solid #163e3b14;padding:18px 0;padding-inline-end:60px}
+#setupSummary p{font-size:14px;color:#49645e;line-height:1.6;margin:8px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+#setupSummary button{position:absolute;inset-inline-end:0;top:14px;border:0;background:transparent;color:#075e5a;font:inherit;font-size:13px;cursor:pointer;text-decoration:underline;padding:8px}
+body.specialist-setup-page .success-container{max-width:660px;margin:40px auto;padding:36px;border-radius:24px;background:#ffffffa8;border:1px solid white;backdrop-filter:blur(18px);text-align:center}
+body.specialist-setup-page .success-container h1{font-family:var(--font-display);font-size:32px;line-height:1.3}
+body.specialist-setup-page .success-container p{font-size:15px;line-height:1.8;color:#49645e;overflow-wrap:anywhere}
+.setup-status-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:24px}
+body.specialist-setup-page :is(button,a,input,select,textarea):focus-visible{outline:3px solid #bd843d;outline-offset:3px}
+@media(max-width:600px){.setup-header{padding:16px;gap:8px;flex-wrap:wrap}.setup-header-actions{gap:6px}.setup-welcome{margin:10px auto;padding:24px}.setup-progress{gap:4px}.setup-progress span{min-width:80px;font-size:11px;padding:8px}.specialist-setup-page .main-content{padding:22px 14px 40px}.setup-status-actions{flex-direction:column}}

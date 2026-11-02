@@ -39,7 +39,7 @@
 <link rel="stylesheet" href="parent-background.css">
 <link rel="stylesheet" href="parent-layout.css">
 <link rel="stylesheet" href="../shared/site-language.css">
-</head>
+<script src="../shared/membership.js"></script><link rel="stylesheet" href="../shared/membership.css"><script src="child-appearance.js"></script><link rel="stylesheet" href="parent-journey.css"><script src="parent-journey.js" defer></script></head>
 
 
 <body class="parent-cycle-video">
@@ -103,7 +103,7 @@
     </header>
 
 
-    <div class="page-body">
+    <div class="page-body"><nav class="booking-steps" aria-label="Booking progress"><span data-booking-step="1" aria-current="step">1 · Choose session</span><span data-booking-step="2">2 · Review details</span><span data-booking-step="3">3 · Demo payment</span><span data-booking-step="4">4 · Confirmed</span></nav>
 
       <!-- =========================
            BOOKING VIEW
@@ -114,7 +114,7 @@
         id="bookingView"
       >
 
-        <nav class="booking-steps" aria-label="Booking steps"><a href="specialists.html">1 · Choose a specialist</a><span aria-current="step">2 · Choose a session</span><span>3 · Review &amp; pay</span></nav>
+
         <p class="booking-intro">Choose how and when to meet. Review all details before continuing to demo payment.</p>
         <div class="booking-layout">
 
@@ -537,7 +537,7 @@
           </span>
 
           <h2>
-            Your booking is saved.
+            Your appointment is confirmed.
           </h2>
 
           <p id="successMessage">
@@ -614,7 +614,8 @@
           </div>
 
 
-          <div class="success-actions">
+          <section class="booking-next"><h3>What happens next?</h3><p>Your appointment is confirmed after demo payment. No real money was collected.</p><div class="confirmation-details"><div><span>Session type</span><strong id="confirmedType"></strong></div><div><span>Demo payment recorded</span><strong id="confirmedPayment"></strong></div></div><p>You can message your specialist before the session. After the session, their report will appear in your appointments.</p><a id="confirmedMessageLink" class="view-bookings-button" href="messages.html">Message specialist</a></section>
+<div class="success-actions">
 
             <a
               href="bookings.html"
@@ -627,7 +628,7 @@
               href="parent-dashboard.html"
               class="dashboard-button"
             >
-              Back to Today
+              Back to Home
             </a>
 
           </div>
@@ -654,6 +655,6 @@
 <script src="booking-review.js"></script>
 <script src="concern-booking.js"></script><script src="booking.js"></script>
 <script src="notifications.js"></script>
-<script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="../shared/site-language.js" defer></script>
-</body>
+<script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="parent-journey-ar.js" defer></script><script src="../shared/site-language.js" defer></script>
+<script src="../shared/membership-ui.js"></script></body>
 </html>

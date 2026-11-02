@@ -40,13 +40,7 @@
 
 
 <body class="admin-cycle-video">
-  <div class="dashboard-video-background" aria-hidden="true">
-    <video id="dashboardBackgroundVideo" muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true">
-      <source src="../pearent-cycel/assets/dashboard/background.mp4" type="video/mp4">
-    </video>
-    <div class="dashboard-video-tint"></div>
-  </div>
-  <button class="background-playback-toggle" id="backgroundPlaybackToggle" type="button" aria-controls="dashboardBackgroundVideo" aria-pressed="true">&#9654; Play background</button>
+  <div class="admin-static-background" aria-hidden="true"></div>
 
 <div class="admin-shell">
 
@@ -918,6 +912,7 @@
             </section>
 
 
+<section class="review-checklist-card"><h3>Verification checklist</h3><p>Confirm each item against an independent source. A recorded file name is not proof that a document was reviewed.</p><div id="reviewChecklist"></div><label for="reviewEvidence">Verification notes and source references <strong aria-hidden="true">*</strong></label><p id="reviewEvidenceHelp">Required before approval: briefly describe what you checked and the source used (at least 10 characters).</p><textarea id="reviewEvidence" aria-describedby="reviewEvidenceHelp reviewChecklistError" aria-required="true" rows="3" maxlength="2000" placeholder="Record the issuing body, reference checked and verification date. Do not include unnecessary personal data."></textarea><p id="reviewContactEmail"></p><p id="reviewChecklistError" role="alert"></p><button type="button" id="requestChangesButton" class="reject-button">Request more information</button><div id="changesRequestForm" hidden><label for="changesRequestReason">What does the applicant need to correct or provide?</label><textarea id="changesRequestReason" rows="3" maxlength="1000"></textarea><button type="button" id="confirmRequestChanges" class="approve-button">Send request to applicant</button><button type="button" id="cancelRequestChanges">Cancel</button></div></section>
             <!-- ACTIONS -->
 
             <section class="review-actions">
@@ -1140,8 +1135,6 @@
 
 
 <script src="specialist-approvals.js"></script>
-
-  <script src="../pearent-cycel/parent-dashboard-background.js"></script>
   <script src="admin-sidebar.js"></script>
 <script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="../shared/site-language.js" defer></script>
 </body>

@@ -100,7 +100,7 @@
       catch { setStatus('Persistent storage is unavailable. Download your photos to keep backups.'); }
     };
     try {
-      const saved = JSON.parse(localStorage.getItem('rafiqChildren') || '[]');
+      const saved = window.RafiqSetup.readChildren();
       const children = Array.isArray(saved) ? saved : [];
       child = children.find(c => c.id === localStorage.getItem('rafiqCurrentChildId')) || children[0];
       if (!child?.id) { $('noChild').hidden = false; return; }

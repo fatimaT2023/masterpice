@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // =====================================================
 
   const children =
-    readArray("rafiqChildren");
+    window.RafiqSetup.readChildren();
 
 
   if (children.length === 0) {
@@ -1761,6 +1761,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       id:
         bookingId,
+      parentId: sessionStorage.getItem('rafiqParentUserId') || localStorage.getItem('rafiqMessagingParentId') || null,
 
 
       status:
@@ -1890,7 +1891,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // CONFIRM
   // =====================================================
 
+  let bookingInFlight=false;
   confirmBookingButton.addEventListener("click", async () => {
+      if(bookingInFlight)return;bookingInFlight=true;confirmBookingButton.disabled=true;
+      try {
 
       clearError();
 
@@ -1910,6 +1914,7 @@ document.addEventListener("DOMContentLoaded", () => {
         bookingError.focus(); return;
       }
       const reviewedFee=Number(reviewPrice);
+      window.RafiqBookingJourney.step(2);
       const accepted=await window.RafiqBookingReview.open({
         Child: currentChild.name,
         Specialist: reviewProfile.fullName || reviewProfile.name || specialist.name,
@@ -1918,8 +1923,8 @@ document.addEventListener("DOMContentLoaded", () => {
         Time: selectedTime,
         'Total session fee': formatPrice(reviewedFee)
       }, bookingReason.value);
-      if(!accepted)return;
-      if(!validateBooking()){bookingError.focus();return;}
+      if(!accepted){window.RafiqBookingJourney.step(1);return;}
+      if(!validateBooking()){window.RafiqBookingJourney.step(1);bookingError.focus();return;}
 
       confirmBookingButton.disabled = true;
       let sessionPayment;
@@ -1934,15 +1939,17 @@ document.addEventListener("DOMContentLoaded", () => {
           bookingError.textContent = 'The session fee changed. Please review your appointment again before payment.';
           bookingError.focus();return;
         }
-        sessionPayment = await window.RafiqFinance.checkout(price);
+        window.RafiqBookingJourney.step(3);
+        sessionPayment = await window.RafiqFinance.checkout(price,{Child:currentChild.name,Specialist:latest.fullName||specialist.name,Date:selectedDateLabel,Time:selectedTime});
       } catch (error) {
-        bookingError.textContent = 'Demo payment could not be completed. Please try again.';
+        window.RafiqBookingJourney.step(1);bookingError.textContent = 'Demo payment could not be completed. Please try again.';
         return;
       } finally {
         confirmBookingButton.disabled = false;
       }
-      if (!sessionPayment) return;
-      const confirmedBooking = createBooking(sessionPayment);
+      if (!sessionPayment) {window.RafiqBookingJourney.step(1);bookingError.textContent='Payment was cancelled. Your appointment has not been booked. Your selections are still here.';bookingError.focus();return;}
+      let confirmedBooking;
+      try {confirmedBooking=createBooking(sessionPayment);} catch {bookingError.textContent='We could not save your appointment. No real money was collected. Please try again.';bookingError.focus();return;}
       if(confirmedBooking){try{window.RafiqConcernBooking.clear(currentChild.id);}catch{/* Confirmed booking already holds the reviewed note. */}}
 
 
@@ -1976,6 +1983,7 @@ document.addEventListener("DOMContentLoaded", () => {
       showSuccess(
         confirmedBooking
       );
+      } finally {bookingInFlight=false;confirmBookingButton.disabled=false;}
     }
   );
 
@@ -1985,6 +1993,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // =====================================================
 
   function showSuccess(booking) {
+    window.RafiqBookingJourney.step(4);
+    document.getElementById('confirmedType').textContent=formatConsultationType(booking.consultationType);
+    document.getElementById('confirmedPayment').textContent=formatPrice(booking.sessionPayment.amount);
+    document.getElementById('confirmedMessageLink').href='messages.html?specialist='+encodeURIComponent(booking.specialistId)+'&child='+encodeURIComponent(booking.childId)+'&booking='+encodeURIComponent(booking.id);
+    const appointments=document.querySelector('#successView .success-actions a[href="bookings.html"]');if(appointments)appointments.href='bookings.html?booking='+encodeURIComponent(booking.id);
 
     successMessage.textContent =
       `Your appointment with ${booking.specialistName} has been saved for ${booking.childName}.`;

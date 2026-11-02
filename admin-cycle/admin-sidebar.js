@@ -39,6 +39,13 @@
     else link.removeAttribute('aria-current');
   });
   sidebar.querySelector('nav')?.setAttribute('aria-label','Admin navigation');
+  const settings=sidebar.querySelector('.sidebar-bottom a[href="admin-settings.html"]');
+  if(settings&&!document.getElementById('adminLanguageMount')){
+    const row=document.createElement('div');row.className='admin-language-row';
+    const label=document.createElement('span');label.textContent='Language';
+    const mount=document.createElement('div');mount.id='adminLanguageMount';
+    row.append(label,mount);settings.after(row);
+  }
   const logout = document.getElementById('logoutButton');
   if (logout) logout.innerHTML = `<span class="nav-icon" aria-hidden="true">${svg('M9 4H3v16h6m5-13 5 5-5 5M7 12h12')}</span><span>Log out</span>`;
   const close = document.getElementById('sidebarClose');

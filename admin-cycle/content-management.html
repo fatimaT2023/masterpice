@@ -39,14 +39,8 @@
 </head>
 
 
-<body class="admin-cycle-video">
-  <div class="dashboard-video-background" aria-hidden="true">
-    <video id="dashboardBackgroundVideo" muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true">
-      <source src="../pearent-cycel/assets/dashboard/background.mp4" type="video/mp4">
-    </video>
-    <div class="dashboard-video-tint"></div>
-  </div>
-  <button class="background-playback-toggle" id="backgroundPlaybackToggle" type="button" aria-controls="dashboardBackgroundVideo" aria-pressed="true">&#9654; Play background</button>
+<body class="admin-cycle-video content-workspace">
+  <div class="admin-static-background" aria-hidden="true"></div>
 
 <div class="admin-shell">
 
@@ -337,13 +331,13 @@
     </header>
 
 
-    <div class="page-body"><section class="page-intro" aria-labelledby="ageBasisTitle"><h2 id="ageBasisTitle">Age bands &amp; content sources</h2><p><strong>23 organizational bands:</strong> 12 monthly bands before age 1, four 3-month bands from 1 to under 2, four 6-month bands from 2 to under 4, and three yearly bands from 4 to under 7. These are product content categories, not a medical classification.</p><p><strong>12 external CDC checklist checkpoints:</strong> 2, 4, 6, 9, 12, 15, 18, 24, 30, 36, 48 and 60 months. These checkpoints are separate from the 23 bands. The upper age limit of 7 years is the current product scope.</p><p>Age is calculated from date of birth. Parent pages also support corrected-age logic for children born early. Content assigned to old broad age groups is retained as legacy content and requires review before reassignment. An age band does not imply reviewed content is available.</p></section>
+    <div class="page-body"><details class="content-guide"><summary>Age bands & content sources</summary><div><p><strong>23 organizational bands:</strong> 12 monthly bands before age 1, four 3-month bands from 1 to under 2, four 6-month bands from 2 to under 4, and three yearly bands from 4 to under 7. These are product content categories, not a medical classification.</p><p><strong>12 external CDC checklist checkpoints:</strong> 2, 4, 6, 9, 12, 15, 18, 24, 30, 36, 48 and 60 months. These checkpoints are separate from the 23 bands. The upper age limit of 7 years is the current product scope.</p><p>Age is calculated from date of birth. Parent pages also support corrected-age logic for children born early. Content assigned to old broad age groups is retained as legacy content and requires review before reassignment. An age band does not imply reviewed content is available.</p></div></details>
 
       <!-- =====================================
            INTRO
       ====================================== -->
 
-      <section class="page-intro">
+      <details class="content-guide"><summary>About content management</summary><div>
 
         <div>
 
@@ -351,10 +345,7 @@
             CONTENT GOVERNANCE
           </span>
 
-          <h2>
-            Manage what RAFIQ
-            <span>teaches and displays.</span>
-          </h2>
+
 
           <p>
             Maintain age-group definitions, developmental
@@ -381,7 +372,7 @@
 
         </div>
 
-      </section>
+      </div></details>
 
 
       <!-- =====================================
@@ -656,6 +647,7 @@
         </div>
 
 
+<div class="content-display-controls"><button type="button" id="contentShowAll" aria-expanded="false" aria-controls="contentTableWrap mobileContentList">Show all</button><span>Starts with 5 records per category.</span></div>
         <!-- RESULT INFO -->
 
         <div class="result-row">
@@ -673,7 +665,7 @@
 
         <!-- TABLE -->
 
-        <div class="table-wrap">
+        <div class="table-wrap" id="contentTableWrap">
 
           <table class="content-table">
 
@@ -896,8 +888,6 @@
 
 
 <script src="../pearent-cycel/parent-setup-utils.js"></script><script src="../pearent-cycel/age-content.js"></script><script src="content-management.js"></script>
-
-  <script src="../pearent-cycel/parent-dashboard-background.js"></script>
   <script src="admin-sidebar.js"></script>
 <script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="../shared/site-language.js" defer></script>
 </body>

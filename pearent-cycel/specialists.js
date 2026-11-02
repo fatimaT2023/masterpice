@@ -249,9 +249,7 @@ document.addEventListener(
     // =====================================
 
     const children =
-      readArray(
-        "rafiqChildren"
-      );
+      window.RafiqSetup.readChildren();
 
 
     if (
@@ -1787,7 +1785,7 @@ document.addEventListener(
                 data-id="${escapeHTML(
                   specialist.id
                 )}"
-              >Choose a session</button>
+              >Choose a session</button><a class="specialist-message-link" href="messages.html?specialist=${encodeURIComponent(specialist.id)}">Message specialist</a>
 
             </div>
           `;

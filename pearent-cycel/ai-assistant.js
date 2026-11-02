@@ -138,11 +138,7 @@ document.addEventListener(
 
       try {
 
-        return JSON.parse(
-          localStorage.getItem(
-            "rafiqChildren"
-          )
-        ) || [];
+        return window.RafiqSetup.readChildren() || [];
 
       } catch (error) {
 
@@ -651,6 +647,10 @@ document.addEventListener(
       }
 
 
+      if(!containsEmergencySignal(cleanText)){
+        try{if(!window.RafiqMembership.consumeAI()){window.RafiqMembership.prompt(window.RafiqMembership.state().active?'You have used your 30 questions for today. Your allowance resets tomorrow.':'You have used your 3 free questions today. Plus includes up to 30 questions per day.');return;}}
+        catch{window.RafiqMembership.prompt('Your usage could not be saved. Please try again.');return;}
+      }
       addMessage(
         "user",
         cleanText

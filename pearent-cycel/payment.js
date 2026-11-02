@@ -192,11 +192,7 @@ document.addEventListener(
 
       try {
 
-        return JSON.parse(
-          localStorage.getItem(
-            "rafiqChildren"
-          )
-        ) || [];
+        return window.RafiqSetup.readChildren() || [];
 
       } catch (error) {
 
@@ -281,8 +277,8 @@ document.addEventListener(
     }
 
 
-    const selectedPlan =
-      getSelectedPlan();
+    const requestedPlan=getSelectedPlan();
+    const selectedPlan=requestedPlan?.id==='plus'?{id:'plus',name:'RAFIQ Plus',price:window.RafiqMembership.config.price,currency:'JOD',billing:'monthly'}:null;
 
 
     if (!selectedPlan) {
@@ -629,6 +625,8 @@ document.addEventListener(
       */
 
       const subscriptionDetails = {
+        parentId: window.RafiqMembership.owner(),
+        id: 'subscription_' + reference,
 
         plan:
           selectedPlan.id,
@@ -683,6 +681,8 @@ document.addEventListener(
 
 
       payments.unshift({
+        subscriptionId: subscriptionDetails.id,
+        parentId: window.RafiqMembership.owner(),
 
         id:
           reference,
@@ -718,6 +718,7 @@ document.addEventListener(
       );
 
 
+      window.RafiqMembership.activate(subscriptionDetails);
       createSubscriptionNotification();
 
 
@@ -840,8 +841,8 @@ document.addEventListener(
         window.setTimeout(
           () => {
 
-            const reference =
-              activateSubscription();
+            let reference;
+            try{reference=activateSubscription();}catch{paymentError.textContent='Could not activate the demo plan. No real money was collected. Please try again.';payButton.disabled=false;payButton.textContent='Try demo payment again';return;}
 
 
             /*

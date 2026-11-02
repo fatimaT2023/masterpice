@@ -327,11 +327,7 @@ document.addEventListener(
 
       try {
 
-        return JSON.parse(
-          localStorage.getItem(
-            "rafiqChildren"
-          )
-        ) || [];
+        return window.RafiqSetup.readChildren() || [];
 
       } catch (error) {
 

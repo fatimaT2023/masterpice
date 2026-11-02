@@ -429,7 +429,8 @@ document.addEventListener(
 
       [
         "rafiqSubscription",
-        "rafiqCurrentSubscription"
+        "rafiqCurrentSubscription",
+        "rafiqSubscriptionDetails"
       ]
         .forEach(
           key => {
@@ -454,7 +455,7 @@ document.addEventListener(
         );
 
 
-      return records;
+      return [...new Map(records.map((item,index)=>[item.id||item.subscriptionId||item.paymentReference||'legacy_'+index,item])).values()];
     }
 
 
@@ -1515,28 +1516,30 @@ document.addEventListener(
 
     function refreshAnalytics() {
 
-      const specialists =
+      let specialists =
         getSpecialists();
 
 
-      const bookings =
+      let bookings =
         getBookings();
 
 
-      const reports =
+      let reports =
         getReports();
 
 
-      const payments =
+      let payments =
         getPayments();
 
 
-      const subscriptions =
+      let subscriptions =
         getSubscriptions();
 
 
+      const allSpecialists=specialists;
+      if(window.RafiqAnalyticsFilter){({specialists,bookings,reports,payments,subscriptions}=window.RafiqAnalyticsFilter({specialists,bookings,reports,payments,subscriptions}));}
       renderApprovalBadge(
-        specialists
+        allSpecialists
       );
 
 

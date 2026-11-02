@@ -14,3 +14,7 @@
 #reviewContinue{background:#365d44;color:white}
 .review-actions button:focus-visible{outline:3px solid #4c7759;outline-offset:3px}
 @media(max-width:600px){.booking-summary{position:static}.review-actions button{width:100%}.appointment-review{padding:20px}.booking-steps>*{font-size:13px}}
+.booking-next{margin:24px 0;padding:20px;border:1px solid #c9e0d4;border-radius:16px;background:#f2faf699;text-align:start}.booking-next h3{font-size:20px;margin:0 0 12px}.booking-next p{font-size:14px;line-height:1.8;color:#49645e}.booking-next .confirmation-details{margin:16px 0}.booking-next>a{display:inline-flex;align-items:center;min-height:44px;padding:10px 16px;border-radius:10px;background:#075e5a;color:white;text-decoration:none}
+@media(max-width:600px){.success-card{padding:22px!important}.confirmation-details{grid-template-columns:1fr 1fr!important}.success-actions{flex-wrap:wrap}.success-actions a{flex:1 1 100%}.booking-next{padding:16px}}
+.booking-steps{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}.booking-steps [data-booking-step]{flex:1;min-width:110px;padding:10px 12px;border:1px solid #d1e3d9;border-radius:10px;background:#ffffff80;font-size:12px;color:#6b8076;line-height:1.6}.booking-steps [aria-current=step]{color:#075e5a;border-color:#76b59a;background:#e0f3e8;font-weight:700}.booking-steps .is-complete{background:#edf7f1;color:#397b5d}
+@media(max-width:600px){.booking-steps{display:grid;grid-template-columns:1fr 1fr}.booking-steps [data-booking-step]{min-width:0;font-size:11px;padding:9px}}

@@ -170,11 +170,7 @@ document.addEventListener(
 
       try {
 
-        return JSON.parse(
-          localStorage.getItem(
-            "rafiqChildren"
-          )
-        ) || [];
+        return window.RafiqSetup.readChildren() || [];
 
       } catch (error) {
 
@@ -684,7 +680,7 @@ document.addEventListener(
               </span>
 
 
-              <div class="booking-actions">
+              <div class="booking-actions">${window.RafiqCareJourney?.reportFor(booking)?`<a class="journey-link report-ready-link" href="specialist-report.html" data-report-booking="${escapeHTML(booking.id)}">Read session report</a>`:status==='completed'?'<span class="report-pending-note">Report awaiting submission</span>':''}<a class="specialist-message-link" href="messages.html?specialist=${encodeURIComponent(booking.specialistId)}&amp;child=${encodeURIComponent(booking.childId||'')}">Message specialist</a>
 
                 <button
                   type="button"
@@ -789,6 +785,7 @@ document.addEventListener(
     }
 
 
+    document.addEventListener('click',event=>{const link=event.target.closest('[data-report-booking]');if(!link)return;const booking=bookings.find(b=>b.id===link.dataset.reportBooking&&b.childId===currentChild.id);if(booking)window.RafiqCareJourney.openReport(booking);else event.preventDefault();});
     // =============================
     // CANCEL
     // =============================
@@ -1110,6 +1107,10 @@ if (
     // =============================
 
     renderBookings();
+    window.addEventListener('storage',event=>{if(['rafiqBookings','rafiqSpecialistReports'].includes(event.key)){bookings=getBookings();renderBookings();}});
+    const requestedBooking=new URLSearchParams(location.search).get('booking');
+    const requested=bookings.find(b=>b.id===requestedBooking&&b.childId===currentChild.id);
+    if(requested)openDetails(requested);
 
   }
 );

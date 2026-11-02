@@ -21,11 +21,21 @@ function formatAge(age) {
  for(const [value,unit] of [[age.years,'year'],[age.months,'month'],[age.days,'day']]) if(value)parts.push(value+' '+unit+(value===1?'':'s'));
  return (parts.length?parts.join(', '):'0 days')+' old';
 }
-function readChildren() {
+function readAllChildren() {
  const value=JSON.parse(localStorage.getItem('rafiqChildren')||'[]');
  if(!Array.isArray(value)||value.some(child=>!child||typeof child.id!=='string'))throw new Error('Invalid child profiles');
  return value;
 }
+function parentOwner(){return sessionStorage.getItem('rafiqParentUserId')||'legacy-browser';}
+function ownsChild(child){const owner=parentOwner();return child.parentId===owner||(owner==='legacy-browser'&&!child.parentId);}
+function readChildren(){return readAllChildren().filter(ownsChild);}
+function writeChildren(children){
+ if(!Array.isArray(children)||children.some(child=>!child||typeof child.id!=='string'||(child.parentId&&child.parentId!==parentOwner())))throw Error('Invalid child ownership');
+ const all=readAllChildren(),others=all.filter(child=>!ownsChild(child));
+ if(children.some(child=>others.some(other=>other.id===child.id)))throw Error('Child belongs to another account');
+ localStorage.setItem('rafiqChildren',JSON.stringify([...others,...children.map(child=>({...child,parentId:parentOwner()}))]));
+}
+function parentProfileKey(){return 'rafiqParentProfile_'+parentOwner();}
 const MAX_MONTHS=84;
 function isSupported(age){return !!age&&age.totalMonths>=0&&age.totalMonths<MAX_MONTHS;}
 const bands=[];
@@ -46,5 +56,23 @@ function childContext(child,today=new Date()){
  }
  return {chronological,development,band:bandForAge(development),chronologicalBand:bandForAge(chronological),supported:isSupported(chronological),basis,beforeDueDate,needsDueDate};
 }
-window.RafiqSetup={ageFromBirth,formatAge,readChildren,isSupported,bandForAge,childContext,bands,MAX_MONTHS};
+document.addEventListener('DOMContentLoaded',()=>{
+ const exit=document.querySelector('[data-setup-exit]');
+ if(exit){exit.textContent='Log out';exit.addEventListener('click',event=>{event.preventDefault();sessionStorage.clear();location.replace('../piblic-pages/login.html');});}
+ const page=location.pathname.split('/').pop();
+ if(['onboarding.html','getting-started.html'].includes(page))return;
+ try{
+  const id=sessionStorage.getItem('rafiqSetupCompletedChildId'),child=readChildren().find(c=>c.id===id);
+  if(!child||localStorage.getItem('rafiqCurrentChildId')!==child.id)return;
+  const main=document.querySelector('main');if(!main)return;
+  const notice=document.createElement('section');notice.className='setup-complete-notice';notice.setAttribute('role','status');
+  const title=document.createElement('strong');title.textContent='Setup complete for '+child.name;
+  const copy=document.createElement('p');copy.textContent='Your child’s profile and starting point are saved. You can return to Today anytime or choose a different starting point.';
+  const home=document.createElement('a');home.href='parent-dashboard.html';home.textContent='Go to Today';
+  const change=document.createElement('a');change.href='getting-started.html?child='+encodeURIComponent(child.id);change.textContent='Change starting point';
+  notice.append(title,copy,home,document.createTextNode(' · '),change);main.prepend(notice);
+  sessionStorage.removeItem('rafiqSetupCompletedChildId');
+ }catch{/* The page controller supplies storage errors. */}
+});
+window.RafiqSetup={writeChildren,parentProfileKey,parentOwner,ageFromBirth,formatAge,readChildren,isSupported,bandForAge,childContext,bands,MAX_MONTHS};
 })();

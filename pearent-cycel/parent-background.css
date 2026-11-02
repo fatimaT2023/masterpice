@@ -1,6 +1,47 @@
-
-/* Shared still background for parent pages. Keep the original image proportions. */
-html body.parent-cycle-video{background:#d0e8f4;isolation:isolate}
-body.parent-cycle-video>.parent-static-background{position:fixed;inset:0;z-index:-1;pointer-events:none;background-color:#d0e8f4;background-image:url('assets/dashboard/parent-background.jpg');background-position:center;background-size:auto 100%;background-repeat:no-repeat}
+﻿/* Shared photo wallpaper and frosted surfaces for every parent page. */
+html body.parent-cycle-video{
+ --parent-glass:rgba(255,255,255,.48);
+ --parent-glass-border:rgba(255,255,255,.82);
+ --child-wallpaper:#fff5e5;
+ background:var(--child-wallpaper);isolation:isolate;
+}
+body.parent-cycle-video>.parent-static-background{
+ position:fixed;inset:0;z-index:-1;pointer-events:none;
+ background-color:var(--child-wallpaper);
+ background-image:none;
+ background-position:center;background-size:cover;
+ background-repeat:no-repeat;
+}
+html[data-child-appearance="boy"] body.parent-cycle-video{--child-wallpaper:#dceefb}
+html[data-child-appearance="girl"] body.parent-cycle-video{--child-wallpaper:#fce1eb}
+html[data-child-appearance="boy"] body.parent-cycle-video>.parent-static-background{background-image:url('assets/dashboard/baby-blue.jpg')}
+html[data-child-appearance="girl"] body.parent-cycle-video>.parent-static-background{background-image:url('assets/dashboard/baby-pink.jpg')}
 body.parent-cycle-video .background-playback-toggle{display:none!important}
-@media print{body.parent-cycle-video>.parent-static-background{display:none}html body.parent-cycle-video{background:white}}
+body.parent-cycle-video :is(.main-content,.page-body,.page-content,.onboarding-page){background:transparent}
+html body.parent-cycle-video :is(.today-card,.daily-moment,.today-hero,.today-question,.screen-flow-card,.hero-card,.report-hero,.payment-hero,.settings-hero,.subscription-hero,.booking-hero,.specialist-banner,.support-banner,.child-profile-hero,.action-card,.appointment-card,.booking-card,.challenge-card,.chat-card,.child-context-card,.context-panel,.empty-card,.faq-card,.form-card,.hero-child-card,.milestone-card,.missing-card,.next-step-card,.order-summary,.plan-card,.privacy-card,.profile-card,.progress-card,.question-card,.recommendations-card,.records-panel,.result-card,.safety-mini-card,.search-panel,.section-card,.selected-specialist,.settings-panel,.side-card,.specialist-card,.step-card,.success-card,.summary-card,.report-section,.comparison-table,.rafiq-age-context,.rafiq-age-panel,.rafiq-age-journal,.album-empty){
+ background:var(--parent-glass);border:1px solid var(--parent-glass-border);
+ backdrop-filter:blur(16px) saturate(120%);-webkit-backdrop-filter:blur(16px) saturate(120%);
+ box-shadow:0 12px 36px #35596612,inset 0 1px 0 #ffffffb3;
+}
+html body.parent-cycle-video .parent-navigation{
+ background:rgba(255,255,255,.52);border-bottom:1px solid var(--parent-glass-border);
+ backdrop-filter:blur(20px) saturate(120%);-webkit-backdrop-filter:blur(20px) saturate(120%);
+ box-shadow:0 4px 24px #3559660a;
+}
+html body.parent-cycle-video :is(.parent-nav-panel,.parent-child-dropdown,.notification-dropdown,.modal-content,.modal-dialog,.modal-card,.modal-box,.modal-panel,.modal-shell,dialog){
+ background:rgba(255,255,255,.88);border-color:var(--parent-glass-border);
+ backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+ box-shadow:0 18px 50px #35596624;
+}
+html body.parent-cycle-video :is(.today-shortcuts a,.parent-child-control,.notification-bell,.child-info,.booking-summary,.current-plan-box,.detail-box,.reason-box,.reference-box,.search-box,.wallet-box,.compact-item,.activity-item,.record-item,.health-entry){
+ background:rgba(255,255,255,.45);border-color:var(--parent-glass-border);
+ backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+html body.parent-cycle-video :is(input:not([type=radio]):not([type=checkbox]):not([type=range]):not([type=hidden]),select,textarea){background:rgba(255,255,255,.65);border-color:#35596630;color:var(--ink,#163e3b)}
+html body.parent-cycle-video :is(input,select,textarea):focus{background:rgba(255,255,255,.9)}
+body.parent-cycle-video .today-priority{border-inline-start:4px solid var(--theme-primary,#0b7a75)}
+@media print{
+ body.parent-cycle-video>.parent-static-background{display:none}
+ html body.parent-cycle-video{background:white}
+ html body.parent-cycle-video :is(.today-card,.screen-flow-card,.section-card,.form-card){background:white;backdrop-filter:none;box-shadow:none}
+}

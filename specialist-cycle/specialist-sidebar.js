@@ -10,9 +10,27 @@
     helpLink.href = '../piblic-pages/help-center.html?from=specialist';
     helpLink.innerHTML = '<span class="nav-icon" aria-hidden="true">?</span>Help Center';helpNav.append(helpLink);
   }
+  // Keep the language preference next to the profile, away from the brand.
+  const profileLink = document.querySelector('#sidebar .sidebar-bottom a[href="profile.html"]');
+  if (profileLink) {
+    const languageRow = document.createElement('div');
+    languageRow.className = 'specialist-profile-language';
+    const label = document.createElement('span');
+    label.className = 'specialist-language-label';
+    label.textContent = 'Language';
+    const languageMount = document.createElement('div');
+    languageMount.id = 'specialistLanguageMount';
+    languageRow.append(label, languageMount);
+    profileLink.after(languageRow);
+  }
   const sidebar = document.getElementById('sidebar');
+  const messagesLink=document.createElement('a');messagesLink.href='messages.html';messagesLink.className='nav-link';
+  messagesLink.innerHTML='<span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H8l-4 4Z"/></svg></span><span>Messages</span>';
+  const bookingsLink=sidebar.querySelector('a[href="specialist-bookings.html"]');if(bookingsLink)bookingsLink.before(messagesLink);
+  const careLink=document.createElement('a');careLink.href='follow-up.html';careLink.className='nav-link';careLink.innerHTML='<span class="nav-icon" aria-hidden="true">♡</span><span>Ongoing follow-up</span>';if(bookingsLink)bookingsLink.after(careLink);
+  const casesLink=sidebar.querySelector('a[href="clients.html"]');if(casesLink){const label=casesLink.lastChild;if(label&&label.nodeType===3)label.textContent='Consultation history';}
   const page = location.pathname.split('/').pop();
-  const activePage = {'booking-details.html':'specialist-bookings.html','consultation.html':'specialist-bookings.html','report-form.html':'clients.html'}[page] || page;
+  const activePage = {'booking-details.html':'specialist-bookings.html','consultation.html':'specialist-bookings.html','report-form.html':'specialist-bookings.html'}[page] || page;
   sidebar.querySelectorAll('a.nav-link').forEach(link => {
     const active = link.getAttribute('href') === activePage;
     link.classList.toggle('active', active);

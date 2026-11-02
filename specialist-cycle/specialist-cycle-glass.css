@@ -14,3 +14,19 @@
 .specialist-cycle-video .brand-panel{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(145%);box-shadow:0 18px 50px rgba(15,47,46,.07)}
 .specialist-cycle-video>.onboarding-page{position:relative;z-index:1}
 @media(max-width:560px){.specialist-cycle-video :is(.content-card,.schedule-card,.settings-card,.form-panel,.profile-card){border-radius:20px}}
+
+/* Quiet, static workspace background across the specialist cycle. */
+html body.specialist-cycle-video{--specialist-workspace-background:radial-gradient(ellipse at 8% 12%,rgba(152,216,207,.28),transparent 52%),radial-gradient(ellipse at 96% 80%,rgba(199,186,232,.24),transparent 52%),linear-gradient(150deg,#f8fafb,#f2f6f7);background:#f5f7f8;isolation:isolate}
+body.specialist-cycle-video>.specialist-static-background{
+ position:fixed;inset:0;z-index:-1;pointer-events:none;
+ background:var(--specialist-workspace-background);
+}
+html body.specialist-cycle-video :is(.main-content,.page-body,.page-content,.dashboard-body){background:transparent}
+html body.specialist-cycle-video :is(.availability-hero,.booking-hero,.clients-hero,.consultation-hero,.earnings-hero,.profile-hero,.report-hero,.schedule-hero,.settings-hero,.approval-banner,.status-banner){background:linear-gradient(120deg,rgba(255,255,255,.68),rgba(233,244,241,.5));border-color:rgba(255,255,255,.88);box-shadow:0 10px 30px #284e4810}
+html body.specialist-cycle-video :is(.account-status-card,.appointments-card,.bookings-card,.breakdown-card,.cancelled-card,.case-card,.channel-card,.client-card,.complete-card,.content-card,.controls-card,.detail-card,.history-card,.metric-card,.payment-mobile-card,.preview-card,.reference-card,.report-card,.report-status-card,.schedule-card,.settings-card,.settings-nav-card,.state-card,.tabs-card,.week-card,.workspace-card,.payment-table,.section-card,.dashboard-card,.form-section){background:rgba(255,255,255,.62);border-color:rgba(255,255,255,.88);backdrop-filter:blur(18px) saturate(115%);-webkit-backdrop-filter:blur(18px) saturate(115%);box-shadow:0 10px 30px #284e4810,inset 0 1px 0 #ffffffb3}
+@media print{body.specialist-cycle-video>.specialist-static-background{display:none}html body.specialist-cycle-video{background:white}}
+
+/* The welcome, application steps and approval status share the workspace backdrop. */
+html body.specialist-setup-page{background:var(--specialist-workspace-background);background-attachment:fixed;min-height:100dvh}
+html body.specialist-setup-page :is(.app-shell,.main-content,.onboarding-page,.form-panel){background:transparent;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+@media print{html body.specialist-setup-page{background:white}}

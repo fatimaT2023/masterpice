@@ -78,11 +78,7 @@ document.addEventListener(
 
       try {
 
-        return JSON.parse(
-          localStorage.getItem(
-            "rafiqChildren"
-          )
-        ) || [];
+        return window.RafiqSetup.readChildren() || [];
 
       } catch (error) {
 
@@ -261,7 +257,7 @@ document.addEventListener(
 
         return JSON.parse(
           localStorage.getItem(
-            "rafiqParentProfile"
+            window.RafiqSetup.parentProfileKey()
           )
         ) || {
 
@@ -341,7 +337,7 @@ document.addEventListener(
 
 
         localStorage.setItem(
-          "rafiqParentProfile",
+          window.RafiqSetup.parentProfileKey(),
           JSON.stringify(
             profile
           )
@@ -479,7 +475,7 @@ document.addEventListener(
                 );
 
 
-                renderSidebarChild();
+                    renderSidebarChild();
 
                 renderChildren();
               }
@@ -560,11 +556,7 @@ document.addEventListener(
 
     function renderSubscription() {
 
-      const plan =
-        localStorage.getItem(
-          "rafiqSubscriptionPlan"
-        ) ||
-        "free";
+      const plan = window.RafiqMembership.state().plan;
 
 
       if (
@@ -729,6 +721,11 @@ document.addEventListener(
     // ===========================
     // INIT
     // ===========================
+
+    const requestedTab = new URLSearchParams(location.search).get('tab');
+    if (Object.prototype.hasOwnProperty.call(panels, requestedTab)) {
+      document.querySelector('.settings-tab[data-tab="' + requestedTab + '"]').click();
+    }
 
     renderSidebarChild();
 
