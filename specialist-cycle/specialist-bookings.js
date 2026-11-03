@@ -471,45 +471,11 @@ document.addEventListener(
     // STATUS
     // =====================================
 
-    function getBookingStatus(
-      booking
-    ) {
-
-      if (
-        booking.status ===
-        "cancelled"
-      ) {
-
-        return "cancelled";
-      }
-
-
-      if (
-        booking.status ===
-        "completed"
-      ) {
-
-        return "completed";
-      }
-
-
-      const appointment =
-        getBookingDateTime(
-          booking
-        );
-
-
-      if (
-        appointment <
-        new Date()
-      ) {
-
-        return "completed";
-      }
-
-
-      return "upcoming";
-    }
+    function getBookingStatus(booking) {
+ if(booking.status==='cancelled')return 'cancelled';
+ if(booking.status==='completed')return 'completed';
+ return 'upcoming';
+ }
 
 
     // =====================================
@@ -1004,7 +970,7 @@ document.addEventListener(
             </div>
 
 
-            <div class="booking-actions">
+            <div class="booking-actions">${booking.consultationType==='online'&&status==='upcoming'?`<a class="care-link" href="../meetingZoom/index.html?booking=${encodeURIComponent(booking.id)}">Open video room</a>`:''}
 
               <span
                 class="status-badge ${status}"

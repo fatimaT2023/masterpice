@@ -1351,8 +1351,7 @@ document.addEventListener(
         )
         .filter(
           profile =>
-            profile.status ===
-            "approved"
+            profile.status === 'approved' && !window.RafiqAccountStatus.inactive({...profile,role:'specialist'})
         )
         .map(
           normalizeSpecialist

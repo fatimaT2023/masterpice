@@ -592,52 +592,7 @@ document.addEventListener(
     }
 
 
-    function getBookingStatus(
-      booking
-    ) {
-
-      if (
-        booking.status ===
-        "cancelled"
-      ) {
-
-        return "cancelled";
-      }
-
-
-      if (
-        booking.status ===
-        "completed"
-      ) {
-
-        return "completed";
-      }
-
-
-      const bookingDate =
-        bookingDateObject(
-          booking
-        );
-
-
-      const today =
-        getDateOnly(
-          new Date()
-        );
-
-
-      if (
-        getDateOnly(
-          bookingDate
-        ) < today
-      ) {
-
-        return "completed";
-      }
-
-
-      return "upcoming";
-    }
+    function getBookingStatus(booking){if(booking.status==='cancelled')return 'cancelled';if(booking.status==='completed')return 'completed';return 'upcoming';}
 
 
     function isToday(

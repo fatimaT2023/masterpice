@@ -8,6 +8,8 @@
  const saved=read(localStorage,'rafiqSpecialistProfile',null);
  const matches=p=>p&&(user?p.email?.toLowerCase()===user.email?.toLowerCase():id&&p.id===id);
  const profile=(Array.isArray(directory)?directory.find(matches):null)||(matches(saved)?saved:null);
+ const disabled=(user&&window.RafiqAccountStatus?.inactive(user))||(profile&&window.RafiqAccountStatus?.inactive({...profile,role:'specialist'}));
+ if(disabled){sessionStorage.clear();location.replace('../piblic-pages/login.html?account=inactive');return;}
  const approved=profile?.status==='approved'&&profile.verificationStatus!=='rejected';
  window.RafiqSpecialistAccess={user,profile,approved};
  if(profile){localStorage.setItem('rafiqSpecialistProfile',JSON.stringify(profile));localStorage.setItem('rafiqCurrentSpecialistId',profile.id);sessionStorage.setItem('rafiqSpecialistId',profile.id);}

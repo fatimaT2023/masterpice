@@ -327,6 +327,7 @@ document.addEventListener(
         }
 
 
+        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){accountMessage.style.color='#A63A17';accountMessage.textContent='Please enter a valid email address.';parentEmail.focus();return;}
         const profile = {
           name,
           email,
@@ -336,12 +337,7 @@ document.addEventListener(
         };
 
 
-        localStorage.setItem(
-          window.RafiqSetup.parentProfileKey(),
-          JSON.stringify(
-            profile
-          )
-        );
+        try{localStorage.setItem(window.RafiqSetup.parentProfileKey(),JSON.stringify(profile));}catch{accountMessage.style.color='#A63A17';accountMessage.textContent='Could not save your changes. Your entries are still here. Please try again.';return;}
 
 
         accountMessage.style.color =

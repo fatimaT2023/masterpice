@@ -277,40 +277,11 @@ document.addEventListener(
     // STATUS
     // =============================
 
-    function getBookingStatus(
-      booking
-    ) {
-
-      if (
-        booking.status ===
-        "cancelled"
-      ) {
-
-        return "cancelled";
-      }
-
-
-      const bookingDate =
-        new Date(
-          booking.date +
-          "T23:59:59"
-        );
-
-
-      const now =
-        new Date();
-
-
-      if (
-        bookingDate < now
-      ) {
-
-        return "completed";
-      }
-
-
-      return "upcoming";
-    }
+    function getBookingStatus(booking) {
+ if(booking.status==='cancelled')return 'cancelled';
+ if(booking.status==='completed')return 'completed';
+ return 'upcoming';
+ }
 
 
     function getStatusLabel(
@@ -680,7 +651,7 @@ document.addEventListener(
               </span>
 
 
-              <div class="booking-actions">${window.RafiqCareJourney?.reportFor(booking)?`<a class="journey-link report-ready-link" href="specialist-report.html" data-report-booking="${escapeHTML(booking.id)}">Read session report</a>`:status==='completed'?'<span class="report-pending-note">Report awaiting submission</span>':''}<a class="specialist-message-link" href="messages.html?specialist=${encodeURIComponent(booking.specialistId)}&amp;child=${encodeURIComponent(booking.childId||'')}">Message specialist</a>
+              <div class="booking-actions">${booking.consultationType==='online'&&status==='upcoming'?`<a class="journey-link" href="../meetingZoom/index.html?booking=${encodeURIComponent(booking.id)}">Open video room</a>`:''}${window.RafiqCareJourney?.reportFor(booking)?`<a class="journey-link report-ready-link" href="specialist-report.html" data-report-booking="${escapeHTML(booking.id)}">Read session report</a>`:status==='completed'?'<span class="report-pending-note">Report awaiting submission</span>':''}<a class="specialist-message-link" href="messages.html?specialist=${encodeURIComponent(booking.specialistId)}&amp;child=${encodeURIComponent(booking.childId||'')}">Message specialist</a>
 
                 <button
                   type="button"
@@ -915,8 +886,10 @@ if (
           : "No consultation note was added.";
 
 
-      modalReference.textContent =
-        booking.id;
+      modalReference.textContent=booking.id;
+ let sessionActions=document.getElementById('modalSessionActions');
+ if(!sessionActions){sessionActions=document.createElement('section');sessionActions.id='modalSessionActions';modalReason.after(sessionActions);}
+ window.RafiqAppointmentUI.render(sessionActions,booking,'parent');
 
 
       detailsModal.hidden =

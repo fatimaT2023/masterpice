@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded',()=>{
    const id=sessionStorage.getItem('rafiqSelectedSpecialistBooking'),booking=read('rafiqBookings').find(b=>b.id===id&&b.specialistId===viewer.id);if(!booking){contextCard.hidden=true;return;}contextCard.hidden=false;
    contextCard.append(make('h2','Family context for this session'),make('strong','Note shared with this booking'));
    const note=make('p',booking.reason||'No booking note was shared.');note.setAttribute('data-user-content','');contextCard.append(note);
+   const sessionActions=make('section');window.RafiqAppointmentUI?.render(sessionActions,booking,'specialist');contextCard.append(sessionActions);
    const row=connections().find(r=>r.thread.childId===booking.childId&&r.thread.parentId===booking.parentId);
    if(row?.state.status==='active'){contextCard.append(link('Review this child’s shared journal','follow-up.html?tab=active&case='+encodeURIComponent(row.thread.id)));}
    else contextCard.append(make('p','This appointment does not grant access to the child’s journal.'));

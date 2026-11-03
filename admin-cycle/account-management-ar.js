@@ -1,0 +1,35 @@
+Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{
+  "Registered accounts": "الحسابات المسجلة",
+  "Active": "فعّال",
+  "Inactive": "معطّل",
+  "Account type": "نوع الحساب",
+  "All types": "كل الأنواع",
+  "Parents": "الأهل",
+  "Specialists": "المختصون",
+  "Status": "الحالة",
+  "All statuses": "كل الحالات",
+  "Type": "النوع",
+  "Action": "الإجراء",
+  "Search accounts": "ابحث بالحسابات",
+  "Deactivate": "تعطيل",
+  "Reactivate": "إعادة تفعيل",
+  "Deactivate this account?": "متأكد من تعطيل هالحساب؟",
+  "Reactivate this account?": "إعادة تفعيل هالحساب؟",
+  "Cancel": "إلغاء",
+  "Yes, deactivate": "نعم، عطّل الحساب",
+  "Yes, reactivate": "نعم، فعّل الحساب",
+  "This user will not be able to sign in. Their current local sessions will be signed out. Their records, appointments and messages will be kept.": "المستخدم ما رح يقدر يسجّل دخول، وجلساته المحلية المفتوحة رح تنتهي. سجلاته ومواعيده ورسائله بتضل محفوظة.",
+  "This user will be able to sign in again. Specialist approval is still required separately.": "المستخدم بيقدر يدخل من جديد. اعتماد المختص إجراء منفصل وما بيتغير.",
+  "Account deactivated. Records were kept.": "تم تعطيل الحساب مع الاحتفاظ بالسجلات.",
+  "Account reactivated. Specialist approval is unchanged.": "تم تفعيل الحساب. اعتماد المختص ما تغيّر.",
+  "Invite a new parent — optional": "دعوة أهل جدد — اختياري",
+  "Public registration link": "رابط التسجيل العام",
+  "Use the public registration link, not a localhost address.": "استخدم رابط التسجيل العام، مش عنوان localhost.",
+  "This parent account is inactive. Reactivate it from the directory instead of sending a new invitation.": "حساب ولي الأمر معطّل. أعد تفعيله من قائمة الحسابات بدل دعوة جديدة.",
+  "This parent is already registered. Find their account in the directory.": "ولي الأمر مسجّل أصلًا. ابحث عن حسابه بالقائمة.",
+  "This account is deactivated. Contact support.": "هالحساب معطّل. تواصل مع الدعم.",
+  "We could not verify your account status. Reload and try again.": "تعذّر التحقق من حالة حسابك. حدّث الصفحة وحاول من جديد."
+});
+
+(window.RafiqArabicTemplates=window.RafiqArabicTemplates||[]).push({en:"{0} of {1} accounts",ar:"{0} من أصل {1} حساب"});
+Object.assign(window.RafiqHomeArabic,{"Administrator access is required.":"هالإجراء متاح للأدمن فقط.","The account no longer exists. Refresh the directory.":"الحساب ما عاد موجود. حدّث القائمة.","Manage parent and specialist accounts. Deactivation blocks access while keeping their records.":"إدارة حسابات الأهل والمختصين. التعطيل بيمنع الدخول وبيحافظ على السجلات."});

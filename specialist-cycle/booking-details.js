@@ -504,49 +504,10 @@ document.addEventListener(
 
 
     function getStatus() {
-
-      if (
-        booking.status ===
-        "cancelled"
-      ) {
-
-        return "cancelled";
-      }
-
-
-      /*
-        Once Consultation page explicitly
-        completes it, this becomes permanent.
-      */
-
-      if (
-        booking.status ===
-        "completed"
-      ) {
-
-        return "completed";
-      }
-
-
-      /*
-        For the prototype, a passed appointment
-        is displayed as completed/history.
-
-        The Consultation page will later save
-        the explicit completed state.
-      */
-
-      if (
-        getAppointmentDateTime() <
-        new Date()
-      ) {
-
-        return "completed";
-      }
-
-
-      return "upcoming";
-    }
+ if(booking.status==='cancelled')return 'cancelled';
+ if(booking.status==='completed')return 'completed';
+ return 'upcoming';
+ }
 
 
     const status =

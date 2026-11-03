@@ -505,41 +505,7 @@ document.addEventListener(
     // STATUS
     // =====================================
 
-    function getBookingStatus(
-      booking
-    ) {
-
-      if (
-        booking.status ===
-        "cancelled"
-      ) {
-
-        return "cancelled";
-      }
-
-
-      if (
-        booking.status ===
-        "completed"
-      ) {
-
-        return "completed";
-      }
-
-
-      if (
-        getBookingDateTime(
-          booking
-        ) <
-        new Date()
-      ) {
-
-        return "completed";
-      }
-
-
-      return "upcoming";
-    }
+    function getBookingStatus(booking){if(booking.status==='cancelled')return 'cancelled';if(booking.status==='completed')return 'completed';return 'upcoming';}
 
 
     // =====================================

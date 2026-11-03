@@ -417,8 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
         item =>
           item.id ===
             selectedSpecialistId &&
-          item.status ===
-            "approved"
+          item.status === 'approved' && !window.RafiqAccountStatus.inactive({...item,role:'specialist'})
       );
 
 
@@ -1589,8 +1588,7 @@ document.addEventListener("DOMContentLoaded", () => {
       item =>
         item.id ===
           specialist.id &&
-        item.status ===
-          "approved"
+        item.status === 'approved' && !window.RafiqAccountStatus.inactive({...item,role:'specialist'})
     );
   }
 

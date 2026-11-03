@@ -4025,3 +4025,5 @@ Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{
   "Choose a specialist for a consultation": "اختار مختصًا للاستشارة.",
   "View appointments, reports and follow-up": "راجع المواعيد والتقارير والمتابعة."
 });
+
+Object.assign(window.RafiqHomeArabic,{"This account is deactivated. Contact support.":"هالحساب معطّل. تواصل مع الدعم.","We could not verify your account status. Reload and try again.":"تعذّر التحقق من حالة حسابك. حدّث الصفحة وحاول من جديد."});

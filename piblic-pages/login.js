@@ -11,6 +11,8 @@
   const status = document.getElementById('formStatus');
   const roles = [...document.querySelectorAll('[data-role]')];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  if(new URLSearchParams(location.search).get('account')==='inactive')status.textContent='This account is deactivated. Contact support.';
+  if(new URLSearchParams(location.search).get('account')==='unavailable')status.textContent='We could not verify your account status. Reload and try again.';
   let role = 'parent', submitting = false, success = false, verifying = false;
   const poses = new Map([...baby.querySelectorAll('[data-pose]')].map(image => [image.dataset.pose, image]));
   const adminPreview = new URLSearchParams(location.search).get('role') === 'admin';
@@ -100,6 +102,7 @@
         const specialists=JSON.parse(localStorage.getItem('rafiqSpecialists')||'[]');
         const profile=Array.isArray(specialists)?specialists.find(p=>p?.email?.toLowerCase()===email.value.trim().toLowerCase()):null;
         if(!user&&!profile){invalid(email,'No specialist account was found for this email. Please register first.');email.focus();return;}
+        if((user&&window.RafiqAccountStatus.inactive(user))||(profile&&window.RafiqAccountStatus.inactive({...profile,role:'specialist'}))){invalid(email,'This account is deactivated. Contact support.');email.focus();return;}
         sessionStorage.removeItem('rafiqSpecialistRegistrationUserId');sessionStorage.removeItem('rafiqSpecialistId');
         if(user)sessionStorage.setItem('rafiqSpecialistRegistrationUserId',user.id);
         if(profile)sessionStorage.setItem('rafiqSpecialistId',profile.id);
@@ -111,11 +114,13 @@
         const users=JSON.parse(localStorage.getItem('rafiqUsers')||'[]');
         const user=Array.isArray(users)?users.find(u=>u?.role==='parent'&&u.email?.toLowerCase()===email.value.trim().toLowerCase()):null;
         if(!user){invalid(email,'No parent account was found for this email. Please register first.');email.focus();return;}
+        if(window.RafiqAccountStatus.inactive(user)){invalid(email,'This account is deactivated. Contact support.');email.focus();return;}
         if(!user.previewCredential){invalid(password,'This older preview account has no saved password verifier. Use a new email to create a preview account; existing records remain saved.');password.focus();return;}
         verifying=true;submit.disabled=true;email.disabled=true;password.disabled=true;toggle.disabled=true;roles.forEach(b=>b.disabled=true);
         let verified;
         try{verified=await window.RafiqPreviewCredentials.verify(user,password.value);}finally{verifying=false;submit.disabled=false;email.disabled=false;password.disabled=false;toggle.disabled=false;roles.forEach(b=>b.disabled=false);}
         if(!verified){invalid(password,'Incorrect password. Please try again.');password.focus();return;}
+        if(window.RafiqAccountStatus.inactive(user)){invalid(email,'This account is deactivated. Contact support.');return;}
         if(sessionStorage.getItem('rafiqParentUserId')!==user.id){
           ['rafiqCurrentChildId','rafiqSetupPendingChildId'].forEach(key=>localStorage.removeItem(key));
           ['rafiqBookingConcernDraft','rafiqSelectedReportBooking'].forEach(key=>sessionStorage.removeItem(key));

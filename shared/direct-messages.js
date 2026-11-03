@@ -3,11 +3,12 @@
  const key='rafiqDirectConversations';
  const read=(name,fallback)=>{const raw=localStorage.getItem(name);if(!raw)return fallback;const value=JSON.parse(raw);return value;};
  const array=name=>{const value=read(name,[]);if(!Array.isArray(value))throw Error('Saved messages could not be read.');return value;};
- const specialists=()=>{const list=array('rafiqSpecialists'),current=read('rafiqSpecialistProfile',null);if(current?.id&&!list.some(p=>p.id===current.id))list.push(current);return list;};
+ const specialists=()=>{const list=array('rafiqSpecialists'),current=read('rafiqSpecialistProfile',null);if(current?.id&&!list.some(p=>p.id===current.id))list.push(current);return list.filter(s=>!window.RafiqAccountStatus?.inactive({...s,role:'specialist'}));};
  function identity(role){
-  if(role==='specialist'){const access=window.RafiqSpecialistAccess;if(!access?.approved||!access.profile)throw Error('Specialist approval is required to open messages.');return {role,id:access.profile.id,name:access.profile.fullName||'Specialist'};}
+  if(role==='specialist'){const access=window.RafiqSpecialistAccess;if(!access?.approved||!access.profile||window.RafiqAccountStatus?.inactive({...access.profile,role:'specialist'}))throw Error('Specialist approval is required to open messages.');return {role,id:access.profile.id,name:access.profile.fullName||'Specialist'};}
   const id=sessionStorage.getItem('rafiqParentUserId'),account=id?array('rafiqUsers').find(u=>u.id===id&&u.role==='parent'):null;
   if(id&&!account)throw Error('Please sign in again to open messages.');
+  if(account&&window.RafiqAccountStatus?.inactive(account))throw Error('This account is deactivated. Contact support.');
   if(account)return {role,id:account.id,name:account.fullName||'Parent'};
   let preview=localStorage.getItem('rafiqMessagingParentId');if(!preview){preview='parent_preview_'+crypto.randomUUID();localStorage.setItem('rafiqMessagingParentId',preview);}
   const profile=read('rafiqParentProfile',null);return {role,id:preview,name:profile?.name||'Parent'};

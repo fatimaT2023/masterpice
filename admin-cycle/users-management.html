@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head><script src="../shared/account-status.js"></script>
 <script src="../piblic-pages/rafiq-theme.js"></script>
 
   <meta charset="UTF-8">
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="admin-sidebar.css">
 <link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
 <link rel="stylesheet" href="users-management.css"><link rel="stylesheet" href="../shared/site-language.css">
-</head>
+<link rel="stylesheet" href="account-management.css"></head>
 
 
 <body class="admin-cycle-video">
@@ -251,20 +251,20 @@
 <main class="main-content">
 <header class="topbar"><div class="topbar-left"><button type="button" class="menu-button" id="menuButton" aria-label="Open navigation">&#9776;</button><div><span class="page-kicker">PLATFORM COMMUNITY</span><h1>Users</h1></div></div></header>
 <div class="page-body">
-<p class="users-intro">View registered parent accounts and their contact details. This preview shows parent registrations saved in this browser.</p>
+<p class="users-intro">Manage parent and specialist accounts. Deactivation blocks access while keeping their records.</p>
 <div id="directoryError" role="alert" hidden>We couldn't load the saved directory. Check browser storage and try Refresh.</div>
-<section class="users-summary" aria-label="Parent total"><article><span>Registered parents</span><strong id="parentCount">0</strong></article></section>
-<section class="users-directory invite-panel" aria-labelledby="inviteTitle">
-<h2 id="inviteTitle">Invite a parent</h2>
-<p class="users-intro">Prepare a registration invitation for someone who needs help. They choose their own password. This preview opens an email draft; it does not create or activate an account.</p>
-<form id="parentInviteForm" class="users-tools"><label for="inviteName">Parent name<input id="inviteName" autocomplete="name" maxlength="100" required></label><label for="inviteEmail">Email address<input id="inviteEmail" type="email" autocomplete="email" maxlength="254" required></label><button type="submit">Prepare invitation</button></form>
-<div id="invitePreview" hidden><p id="inviteStatus" role="status" aria-live="polite"></p><label class="invite-message-label" for="inviteMessage">Invitation message</label><textarea id="inviteMessage" rows="7" readonly></textarea><div class="invite-actions"><a id="inviteEmailDraft" class="invite-action">Open email draft</a><button id="copyInvite" type="button" class="invite-action">Copy message</button></div><small id="inviteHostingNote">Use a hosted site address so the recipient can open the registration page.</small></div>
-</section>
+<section class="users-summary" aria-label="Account totals"><article><span>Registered accounts</span><strong id="parentCount">0</strong></article><article><span>Active</span><strong id="activeAccountCount">0</strong></article><article><span>Inactive</span><strong id="inactiveAccountCount">0</strong></article></section><p id="accountActionStatus" role="status" aria-live="polite"></p>
+
 <section class="users-directory" aria-label="Parent directory">
-<div class="users-tools"><label for="userSearch">Search parents<input type="search" id="userSearch" placeholder="Name, email or phone"></label><button id="refreshUsers" type="button">Refresh</button></div>
+<div class="users-tools"><label for="userSearch">Search accounts<input type="search" id="userSearch" placeholder="Name, email or phone"></label><label for="userRoleFilter">Account type<select id="userRoleFilter"><option value="all">All types</option><option value="parent">Parents</option><option value="specialist">Specialists</option></select></label><label for="userStatusFilter">Status<select id="userStatusFilter"><option value="all">All statuses</option><option value="active">Active</option><option value="inactive">Inactive</option></select></label><button id="refreshUsers" type="button">Refresh</button></div>
 <p id="userResults" role="status" aria-live="polite"></p>
-<div class="users-table-wrap" tabindex="0" role="region" aria-label="Parents table"><table><thead><tr><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Phone</th><th scope="col">Joined</th></tr></thead><tbody id="userRows"></tbody></table></div><p id="usersEmpty" hidden></p>
-</section></div></main>
-</div><script src="admin-sidebar.js"></script><script src="users-management.js"></script><script src="parent-invitations.js"></script>
-<script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="../shared/site-language.js" defer></script>
+<div class="users-table-wrap" tabindex="0" role="region" aria-label="Parents table"><table><thead><tr><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Phone</th><th scope="col">Type</th><th scope="col">Joined</th><th scope="col">Status</th><th scope="col">Action</th></tr></thead><tbody id="userRows"></tbody></table></div><p id="usersEmpty" hidden></p>
+</section><details class="users-directory invite-panel"><summary id="inviteTitle">Invite a new parent — optional</summary>
+
+<p class="users-intro">Prepare a registration invitation for someone who needs help. They choose their own password. This preview opens an email draft; it does not create or activate an account.</p>
+<form id="parentInviteForm" class="users-tools"><label for="inviteName">Parent name<input id="inviteName" autocomplete="name" maxlength="100" required></label><label for="inviteEmail">Email address<input id="inviteEmail" type="email" autocomplete="email" maxlength="254" required></label><label for="invitePublicUrl">Public registration link<input id="invitePublicUrl" type="url" placeholder="https://your-site.example/register.html"></label><button type="submit">Prepare invitation</button></form>
+<div id="invitePreview" hidden><p id="inviteStatus" role="status" aria-live="polite"></p><label class="invite-message-label" for="inviteMessage">Invitation message</label><textarea id="inviteMessage" rows="7" readonly></textarea><div class="invite-actions"><a id="inviteEmailDraft" class="invite-action">Open email draft</a><button id="copyInvite" type="button" class="invite-action">Copy message</button></div><small id="inviteHostingNote">Use a hosted site address so the recipient can open the registration page.</small></div>
+</details></div></main>
+</div><dialog id="accountActionDialog" class="account-action-dialog" aria-labelledby="accountActionTitle"><h2 id="accountActionTitle"></h2><p id="accountActionName" data-user-content></p><p id="accountActionDescription"></p><p id="accountActionError" role="alert"></p><div><button id="cancelAccountAction" type="button">Cancel</button><button id="confirmAccountAction" type="button">Yes, deactivate</button></div></dialog><script src="admin-sidebar.js"></script><script src="users-management.js"></script><script src="parent-invitations.js"></script>
+<script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="account-management-ar.js" defer></script><script src="../shared/site-language.js" defer></script>
 </body></html>
