@@ -25,10 +25,11 @@
     });
   }
   function transaction(mode, action) {
+    if(child&&window.RafiqFamily&&!window.RafiqFamily.canAccessId(child.id))return Promise.reject(new Error('This child is not linked to your account.'));
     return new Promise((resolve,reject) => {
       const tx = db.transaction('photos',mode);
       let result;
-      tx.oncomplete = () => resolve(result);
+      tx.oncomplete = () => {if(mode==='readwrite')try{localStorage.setItem('rafiqAlbumChanged',Date.now()+'_'+crypto.randomUUID());window.RafiqFamily?.notify(child.id,'Child memories updated','album.html');}catch{}resolve(result);};
       tx.onabort = () => reject(tx.error || new Error('Transaction aborted'));
       tx.onerror = () => {}; // The abort handler reports errors once.
       try { action(tx.objectStore('photos'), value => { result = value; }); }
@@ -39,7 +40,7 @@
     const request = store.index('childId').getAll(child.id);
     request.onsuccess = () => done(request.result);
   });
-  const writePhotos = records => transaction('readwrite',store => records.forEach(record => store.put(record)));
+  const writePhotos = records => transaction('readwrite',store => records.forEach(record => store.put({...record,createdBy:record.createdBy||window.RafiqFamily?.owner(),createdByName:record.createdByName||window.RafiqFamily?.actor().name,updatedBy:window.RafiqFamily?.owner()})));
   const removePhoto = id => transaction('readwrite',store => store.delete(id));
   function displayDate(date) { return new Date(date+'T12:00:00').toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'}); }
   function render() {
@@ -60,7 +61,7 @@
       const title = document.createElement('h3'); title.textContent = photo.title;
       const date = document.createElement('time'); date.dateTime = photo.date; date.textContent = displayDate(photo.date);
       const description = document.createElement('p'); description.textContent = photo.description;
-      caption.append(title,date,description); button.append(image,caption); article.append(button); grid.append(article);
+      caption.append(title,date,description);if(photo.createdByName){const author=document.createElement('small');author.textContent='Added by: '+photo.createdByName;caption.append(author);} button.append(image,caption); article.append(button); grid.append(article);
       button.onclick = () => openMemory(photo.id);
     });
   }
@@ -102,7 +103,7 @@
     try {
       const saved = window.RafiqSetup.readChildren();
       const children = Array.isArray(saved) ? saved : [];
-      child = children.find(c => c.id === localStorage.getItem('rafiqCurrentChildId')) || children[0];
+      child = children.find(c => c.id === (window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId'))) || children[0];
       if (!child?.id) { $('noChild').hidden = false; return; }
       const title = (child.name || 'My Child') + "'s Album";
       $('albumTitle').textContent = title; document.title = `${title} | RAFIQ`;

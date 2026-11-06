@@ -18,5 +18,5 @@ document.addEventListener('DOMContentLoaded',()=>{
    status.textContent='Demo accounts are ready. Sign in using the credentials below.';document.getElementById('demoLogins').hidden=false;
   }catch(error){status.textContent='Could not prepare demo accounts: '+error.message;}finally{button.disabled=false;}
  });
- document.getElementById('parentDemoLogin').addEventListener('click',()=>localStorage.setItem('rafiqCurrentChildId','rafiq_demo_child'));
+ document.getElementById('parentDemoLogin').addEventListener('click',()=>(window.RafiqFamily ? window.RafiqFamily.select('rafiq_demo_child') : localStorage.setItem('rafiqCurrentChildId','rafiq_demo_child')));
 });

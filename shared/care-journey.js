@@ -2,7 +2,7 @@
 (()=>{'use strict';
  const read=key=>{try{const value=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(value)?value:[];}catch{return [];}};
  const reportFor=booking=>read('rafiqSpecialistReports').find(r=>r.bookingId===booking.id&&r.childId===booking.childId&&r.specialistId===booking.specialistId);
- const belongs=(b,viewer,thread)=>b.childId===thread.childId&&b.specialistId===thread.specialistId&&(viewer.role==='specialist'?b.specialistId===viewer.id:!b.parentId||b.parentId===viewer.id);
+ const belongs=(b,viewer,thread)=>b.childId===thread.childId&&b.specialistId===thread.specialistId&&(viewer.role==='specialist'?b.specialistId===viewer.id:window.RafiqFamily?window.RafiqFamily.canAccessId(b.childId,viewer.id):(!b.parentId||b.parentId===viewer.id));
  function context(viewer,thread,requested){
   const bookings=read('rafiqBookings').filter(b=>belongs(b,viewer,thread));
   const today=new Date();today.setHours(0,0,0,0);
@@ -10,7 +10,7 @@
   const booking=bookings.find(b=>b.id===requested)||upcoming[0]||bookings.sort((a,b)=>String(b.date).localeCompare(String(a.date)))[0];
   return booking?{booking,report:reportFor(booking)}:null;
  }
- function openReport(booking){sessionStorage.setItem('rafiqSelectedReportBooking',booking.id);localStorage.setItem('rafiqCurrentChildId',booking.childId);}
+ function openReport(booking){sessionStorage.setItem('rafiqSelectedReportBooking',booking.id);(window.RafiqFamily ? window.RafiqFamily.select(booking.childId) : localStorage.setItem('rafiqCurrentChildId',booking.childId));}
  function prepareSpecialist(booking){sessionStorage.setItem('rafiqSelectedSpecialistBooking',booking.id);}
  window.RafiqCareJourney={context,reportFor,openReport,prepareSpecialist};
 })();

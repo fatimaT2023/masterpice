@@ -1,0 +1,5 @@
+document.addEventListener('DOMContentLoaded',()=>{
+if(new URLSearchParams(location.search).has('edit'))return;const family=window.RafiqFamily,form=document.getElementById('childForm');if(!form)return;
+const label=document.createElement('label');label.textContent='Family workspace';const select=document.createElement('select');select.id='childFamily';select.name='familyId';
+const ids=new Set(['family_'+family.owner(),...window.RafiqSetup.readChildren().map(c=>family.familyId(c))]);for(const id of ids){const person=family.user(family.family(id).ownerId),option=document.createElement('option');option.value=id;option.textContent=person?.fullName||'My family';option.dataset.userContent='';select.append(option);}select.value=family.currentFamilyId();label.append(select);const help=document.createElement('p');help.className='screen-flow-small';help.textContent='The primary caregiver of this family can see the new child. Other caregivers need a separate invitation.';form.prepend(label,help);
+});

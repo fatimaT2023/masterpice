@@ -7,8 +7,8 @@
   const account=window.RafiqAccountStatus?.current();if(account&&window.RafiqAccountStatus.inactive(account))throw Error('This account is deactivated. Contact support.');
   if(role==='parent'){
    const parent=sessionStorage.getItem('rafiqParentUserId');
-   const child=read('rafiqChildren').find(c=>c.id===booking.childId&&c.parentId===parent);
-   if(!parent||!child||(booking.parentId&&booking.parentId!==parent))throw Error('This appointment is not available to your account.');
+   const child=read('rafiqChildren').find(c=>c.id===booking.childId&&(window.RafiqFamily?window.RafiqFamily.canAccess(c,parent):c.parentId===parent));
+   if(!parent||!child)throw Error('This appointment is not available to your account.');
   }else if(role==='specialist'){
    const specialist=sessionStorage.getItem('rafiqSpecialistId'),profile=read('rafiqSpecialists').find(s=>s.id===specialist&&s.status==='approved'&&s.verificationStatus!=='rejected');
    if(!profile||booking.specialistId!==specialist)throw Error('This appointment is not available to your account.');

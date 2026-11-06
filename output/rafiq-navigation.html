@@ -1,0 +1,69 @@
+<div id="rafiq-navigation-preview" dir="rtl">
+  <div class="viz-carousel" aria-label="أفكار تنقّل رفيق" data-previous-label="التصميم السابق" data-next-label="التصميم التالي">
+    <section data-variant="شريط عائم" aria-label="شريط عائم مع تبويبات داخل الصفحة"><div class="rf-app rf-floating" data-design="floating"></div></section>
+    <section data-variant="شريط جانبي" aria-label="شريط جانبي مع تبويبات داخل الصفحة" hidden><div class="rf-app rf-sidebar" data-design="sidebar"></div></section>
+  </div>
+</div>
+<style>
+#rafiq-navigation-preview .rf-app{--rf-bg:light-dark(#fff3f6,#182b27);--rf-panel:light-dark(#fffbfc,#243a34);--rf-ink:light-dark(#163f36,#e9f4ee);--rf-muted:light-dark(#587268,#b4c9be);--rf-line:light-dark(#e6dcd9,#42594e);--rf-brand:light-dark(#076b61,#90d7be);--rf-active:light-dark(#d9eee4,#365b4c);color:var(--rf-ink);background:var(--rf-bg);font-family:Tahoma,"Segoe UI",sans-serif;min-height:560px;box-sizing:border-box;overflow:clip;border-radius:24px;line-height:1.7}
+#rafiq-navigation-preview .rf-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 26px;background:var(--rf-panel);border-bottom:1px solid var(--rf-line);flex-wrap:wrap}
+#rafiq-navigation-preview .rf-brand{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:700;direction:ltr;letter-spacing:.02em}
+#rafiq-navigation-preview .rf-mark{display:grid;place-items:center;background:var(--rf-brand);color:var(--rf-panel);width:37px;height:37px;border-radius:12px;font-size:24px}
+#rafiq-navigation-preview .rf-context{display:flex;align-items:center;gap:15px;flex-wrap:wrap;color:var(--rf-muted);font-size:13px}
+#rafiq-navigation-preview .rf-child{color:var(--rf-ink);display:flex;gap:9px;align-items:center}
+#rafiq-navigation-preview .rf-avatar{width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:var(--rf-active);color:var(--rf-brand);font-weight:700}
+#rafiq-navigation-preview .rf-mainnav{position:relative;display:flex;align-items:stretch;gap:4px;background:var(--rf-panel);padding:5px;border:1px solid var(--rf-line);border-radius:var(--rf-radius,30px);isolation:isolate}
+#rafiq-navigation-preview .rf-mainnav button{position:relative;z-index:1;border:0;background:transparent;color:var(--rf-muted);font:inherit;font-size:13px;padding:12px 15px;min-height:46px;display:flex;align-items:center;justify-content:center;gap:7px;border-radius:20px;white-space:nowrap}
+#rafiq-navigation-preview .rf-mainnav button[aria-current=page]{color:var(--rf-brand);font-weight:700}
+#rafiq-navigation-preview .rf-indicator{position:absolute;top:5px;bottom:5px;left:5px;background:var(--rf-active);border-radius:calc(var(--rf-radius,30px) - 5px);transition:left .3s ease,width .3s ease;pointer-events:none;z-index:0}
+#rafiq-navigation-preview .rf-app[data-motion=false] .rf-indicator{transition:none}
+#rafiq-navigation-preview .rf-floating .rf-mainnav{margin:22px auto 0;width:fit-content;max-width:calc(100% - 40px);box-shadow:0 8px 24px light-dark(#6140380b,#00000024)}
+#rafiq-navigation-preview .rf-content{padding:26px 36px 38px;min-width:0}
+#rafiq-navigation-preview .rf-eyebrow{color:var(--rf-muted);font-size:12px;margin:0 0 5px}
+#rafiq-navigation-preview .rf-content h1{font-size:27px;font-weight:700;line-height:1.5;margin:0 0 7px;color:var(--rf-ink)}
+#rafiq-navigation-preview .rf-subtitle{font-size:14px;color:var(--rf-muted);margin:0 0 22px}
+#rafiq-navigation-preview .rf-localnav{display:flex;gap:20px;flex-wrap:wrap;border-bottom:1px solid var(--rf-line);margin-bottom:24px}
+#rafiq-navigation-preview .rf-localnav button{font:inherit;font-size:14px;color:var(--rf-muted);background:none;border:0;border-bottom:3px solid transparent;padding:10px 0;min-height:45px;margin-bottom:-1px}
+#rafiq-navigation-preview .rf-localnav button[aria-current=page]{color:var(--rf-brand);border-bottom-color:var(--rf-brand);font-weight:700}
+#rafiq-navigation-preview .rf-page{background:var(--rf-panel);padding:24px;border:1px solid var(--rf-line);border-radius:18px;min-height:160px}
+#rafiq-navigation-preview .rf-page h2{margin:0 0 9px;font-size:20px;font-weight:700;color:var(--rf-ink)}
+#rafiq-navigation-preview .rf-page p{margin:0;font-size:14px;color:var(--rf-muted)}
+#rafiq-navigation-preview .rf-example{margin-top:20px;padding-top:17px;border-top:1px solid var(--rf-line);font-size:14px;color:var(--rf-ink)}
+#rafiq-navigation-preview .rf-example span{display:block;font-size:12px;color:var(--rf-muted);margin-bottom:4px}
+#rafiq-navigation-preview .rf-sidebar .rf-workspace{display:grid;grid-template-columns:174px minmax(0,1fr)}
+#rafiq-navigation-preview .rf-sidebar .rf-mainnav{flex-direction:column;gap:6px;border:0;border-inline-end:1px solid var(--rf-line);border-radius:0;padding:22px 12px;align-items:stretch;justify-content:start}
+#rafiq-navigation-preview .rf-sidebar .rf-mainnav button{justify-content:flex-start;white-space:normal;text-align:start;padding:12px}
+#rafiq-navigation-preview .rf-sidebar .rf-indicator{display:none}
+#rafiq-navigation-preview .rf-sidebar .rf-mainnav button[aria-current=page]{background:var(--rf-active);border-radius:12px}
+#rafiq-navigation-preview .rf-sidebar .rf-content{padding:28px 24px 38px}
+#rafiq-navigation-preview .rf-mainnav svg{width:17px;height:17px;flex-shrink:0}
+#rafiq-navigation-preview .rf-app [hidden]{display:none!important}
+@media(max-width:650px){#rafiq-navigation-preview .rf-top{padding:18px}#rafiq-navigation-preview .rf-content{padding:23px 18px}#rafiq-navigation-preview .rf-context{gap:8px}#rafiq-navigation-preview .rf-context>span:last-child{display:none}#rafiq-navigation-preview .rf-floating .rf-mainnav{width:auto;max-width:none;margin:16px 12px 0;gap:0}#rafiq-navigation-preview .rf-mainnav button{flex:1;flex-direction:column;gap:4px;font-size:11px;white-space:normal;padding:8px 4px}#rafiq-navigation-preview .rf-mainnav svg{width:19px;height:19px}#rafiq-navigation-preview .rf-localnav{gap:14px}#rafiq-navigation-preview .rf-localnav button{font-size:12px}#rafiq-navigation-preview .rf-page{padding:18px}#rafiq-navigation-preview .rf-sidebar .rf-workspace{grid-template-columns:110px minmax(0,1fr)}#rafiq-navigation-preview .rf-sidebar .rf-mainnav{padding:16px 6px}#rafiq-navigation-preview .rf-sidebar .rf-mainnav button{flex:0;flex-direction:column;justify-content:center;text-align:center;font-size:12px}#rafiq-navigation-preview .rf-sidebar .rf-content{padding:22px 12px}#rafiq-navigation-preview .rf-sidebar .rf-localnav{gap:8px}#rafiq-navigation-preview .rf-content h1{font-size:23px}#rafiq-navigation-preview .rf-app{min-height:660px}}
+@media(prefers-reduced-motion:reduce){#rafiq-navigation-preview .rf-indicator{transition:none}}
+</style>
+<script>
+(()=>{
+const root=document.getElementById('rafiq-navigation-preview');
+const sections={
+home:{label:'الرئيسية',icon:'house',intro:'يوم جديد مع لولو',tabs:[['اليوم','خطوتك اليوم','اختاري ما تحتاجينه الآن، وارجعي إلى يوم طفلك بسهولة.','نشاط اليوم','لحظة لعب هادئة ومناسبة لعمر لولو.']]},
+growth:{label:'النمو والأنشطة',icon:'sprout',intro:'نفهم نموّها، ونشاركها اللعب',tabs:[['متابعة النمو','متابعة نمو لولو','ملاحظاتك ومتابعتك لنمو طفلتك في مكان واحد.','آخر ملاحظة','بتلتفت للصوت لما نحكي معها.'],['أنشطة لطفلي','نشاط مع لولو','فكرة لعب حسب عمر طفلتك وجاهزيتها والمهارة التي تدعمها.','نشاط مقترح','صوتك ولحظة انتظار — لدعم التواصل والتفاعل.'],['عندي قلق','خلّينا نفهم ملاحظتك','رتّبي ما لاحظتِه، ثم اختاري الخطوة التالية أو ناقشيه مع المختص.','ماذا لاحظتِ؟','احفظي الموقف والتاريخ والتفاصيل التي تريدين مناقشتها.']]},
+records:{label:'سجلّ طفلتي',icon:'notebook-tabs',intro:'تفاصيل لولو وذكرياتها',tabs:[['بيانات الطفل','ملف لولو','بياناتها الأساسية وأولياء الأمور والمختصون المتابعون لها.','لولو','شهران · الحسابات المرتبطة وبيانات الملف.'],['الصحة والتطعيمات','سجلّها الصحي','القياسات والتطعيمات والملاحظات الصحية المحفوظة.','القياسات','راجعي السجلات المسجّلة وأضيفي تحديثًا عند الحاجة.'],['الذكريات','لحظات تستحق أن تبقى','صور ولحظات تشاركونها ضمن ملف طفلتك.','ألبوم لولو','كل ذكرى مع تاريخها والشخص الذي أضافها.']]},
+specialists:{label:'المختصّون',icon:'stethoscope',intro:'دعم يناسب احتياج طفلتك',tabs:[['البحث عن مختص','اختاري المختص المناسب','تصفّحي المختصين وتعرّفي على خبراتهم ومواعيدهم.','ابحثي حسب الاختصاص','راجعي الملف قبل اختيار الموعد.'],['متابعة طفلتي','المختصون المتابعون للولو','علاقات المتابعة المستمرة والملاحظات والتوصيات المشتركة.','المتابعة والتوصيات','تتحكم العائلة بالسجلات التي تشاركها مع المختص.'],['المواعيد والتقارير','مواعيد لولو وتقاريرها','المواعيد القادمة والزيارات السابقة وتقارير المختصين.','مواعيد العائلة','الموعد نفسه ظاهر للحسابين المرتبطين بالطفلة.']]},
+messages:{label:'الرسائل',icon:'messages-square',intro:'محادثات العائلة مع المختصين',tabs:[['المحادثات','رسائلك مع المختصين','المحادثة الخاصة بالطفلة مشتركة بين أولياء الأمور المرتبطين بها.','اختاري محادثة','تظهر الرسائل باسم الشخص الذي أرسلها.']]}
+};
+const saved=window.openai?.widgetState?.privateContent?.views;
+const views=[],renderers=[];
+function persist(){window.openai?.setWidgetState?.({modelContent:{navigation:'روابط مباشرة للأقسام وتبويبات فرعية داخل الصفحة'},privateContent:{views:views.map(v=>({section:v.section,tab:v.tab}))}})?.catch(()=>{});}
+for(const [index,app] of [...root.querySelectorAll('.rf-app')].entries()){
+app.innerHTML='<header class="rf-top"><div class="rf-brand"><span class="rf-mark">r.</span><span>RAFIQ</span></div><div class="rf-context"><div class="rf-child"><span class="rf-avatar">ل</span><span>لولو · شهران</span></div><span>حسابي</span></div></header><div class="rf-workspace"><nav class="rf-mainnav" aria-label="الأقسام الرئيسية"><span class="rf-indicator" aria-hidden="true"></span></nav><main class="rf-content"><p class="rf-eyebrow">لولو · متابعة طفلتك</p><h1></h1><p class="rf-subtitle"></p><nav class="rf-localnav" aria-label="صفحات القسم"></nav><section class="rf-page" aria-live="polite"><h2></h2><p></p><div class="rf-example"><span></span><div></div></div></section></main></div>';
+const state={section:sections[saved?.[index]?.section]?saved[index].section:'growth',tab:saved?.[index]?.tab||0,radius:30,motion:true};views.push(state);
+const mainnav=app.querySelector('.rf-mainnav'),tabs=app.querySelector('.rf-localnav');
+function indicator(){const active=mainnav.querySelector('[aria-current=page]'),mark=mainnav.querySelector('.rf-indicator');if(active){mark.style.left=active.offsetLeft+'px';mark.style.width=active.offsetWidth+'px';}}
+function draw(){const group=sections[state.section];state.tab=Math.max(0,Math.min(group.tabs.length-1,state.tab));const item=group.tabs[state.tab];mainnav.querySelectorAll('button').forEach(b=>{if(b.dataset.section===state.section)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});app.querySelector('h1').textContent=group.label;app.querySelector('.rf-subtitle').textContent=group.intro;tabs.replaceChildren();tabs.hidden=group.tabs.length<2;group.tabs.forEach((tab,i)=>{const b=document.createElement('button');b.type='button';b.className='cursor-interaction';b.textContent=tab[0];if(i===state.tab)b.setAttribute('aria-current','page');b.onclick=()=>{state.tab=i;draw();persist();};tabs.append(b);});app.querySelector('.rf-page h2').textContent=item[1];app.querySelector('.rf-page p').textContent=item[2];app.querySelector('.rf-example span').textContent=item[3];app.querySelector('.rf-example div').textContent=item[4];app.style.setProperty('--rf-radius',state.radius+'px');app.dataset.motion=String(state.motion);requestAnimationFrame(indicator);}
+for(const [key,group] of Object.entries(sections)){const button=document.createElement('button');button.type='button';button.className='cursor-interaction';button.dataset.section=key;button.innerHTML='<i data-lucide="'+group.icon+'" aria-hidden="true"></i><span>'+group.label+'</span>';button.onclick=()=>{state.section=key;state.tab=0;draw();persist();};mainnav.append(button);}renderers.push(draw);draw();
+new ResizeObserver(indicator).observe(mainnav);
+if(globalThis.Tweak){const tweak=new Tweak({container:mainnav,onChange:draw});tweak.addSlider(state,'radius',{label:'استدارة الشريط',min:14,max:36,unit:'px'});tweak.addToggle(state,'motion',{label:'حركة المؤشّر'});}
+}
+window.addEventListener('openai:set_globals',event=>{const incoming=event.detail?.globals?.widgetState?.privateContent?.views;if(!incoming)return;incoming.forEach((value,index)=>{const view=views[index];if(view&&sections[value.section]){view.section=value.section;view.tab=value.tab||0;renderers[index]();}});});
+})();
+</script>

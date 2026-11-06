@@ -227,9 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   const currentChildId =
-    localStorage.getItem(
-      "rafiqCurrentChildId"
-    );
+    (window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId'));
 
 
   const currentChild =
@@ -1703,6 +1701,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // =====================================================
 
   function createBooking(sessionPayment) {
+    const duplicate=JSON.parse(localStorage.getItem('rafiqBookings')||'[]').some(b=>b.childId===currentChild.id&&b.specialistId===specialist.id&&b.date===selectedDate&&b.time===selectedTime&&!['cancelled','canceled'].includes(b.status));if(duplicate)throw Error('This child already has this appointment.');
 
     /*
       Pull the latest approved profile again
@@ -1759,7 +1758,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       id:
         bookingId,
-      parentId: sessionStorage.getItem('rafiqParentUserId') || localStorage.getItem('rafiqMessagingParentId') || null,
+      parentId: currentChild.parentId || sessionStorage.getItem('rafiqParentUserId') || localStorage.getItem('rafiqMessagingParentId') || null,
+      createdBy: sessionStorage.getItem('rafiqParentUserId') || null,
 
 
       status:
@@ -1938,6 +1938,7 @@ document.addEventListener("DOMContentLoaded", () => {
           bookingError.focus();return;
         }
         window.RafiqBookingJourney.step(3);
+        if(JSON.parse(localStorage.getItem('rafiqBookings')||'[]').some(b=>b.childId===currentChild.id&&b.specialistId===specialist.id&&b.date===selectedDate&&b.time===selectedTime&&!['cancelled','canceled'].includes(b.status))){bookingError.textContent='This child already has this appointment. No second payment is needed.';return;}
         sessionPayment = await window.RafiqFinance.checkout(price,{Child:currentChild.name,Specialist:latest.fullName||specialist.name,Date:selectedDateLabel,Time:selectedTime});
       } catch (error) {
         window.RafiqBookingJourney.step(1);bookingError.textContent = 'Demo payment could not be completed. Please try again.';

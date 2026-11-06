@@ -193,9 +193,7 @@ document.addEventListener(
 
 
     const currentChildId =
-      localStorage.getItem(
-        "rafiqCurrentChildId"
-      );
+      (window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId'));
 
 
     const currentChild =
@@ -639,7 +637,7 @@ document.addEventListener(
             </div>
 
 
-            <div class="booking-card-footer">
+            <div class="booking-family-payment"><p>Booked by: ${escapeHTML(window.RafiqFamily?.user(booking.createdBy||booking.parentId)?.fullName||'Caregiver')}</p>${booking.sessionPayment?`<p>Payment: ${escapeHTML(booking.sessionPayment.status)} · ${escapeHTML(booking.sessionPayment.amount)} JOD</p><p>Paid by: ${escapeHTML(booking.sessionPayment.payerName||window.RafiqFamily?.user(booking.sessionPayment.payerId||booking.createdBy||booking.parentId)?.fullName||'Caregiver')}</p><p>Any refund returns to the original payment method.</p>`:''}</div><div class="booking-card-footer">
 
               <span class="booking-reference">
                 Reference:
@@ -792,6 +790,8 @@ document.addEventListener(
         "cancelled";
 
 
+      booking.cancelledBy=window.RafiqFamily?.owner()||null;
+      booking.cancelledByName=window.RafiqFamily?.actor().name||'';
       booking.cancelledAt =
         new Date().toISOString();
 

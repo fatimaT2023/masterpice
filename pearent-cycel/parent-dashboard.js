@@ -5,8 +5,8 @@ let children,child,model;
 function fail(message){text('todayError',message);get('todayError').hidden=false;}
 try{
  children=window.RafiqSetup.readChildren();if(!children.length){location.replace('onboarding.html');return;}
- child=children.find(item=>item.id===localStorage.getItem('rafiqCurrentChildId'))||children[0];
- localStorage.setItem('rafiqCurrentChildId',child.id);
+ child=children.find(item=>item.id===(window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId')))||children[0];
+ (window.RafiqFamily ? window.RafiqFamily.select(child.id) : localStorage.setItem('rafiqCurrentChildId',child.id));
  if(localStorage.getItem('rafiqSetupPendingChildId')===child.id||!child.setupCompletedAt){location.replace('getting-started.html?child='+encodeURIComponent(child.id));return;}
  model=window.RafiqToday.build(child);
 }catch{fail('We couldn’t read your saved profile in this browser. Check that browser storage is available, then reload this page.');return;}
@@ -44,7 +44,7 @@ if(model.warnings.length)fail('Some saved records couldn’t be read. Your exist
 const dropdown=get('childDropdown'),switcher=get('childSwitcherButton');
 switcher.addEventListener('click',()=>{dropdown.hidden=!dropdown.hidden;});
 document.addEventListener('click',event=>{if(!event.target.closest('.child-switcher'))dropdown.hidden=true;});
-children.forEach(item=>{const button=document.createElement('button');button.type='button';button.className='dropdown-child-button';button.textContent=item.name||'Your child';if(item.id===child.id){button.classList.add('active');button.setAttribute('aria-current','true');}button.addEventListener('click',()=>{try{localStorage.setItem('rafiqCurrentChildId',item.id);location.assign('child-profile.html?child='+encodeURIComponent(item.id));}catch{fail('We couldn’t switch profiles. Check browser storage and try again.');}});get('childDropdownList').append(button);});
+children.forEach(item=>{const button=document.createElement('button');button.type='button';button.className='dropdown-child-button';button.textContent=item.name||'Your child';if(item.id===child.id){button.classList.add('active');button.setAttribute('aria-current','true');}button.addEventListener('click',()=>{try{(window.RafiqFamily ? window.RafiqFamily.select(item.id) : localStorage.setItem('rafiqCurrentChildId',item.id));location.assign('child-profile.html?child='+encodeURIComponent(item.id));}catch{fail('We couldn’t switch profiles. Check browser storage and try again.');}});get('childDropdownList').append(button);});
 get('todayContent').hidden=false;
 // Refresh age context when Today remains open across a local calendar day.
 const calendarDay=new Date().toDateString();

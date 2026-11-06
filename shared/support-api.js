@@ -7,7 +7,9 @@
   const states = ['new','in_progress','resolved'];
   const uid = () => crypto.randomUUID();
   function identity() {
-    let id = sessionStorage.getItem('rafiqSupportViewerId');
+    const accountRole=sessionStorage.getItem('rafiqRole');
+    const accountId=accountRole==='parent'?sessionStorage.getItem('rafiqParentUserId'):accountRole==='specialist'?(sessionStorage.getItem('rafiqSpecialistId')||sessionStorage.getItem('rafiqSpecialistRegistrationUserId')):null;
+    let id = accountId ? accountRole+':'+accountId : sessionStorage.getItem('rafiqSupportViewerId');
     if (!id) {id=uid();sessionStorage.setItem('rafiqSupportViewerId',id);}
     const hint = new URLSearchParams(location.search).get('from');
     const role = sessionStorage.getItem('rafiqRole') || hint || 'guest';

@@ -10,6 +10,12 @@
   const submit = document.getElementById('loginButton');
   const status = document.getElementById('formStatus');
   const roles = [...document.querySelectorAll('[data-role]')];
+  const invitationId = new URLSearchParams(location.search).get('invite');
+  if(invitationId){
+    document.querySelector('.role-selector').hidden=true;
+    document.querySelector('.create-account').href='register.html?role=parent&invite='+encodeURIComponent(invitationId);
+    try{const invite=JSON.parse(localStorage.getItem('rafiqCaregiverInvitationsPreview')||'[]').find(r=>r.id===invitationId);if(invite)email.value=invite.email;}catch{}
+  }
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   if(new URLSearchParams(location.search).get('account')==='inactive')status.textContent='This account is deactivated. Contact support.';
   if(new URLSearchParams(location.search).get('account')==='unavailable')status.textContent='We could not verify your account status. Reload and try again.';
@@ -135,6 +141,7 @@
     success = true;setState('success');submit.firstElementChild.textContent = 'Welcome back';
     form.setAttribute('aria-busy','false');
     await new Promise(resolve => setTimeout(resolve,1000));
+    if(invitationId && signInRole==='parent'){location.href='caregiver-invitation.html?invite='+encodeURIComponent(invitationId);return;}
     location.href = signInRole === 'admin' ? '../admin-cycle/specialist-approvals.html' : signInRole === 'parent' ? '../pearent-cycel/parent-dashboard.html' : '../specialist-cycle/specialist-dashboard.html';
   });
   reduced.addEventListener('change', () => { clearTimeout(poseTimer); if (assetsReady) showPose(privatePoses.has(targetState) ? targetState : 'idle'); });

@@ -27,13 +27,26 @@ function readAllChildren() {
  return value;
 }
 function parentOwner(){return sessionStorage.getItem('rafiqParentUserId')||'legacy-browser';}
-function ownsChild(child){const owner=parentOwner();return child.parentId===owner||(owner==='legacy-browser'&&!child.parentId);}
-function readChildren(){return readAllChildren().filter(ownsChild);}
+function ownsChild(child){return window.RafiqFamily.primary(child);}
+function readChildren(){return readAllChildren().filter(child=>!child.archivedAt&&window.RafiqFamily.canAccess(child)).map(child=>({...child,relationship:window.RafiqFamily.relationship(child)}));}
 function writeChildren(children){
- if(!Array.isArray(children)||children.some(child=>!child||typeof child.id!=='string'||(child.parentId&&child.parentId!==parentOwner())))throw Error('Invalid child ownership');
- const all=readAllChildren(),others=all.filter(child=>!ownsChild(child));
- if(children.some(child=>others.some(other=>other.id===child.id)))throw Error('Child belongs to another account');
- localStorage.setItem('rafiqChildren',JSON.stringify([...others,...children.map(child=>({...child,parentId:parentOwner()}))]));
+ if(!Array.isArray(children)||children.some(c=>!c||typeof c.id!=='string')||new Set(children.map(c=>c.id)).size!==children.length)throw Error('Invalid child profiles');
+ const all=readAllChildren(),ids=new Set(children.map(c=>c.id));
+ const invitations=window.RafiqFamily.links();let linksChanged=false;
+ const merged=all.filter(c=>!ids.has(c.id));
+ // A shared caregiver cannot remove a child by omitting it from a stale list.
+ for(const incoming of children){
+  const existing=all.find(c=>c.id===incoming.id);
+  if(!existing&&incoming.familyId&&incoming.familyId!=='family_'+parentOwner()&&!window.RafiqFamily.member(incoming.familyId))throw Error('This family is not linked to your account.');
+  if(!existing&&incoming.familyId&&window.RafiqFamily.family(incoming.familyId).ownerId!==parentOwner()){const account=window.RafiqFamily.user();invitations.push({id:crypto.randomUUID(),childId:incoming.id,childName:incoming.name,ownerId:window.RafiqFamily.family(incoming.familyId).ownerId,email:account.email.toLowerCase(),relationship:incoming.relationship,permission:'contribute',acceptedUserId:parentOwner(),status:'accepted',createdAt:new Date().toISOString()});linksChanged=true;}
+  if(existing&&!window.RafiqFamily.canAccess(existing))throw Error('Child belongs to another account');
+  if(existing&&!ownsChild(existing)){const link=window.RafiqFamily.link(existing);const stored=invitations.find(r=>r.id===link?.id);if(stored&&stored.relationship!==incoming.relationship){stored.relationship=incoming.relationship;linksChanged=true;}}
+  const canonicalPrimary=existing?.parentId||(incoming.familyId?window.RafiqFamily.family(incoming.familyId).ownerId:parentOwner());
+  const newManager=window.RafiqAccountStatus?.inactive(window.RafiqFamily.user(canonicalPrimary))?parentOwner():canonicalPrimary;
+  merged.push({...incoming,familyId:existing?window.RafiqFamily.familyId(existing):(incoming.familyId||'family_'+parentOwner()),primaryManagerId:existing?.primaryManagerId||(!existing?newManager:undefined),responsibilityHold:existing?.responsibilityHold||false,updatedBy:parentOwner(),updatedAt:new Date().toISOString(),parentId:existing?.parentId||(incoming.familyId?window.RafiqFamily.family(incoming.familyId).ownerId:parentOwner()),relationship:existing&&!ownsChild(existing)?existing.relationship:!existing&&incoming.familyId&&window.RafiqFamily.family(incoming.familyId).ownerId!==parentOwner()?(all.find(c=>window.RafiqFamily.familyId(c)===incoming.familyId&&c.parentId===window.RafiqFamily.family(incoming.familyId).ownerId)?.relationship||'guardian'):incoming.relationship});
+ }
+ localStorage.setItem('rafiqChildren',JSON.stringify(merged));
+ if(linksChanged)localStorage.setItem('rafiqCaregiverInvitationsPreview',JSON.stringify(invitations));
 }
 function parentProfileKey(){return 'rafiqParentProfile_'+parentOwner();}
 const MAX_MONTHS=84;
@@ -63,7 +76,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  if(['onboarding.html','getting-started.html'].includes(page))return;
  try{
   const id=sessionStorage.getItem('rafiqSetupCompletedChildId'),child=readChildren().find(c=>c.id===id);
-  if(!child||localStorage.getItem('rafiqCurrentChildId')!==child.id)return;
+  if(!child||(window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId'))!==child.id)return;
   const main=document.querySelector('main');if(!main)return;
   const notice=document.createElement('section');notice.className='setup-complete-notice';notice.setAttribute('role','status');
   const title=document.createElement('strong');title.textContent='Setup complete for '+child.name;
@@ -75,4 +88,13 @@ document.addEventListener('DOMContentLoaded',()=>{
  }catch{/* The page controller supplies storage errors. */}
 });
 window.RafiqSetup={writeChildren,parentProfileKey,parentOwner,ageFromBirth,formatAge,readChildren,isSupported,bandForAge,childContext,bands,MAX_MONTHS};
+})();
+
+(() => {
+ let dirty=false,pending=false,timer;
+ document.addEventListener('input',event=>{if(event.target.closest?.('form'))dirty=true;});
+ document.addEventListener('reset',()=>{dirty=false;},true);
+ function refresh(){if(!pending||document.hidden)return;if(!dirty&&!window.rafiqTodayHasUnsavedMoment){location.reload();return;}if(document.getElementById('familyUpdateNotice'))return;const notice=document.createElement('aside');notice.id='familyUpdateNotice';notice.className='setup-complete-notice';notice.setAttribute('role','status');const text=document.createElement('p');text.textContent='Your child’s information changed in another tab. Save your work, then refresh to see the updates.';const button=document.createElement('button');button.type='button';button.className='screen-flow-secondary';button.textContent='Refresh saved information';button.onclick=()=>{if(confirm('Refresh this page? Unsaved changes will be lost.'))location.reload();};notice.append(text,button);(document.querySelector('main')||document.body).prepend(notice);}
+ window.addEventListener('storage',event=>{if(event.key&&(/^(rafiqChildren|rafiqCaregiverInvitationsPreview|rafiqCareReviews|rafiqCareConnections|rafiqActivityProfile_|rafiqBookings|rafiqSpecialistReports|rafiqVaccinations_|rafiqGrowth_|rafiqHealthNotes_|rafiqMilestones|rafiqDaily|rafiqAge|rafiqConcern|rafiqPlay|rafiqChallenge|rafiqActivity|rafiqAlbumChanged)/.test(event.key))){pending=true;clearTimeout(timer);timer=setTimeout(refresh,150);}});
+ window.addEventListener('focus',refresh);
 })();

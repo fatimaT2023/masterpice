@@ -966,9 +966,10 @@ library.push(...[
 const comfortLabels={listening:'Listening to voices',pictures:'Looking at pictures',handling:'Handling large toys',pretend:'Pretend play',storytelling:'Sharing stories'};
 const comfortById={'moment-0-0':'listening','moment-0-1':'pictures','moment-2-0':'listening','moment-2-1':'pictures','moment-4-0':'listening','moment-4-1':'listening','moment-6-0':'listening','moment-6-1':'pictures','moment-9-0':'listening','moment-9-1':'pictures','moment-12-0':'pictures','moment-12-1':'handling','moment-18-0':'pretend','moment-18-1':'storytelling','moment-24-0':'pictures','moment-24-1':'handling','moment-36-0':'storytelling','moment-36-1':'handling','moment-48-0':'storytelling','moment-48-1':'pictures','moment-60-0':'listening','moment-60-1':'storytelling','moment-72-0':'storytelling','moment-72-1':'handling'};
 for(const item of library)item.comfort=comfortById[item.id]||item.comfort;
+window.RafiqActivityMatching.annotate(library);
 function preferences(child){try{const value=JSON.parse(localStorage.getItem('rafiqPlayPreferences_'+child.id)||'{}');return {comfortable:Array.isArray(value.comfortable)?value.comfortable.filter(key=>Object.hasOwn(comfortLabels,key)):[]};}catch{return {comfortable:[],unavailable:true};}}
-function reasons(item,context,prefs,records){
- const result=[context.basis==='corrected'?'Within your child’s corrected development-age range.':'Within your child’s recorded age range.'];
+function reasons(item,context,prefs,records,matching){
+ const result=window.RafiqActivityMatching.reasons(item,matching);result.push(context.basis==='corrected'?'Within your child’s corrected development-age range.':'Within your child’s recorded age range.');
  if(prefs.comfortable.includes(item.comfort))result.push('You said '+comfortLabels[item.comfort].toLowerCase()+' feels comfortable for your child.');
  const tried=records.some(record=>record.outcome==='tried'&&library.find(other=>other.id===record.activityId)?.comfort===item.comfort);
  if(tried)result.push('You previously tried a similar kind of play.');
@@ -978,17 +979,19 @@ function dayKey(date=new Date()){return [date.getFullYear(),String(date.getMonth
 function choose(child,notes=[],date=new Date()){
  const context=window.RafiqSetup.childContext(child,date),day=dayKey(date),prefs=preferences(child);
  if(!context.supported||!context.development||context.needsDueDate)return {day,context,item:null,reason:context.needsDueDate?'needs-due-date':'age-unavailable'};
+ const matching=window.RafiqActivityMatching.context(child,date);
  const months=context.development.totalMonths,eligible=library.filter(item=>months>=item.minMonths&&months<item.maxMonthsExclusive);
  const records=notes.filter(n=>n&&n.type==='daily-moment'&&n.childId===child.id);
  const saved=records.find(n=>!n.isExtra&&n.day===day&&eligible.some(item=>item.id===n.activityId));
- if(saved){const item=eligible.find(i=>i.id===saved.activityId);return {day,context,item,saved,reasons:reasons(item,context,prefs,records)};}
+ if(saved){const item=eligible.find(i=>i.id===saved.activityId);return {day,context,item,saved,noLongerSuggested:!window.RafiqActivityMatching.suitable(item,matching),reasons:reasons(item,context,prefs,records,matching)};}
  const excluded=new Set(records.filter(n=>n.outcome==='not-for-us').map(n=>n.activityId));
- let options=eligible.filter(i=>!excluded.has(i.id));
+ let options=eligible.filter(i=>!excluded.has(i.id)&&window.RafiqActivityMatching.suitable(i,matching));
  if(!options.length)return {day,context,item:null,reason:'no-suitable-idea'};
+ const priority=Math.max(...options.map(item=>window.RafiqActivityMatching.score(item,matching)));options=options.filter(item=>window.RafiqActivityMatching.score(item,matching)===priority);
  let assignments=[];
  try{const stored=JSON.parse(localStorage.getItem('rafiqDailyAssignments_'+child.id)||'[]');if(Array.isArray(stored))assignments=stored.filter(a=>a&&/^\d{4}-\d{2}-\d{2}$/.test(a.day)&&typeof a.activityId==='string');}catch{/* Saved observations still support rotation. */}
  const assigned=assignments.find(a=>a.day===day&&options.some(item=>item.id===a.activityId));
- if(assigned){const item=options.find(i=>i.id===assigned.activityId);return {day,context,item,saved:null,reasons:reasons(item,context,prefs,records)};}
+ if(assigned){const item=options.find(i=>i.id===assigned.activityId);return {day,context,item,saved:null,reasons:reasons(item,context,prefs,records,matching)};}
  // Offer unseen ideas first; otherwise revisit the least recently offered idea.
  const seen=[...records,...assignments].filter(a=>a.day<day);
  const lastSeen=item=>seen.filter(a=>a.activityId===item.id).reduce((last,a)=>a.day>last?a.day:last,'');
@@ -998,23 +1001,23 @@ function choose(child,notes=[],date=new Date()){
  const seed=Array.from(child.id+'|'+day).reduce((sum,c)=>(sum*31+c.charCodeAt(0))>>>0,0);
  const item=options[seed%options.length];let selectionUnstored=false;
  try{localStorage.setItem('rafiqDailyAssignments_'+child.id,JSON.stringify([...assignments.filter(a=>a.day!==day),{day,activityId:item.id}].sort((a,b)=>a.day.localeCompare(b.day)).slice(-180)));}catch{selectionUnstored=true;}
- return {day,context,item,saved:null,reasons:reasons(item,context,prefs,records),selectionUnstored};
+ return {day,context,item,saved:null,reasons:reasons(item,context,prefs,records,matching),selectionUnstored};
 }
 function additional(child,notes=[],date=new Date()){
  const context=window.RafiqSetup.childContext(child,date),day=dayKey(date);
  if(!context.supported||!context.development||context.needsDueDate)return [];
  const own=notes.filter(n=>n&&n.type==='daily-moment'&&n.childId===child.id);
  const used=new Set(own.filter(n=>n.day===day||n.outcome==='not-for-us').map(n=>n.activityId));
- const months=context.development.totalMonths;
- return library.filter(item=>months>=item.minMonths&&months<item.maxMonthsExclusive&&!used.has(item.id));
+ const months=context.development.totalMonths,matching=window.RafiqActivityMatching.context(child,date);
+ return library.filter(item=>months>=item.minMonths&&months<item.maxMonthsExclusive&&!used.has(item.id)&&window.RafiqActivityMatching.suitable(item,matching)).sort((a,b)=>window.RafiqActivityMatching.score(b,matching)-window.RafiqActivityMatching.score(a,matching));
 }
 function open(child,notes=[],requested=null,date=new Date()){
  const primary=choose(child,notes,date);if(!requested||requested===primary.item?.id)return primary;
  const saved=notes.find(n=>n&&n.type==='daily-moment'&&n.childId===child.id&&n.day===primary.day&&n.activityId===requested);
- const item=library.find(i=>i.id===requested),context=primary.context,months=context.development?.totalMonths;
+ const item=library.find(i=>i.id===requested),context=primary.context,months=context.development?.totalMonths,matching=window.RafiqActivityMatching.context(child,date);
  if(!item||!context.supported||!context.development||context.needsDueDate||months<item.minMonths||months>=item.maxMonthsExclusive)return {...primary,requestDenied:true};
- if(saved)return {...primary,item,saved,isExtra:!!saved.isExtra,reasons:reasons(item,context,preferences(child),notes.filter(n=>n?.childId===child.id))};
- if(!primary.saved||!window.RafiqMembership?.state().active||!additional(child,notes,date).some(i=>i.id===requested))return {...primary,requestDenied:true};
- return {...primary,item,saved:null,isExtra:true,reasons:reasons(item,context,preferences(child),notes.filter(n=>n?.childId===child.id))};
+ if(saved)return {...primary,item,saved,noLongerSuggested:!window.RafiqActivityMatching.suitable(item,matching),isExtra:!!saved.isExtra,reasons:reasons(item,context,preferences(child),notes.filter(n=>n?.childId===child.id),matching)};
+ if(!window.RafiqMembership?.state().active||!additional(child,notes,date).some(i=>i.id===requested))return {...primary,requestDenied:true};
+ return {...primary,item,saved:null,isExtra:true,reasons:reasons(item,context,preferences(child),notes.filter(n=>n?.childId===child.id),matching)};
 }
 window.RafiqDailyMoments={library,dayKey,choose,preferences,comfortLabels,additional,open};})();

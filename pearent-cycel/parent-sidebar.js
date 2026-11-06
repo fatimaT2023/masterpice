@@ -34,12 +34,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 if(!document.getElementById('menuButton')){const button=document.createElement('button');button.id='menuButton';button.hidden=true;button.type='button';header.append(button);}
 if(!document.getElementById('sidebarOverlay')){const overlay=document.createElement('div');overlay.id='sidebarOverlay';overlay.hidden=true;document.body.append(overlay);}
 if(dashboard)return;
-try{const stored=window.RafiqSetup.readChildren(),children=Array.isArray(stored)?stored:[],id=(page==='child-profile.html'?new URLSearchParams(location.search).get('child'):null)||localStorage.getItem('rafiqCurrentChildId'),child=children.find(item=>item.id===id)||children[0];
-if(child){localStorage.setItem('rafiqCurrentChildId',child.id);
+try{const stored=window.RafiqSetup.readChildren(),children=Array.isArray(stored)?stored:[],id=(page==='child-profile.html'?new URLSearchParams(location.search).get('child'):null)||(window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId')),child=children.find(item=>item.id===id)||children[0];
+if(child){(window.RafiqFamily ? window.RafiqFamily.select(child.id) : localStorage.setItem('rafiqCurrentChildId',child.id));
 const visitPages=['milestones.html','challenges.html','screening.html','health.html','album.html','ai-assistant.html','specialists.html','bookings.html'];
 if(visitPages.includes(page))localStorage.setItem('rafiqLastVisit_'+child.id,JSON.stringify({page,visitedAt:new Date().toISOString()}));
 document.getElementById('childAvatar').textContent=(child.name||'?').charAt(0).toUpperCase();document.getElementById('childName').textContent=child.name||'Your child';document.getElementById('childAge').textContent=window.RafiqSetup.formatAge(window.RafiqSetup.childContext(child).chronological)||'Review date of birth';}else document.getElementById('childName').textContent='Add your child';
-children.forEach(item=>{const button=document.createElement('button');button.type='button';button.className='dropdown-child-button';button.textContent=item.name||'Your child';if(item.id===child?.id){button.classList.add('active');button.setAttribute('aria-current','true');}button.addEventListener('click',()=>{localStorage.setItem('rafiqCurrentChildId',item.id);location.assign('child-profile.html?child='+encodeURIComponent(item.id));});document.getElementById('childDropdownList').append(button);});
+children.forEach(item=>{const button=document.createElement('button');button.type='button';button.className='dropdown-child-button';button.textContent=item.name||'Your child';if(item.id===child?.id){button.classList.add('active');button.setAttribute('aria-current','true');}button.addEventListener('click',()=>{(window.RafiqFamily ? window.RafiqFamily.select(item.id) : localStorage.setItem('rafiqCurrentChildId',item.id));location.assign('child-profile.html?child='+encodeURIComponent(item.id));});document.getElementById('childDropdownList').append(button);});
 }catch{/* Keep navigation usable when browser storage is unavailable. */}
 });
 })();

@@ -13,15 +13,15 @@
   let preview=localStorage.getItem('rafiqMessagingParentId');if(!preview){preview='parent_preview_'+crypto.randomUUID();localStorage.setItem('rafiqMessagingParentId',preview);}
   const profile=read('rafiqParentProfile',null);return {role,id:preview,name:profile?.name||'Parent'};
  }
- const owns=(thread,viewer)=>viewer.role==='parent'?thread.parentId===viewer.id:thread.specialistId===viewer.id;
+ const owns=(thread,viewer)=>viewer.role==='parent'?(window.RafiqFamily?window.RafiqFamily.canAccessId(thread.childId,viewer.id):thread.parentId===viewer.id):thread.specialistId===viewer.id;
  function list(viewer){return array(key).filter(t=>owns(t,viewer)).sort((a,b)=>String(b.updatedAt).localeCompare(String(a.updatedAt)));}
  function start(viewer,specialistId,childId){
   if(viewer.role!=='parent')throw Error('Parents start conversations with their specialist.');
   const specialist=specialists().find(s=>s.id===specialistId&&s.status==='approved');if(!specialist)throw Error('This specialist is not currently available for messages.');
   const owner=sessionStorage.getItem('rafiqParentUserId')||'legacy-browser';
-  const child=array('rafiqChildren').find(c=>c.id===childId&&(c.parentId===owner||(owner==='legacy-browser'&&!c.parentId)));if(!child)throw Error('Choose a child before starting a conversation.');
-  const all=array(key);let thread=all.find(t=>t.parentId===viewer.id&&t.specialistId===specialistId&&t.childId===child.id);
-  if(!thread){thread={id:crypto.randomUUID(),parentId:viewer.id,parentName:viewer.name,specialistId,specialistName:specialist.fullName||'Specialist',childId:child.id,childName:child.name||'Your child',messages:[],readAt:{},updatedAt:new Date().toISOString()};all.push(thread);localStorage.setItem(key,JSON.stringify(all));}
+  const child=array('rafiqChildren').find(c=>c.id===childId&&(window.RafiqFamily?window.RafiqFamily.canAccess(c,owner):(c.parentId===owner||(owner==='legacy-browser'&&!c.parentId))));if(!child)throw Error('Choose a child before starting a conversation.');
+  const all=array(key);let thread=all.find(t=>t.specialistId===specialistId&&t.childId===child.id);
+  if(!thread){thread={id:crypto.randomUUID(),parentId:child.parentId||viewer.id,parentName:window.RafiqFamily?.user(child.parentId)?.fullName||viewer.name,specialistId,specialistName:specialist.fullName||'Specialist',childId:child.id,childName:child.name||'Your child',messages:[],readAt:{},updatedAt:new Date().toISOString()};all.push(thread);localStorage.setItem(key,JSON.stringify(all));}
   return thread;
  }
  function send(viewer,id,body){
@@ -30,9 +30,9 @@
   if(!specialists().some(s=>s.id===thread.specialistId&&s.status==='approved'))throw Error('This specialist is not currently available for messages.');
   if(!Array.isArray(thread.messages))throw Error('Saved messages could not be read.');
   if(thread.messages.length>=500)throw Error('This preview conversation has reached its message limit.');
-  const message={id:crypto.randomUUID(),senderRole:viewer.role,senderId:viewer.id,text,createdAt:new Date().toISOString()};thread.messages.push(message);thread.updatedAt=message.createdAt;thread.readAt={...thread.readAt,[viewer.role]:message.createdAt};thread.readCounts={...thread.readCounts,[viewer.role]:thread.messages.length};localStorage.setItem(key,JSON.stringify(all));return message;
+  const message={id:crypto.randomUUID(),senderRole:viewer.role,senderId:viewer.id,senderName:viewer.name,text,createdAt:new Date().toISOString()};thread.messages.push(message);thread.updatedAt=message.createdAt;thread.readAt={...thread.readAt,[viewer.role+':'+viewer.id]:message.createdAt};thread.readCounts={...thread.readCounts,[viewer.role+':'+viewer.id]:thread.messages.length};localStorage.setItem(key,JSON.stringify(all));try{const notices=array('rafiqNotifications');notices.unshift({id:crypto.randomUUID(),type:'message',childId:thread.childId,title:'New message about your child',message:viewer.name+' sent a message.',createdBy:viewer.id,createdAt:message.createdAt,link:'messages.html?thread='+encodeURIComponent(thread.id),readBy:viewer.role==='parent'?{[viewer.id]:true}:{}});localStorage.setItem('rafiqNotifications',JSON.stringify(notices.slice(0,500)));}catch{}return message;
  }
- function markRead(viewer,id){const all=array(key),thread=all.find(t=>t.id===id&&owns(t,viewer));if(!thread)return;thread.readAt={...thread.readAt,[viewer.role]:new Date().toISOString()};thread.readCounts={...thread.readCounts,[viewer.role]:thread.messages.length};localStorage.setItem(key,JSON.stringify(all));}
- const unread=(thread,viewer)=>(thread.messages||[]).filter((m,index)=>m.senderRole!==viewer.role&&(Number.isInteger(thread.readCounts?.[viewer.role])?index>=thread.readCounts[viewer.role]:m.createdAt>(thread.readAt?.[viewer.role]||''))).length;
+ function markRead(viewer,id){const all=array(key),thread=all.find(t=>t.id===id&&owns(t,viewer));if(!thread)return;thread.readAt={...thread.readAt,[viewer.role+':'+viewer.id]:new Date().toISOString()};thread.readCounts={...thread.readCounts,[viewer.role+':'+viewer.id]:thread.messages.length};localStorage.setItem(key,JSON.stringify(all));}
+ const unread=(thread,viewer)=>(thread.messages||[]).filter((m,index)=>(m.senderRole!==viewer.role||m.senderId!==viewer.id)&&(Number.isInteger(thread.readCounts?.[viewer.role+':'+viewer.id])?index>=thread.readCounts[viewer.role+':'+viewer.id]:m.createdAt>(thread.readAt?.[viewer.role+':'+viewer.id]||''))).length;
  window.RafiqDirectMessages={identity,list,start,send,markRead,unread,specialists};
 })();

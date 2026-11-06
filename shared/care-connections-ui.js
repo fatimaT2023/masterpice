@@ -11,10 +11,13 @@ document.addEventListener('DOMContentLoaded',()=>{
    const notice=make('p',message);notice.setAttribute('role','status');mount.append(title,copy,status);
    function button(text,handler){const b=make('button',text);b.type='button';b.addEventListener('click',()=>{try{handler();}catch(error){notice.textContent=error.message;}});return b;}
    if(parent){
-    const form=make('form'),legend=make('strong','Choose ongoing sharing (optional)'),explain=make('p','Selected categories include existing and future entries for this child only, after the specialist accepts. Photos, health records and reports are not included. You can stop sharing at any time.'),choices=[];
+    const form=make('form'),legend=make('strong','Choose ongoing sharing (optional)'),explain=make('p','Sharing starts only after specialist acceptance. Choose whether earlier entries are included. Photos, health records and reports are not included. You can stop sharing at any time.'),choices=[];
     form.append(legend,explain);
     for(const [value,text] of [['observations','Growth observations and concerns'],['activities','Activity results and reactions']]){const label=make('label'),input=make('input');input.type='checkbox';input.value=value;input.checked=(state?.scopes||[]).includes(value);input.disabled=pending;label.append(input,make('span',text));form.append(label);choices.push(input);}
-    if(!pending){const submit=make('button',active?'Save sharing permissions':'Request ongoing follow-up');submit.type='submit';form.append(submit);form.addEventListener('submit',event=>{event.preventDefault();try{api.change(viewer,threadId,active?'sharing':'request',choices.filter(c=>c.checked).map(c=>c.value));draw('Your choice is saved.');}catch(error){notice.textContent=error.message;}});}
+    const historyLabel=make('label'),historyInput=make('input');historyInput.type='checkbox';historyInput.checked=state?state.includeEarlierRecords!==false:false;historyInput.disabled=pending;historyLabel.append(historyInput,make('span','Include earlier entries in the selected categories'));
+    const existingLabel=make('label'),existingInput=make('input');existingInput.type='checkbox';existingInput.checked=!!state?.previousRelationshipSince;existingInput.disabled=pending;existingLabel.append(existingInput,make('span','This specialist followed my child before joining RAFIQ'));
+    const sinceLabel=make('label','Follow-up started on (reported by the family)'),since=make('input');since.type='date';since.value=state?.previousRelationshipSince||'';since.max=new Date().toLocaleDateString('en-CA');since.disabled=pending;since.required=existingInput.checked;sinceLabel.hidden=!existingInput.checked;sinceLabel.append(since);existingInput.onchange=()=>{sinceLabel.hidden=!existingInput.checked;since.required=existingInput.checked;};const guideLabel=make('label'),guideInput=make('input');guideInput.type='checkbox';guideInput.checked=state?.allowActivityGuidance===true;guideInput.disabled=pending;guideLabel.append(guideInput,make('span','Allow this specialist to guide activity suggestions and view reported activity readiness'));form.append(historyLabel,existingLabel,sinceLabel,guideLabel);
+    if(!pending){const submit=make('button',active?'Save sharing permissions':'Request ongoing follow-up');submit.type='submit';form.append(submit);form.addEventListener('submit',event=>{event.preventDefault();if(!form.reportValidity())return;try{api.change(viewer,threadId,active?'sharing':'request',choices.filter(c=>c.checked).map(c=>c.value),{allowActivityGuidance:guideInput.checked,includeEarlierRecords:historyInput.checked,previousRelationshipSince:existingInput.checked?since.value:null});draw('Your choice is saved.');}catch(error){notice.textContent=error.message;}});}
     mount.append(form);
     if(pending||active)mount.append(button(pending?'Cancel follow-up request':'Stop ongoing sharing',()=>{api.change(viewer,threadId,'revoke');draw('Ongoing access is stopped. Previously sent messages remain available.');}));
     const details=make('details'),summary=make('summary','Share selected notes for this consultation'),shareForm=make('form'),help=make('p','Only the entries you select are sent as a message. This does not give access to future entries. Sent copies remain in this conversation.'),inputs=[];
@@ -25,14 +28,15 @@ document.addEventListener('DOMContentLoaded',()=>{
     mount.append(details);
    }else{
     if(pending){mount.append(button('Accept follow-up request',()=>{api.change(viewer,threadId,'accept');draw('Follow-up request accepted.');}),button('Decline follow-up request',()=>{api.change(viewer,threadId,'decline');draw('Follow-up request declined.');}));}
-    if(active){const records=api.records(viewer,threadId);mount.append(make('h4','Entries shared by the parent'),make('p','These are parent observations, not a clinical assessment. Access does not mean that entries are monitored continuously.'));
+    if(active){const open=make('a','Review entries in ongoing follow-up');open.href='follow-up.html?tab=active&case='+encodeURIComponent(threadId);mount.append(open);const records=api.records(viewer,threadId);mount.append(make('h4','Entries shared by the parent'),make('p','These are parent observations, not a clinical assessment. Access does not mean that entries are monitored continuously.'));
      if(!records.length)mount.append(make('p','No entries are available under the current sharing permissions.'));
      for(const record of records){const article=make('article'),date=make('small',String(record.createdAt||'').slice(0,10)),text=make('p',record.text);text.setAttribute('data-user-content','');article.append(date,text);mount.append(article);}
     }
    }
+   window.RafiqCareReviewUI?.history(mount,viewer,threadId);
    mount.append(make('p','Sharing is not an instant review. Send a message when you need a reply.'),notice);
   }catch(error){mount.append(make('p',error.message));}
  }
  window.addEventListener('rafiq:conversation',event=>{viewer=event.detail.viewer;threadId=event.detail.threadId;draw();});
- window.addEventListener('storage',event=>{if(event.key===null||event.key==='rafiqCareConnections'||event.key?.startsWith('rafiqAgeObservations_'))draw();});
+ window.addEventListener('storage',event=>{if(event.key===null||['rafiqCareConnections','rafiqCareReviews'].includes(event.key)||event.key?.startsWith('rafiqAgeObservations_'))draw();});
 });

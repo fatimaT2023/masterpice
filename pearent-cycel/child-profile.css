@@ -23,3 +23,7 @@
 .profile-health-entry h3{font-size:18px;margin:0 0 8px}
 .profile-health-body{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7}
 @media(max-width:520px){.profile-measurement-grid{grid-template-columns:1fr}}
+
+.profile-caregiver{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px;border:1px solid #c9ddd4;border-radius:18px;background:#ffffff80}
+.profile-caregiver h3{margin:0 0 8px;font-size:18px;overflow-wrap:anywhere}.profile-caregiver p{margin:0;color:#50665d}.profile-caregiver>strong{border-radius:99px;background:#d7eee4;color:#155e56;padding:8px 14px;font-size:13px}
+.caregiver-invite-form{margin-top:22px;padding:22px;border:1px solid #c9ddd4;border-radius:18px}.caregiver-invite-form input[type=email]{width:100%;box-sizing:border-box;padding:13px;border:1px solid #163e3b35;border-radius:14px;background:#ffffffb0;color:inherit;font:inherit}.caregiver-invitation{margin-top:14px}.caregiver-invitation>div{min-width:0}.caregiver-invitation strong{overflow-wrap:anywhere}.caregiver-invitation p{font-size:14px}

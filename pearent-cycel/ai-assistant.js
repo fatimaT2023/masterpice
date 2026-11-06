@@ -163,9 +163,7 @@ document.addEventListener(
     function getCurrentChild() {
 
       const currentId =
-        localStorage.getItem(
-          "rafiqCurrentChildId"
-        );
+        (window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId'));
 
 
       const selected =
@@ -309,8 +307,7 @@ document.addEventListener(
     // =====================================
 
     const chatStorageKey =
-      "rafiqChat_" +
-      currentChild.id;
+      window.RafiqFamily.privateChatKey(currentChild.id);
 
 
     function getSavedChat() {
@@ -436,6 +433,8 @@ document.addEventListener(
       );
 
 
+      const share=document.createElement('button');share.type='button';share.className='screen-flow-secondary';share.textContent='Save to shared child record';
+      share.addEventListener('click',()=>{try{if(!confirm('Share this message with the other caregivers linked to this child?'))return;const result=window.RafiqFamily.shareAI(currentChild.id,message);share.textContent=result.duplicate?'Already shared':'Saved to shared child record';share.disabled=true;}catch(error){alert(error.message);}});row.append(share);
       return row;
     }
 
@@ -468,6 +467,7 @@ document.addEventListener(
     ) {
 
       const message = {
+        id:crypto.randomUUID(),
         sender,
         text,
         time:

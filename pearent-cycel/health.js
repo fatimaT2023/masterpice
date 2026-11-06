@@ -350,9 +350,7 @@ document.addEventListener(
 
 
     const currentChildId =
-      localStorage.getItem(
-        "rafiqCurrentChildId"
-      );
+      (window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId'));
 
 
     const currentChild =

@@ -1799,6 +1799,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const history=document.createElement('section');history.className='finance-subscription-history';
     const heading=document.createElement('h3');heading.textContent='Subscription payment history';history.append(heading);
+    if(item.familyId){const familyLabel=document.createElement('p');familyLabel.textContent='Family workspace: '+item.familyId;history.append(familyLabel);}
     const related=payments.filter(payment=>payment.subscriptionId===item.id||payment.subscriptionReference===item.id||item.paymentReference&&payment.id===item.paymentReference).sort((a,b)=>String(b.createdAt||'').localeCompare(String(a.createdAt||'')));
     if(!related.length){const p=document.createElement('p');p.textContent='No payments explicitly linked to this subscription. Older records may not contain a subscription reference.';history.append(p);}
     for(const payment of related){const row=document.createElement('div');row.className='finance-history-row';const description=document.createElement('p');description.textContent=payment.id+' · '+formatDate(payment.createdAt)+' · '+formatMoney(payment.amount,payment.currency)+' · '+capitalize(payment.status);const open=document.createElement('button');open.type='button';open.textContent='View payment details';open.addEventListener('click',()=>openPaymentDetails(payment));row.append(description,open);history.append(row);}

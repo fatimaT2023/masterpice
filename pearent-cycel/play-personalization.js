@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  'use strict';
  const api=window.RafiqDailyMoments,get=id=>document.getElementById(id);
  let child;
- try{const children=window.RafiqSetup.readChildren();child=children.find(c=>c.id===localStorage.getItem('rafiqCurrentChildId'))||children[0];}catch{return;}
+ try{const children=window.RafiqSetup.readChildren();child=children.find(c=>c.id===(window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId')))||children[0];}catch{return;}
  if(!child)return;
  const preferences=api.preferences(child),inputs=[];
  for(const [key,title] of Object.entries(api.comfortLabels)){

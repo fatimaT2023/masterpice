@@ -105,9 +105,7 @@ document.addEventListener(
     function getCurrentChild() {
 
       const id =
-        localStorage.getItem(
-          "rafiqCurrentChildId"
-        );
+        (window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId'));
 
 
       return (
@@ -279,6 +277,7 @@ document.addEventListener(
 
     const parentProfile =
       getParentProfile();
+    const currentAccount=window.RafiqFamily.user();if(currentAccount){parentProfile.name=parentProfile.name||currentAccount.fullName;parentProfile.email=parentProfile.email||currentAccount.email;parentProfile.phone=parentProfile.phone||currentAccount.phone;}
 
 
     parentName.value =
@@ -337,7 +336,7 @@ document.addEventListener(
         };
 
 
-        try{localStorage.setItem(window.RafiqSetup.parentProfileKey(),JSON.stringify(profile));}catch{accountMessage.style.color='#A63A17';accountMessage.textContent='Could not save your changes. Your entries are still here. Please try again.';return;}
+        try{const users=JSON.parse(localStorage.getItem('rafiqUsers')||'[]'),account=users.find(u=>u.id===window.RafiqSetup.parentOwner()&&u.role==='parent');if(users.some(u=>u.id!==account?.id&&u.role==='parent'&&u.email?.toLowerCase()===email.toLowerCase())){accountMessage.textContent='This email is already registered.';return;}if(account){account.fullName=name;account.email=email.toLowerCase();account.phone=profile.phone;localStorage.setItem('rafiqUsers',JSON.stringify(users));}localStorage.setItem(window.RafiqSetup.parentProfileKey(),JSON.stringify(profile));}catch{accountMessage.style.color='#A63A17';accountMessage.textContent='Could not save your changes. Your entries are still here. Please try again.';return;}
 
 
         accountMessage.style.color =
@@ -465,10 +464,7 @@ document.addEventListener(
               "click",
               () => {
 
-                localStorage.setItem(
-                  "rafiqCurrentChildId",
-                  button.dataset.id
-                );
+                window.RafiqFamily.select(button.dataset.id);
 
 
                     renderSidebarChild();
@@ -495,9 +491,7 @@ document.addEventListener(
     function getLanguage() {
 
       return (
-        localStorage.getItem(
-          "rafiqLanguage"
-        ) ||
+        localStorage.getItem('rafiqLanguage_'+window.RafiqSetup.parentOwner()) ||
         "en"
       );
     }
@@ -533,10 +527,7 @@ document.addEventListener(
               button.dataset.language;
 
 
-            localStorage.setItem(
-              "rafiqLanguage",
-              language
-            );
+            window.RafiqLanguage.setLanguage(language);
 
 
             renderLanguage();

@@ -1,7 +1,8 @@
 /* Shared browser-local appearance settings. Load in <head> on every page. */
 (() => {
   'use strict';
-  const key = 'rafiqAppearanceV1';
+  const accountId=sessionStorage.getItem('rafiqRole')==='parent'?sessionStorage.getItem('rafiqParentUserId'):null;
+  const key = accountId ? 'rafiqAppearanceV1_'+accountId : 'rafiqAppearanceV1';
   const defaults = {primary:'#0b7a75',secondary:'#8f7af2',background:'#fffaf0',video:true,glass:36};
   const root = document.documentElement;
   const hex = value => typeof value === 'string' && /^#[0-9a-f]{6}$/i.test(value);

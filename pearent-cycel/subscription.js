@@ -99,9 +99,7 @@ document.addEventListener(
 
 
     const currentChildId =
-      localStorage.getItem(
-        "rafiqCurrentChildId"
-      );
+      (window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId'));
 
 
     const currentChild =
@@ -187,7 +185,7 @@ document.addEventListener(
 
 
         freePlanButton.textContent =
-          "Switch to Free";
+          "Cancel renewal";
 
 
         freePlanButton.disabled =
@@ -250,6 +248,10 @@ document.addEventListener(
           "current"
         );
       }
+      const familyState=window.RafiqMembership.state();
+      freePlanButton.disabled=!familyState.canManage||!familyState.active;
+      if(familyState.active)freePlanButton.textContent=familyState.record.cancelAtPeriodEnd?'Keep renewal enabled':'Cancel renewal';
+      if(!familyState.canManage){plusPlanButton.disabled=true;freePlanButton.disabled=true;}
     }
 
 
@@ -288,6 +290,7 @@ document.addEventListener(
           currency:
             "JOD",
 
+          familyId: window.RafiqMembership.familyId(),
           billing:
             "monthly"
         };
@@ -326,7 +329,7 @@ document.addEventListener(
 
         const confirmed =
           window.confirm(
-            "Switch to Free now? Plus features will stop immediately. Your existing records and reports will stay available."
+            "Change renewal? Your family keeps Plus until the paid period ends. Existing records and paid appointments stay available."
           );
 
 
@@ -342,18 +345,7 @@ document.addEventListener(
           handle billing-cycle rules.
         */
 
-        localStorage.setItem(
-          "rafiqSubscriptionPlan",
-          "free"
-        );
-
-
-        localStorage.removeItem(
-          "rafiqSubscriptionDetails"
-        );
-
-
-        window.RafiqMembership.downgrade();
+        try{window.RafiqMembership.renewal(!window.RafiqMembership.state().record?.cancelAtPeriodEnd);}catch(error){alert(error.message);return;}
         renderCurrentPlan();
 
       }
@@ -456,8 +448,9 @@ document.addEventListener(
     // ===========================
 
     renderCurrentPlan();
+    document.addEventListener('rafiq:family-plan',renderCurrentPlan);document.addEventListener('rafiq:family-change',renderCurrentPlan);
     window.addEventListener('focus',renderCurrentPlan);
-    window.addEventListener('storage',event=>{if(event.key==='rafiqParentMemberships')renderCurrentPlan();});
+    window.addEventListener('storage',event=>{if(['rafiqParentMemberships','rafiqFamilyMemberships','rafiqFamilies'].includes(event.key))renderCurrentPlan();});
 
   }
 );

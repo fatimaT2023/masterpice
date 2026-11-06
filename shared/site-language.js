@@ -2,6 +2,7 @@
    layers are retained. Dynamic preview messages use the same dictionary. */
 (() => {
   'use strict';
+  const languageKey=sessionStorage.getItem('rafiqRole')==='parent'&&sessionStorage.getItem('rafiqParentUserId')?'rafiqLanguage_'+sessionStorage.getItem('rafiqParentUserId'):'rafiqLanguage';
   const messages = window.RafiqHomeArabic || {};
   const privateValues = new Set();
   let privateScan = -Infinity;
@@ -131,7 +132,7 @@
     });
     const languageSelect=document.getElementById('languageSelect');
     if(languageSelect)languageSelect.value=language;
-    if (persist) { try { localStorage.setItem('rafiqLanguage', language); } catch { /* Storage is optional. */ } }
+    if (persist) { try { localStorage.setItem(languageKey, language); } catch { /* Storage is optional. */ } }
     observe();
     // Re-measure text-dependent scenes without restarting or replacing them.
     requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
@@ -147,13 +148,13 @@
     observe();
   });
   buttons.forEach(button => button.addEventListener('click', () => apply(button.dataset.homeLanguage)));
-  window.addEventListener('storage', event => { if (event.key === 'rafiqLanguage') apply(event.newValue, false); });
+  window.addEventListener('storage', event => { if (event.key === languageKey) apply(event.newValue, false); });
   let saved;
-  try { saved = localStorage.getItem('rafiqLanguage'); } catch { /* Use English when storage is unavailable. */ }
+  try { saved = localStorage.getItem(languageKey); } catch { /* Use English when storage is unavailable. */ }
   apply(saved, false);
   window.RafiqHomeI18n = window.RafiqLanguage = {setLanguage: apply, getLanguage: () => language};
   document.addEventListener('click',event=>{const button=event.target.closest('[data-language]');if(button&&['en','ar'].includes(button.dataset.language))apply(button.dataset.language);});
   document.addEventListener('change',event=>{if(event.target.id==='languageSelect'&&['en','ar'].includes(event.target.value))apply(event.target.value);});
-  document.addEventListener('DOMContentLoaded',()=>{let stored;try{stored=localStorage.getItem('rafiqLanguage');}catch{}apply(stored||language,false);});
+  document.addEventListener('DOMContentLoaded',()=>{let stored;try{stored=localStorage.getItem(languageKey);}catch{}apply(stored||language,false);});
   new MutationObserver(()=>{if(document.documentElement.lang!==language)apply(document.documentElement.lang);}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();

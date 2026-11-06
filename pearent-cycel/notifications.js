@@ -8,46 +8,16 @@
 ========================================= */
 
 function getRafiqNotifications() {
-
-  try {
-
-    return JSON.parse(
-      localStorage.getItem(
-        "rafiqNotifications"
-      )
-    ) || [];
-
-  } catch (error) {
-
-    return [];
-  }
+ try{const all=JSON.parse(localStorage.getItem('rafiqNotifications')||'[]'),id=window.RafiqFamily?.owner()||sessionStorage.getItem('rafiqParentUserId')||'legacy-browser';const prefs=JSON.parse(localStorage.getItem('rafiqNotificationPreferences_'+id)||'{}');return all.filter(n=>{
+ const accessible=n.childId?window.RafiqFamily?.canAccessId(n.childId):n.familyId?window.RafiqFamily?.member(n.familyId):n.ownerId?n.ownerId===id:id==='legacy-browser';
+ const category=n.type==='message'?'messages':n.type==='subscription'?'familyPlan':['booking','cancelled'].includes(n.type)?'appointments':'childUpdates';return accessible&&prefs[category]!==false;
+ }).map(n=>({...n,read:!!n.readBy?.[id]}));}catch{return [];}
 }
-
-
-function saveRafiqNotifications(
-  notifications
-) {
-
-  localStorage.setItem(
-    "rafiqNotifications",
-    JSON.stringify(
-      notifications
-    )
-  );
-
-
-  /*
-    Tell the current page that
-    notification data changed.
-  */
-
-  window.dispatchEvent(
-    new Event(
-      "rafiqNotificationsChanged"
-    )
-  );
+function saveRafiqNotifications(notifications){
+ const id=window.RafiqFamily?.owner()||sessionStorage.getItem('rafiqParentUserId')||'legacy-browser',all=JSON.parse(localStorage.getItem('rafiqNotifications')||'[]');
+ for(const notification of notifications){const index=all.findIndex(n=>n.id===notification.id);const previous=index<0?{}:all[index];const record={...previous,...notification,read:false,readBy:{...previous.readBy,[id]:!!notification.read}};if(index<0)all.unshift(record);else all[index]=record;}
+ localStorage.setItem('rafiqNotifications',JSON.stringify(all));window.dispatchEvent(new Event('rafiqNotificationsChanged'));
 }
-
 
 /* =========================================
    CREATE NOTIFICATION
@@ -67,7 +37,8 @@ function createRafiqNotification({
   title = "RAFIQ",
   message = "",
   link = null,
-  childId = null
+  childId = null,
+  familyId = null
 }) {
 
   const notifications =
@@ -93,6 +64,9 @@ function createRafiqNotification({
     link,
 
     childId,
+    familyId,
+    ownerId: !childId&&!familyId?(window.RafiqFamily?.owner()||sessionStorage.getItem("rafiqParentUserId")||"legacy-browser"):null,
+    createdBy: window.RafiqFamily?.owner()||null,
 
     read:
       false,
@@ -482,9 +456,7 @@ document.addEventListener(
 
     function getCurrentChildId() {
 
-      return localStorage.getItem(
-        "rafiqCurrentChildId"
-      );
+      return (window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId'));
     }
 
 

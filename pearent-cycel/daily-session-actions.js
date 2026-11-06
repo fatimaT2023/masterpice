@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  const get=id=>document.getElementById(id),daily=window.RafiqDailyMoments;
  function render(){
   try{
-   const children=window.RafiqSetup.readChildren(),child=children.find(c=>c.id===localStorage.getItem('rafiqCurrentChildId'))||children[0];if(!child)return;
+   const children=window.RafiqSetup.readChildren(),child=children.find(c=>c.id===(window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId')))||children[0];if(!child)return;
    const notes=JSON.parse(localStorage.getItem('rafiqAgeObservations_'+child.id)||'[]');if(!Array.isArray(notes))throw Error('Invalid moments');
    const today=notes.filter(n=>n&&n.type==='daily-moment'&&n.childId===child.id&&n.day===daily.dayKey());
    get('todayMore').hidden=!today.length;if(!today.length)return;

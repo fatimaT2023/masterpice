@@ -217,9 +217,7 @@ document.addEventListener(
 
 
     const currentChildId =
-      localStorage.getItem(
-        "rafiqCurrentChildId"
-      );
+      (window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId'));
 
 
     const currentChild =
@@ -278,7 +276,7 @@ document.addEventListener(
 
 
     const requestedPlan=getSelectedPlan();
-    const selectedPlan=requestedPlan?.id==='plus'?{id:'plus',name:'RAFIQ Plus',price:window.RafiqMembership.config.price,currency:'JOD',billing:'monthly'}:null;
+    const selectedPlan=requestedPlan?.id==='plus'?{id:'plus',name:'RAFIQ Plus',price:window.RafiqMembership.config.price,currency:'JOD',billing:'monthly',familyId:requestedPlan.familyId||window.RafiqMembership.familyId()}:null;
 
 
     if (!selectedPlan) {
@@ -291,6 +289,10 @@ document.addEventListener(
     }
 
 
+    const existingFamily=window.RafiqMembership.state(new Date(),selectedPlan.familyId);
+    if(existingFamily.active||!existingFamily.canManage){showView(missingPlanView);const notice=document.createElement('p');notice.textContent=existingFamily.active?'Your family already has an active subscription. No second payment is needed.':'Only the billing manager can purchase or change the family plan.';const back=document.createElement('a');back.href='subscription.html?family='+encodeURIComponent(selectedPlan.familyId);back.textContent='View family subscription';missingPlanView.replaceChildren(notice,back);return;}
+    document.querySelectorAll('a[href="subscription.html"]').forEach(link=>link.href='subscription.html?family='+encodeURIComponent(selectedPlan.familyId));
+    const familyLabel=document.createElement('p');familyLabel.textContent='Family workspace: '+(window.RafiqFamily.user(window.RafiqFamily.family(selectedPlan.familyId).ownerId)?.fullName||'My family');planName.before(familyLabel);
     planName.textContent =
       selectedPlan.name;
 
@@ -611,120 +613,12 @@ document.addEventListener(
 
 
     function activateSubscription() {
-
-      const reference =
-        createPaymentReference();
-
-
-      /*
-        IMPORTANT:
-        We only save subscription/payment metadata.
-
-        Card number, expiry and CVV
-        are NOT saved.
-      */
-
-      const subscriptionDetails = {
-        parentId: window.RafiqMembership.owner(),
-        id: 'subscription_' + reference,
-
-        plan:
-          selectedPlan.id,
-
-        planName:
-          selectedPlan.name,
-
-        price:
-          selectedPlan.price,
-
-        currency:
-          selectedPlan.currency,
-
-        billing:
-          selectedPlan.billing,
-
-        status:
-          "active",
-
-        activatedAt:
-          new Date().toISOString(),
-
-        paymentReference:
-          reference,
-
-        paymentMethod:
-          selectedMethod
-      };
-
-
-      localStorage.setItem(
-        "rafiqSubscriptionPlan",
-        "plus"
-      );
-
-
-      localStorage.setItem(
-        "rafiqSubscriptionDetails",
-        JSON.stringify(
-          subscriptionDetails
-        )
-      );
-
-
-      /*
-        Optional payment history.
-        Again: no sensitive card data.
-      */
-
-      const payments =
-        getPayments();
-
-
-      payments.unshift({
-        subscriptionId: subscriptionDetails.id,
-        parentId: window.RafiqMembership.owner(),
-
-        id:
-          reference,
-
-        type:
-          "subscription",
-
-        plan:
-          selectedPlan.name,
-
-        amount:
-          selectedPlan.price,
-
-        currency:
-          selectedPlan.currency,
-
-        method:
-          selectedMethod,
-
-        status:
-          "paid",
-
-        createdAt:
-          new Date().toISOString()
-      });
-
-
-      localStorage.setItem(
-        "rafiqPayments",
-        JSON.stringify(
-          payments
-        )
-      );
-
-
-      window.RafiqMembership.activate(subscriptionDetails);
-      createSubscriptionNotification();
-
-
+      const reference=createPaymentReference();
+      const record=window.RafiqMembership.activate({id:'subscription_'+reference,familyId:selectedPlan.familyId,planName:'RAFIQ Plus',price:window.RafiqMembership.config.price,currency:'JOD',billing:'monthly',paymentReference:reference,paymentMethod:selectedMethod});
+      const payments=getPayments();payments.unshift({id:reference,subscriptionId:record.id,familyId:record.familyId,parentId:record.payerId,payerId:record.payerId,type:'subscription',plan:record.planName,amount:record.price,currency:record.currency,method:selectedMethod,status:'paid',createdAt:record.activatedAt});localStorage.setItem('rafiqPayments',JSON.stringify(payments));
+      if(window.createRafiqNotification)window.createRafiqNotification({type:'subscription',title:'Family Plus activated',message:'Your family subscription is active for all linked caregivers.',familyId:record.familyId,link:'subscription.html'});
       return reference;
     }
-
 
     function getPayments() {
 
@@ -842,7 +736,7 @@ document.addEventListener(
           () => {
 
             let reference;
-            try{reference=activateSubscription();}catch{paymentError.textContent='Could not activate the demo plan. No real money was collected. Please try again.';payButton.disabled=false;payButton.textContent='Try demo payment again';return;}
+            try{reference=activateSubscription();}catch(error){paymentError.textContent=error.message||'Could not activate the demo plan. No real money was collected. Please try again.';payButton.disabled=false;payButton.textContent='Try demo payment again';return;}
 
 
             /*

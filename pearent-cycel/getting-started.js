@@ -4,7 +4,7 @@ const {readChildren,ageFromBirth,formatAge}=window.RafiqSetup;
 const get=id=>document.getElementById(id), form=get('needsForm'), button=get('startButton'), explore=get('exploreButton');
 const choices={development:{url:'milestones.html',label:'Growth & milestones',copy:'Start with your child’s stage and record your observations.'},activities:{url:'activities.html',label:'Activities together',copy:'Explore age-group guidance and things to try together.'},concern:{url:'screening.html',label:'My concern',copy:'Tell us what is worrying you, answer a few age-aware observation questions, and review your next step.'},health:{url:'health.html',label:'Health & vaccinations',copy:'Start by adding a health note, measurement, or vaccination record.'},explore:{url:'parent-dashboard.html',label:'Today'}};
 let child;
-try{const id=new URLSearchParams(location.search).get('child')||localStorage.getItem('rafiqCurrentChildId');child=readChildren().find(item=>item.id===id);}catch{get('needsError').textContent='We couldn’t read your child’s profile in this browser. Please return to child details and try again.';form.querySelectorAll('input,button').forEach(input=>input.disabled=true);return;}
+try{const id=new URLSearchParams(location.search).get('child')||(window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId'));child=readChildren().find(item=>item.id===id);}catch{get('needsError').textContent='We couldn’t read your child’s profile in this browser. Please return to child details and try again.';form.querySelectorAll('input,button').forEach(input=>input.disabled=true);return;}
 if(!child){location.replace('onboarding.html');return;}
 const age=ageFromBirth(child.dateOfBirth);
 get('needsChild').textContent=child.name+(age?' · '+formatAge(age):'');get('backToChild').href='onboarding.html?edit='+encodeURIComponent(child.id);
@@ -15,7 +15,7 @@ function start(goal){
  try{
  const children=readChildren(),index=children.findIndex(item=>item.id===child.id);if(index<0)throw new Error('Missing child');
  children[index]={...children[index],initialGoal:goal,setupCompletedAt:new Date().toISOString()};
- window.RafiqSetup.writeChildren(children);localStorage.setItem('rafiqCurrentChildId',child.id);
+ window.RafiqSetup.writeChildren(children);(window.RafiqFamily ? window.RafiqFamily.select(child.id) : localStorage.setItem('rafiqCurrentChildId',child.id));
  if(localStorage.getItem('rafiqSetupPendingChildId')===child.id)localStorage.removeItem('rafiqSetupPendingChildId');
  sessionStorage.setItem('rafiqSetupCompletedChildId',child.id);
  location.assign(choices[goal].url);

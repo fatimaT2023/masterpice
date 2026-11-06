@@ -9,7 +9,7 @@
    const report=records.find(r=>r.bookingId===booking.id&&r.childId===booking.childId&&r.specialistId===booking.specialistId&&r.status==='submitted');
    mount.append(make('strong',report?'Session completed · report ready':'Session completed · report pending'));
    if(role==='parent'){
-    if(report){const a=link('Read report and record my follow-up','specialist-report.html');a.addEventListener('click',()=>{sessionStorage.setItem('rafiqSelectedReportBooking',booking.id);localStorage.setItem('rafiqCurrentChildId',booking.childId);});mount.append(a);}
+    if(report){const a=link('Read report and record my follow-up','specialist-report.html');a.addEventListener('click',()=>{sessionStorage.setItem('rafiqSelectedReportBooking',booking.id);(window.RafiqFamily ? window.RafiqFamily.select(booking.childId) : localStorage.setItem('rafiqCurrentChildId',booking.childId));});mount.append(a);}
     else mount.append(make('p','Your specialist’s report will appear after they submit it. You can send a message if you have a question.'));
    }else{const a=link(report?'Review submitted report':'Write the session report','report-form.html');a.addEventListener('click',()=>sessionStorage.setItem('rafiqSelectedSpecialistBooking',booking.id));mount.append(a);}
    return;

@@ -19,7 +19,7 @@
       if (!b.sessionPayment) return;
       const p = b.sessionPayment;
       if (b.status === 'cancelled' && p.status === 'paid' && p.payoutStatus !== 'transferred') {
-        p.status = 'refund_pending'; p.payoutStatus = 'blocked'; changed = true;
+        p.refundRecipientId=p.payerId||b.createdBy||b.parentId;p.refundTo='original_payment_method';p.status = 'refund_pending'; p.payoutStatus = 'blocked'; changed = true;
       }
       if (b.status === 'completed' && p.status === 'paid' && p.payoutStatus === 'held') {
         p.payoutStatus = 'pending'; changed = true;
@@ -51,7 +51,7 @@
         e.preventDefault();
         const commissionRate = rate();
         const commission = round(price * commissionRate / 100);
-        finish({ provider: 'orange_money_demo', status: 'paid', amount: price,
+        finish({ payerId:sessionStorage.getItem('rafiqParentUserId')||null,payerName:window.RafiqFamily?.actor().name||'Caregiver',refundTo:'original_payment_method',provider: 'orange_money_demo', status: 'paid', amount: price,
           commissionRate, commission, specialistNet: round(price - commission),
           payoutStatus: 'held', reference: 'DEMO-' + crypto.randomUUID(),
           paidAt: new Date().toISOString() });

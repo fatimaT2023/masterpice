@@ -13,7 +13,7 @@ function appendRecord(container,title,record,child,body){
  const age=usableDate(record.date)?window.RafiqSetup.ageFromBirth(child.dateOfBirth||child.dob||child.birthDate,new Date(record.date+'T12:00:00')):null;
  meta.textContent=displayDate(record.date)+(age?' · '+window.RafiqSetup.formatAge(age):'');
  const content=document.createElement('p');content.className='profile-health-body';content.textContent=body||'No additional details.';
- article.append(heading,meta,content);container.append(article);
+ article.append(heading,meta,content);if(record.createdByName){const author=document.createElement('small');author.textContent='Added by: '+record.createdByName;article.append(author);}container.append(article);
 }
 function render(child){
  const types=[['growth','Growth'],['vaccine','Vaccine'],['note','Note']];

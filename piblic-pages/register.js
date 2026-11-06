@@ -1604,7 +1604,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 : "../specialist-cycle/specialist-onboarding.html";
 
             window.location.href =
-              destination;
+              selectedRole === "parent" && new URLSearchParams(location.search).get("invite")
+                ? "caregiver-invitation.html?invite=" + encodeURIComponent(new URLSearchParams(location.search).get("invite"))
+                : destination;
           },
           1000
         );

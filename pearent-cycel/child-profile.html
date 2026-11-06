@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head><script src="../shared/account-status.js"></script><script src="../shared/account-access.js" defer></script>
+<head><script src="../shared/family-access.js"></script><script src="../shared/account-status.js"></script><script src="../shared/account-access.js" defer></script>
 <script src="../piblic-pages/rafiq-theme.js"></script>
 
   <meta charset="UTF-8">
@@ -55,6 +55,14 @@
 <p id="profileError" role="alert" hidden></p>
 <div id="profileContent" hidden>
 <section class="screen-flow-card child-profile-hero"><div class="child-profile-avatar" id="profileAvatar"></div><div><p class="screen-flow-eyebrow">CHILD PROFILE</p><h1 id="profileName"></h1><p id="profileAge"></p></div><a id="editChildProfile" class="screen-flow-secondary">Edit child details</a></section>
+<section class="screen-flow-card" id="childCaregivers" aria-labelledby="caregiversHeading"><h2 id="caregiversHeading">Manage caregivers</h2><p>Accounts connected to this child.</p><div class="profile-caregiver"><div><h3 id="caregiverName" data-user-content>Your account</h3><p id="caregiverRelationship"></p></div><strong id="caregiverRole">Primary caregiver</strong></div><p class="screen-flow-small">Shared child records: caregivers use separate accounts and see the same child updates. Invitations are stored in this browser; no email is sent.</p>
+<button type="button" id="caregiverInviteToggle" class="screen-flow-primary" aria-expanded="false" aria-controls="caregiverInviteForm">Invite another caregiver</button>
+<form id="caregiverInviteForm" class="caregiver-invite-form" hidden>
+<label for="caregiverEmail">Caregiver email</label><input id="caregiverEmail" name="email" type="email" autocomplete="email" maxlength="254" required>
+<label for="caregiverRelation">Relationship to the child</label><select id="caregiverRelation" name="relationship" required><option value="">Select relationship</option><option value="mother">Mother</option><option value="father">Father</option><option value="guardian">Guardian</option><option value="other">Other caregiver</option></select>
+<p class="screen-flow-small">The invited caregiver can use the same child workspace: appointments, health records, activities and memories.</p>
+<button type="submit" class="screen-flow-primary">Create preview invitation</button></form>
+<p id="caregiverFeedback" role="status" aria-live="polite"></p><h3>Invitations</h3><div id="caregiverInvitations"></div></section>
 <section class="screen-flow-card"><h2>About your child</h2><dl id="childDetails" class="child-profile-details"></dl><p class="screen-flow-small">These details help Rafiq show content for your child’s age. You can update them at any time.</p></section>
 <section class="screen-flow-card" aria-labelledby="profileMeasurementsHeading"><div class="profile-section-heading"><h2 id="profileMeasurementsHeading">Height &amp; weight</h2><a href="health.html" class="screen-flow-link">Add or update a measurement</a></div><p>Latest recorded values, with the date each was measured.</p><div class="profile-measurement-grid"><div><h3>Weight</h3><strong id="profileWeight">Not recorded yet</strong><p id="profileWeightDate"></p></div><div><h3>Height / length</h3><strong id="profileHeight">Not recorded yet</strong><p id="profileHeightDate"></p></div></div><p class="screen-flow-small">Measurements are parent-entered records. A single value does not describe your child’s growth.</p><details class="profile-record-section"><summary>All measurements <span id="profileGrowthCount"></span></summary><div id="profileGrowthRecords"></div></details></section>
 <section class="screen-flow-card"><h2>Health details</h2><p>Records saved for this child. Add or edit details in <a href="health.html">Health &amp; vaccinations</a>.</p><details class="profile-record-section"><summary>Vaccines received <span id="profileVaccineCount"></span></summary><div id="profileVaccineRecords"></div></details><details class="profile-record-section"><summary>Health notes <span id="profileNoteCount"></span></summary><div id="profileNoteRecords"></div></details><p class="screen-flow-small">An empty vaccine list does not mean a dose was missed. Medication notes are records you entered, not prescribing instructions.</p></section>
@@ -67,6 +75,6 @@
 <a href="parent-dashboard.html"><strong>Today</strong><span>Return to your child’s next step.</span></a>
 </div></section><p class="screen-flow-small">Profile details are saved in this browser.</p></div>
 <a href="parent-dashboard.html" class="screen-flow-link">Back to Home</a>
-</main><script src="health-records.js"></script><script src="child-profile-health.js"></script><script src="child-profile.js"></script><script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="parent-journey-ar.js" defer></script><script src="../shared/site-language.js" defer></script>
+</main><script src="health-records.js"></script><script src="child-profile-health.js"></script><script src="child-profile.js"></script><script src="caregiver-invitations.js"></script><script src="caregivers.js"></script><script src="../shared/direct-messages.js"></script><script src="../shared/care-connections.js"></script><script src="child-care-team.js"></script><script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="parent-journey-ar.js" defer></script><script src="../shared/site-language.js" defer></script>
 <script src="notifications.js"></script>
-<script src="../shared/membership-ui.js"></script></body></html>
+<script src="../shared/membership-ui.js"></script><script src="family-archive-ui.js"></script></body></html>

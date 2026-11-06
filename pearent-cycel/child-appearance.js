@@ -10,7 +10,7 @@
   try{
    const children=window.RafiqSetup?.readChildren?.()||JSON.parse(localStorage.getItem('rafiqChildren')||'[]');
    const params=new URLSearchParams(location.search);
-   const id=(location.pathname.endsWith('/child-profile.html')?params.get('child'):null)||localStorage.getItem('rafiqCurrentChildId');
+   const id=(location.pathname.endsWith('/child-profile.html')?params.get('child'):null)||(window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId'));
    const profiles=Array.isArray(children)?children:[];
    apply((profiles.find(child=>child.id===id)||profiles[0])?.gender);
   }catch{apply('');}
