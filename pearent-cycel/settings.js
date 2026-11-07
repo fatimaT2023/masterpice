@@ -1,6 +1,22 @@
 document.addEventListener(
   "DOMContentLoaded",
   () => {
+    const settingsIcons={
+      account:'<circle cx="12" cy="7" r="3"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/>',
+      children:'<circle cx="9" cy="7" r="3"/><path d="M3 21v-4a6 6 0 0 1 12 0v4M17 4a3 3 0 0 1 0 6m2 4a5 5 0 0 1 2 4v3"/>',
+      subscription:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h4"/>',
+      notifications:'<path d="M18 8a6 6 0 0 0-12 0c0 6-3 6-3 9h18c0-3-3-3-3-9M10 21h4"/>',
+      privacy:'<path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"/>'
+    };
+    document.querySelectorAll('.settings-tab').forEach(tab=>{
+      const name=tab.dataset.tab;
+      tab.insertAdjacentHTML('afterbegin',`<span class="settings-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${settingsIcons[name]||''}</svg></span>`);
+      tab.setAttribute('aria-controls',name+'Panel');
+      tab.setAttribute('aria-pressed',String(tab.classList.contains('active')));
+    });
+    const notificationsTab=document.querySelector('.settings-tab[data-tab="notifications"]');
+    document.querySelector('.settings-tab[data-tab="privacy"]').before(notificationsTab);
+    document.getElementById('accountMessage').setAttribute('role','status');
 
     // ===========================
     // ELEMENTS
@@ -170,6 +186,7 @@ document.addEventListener(
 
 
     const panels = {
+      notifications:document.getElementById('notificationsPanel'),
       account:
         document.getElementById(
           "accountPanel"
@@ -214,6 +231,7 @@ document.addEventListener(
                 item.classList.remove(
                   "active"
                 );
+                item.setAttribute('aria-pressed','false');
               }
             );
 
@@ -233,6 +251,7 @@ document.addEventListener(
             tab.classList.add(
               "active"
             );
+            tab.setAttribute('aria-pressed','true');
 
 
             panels[target]
@@ -711,7 +730,7 @@ document.addEventListener(
 
     const requestedTab = new URLSearchParams(location.search).get('tab');
     if (Object.prototype.hasOwnProperty.call(panels, requestedTab)) {
-      document.querySelector('.settings-tab[data-tab="' + requestedTab + '"]').click();
+      document.querySelector('.settings-tab[data-tab="' + requestedTab + '"]')?.click();
     }
 
     renderSidebarChild();

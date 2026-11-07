@@ -39,13 +39,14 @@
   <link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
 <link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
 <link rel="stylesheet" href="../shared/site-language.css">
+<link rel="stylesheet" href="specialist-setup-refined.css">
 </head>
 
 
 <body class="parent-cycle-video specialist-cycle-video specialist-setup-page">
   <div class="specialist-static-background" aria-hidden="true"></div>
 
-<header class="setup-header"><a href="../piblic-pages/index.html" class="brand">RAFIQ</a><div class="setup-header-actions"><a href="../piblic-pages/help-center.html?from=specialist">Help Center</a><button type="button" id="setupLogout">Log out</button></div></header><div class="app-shell"><div class="main-content"><main class="onboarding-page">
+<header class="setup-header"><a href="../rafiq-home-transfer-20261013-211454/index.html" class="brand">RAFIQ</a><div class="setup-header-actions"><a href="../piblic-pages/help-center.html?from=specialist">Help Center</a><button type="button" id="setupLogout">Log out</button></div></header><div class="app-shell"><div class="main-content"><main class="onboarding-page">
 
   <!-- RIGHT FORM PANEL -->
 
@@ -306,6 +307,13 @@
                 id="licenseNumber"
                 placeholder="Professional registration number"
               >
+<div class="proof-upload" data-proof="licenseProof">
+<p>Professional license document <strong>*</strong></p>
+<p class="proof-help">Upload a clear copy showing your name and document details. PDF, JPG or PNG, up to 1 MB in this preview.</p>
+<div class="proof-actions"><label class="proof-button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4m-4 4 4-4 4 4M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg><span>Upload a file</span><input type="file" data-proof-file="licenseProof" accept="application/pdf,image/jpeg,image/png" hidden></label><button type="button" class="proof-button" data-proof-camera="licenseProof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5 6.5 8H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-2.5L16 5Z"/><circle cx="12" cy="14" r="4"/></svg><span>Take a photo</span></button></div>
+<div data-proof-preview="licenseProof"></div><button type="button" data-proof-remove="licenseProof" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M9 6V4h6v2M5 6l1 14h12l1-14M10 10v6m4-6v6"/></svg><span>Remove document</span></button>
+<p class="field-error" id="licenseProofError" role="alert"></p>
+</div>
 
               <small
                 class="field-error"
@@ -327,6 +335,13 @@
                 id="qualification"
                 placeholder="Example: MSc Speech Therapy"
               >
+<div class="proof-upload" data-proof="qualificationProof">
+<p>Academic qualification document <strong>*</strong></p>
+<p class="proof-help">Upload a clear copy showing your name and document details. PDF, JPG or PNG, up to 1 MB in this preview.</p>
+<div class="proof-actions"><label class="proof-button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4m-4 4 4-4 4 4M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg><span>Upload a file</span><input type="file" data-proof-file="qualificationProof" accept="application/pdf,image/jpeg,image/png" hidden></label><button type="button" class="proof-button" data-proof-camera="qualificationProof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5 6.5 8H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-2.5L16 5Z"/><circle cx="12" cy="14" r="4"/></svg><span>Take a photo</span></button></div>
+<div data-proof-preview="qualificationProof"></div><button type="button" data-proof-remove="qualificationProof" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M9 6V4h6v2M5 6l1 14h12l1-14M10 10v6m4-6v6"/></svg><span>Remove document</span></button>
+<p class="field-error" id="qualificationProofError" role="alert"></p>
+</div>
 
               <small
                 class="field-error"
@@ -413,9 +428,7 @@
                   value="online"
                 >
 
-                <span class="choice-icon">
-                  ◉
-                </span>
+                <span class="choice-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="12" height="14" rx="3"/><path d="m15 10 6-4v12l-6-4"/></svg></span>
 
                 <span>
 
@@ -440,9 +453,7 @@
                   value="in-person"
                 >
 
-                <span class="choice-icon">
-                  ⌂
-                </span>
+                <span class="choice-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16M2 21h20M9 21v-5h6v5M12 6v6M9 9h6"/></svg></span>
 
                 <span>
 
@@ -575,88 +586,7 @@
         </section>
 
 
-        <!-- VERIFICATION -->
-
-        <section class="form-section">
-
-          <div class="section-heading">
-
-            <div class="section-number">
-              04
-            </div>
-
-            <div>
-
-              <span>
-                VERIFICATION
-              </span>
-
-              <h3>
-                Professional credentials
-              </h3>
-
-            </div>
-
-          </div>
-
-
-          <div class="verification-note">
-
-            <span>i</span>
-
-            <p>
-              In the production platform, professional
-              documents would be securely uploaded and
-              reviewed by the RAFIQ administration team.
-              This prototype stores only the selected
-              file name for demonstration.
-            </p>
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="credentialFile">
-              Credential Document
-              <span class="optional">
-                Optional in prototype
-              </span>
-            </label>
-
-
-            <label
-              for="credentialFile"
-              class="upload-box"
-              id="uploadBox"
-            >
-
-              <div class="upload-icon">
-                ↑
-              </div>
-
-              <strong>
-                Select verification document
-              </strong>
-
-              <span id="uploadText">
-                PDF or image — demo only
-              </span>
-
-            </label>
-
-
-            <input
-              type="file"
-              id="credentialFile"
-              class="hidden-file"
-              accept=".pdf,.png,.jpg,.jpeg"
-            >
-
-          </div>
-
-
-          <label class="confirmation-check">
+<section class="form-section" id="setupReview"><div class="section-heading"><div><span>FINAL REVIEW</span><h3>Review and submit your application</h3></div></div><div id="setupSummary"></div><label for="notificationEmail">Email for application updates</label><input type="email" id="notificationEmail" required autocomplete="email"><small class="field-error" id="notificationEmailError"></small><p class="setup-email-note">We’ll keep this email with your application. Automatic email updates are not enabled in this preview; sign in to check the decision.</p><label class="confirmation-check">
 
             <input
               type="checkbox"
@@ -674,12 +604,7 @@
           <small
             class="field-error"
             id="accuracyError"
-          ></small>
-
-        </section>
-
-
-<section class="form-section" id="setupReview"><div class="section-heading"><div><span>FINAL REVIEW</span><h3>Review and submit your application</h3></div></div><div id="setupSummary"></div><label for="notificationEmail">Email for application updates</label><input type="email" id="notificationEmail" required autocomplete="email"><small class="field-error" id="notificationEmailError"></small><p class="setup-email-note">We’ll keep this email with your application. Automatic email updates are not enabled in this preview; sign in to check the decision.</p></section>
+          ></small></section>
 <div class="setup-navigation"><button type="button" id="setupBack" class="draft-button">Back</button><button type="button" id="setupNext" class="submit-button">Next</button></div>
         <!-- SUBMIT -->
 
@@ -716,7 +641,7 @@
       hidden
     >
 
-<div class="success-icon" aria-hidden="true">✓</div><span class="success-kicker">APPLICATION STATUS</span><h1 id="applicationStatusTitle">Your application is under review</h1><p id="applicationStatusCopy">Thank you for completing your profile. Our administration team will review your professional information. Your workspace will be available after approval.</p><div class="review-status"><strong id="applicationStatusLabel">Pending Review</strong></div><p id="applicationEmail"></p><p>Automatic email updates are not enabled in this preview. Sign in to check your application status.</p><div class="setup-status-actions"><a href="../piblic-pages/help-center.html?from=specialist" class="dashboard-button">Contact Help Center</a><button type="button" id="checkApplicationStatus" class="draft-button">Check status</button></div>
+<div class="success-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7M14 3l5 5h-5V3M8 9h3M8 13h4"/><circle cx="17" cy="17" r="5"/><path d="M17 14v3l2 1"/></svg></div><span class="success-kicker">APPLICATION STATUS</span><h1 id="applicationStatusTitle">Your application is under review</h1><p id="applicationStatusCopy">Thank you for completing your profile. Our administration team will review your professional information. Your workspace will be available after approval.</p><div class="review-status" role="status"><span class="status-dot" aria-hidden="true"></span><strong id="applicationStatusLabel">Pending Review</strong></div><div class="application-contact"><span class="application-contact-label">APPLICATION EMAIL</span><p id="applicationEmail"></p><p class="application-status-note">Sign in to check your application status. Email notifications are not available in this preview.</p></div><div class="setup-status-actions"><a href="../piblic-pages/help-center.html?from=specialist" class="dashboard-button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4m0 2v2"/></svg><span>Contact Help Center</span></a><a href="../rafiq-home-transfer-20261013-211454/index.html" id="applicationBackHome" class="draft-button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7M5 9v12h14V9M9 21v-7h6v7"/></svg><span>Back to home</span></a></div>
     </div>
 
   </section>
@@ -724,7 +649,7 @@
 </main></div></div>
 
 
-<script src="specialist-onboarding.js"></script><script src="specialist-setup-wizard.js"></script>
+<script src="specialist-proof-upload.js"></script><script src="specialist-onboarding.js"></script><script src="specialist-setup-wizard.js"></script>
 <script src="specialist-notifications.js"></script>
 <script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="../shared/site-language.js" defer></script>
 </body>

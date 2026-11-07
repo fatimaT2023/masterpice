@@ -45,13 +45,74 @@
 <body class="parent-cycle-video parent-today-page">
 <div class="parent-static-background" aria-hidden="true"></div><div id="parentSidebarMount"></div><script src="parent-sidebar.js"></script>
 <main class="main-content today-main" id="mainContent">
-<header class="topbar today-topbar"><div><p class="today-eyebrow" id="todayDate"></p><h1 id="todayHeading">Your family home</h1><p id="todayChildContext" class="today-meta"></p><p class="today-intro">Choose what you need today. Each path has a clear next step, and you can come back here anytime.</p></div></header>
+<header class="topbar today-topbar">
+  <div class="today-hero-card">
+    <div class="today-hero-meta-row">
+      <div class="today-date-badge">
+        <svg class="meta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="today-eyebrow" id="todayDate"></span>
+      </div>
+      <div class="today-child-badge">
+        <span class="badge-dot" aria-hidden="true"></span>
+        <span id="todayChildContext" class="today-meta"></span>
+      </div>
+    </div>
+    <h1 id="todayHeading">Your family home</h1>
+    <p class="today-intro">Choose what you need today. Each path has a clear next step, and you can come back here anytime.</p>
+  </div>
+</header>
 <div class="today-alert" id="todayError" role="alert" hidden></div>
 <div id="todayContent" hidden>
 <section class="today-priority today-card" id="todayPriority" aria-labelledby="priorityTitle" hidden><div><span class="today-eyebrow" id="priorityReason"></span><h2 id="priorityTitle"></h2><p id="priorityDescription"></p></div><a class="today-secondary" id="priorityAction" href="bookings.html">View details</a></section>
 
-<section class="parent-home-paths" aria-labelledby="homePathsTitle"><h2 id="homePathsTitle">What would you like to do for your child?</h2><p>Choose one starting point. You don’t need to visit every page.</p><div class="parent-path-grid"><a class="parent-path-card" href="daily-activity.html"><span aria-hidden="true">♡</span><h3>Do an activity together</h3><p>Try an age-matched idea, then save your child’s reaction.</p><strong>Start an activity →</strong></a><a class="parent-path-card" href="milestones.html"><span aria-hidden="true">✦</span><h3>Follow my child’s growth</h3><p>Understand their stage, record an observation, and revisit it later.</p><strong>Open growth journal →</strong></a><a class="parent-path-card" href="screening.html"><span aria-hidden="true">☏</span><h3>Discuss something worrying me</h3><p>Describe your concern, review it, then decide whether to speak to a specialist.</p><strong>Start with my concern →</strong></a></div></section>
-<details class="home-activity-panel" id="homeActivityPanel"><summary>Optional: today’s activity and your shared moments</summary><section class="today-card daily-moment" id="dailyMoment" aria-labelledby="dailyTitle">
+<section class="parent-home-paths" aria-labelledby="homePathsTitle">
+  <div class="paths-header">
+    <h2 id="homePathsTitle">What would you like to do for your child?</h2>
+    <p>Choose one starting point. You don’t need to visit every page.</p>
+  </div>
+  <div class="parent-path-grid">
+    <a class="parent-path-card path-card-activity" href="daily-activity.html">
+      <div class="path-card-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </div>
+      <div class="path-card-content">
+        <h3>Do an activity together</h3>
+        <p>Try an age-matched idea, then save your child’s reaction.</p>
+      </div>
+      <strong class="path-card-action">Start an activity →</strong>
+    </a>
+    <a class="parent-path-card path-card-growth" href="milestones.html">
+      <div class="path-card-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+      </div>
+      <div class="path-card-content">
+        <h3>Follow my child’s growth</h3>
+        <p>Understand their stage, record an observation, and revisit it later.</p>
+      </div>
+      <strong class="path-card-action">Open growth journal →</strong>
+    </a>
+    <a class="parent-path-card path-card-concern" href="screening.html">
+      <div class="path-card-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      </div>
+      <div class="path-card-content">
+        <h3>Discuss something worrying me</h3>
+        <p>Describe your concern, review it, then decide whether to speak to a specialist.</p>
+      </div>
+      <strong class="path-card-action">Start with my concern →</strong>
+    </a>
+  </div>
+</section>
+
+<details class="home-activity-panel" id="homeActivityPanel">
+<summary>
+  <span class="summary-label">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+    Optional: today’s activity and your shared moments
+  </span>
+  <span class="summary-chevron" aria-hidden="true">▾</span>
+</summary>
+<section class="today-card daily-moment" id="dailyMoment" aria-labelledby="dailyTitle">
 <div class="daily-heading"><div><span class="today-eyebrow">TODAY’S ACTIVITY</span><h2 id="dailyTitle">A little moment together</h2><p id="dailyAge" class="today-meta"></p></div></div>
 <div class="daily-welcome"><span aria-hidden="true">♡</span><div><strong>A little time together is enough</strong><p>No perfect result, no catching up. Follow your child’s pace.</p></div></div><p id="dailyWeek" class="daily-week" role="status"></p><p class="today-activity-guide">1. Open the steps · 2. Try it together · 3. Save your child’s reaction. You can also leave it for later.</p><p id="dailyStatus" role="status" aria-live="polite"></p><nav id="dailyUnavailable" class="daily-unavailable" aria-label="Other ways to continue" hidden><a id="dailyReviewChild" class="today-secondary" href="child-profile.html">Review child details</a><a class="today-text-link" href="milestones.html?filter=daily-moment#savedObservations">View saved observations →</a><a class="today-text-link" href="screening.html">Discuss a concern →</a></nav><section id="dailySaved" class="daily-saved" aria-labelledby="dailySavedTitle" hidden><h3 id="dailySavedTitle">Your saved response</h3><p id="dailySavedOutcome"></p><p id="dailySavedNote" data-user-content></p><p class="today-meta">Saved in this child’s observations. You can return here today to update it.</p><button type="button" class="today-secondary" id="dailyEdit">Edit today’s response</button> <a class="today-text-link" href="milestones.html?filter=daily-moment#savedObservations">View saved observations →</a></section>
 <div id="dailyIdea" hidden><p id="dailyInsight"></p><p id="dailyDuration" class="today-meta"></p><button type="button" class="today-primary" id="dailyStart" aria-expanded="false" aria-controls="dailyDetails">Try this activity</button>
@@ -64,8 +125,36 @@
 <section class="today-card daily-history" aria-labelledby="dailyHistoryTitle"><h2 id="dailyHistoryTitle">Our previous moments</h2><p>Today has its own activity. Your saved responses from earlier days stay here.</p><p id="dailyHistoryStatus" role="status"></p><div id="dailyHistoryList"></div><a class="today-text-link" href="milestones.html?filter=daily-moment#savedObservations">View all saved observations →</a></section>
 </details>
 
-<section class="today-other" aria-labelledby="otherActionsTitle"><p>No regular doctor? You can still use Rafiq. <a href="specialists.html">Find a one-time consultation</a> or <a href="messages.html">request optional ongoing follow-up</a>.</p><h2 id="otherActionsTitle">What else would you like to do?</h2><p>Choose what you need. You don’t have to complete everything today.</p><nav class="today-shortcuts" aria-label="Quick actions"><a href="milestones.html">Record an observation <span aria-hidden="true">↗</span></a><a href="album.html">Save a memory <span aria-hidden="true">↗</span></a><a href="health.html">Health records <span aria-hidden="true">↗</span></a></nav></section>
-<p class="today-help"><a href="screening.html">Concerned about your child’s development? <span aria-hidden="true">→</span></a></p>
+<section class="today-other" aria-labelledby="otherActionsTitle">
+  <div class="today-other-header">
+    <h2 id="otherActionsTitle">What else would you like to do?</h2>
+    <p>Choose what you need. You don’t have to complete everything today.</p>
+  </div>
+  <nav class="today-shortcuts" aria-label="Quick actions">
+    <a href="album.html" class="today-shortcut-item">
+      <span class="shortcut-icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </span>
+      <span class="shortcut-text">Save a memory</span>
+      <span class="shortcut-arrow" aria-hidden="true">↗</span>
+    </a>
+    <a href="health.html" class="today-shortcut-item">
+      <span class="shortcut-icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="14"/><line x1="9" y1="11" x2="15" y2="11"/></svg>
+      </span>
+      <span class="shortcut-text">Health records</span>
+      <span class="shortcut-arrow" aria-hidden="true">↗</span>
+    </a>
+    <a href="specialists.html" class="today-shortcut-item">
+      <span class="shortcut-icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </span>
+      <span class="shortcut-text">Find a specialist</span>
+      <span class="shortcut-arrow" aria-hidden="true">↗</span>
+    </a>
+  </nav>
+</section>
+
 <p class="today-footnote">Rafiq provides educational support, not a diagnosis or emergency care.</p>
 </div></main>
 <script src="screening-tools.js"></script><script src="today-model.js"></script><script src="activity-matching.js"></script><script src="daily-moments.js"></script><script src="parent-dashboard.js"></script><script src="daily-moment-ui.js"></script><script src="play-personalization.js"></script><script src="activity-profile-ui.js"></script><script src="daily-session-actions.js"></script><script src="parent-journey.js" defer></script><script src="notifications.js"></script><script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="parent-journey-ar.js" defer></script><script src="today-ar.js" defer></script><script src="../shared/site-language.js" defer></script>

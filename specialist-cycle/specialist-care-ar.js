@@ -42,3 +42,20 @@ Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{
   "These children have consultation records. Ongoing follow-up is managed separately.": "هدول الأطفال إلهم سجلات استشارات. المتابعة المستمرة إلها قسم منفصل.",
   "Open ongoing follow-up": "افتح المتابعة المستمرة"
 });
+
+Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{
+  "Good morning,": "صباح الخير،",
+  "No sessions today": "لا توجد جلسات اليوم",
+  "Needs your attention": "بحاجة إلى انتباهك",
+  "All caught up": "كل المهام مكتملة",
+  "Unread messages": "رسائل غير مقروءة",
+  "Join session": "انضم للجلسة",
+  "Open booking": "افتح الحجز",
+  "Open": "افتح",
+  "Upcoming": "القادمة",
+  "Edit profile": "تعديل الملف الشخصي"
+});
+(window.RafiqArabicTemplates=window.RafiqArabicTemplates||[]).push(
+  {en:"You have {0} sessions today.",ar:"لديك {0} جلسات اليوم."},
+  {en:"Profile completeness {0}%",ar:"اكتمال الملف الشخصي {0}%"}
+);

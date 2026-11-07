@@ -765,6 +765,7 @@ document.addEventListener(
 
         settings.language =
           languageSelect.value;
+        window.RafiqLanguage?.setLanguage(settings.language);
 
 
         settings.updatedAt =

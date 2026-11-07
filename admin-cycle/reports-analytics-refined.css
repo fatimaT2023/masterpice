@@ -1,0 +1,100 @@
+/* Clear hierarchy for period selection, comparisons and supporting analytics. */
+body.admin-performance .topbar {
+  position:static; padding-block:24px 18px; padding-inline:clamp(16px,3vw,40px);
+  gap:16px; flex-wrap:wrap; border-block-end:0; background:transparent;
+  box-shadow:none; backdrop-filter:none; -webkit-backdrop-filter:none;
+}
+.admin-performance .topbar-left { min-inline-size:0; gap:16px; flex:1; }
+.admin-performance .analytics-heading-icon {
+  display:grid; place-items:center; flex-shrink:0; inline-size:54px; block-size:54px;
+  border:1px solid #ffffffd9; border-radius:18px; color:#075e5a;
+  background:linear-gradient(145deg,#ffffffd9,#d4f3ea); box-shadow:0 6px 20px #163e3b08;
+}
+.analytics-heading-icon svg { inline-size:34px; block-size:34px; }
+.analytics-heading-copy { min-inline-size:0; }
+.admin-performance .topbar .page-kicker { margin:0; font-size:9px; letter-spacing:.13em; color:#0b7a75; }
+.admin-performance .topbar h1 { margin-block:2px 4px; font-size:24px; line-height:1.25; }
+.admin-performance .analytics-heading-description { margin:0; color:#49645e; font-size:13px; line-height:1.6; }
+.admin-performance .refresh-button { min-block-size:44px; padding-inline:16px; border-radius:12px; font-size:12px; font-weight:600; }
+.admin-performance .menu-button { min-inline-size:44px; min-block-size:44px; }
+body.admin-performance .page-body { padding-block-start:14px; }
+.admin-performance .operations-intro { display:flex; align-items:center; flex-wrap:wrap; gap:10px 16px; margin-block:0 16px; }
+.admin-performance .operations-intro h2 { font-size:22px; line-height:1.35; font-weight:600; margin:0; }
+.admin-performance .operations-intro a { display:inline-flex; align-items:center; min-block-size:44px; margin-inline-start:auto; font-size:12px; }
+.admin-performance .performance-period {
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px 20px; padding:20px;
+  border:1px solid #ffffffdf; border-radius:24px; background:#ffffffa6; box-shadow:0 6px 20px #163e3b05;
+}
+.admin-performance .performance-period label { min-inline-size:0; gap:7px; font-size:12px; font-weight:600; color:#315b52; }
+.admin-performance .performance-period :is(input,select) { inline-size:100%; min-inline-size:0; min-block-size:44px; padding:10px 12px; border:1px solid #bcd3c6; border-radius:12px; font-size:13px; background:#ffffffc9; }
+.admin-performance #analyticsPeriodMessage { grid-column:1 / -1; padding:12px 14px; border-inline-start:3px solid #0b7a75; border-radius:12px; background:#e1f3eb; font-size:12px; color:#315b52; line-height:1.6; }
+.admin-performance .reporting-explainer { grid-column:1 / -1; min-inline-size:0; }
+.admin-performance .reporting-explainer summary { display:list-item; min-block-size:44px; padding-block:10px; cursor:pointer; font-size:12px; color:#527169; }
+.admin-performance .reporting-explainer p { margin-block:4px; font-size:12px; line-height:1.7; color:#527169; }
+.admin-performance .performance-comparisons { gap:14px; margin-block-end:20px; }
+.admin-performance .performance-comparisons article {
+  position:relative; min-inline-size:0; padding:20px; gap:8px; border:1px solid #ffffffdf; border-radius:22px;
+  background:linear-gradient(145deg,#ffffffd9,#eff8f4b3); box-shadow:0 8px 26px #163e3b05;
+}
+.admin-performance .performance-comparisons article::before { content:''; display:block; inline-size:32px; block-size:5px; border-radius:8px; background:#a9dbca; margin-block-end:6px; }
+.admin-performance .performance-comparisons article:nth-child(2)::before { background:#acd6ee; }
+.admin-performance .performance-comparisons article:nth-child(3)::before { background:#c7b9ec; }
+.admin-performance .performance-comparisons span { font-size:13px; font-weight:600; color:#315b52; }
+.admin-performance .performance-comparisons strong { font-family:var(--font-display); font-size:32px; line-height:1.2; }
+.admin-performance .performance-comparisons p { font-size:12px; padding:8px 10px; border-radius:10px; background:#ffffff80; color:#527169; }
+.admin-performance .performance-comparisons a { display:inline-flex; align-items:center; min-block-size:44px; font-size:12px; font-weight:600; }
+.admin-performance .metrics-grid { gap:14px; }
+.admin-performance .metric-card { min-inline-size:0; padding:16px; gap:12px; border:1px solid #ffffffdf; border-radius:18px; background:#ffffff90; }
+.admin-performance .metric-card strong { font-size:24px; }
+.admin-performance .metric-card span { font-size:12px; }
+.admin-performance .metric-card small { font-size:11px; }
+.admin-performance .analytics-grid { gap:16px; grid-template-columns:repeat(2,minmax(0,1fr)); }
+.admin-performance :is(.analytics-card,.activity-panel,.performance-inventory) { min-inline-size:0; padding:20px; border:1px solid #ffffffdf; border-radius:24px; background:#ffffff90; box-shadow:0 8px 26px #163e3b05; }
+.admin-performance .card-heading { gap:12px; flex-wrap:wrap; }
+.admin-performance .card-heading h2 { font-size:20px; }
+.admin-performance .section-kicker { font-size:9px; }
+.admin-performance .card-link { display:inline-flex; align-items:center; min-block-size:44px; font-size:12px; }
+.admin-performance .bar-label { font-size:13px; }
+.admin-performance .bar-label :is(span,strong) { font-size:13px; }
+.admin-performance .bar-track,.admin-performance .progress-track { block-size:10px; border-radius:10px; background:#e4eee9; }
+.admin-performance .donut-layout { gap:20px; }
+.admin-performance .donut strong { font-size:24px; }
+.admin-performance .donut span { font-size:12px; }
+.admin-performance .legend-list span { font-size:12px; }
+.admin-performance .legend-list strong { font-size:14px; }
+.admin-performance .type-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.admin-performance .type-card { min-inline-size:0; border-radius:16px; background:#ffffff90; }
+.admin-performance .type-card > span { font-size:12px; }
+.admin-performance .type-card strong { font-size:24px; }
+.admin-performance .type-card small { font-size:11px; }
+.admin-performance .completion-box { border-radius:16px; background:#e1f3eb80; }
+.admin-performance .completion-box span { font-size:12px; }
+.admin-performance .completion-box strong { font-size:16px; }
+.admin-performance .billing-summary { gap:10px; }
+.admin-performance .billing-summary > div { gap:12px; flex-wrap:wrap; padding:14px; border-radius:14px; background:#ffffff70; }
+.admin-performance .billing-summary span { font-size:12px; }
+.admin-performance .billing-summary strong { font-size:16px; }
+.admin-performance .performance-inventory summary { min-block-size:44px; font-size:14px; }
+.admin-performance .activity-copy strong { font-size:13px; }
+.admin-performance .activity-copy span,.admin-performance .activity-row > time { font-size:11px; }
+.admin-performance .analytics-note { border-radius:18px; }
+.admin-performance .analytics-note strong { font-size:13px; }
+.admin-performance .analytics-note p { font-size:12px; line-height:1.7; }
+.admin-performance .main-content :is(a,button,input,select,summary):focus-visible { outline:2px solid #0b7a75; outline-offset:3px; }
+@media(max-width:1100px) {
+  .admin-performance .analytics-grid { grid-template-columns:minmax(0,1fr); }
+}
+@media(max-width:650px) {
+  .admin-performance .topbar-left { flex-basis:100%; gap:10px; }
+  .admin-performance .refresh-button { margin-inline-start:auto; }
+  .admin-performance .operations-intro a { margin-inline-start:0; }
+  .admin-performance .performance-period { grid-template-columns:minmax(0,1fr); padding:16px; }
+  .admin-performance .performance-period label { min-width:0; }
+  .admin-performance .performance-comparisons { grid-template-columns:minmax(0,1fr); }
+  .admin-performance :is(.analytics-card,.activity-panel) { padding:16px; }
+  .admin-performance .donut-layout { grid-template-columns:minmax(0,1fr); }
+}
+@media(max-width:400px) {
+  .admin-performance .analytics-heading-icon { inline-size:44px; block-size:44px; border-radius:15px; }
+  .admin-performance .analytics-heading-description { font-size:12px; }
+}

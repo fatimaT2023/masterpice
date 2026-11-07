@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
 <link rel="stylesheet" href="../session-finance.css">
 <script src="../session-finance.js"></script>
-<link rel="stylesheet" href="../shared/site-language.css">
+<link rel="stylesheet" href="../shared/site-language.css"><link rel="stylesheet" href="billing-management-refined.css">
 </head>
 
 
@@ -269,10 +269,7 @@
           id="menuButton"
         >
           ☰
-        </button>
-
-
-        <div>
+        </button><span class="finance-heading-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="12" width="36" height="28" rx="7"/><path d="M12 12V9a3 3 0 0 1 3-3h20M42 23H32a5 5 0 0 0 0 10h10"/><circle cx="33" cy="28" r="1.5" fill="currentColor"/><path d="m14 30 5-5 4 2 5-8"/></svg></span><div class="finance-heading-copy">
 
           <span class="page-kicker">
             PLATFORM FINANCE
@@ -414,7 +411,46 @@
       <section class="billing-panel">
 
 <section class="finance-intro"><p>Review session payments, specialist settlements and parent subscriptions.</p><p class="finance-demo">Preview records only. No real payments, transfers or emails are sent.</p></section>
-<div class="finance-period"><label for="financePeriod">Reporting period</label><select id="financePeriod"><option value="all">All time</option><option value="month">This month</option><option value="custom">Custom dates</option></select><label>From date<input id="financeFrom" type="date"></label><label>To date<input id="financeTo" type="date"></label><span id="financePeriodNote">Session date · subscription start date · payment date</span></div>
+        <div class="finance-period" aria-label="Filter by date range">
+          <div class="period-control-group">
+            <label for="financePeriod" class="period-label">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span>Reporting period</span>
+            </label>
+            <select id="financePeriod" class="period-select">
+              <option value="all">All time</option>
+              <option value="month">This month</option>
+              <option value="custom">Custom date range</option>
+            </select>
+          </div>
+
+          <div class="date-range-controls">
+            <div class="date-picker-field">
+              <label for="financeFrom">From date</label>
+              <div class="date-input-box">
+                <svg class="date-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <input id="financeFrom" type="date">
+              </div>
+            </div>
+
+            <span class="date-separator" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </span>
+
+            <div class="date-picker-field">
+              <label for="financeTo">To date</label>
+              <div class="date-input-box">
+                <svg class="date-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <input id="financeTo" type="date">
+              </div>
+            </div>
+          </div>
+
+          <span id="financePeriodNote" class="finance-period-note">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <span>Session date · subscription start date · payment date</span>
+          </span>
+        </div>
 <div id="financeAlerts" class="finance-alerts" aria-label="Actions required"></div><p id="financeNotice" role="status" hidden></p>
 <section class="finance-metrics" aria-label="Session totals for the selected period"><article><span>Collected session payments</span><strong id="financeCollected">0.00 JOD</strong><small>Selected period · excludes refunded payments</small></article><article><span>Specialist amounts due</span><strong id="financeDue">0.00 JOD</strong><small>Completed sessions awaiting transfer</small></article><article><span>Earned platform commission</span><strong id="financeEarned">0.00 JOD</strong><small>Paid, completed sessions</small></article></section>
 <nav class="finance-tabs" aria-label="Finance sections"><button type="button" data-finance-tab="sessions" aria-pressed="true">Session payments</button><button type="button" data-finance-tab="settlements" aria-pressed="false">Specialist settlements</button><button type="button" data-finance-tab="subscriptions" aria-pressed="false">Parent subscriptions</button><button type="button" data-finance-tab="payments" aria-pressed="false">Subscription payment history</button></nav>

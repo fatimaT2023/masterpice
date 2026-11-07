@@ -1,14 +1,12 @@
-
 .child-profile-hero{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
 .child-profile-hero h1{margin:5px 0;font-size:clamp(30px,5vw,48px)}
-.child-profile-hero>a{margin-left:auto;text-decoration:none}
 .child-profile-avatar{display:grid;place-items:center;width:84px;height:84px;border-radius:26px;background:#d7eee4;color:#155e56;font-size:36px}
 .child-profile-details{display:grid;grid-template-columns:minmax(160px,1fr) 2fr;gap:16px}
 .child-profile-details dt{color:#50665d}.child-profile-details dd{margin:0;font-weight:600;overflow-wrap:anywhere}
 .child-profile-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .child-profile-links a{display:grid;gap:8px;padding:20px;border:1px solid #c9ddd4;border-radius:18px;background:#ffffff80;color:#254e42;text-decoration:none}
 .child-profile-links a:hover{background:#e3f1e9}.child-profile-links span{font-size:14px;line-height:1.6}
-@media(max-width:600px){.child-profile-links{grid-template-columns:1fr}.child-profile-details{grid-template-columns:1fr;gap:8px}.child-profile-details dd{margin-bottom:14px}.child-profile-hero>a{margin-left:0}}
+@media(max-width:600px){.child-profile-links{grid-template-columns:1fr}.child-profile-details{grid-template-columns:1fr;gap:8px}.child-profile-details dd{margin-bottom:14px}}
 
 .profile-section-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .profile-measurement-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:22px 0}
@@ -24,6 +22,530 @@
 .profile-health-body{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7}
 @media(max-width:520px){.profile-measurement-grid{grid-template-columns:1fr}}
 
-.profile-caregiver{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px;border:1px solid #c9ddd4;border-radius:18px;background:#ffffff80}
-.profile-caregiver h3{margin:0 0 8px;font-size:18px;overflow-wrap:anywhere}.profile-caregiver p{margin:0;color:#50665d}.profile-caregiver>strong{border-radius:99px;background:#d7eee4;color:#155e56;padding:8px 14px;font-size:13px}
-.caregiver-invite-form{margin-top:22px;padding:22px;border:1px solid #c9ddd4;border-radius:18px}.caregiver-invite-form input[type=email]{width:100%;box-sizing:border-box;padding:13px;border:1px solid #163e3b35;border-radius:14px;background:#ffffffb0;color:inherit;font:inherit}.caregiver-invitation{margin-top:14px}.caregiver-invitation>div{min-width:0}.caregiver-invitation strong{overflow-wrap:anywhere}.caregiver-invitation p{font-size:14px}
+/* Compact profile workspace layout */
+html body.parent-cycle-video.child-profile-page .main-content{max-width:1120px;padding:28px 24px 48px}
+html body.child-profile-page .screen-flow-card{padding:24px;margin:0;border-radius:26px;background:#fffafbd9;border-color:#fff;box-shadow:0 8px 24px #573a460c}
+.child-profile-page .child-profile-hero{gap:20px;flex-wrap:wrap;margin-bottom:24px;display:flex;align-items:center}
+.child-profile-page .child-profile-hero h1{font-size:32px;line-height:1.2;margin:0 0 10px}
+.child-profile-page .profile-avatar-control{position:relative;flex:0 0 96px}
+.child-profile-page .child-profile-avatar{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;font-size:36px}
+.child-profile-page #changeChildPhoto{position:absolute;inset-inline-end:-4px;inset-block-end:0;display:grid;place-items:center;width:34px;height:34px;border:2px solid #fff;border-radius:50%;background:#0b7a75;color:#fff;cursor:pointer;box-shadow:0 3px 10px #0b7a7520}
+.child-profile-page #changeChildPhoto svg{width:17px;height:17px}
+.child-profile-page #profileAge{display:inline-flex;align-items:center;min-height:28px;padding:4px 10px;border:1px solid #fff;border-radius:999px;margin:0;font-size:12px;background:#ffffff90;color:#527069}
+
+/* Hero Top Action Buttons */
+.profile-hero-actions{margin-inline-start:auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.profile-action-btn{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:8px 18px;border-radius:999px;background:rgba(255,255,255,0.92);border:1px solid rgba(22,62,59,0.14);color:#174e44;font-family:inherit;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;transition:all .2s cubic-bezier(.16,1,.3,1);box-shadow:0 2px 6px rgba(15,47,46,0.04)}
+.profile-action-btn:hover{background:#ffffff;border-color:var(--child-theme-accent,#0b7a75);transform:translateY(-1.5px);box-shadow:0 6px 16px rgba(11,122,117,0.12)}
+#openCaregiversModal{background:rgba(255,255,255,0.95);border-color:var(--child-theme-accent,#0b7a75);color:var(--child-theme-accent,#0b7a75)}
+#openCaregiversModal:hover{background:var(--child-theme-accent,#0b7a75);color:#ffffff}
+#openCaregiversModal:hover svg{stroke:#ffffff}
+
+.child-profile-layout{display:grid;grid-template-columns:minmax(0,1fr) 336px;gap:24px;align-items:start;margin-top:24px}
+.child-profile-main,.child-profile-side{display:grid;gap:24px;min-width:0}
+.child-profile-page .screen-flow-card h2{font-size:19px;line-height:1.4;margin:0 0 18px}
+.child-profile-page .child-profile-details{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:0}
+.child-profile-details>div{display:grid;gap:5px;min-width:0}
+.child-profile-page .child-profile-details dt{font-size:11px;line-height:1.6;color:#61766d}.child-profile-page .child-profile-details dd{font-size:13px;line-height:1.6;margin:0}
+.child-profile-page .profile-section-heading{gap:10px}.child-profile-page .profile-section-heading h2{margin:0}.child-profile-page .profile-section-heading a{font-size:11px}
+.child-profile-page .profile-measurement-grid{gap:12px;margin:18px 0 0}.child-profile-page .profile-measurement-grid[hidden]{display:none}
+.child-profile-page .profile-measurement-grid>div{padding:16px;border-radius:16px;border:1px solid #315d4b12;background:#edf6f0a0}
+.child-profile-page .profile-measurement-grid h3{font-size:12px;margin-bottom:8px}.child-profile-page .profile-measurement-grid strong{font-size:26px}.child-profile-page .profile-measurement-grid p{font-size:10px;margin-bottom:0}
+.profile-measurement-empty{display:grid;place-items:center;padding:22px 12px;margin-top:18px;border:1px dashed #0b7a7533;border-radius:16px;background:#ffffff70}.profile-measurement-empty a{font-size:12px}
+.child-profile-page .profile-record-section{margin-top:12px;padding-top:4px;border-color:#315d4b16}.child-profile-page .profile-record-section summary{font-size:12px;font-weight:600;min-height:44px}
+.child-profile-page .profile-health-entry h3{font-size:14px}.child-profile-page .profile-health-entry p{font-size:12px;line-height:1.7}
+.child-profile-page .child-profile-links{grid-template-columns:1fr;gap:4px}
+.child-profile-page .child-profile-links a{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:center;min-height:46px;padding:8px 6px;border:0;border-radius:12px;background:transparent}
+.child-profile-page .child-profile-links a:hover{background:#eaf4ef}
+.child-profile-page .child-profile-links a strong{font-size:12px;line-height:1.5}.child-profile-page .child-profile-links a>span:not(.profile-record-icon){display:none}
+.child-profile-page .profile-record-icon{display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:#edf5ef;color:#297c6d;font-size:17px}
+.child-profile-page #childCareTeam article{padding:12px 0;border-block-end:1px solid #315d4b12}.child-profile-page #childCareTeam h3{font-size:13px;margin:0 0 6px}.child-profile-page #childCareTeam p{font-size:11px;line-height:1.7}.child-profile-page #childCareTeam a{font-size:12px;min-height:44px;display:inline-flex;align-items:center}
+.child-profile-page #childCareTeam>a{padding:10px 14px;border:1px solid #0b7a752e;border-radius:12px;margin-top:8px}
+
+/* ==========================================================================
+   Caregivers Modal Popup Dialog (Refined Edges & Modern Controls)
+   ========================================================================== */
+dialog.caregivers-dialog{
+  position:fixed;
+  inset:0;
+  margin:auto;
+  border:none;
+  outline:none;
+  padding:0;
+  background:transparent;
+  width:calc(100% - 32px);
+  max-width:560px;
+  max-height:calc(100dvh - 48px);
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 25px 65px -12px rgba(15,35,30,0.32), 0 0 0 1px rgba(255,255,255,0.7) inset;
+  z-index:1000;
+}
+dialog.caregivers-dialog::backdrop{
+  background:rgba(15,38,34,0.48);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+
+.caregivers-dialog-card{
+  background:#ffffff;
+  border-radius:28px;
+  display:flex;
+  flex-direction:column;
+  max-height:calc(100dvh - 48px);
+  overflow-y:auto;
+  color:#163e3b;
+  font-family:inherit;
+  border:1px solid rgba(22,62,59,0.08);
+}
+
+.caregivers-dialog-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:24px 28px 20px;
+  background:#ffffff;
+  border-bottom:1px solid rgba(22,62,59,0.07);
+}
+
+.caregivers-dialog-title-group{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.dialog-icon-bubble{
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  background:rgba(11,122,117,0.08);
+  color:var(--child-theme-accent,#0b7a75);
+  display:grid;
+  place-items:center;
+  font-size:20px;
+  flex-shrink:0;
+  border:1px solid rgba(11,122,117,0.12);
+}
+
+.caregivers-dialog-header h2{
+  margin:0 0 3px;
+  font-size:20px;
+  font-weight:700;
+  color:#163e3b;
+  line-height:1.25;
+}
+
+.dialog-subtitle{
+  margin:0;
+  font-size:12.5px;
+  color:#55726b;
+  line-height:1.45;
+}
+
+/* Refined Close Button (X) */
+.dialog-close-btn{
+  width:36px;
+  height:36px;
+  min-width:36px;
+  min-height:36px;
+  border-radius:50%;
+  border:1px solid rgba(22,62,59,0.12);
+  background:#f7faf9;
+  color:#526d66;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  flex-shrink:0;
+  transition:all .2s cubic-bezier(.16,1,.3,1);
+  padding:0;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+
+.dialog-close-btn:hover{
+  background:#eef4f1;
+  color:#163e3b;
+  border-color:rgba(22,62,59,0.25);
+  transform:scale(1.08) rotate(90deg);
+  box-shadow:0 3px 8px rgba(0,0,0,0.08);
+}
+
+.dialog-close-btn svg{
+  display:block;
+  stroke:currentColor;
+  width:16px;
+  height:16px;
+}
+
+.caregivers-dialog-body{
+  padding:22px 28px 28px;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.caregivers-section-label{
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.6px;
+  color:#6a857d;
+  margin-bottom:8px;
+  display:block;
+}
+
+/* Primary Caregiver Card */
+.primary-caregiver-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:16px 20px;
+  background:rgba(248,252,250,0.85);
+  border:1px solid rgba(22,62,59,0.09);
+  border-radius:20px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.02);
+}
+
+.caregiver-avatar-chip{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  background:#ffffff;
+  border:1px solid rgba(11,122,117,0.14);
+  display:grid;
+  place-items:center;
+  font-size:20px;
+  flex-shrink:0;
+  box-shadow:0 1px 4px rgba(0,0,0,0.03);
+}
+
+.caregiver-info-text{
+  flex:1;
+  min-width:0;
+}
+
+.caregiver-info-text h3{
+  margin:0 0 2px;
+  font-size:15px;
+  font-weight:700;
+  color:#163e3b;
+}
+
+.caregiver-info-text p{
+  margin:0;
+  font-size:12px;
+  color:#55726b;
+}
+
+#caregiverRole{
+  border-radius:999px;
+  background:#d5eee3;
+  color:#0d5f57;
+  padding:5px 12px;
+  font-size:11.5px;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+/* Invite Button */
+.caregiver-invite-trigger-bar #caregiverInviteToggle{
+  width:100%;
+  min-height:48px;
+  border-radius:16px;
+  background:var(--child-theme-accent,#0b7a75);
+  color:#ffffff;
+  border:none;
+  font-size:14px;
+  font-weight:600;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  cursor:pointer;
+  box-shadow:0 4px 14px rgba(11,122,117,0.22);
+  transition:all .2s cubic-bezier(.16,1,.3,1);
+}
+
+.caregiver-invite-trigger-bar #caregiverInviteToggle:hover{
+  filter:brightness(1.08);
+  transform:translateY(-1.5px);
+  box-shadow:0 6px 18px rgba(11,122,117,0.3);
+}
+
+/* Invite Form */
+.caregiver-invite-form{
+  padding:20px;
+  background:rgba(248,252,250,0.95);
+  border:1px solid rgba(11,122,117,0.18);
+  border-radius:20px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.caregiver-invite-form .form-field{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.caregiver-invite-form label{
+  font-size:12px;
+  font-weight:600;
+  color:#163e3b;
+}
+
+.caregiver-invite-form input[type=email],.caregiver-invite-form select{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px 16px;
+  border:1px solid rgba(22,62,59,0.16);
+  border-radius:14px;
+  background:#ffffff;
+  font-family:inherit;
+  font-size:13px;
+  color:#163e3b;
+  outline:none;
+  transition:border-color .18s,box-shadow .18s;
+}
+
+.caregiver-invite-form input[type=email]:focus,.caregiver-invite-form select:focus{
+  border-color:var(--child-theme-accent,#0b7a75);
+  box-shadow:0 0 0 3px rgba(11,122,117,0.14);
+}
+
+.caregiver-invite-form .invite-hint-note{
+  margin:0;
+  font-size:12px;
+  line-height:1.5;
+  color:#55726b;
+}
+
+.caregiver-invite-form button[type=submit]{
+  min-height:46px;
+  border-radius:14px;
+  background:var(--child-theme-accent,#0b7a75);
+  color:#ffffff;
+  border:none;
+  font-family:inherit;
+  font-size:13.5px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .2s;
+}
+
+.caregiver-invite-form button[type=submit]:hover{
+  filter:brightness(1.08);
+}
+
+.caregiver-feedback-msg{
+  margin:0;
+  padding:10px 14px;
+  border-radius:14px;
+  background:#eef7f3;
+  color:#0e625a;
+  font-size:12.5px;
+  font-weight:500;
+  border:1px solid rgba(14,98,90,0.15);
+}
+
+.caregiver-feedback-msg:empty{
+  display:none;
+}
+
+/* Invitations List & Row Styling */
+.child-profile-page .caregiver-invitations-section{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.child-profile-page .invitations-title{
+  margin:0;
+  font-size:13px;
+  font-weight:700;
+  color:#163e3b;
+}
+
+#caregiverInvitations:empty::before{
+  content:'No pending or sent invitations.';
+  font-size:12px;
+  color:#6a857d;
+  font-style:italic;
+}
+
+.child-profile-page .caregiver-invitation{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 18px;
+  border-radius:18px;
+  border:1px solid rgba(22,62,59,0.08);
+  background:#ffffff;
+  box-shadow:0 2px 8px rgba(15,47,46,0.03);
+  transition:all .2s cubic-bezier(.16,1,.3,1);
+}
+
+.child-profile-page .caregiver-invitation:hover{
+  border-color:rgba(22,62,59,0.16);
+  box-shadow:0 4px 14px rgba(15,47,46,0.06);
+}
+
+.caregiver-invitation-info{
+  min-width:0;
+  flex:1;
+}
+
+.caregiver-invitation-info strong{
+  font-size:13.5px;
+  font-weight:600;
+  color:#163e3b;
+  display:block;
+  overflow-wrap:anywhere;
+}
+
+.caregiver-invitation-meta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  flex-shrink:0;
+  margin-inline-start:auto;
+}
+
+.child-profile-page .caregiver-status-pill{
+  display:inline-flex;
+  align-items:center;
+  padding:5px 12px;
+  border-radius:999px;
+  font-size:11.5px;
+  font-weight:600;
+  background:#edf7f2;
+  color:#166a4a;
+  border:1px solid rgba(22,106,74,0.18);
+  white-space:nowrap;
+}
+
+.child-profile-page .caregiver-status-pill.status-removed{
+  background:#f4f6f8;
+  color:#586770;
+  border-color:rgba(88,103,112,0.2);
+}
+
+.child-profile-page .caregiver-status-pill.status-pending{
+  background:#fff8eb;
+  color:#925c00;
+  border-color:rgba(146,92,0,0.2);
+}
+
+.child-profile-page .caregiver-status-pill.status-connected{
+  background:#edf7f2;
+  color:#166a4a;
+  border-color:rgba(22,106,74,0.18);
+}
+
+/* Sleek Circular Remove Action Button with Red Hover */
+.child-profile-page .caregiver-icon-action{
+  width:32px;
+  height:32px;
+  min-width:32px;
+  min-height:32px;
+  max-width:32px;
+  max-height:32px;
+  padding:0;
+  box-sizing:border-box;
+  border-radius:50%;
+  border:1px solid rgba(200,45,65,0.18);
+  background:rgba(254,242,244,0.9);
+  color:#c23356;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  transition:all .2s cubic-bezier(.16,1,.3,1);
+  box-shadow:0 1px 3px rgba(0,0,0,0.03);
+}
+
+.child-profile-page .caregiver-icon-action:hover{
+  background:#e11d48;
+  border-color:#e11d48;
+  color:#ffffff;
+  transform:scale(1.1);
+  box-shadow:0 4px 12px rgba(225,29,72,0.3);
+}
+
+.child-profile-page .caregiver-icon-action svg{
+  display:block;
+  stroke:currentColor;
+  pointer-events:none;
+}
+
+/* Dialog focus & common avatar picker styles */
+.child-profile-page :is(button,a,summary):focus-visible{outline:3px solid #0b7a7566;outline-offset:3px}
+html body.child-profile-page dialog.child-avatar-dialog{inset:0;margin:auto;width:calc(100% - 32px);max-width:440px;max-height:calc(100dvh - 32px);overflow:auto;padding:24px;border:1px solid #fff;border-radius:26px;background:#fffafbf7;box-shadow:0 24px 80px #183d3b30;color:#183d3b;font-family:inherit}
+.child-avatar-dialog::backdrop{background:#203c3940;backdrop-filter:blur(8px)}
+.child-avatar-dialog h2{font-size:21px;margin:0 0 8px}.child-avatar-dialog p{font-size:11px;line-height:1.7;color:#61766d}.child-avatar-dialog button{min-height:44px;padding:8px 12px;border:1px solid #315d4b22;border-radius:12px;background:#ffffffc0;font-family:inherit;color:#275b50;cursor:pointer;font-size:12px}
+.avatar-upload-actions,.avatar-picker-actions{display:flex;gap:8px}.avatar-upload-actions>*{flex:1}.avatar-picker-actions{justify-content:flex-end;margin-top:16px}.child-avatar-dialog [data-save]{background:#0b7a75;color:white}.child-avatar-dialog [data-save]:disabled{opacity:.5}
+.avatar-crop-wrap{display:grid;place-items:center;margin:18px 0}.avatar-crop-wrap canvas,.avatar-picker-preview{width:256px;max-width:100%;aspect-ratio:1;border-radius:50%;overflow:hidden;background:#d9eee3;touch-action:none}.avatar-crop-wrap canvas{cursor:grab}.avatar-picker-preview{display:grid;place-items:center;font-size:64px}.child-avatar-dialog [hidden]{display:none!important}
+.avatar-zoom{display:flex;align-items:center;gap:12px;font-size:12px}.avatar-zoom input{width:100%;accent-color:#0b7a75}.child-avatar-dialog fieldset{border:0;margin:16px 0 0;padding:0;min-width:0}.child-avatar-dialog legend{font-size:11px;margin-bottom:8px}.avatar-options{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}.avatar-options button{padding:0;aspect-ratio:1;min-width:0}.avatar-options svg{display:block;margin:auto}.avatar-colors{display:flex;gap:10px;flex-wrap:wrap}.avatar-colors button{width:36px;min-height:36px;padding:0;border-radius:50%;border:2px solid white}.child-avatar-dialog button[aria-pressed=true]{outline:2px solid #0b7a75;outline-offset:2px}.child-avatar-dialog :is(button,input,canvas):focus-visible{outline:3px solid #0b7a7566;outline-offset:3px}
+
+/* ==========================================================================
+   Gender Appearance Theming (Pink for Girls, Blue for Boys)
+   ========================================================================== */
+html[data-child-appearance="girl"]{
+  --child-theme-accent:#c24376;
+  --child-theme-accent-hover:#a83563;
+  --child-badge-bg:rgba(255,228,240,0.92);
+  --child-badge-border:rgba(245,175,205,0.7);
+  --child-badge-text:#9e2b5e;
+  --child-theme-glow:rgba(194,67,118,0.2);
+}
+
+html[data-child-appearance="boy"]{
+  --child-theme-accent:#2378b5;
+  --child-theme-accent-hover:#196196;
+  --child-badge-bg:rgba(225,242,255,0.92);
+  --child-badge-border:rgba(160,210,250,0.7);
+  --child-badge-text:#175787;
+  --child-theme-glow:rgba(35,120,181,0.2);
+}
+
+html[data-child-appearance="girl"] .child-profile-avatar{background:#fce4ee;color:#c24376}
+html[data-child-appearance="boy"] .child-profile-avatar{background:#e2f1fc;color:#2378b5}
+
+html[data-child-appearance="girl"] #changeChildPhoto{background:#c24376;box-shadow:0 3px 10px rgba(194,67,118,0.25)}
+html[data-child-appearance="boy"] #changeChildPhoto{background:#2378b5;box-shadow:0 3px 10px rgba(35,120,181,0.25)}
+
+html[data-child-appearance="girl"] .dialog-icon-bubble{background:rgba(194,67,118,0.1);color:#c24376;border-color:rgba(194,67,118,0.16)}
+html[data-child-appearance="boy"] .dialog-icon-bubble{background:rgba(35,120,181,0.1);color:#2378b5;border-color:rgba(35,120,181,0.16)}
+
+html[data-child-appearance="girl"] #caregiverRole{background:#fce4ee;color:#9e2b5e}
+html[data-child-appearance="boy"] #caregiverRole{background:#e2f1fc;color:#175787}
+
+html[data-child-appearance="girl"] .primary-caregiver-card{background:rgba(255,245,249,0.85);border-color:rgba(194,67,118,0.18)}
+html[data-child-appearance="boy"] .primary-caregiver-card{background:rgba(240,248,255,0.85);border-color:rgba(35,120,181,0.18)}
+
+@media(max-width:959px){
+  .child-profile-layout{grid-template-columns:minmax(0,1fr)}
+  .child-profile-page .child-profile-hero{flex-wrap:wrap}
+  .child-profile-page .profile-hero-actions{margin-inline-start:0;width:100%;margin-top:12px}
+}
+@media(max-width:600px){
+  html body.parent-cycle-video.child-profile-page .main-content{padding-inline:16px}
+  html body.child-profile-page .screen-flow-card{padding:20px}
+  .child-profile-page .child-profile-hero h1{font-size:28px}
+  .profile-hero-actions{flex-direction:column;width:100%}
+  .profile-action-btn{width:100%;justify-content:center}
+  .child-profile-page .child-profile-details{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .child-profile-page .child-profile-details dd{margin:0}
+  .child-profile-page .profile-measurement-grid{grid-template-columns:1fr 1fr}
+  .child-profile-page .profile-section-heading>a{width:100%;min-height:44px}
+  .child-profile-page .child-profile-side a{width:100%;min-height:44px;justify-content:center}
+  .child-profile-page .caregiver-invitation{flex-wrap:wrap}
+  .child-avatar-dialog .avatar-picker-actions{display:grid;grid-template-columns:repeat(3,1fr)}
+}
+body.child-avatar-open{overflow:hidden}
+.avatar-camera-preview{width:100%;max-height:240px;object-fit:cover;border-radius:16px;margin-bottom:10px}

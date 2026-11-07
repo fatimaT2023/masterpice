@@ -541,3 +541,63 @@
   }
 
 }
+
+/* Shared specialist notification center, matching the parent dock design. */
+body.specialist-cycle-video .specialist-topbar-actions { gap:12px; margin-inline-start:auto; flex-shrink:0; }
+body.specialist-cycle-video .notification-bell {
+  box-sizing:border-box; inline-size:44px; block-size:44px; border:1px solid #b8d7cb;
+  border-radius:50%; color:#183d3b; background:#ffffffd9;
+  box-shadow:0 0 0 3px #d4eee380; padding:10px;
+}
+body.specialist-cycle-video .notification-line-icon { display:block; inline-size:21px; block-size:21px; flex-shrink:0; }
+body.specialist-cycle-video .notification-bell:hover,
+body.specialist-cycle-video .notification-bell[aria-expanded=true] {
+  transform:none; background:#ffffff; border-color:#83b6a4; box-shadow:0 0 0 3px #83b6a433;
+}
+body.specialist-cycle-video .notification-badge {
+  inset:auto; inset-block-start:-3px; inset-inline-end:-3px;
+  min-inline-size:18px; block-size:18px; font:700 9px/1 var(--font-body);
+  border:2px solid white; background:#477d6c;
+}
+body.specialist-cycle-video .notification-dropdown {
+  inset:auto; inset-block-start:calc(100% + 18px); inset-inline-end:0;
+  inline-size:352px; max-inline-size:calc(100vw - 32px); max-block-size:calc(100dvh - 100px);
+  border:1px solid white; border-radius:24px;
+  background:linear-gradient(145deg,#fffffff7,#f5fcf8f2);
+  box-shadow:0 18px 48px #344f421c,0 3px 10px #344f4208;
+  color:#183d3b; backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); text-align:start;
+}
+body.specialist-cycle-video .notification-dropdown-header { padding:18px 20px 16px; gap:12px; border-block-end:1px solid #183d3b0d; }
+body.specialist-cycle-video .notification-dropdown-header > div > span { display:none; }
+body.specialist-cycle-video .notification-dropdown-header h3 { margin:0; font-family:var(--font-body); font-size:15px; font-weight:700; line-height:1.5; }
+body.specialist-cycle-video .notification-mark-all { min-block-size:44px; padding:7px 10px; border-radius:12px; font:600 11px/1.4 var(--font-body); background:#edf3f0; color:#315b52; }
+body.specialist-cycle-video .notification-mark-all:hover { background:#e4eee9; }
+body.specialist-cycle-video .notification-list { padding:6px; max-block-size:min(380px,50dvh); overscroll-behavior:contain; }
+body.specialist-cycle-video .notification-item {
+  grid-template-columns:36px minmax(0,1fr) 6px; gap:11px; padding:12px 10px;
+  min-block-size:44px; border:0; border-radius:15px; background:transparent;
+  text-align:start; font-family:var(--font-body);
+}
+body.specialist-cycle-video .notification-item + .notification-item { margin-block-start:3px; }
+body.specialist-cycle-video .notification-item:hover { background:#edf3f080; }
+body.specialist-cycle-video .notification-item.unread { background:#d4eee34d; }
+body.specialist-cycle-video .notification-item.unread:hover { background:#d4eee380; }
+body.specialist-cycle-video .notification-icon { inline-size:36px; block-size:36px; border-radius:12px; color:#0b7a75; background:#d4f3ea; }
+body.specialist-cycle-video .notification-copy strong { font-size:12px; font-weight:650; line-height:1.5; color:#183d3b; overflow-wrap:anywhere; }
+body.specialist-cycle-video .notification-copy p { font-size:11px; line-height:1.6; color:#61736e; overflow-wrap:anywhere; }
+body.specialist-cycle-video .notification-time { display:block; font-size:10px; color:#7a8983; margin-block-start:5px; white-space:normal; }
+body.specialist-cycle-video .notification-dot { inline-size:6px; block-size:6px; border-radius:50%; background:#477d6c; margin-block-start:7px; }
+body.specialist-cycle-video .notification-item:not(.unread) .notification-dot { visibility:hidden; }
+body.specialist-cycle-video .notification-empty { padding:28px 18px 30px; }
+body.specialist-cycle-video .notification-empty-icon { inline-size:54px; block-size:54px; margin-block-end:15px; border-radius:19px; border:1px solid white; background:linear-gradient(145deg,#ffffff,#d4eee366); color:#41675e; }
+body.specialist-cycle-video .notification-empty strong { font-size:14px; font-family:var(--font-body); line-height:1.5; }
+body.specialist-cycle-video :is(.notification-empty p,.notification-disabled p) { font-size:11px; line-height:1.6; color:#61736e; }
+body.specialist-cycle-video .notification-dropdown-footer { padding:12px 18px; border-block-start:1px solid #183d3b0d; background:transparent; font-size:10px; color:#7a8983; }
+body.specialist-cycle-video .notification-center :is(button,a):focus-visible { outline:2px solid #477d6c; outline-offset:2px; }
+@media(max-width:650px) {
+  body.specialist-cycle-video .notification-dropdown {
+    position:fixed; inset-block-start:84px; inset-inline:16px;
+    inline-size:auto; max-inline-size:none; max-block-size:calc(100dvh - 100px);
+  }
+  body.specialist-cycle-video .notification-list { max-block-size:calc(100dvh - 245px); }
+}

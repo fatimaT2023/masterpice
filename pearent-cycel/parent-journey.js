@@ -22,10 +22,9 @@ document.addEventListener('DOMContentLoaded',()=>{
   const panel=document.getElementById('homeActivityPanel');
   const openActivity=()=>{if(location.hash==='#dailyMoment'||new URLSearchParams(location.search).has('activity')){panel.open=true;document.getElementById('dailyMoment').scrollIntoView({block:'start'});}};
   openActivity();window.addEventListener('hashchange',openActivity);
-  
   return;
  }
- if(['messages.html','milestones.html'].includes(page))return;
+ if(['messages.html','milestones.html','child-profile.html','ai-assistant.html','specialists.html','booking.html','album.html','screening.html','daily-activity.html','health.html'].includes(page))return;
  const route=routes[page];if(!route)return;
  const guide=document.createElement('section');guide.className='parent-journey-guide';guide.setAttribute('aria-label','Your path');
  const home=document.createElement('a');home.href='parent-dashboard.html';home.textContent='← Home: choose what you need';

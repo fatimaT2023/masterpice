@@ -377,6 +377,7 @@ document.addEventListener(
 
 
     function renderStatus() {
+      approvalBanner.hidden = isApproved;
 
       sidebarStatus.classList.remove(
         "approved",
@@ -415,7 +416,7 @@ document.addEventListener(
 
 
         topbarStatusText.textContent =
-          "Approved Specialist";
+          "Approved";
 
 
         approvalBanner.classList.add(
@@ -447,7 +448,7 @@ document.addEventListener(
           "Manage your upcoming appointments, availability and consultation activity from one place.";
 
       } else if (
-        profileStatus === "rejected"
+        ["rejected", "needs_changes", "needs-changes"].includes(profileStatus)
       ) {
 
         sidebarStatus.classList.add(
@@ -826,6 +827,13 @@ document.addEventListener(
     // TODAY SCHEDULE
     // =================================
 
+    function bookingStart(booking) {
+      const match=String(booking.time||'').trim().match(/^(\d{1,2}):(\d{2})(?:\s*(AM|PM))?$/i);
+      if(!match)return Infinity;
+      let hour=Number(match[1]);if(match[3])hour=hour%12+(/pm/i.test(match[3])?12:0);
+      return new Date(booking.date+'T'+String(hour).padStart(2,'0')+':'+match[2]+':00').getTime();
+    }
+
     function renderTodaySchedule() {
 
       todaySchedule.innerHTML =
@@ -873,81 +881,19 @@ document.addEventListener(
         bookings.length !== 0;
 
 
-      bookings.forEach(
-        booking => {
-
-          const item =
-            document.createElement(
-              "article"
-            );
-
-
-          item.className =
-            "schedule-item";
-
-
-          item.innerHTML = `
-            <div class="schedule-time">
-
-              <strong>
-                ${escapeHTML(
-                  booking.time
-                )}
-              </strong>
-
-              <span>
-                Today
-              </span>
-
-            </div>
-
-
-            <div class="schedule-info">
-
-              <h3>
-                ${escapeHTML(
-                  booking.childName
-                )}
-              </h3>
-
-              <p>
-                ${escapeHTML(
-                  booking.reason ||
-                  "Consultation"
-                )}
-              </p>
-
-            </div>
-
-
-            <span class="consultation-badge">
-              ${typeLabel(
-                booking.consultationType
-              )}
-            </span>
-          `;
-
-
-          item.addEventListener(
-            "click",
-            () => {
-
-              openConsultation(
-                booking
-              );
-            }
-          );
-
-
-          item.style.cursor =
-            "pointer";
-
-
-          todaySchedule.appendChild(
-            item
-          );
-        }
-      );
+      const ordered=bookings.sort((a,b)=>bookingStart(a)-bookingStart(b));
+      const next=ordered.find(booking=>bookingStart(booking)+(Number(booking.durationMinutes)||30)*60000>=Date.now());
+      ordered.forEach(booking=>{
+        const item=document.createElement("article");
+        item.className="schedule-item"+(booking===next?" next-session":"");
+        const join=window.RafiqMeetingRoom?.availability(booking).allowed;
+        item.innerHTML=`<div class="schedule-time"><strong>${escapeHTML(booking.time)}</strong><span>Today</span></div>
+          <div class="schedule-info"><h3 data-user-content>${escapeHTML(booking.childName)}</h3><p data-user-content>${escapeHTML(booking.reason||"Consultation")}</p></div>
+          <span class="consultation-badge">${typeLabel(booking.consultationType)}</span>
+          <a class="session-action ${booking===next?'primary-action':''}" href="${join?window.RafiqMeetingRoom.url(booking.id):'booking-details.html'}">${join?'Join session':'Open booking'}</a>`;
+        item.querySelector('.session-action').addEventListener('click',()=>sessionStorage.setItem('rafiqSelectedSpecialistBooking',booking.id));
+        todaySchedule.appendChild(item);
+      });
 
     }
 
@@ -988,8 +934,8 @@ document.addEventListener(
           )
           .sort(
             (a,b) =>
-              bookingDateObject(a) -
-              bookingDateObject(b)
+              bookingStart(a) -
+              bookingStart(b)
           )
           .slice(
             0,
@@ -1001,133 +947,15 @@ document.addEventListener(
         bookings.length !== 0;
 
 
-      bookings.forEach(
-        booking => {
-
-          const item =
-            document.createElement(
-              "article"
-            );
-
-
-          item.className =
-            "upcoming-item";
-
-
-          const childInitial =
-            String(
-              booking.childName ||
-              "C"
-            )
-              .charAt(0)
-              .toUpperCase();
-
-
-          item.innerHTML = `
-            <div class="child-avatar">
-              ${escapeHTML(
-                childInitial
-              )}
-            </div>
-
-
-            <div class="upcoming-child">
-
-              <h3>
-                ${escapeHTML(
-                  booking.childName
-                )}
-              </h3>
-
-              <p>
-                ${escapeHTML(
-                  booking.reason ||
-                  "Parent consultation"
-                )}
-              </p>
-
-            </div>
-
-
-            <div class="upcoming-meta">
-
-              <span>
-                Date
-              </span>
-
-              <strong>
-                ${escapeHTML(
-                  formatBookingDate(
-                    booking
-                  )
-                )}
-              </strong>
-
-            </div>
-
-
-            <div class="upcoming-meta">
-
-              <span>
-                Time
-              </span>
-
-              <strong>
-                ${escapeHTML(
-                  booking.time
-                )}
-              </strong>
-
-            </div>
-
-
-            <div class="upcoming-meta">
-
-              <span>
-                Type
-              </span>
-
-              <strong>
-                ${typeLabel(
-                  booking.consultationType
-                )}
-              </strong>
-
-            </div>
-
-
-            <button
-              type="button"
-              class="view-button"
-              data-id="${escapeHTML(
-                booking.id
-              )}"
-            >
-              View
-            </button>
-          `;
-
-
-          item
-            .querySelector(
-              ".view-button"
-            )
-            .addEventListener(
-              "click",
-              () => {
-
-                openConsultation(
-                  booking
-                );
-              }
-            );
-
-
-          upcomingList.appendChild(
-            item
-          );
-        }
-      );
+      bookings.sort((a,b)=>bookingStart(a)-bookingStart(b)).forEach(booking=>{
+        const item=document.createElement("article");item.className="upcoming-item";
+        item.innerHTML=`<time class="date-chip">${escapeHTML(formatBookingDate(booking))}</time>
+          <h3 data-user-content>${escapeHTML(booking.childName)}</h3><span>${escapeHTML(booking.time)}</span>
+          <span class="consultation-badge">${typeLabel(booking.consultationType)}</span>
+          <a class="view-button" href="booking-details.html">Open</a>`;
+        item.querySelector('.view-button').addEventListener('click',()=>sessionStorage.setItem('rafiqSelectedSpecialistBooking',booking.id));
+        upcomingList.appendChild(item);
+      });
 
     }
 
@@ -1316,6 +1144,13 @@ document.addEventListener(
     renderStatus();
 
     renderMetrics();
+    const count=Number(todayCount.textContent)||0;
+    heroMessage.textContent=count ? 'You have '+count+' sessions today.' : 'No sessions today';
+    document.getElementById('dashboardDate').textContent=new Date().toLocaleDateString(document.documentElement.lang==='ar'?'ar-JO':'en-GB',{weekday:'long',month:'short',day:'numeric'});
+    const fields=[specialist.specialty,specialist.bio,Number(specialist.price)>0,(specialist.languages||[]).length,specialist.licenseNumber];
+    const completeness=fields.filter(value=>typeof value==='string'?value.trim():value).length*20;
+    document.getElementById('profileCompleteness').value=completeness;
+    document.getElementById('profileCompletenessText').textContent='Profile completeness '+completeness+'%';
 
     renderTodaySchedule();
 

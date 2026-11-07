@@ -1,49 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><script src="../shared/family-access.js"></script><script src="../shared/account-status.js"></script><script src="../shared/account-access.js" defer></script>
-<script src="../piblic-pages/rafiq-theme.js"></script>
+<head>
+  <script src="../shared/family-access.js"></script>
+  <script src="../shared/account-status.js"></script>
+  <script src="../shared/account-access.js" defer></script>
+  <script src="../piblic-pages/rafiq-theme.js"></script>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>I’m concerned about development | RAFIQ</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
-
-  <link
-    rel="stylesheet"
-    href="screening.css"
-  >
-  <link
-  rel="stylesheet"
-  href="notifications.css"
->
+  <link rel="stylesheet" href="screening.css">
+  <link rel="stylesheet" href="today.css">
+  <link rel="stylesheet" href="notifications.css">
   <link rel="stylesheet" href="parent-cycle-glass.css">
   <link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
-<link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
-<link rel="stylesheet" href="parent-sidebar.css">
-<script src="parent-setup-utils.js"></script>
-<script src="age-content.js"></script>
-<script src="age-context.js"></script>
-<link rel="stylesheet" href="age-context.css">
-<script src="screening-tools.js"></script><link rel="stylesheet" href="screening-flow.css">
-<script src="concern-model.js"></script>
-<link rel="stylesheet" href="parent-background.css">
-<link rel="stylesheet" href="parent-layout.css">
-<link rel="stylesheet" href="../shared/site-language.css">
-<script src="../shared/membership.js"></script><link rel="stylesheet" href="../shared/membership.css"><script src="child-appearance.js"></script><link rel="stylesheet" href="parent-journey.css"><script src="parent-journey.js" defer></script></head>
+  <link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
+  <link rel="stylesheet" href="parent-sidebar.css">
+  <script src="parent-setup-utils.js"></script>
+  <script src="age-content.js"></script>
+  <script src="age-context.js"></script>
+  <link rel="stylesheet" href="age-context.css">
+  <script src="screening-tools.js"></script>
+  <link rel="stylesheet" href="screening-flow.css">
+  <script src="concern-model.js"></script>
+  <link rel="stylesheet" href="parent-background.css">
+  <link rel="stylesheet" href="parent-layout.css">
+  <link rel="stylesheet" href="../shared/site-language.css">
+  <script src="../shared/membership.js"></script>
+  <link rel="stylesheet" href="../shared/membership.css">
+  <script src="child-appearance.js"></script>
+  <link rel="stylesheet" href="parent-journey.css">
+  <script src="parent-journey.js" defer></script>
+</head>
 
-<body class="parent-cycle-video screening-flow"><div class="parent-static-background" aria-hidden="true"></div><div id="parentSidebarMount"></div><script src="parent-sidebar.js"></script><main class="main-content screening-flow-main"><header class="topbar"><div><p class="screen-flow-eyebrow">LET’S START WITH YOUR CONCERN</p><h1>I’m concerned about development</h1><p>Choose what is worrying you, answer a few questions, then review your next step.</p><p id="concernChild"></p></div></header><p id="concernError" class="screen-flow-error" role="alert" hidden></p><div id="concernContent" hidden><ol class="screen-flow-steps" aria-label="Your concern journey"><li id="stepConcern" aria-current="step">1. Your concern</li><li id="stepQuestions">2. A few observations</li><li id="stepSummary">3. Your next step</li></ol>
-<section class="screen-flow-card" id="topicView"><form id="topicForm"><fieldset class="concern-topics"><legend>What would you like help understanding?</legend><div id="topicChoices"></div></fieldset><p class="screen-flow-small">We’ll use your child’s age to ask about relevant everyday situations. These questions organize your observations; they are not a scored screening test.</p><button type="submit" class="screen-flow-primary">Continue →</button></form><a class="screen-flow-link" href="specialists.html">I’d rather speak to a specialist</a><a class="screen-flow-link" id="reviewChild" href="onboarding.html">Review child details</a></section>
-<section class="screen-flow-card" id="questionView" hidden><p id="questionCount" class="screen-flow-eyebrow"></p><form id="concernQuestionForm"><h2 id="concernQuestionTitle" tabindex="-1"></h2><p id="concernQuestionHelp"></p><label class="visually-hidden" id="concernAnswerLabel" for="concernAnswer">Your observation</label><div id="concernAnswerMount"></div><div class="screen-flow-actions"><button type="button" class="screen-flow-secondary" id="previousQuestion">← Back</button><button type="submit" class="screen-flow-primary" id="nextQuestion">Save & continue →</button></div><p class="screen-flow-small">You can go back and change an answer. Your draft is saved in this browser when you continue.</p></form><a class="screen-flow-link" href="specialists.html">Speak to a specialist without finishing</a></section>
-<section class="screen-flow-card" id="summaryView" hidden><p class="screen-flow-eyebrow">YOUR OBSERVATION SUMMARY</p><h2 id="concernSummaryTitle" tabindex="-1"></h2><p id="concernSummaryNext"></p><p class="screen-flow-small" id="summaryAge"></p><dl id="concernSummaryAnswers" class="concern-summary-list"></dl><div class="concern-booking"><h3>Talk it through with a specialist</h3><p id="directoryExplanation"></p><a class="screen-flow-primary" id="browseConcernSpecialists" href="specialists.html">Find specialist support →</a><label class="screen-flow-check"><input type="checkbox" id="includeConcernSummary"> Include a short summary in my booking draft. I can review it before confirming.</label><div id="bookingNotePreview" hidden><label for="bookingNoteText">Booking note preview — you can edit this</label><textarea id="bookingNoteText" rows="4" maxlength="500"></textarea><p class="screen-flow-small" id="bookingNoteHelp"></p></div><p class="screen-flow-small">You can also contact your usual clinician. Booking a paid session is optional.</p></div><div class="journey-result"><strong>Your concern summary is saved.</strong><p>You can stop here and return later. A specialist booking is optional.</p><a href="milestones.html?filter=concern#savedObservations">View my saved concern →</a><a href="parent-dashboard.html">Return to Home</a></div><button type="button" class="screen-flow-secondary" id="editConcernAnswers">Review my answers</button><p class="screen-flow-small"><a id="concernSource" href="https://www.cdc.gov/act-early/families/concerned.html" target="_blank" rel="noopener noreferrer">Why discuss developmental concerns with a clinician?</a></p><details class="concern-original"><summary>Optional: original developmental screening form</summary><p id="optionalScreeningText"></p><a id="optionalScreeningLink" href="https://www.teamupcenter.org/age-specific-forms/" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Open publisher guidance ↗</a><p class="screen-flow-small">The original form is a separate tool. This observation summary is not its result; Rafiq does not score the external form.</p></details></section><p class="screen-flow-small screen-flow-footer">Your saved observations are private to this browser. <a href="parent-dashboard.html">Back to Home</a></p></div></main><script src="concern-booking.js"></script><script src="screening-flow.js"></script><script src="notifications.js"></script><script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="parent-journey-ar.js" defer></script><script src="../shared/site-language.js" defer></script>
-<script src="../shared/membership-ui.js"></script></body></html>
+<body class="parent-cycle-video screening-flow">
+  <div class="parent-static-background" aria-hidden="true"></div>
+  <div id="parentSidebarMount"></div>
+  <script src="parent-sidebar.js"></script>
+
+  <main class="main-content screening-flow-main">
+    <!-- Clean, Frosted Header Card -->
+    <header class="topbar screening-topbar">
+      <div class="today-hero-card screening-hero">
+        <div class="today-hero-meta-row">
+          <a class="activity-back-link" href="parent-dashboard.html">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Back to Home</span>
+          </a>
+          <div class="screening-privacy-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Confidential & Private</span>
+          </div>
+          <div class="today-child-badge">
+            <span class="badge-dot" aria-hidden="true"></span>
+            <span id="concernChild" class="today-meta"></span>
+          </div>
+        </div>
+
+        <div class="screening-hero-body">
+          <div class="screening-hero-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+          </div>
+          <div class="screening-hero-text">
+            <span class="today-eyebrow">GUIDED OBSERVATIONS & CONCERNS</span>
+            <h1 id="screeningHeading">I’m concerned about development</h1>
+            <p class="screening-intro">Choose what is worrying you, answer a few questions, then review your next step.</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <p id="concernError" class="screen-flow-error" role="alert" hidden></p>
+
+    <div id="concernContent" hidden>
+      <!-- Stepper Navigation -->
+      <ol class="screen-flow-steps" aria-label="Your concern journey">
+        <li id="stepConcern" aria-current="step">
+          <span class="step-num">1</span>
+          <span class="step-text">1. Your concern</span>
+        </li>
+        <li id="stepQuestions">
+          <span class="step-num">2</span>
+          <span class="step-text">2. A few observations</span>
+        </li>
+        <li id="stepSummary">
+          <span class="step-num">3</span>
+          <span class="step-text">3. Your next step</span>
+        </li>
+      </ol>
+
+      <!-- Step 1: Topic Selection View -->
+      <section class="screen-flow-card" id="topicView">
+        <div class="flow-card-head">
+          <span class="flow-step-tag">STEP 1 OF 3</span>
+          <h2>What would you like help understanding?</h2>
+          <p class="flow-card-desc">Select the area that is worrying you. We will guide you through simple everyday observations tailored to your child's developmental age.</p>
+        </div>
+
+        <form id="topicForm">
+          <fieldset class="concern-topics">
+            <legend class="visually-hidden">What would you like help understanding?</legend>
+            <div id="topicChoices"></div>
+          </fieldset>
+
+          <div class="screen-flow-notice">
+            <span class="notice-icon" aria-hidden="true">💡</span>
+            <p class="screen-flow-small">We’ll use your child’s age to ask about relevant everyday situations. These questions organize your observations; they are not a scored screening test.</p>
+          </div>
+
+          <div class="flow-submit-bar">
+            <button type="submit" class="screen-flow-primary">
+              <span>Continue →</span>
+            </button>
+          </div>
+        </form>
+
+        <div class="flow-card-links">
+          <a class="screen-flow-link" href="specialists.html">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>I’d rather speak to a specialist</span>
+          </a>
+          <a class="screen-flow-link" id="reviewChild" href="onboarding.html">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>Review child details</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Step 2: Questions View -->
+      <section class="screen-flow-card" id="questionView" hidden>
+        <div class="flow-card-head">
+          <p id="questionCount" class="screen-flow-eyebrow"></p>
+        </div>
+
+        <form id="concernQuestionForm">
+          <h2 id="concernQuestionTitle" tabindex="-1"></h2>
+          
+          <div class="question-help-box">
+            <span class="help-bulb">💡</span>
+            <p id="concernQuestionHelp"></p>
+          </div>
+
+          <label class="visually-hidden" id="concernAnswerLabel" for="concernAnswer">Your observation</label>
+          <div id="concernAnswerMount"></div>
+
+          <div class="screen-flow-actions">
+            <button type="button" class="screen-flow-secondary" id="previousQuestion">← Back</button>
+            <button type="submit" class="screen-flow-primary" id="nextQuestion">Save & continue →</button>
+          </div>
+
+          <p class="screen-flow-small">You can go back and change an answer. Your draft is saved in this browser when you continue.</p>
+        </form>
+
+        <div class="flow-card-links">
+          <a class="screen-flow-link" href="specialists.html">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            <span>Speak to a specialist without finishing</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Step 3: Summary View -->
+      <section class="screen-flow-card" id="summaryView" hidden>
+        <div class="summary-success-banner">
+          <div class="success-icon-badge">✓</div>
+          <div>
+            <p class="screen-flow-eyebrow">YOUR OBSERVATION SUMMARY</p>
+            <h2 id="concernSummaryTitle" tabindex="-1"></h2>
+            <p id="concernSummaryNext" class="summary-next-text"></p>
+            <p class="screen-flow-small summary-meta-chip" id="summaryAge"></p>
+          </div>
+        </div>
+
+        <div class="summary-answers-section">
+          <h3 class="answers-heading">What you observed:</h3>
+          <dl id="concernSummaryAnswers" class="concern-summary-list"></dl>
+        </div>
+
+        <!-- Specialist Consultation Card -->
+        <div class="concern-booking">
+          <div class="booking-card-head">
+            <div class="booking-icon-bubble">🩺</div>
+            <div>
+              <h3>Talk it through with a specialist</h3>
+              <p id="directoryExplanation"></p>
+            </div>
+          </div>
+
+          <div class="booking-cta-wrap">
+            <a class="screen-flow-primary" id="browseConcernSpecialists" href="specialists.html">Find specialist support →</a>
+          </div>
+
+          <div class="booking-note-section">
+            <label class="screen-flow-check">
+              <input type="checkbox" id="includeConcernSummary">
+              <span>Include a short summary in my booking draft. I can review it before confirming.</span>
+            </label>
+
+            <div id="bookingNotePreview" hidden>
+              <label for="bookingNoteText">Booking note preview — you can edit this</label>
+              <textarea id="bookingNoteText" rows="4" maxlength="500"></textarea>
+              <p class="screen-flow-small" id="bookingNoteHelp"></p>
+            </div>
+          </div>
+
+          <p class="screen-flow-small booking-footnote">You can also contact your usual clinician. Booking a paid session is optional.</p>
+        </div>
+
+        <!-- Saved Confirmation & Shortcuts -->
+        <div class="journey-result">
+          <div class="journey-result-msg">
+            <strong>Your concern summary is saved.</strong>
+            <p>You can stop here and return later. A specialist booking is optional.</p>
+          </div>
+          <div class="journey-result-actions">
+            <a href="milestones.html?filter=concern#savedObservations" class="result-btn-primary">View my saved concern →</a>
+            <a href="parent-dashboard.html" class="result-btn-secondary">Return to Home</a>
+          </div>
+        </div>
+
+        <div class="summary-footer-actions">
+          <button type="button" class="screen-flow-secondary" id="editConcernAnswers">Review my answers</button>
+          <p class="screen-flow-small">
+            <a id="concernSource" href="https://www.cdc.gov/act-early/families/concerned.html" target="_blank" rel="noopener noreferrer">Why discuss developmental concerns with a clinician? ↗</a>
+          </p>
+        </div>
+
+        <!-- Optional Original Form Details -->
+        <details class="concern-original">
+          <summary>Optional: original developmental screening form</summary>
+          <div class="original-form-content">
+            <p id="optionalScreeningText"></p>
+            <a id="optionalScreeningLink" href="https://www.teamupcenter.org/age-specific-forms/" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Open publisher guidance ↗</a>
+            <p class="screen-flow-small">The original form is a separate tool. This observation summary is not its result; Rafiq does not score the external form.</p>
+          </div>
+        </details>
+      </section>
+
+      <p class="screen-flow-small screen-flow-footer">
+        Your saved observations are private to this browser. <a href="parent-dashboard.html">Back to Home</a>
+      </p>
+    </div>
+  </main>
+
+  <script src="concern-booking.js"></script>
+  <script src="screening-flow.js"></script>
+  <script src="notifications.js"></script>
+  <script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script>
+  <script src="../shared/site-ar.js" defer></script>
+  <script src="../shared/site-identity.js" defer></script>
+  <script src="parent-journey-ar.js" defer></script>
+  <script src="../shared/site-language.js" defer></script>
+  <script src="../shared/membership-ui.js"></script>
+</body>
+</html>

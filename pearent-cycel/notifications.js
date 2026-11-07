@@ -338,6 +338,7 @@ document.addEventListener(
       "notificationCenter";
 
 
+    const bellIcon = '<svg class="notification-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4M12 2V1"/></svg>';
     center.innerHTML = `
       <button
         type="button"
@@ -345,8 +346,9 @@ document.addEventListener(
         id="notificationBell"
         aria-label="Notifications"
         aria-expanded="false"
+        aria-controls="notificationDropdown"
       >
-        🔔
+        ${bellIcon}
 
         <span
           class="notification-badge"
@@ -361,6 +363,8 @@ document.addEventListener(
       <div
         class="notification-dropdown"
         id="notificationDropdown"
+        role="region"
+        aria-labelledby="notificationTitle"
         hidden
       >
 
@@ -372,7 +376,7 @@ document.addEventListener(
               RAFIQ
             </span>
 
-            <h3>
+            <h3 id="notificationTitle">
               Notifications
             </h3>
 
@@ -543,7 +547,7 @@ document.addEventListener(
           <div class="notification-empty">
 
             <div class="notification-empty-icon">
-              🔔
+              ${bellIcon}
             </div>
 
             <strong>

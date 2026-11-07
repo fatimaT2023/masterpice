@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  'use strict';
  const get=id=>document.getElementById(id), form=get('specialistForm');
  const sections=[...form.querySelectorAll(':scope > .form-section')];
- const names=['Personal details','Professional profile','Consultation settings','Credentials','Review & submit'];
+ const names=['Personal details','Professional profile','Consultation settings','Review & submit'];
  let step=-1;
  const profile=window.RafiqSpecialistAccess?.profile;
  const registration=window.RafiqSpecialistAccess?.user;
@@ -14,16 +14,18 @@ document.addEventListener('DOMContentLoaded',()=>{
  form.addEventListener('input',saveDraft);form.addEventListener('change',saveDraft);
  function summary(){
   const mount=get('setupSummary');mount.replaceChildren();
+  const labels={fullName:'Full name',email:'Email address',phone:'Phone number',specialty:'Specialty',experience:'Years of experience',licenseNumber:'Professional license number',qualification:'Main qualification',bio:'Professional bio',sessionFee:'Session fee'};
+  function detail(grid,label,value,wide=false){const item=document.createElement('div');item.className='review-detail'+(wide?' review-detail-wide':'');const term=document.createElement('dt'),description=document.createElement('dd');term.textContent=label;description.textContent=value||'Not provided';description.setAttribute('data-user-content','');item.append(term,description);grid.append(item);}
   for(const [index,fields] of [[0,['fullName','email','phone']],[1,['specialty','experience','licenseNumber','qualification','bio']],[2,['sessionFee']]]){
-   const row=document.createElement('section'),title=document.createElement('strong');title.textContent=names[index];row.append(title);
-   for(const id of fields){const input=get(id);const p=document.createElement('p');p.textContent=(input.labels?.[0]?.textContent.trim().replace(/\s+/g,' ')||id)+': '+(input.tagName==='SELECT'?input.selectedOptions[0]?.textContent:input.value);row.append(p);}
-   if(index===2){
-    for(const name of ['consultationType','language']){
-     const p=document.createElement('p');p.textContent=[...form.querySelectorAll('input[name="'+name+'"]:checked')].map(input=>input.closest('label')?.textContent.trim().replace(/\s+/g,' ')||input.value).join(' · ');row.append(p);
-    }
-    const p=document.createElement('p');p.textContent=get('credentialFile').files[0]?.name||'No credential document selected';row.append(p);
-   }
-   const edit=document.createElement('button');edit.type='button';edit.textContent='Edit';edit.addEventListener('click',()=>show(index));row.append(edit);mount.append(row);
+   const row=document.createElement('section'),header=document.createElement('header'),title=document.createElement('h4'),number=document.createElement('span');
+   header.className='review-card-heading';number.className='review-card-number';number.textContent=String(index+1).padStart(2,'0');title.textContent=names[index];
+   const edit=document.createElement('button');edit.type='button';edit.textContent='Edit details';edit.setAttribute('aria-label','Edit '+names[index].toLowerCase());edit.addEventListener('click',()=>show(index));header.append(number,title,edit);row.append(header);
+   const grid=document.createElement('dl');grid.className='review-details';
+   for(const id of fields){const input=get(id);let value=input.tagName==='SELECT'?input.selectedOptions[0]?.textContent.trim().replace(/\s+/g,' '):input.value.trim();if(id==='sessionFee'&&value)value+=' JOD';detail(grid,labels[id],value,id==='bio');}
+   if(index===2){for(const [name,label] of [['consultationType','Consultation types'],['language','Languages']]){const values=[...form.querySelectorAll('input[name="'+name+'"]:checked')].map(input=>name==='consultationType'?(input.value==='online'?'Online':'In-person'):input.value);detail(grid,label,values.join(' · '));}}
+   row.append(grid);
+   if(index===1){const docs=document.createElement('div');docs.className='review-documents';for(const [key,label] of [['licenseProof','Professional license'],['qualificationProof','Academic qualification']]){const doc=window.RafiqCredentialProofs?.[key],card=document.createElement('div');card.className='review-document';const icon=document.createElement('span');icon.className='review-document-icon';icon.setAttribute('aria-hidden','true');icon.textContent=doc?'✓':'!';const copy=document.createElement('div'),name=document.createElement('strong'),file=document.createElement('span');name.textContent=label;file.textContent=doc?.name||'No document attached';file.setAttribute('data-user-content','');copy.append(name,file);card.append(icon,copy);docs.append(card);}row.append(docs);}
+   mount.append(row);
   }
  }
  function show(index){
@@ -51,11 +53,12 @@ document.addEventListener('DOMContentLoaded',()=>{
   const copy=state==='rejected'?['Your application was not approved','Thank you for your interest in joining Rafiq. Your application was not approved. Contact Help Center for clarification about the decision.','Not approved']:state==='suspended'?['Your workspace access is paused','Contact Help Center for assistance with your account status.','Access paused']:['Your application is under review','Thank you for completing your profile. Our administration team will review your professional information. Your workspace will be available after approval.','Pending Review'];
   get('applicationStatusTitle').textContent=copy[0];get('applicationStatusCopy').textContent=copy[1];
   if(state==='rejected'&&current?.rejectionReason){const reason=document.createElement('p');reason.textContent=current.rejectionReason;reason.setAttribute('data-user-content','');get('applicationStatusCopy').after(reason);}get('applicationStatusLabel').textContent=copy[2];
-  get('applicationEmail').textContent='Email for application updates: '+(current?.notificationEmail||current?.email||'');
+  get('successView').dataset.status=state;
+  get('applicationEmail').textContent=(current?.notificationEmail||current?.email||'');
   if(draftKey){try{localStorage.removeItem(draftKey);}catch{}}
  }
  get('setupLogout').addEventListener('click',()=>{sessionStorage.clear();location.assign('../piblic-pages/login.html');});
- get('checkApplicationStatus').addEventListener('click',()=>location.reload());
+
  document.addEventListener('rafiq:application-submitted',status);
  window.addEventListener('storage',event=>{if(event.key==='rafiqSpecialists')location.reload();});
  if(profile?.status==='needs_changes'){

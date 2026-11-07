@@ -1,0 +1,84 @@
+/* AI governance uses the compact illustrated Admin workspace. */
+body.admin-ai-page .topbar { position:static; padding-block:20px 14px; padding-inline:clamp(16px,3vw,40px); gap:16px; flex-wrap:wrap; border-block-end:0; background:transparent; box-shadow:none; backdrop-filter:none; }
+.admin-ai-page .topbar-left { min-inline-size:0; gap:14px; flex:1; }
+.ai-heading-icon { display:grid; place-items:center; flex-shrink:0; inline-size:54px; block-size:54px; border:1px solid #ffffffd9; border-radius:18px; color:#075e5a; background:linear-gradient(145deg,#ffffffd9,#d4f3ea); box-shadow:0 6px 20px #163e3b08; }
+.ai-heading-icon svg { inline-size:34px; block-size:34px; }
+.ai-heading-copy { min-inline-size:0; }
+.admin-ai-page .topbar .page-kicker { margin:0; font-size:9px; letter-spacing:.13em; }
+.admin-ai-page .topbar h1 { margin-block:2px 4px; font-size:24px; line-height:1.25; }
+.admin-ai-page .governance-pill { padding:10px 14px; border-radius:14px; font-size:12px; background:#ffffff90; border:1px solid #ffffffdf; }
+.admin-ai-page .menu-button { min-inline-size:44px; min-block-size:44px; }
+.admin-ai-page .page-body { padding-block-start:10px; }
+.admin-ai-page .hero { grid-template-columns:minmax(0,1fr) auto; gap:20px; padding:20px 22px; border:1px solid #ffffffdf; border-radius:22px; background:linear-gradient(120deg,#ffffffa6,#d4f3ea70); box-shadow:none; }
+.admin-ai-page .hero-kicker { font-size:9px; margin-block-end:5px; }
+.admin-ai-page .hero h2 { font-size:22px; font-weight:600; line-height:1.35; letter-spacing:normal; }
+.admin-ai-page .hero p { margin-block:6px 0; font-size:12px; line-height:1.65; }
+.admin-ai-page .hero-safety-card { min-inline-size:0; max-inline-size:240px; padding:16px; border:1px solid #ffffffdf; border-radius:18px; background:#ffffff90; box-shadow:none; }
+.admin-ai-page .hero-safety-icon { inline-size:36px; block-size:36px; border-radius:12px; font-size:18px; }
+.admin-ai-page .hero-safety-card h3 { font-size:16px; }
+.admin-ai-page .hero-safety-card p { font-size:11px; line-height:1.6; }
+.admin-ai-page .metrics-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-block:14px; }
+.admin-ai-page .metric-card { min-inline-size:0; padding:14px; gap:10px; border:1px solid #ffffffdf; border-radius:18px; background:#ffffff90; box-shadow:0 6px 20px #163e3b05; }
+.admin-ai-page .metric-card > div { min-inline-size:0; }
+.admin-ai-page .metric-icon { inline-size:32px; block-size:32px; border-radius:11px; }
+.admin-ai-page .metric-card strong { font-size:24px; }
+.admin-ai-page .metric-card span { font-size:11px; overflow-wrap:anywhere; }
+.admin-ai-page .metric-card small { font-size:10px; }
+.admin-ai-page .governance-panel { min-inline-size:0; border:1px solid #ffffffdf; border-radius:24px; background:#ffffff90; box-shadow:0 8px 26px #163e3b05; }
+.admin-ai-page .tabs { padding:10px 12px; gap:5px; flex-wrap:wrap; background:#ffffff50; border-block-end:1px solid #163e3b0a; }
+.admin-ai-page .tab { min-block-size:44px; padding:10px 16px; font-size:12px; font-weight:600; border-radius:12px; }
+.admin-ai-page .tab.active { background:#075e5a; color:white; }
+.admin-ai-page .section-heading { padding:18px 20px 12px; gap:12px; flex-wrap:wrap; }
+.admin-ai-page .section-heading h2 { font-size:20px; }
+.admin-ai-page .section-heading p { font-size:12px; line-height:1.6; }
+.admin-ai-page .section-kicker { font-size:9px; color:#0b7a75; }
+.admin-ai-page .add-button { min-block-size:44px; border-radius:12px; font-size:12px; }
+.admin-ai-page .governance-notice { padding:12px 16px; margin-block:0 12px; border-radius:14px; }
+.admin-ai-page .governance-notice p { font-size:12px; line-height:1.6; }
+.admin-ai-page .toolbar { margin-inline:16px; padding:12px; gap:10px; flex-wrap:wrap; border:1px solid #ffffffdf; border-radius:16px; background:#ffffff80; }
+.admin-ai-page .search-box { flex:1; min-inline-size:180px; border-radius:12px; border-color:#163e3b20; background:#ffffffb3; }
+.admin-ai-page .search-box input { min-inline-size:0; min-block-size:44px; font-family:inherit; font-size:12px; }
+.admin-ai-page .filters { gap:8px; flex-wrap:wrap; }
+.admin-ai-page .filters select { min-block-size:44px; max-inline-size:100%; border-radius:12px; font-size:12px; background:#ffffffb3; }
+.admin-ai-page .clear-button { min-block-size:44px; font-size:12px; border-radius:12px; }
+.admin-ai-page .result-row { padding:10px 20px; gap:12px; flex-wrap:wrap; }
+.admin-ai-page .result-row > * { font-size:11px; overflow-wrap:anywhere; }
+.admin-ai-page .governance-table :is(th,td) { text-align:start; padding:12px; line-height:1.6; }
+.admin-ai-page .governance-table th { font-size:11px; background:#edf5f180; }
+.admin-ai-page .governance-table td { font-size:12px; border-color:#163e3b0c; }
+.admin-ai-page .governance-table strong { font-size:13px; }
+.admin-ai-page .governance-table small { font-size:11px; }
+.admin-ai-page .status-badge { padding:6px 10px; font-size:10px; }
+.admin-ai-page .action-button { min-inline-size:44px; min-block-size:44px; font-size:12px; border-radius:12px; }
+.admin-ai-page .mobile-card { padding:16px; border:1px solid #ffffffdf; border-radius:18px; background:#ffffff90; }
+.admin-ai-page .mobile-card h3 { font-size:15px; }
+.admin-ai-page .mobile-meta { font-size:12px; }
+.admin-ai-page .editor-modal { padding:22px; border-radius:24px; }
+.admin-ai-page .modal-header h2 { font-size:22px; }
+.admin-ai-page .modal-close { min-inline-size:44px; min-block-size:44px; }
+.admin-ai-page .form-grid { gap:14px; }
+.admin-ai-page .form-field { min-inline-size:0; }
+.admin-ai-page .form-field label { font-size:12px; }
+.admin-ai-page .form-field :is(input,select,textarea) { min-inline-size:0; min-block-size:44px; font-size:14px; border-radius:12px; }
+.admin-ai-page .field-help { font-size:11px; line-height:1.6; }
+.admin-ai-page .form-error { font-size:12px; }
+.admin-ai-page :is(.secondary-button,.save-button,.delete-button) { min-block-size:44px; font-size:12px; font-weight:600; border-radius:12px; }
+.admin-ai-page .confirm-modal { border-radius:24px; }
+.admin-ai-page .confirm-modal p { font-size:13px; }
+.admin-ai-page .empty-state { padding:30px 16px; border-radius:18px; }
+.admin-ai-page .empty-state strong { font-size:16px; }
+.admin-ai-page .empty-state p { font-size:12px; }
+.admin-ai-page .main-content :is(a,button,input,select):focus-visible { outline:2px solid #0b7a75; outline-offset:3px; }
+@media(max-width:1000px) { .admin-ai-page .metrics-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:650px) {
+ .admin-ai-page .topbar-left { gap:10px; }
+ .admin-ai-page .hero { grid-template-columns:minmax(0,1fr); padding:18px; gap:12px; }
+ .admin-ai-page .hero-safety-card { max-inline-size:none; }
+ .admin-ai-page .section-heading { padding:16px; }
+ .admin-ai-page .toolbar { margin-inline:12px; padding:10px; }
+ .admin-ai-page .search-box { min-inline-size:0; flex-basis:100%; }
+}
+@media(max-width:400px) {
+ .ai-heading-icon { inline-size:44px; block-size:44px; border-radius:15px; }
+ .admin-ai-page .metrics-grid { grid-template-columns:minmax(0,1fr); }
+}

@@ -41,7 +41,133 @@
 <link rel="stylesheet" href="../shared/site-language.css">
 <script src="../shared/membership.js"></script><link rel="stylesheet" href="../shared/membership.css"><script src="child-appearance.js"></script><link rel="stylesheet" href="parent-journey.css"><script src="parent-journey.js" defer></script></head>
 
-<body class="parent-cycle-video screening-flow growth-page"><div class="parent-static-background" aria-hidden="true"></div><div id="parentSidebarMount"></div><script src="parent-sidebar.js"></script><main class="main-content screening-flow-main"><header class="topbar growth-heading"><div><a class="screen-flow-link" href="parent-dashboard.html">← Back to Home</a><h1>My child’s observations</h1><p id="growthChild"></p></div><a class="growth-jump" href="#savedObservations">View saved notes ↓</a></header><p id="growthError" class="screen-flow-error" role="alert" hidden></p><div id="growthContent" hidden>
-<section class="screen-flow-card growth-compose" aria-labelledby="growthComposeTitle"><span class="growth-section-label">NOTICE → SAVE → REVISIT</span><h2 id="growthComposeTitle">What did you notice today?</h2><p>A small everyday example is enough. Describe what happened; you don’t need to judge your child’s development.</p><div class="growth-prompts" aria-label="Writing ideas"><span>Need a starting point?</span><button type="button" data-growth-prompt="movement" aria-pressed="false">A movement or action</button><button type="button" data-growth-prompt="interaction" aria-pressed="false">A moment of interaction</button><button type="button" data-growth-prompt="question" aria-pressed="false">A question I have</button></div><form id="growthNoteForm"><label for="growthNoteType">What kind of note?</label><select id="growthNoteType"><option value="observation">An everyday observation</option><option value="concern">A question or concern</option></select><label for="growthNote">What happened?</label><textarea id="growthNote" rows="4" maxlength="2000" required aria-describedby="growthWritingHelp growthSharingHelp" placeholder="What did your child do? When did you notice it?"></textarea><p id="growthWritingHelp" class="screen-flow-small">Include the situation and your child’s reaction. Only save things you actually noticed.</p><button type="submit" class="screen-flow-primary">Save my observation</button><p id="growthSharingHelp" class="growth-sharing-help">Saving does not send a message. A specialist can see entries you choose to send, or categories you explicitly allow in accepted ongoing follow-up.</p><p id="growthSaveStatus" class="screen-flow-status" role="status"></p><a id="growthViewSaved" class="screen-flow-link" href="#savedObservations" hidden>View the observation I just saved →</a></form></section>
-<section class="screen-flow-card" id="savedObservations" tabindex="-1"><div class="screen-flow-heading"><div><p class="screen-flow-eyebrow">THEIR STORY OVER TIME</p><h2>Your child’s saved story</h2></div><div><label for="growthFilter">Show</label><select id="growthFilter"><option value="all">All observations</option><option value="observation">Everyday observations</option><option value="concern">Questions & concerns</option><option value="daily-moment">Moments together</option><option value="follow-up">After a specialist visit</option></select></div></div><p class="screen-flow-small">Your observations and activity results, together by date. Add a follow-up, or select entries to discuss in a consultation.</p><p id="growthEmpty"></p><div id="growthTimeline"></div><p id="growthSelectionCount" role="status"></p><button type="button" class="screen-flow-secondary" id="prepareGrowthVisit" disabled>Prepare selected notes for a visit</button><div id="growthVisitPreview" hidden><label for="growthBookingNote">Review your booking note</label><textarea id="growthBookingNote" rows="4" maxlength="500"></textarea><p class="screen-flow-small">This editable preview is limited to 500 characters. Full notes stay in your journal. Nothing is shared until you review and confirm a booking.</p><a class="screen-flow-primary" id="growthBookLink" href="specialists.html">Use this note when booking →</a></div></section><details class="screen-flow-card growth-age-guide"><summary>Understand my child’s stage — optional</summary><div class="growth-age-body"><p class="screen-flow-eyebrow">THEIR STAGE NOW</p><h2 id="growthStage"></h2><p id="growthStageDescription"></p><p class="screen-flow-small" id="growthAgeBasis"></p><div id="growthSourceBox"><p id="growthSourceDescription"></p><a id="growthSource" target="_blank" rel="noopener noreferrer">Read the original age resource ↗</a></div><a class="screen-flow-link" href="screening.html">Something is worrying me →</a></div></details><p class="screen-flow-small">Preview records are saved in this browser. <a href="parent-dashboard.html">Back to Home</a></p></div></main><script src="concern-booking.js"></script><script src="growth-journal.js"></script><script src="notifications.js"></script><script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="parent-journey-ar.js" defer></script><script src="growth-journal-ar.js" defer></script><script src="../shared/site-language.js" defer></script>
+<body class="parent-cycle-video screening-flow growth-page">
+<div class="parent-static-background" aria-hidden="true"></div>
+<div id="parentSidebarMount"></div>
+<script src="parent-sidebar.js"></script>
+
+<main class="main-content screening-flow-main">
+<header class="topbar growth-heading">
+  <div>
+    <a class="screen-flow-link" href="parent-dashboard.html">← Back to Home</a>
+    <h1>My child’s observations</h1>
+    <p id="growthChild"></p>
+  </div>
+  <a class="growth-jump" href="#savedObservations">View saved notes ↓</a>
+</header>
+
+<p id="growthError" class="screen-flow-error" role="alert" hidden></p>
+
+<div id="growthContent" hidden>
+
+  <!-- STEP 1: Current Stage & Expected Skills Overview (FIRST!) -->
+  <section class="screen-flow-card growth-stage-hero" id="growthStageSection" aria-labelledby="growthStage">
+    <div class="stage-hero-header">
+      <div class="stage-tag-badge">
+        <span class="stage-pulse-dot" aria-hidden="true"></span>
+        <span class="screen-flow-eyebrow">THEIR STAGE NOW</span>
+      </div>
+      <h2 id="growthStage">Your child’s recorded stage</h2>
+      <p id="growthStageDescription" class="stage-hero-desc"></p>
+      <p class="screen-flow-small stage-basis-note" id="growthAgeBasis"></p>
+    </div>
+
+    <!-- The 4 Expected Skills Grid -->
+    <div class="stage-skills-container">
+      <div class="stage-skills-title-row">
+        <h3>Key Developmental Skills for this Stage</h3>
+        <p>Skills and milestones children typically explore and develop at this age:</p>
+      </div>
+      <div class="stage-skills-grid" id="stageSkillsGrid"></div>
+    </div>
+
+    <!-- Official CDC Resource & Concern Box -->
+    <div id="growthSourceBox" class="growth-source-box">
+      <div class="growth-source-info">
+        <svg class="growth-cdc-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <p id="growthSourceDescription"></p>
+      </div>
+      <div class="growth-source-actions">
+        <a id="growthSource" class="growth-cdc-button" target="_blank" rel="noopener noreferrer">Read the original age resource ↗</a>
+        <a class="growth-concern-action" href="screening.html">Have a concern about these milestones? →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 2: Now that you know the stage, what did you notice today? -->
+  <section class="screen-flow-card growth-compose" aria-labelledby="growthComposeTitle">
+    <div class="compose-header">
+      <span class="growth-section-label">STEP 2: RECORD YOUR OBSERVATION</span>
+      <h2 id="growthComposeTitle">What did you notice today?</h2>
+      <p>A small everyday example is enough. Describe what happened; you don’t need to judge your child’s development.</p>
+    </div>
+
+    <div class="growth-prompts" aria-label="Writing ideas">
+      <span>Need a starting point?</span>
+      <button type="button" data-growth-prompt="movement" aria-pressed="false">A movement or action</button>
+      <button type="button" data-growth-prompt="interaction" aria-pressed="false">A moment of interaction</button>
+      <button type="button" data-growth-prompt="question" aria-pressed="false">A question I have</button>
+    </div>
+
+    <form id="growthNoteForm">
+      <div class="form-row">
+        <label for="growthNoteType">What kind of note?</label>
+        <select id="growthNoteType">
+          <option value="observation">An everyday observation</option>
+          <option value="concern">A question or concern</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="growthNote">What happened?</label>
+        <textarea id="growthNote" rows="4" maxlength="2000" required aria-describedby="growthWritingHelp growthSharingHelp" placeholder="What did your child do? When did you notice it?"></textarea>
+      </div>
+
+      <p id="growthWritingHelp" class="screen-flow-small">Include the situation and your child’s reaction. Only save things you actually noticed.</p>
+      
+      <div class="form-submit-row">
+        <button type="submit" class="screen-flow-primary">Save my observation</button>
+        <p id="growthSaveStatus" class="screen-flow-status" role="status"></p>
+        <a id="growthViewSaved" class="screen-flow-link" href="#savedObservations" hidden>View the observation I just saved →</a>
+      </div>
+
+      <p id="growthSharingHelp" class="growth-sharing-help">Saving does not send a message. A specialist can see entries you choose to send, or categories you explicitly allow in accepted ongoing follow-up.</p>
+    </form>
+  </section>
+
+  <!-- STEP 3: Timeline of Saved Observations -->
+  <section class="screen-flow-card saved-observations-section" id="savedObservations" tabindex="-1">
+    <div class="screen-flow-heading">
+      <div>
+        <p class="screen-flow-eyebrow">THEIR STORY OVER TIME</p>
+        <h2>Your child’s saved story</h2>
+      </div>
+      <div>
+        <label for="growthFilter">Show</label>
+        <select id="growthFilter">
+          <option value="all">All observations</option>
+          <option value="observation">Everyday observations</option>
+          <option value="concern">Questions & concerns</option>
+          <option value="daily-moment">Moments together</option>
+          <option value="follow-up">After a specialist visit</option>
+        </select>
+      </div>
+    </div>
+    <p class="screen-flow-small">Your observations and activity results, together by date. Add a follow-up, or select entries to discuss in a consultation.</p>
+    <p id="growthEmpty"></p>
+    <div id="growthTimeline"></div>
+    <p id="growthSelectionCount" role="status"></p>
+    <button type="button" class="screen-flow-secondary" id="prepareGrowthVisit" disabled>Prepare selected notes for a visit</button>
+    <div id="growthVisitPreview" hidden>
+      <label for="growthBookingNote">Review your booking note</label>
+      <textarea id="growthBookingNote" rows="4" maxlength="500"></textarea>
+      <p class="screen-flow-small">This editable preview is limited to 500 characters. Full notes stay in your journal. Nothing is shared until you review and confirm a booking.</p>
+      <a class="screen-flow-primary" id="growthBookLink" href="specialists.html">Use this note when booking →</a>
+    </div>
+  </section>
+
+  <p class="screen-flow-small footnote-link">Preview records are saved in this browser. <a href="parent-dashboard.html">Back to Home</a></p>
+</div>
+</main>
+<script src="concern-booking.js"></script><script src="growth-journal.js"></script><script src="notifications.js"></script><script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="parent-journey-ar.js" defer></script><script src="growth-journal-ar.js" defer></script><script src="../shared/site-language.js" defer></script>
 <script src="../shared/membership-ui.js"></script></body></html>

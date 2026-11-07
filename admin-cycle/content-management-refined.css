@@ -1,0 +1,81 @@
+/* Compact content workspace, aligned with the illustrated Admin Dashboard. */
+body.content-workspace .topbar { position:static; padding-block:20px 14px; padding-inline:clamp(16px,3vw,40px); gap:16px; flex-wrap:wrap; border-block-end:0; background:transparent; box-shadow:none; backdrop-filter:none; }
+.content-workspace .topbar-left { min-inline-size:0; gap:14px; }
+.content-heading-icon { display:grid; place-items:center; flex-shrink:0; inline-size:54px; block-size:54px; border:1px solid #ffffffd9; border-radius:18px; color:#075e5a; background:linear-gradient(145deg,#ffffffd9,#d4f3ea); box-shadow:0 6px 20px #163e3b08; }
+.content-heading-icon svg { inline-size:34px; block-size:34px; }
+.content-heading-copy { min-inline-size:0; }
+.content-workspace .topbar h1 { margin-block:2px 4px; font-size:24px; line-height:1.25; }
+.content-workspace .menu-button { min-inline-size:44px; min-block-size:44px; }
+body.content-workspace .page-body { padding-block-start:10px; }
+body.content-workspace .content-guide { padding-inline:16px; margin-block-end:8px; border:1px solid #ffffffdf; border-radius:16px; background:#ffffff85; }
+body.content-workspace .content-guide summary { min-block-size:44px; padding-block:11px; font-size:12px; }
+body.content-workspace .content-guide :is(p,strong) { font-size:12px; line-height:1.7; }
+body.content-workspace .content-guide > div { padding-block-end:12px; }
+body.content-workspace .metrics-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-block:14px; }
+body.content-workspace .metric-card { min-inline-size:0; padding:14px; gap:10px; border:1px solid #ffffffdf; border-radius:18px; background:#ffffff90; box-shadow:0 6px 20px #163e3b05; }
+.content-workspace .metric-card > div { min-inline-size:0; }
+.content-workspace .metric-icon { inline-size:32px; block-size:32px; border-radius:11px; }
+.content-workspace .metric-card strong { font-size:24px; }
+.content-workspace .metric-card span { font-size:11px; overflow-wrap:anywhere; }
+.content-workspace .metric-card small { font-size:10px; }
+body.content-workspace .content-panel { margin-block-start:14px; border:1px solid #ffffffdf; border-radius:24px; background:#ffffff90; box-shadow:0 8px 26px #163e3b05; }
+.content-workspace .content-tabs { padding:10px 12px; gap:5px; flex-wrap:wrap; background:#ffffff50; border-block-end:1px solid #163e3b0a; }
+.content-workspace .content-tab { min-block-size:44px; padding:10px 14px; border-radius:12px; font-size:12px; font-weight:600; }
+.content-workspace .content-tab.active { background:#075e5a; color:white; }
+.content-workspace .content-heading { padding:18px 20px 12px; gap:12px; flex-wrap:wrap; }
+.content-workspace .content-heading h2 { font-size:20px; }
+.content-workspace .content-heading p { font-size:12px; line-height:1.6; }
+.content-workspace .section-kicker { font-size:9px; color:#0b7a75; }
+.content-workspace .add-button { min-block-size:44px; font-size:12px; border-radius:12px; }
+.content-workspace .toolbar { margin-inline:16px; padding:12px; gap:10px; flex-wrap:wrap; border:1px solid #ffffffdf; border-radius:16px; background:#ffffff80; }
+.content-workspace .search-box { flex:1; min-inline-size:180px; border-radius:12px; border-color:#163e3b20; background:#ffffffb3; }
+.content-workspace .search-box input { min-inline-size:0; min-block-size:44px; font-size:12px; font-family:inherit; }
+.content-workspace .toolbar-filters { gap:8px; flex-wrap:wrap; }
+.content-workspace .filter-select { min-block-size:44px; max-inline-size:100%; font-size:12px; border-radius:12px; background:#ffffffb3; }
+.content-workspace .clear-button { min-block-size:44px; font-size:12px; border-radius:12px; }
+.content-workspace .content-display-controls { padding:10px 20px; border-color:#163e3b0a; }
+.content-workspace .content-display-controls button { min-block-size:44px; font-size:12px; border-radius:12px; }
+.content-workspace .content-display-controls span { font-size:11px; }
+.content-workspace .result-row { padding:10px 20px; gap:12px; flex-wrap:wrap; }
+.content-workspace .result-row > * { font-size:11px; overflow-wrap:anywhere; }
+body.content-workspace .content-table :is(td,th) { padding:12px; text-align:start; line-height:1.6; }
+.content-workspace .content-table th { font-size:11px; background:#edf5f180; }
+.content-workspace .content-table td { font-size:12px; border-color:#163e3b0c; }
+.content-workspace .content-table strong { font-size:13px; }
+.content-workspace .content-table small { font-size:11px; }
+.content-workspace :is(.age-pill,.category-pill,.status-badge) { font-size:10px; padding:6px 10px; }
+.content-workspace .table-actions { gap:6px; flex-wrap:wrap; }
+.content-workspace .action-button { min-block-size:44px; min-inline-size:44px; font-size:12px; border-radius:12px; }
+.content-workspace .mobile-content-list { padding:14px; }
+.content-workspace .mobile-content-card { padding:16px; border-radius:18px; background:#ffffff90; }
+.content-workspace .mobile-card-top h3 { font-size:15px; }
+.content-workspace .mobile-card-meta { font-size:12px; }
+.content-workspace .content-modal { padding:22px; border-radius:24px; }
+.content-workspace .modal-header h2 { font-size:22px; }
+.content-workspace .modal-close { min-inline-size:44px; min-block-size:44px; }
+.content-workspace .dynamic-fields { gap:14px; }
+.content-workspace .form-field { min-inline-size:0; }
+.content-workspace .form-field label { font-size:12px; }
+.content-workspace .form-field :is(input,select,textarea) { min-inline-size:0; min-block-size:44px; font-size:14px; border-radius:12px; }
+.content-workspace .field-help { font-size:11px; line-height:1.6; }
+.content-workspace .form-error { font-size:12px; }
+.content-workspace :is(.secondary-button,.save-button,.delete-button) { min-block-size:44px; font-size:12px; font-weight:600; border-radius:12px; }
+.content-workspace .delete-modal { border-radius:24px; }
+.content-workspace .delete-modal p { font-size:13px; }
+.content-workspace .empty-state { padding:30px 16px; border-radius:18px; }
+.content-workspace .empty-state strong { font-size:16px; }
+.content-workspace .empty-state p { font-size:12px; }
+.content-workspace .main-content :is(a,button,input,select,summary):focus-visible { outline:2px solid #0b7a75; outline-offset:3px; }
+@media(max-width:1000px) { body.content-workspace .metrics-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:650px) {
+ .content-workspace .topbar-left { gap:10px; }
+ .content-workspace .content-heading { padding:16px; }
+ .content-workspace .toolbar { margin-inline:12px; padding:10px; }
+ .content-workspace .search-box { min-inline-size:0; flex-basis:100%; }
+ .content-workspace .content-tab { padding-inline:10px; }
+ .content-workspace .content-display-controls { padding:10px 16px; }
+}
+@media(max-width:400px) {
+ .content-heading-icon { inline-size:44px; block-size:44px; border-radius:15px; }
+ body.content-workspace .metrics-grid { grid-template-columns:minmax(0,1fr); }
+}

@@ -401,3 +401,33 @@
   }
 
 }
+
+/* Parent dock notifications share the account card's light glass surfaces. */
+.notification-line-icon{display:block;width:21px;height:21px;flex-shrink:0}
+html body.parent-cycle-video .parent-navigation .notification-dropdown{width:352px;max-width:calc(100vw - 32px);top:calc(100% + 18px);inset-inline-end:0;inset-inline-start:auto;margin:0;border:1px solid #fff;border-radius:24px;background:linear-gradient(145deg,#fffefdf7,#fff8fbf2);box-shadow:0 18px 48px #4f34421c,0 3px 10px #4f344208;color:#183d3b;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);text-align:start}
+.parent-navigation .notification-header{padding:18px 20px 16px;gap:12px;border-bottom:1px solid #183d3b0d}
+.parent-navigation .notification-header-text>span{display:none}
+.parent-navigation .notification-header-text h3{font-family:inherit;font-size:15px;font-weight:700;line-height:1.5;color:#183d3b}
+.parent-navigation .mark-all-button{font-family:inherit;font-size:11px;font-weight:600;line-height:1.4;min-height:36px;padding:7px 9px;border-radius:10px;background:#edf3f0;color:#315b52}
+.parent-navigation .mark-all-button:hover{background:#e4eee9;text-decoration:none}
+.parent-navigation .notification-list{padding:6px;max-height:min(380px,50dvh);overscroll-behavior:contain}
+.parent-navigation .notification-item{grid-template-columns:36px minmax(0,1fr) 6px;gap:11px;padding:12px 10px;border:0;border-radius:15px;background:transparent;text-align:start;font-family:inherit}
+.parent-navigation .notification-item+.notification-item{margin-top:3px}
+.parent-navigation .notification-item:hover{background:#edf3f080}
+.parent-navigation .notification-item.unread{background:rgba(var(--nav-glow,134,223,205),.12)}
+.parent-navigation .notification-item.unread:hover{background:rgba(var(--nav-glow,134,223,205),.2)}
+.parent-navigation .notification-icon{width:36px;height:36px;border-radius:12px;font-size:16px}
+.parent-navigation .notification-content strong{font-size:12px;font-weight:650;line-height:1.5;color:#183d3b;overflow-wrap:anywhere}
+.parent-navigation .notification-content p{font-size:11px;line-height:1.6;color:#61736e;overflow-wrap:anywhere}
+.parent-navigation .notification-time{font-size:10px;color:#7a8983;margin-top:5px}
+.parent-navigation .notification-dot{width:6px;height:6px;background:#477d6c;margin-top:7px}
+.parent-navigation .notification-empty{padding:28px 18px 30px}
+.parent-navigation .notification-empty-icon{position:relative;width:54px;height:54px;margin:0 auto 15px;border-radius:19px;border:1px solid #fff;background:linear-gradient(145deg,#ffffff,rgba(var(--nav-glow,134,223,205),.22));color:#41675e;box-shadow:0 5px 16px #183d3b08}
+.parent-navigation .notification-empty-icon .notification-line-icon{width:25px;height:25px}
+.parent-navigation .notification-empty strong{font-family:inherit;font-size:14px;line-height:1.5;color:#183d3b}
+.parent-navigation .notification-empty p{margin-top:6px;font-size:11px;line-height:1.6;color:#61736e}
+.parent-navigation .notification-footer{padding:12px 18px;border-top:1px solid #183d3b0d;background:transparent;font-size:10px;color:#7a8983}
+.parent-navigation .notification-badge{background:#477d6c;border-color:#fff;font-size:9px;min-width:17px;height:17px;top:-3px;right:-3px}
+.parent-navigation .notification-bell[aria-expanded=true]{background:#fff;border-color:rgba(var(--nav-glow,134,223,205),.7);box-shadow:0 0 0 3px rgba(var(--nav-glow,134,223,205),.12)}
+.parent-navigation .notification-dropdown :is(button,a):focus-visible{outline:2px solid #477d6c;outline-offset:2px}
+@media(max-width:900px){html body.parent-cycle-video .parent-navigation .notification-dropdown{position:fixed;top:auto;width:auto;max-width:none;margin-top:14px;max-height:60dvh;overflow-y:auto;inset-inline-end:16px;inset-inline-start:16px}.parent-navigation .notification-list{max-height:38dvh}}

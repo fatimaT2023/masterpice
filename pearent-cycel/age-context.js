@@ -13,8 +13,10 @@ document.addEventListener('DOMContentLoaded',()=>{
  const detail=document.createElement('p');detail.textContent=context.supported?'Age today: '+window.RafiqSetup.formatAge(context.chronological)+'. '+(context.basis==='corrected'?'Development resources use corrected age: '+window.RafiqSetup.formatAge(context.development)+'. Health records and appointment details use age from date of birth.':context.beforeDueDate?'The expected due date has not arrived. No developmental checklist is selected.':context.needsDueDate?'Add the expected due date to use corrected age for development resources.':'Content availability depends on the age range of each resource.'): 'Personalized age-based content is available from birth until the seventh birthday. Existing records, appointments, payments and reports remain accessible.';
  notice.append(title,detail);
  const edit=document.createElement('a');edit.href='onboarding.html?edit='+encodeURIComponent(child.id);edit.textContent='Review child details';notice.append(edit);
- const header=main.querySelector('header');if(header)header.after(notice);else main.prepend(notice);
+ // Keep coverage warnings, but omit the repeated age-summary card.
+ const header=main.querySelector('header');
  const gated=['milestones.html','challenges.html','screening.html'].includes(page);
+ if(!context.supported||gated){if(context.supported)notice.hidden=true;if(header)header.after(notice);else main.prepend(notice);}
  if(!gated)return;
  document.body.classList.add('age-content-gated','age-page-'+page.split('.')[0]);
  const panel=document.createElement('section');panel.className='rafiq-age-panel';

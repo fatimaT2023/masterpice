@@ -1,0 +1,96 @@
+/* Professional profile follows the illustrated specialist workspace. */
+body.specialist-profile-page .topbar {
+  position:static; padding-block:24px 18px; padding-inline:clamp(16px,3vw,40px);
+  gap:16px; flex-wrap:wrap; border-block-end:0; background:transparent;
+  box-shadow:none; backdrop-filter:none; -webkit-backdrop-filter:none;
+}
+.specialist-profile-page .topbar-left { gap:16px; min-inline-size:0; flex:1; }
+.specialist-profile-page .profile-heading-icon {
+  display:grid; place-items:center; flex-shrink:0; inline-size:54px; block-size:54px;
+  border:1px solid #ffffffd9; border-radius:18px; color:var(--sage-deep);
+  background:linear-gradient(145deg,#ffffffd9,var(--sage-tint)); box-shadow:0 6px 20px #163e3b08;
+}
+.profile-heading-icon svg { inline-size:34px; block-size:34px; }
+.profile-heading-copy { min-inline-size:0; }
+.specialist-profile-page .topbar .page-kicker { margin:0; font-size:9px; letter-spacing:.13em; }
+.specialist-profile-page .topbar h1 { margin-block:2px 4px; font-size:24px; line-height:1.25; }
+.specialist-profile-page .back-button { display:inline-flex; align-items:center; min-block-size:44px; font-size:12px; font-weight:600; border-radius:12px; }
+.specialist-profile-page .menu-button { min-inline-size:44px; min-block-size:44px; }
+.specialist-profile-page .page-body { padding-block-start:14px; }
+.specialist-profile-page .profile-hero {
+  padding:24px; gap:24px; border:1px solid #ffffffdb; border-radius:24px;
+  background:radial-gradient(ellipse at 100% 0%,var(--sage-tint),transparent 65%),#ffffff80;
+  box-shadow:0 10px 30px #284e4808;
+}
+.specialist-profile-page .hero-profile { gap:16px; min-inline-size:0; }
+.specialist-profile-page .hero-profile > div { min-inline-size:0; }
+.specialist-profile-page .hero-avatar { inline-size:64px; block-size:64px; flex-shrink:0; font-size:22px; border-radius:20px; color:var(--sage-deep); background:linear-gradient(145deg,var(--sage-tint),#ffffffb3); border:1px solid #ffffff; }
+.specialist-profile-page .profile-hero h2 { font-size:26px; font-weight:600; line-height:1.3; letter-spacing:normal; overflow-wrap:anywhere; }
+.specialist-profile-page .profile-hero p { font-size:13px; line-height:1.6; overflow-wrap:anywhere; }
+.specialist-profile-page .hero-verification { padding:16px 20px; border:1px solid #ffffffd9; border-radius:18px; background:#ffffff85; box-shadow:0 6px 20px #163e3b05; }
+.specialist-profile-page .hero-verification > span { font-size:9px; }
+.specialist-profile-page .verification-badge { font-size:11px; }
+.specialist-profile-page .status-banner { padding:16px; border-radius:18px; gap:12px; }
+.specialist-profile-page .status-banner strong { font-size:13px; }
+.specialist-profile-page .status-banner p { font-size:12px; line-height:1.6; }
+.specialist-profile-page .profile-layout { grid-template-columns:minmax(0,1.8fr) minmax(260px,1fr); gap:16px; align-items:start; }
+.specialist-profile-page :is(.profile-card,.preview-card) { min-inline-size:0; padding:22px; border:1px solid #ffffffdf; border-radius:24px; background:#ffffff85; }
+.specialist-profile-page .card-heading { gap:12px; }
+.specialist-profile-page .card-icon { inline-size:44px; block-size:44px; flex-shrink:0; border-radius:15px; }
+.specialist-profile-page .card-heading h2 { font-size:20px; }
+.specialist-profile-page .card-heading p { font-size:13px; line-height:1.6; }
+.specialist-profile-page .verified-note { padding:14px; gap:12px; border-radius:14px; }
+.specialist-profile-page .verified-note p { font-size:12px; line-height:1.65; }
+.specialist-profile-page .form-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.specialist-profile-page .form-group { min-inline-size:0; }
+.specialist-profile-page :is(.form-group label,.option-title) { font-size:12px; }
+.specialist-profile-page .form-group :is(input,textarea) { min-inline-size:0; min-block-size:44px; font-family:inherit; font-size:14px; border-radius:12px; }
+.specialist-profile-page .credential-row { gap:12px; flex-wrap:wrap; padding:16px; border-radius:16px; }
+.specialist-profile-page .credential-row span:first-child { font-size:10px; }
+.specialist-profile-page .credential-row strong { font-size:13px; overflow-wrap:anywhere; }
+.specialist-profile-page .credential-status { font-size:10px; }
+.specialist-profile-page :is(.field-footer span,.field-error) { font-size:11px; }
+.specialist-profile-page .choice-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.specialist-profile-page .choice-card > span { min-block-size:60px; padding:14px; border-radius:14px; background:#ffffff85; }
+.specialist-profile-page .choice-card strong { font-size:13px; }
+.specialist-profile-page .choice-card small { font-size:12px; line-height:1.5; }
+.specialist-profile-page .choice-card:focus-within > span { outline:2px solid var(--sage); outline-offset:3px; }
+.specialist-profile-page .fee-input span { font-size:12px; }
+.specialist-profile-page .save-bar { padding:18px; border-radius:18px; flex-wrap:wrap; gap:16px; background:#ffffff90; }
+.specialist-profile-page .save-bar strong { font-size:13px; }
+.specialist-profile-page .save-bar span { font-size:12px; }
+.specialist-profile-page .save-button { min-block-size:44px; padding-inline:20px; font-size:13px; font-weight:600; border-radius:12px; }
+.specialist-profile-page .preview-avatar { inline-size:64px; block-size:64px; border-radius:20px; background:var(--sage-tint); color:var(--sage-deep); font-size:22px; }
+.specialist-profile-page .preview-card h3 { font-size:20px; overflow-wrap:anywhere; }
+.specialist-profile-page .preview-specialty { font-size:12px; }
+.specialist-profile-page .preview-verified { font-size:10px; }
+.specialist-profile-page .preview-bio { font-size:13px; line-height:1.7; overflow-wrap:anywhere; }
+.specialist-profile-page .preview-stats { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.specialist-profile-page .preview-stats > div { min-inline-size:0; border-radius:14px; background:#ffffff80; }
+.specialist-profile-page .preview-stats span { font-size:11px; }
+.specialist-profile-page .preview-stats strong { font-size:14px; overflow-wrap:anywhere; }
+.specialist-profile-page .preview-section > span { font-size:11px; }
+.specialist-profile-page .preview-tag { font-size:11px; padding:6px 10px; border-radius:10px; }
+.specialist-profile-page .preview-footnote { border-radius:14px; }
+.specialist-profile-page .preview-footnote p { font-size:11px; line-height:1.6; }
+.specialist-profile-page .toast { max-inline-size:calc(100vw - 32px); border-radius:16px; }
+.specialist-profile-page .toast strong { font-size:14px; }
+.specialist-profile-page .toast p { font-size:12px; }
+.specialist-profile-page .main-content :is(a,button,input,textarea):focus-visible { outline:2px solid var(--sage); outline-offset:3px; }
+@media(max-width:1100px) {
+  .specialist-profile-page .profile-layout { grid-template-columns:minmax(0,1fr); }
+}
+@media(max-width:700px) {
+  .specialist-profile-page .topbar-left { flex-basis:100%; gap:10px; }
+  .specialist-profile-page .back-button { margin-inline-start:auto; }
+  .specialist-profile-page .profile-hero { padding:20px; grid-template-columns:minmax(0,1fr); gap:16px; }
+  .specialist-profile-page .hero-verification { min-inline-size:0; }
+  .specialist-profile-page :is(.profile-card,.preview-card) { padding:18px; }
+  .specialist-profile-page .form-grid { grid-template-columns:minmax(0,1fr); }
+}
+@media(max-width:400px) {
+  .specialist-profile-page .profile-heading-icon { inline-size:44px; block-size:44px; border-radius:15px; }
+  .specialist-profile-page .hero-avatar { inline-size:48px; block-size:48px; font-size:18px; border-radius:16px; }
+  .specialist-profile-page .profile-hero h2 { font-size:22px; }
+  .specialist-profile-page .choice-grid { grid-template-columns:minmax(0,1fr); }
+}

@@ -33,26 +33,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const confirmPasswordInput =
     document.getElementById("confirmPassword");
 
-  const specialtyInput =
-    document.getElementById("specialty");
 
-  const experienceInput =
-    document.getElementById("experience");
 
-  const consultationInput =
-    document.getElementById("consultationType");
 
-  const preferredLanguageInput =
-    document.getElementById("preferredLanguage");
 
-  const languageBothOption =
-    document.getElementById("languageBothOption");
 
   const termsInput =
     document.getElementById("terms");
 
-  const specialistFields =
-    document.getElementById("specialistFields");
 
   const verificationNote =
     document.getElementById("verificationNote");
@@ -172,39 +160,6 @@ document.addEventListener("DOMContentLoaded", () => {
       error:
         document.getElementById("confirmPasswordError")
     },
-
-    specialty: {
-      wrapper:
-        document.getElementById("specialtyField"),
-
-      input:
-        specialtyInput,
-
-      error:
-        document.getElementById("specialtyError")
-    },
-
-    experience: {
-      wrapper:
-        document.getElementById("experienceField"),
-
-      input:
-        experienceInput,
-
-      error:
-        document.getElementById("experienceError")
-    },
-
-    consultation: {
-      wrapper:
-        document.getElementById("consultationField"),
-
-      input:
-        consultationInput,
-
-      error:
-        document.getElementById("consultationError")
-    }
   };
 
   const termsField =
@@ -658,32 +613,9 @@ document.addEventListener("DOMContentLoaded", () => {
       isSpecialist
     );
 
-    specialistFields.hidden =
-      !isSpecialist;
+    // Professional details are collected during setup.
 
-    verificationNote.hidden =
-      !isSpecialist;
-
-    languageBothOption.hidden =
-      !isSpecialist;
-
-    if (!isSpecialist) {
-      specialtyInput.value = "";
-      experienceInput.value = "";
-      consultationInput.value = "";
-
-      clearFieldState(fields.specialty);
-      clearFieldState(fields.experience);
-      clearFieldState(fields.consultation);
-
-      if (
-        preferredLanguageInput.value ===
-        "both"
-      ) {
-        preferredLanguageInput.value =
-          "english";
-      }
-    }
+    verificationNote.hidden = !isSpecialist;
 
     updateRoleContent();
     clearStatus();
@@ -1117,102 +1049,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return true;
   }
 
-  function validateSpecialty() {
-    if (
-      selectedRole !==
-      "specialist"
-    ) {
-      return true;
-    }
-
-    if (!specialtyInput.value) {
-      setFieldError(
-        fields.specialty,
-        translations[currentLanguage]
-          .specialtyRequired
-      );
-
-      return false;
-    }
-
-    setFieldValid(
-      fields.specialty
-    );
-
-    return true;
-  }
-
-  function validateExperience() {
-    if (
-      selectedRole !==
-      "specialist"
-    ) {
-      return true;
-    }
-
-    const value =
-      experienceInput.value.trim();
-
-    const text =
-      translations[currentLanguage];
-
-    if (!value) {
-      setFieldError(
-        fields.experience,
-        text.experienceRequired
-      );
-
-      return false;
-    }
-
-    const numericValue =
-      Number(value);
-
-    if (
-      Number.isNaN(numericValue) ||
-      numericValue < 0 ||
-      numericValue > 60
-    ) {
-      setFieldError(
-        fields.experience,
-        text.experienceInvalid
-      );
-
-      return false;
-    }
-
-    setFieldValid(
-      fields.experience
-    );
-
-    return true;
-  }
-
-  function validateConsultation() {
-    if (
-      selectedRole !==
-      "specialist"
-    ) {
-      return true;
-    }
-
-    if (!consultationInput.value) {
-      setFieldError(
-        fields.consultation,
-        translations[currentLanguage]
-          .consultationRequired
-      );
-
-      return false;
-    }
-
-    setFieldValid(
-      fields.consultation
-    );
-
-    return true;
-  }
-
   function validateTerms() {
     if (!termsInput.checked) {
       termsField.classList.add(
@@ -1264,20 +1100,8 @@ document.addEventListener("DOMContentLoaded", () => {
     validateConfirmPassword
   );
 
-  specialtyInput.addEventListener(
-    "change",
-    validateSpecialty
-  );
 
-  experienceInput.addEventListener(
-    "blur",
-    validateExperience
-  );
 
-  consultationInput.addEventListener(
-    "change",
-    validateConsultation
-  );
 
   termsInput.addEventListener(
     "change",
@@ -1336,18 +1160,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-  experienceInput.addEventListener(
-    "input",
-    () => {
-      if (
-        fields.experience.wrapper
-          .classList
-          .contains("has-error")
-      ) {
-        validateExperience();
-      }
-    }
-  );
 
   /* =======================================================
      Terms Click Behaviour
@@ -1416,16 +1228,6 @@ document.addEventListener("DOMContentLoaded", () => {
       validateConfirmPassword()
     ];
 
-    if (
-      selectedRole ===
-      "specialist"
-    ) {
-      results.push(
-        validateSpecialty(),
-        validateExperience(),
-        validateConsultation()
-      );
-    }
 
     results.push(
       validateTerms()
@@ -1445,16 +1247,6 @@ document.addEventListener("DOMContentLoaded", () => {
       fields.confirmPassword
     ];
 
-    if (
-      selectedRole ===
-      "specialist"
-    ) {
-      candidateFields.push(
-        fields.specialty,
-        fields.experience,
-        fields.consultation
-      );
-    }
 
     const firstInvalid =
       candidateFields.find(
@@ -1686,29 +1478,8 @@ document.addEventListener("DOMContentLoaded", () => {
       validateConfirmPassword();
     }
 
-    if (
-      fields.specialty.wrapper
-        .classList
-        .contains("has-error")
-    ) {
-      validateSpecialty();
-    }
 
-    if (
-      fields.experience.wrapper
-        .classList
-        .contains("has-error")
-    ) {
-      validateExperience();
-    }
 
-    if (
-      fields.consultation.wrapper
-        .classList
-        .contains("has-error")
-    ) {
-      validateConsultation();
-    }
 
     if (
       termsField.classList.contains(

@@ -1,0 +1,88 @@
+/* Compact specialist directory, aligned with the Admin Dashboard. */
+body.admin-specialists-page .topbar { position:static; padding-block:20px 14px; padding-inline:clamp(16px,3vw,40px); gap:16px; flex-wrap:wrap; border-block-end:0; background:transparent; box-shadow:none; backdrop-filter:none; }
+.admin-specialists-page .topbar-left { min-inline-size:0; gap:14px; flex:1; }
+.specialists-heading-icon { display:grid; place-items:center; flex-shrink:0; inline-size:54px; block-size:54px; border:1px solid #ffffffd9; border-radius:18px; color:#075e5a; background:linear-gradient(145deg,#ffffffd9,#d4f3ea); box-shadow:0 6px 20px #163e3b08; }
+.specialists-heading-icon svg { inline-size:34px; block-size:34px; }
+.specialists-heading-copy { min-inline-size:0; }
+.admin-specialists-page .topbar .page-kicker { margin:0; font-size:9px; letter-spacing:.13em; }
+.admin-specialists-page .topbar h1 { margin-block:2px 4px; font-size:24px; line-height:1.25; }
+.admin-specialists-page .topbar-action { display:inline-flex; align-items:center; min-block-size:44px; padding-inline:16px; font-size:12px; border-radius:12px; }
+.admin-specialists-page .menu-button { min-inline-size:44px; min-block-size:44px; }
+.admin-specialists-page .page-body { padding-block-start:10px; }
+.admin-specialists-page .page-hero { grid-template-columns:minmax(0,1fr) auto; gap:20px; padding:18px 22px; border:1px solid #ffffffdf; border-radius:22px; background:linear-gradient(120deg,#ffffffa6,#d4f3ea70); box-shadow:none; }
+.admin-specialists-page .hero-kicker { font-size:9px; margin-block-end:5px; }
+.admin-specialists-page .page-hero h2 { font-size:22px; font-weight:600; line-height:1.35; letter-spacing:normal; }
+.admin-specialists-page .page-hero p { font-size:12px; line-height:1.6; margin-block:6px 0; }
+.admin-specialists-page .hero-stat { padding:12px 18px; min-inline-size:140px; border-radius:16px; background:#ffffff90; box-shadow:none; }
+.admin-specialists-page .hero-stat strong { font-size:26px; margin-block:3px; }
+.admin-specialists-page .hero-stat span { font-size:9px; }
+.admin-specialists-page .hero-stat small { font-size:11px; }
+.admin-specialists-page .metrics-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-block:14px; }
+.admin-specialists-page .metric-card { min-inline-size:0; padding:14px; gap:10px; border:1px solid #ffffffdf; border-radius:18px; background:#ffffff90; box-shadow:0 6px 20px #163e3b05; }
+.admin-specialists-page .metric-card > div { min-inline-size:0; }
+.admin-specialists-page .metric-icon { inline-size:32px; block-size:32px; border-radius:11px; }
+.admin-specialists-page .metric-card strong { font-size:24px; }
+.admin-specialists-page .metric-card span { font-size:11px; overflow-wrap:anywhere; }
+.admin-specialists-page .metric-card small { font-size:10px; }
+.admin-specialists-page .directory-card { min-inline-size:0; padding:20px; border:1px solid #ffffffdf; border-radius:24px; background:#ffffff90; box-shadow:0 8px 26px #163e3b05; }
+.admin-specialists-page .directory-heading { gap:12px; flex-wrap:wrap; margin-block-end:14px; }
+.admin-specialists-page .directory-heading h2 { font-size:20px; }
+.admin-specialists-page .directory-heading p { font-size:12px; line-height:1.6; }
+.admin-specialists-page .directory-heading > span { font-size:12px; }
+.admin-specialists-page .section-kicker { font-size:9px; }
+.admin-specialists-page .filter-bar { padding:12px; gap:10px; flex-wrap:wrap; border-radius:16px; background:#ffffff80; }
+.admin-specialists-page .search-box { flex:1; min-inline-size:180px; border-radius:12px; background:#ffffffb3; border-color:#163e3b20; }
+.admin-specialists-page .search-box input { min-inline-size:0; min-block-size:44px; font-size:12px; font-family:inherit; }
+.admin-specialists-page .filter-bar select { min-block-size:44px; max-inline-size:100%; font-size:12px; border-radius:12px; background:#ffffffb3; }
+.admin-specialists-page .status-tabs { gap:4px; flex-wrap:wrap; }
+.admin-specialists-page .status-filter { min-block-size:44px; padding-inline:12px; border-radius:10px; font-size:12px; }
+.admin-specialists-page .status-filter.active { background:#075e5a; color:white; }
+.admin-specialists-page .table-wrap { border:1px solid #ffffffda; border-radius:16px; overscroll-behavior-inline:contain; }
+.admin-specialists-page .table-wrap :is(th,td) { text-align:start; padding:12px; }
+.admin-specialists-page .table-wrap th { font-size:11px; background:#edf5f180; }
+.admin-specialists-page .table-wrap td { font-size:12px; border-color:#163e3b0c; }
+.admin-specialists-page .specialist-cell strong { font-size:13px; }
+.admin-specialists-page .specialist-cell span { font-size:11px; }
+.admin-specialists-page .status-badge { font-size:10px; padding:6px 10px; }
+.admin-specialists-page :is(.view-button,.account-button,.secondary-button,.suspend-button,.confirm-status-button) { min-block-size:44px; font-size:12px; border-radius:12px; }
+.admin-specialists-page .actions { gap:6px; flex-wrap:wrap; }
+.admin-specialists-page .mobile-card { padding:16px; border:1px solid #ffffffdf; border-radius:18px; background:#ffffff90; }
+.admin-specialists-page .mobile-info span { font-size:11px; }
+.admin-specialists-page .mobile-info strong { font-size:12px; }
+.admin-specialists-page .governance-note { padding:12px 16px; border-radius:16px; }
+.admin-specialists-page .governance-note p { font-size:11px; line-height:1.6; }
+.admin-specialists-page .empty-state { padding:30px 16px; border:1px dashed #83b6a447; border-radius:18px; background:#ffffff50; }
+.admin-specialists-page .empty-state strong { font-size:16px; }
+.admin-specialists-page .empty-state p { font-size:12px; }
+.admin-specialists-page .profile-modal { padding:22px; border-radius:24px; }
+.admin-specialists-page .modal-header h2 { font-size:22px; }
+.admin-specialists-page .modal-close { min-inline-size:44px; min-block-size:44px; }
+.admin-specialists-page .modal-profile { padding:16px; gap:12px; border-radius:18px; }
+.admin-specialists-page .modal-profile h3 { font-size:20px; }
+.admin-specialists-page .modal-profile p { font-size:13px; }
+.admin-specialists-page .details-grid { gap:10px; }
+.admin-specialists-page .detail-box { min-inline-size:0; padding:12px; border-radius:12px; background:#ffffff80; }
+.admin-specialists-page .detail-box span { font-size:10px; }
+.admin-specialists-page .detail-box strong { font-size:13px; overflow-wrap:anywhere; }
+.admin-specialists-page .bio-section p { font-size:13px; line-height:1.65; }
+.admin-specialists-page .account-section strong { font-size:12px; }
+.admin-specialists-page .account-section span { font-size:10px; }
+.admin-specialists-page .rejection-box p { font-size:12px; }
+.admin-specialists-page .decision-modal { border-radius:24px; }
+.admin-specialists-page .decision-modal p { font-size:13px; }
+.admin-specialists-page .reason-group label { font-size:12px; }
+.admin-specialists-page .reason-group textarea { font-size:13px; border-radius:12px; }
+.admin-specialists-page .main-content :is(button,a,input,select):focus-visible { outline:2px solid #0b7a75; outline-offset:3px; }
+@media(max-width:1000px) { .admin-specialists-page .metrics-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:650px) {
+ .admin-specialists-page .topbar-left { gap:10px; }
+ .admin-specialists-page .topbar-action { margin-inline-start:auto; }
+ .admin-specialists-page .page-hero { grid-template-columns:minmax(0,1fr); padding:18px; gap:12px; }
+ .admin-specialists-page .hero-stat { min-inline-size:0; }
+ .admin-specialists-page .directory-card { padding:14px; }
+ .admin-specialists-page .search-box { min-inline-size:0; flex-basis:100%; }
+}
+@media(max-width:400px) {
+ .specialists-heading-icon { inline-size:44px; block-size:44px; border-radius:15px; }
+ .admin-specialists-page .metrics-grid { grid-template-columns:minmax(0,1fr); }
+}

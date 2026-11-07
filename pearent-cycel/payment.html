@@ -38,9 +38,9 @@
 <link rel="stylesheet" href="parent-layout.css">
 <link rel="stylesheet" href="../shared/site-language.css">
 <link rel="stylesheet" href="notifications.css">
-<script src="../shared/membership.js"></script><link rel="stylesheet" href="../shared/membership.css"><script src="child-appearance.js"></script></head>
+<script src="../shared/membership.js"></script><link rel="stylesheet" href="../shared/membership.css"><script src="child-appearance.js"></script><link rel="stylesheet" href="payment-refined.css"></head>
 
-<body class="parent-cycle-video">
+<body class="parent-cycle-video payment-page">
   <div class="parent-static-background" aria-hidden="true"></div>
 
 
@@ -62,487 +62,49 @@
 
   <main class="main-content">
 
-    <header class="topbar">
-
-      <div class="topbar-left">
-
-        <button
-          type="button"
-          class="menu-button"
-          id="menuButton"
-        >
-          ☰
-        </button>
-
-
-        <div>
-
-          <span class="page-kicker">
-            SUBSCRIPTION
-          </span>
-
-          <h1>
-            Payment
-          </h1>
-
-        </div>
-
-      </div>
-
-
-      <a
-        href="subscription.html"
-        class="back-button"
-      >
-        ← Back to Plans
-      </a>
-
-    </header>
+    <header class="topbar checkout-header"><div><span class="checkout-eyebrow">RAFIQ PLUS</span><h1>Complete your upgrade</h1><p>One family plan. More room to grow together.</p><button type="button" class="menu-button" id="menuButton" hidden>Menu</button></div><a href="subscription.html" class="back-button">← Back to Plans</a></header>
 
 
     <div class="page-body">
 
       <!-- PAYMENT VIEW -->
 
-      <section
-        class="payment-view active"
-        id="paymentView"
-      >
-
-        <div class="payment-layout">
-
-
-          <!-- LEFT -->
-
-          <div class="payment-main">
-
-            <!-- HERO -->
-
-            <section class="payment-hero">
-
-              <span class="hero-kicker">
-                RAFIQ PLUS
-              </span>
-
-              <h2>
-                Complete your
-                <span>subscription.</span>
-              </h2>
-
-              <p>
-                Review your plan and complete the demo
-                payment to activate RAFIQ Plus.
-              </p>
-
-            </section>
-
-
-            <!-- DEMO NOTE -->
-
-            <div class="prototype-note">
-
-              <span>i</span>
-
-              <p>
-                This is a frontend prototype. No real
-                payment is processed and sensitive card
-                information is never stored.
-              </p>
-
-            </div>
-
-
-            <!-- PAYMENT METHOD -->
-
-            <section class="section-card">
-
-              <div class="section-heading">
-
-                <span class="section-number">
-                  01
-                </span>
-
-                <div>
-
-                  <span class="section-kicker">
-                    PAYMENT METHOD
-                  </span>
-
-                  <h2>
-                    Choose how to pay
-                  </h2>
-
-                </div>
-
-              </div>
-
-
-              <div class="payment-methods">
-
-                <button
-                  type="button"
-                  class="method-button active"
-                  data-method="card"
-                >
-                  <span class="method-icon">
-                    ▣
-                  </span>
-
-                  <span>
-                    <strong>
-                      Card
-                    </strong>
-
-                    <small>
-                      Demo card payment
-                    </small>
-                  </span>
-                </button>
-
-
-                <button
-                  type="button"
-                  class="method-button"
-                  data-method="wallet"
-                >
-                  <span class="method-icon">
-                    ◇
-                  </span>
-
-                  <span>
-                    <strong>
-                      Digital Wallet
-                    </strong>
-
-                    <small>
-                      Simulated wallet
-                    </small>
-                  </span>
-                </button>
-
-              </div>
-
-            </section>
-
-
-            <!-- CARD FORM -->
-
-            <section
-              class="section-card"
-              id="cardSection"
-            >
-
-              <div class="section-heading">
-
-                <span class="section-number">
-                  02
-                </span>
-
-                <div>
-
-                  <span class="section-kicker">
-                    CARD DETAILS
-                  </span>
-
-                  <h2>
-                    Enter demo payment details
-                  </h2>
-
-                </div>
-
-              </div>
-
-
-              <form id="paymentForm">
-
-                <div class="form-group">
-
-                  <label for="cardholderName">
-                    Cardholder Name
-                  </label>
-
-                  <input
-                    type="text"
-                    id="cardholderName"
-                    placeholder="Name on card"
-                    autocomplete="off"
-                  >
-
-                  <small
-                    class="field-error"
-                    id="nameError"
-                  ></small>
-
-                </div>
-
-
-                <div class="form-group">
-
-                  <label for="cardNumber">
-                    Card Number
-                  </label>
-
-                  <input
-                    type="text"
-                    id="cardNumber"
-                    inputmode="numeric"
-                    maxlength="19"
-                    placeholder="4242 4242 4242 4242"
-                    autocomplete="off"
-                  >
-
-                  <small
-                    class="field-error"
-                    id="cardError"
-                  ></small>
-
-                </div>
-
-
-                <div class="form-row">
-
-                  <div class="form-group">
-
-                    <label for="expiryDate">
-                      Expiry
-                    </label>
-
-                    <input
-                      type="text"
-                      id="expiryDate"
-                      inputmode="numeric"
-                      maxlength="5"
-                      placeholder="MM/YY"
-                      autocomplete="off"
-                    >
-
-                    <small
-                      class="field-error"
-                      id="expiryError"
-                    ></small>
-
-                  </div>
-
-
-                  <div class="form-group">
-
-                    <label for="cvv">
-                      CVV
-                    </label>
-
-                    <input
-                      type="password"
-                      id="cvv"
-                      inputmode="numeric"
-                      maxlength="4"
-                      placeholder="123"
-                      autocomplete="off"
-                    >
-
-                    <small
-                      class="field-error"
-                      id="cvvError"
-                    ></small>
-
-                  </div>
-
-                </div>
-
-
-                <div class="security-note">
-
-                  <span>◇</span>
-
-                  <p>
-                    Demo only. Card number and CVV are
-                    validated temporarily in this page
-                    and are not saved to localStorage
-                    or sessionStorage.
-                  </p>
-
-                </div>
-
-              </form>
-
-            </section>
-
-
-            <!-- WALLET -->
-
-            <section
-              class="section-card"
-              id="walletSection"
-              hidden
-            >
-
-              <div class="section-heading">
-
-                <span class="section-number">
-                  02
-                </span>
-
-                <div>
-
-                  <span class="section-kicker">
-                    DIGITAL WALLET
-                  </span>
-
-                  <h2>
-                    Demo wallet payment
-                  </h2>
-
-                </div>
-
-              </div>
-
-
-              <div class="wallet-box">
-
-                <div class="wallet-icon">
-                  ◇
-                </div>
-
-                <div>
-
-                  <h3>
-                    RAFIQ Demo Wallet
-                  </h3>
-
-                  <p>
-                    For this prototype, selecting a wallet
-                    simulates an approved digital payment.
-                  </p>
-
-                </div>
-
-              </div>
-
-            </section>
-
-          </div>
-
-
-          <!-- RIGHT SUMMARY -->
-
-          <aside class="order-summary">
-
-            <span class="summary-kicker">
-              ORDER SUMMARY
-            </span>
-
-            <h2>
-              RAFIQ Plus
-            </h2>
-
-
-            <div class="plan-row">
-
-              <div>
-
-                <strong id="planName">
-                  RAFIQ Plus
-                </strong>
-
-                <span>
-                  Monthly subscription
-                </span>
-
-              </div>
-
-              <strong id="planPrice">
-                5 JOD
-              </strong>
-
-            </div>
-
-
-            <div class="summary-divider"></div>
-
-
-            <div class="summary-row">
-
-              <span>
-                Billing cycle
-              </span>
-
-              <strong id="billingCycle">
-                Monthly
-              </strong>
-
-            </div>
-
-
-            <div class="summary-row">
-
-              <span>
-                Subscription
-              </span>
-
-              <strong>
-                RAFIQ Plus
-              </strong>
-
-            </div>
-
-
-            <div class="summary-divider"></div>
-
-
-            <div class="total-row">
-
-              <span>
-                Total
-              </span>
-
-              <strong id="totalPrice">
-                5 JOD
-              </strong>
-
-            </div>
-
-
-            <label class="terms-check">
-
-              <input
-                type="checkbox"
-                id="termsCheckbox"
-              >
-
-              <span>
-                I understand this is a demo payment
-                for the frontend prototype.
-              </span>
-
-            </label>
-
-
-            <div
-              class="payment-error"
-              id="paymentError"
-            ></div>
-
-
-            <button
-              type="button"
-              class="pay-button"
-              id="payButton"
-            >
-              Pay & Activate Plus
-            </button>
-
-
-            <p class="summary-note">
-              No real charge will be made.
-            </p>
-
-          </aside>
-
-        </div>
-
+      <section class="payment-view active" id="paymentView">
+  <ol class="checkout-steps" aria-label="Upgrade progress"><li class="complete"><span aria-hidden="true">✓</span>Choose plan</li><li class="current" aria-current="step"><span aria-hidden="true">2</span>Payment details</li><li><span aria-hidden="true">3</span>Confirmation</li></ol>
+  <div class="payment-layout">
+    <div class="checkout-form-card">
+      <div class="checkout-card-heading"><h2>Payment details</h2><span class="checkout-demo-tag">Demo checkout</span></div>
+      <p class="checkout-demo-note">Use sample details only. No real payment is processed.</p>
+      <div class="payment-methods" role="group" aria-label="Payment method">
+        <button type="button" class="method-button active" data-method="card" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h4"/></svg><strong>Card</strong></button>
+        <button type="button" class="method-button" data-method="wallet" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="3"/><path d="M3 8V5l14-3v3"/><path d="M16 11h5v5h-5z"/></svg><strong>Digital Wallet</strong></button>
+      </div>
+      <section id="cardSection" aria-label="Demo card details">
+        <div class="checkout-field-heading"><h3>Card details</h3><button type="button" id="fillDemoDetails">Use sample details</button></div>
+        <form id="paymentForm" novalidate autocomplete="off">
+          <div class="form-group"><label for="cardholderName">Cardholder Name</label><input type="text" id="cardholderName" placeholder="Name on card" autocomplete="off" aria-describedby="nameError"><small class="field-error" id="nameError"></small></div>
+          <div class="form-group"><label for="cardNumber">Card Number</label><input type="text" id="cardNumber" inputmode="numeric" maxlength="19" placeholder="4242 4242 4242 4242" autocomplete="off" dir="ltr" aria-describedby="cardError"><small class="field-error" id="cardError"></small></div>
+          <div class="form-row"><div class="form-group"><label for="expiryDate">Expiry</label><input type="text" id="expiryDate" inputmode="numeric" maxlength="5" placeholder="MM/YY" autocomplete="off" dir="ltr" aria-describedby="expiryError"><small class="field-error" id="expiryError"></small></div><div class="form-group"><label for="cvv">CVV</label><input type="password" id="cvv" inputmode="numeric" maxlength="4" placeholder="123" autocomplete="off" dir="ltr" aria-describedby="cvvError"><small class="field-error" id="cvvError"></small></div></div>
+          <p class="checkout-storage-note">Sample card details are not saved.</p><p id="demoDetailsStatus" role="status"></p>
+        </form>
       </section>
+      <section id="walletSection" hidden><div class="wallet-box"><div><h3>RAFIQ Demo Wallet</h3><p>For this prototype, selecting a wallet simulates an approved digital payment.</p></div></div></section>
+    </div>
+    <aside class="order-summary">
+      <div class="checkout-summary-title"><span class="checkout-plus-mark" aria-hidden="true">✦</span><div><span class="summary-kicker">YOUR UPGRADE</span><h2 id="planName">RAFIQ Plus</h2></div></div>
+      <div class="checkout-price"><strong id="planPrice">5 JOD</strong><span>/ month</span></div>
+      <ul class="checkout-benefits"><li>Up to 5 child profiles</li><li>30 Rafiq questions per family per day</li><li>Daily activity plus additional age-matched activities</li></ul>
+      <div class="summary-row"><span>Billing cycle</span><strong id="billingCycle">Monthly</strong></div>
+      <div class="total-row"><span>Total</span><strong id="totalPrice">5 JOD</strong></div>
+      <label class="terms-check"><input type="checkbox" id="termsCheckbox"><span>I understand this is a demo payment for the frontend prototype.</span></label>
+      <div class="payment-error" id="paymentError" role="alert"></div>
+      <button type="button" class="pay-button" id="payButton">Activate Plus · Demo payment</button>
+      <p class="summary-note">No real charge will be made.</p>
+    </aside>
+  </div>
+</section>
 
-
-      <!-- SUCCESS VIEW -->
+<!-- SUCCESS VIEW -->
 
       <section
         class="payment-view"

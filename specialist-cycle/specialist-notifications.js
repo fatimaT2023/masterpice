@@ -58,7 +58,7 @@ document.addEventListener(
 
     const topbar =
       document.querySelector(
-        ".topbar"
+        ".topbar, .messages-heading, .care-heading"
       );
 
 
@@ -856,10 +856,7 @@ document.addEventListener(
         const rightSideChildren =
           children.filter(
             element =>
-              !element.classList
-                .contains(
-                  "topbar-left"
-                )
+              (topbar.matches(".topbar") ? !element.classList.contains("topbar-left") : element.matches(".follow-up-back"))
           );
 
 
@@ -897,13 +894,10 @@ document.addEventListener(
           id="specialistNotificationBell"
           aria-label="Notifications"
           aria-expanded="false"
+          aria-controls="specialistNotificationDropdown"
         >
 
-          <span
-            class="notification-bell-icon"
-          >
-            ♢
-          </span>
+          <svg class="notification-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4M12 2V1"/></svg>
 
           <span
             class="notification-badge"
@@ -942,7 +936,7 @@ document.addEventListener(
               class="notification-mark-all"
               id="specialistMarkAllRead"
             >
-              Mark all read
+              Mark all as read
             </button>
 
           </div>
@@ -955,7 +949,7 @@ document.addEventListener(
 
 
           <div class="notification-dropdown-footer">
-            Notifications are generated from RAFIQ practice activity.
+            Your latest RAFIQ updates
           </div>
 
         </div>
@@ -1114,39 +1108,17 @@ document.addEventListener(
     // ICON
     // =====================================
 
-    function getIcon(
-      type
-    ) {
-
-      const icons = {
-
-        booking:
-          "◷",
-
-        cancelled:
-          "✕",
-
-        reminder:
-          "◷",
-
-        report:
-          "◫",
-
-        earning:
-          "◇",
-
-        approval:
-          "✓"
+    function getIcon(type) {
+      const paths={
+        booking:'<rect x="4" y="5" width="16" height="16" rx="3"/><path d="M8 3v4m8-4v4M4 11h16"/>',
+        cancelled:'<path d="m7 7 10 10M17 7 7 17"/>',
+        reminder:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+        report:'<rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 8h6m-6 4h6m-6 4h4"/>',
+        earning:'<rect x="3" y="6" width="18" height="14" rx="3"/><path d="M21 11h-5v5h5M7 6V3h11"/>',
+        approval:'<path d="m5 12 4 4L19 6"/>'
       };
-
-
-      return (
-        icons[type] ||
-        "♢"
-      );
-
+      return '<svg class="notification-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(paths[type]||paths.reminder)+'</svg>';
     }
-
 
     // =====================================
     // ESCAPE HTML
@@ -1272,9 +1244,7 @@ document.addEventListener(
         notificationList.innerHTML = `
           <div class="notification-empty">
 
-            <div class="notification-empty-icon">
-              ♢
-            </div>
+            <div class="notification-empty-icon"><svg class="notification-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4M12 2V1"/></svg></div>
 
             <strong>
               You're all caught up
@@ -1330,11 +1300,7 @@ document.addEventListener(
                   notification.type
                 )}"
               >
-                ${escapeHTML(
-                  getIcon(
-                    notification.type
-                  )
-                )}
+                ${getIcon(notification.type)}
               </div>
 
 
@@ -1350,18 +1316,11 @@ document.addEventListener(
                   ${escapeHTML(
                     notification.message
                   )}
-                </p>
-
-              </div>
-
-
-              <span class="notification-time">
-                ${escapeHTML(
+                </p><span class="notification-time">${escapeHTML(
                   formatRelativeTime(
                     notification.createdAt
                   )
-                )}
-              </span>
+                )}</span></div><span class="notification-dot" aria-hidden="true"></span>
             `;
 
 

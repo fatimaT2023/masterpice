@@ -1566,3 +1566,89 @@ button {
   }
 
 }
+/* Compact specialist dashboard; logical sizing keeps the layout usable in RTL. */
+body.specialist-cycle-video .main-content { min-inline-size: 0; }
+body.specialist-cycle-video .topbar { padding-block: 12px; gap: 12px; flex-wrap: wrap; }
+.topbar h1 { font-size: 24px; margin-block: 2px 0; }
+#dashboardDate { color: var(--ink-soft); font-size: 12px; }
+body.specialist-cycle-video .topbar-status { display: inline-flex; font-size: 12px; }
+#approvalBanner[hidden], .dashboard-greeting [hidden], .profile-completeness [hidden] { display: none !important; }
+.dashboard-greeting { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; }
+.dashboard-greeting p { margin: 0; }
+.dashboard-greeting p:first-child { font-size: 22px; font-weight: 600; }
+#heroMessage { color: var(--ink-soft); }
+body.specialist-cycle-video .metrics-grid { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
+body.specialist-cycle-video .metric-card { padding: 14px; gap: 10px; min-inline-size: 0; border-radius: 18px; }
+.metric-card > div { min-inline-size: 0; }
+.metric-card span { overflow-wrap: anywhere; }
+body.specialist-cycle-video .metric-card strong { font-size: 24px; }
+body.specialist-cycle-video .metric-icon { inline-size: 32px; block-size: 32px; flex-shrink: 0; }
+body.specialist-cycle-video .dashboard-grid { grid-template-columns: minmax(0,1.6fr) minmax(0,1fr); align-items: start; }
+.dashboard-grid > *, .schedule-info, .upcoming-item > * { min-inline-size: 0; }
+body.specialist-cycle-video .content-card { padding: 20px; }
+.card-heading h2 { font-size: 20px; }
+body.specialist-cycle-video .schedule-item { grid-template-columns: 76px minmax(0,1fr) auto; gap: 10px; padding: 14px; }
+.schedule-info h3, .upcoming-item h3 { overflow-wrap: anywhere; }
+.schedule-info p { overflow-wrap: anywhere; }
+body.specialist-cycle-video .schedule-item.next-session { padding-block: 22px; border: 1px solid var(--sage); background: var(--sage-tint); }
+.next-session .schedule-info h3 { font-size: 20px; }
+.session-action { grid-column: 2 / -1; justify-self: start; display: inline-flex; align-items: center; min-block-size: 44px; padding-inline: 14px; border: 1px solid var(--line-strong); border-radius: 12px; color: var(--sage-deep); text-decoration: none; font-weight: 600; }
+.session-action.primary-action { background: var(--sage); color: white; border-color: var(--sage); }
+.attention-row { display: flex; align-items: center; gap: 12px; padding-block: 10px; border-block-end: 1px solid var(--line); }
+.attention-row strong { color: var(--sage-deep); font-size: 22px; }
+.attention-row a { display: inline-flex; align-items: center; min-block-size: 44px; overflow-wrap: anywhere; }
+.attention-clear { color: var(--mint-ink); background: var(--mint); padding: 12px; border-radius: 12px; }
+body.specialist-cycle-video .upcoming-item { grid-template-columns: 120px minmax(0,1fr) auto auto auto; gap: 14px; padding: 12px; }
+.date-chip { padding: 8px; border-radius: 10px; background: var(--sage-tint); font-size: 12px; text-align: center; }
+body.specialist-cycle-video .view-button { display: inline-flex; align-items: center; justify-content: center; min-block-size: 44px; padding-inline: 14px; grid-column: auto; text-decoration: none; }
+.profile-completeness { display: flex; align-items: center; gap: 16px; padding-block: 14px; border-block-start: 1px solid var(--line-strong); flex-wrap: wrap; }
+.profile-completeness progress { flex: 1; min-inline-size: 80px; max-inline-size: 320px; block-size: 10px; accent-color: var(--sage); }
+.profile-completeness a, .text-link, .menu-button { min-block-size: 44px; display: inline-flex; align-items: center; }
+@media (max-width: 959px) {
+  body.specialist-cycle-video .dashboard-grid { grid-template-columns: minmax(0,1fr); }
+}
+@media (max-width: 600px) {
+  body.specialist-cycle-video .metrics-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+  body.specialist-cycle-video .metric-card { padding: 12px; }
+  body.specialist-cycle-video .content-card { padding: 14px; }
+  body.specialist-cycle-video .upcoming-item { grid-template-columns: 80px minmax(0,1fr) auto; gap: 8px; }
+  .upcoming-item .consultation-badge { grid-column: 2; }
+  body.specialist-cycle-video .upcoming-item .view-button { grid-column: 3; grid-row: 2; }
+  body.specialist-cycle-video .schedule-item { grid-template-columns: 62px minmax(0,1fr); }
+  .schedule-item .consultation-badge { grid-column: 2; }
+  .topbar-left { min-inline-size: 0; }
+  .card-heading { flex-wrap: wrap; gap: 8px; }
+}
+
+body.specialist-cycle-video .topbar { min-block-size: 64px; }
+.menu-button { min-inline-size: 44px; }
+@media (max-width: 600px) {
+  body.specialist-cycle-video .metrics-grid { grid-template-columns: minmax(0,1fr); }
+}
+
+
+/* Match the illustrated Messages and Bookings workspace headings. */
+body.specialist-dashboard-page .topbar {
+  position:static; padding-block:24px 18px; padding-inline:clamp(16px,3vw,40px);
+  gap:16px; flex-wrap:wrap; border-block-end:0; background:transparent;
+  box-shadow:none; backdrop-filter:none; -webkit-backdrop-filter:none;
+}
+.specialist-dashboard-page .topbar-left { min-inline-size:0; flex:1; gap:16px; }
+.specialist-dashboard-page .dashboard-heading-icon {
+  display:grid; place-items:center; flex-shrink:0; inline-size:54px; block-size:54px;
+  border:1px solid #ffffffd9; border-radius:18px; color:var(--sage-deep);
+  background:linear-gradient(145deg,#ffffffd9,var(--sage-tint)); box-shadow:0 6px 20px #163e3b08;
+}
+.dashboard-heading-icon svg { inline-size:34px; block-size:34px; }
+.dashboard-heading-copy { min-inline-size:0; }
+.specialist-dashboard-page #dashboardDate { display:block; font-size:12px; line-height:1.6; color:var(--ink-soft); }
+.specialist-dashboard-page .topbar h1 { margin-block:2px 4px; font-size:24px; line-height:1.25; }
+.specialist-dashboard-page .page-body { padding-block-start:14px; }
+@media(max-width:600px) {
+  .specialist-dashboard-page .topbar-left { gap:10px; }
+  .specialist-dashboard-page .topbar-status { margin-inline-start:auto; }
+}
+@media(max-width:400px) {
+  .specialist-dashboard-page .dashboard-heading-icon { inline-size:44px; block-size:44px; border-radius:15px; }
+  .specialist-dashboard-page .topbar { gap:10px; }
+}

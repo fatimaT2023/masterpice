@@ -39,15 +39,47 @@
     else link.removeAttribute('aria-current');
   });
   sidebar.querySelector('nav')?.setAttribute('aria-label','Admin navigation');
-  const settings=sidebar.querySelector('.sidebar-bottom a[href="admin-settings.html"]');
-  if(settings&&!document.getElementById('adminLanguageMount')){
-    const row=document.createElement('div');row.className='admin-language-row';
-    const label=document.createElement('span');label.textContent='Language';
-    const mount=document.createElement('div');mount.id='adminLanguageMount';
-    row.append(label,mount);settings.after(row);
-  }
+  document.body.dataset.specialistLanguageInSettings='true';
   const logout = document.getElementById('logoutButton');
   if (logout) logout.innerHTML = `<span class="nav-icon" aria-hidden="true">${svg('M9 4H3v16h6m5-13 5 5-5 5M7 12h12')}</span><span>Log out</span>`;
+  sidebar.querySelectorAll('a.nav-link,#logoutButton').forEach(link=>{
+   const label=link.textContent.trim().replace(/\s+/g,' ');link.title=label;link.setAttribute('aria-label',label);
+   [...link.childNodes].forEach(node=>{if(node.nodeType===3&&node.textContent.trim()){const span=document.createElement('span');span.className='admin-item-label';span.textContent=node.textContent.trim();node.replaceWith(span);}});
+   link.querySelectorAll(':scope > span:not(.nav-icon)').forEach(span=>span.classList.add('admin-item-label'));
+  });
+  const toggle=document.createElement('button');toggle.type='button';toggle.className='admin-collapse-toggle';toggle.setAttribute('aria-controls','sidebar');toggle.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>';
+  sidebar.querySelector('.sidebar-top')?.append(toggle);
+  function collapse(value){document.documentElement.classList.toggle('admin-sidebar-collapsed',value);toggle.setAttribute('aria-expanded',String(!value));toggle.setAttribute('aria-label',value?'Expand navigation':'Collapse navigation');toggle.title=value?'Expand navigation':'Collapse navigation';}
+  let savedCollapsed=false;
+  try{savedCollapsed=localStorage.getItem('rafiqAdminSidebarCollapsed')==='true';}catch{}
+  collapse(savedCollapsed);
+  // Hover expands the rail temporarily; only the toggle saves a preference.
+  const hoverRail=window.matchMedia('(min-width:951px) and (hover:hover) and (pointer:fine)');
+  let pointerInside=false;
+  function preview(open){
+    const expanded=open&&savedCollapsed&&hoverRail.matches;
+    document.documentElement.classList.toggle('admin-sidebar-preview',expanded);
+    collapse(savedCollapsed&&!expanded);
+  }
+  sidebar.addEventListener('pointerenter',event=>{
+    if(event.pointerType==='touch')return;
+    pointerInside=true;preview(true);
+  });
+  sidebar.addEventListener('pointerleave',()=>{
+    pointerInside=false;
+    if(document.activeElement===toggle||!sidebar.contains(document.activeElement))preview(false);
+  });
+  sidebar.addEventListener('focusin',()=>preview(true));
+  sidebar.addEventListener('focusout',event=>{
+    if(!sidebar.contains(event.relatedTarget)&&!pointerInside)preview(false);
+  });
+  hoverRail.addEventListener('change',()=>{pointerInside=false;preview(false);});
+  toggle.addEventListener('click',()=>{
+    savedCollapsed=!savedCollapsed;
+    document.documentElement.classList.remove('admin-sidebar-preview');
+    collapse(savedCollapsed);
+    try{localStorage.setItem('rafiqAdminSidebarCollapsed',String(savedCollapsed));}catch{}
+  });
   const close = document.getElementById('sidebarClose');
   if (close) {close.innerHTML = svg('m6 6 12 12M6 18 18 6');close.setAttribute('aria-label','Close navigation');}
   const menu = document.getElementById('menuButton');

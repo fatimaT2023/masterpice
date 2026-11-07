@@ -7,7 +7,14 @@ document.addEventListener('DOMContentLoaded',()=>{
  const read=key=>{const value=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(value))throw Error('Saved care information could not be read.');return value;};
  const link=(text,href)=>{const a=make('a',text);a.href=href;a.className='care-link';return a;};
  const conversation=thread=>'messages.html?thread='+encodeURIComponent(thread.id);
- function connections(){return dm.list(viewer).map(thread=>({thread,state:api.state(viewer,thread.id)})).filter(row=>row.state);}
+ function connections(){
+  const rows=[];
+  for(const thread of dm.list(viewer)){
+   try{const state=api.state(viewer,thread.id);if(state)rows.push({thread,state});}
+   catch{/* A stale or inaccessible thread must not hide other families. */}
+  }
+  return rows;
+ }
  function profile(){const p=window.RafiqSpecialistAccess.profile;for(const [id,text] of [['sidebarName',p.fullName||'Specialist'],['sidebarSpecialty',p.specialty||'Specialist'],['sidebarAvatar',(p.fullName||'S').charAt(0)]])if(get(id))get(id).textContent=text;}
  let filter=new URLSearchParams(location.search).get('tab')==='active'?'active':'pending',selected=new URLSearchParams(location.search).get('case');
  function followUps(message=''){
@@ -36,15 +43,25 @@ document.addEventListener('DOMContentLoaded',()=>{
  }
  const dashboardCard=make('section');dashboardCard.className='care-task-card';
  function dashboard(){
-  dashboardCard.replaceChildren();
+  dashboardCard.replaceChildren();dashboardCard.hidden=true;
+  const mount=get('attentionList');if(!mount)return;mount.replaceChildren();
   try{
-   const rows=connections(),pending=rows.filter(r=>r.state.status==='pending').length,active=rows.filter(r=>r.state.status==='active').length;
+   const rows=[],validThreads=[];
+   for(const thread of dm.list(viewer)){
+    try{const state=api.state(viewer,thread.id);validThreads.push(thread);if(state)rows.push({thread,state});}catch{/* Skip inaccessible threads. */}
+   }
    const reports=read('rafiqSpecialistReports').filter(r=>r.specialistId===viewer.id&&r.status==='submitted');
    const unfinished=read('rafiqBookings').filter(b=>b.specialistId===viewer.id&&b.status==='completed'&&!reports.some(r=>r.bookingId===b.id));
-   const unreviewed=rows.filter(r=>r.state.status==='active').reduce((total,row)=>{const reviews=api.reviews(viewer,row.thread.id);return total+api.records(viewer,row.thread.id).filter(record=>!reviews.some(review=>review.recordId===record.id&&review.recordFingerprint===api.fingerprint(record))).length;},0);
-   dashboardCard.append(link('Shared entries awaiting review','follow-up.html?tab=active'),make('strong',String(unreviewed)));
-   dashboardCard.append(make('h2','What needs your attention?'),link('New follow-up requests','follow-up.html'),make('strong',String(pending)),link('Children I follow','follow-up.html?tab=active'),make('strong',String(active)),link('Completed sessions awaiting a report','specialist-bookings.html'),make('strong',String(unfinished.length)),make('p','Bookings are one-time appointments. Ongoing follow-up starts only when you accept a family’s request.'));
-  }catch(error){dashboardCard.append(make('p',error.message));}
+   const pending=rows.filter(r=>r.state.status==='pending').length;
+   const unread=validThreads.reduce((sum,thread)=>sum+dm.unread(thread,viewer),0);
+   for(const [count,text,href] of [[unfinished.length,'Completed sessions awaiting a report','report-form.html'],[pending,'New follow-up requests','follow-up.html?tab=pending'],[unread,'Unread messages','messages.html']]){
+    if(!count)continue;
+    const row=make('div');row.className='attention-row';const action=link(text,href);
+    if(href==='report-form.html')action.addEventListener('click',()=>sessionStorage.setItem('rafiqSelectedSpecialistBooking',unfinished[0].id));
+    row.append(make('strong',String(count)),action);mount.append(row);
+   }
+   if(!mount.childElementCount){const line=make('p','All caught up');line.className='attention-clear';mount.append(line);}
+  }catch{mount.replaceChildren();}
  }
  const contextCard=make('section');contextCard.className='care-task-card';
  function sessionContext(){
@@ -67,7 +84,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  profile();
  let refresh=()=>{};
  if(page==='follow-up.html'){document.querySelectorAll('[data-care-filter]').forEach(b=>b.addEventListener('click',()=>{filter=b.dataset.careFilter;selected=null;followUps();}));refresh=followUps;}
- else if(page==='specialist-dashboard.html'){const header=main.querySelector('header');if(header)header.after(dashboardCard);else main.prepend(dashboardCard);refresh=dashboard;}
+ else if(page==='specialist-dashboard.html'){refresh=dashboard;}
  else if(['booking-details.html','consultation.html','report-form.html'].includes(page)){main.append(contextCard);refresh=sessionContext;}
  else if(page==='clients.html'){const heading=main.querySelector('h1');if(heading)heading.textContent='Consultation history';const note=make('p','These children have consultation records. Ongoing follow-up is managed separately.');note.className='care-history-note';note.append(link('Open ongoing follow-up','follow-up.html?tab=active'));if(heading)heading.after(note);}
  if(page==='report-form.html'&&get('reportStatus')&&typeof MutationObserver!=='undefined')new MutationObserver(()=>sessionContext()).observe(get('reportStatus'),{attributes:true,childList:true,subtree:true});

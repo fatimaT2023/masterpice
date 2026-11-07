@@ -42,7 +42,7 @@
 <link rel="stylesheet" href="specialist-care.css"></head>
 
 
-<body class="parent-cycle-video specialist-cycle-video">
+<body class="parent-cycle-video specialist-cycle-video specialist-dashboard-page">
   <div class="specialist-static-background" aria-hidden="true"></div>
 
 <div class="app-shell">
@@ -79,13 +79,17 @@
         >
           ☰
         </button>
+        <span class="dashboard-heading-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="7" y="7" width="14" height="18" rx="4"/>
+            <rect x="27" y="7" width="14" height="11" rx="4"/>
+            <rect x="7" y="31" width="14" height="10" rx="4"/>
+            <rect x="27" y="24" width="14" height="17" rx="4"/>
+          </svg>
+        </span>
+        <div class="dashboard-heading-copy">
 
-
-        <div>
-
-          <span class="page-kicker">
-            SPECIALIST PORTAL
-          </span>
+          <time id="dashboardDate"></time>
 
           <h1>
             Dashboard
@@ -160,56 +164,11 @@
            HERO
       ========================== -->
 
-      <section class="hero-card">
-
-        <div class="hero-copy">
-
-          <span class="hero-kicker">
-            WELCOME BACK
-          </span>
-
-          <h2>
-            Good to see you,
-            <span id="heroName">
-              Specialist
-            </span>
-          </h2>
-
-          <p id="heroMessage">
-            Your dashboard gives you a clear view of
-            your appointments, availability and
-            consultation activity.
-          </p>
-
-        </div>
-
-
-        <div class="hero-profile">
-
-          <div
-            class="hero-avatar"
-            id="heroAvatar"
-          >
-            DR
-          </div>
-
-
-          <span>
-            PROFESSIONAL PROFILE
-          </span>
-
-          <h3 id="heroSpecialty">
-            Specialty
-          </h3>
-
-          <p id="heroExperience">
-            0 years experience
-          </p>
-
-        </div>
-
+      <section class="dashboard-greeting">
+        <p><span>Good morning,</span> <span id="heroName" data-user-content>Specialist</span>.</p>
+        <p id="heroMessage">No sessions today</p>
+        <div hidden><span id="heroAvatar"></span><span id="heroSpecialty"></span><span id="heroExperience"></span></div>
       </section>
-
 
       <!-- =========================
            METRICS
@@ -368,134 +327,9 @@
         </div>
 
 
-        <!-- QUICK ACTIONS -->
-
-        <aside class="content-card quick-card">
-
-          <div class="card-heading">
-
-            <div>
-
-              <span class="section-kicker">
-                QUICK ACTIONS
-              </span>
-
-              <h2>
-                Manage your practice
-              </h2>
-
-            </div>
-
-          </div>
-
-
-          <div class="quick-actions">
-
-            <a
-              href="availability.html"
-              class="quick-action practice-link"
-            >
-              <div class="quick-icon mint">
-                ◫
-              </div>
-
-              <div>
-
-                <strong>
-                  Set Availability
-                </strong>
-
-                <span>
-                  Manage your available days and times
-                </span>
-
-              </div>
-
-              <b>
-                →
-              </b>
-            </a>
-
-
-            <a
-              href="specialist-bookings.html"
-              class="quick-action practice-link"
-            >
-              <div class="quick-icon sky">
-                ◷
-              </div>
-
-              <div>
-
-                <strong>
-                  Review Bookings
-                </strong>
-
-                <span>
-                  See upcoming parent appointments
-                </span>
-
-              </div>
-
-              <b>
-                →
-              </b>
-            </a>
-
-
-            <a
-              href="earnings.html"
-              class="quick-action practice-link"
-            >
-              <div class="quick-icon sun">
-                ◇
-              </div>
-
-              <div>
-
-                <strong>
-                  View Earnings
-                </strong>
-
-                <span>
-                  Review completed consultation earnings
-                </span>
-
-              </div>
-
-              <b>
-                →
-              </b>
-            </a>
-
-
-            <a
-              href="specialist-settings.html"
-              class="quick-action"
-            >
-              <div class="quick-icon lavender">
-                ⚙
-              </div>
-
-              <div>
-
-                <strong>
-                  Edit Profile
-                </strong>
-
-                <span>
-                  Update professional information
-                </span>
-
-              </div>
-
-              <b>
-                →
-              </b>
-            </a>
-
-          </div>
-
+        <aside class="content-card attention-card">
+          <div class="card-heading"><h2>Needs your attention</h2></div>
+          <div id="attentionList" aria-live="polite"></div>
         </aside>
 
       </section>
@@ -516,7 +350,7 @@
             </span>
 
             <h2>
-              Upcoming bookings
+              Upcoming
             </h2>
 
           </div>
@@ -565,91 +399,11 @@
            PROFILE SUMMARY
       ========================== -->
 
-      <section class="profile-summary">
-
-        <div>
-
-          <span class="section-kicker">
-            YOUR RAFIQ PROFILE
-          </span>
-
-          <h2>
-            Professional profile
-          </h2>
-
-          <p>
-            These details will be used across your
-            specialist workspace and, after approval,
-            in the parent specialist directory.
-          </p>
-
-        </div>
-
-
-        <div class="profile-details">
-
-          <div>
-
-            <span>
-              Specialty
-            </span>
-
-            <strong id="profileSpecialty">
-              —
-            </strong>
-
-          </div>
-
-
-          <div>
-
-            <span>
-              Consultation
-            </span>
-
-            <strong id="profileConsultation">
-              —
-            </strong>
-
-          </div>
-
-
-          <div>
-
-            <span>
-              Languages
-            </span>
-
-            <strong id="profileLanguages">
-              —
-            </strong>
-
-          </div>
-
-
-          <div>
-
-            <span>
-              Session Fee
-            </span>
-
-            <strong id="profileFee">
-              —
-            </strong>
-
-          </div>
-
-        </div>
-
-
-        <a
-          href="specialist-settings.html"
-          class="edit-profile-button"
-        >
-          Edit Professional Profile
-          <span>→</span>
-        </a>
-
+      <section class="profile-completeness">
+        <span id="profileCompletenessText">Profile completeness 0%</span>
+        <progress id="profileCompleteness" max="100" value="0" aria-labelledby="profileCompletenessText"></progress>
+        <a href="profile.html" class="text-link">Edit profile</a>
+        <div hidden><span id="profileSpecialty"></span><span id="profileConsultation"></span><span id="profileLanguages"></span><span id="profileFee"></span></div>
       </section>
 
     </div>
@@ -675,6 +429,7 @@
 </div>
 
 
+<script src="../shared/meeting-room.js"></script>
 <script src="specialist-dashboard.js"></script>
 <script src="specialist-notifications.js"></script>
 <script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="specialist-care-ar.js" defer></script><script src="../shared/site-language.js" defer></script>

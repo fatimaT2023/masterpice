@@ -40,9 +40,9 @@
 <link rel="stylesheet" href="parent-background.css">
 <link rel="stylesheet" href="parent-layout.css">
 <link rel="stylesheet" href="../shared/site-language.css">
-<script src="../shared/membership.js"></script><link rel="stylesheet" href="../shared/membership.css"><script src="child-appearance.js"></script><link rel="stylesheet" href="parent-journey.css"><script src="parent-journey.js" defer></script><link rel="stylesheet" href="screening-flow.css"></head>
+<script src="../shared/membership.js"></script><link rel="stylesheet" href="../shared/membership.css"><script src="child-appearance.js"></script><link rel="stylesheet" href="parent-journey.css"><script src="parent-journey.js" defer></script><link rel="stylesheet" href="screening-flow.css"><link rel="stylesheet" href="ai-chat-refined.css"></head>
 
-<body class="parent-cycle-video">
+<body class="parent-cycle-video ai-chat-page">
   <div class="parent-static-background" aria-hidden="true"></div>
 
 
@@ -93,7 +93,7 @@
             </span> -->
 
             <h1>
-              Parent Assistant
+              Ask Rafiq
             </h1>
 
           </div>
@@ -102,7 +102,7 @@
 
 
 
-      </header>
+        <div id="chatUsage" aria-live="polite"></div></header>
 
 
       <!-- =================================
@@ -217,7 +217,7 @@
             Clear conversation
           </button>
 
-        </aside>
+          <details class="chat-privacy"><summary>About this chat</summary><p>Your AI conversation is private to your account. Only messages you save to the shared child record are visible to other caregivers. AI usage is shared by the family plan.</p></details></aside>
 
 
         <!-- CHAT CARD -->
@@ -242,7 +242,7 @@
                 </strong>
 
                 <span>
-                  Parenting & child development support
+                  Educational preview · Parenting support
                 </span>
 
               </div>
@@ -277,7 +277,7 @@
 
           <div
             class="messages"
-            id="messages"
+            id="messages" role="log" aria-label="Conversation"
             aria-live="polite"
           ></div>
 
@@ -314,7 +314,7 @@
               <div class="composer-wrapper">
 
                 <textarea
-                  id="messageInput"
+                  id="messageInput" aria-label="Message Rafiq"
                   rows="1"
                   maxlength="500"
                   placeholder="Ask Rafiq about your child..."
@@ -430,7 +430,7 @@
   </div>
 
 
-  <script src="ai-assistant.js"></script><script>document.addEventListener("DOMContentLoaded",()=>{const p=document.createElement("p");p.className="membership-access-note";p.textContent="Your AI conversation is private to your account. Only messages you save to the shared child record are visible to other caregivers. AI usage is shared by the family plan.";(document.querySelector("main")||document.body).prepend(p);});</script>
+  <script src="ai-assistant.js"></script>
 <script src="notifications.js"></script>
 <script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="parent-journey-ar.js" defer></script><script src="../shared/site-language.js" defer></script>
 <script src="../shared/membership-ui.js"></script></body>

@@ -34,8 +34,11 @@
   <link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
   <link rel="stylesheet" href="admin-cycle-glass.css">
   <link rel="stylesheet" href="admin-sidebar.css">
-<link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
-<link rel="stylesheet" href="users-management.css"><link rel="stylesheet" href="../shared/support-portal.css"><link rel="stylesheet" href="../shared/site-language.css">
+  <link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
+  <link rel="stylesheet" href="users-management.css">
+  <link rel="stylesheet" href="../shared/support-portal.css">
+  <link rel="stylesheet" href="support-requests-refined.css">
+  <link rel="stylesheet" href="../shared/site-language.css">
 </head>
 
 
@@ -194,7 +197,7 @@
 
       <a
         href="bookings-management.html"
-        class="nav-link active"
+        class="nav-link"
       >
         <span class="nav-icon">▦</span>
         <span>Bookings</span>
@@ -209,11 +212,19 @@
         <span>Billing & Subscriptions</span>
       </a>
 
+      <a
+        href="support-requests.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">🎧</span>
+        <span>Support Requests</span>
+      </a>
+
     </nav>
 
 
     <div class="sidebar-bottom">
-<a href="appearance.html" class="nav-link"><span class="nav-icon" aria-hidden="true"></span><span>Appearance</span></a>
+      <a href="appearance.html" class="nav-link"><span class="nav-icon" aria-hidden="true"></span><span>Appearance</span></a>
 
       <a
         href="admin-settings.html"
@@ -248,23 +259,186 @@
        MAIN
   ====================================== -->
 
-<main class="main-content">
-  <header class="topbar">
-    <div class="topbar-left">
-      <button type="button" id="menuButton" class="menu-button" aria-label="Open navigation">&#9776;</button>
-      <div>
-        <!-- <span class="page-kicker">USER SUPPORT</span>  -->
-        <h1>Support Requests</h1>
-      </div></div>
+  <main class="main-content">
+
+    <header class="topbar">
+      <div class="topbar-left">
+        <button type="button" id="menuButton" class="menu-button" aria-label="Open navigation">&#9776;</button>
+        <span class="support-heading-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 24a16 16 0 1 1 32 0v8a4 4 0 0 1-4 4h-4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h6a14 14 0 1 0-28 0h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-4a4 4 0 0 1-4-4v-8z"/>
+          </svg>
+        </span>
+        <div class="support-heading-copy">
+          <span class="page-kicker">USER SUPPORT</span>
+          <h1>Support Requests</h1>
+        </div>
+      </div>
+
+      <div class="operations-pill">
+        <span></span>
+        Platform Inquiries
+      </div>
     </header>
+
     <div class="page-body">
-      <p>Review requests from parents and specialists, reply and track their resolution.</p>
+
+      <!-- =====================================
+           HERO
+      ====================================== -->
+      <section class="support-hero">
+        <div class="support-hero-copy">
+          <span class="hero-kicker">TICKET RESOLUTION</span>
+          <h2>
+            Manage inquiries & assistance
+            <span>across the platform.</span>
+          </h2>
+          <p>
+            Review requests from parents and specialists, reply directly to resolve inquiries, and manage resolution statuses.
+          </p>
+        </div>
+        <div class="support-hero-stat">
+          <span>PENDING RESOLUTION</span>
+          <strong id="heroOpenCount">0</strong>
+          <small id="heroOpenText">Tickets requiring attention</small>
+        </div>
+      </section>
+
+      <!-- =====================================
+           METRICS
+      ====================================== -->
+      <section class="metrics-grid">
+        <article class="metric-card">
+          <div class="metric-icon mint">✉</div>
+          <div>
+            <span>Total Requests</span>
+            <strong id="metricTotal">0</strong>
+            <small>All logged inquiries</small>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-icon peach">⚡</div>
+          <div>
+            <span>New Requests</span>
+            <strong id="metricNew">0</strong>
+            <small>Awaiting response</small>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-icon sky">⏳</div>
+          <div>
+            <span>In Progress</span>
+            <strong id="metricInProgress">0</strong>
+            <small>Being investigated</small>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-icon sun">✓</div>
+          <div>
+            <span>Resolved</span>
+            <strong id="metricResolved">0</strong>
+            <small>Closed inquiries</small>
+          </div>
+        </article>
+      </section>
+
+      <!-- =====================================
+           SUPPORT INBOX PANEL
+      ====================================== -->
       <section id="supportPortal" data-admin="true" class="support-panel">
         <p id="supportNotice" class="support-notice"></p>
-        <p id="supportFeedback" role="status" aria-live="polite"></p>
-        <h2>All requests</h2>
-        <div class="support-toolbar">
-          <input type="search" id="supportSearch" aria-label="Search requests" placeholder="Search requests"><select id="supportFilter" aria-label="Filter by status"><option value="">All statuses</option><option value="new">New</option><option value="in_progress">In progress</option><option value="resolved">Resolved</option></select><button type="button" id="supportRefresh">Refresh</button></div><p id="supportCount" role="status"></p><div class="support-layout"><div id="supportList"></div><section id="supportDetail" hidden aria-labelledby="ticketTitle"><h3 id="ticketTitle"></h3><p id="ticketMeta"></p><p id="ticketReference"></p><div class="support-toolbar"><label for="ticketStatus">Request status</label><select id="ticketStatus"><option value="new">New</option><option value="in_progress">In progress</option><option value="resolved">Resolved</option></select><button type="button" id="saveTicketStatus">Update status</button></div><div id="supportMessages"></div><form id="supportReply" class="support-form"><label for="replyBody">Reply<textarea id="replyBody" rows="3" maxlength="4000" required></textarea></label><button type="submit">Send reply</button></form></section></div></section></div></main></div><script src="admin-sidebar.js"></script><script src="../shared/support-config.js"></script><script src="../shared/support-api.js"></script>
-          <script src="../shared/support-portal.js"></script>
-        <script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="../shared/site-language.js" defer></script>
-</body></html>
+        <p id="supportFeedback" class="support-feedback" role="status" aria-live="polite"></p>
+
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">INBOX MANAGEMENT</span>
+            <h2>All Requests</h2>
+            <p>Filter, search, inspect conversations, and update statuses.</p>
+          </div>
+          <p id="supportCount" class="support-count-badge" role="status"></p>
+        </div>
+
+        <div class="support-toolbar-modern">
+          <div class="support-search-wrapper">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input type="search" id="supportSearch" aria-label="Search requests" placeholder="Search by subject, requester, email, or ticket ID...">
+          </div>
+          <div class="support-filter-group">
+            <select id="supportFilter" aria-label="Filter by status">
+              <option value="">All statuses</option>
+              <option value="new">New</option>
+              <option value="in_progress">In progress</option>
+              <option value="resolved">Resolved</option>
+            </select>
+            <button type="button" id="supportRefresh" class="support-refresh-btn">
+              <span class="refresh-icon" aria-hidden="true">↻</span>
+              <span>Refresh</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="support-layout">
+          <div id="supportList"></div>
+
+          <div class="ticket-detail-wrapper">
+            <div id="supportDetailEmpty" class="support-detail-empty" hidden>
+              <div class="empty-icon" aria-hidden="true">💬</div>
+              <h3>Select a Support Request</h3>
+              <p>Choose an inquiry from the list on the left to review the requester information, full message history, and send a reply.</p>
+            </div>
+
+            <section id="supportDetail" class="ticket-detail-panel" hidden aria-labelledby="ticketTitle">
+              <div class="ticket-detail-header">
+                <div class="ticket-header-title-row">
+                  <h3 id="ticketTitle"></h3>
+                  <span id="ticketReference"></span>
+                </div>
+                <div id="ticketMeta"></div>
+              </div>
+
+              <div class="ticket-status-bar">
+                <div class="ticket-status-controls">
+                  <label for="ticketStatus">Request status</label>
+                  <select id="ticketStatus">
+                    <option value="new">New</option>
+                    <option value="in_progress">In progress</option>
+                    <option value="resolved">Resolved</option>
+                  </select>
+                </div>
+                <button type="button" id="saveTicketStatus">Update status</button>
+              </div>
+
+              <div id="supportMessages"></div>
+
+              <form id="supportReply" class="support-form">
+                <label for="replyBody">
+                  <span>Reply to Requester</span>
+                  <textarea id="replyBody" rows="4" maxlength="4000" placeholder="Type your response to the user here..." required></textarea>
+                </label>
+                <div class="support-reply-actions">
+                  <button type="submit" class="support-reply-btn">
+                    <span>Send reply</span>
+                    <span aria-hidden="true">↗</span>
+                  </button>
+                </div>
+              </form>
+            </section>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+</div>
+
+<script src="admin-sidebar.js"></script>
+<script src="../shared/support-config.js"></script>
+<script src="../shared/support-api.js"></script>
+<script src="../shared/support-portal.js"></script>
+<script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script>
+<script src="../shared/site-ar.js" defer></script>
+<script src="../shared/site-identity.js" defer></script>
+<script src="../shared/site-language.js" defer></script>
+</body>
+</html>

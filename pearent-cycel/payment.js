@@ -292,7 +292,7 @@ document.addEventListener(
     const existingFamily=window.RafiqMembership.state(new Date(),selectedPlan.familyId);
     if(existingFamily.active||!existingFamily.canManage){showView(missingPlanView);const notice=document.createElement('p');notice.textContent=existingFamily.active?'Your family already has an active subscription. No second payment is needed.':'Only the billing manager can purchase or change the family plan.';const back=document.createElement('a');back.href='subscription.html?family='+encodeURIComponent(selectedPlan.familyId);back.textContent='View family subscription';missingPlanView.replaceChildren(notice,back);return;}
     document.querySelectorAll('a[href="subscription.html"]').forEach(link=>link.href='subscription.html?family='+encodeURIComponent(selectedPlan.familyId));
-    const familyLabel=document.createElement('p');familyLabel.textContent='Family workspace: '+(window.RafiqFamily.user(window.RafiqFamily.family(selectedPlan.familyId).ownerId)?.fullName||'My family');planName.before(familyLabel);
+    const familyLabel=document.createElement('p');familyLabel.className='checkout-family';familyLabel.dataset.userContent='';familyLabel.textContent=window.RafiqFamily.user(window.RafiqFamily.family(selectedPlan.familyId).ownerId)?.fullName||'My family';planName.after(familyLabel);
     planName.textContent =
       selectedPlan.name;
 
@@ -318,6 +318,13 @@ document.addEventListener(
     let selectedMethod =
       "card";
 
+    document.getElementById('fillDemoDetails')?.addEventListener('click',()=>{
+      cardholderName.value='Rafiq Demo';cardNumber.value='4242 4242 4242 4242';
+      expiryDate.value='12/'+String(new Date().getFullYear()+2).slice(-2);cvv.value='123';
+      clearErrors();document.getElementById('demoDetailsStatus').textContent='Sample details added. Review your order to continue.';
+    });
+    document.getElementById('paymentForm').addEventListener('submit',event=>{event.preventDefault();payButton.click();});
+
 
     methodButtons.forEach(
       button => {
@@ -336,6 +343,7 @@ document.addEventListener(
                 item.classList.remove(
                   "active"
                 );
+                item.setAttribute('aria-pressed','false');
 
               }
             );
@@ -344,6 +352,7 @@ document.addEventListener(
             button.classList.add(
               "active"
             );
+            button.setAttribute('aria-pressed','true');
 
 
             if (

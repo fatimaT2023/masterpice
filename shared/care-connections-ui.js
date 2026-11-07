@@ -7,8 +7,13 @@ document.addEventListener('DOMContentLoaded',()=>{
   try{
    const state=api.state(viewer,threadId),parent=viewer.role==='parent',active=state?.status==='active',pending=state?.status==='pending';
    const title=make('h3','Optional ongoing follow-up'),copy=make('p','A conversation or appointment does not automatically share the child’s journal. Ongoing follow-up needs a parent request and specialist acceptance.');
+   copy.className='care-connection-intro';
    const status=make('p',({pending:'Follow-up request awaiting specialist acceptance.',active:'Ongoing follow-up accepted.',declined:'The specialist declined this request. You can continue with a one-time consultation.',revoked:'Ongoing sharing is stopped. Previously sent messages remain in the conversation.'})[state?.status]||'No ongoing follow-up. You can use Rafiq and have a one-time consultation without a regular doctor.');
    const notice=make('p',message);notice.setAttribute('role','status');mount.append(title,copy,status);
+   const settings=make('details');
+   settings.className='care-connection-settings';
+   settings.open=pending||active;
+   settings.append(make('summary',active?'Manage ongoing sharing':'Set up ongoing follow-up'));
    function button(text,handler){const b=make('button',text);b.type='button';b.addEventListener('click',()=>{try{handler();}catch(error){notice.textContent=error.message;}});return b;}
    if(parent){
     const form=make('form'),legend=make('strong','Choose ongoing sharing (optional)'),explain=make('p','Sharing starts only after specialist acceptance. Choose whether earlier entries are included. Photos, health records and reports are not included. You can stop sharing at any time.'),choices=[];
@@ -18,7 +23,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     const existingLabel=make('label'),existingInput=make('input');existingInput.type='checkbox';existingInput.checked=!!state?.previousRelationshipSince;existingInput.disabled=pending;existingLabel.append(existingInput,make('span','This specialist followed my child before joining RAFIQ'));
     const sinceLabel=make('label','Follow-up started on (reported by the family)'),since=make('input');since.type='date';since.value=state?.previousRelationshipSince||'';since.max=new Date().toLocaleDateString('en-CA');since.disabled=pending;since.required=existingInput.checked;sinceLabel.hidden=!existingInput.checked;sinceLabel.append(since);existingInput.onchange=()=>{sinceLabel.hidden=!existingInput.checked;since.required=existingInput.checked;};const guideLabel=make('label'),guideInput=make('input');guideInput.type='checkbox';guideInput.checked=state?.allowActivityGuidance===true;guideInput.disabled=pending;guideLabel.append(guideInput,make('span','Allow this specialist to guide activity suggestions and view reported activity readiness'));form.append(historyLabel,existingLabel,sinceLabel,guideLabel);
     if(!pending){const submit=make('button',active?'Save sharing permissions':'Request ongoing follow-up');submit.type='submit';form.append(submit);form.addEventListener('submit',event=>{event.preventDefault();if(!form.reportValidity())return;try{api.change(viewer,threadId,active?'sharing':'request',choices.filter(c=>c.checked).map(c=>c.value),{allowActivityGuidance:guideInput.checked,includeEarlierRecords:historyInput.checked,previousRelationshipSince:existingInput.checked?since.value:null});draw('Your choice is saved.');}catch(error){notice.textContent=error.message;}});}
-    mount.append(form);
+    settings.append(form);
+    mount.append(settings);
     if(pending||active)mount.append(button(pending?'Cancel follow-up request':'Stop ongoing sharing',()=>{api.change(viewer,threadId,'revoke');draw('Ongoing access is stopped. Previously sent messages remain available.');}));
     const details=make('details'),summary=make('summary','Share selected notes for this consultation'),shareForm=make('form'),help=make('p','Only the entries you select are sent as a message. This does not give access to future entries. Sent copies remain in this conversation.'),inputs=[];
     details.append(summary,help);const records=api.records(viewer,threadId);

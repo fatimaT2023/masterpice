@@ -4037,7 +4037,7 @@ Object.assign(window.RafiqHomeArabic, {
  'No action needed':'?? ????? ?????'
 });
 window.RafiqArabicTemplates.push({en:'{0} session records need action.',ar:'{0} ?? ????? ??????? ????? ?????.'});
-Object.assign(window.RafiqHomeArabic, {'From date':'?? ?????','To date':'??? ?????'});
+Object.assign(window.RafiqHomeArabic, {'From date':'من تاريخ','To date':'إلى تاريخ','Custom date range':'فترة مخصصة'});
 Object.assign(window.RafiqHomeArabic, {
  'Parent subscriptions':'???????? ?????',
  'Subscription payment history':'??? ????? ??????????'
@@ -4414,3 +4414,147 @@ Object.assign(window.RafiqHomeArabic,{"14 days":"14 أيام"});
 Object.assign(window.RafiqHomeArabic,{"30 days":"30 أيام"});
 
 Object.assign(window.RafiqHomeArabic,{"14 days":"١٤ يومًا","30 days":"٣٠ يومًا"});
+
+/* Compact subscription workspace. */
+Object.assign(window.RafiqHomeArabic, {
+  "Subscription status": "حالة الاشتراك",
+  "Current plan": "الباقة الحالية",
+  "AI messages remaining today": "رسائل رفيق المتبقية اليوم",
+  "Renewal": "التجديد",
+  "Paid period ends": "تنتهي الفترة المدفوعة",
+  "No renewal - Free plan": "لا يوجد تجديد - الباقة المجانية",
+  "Plus benefits active": "مزايا بلس فعالة",
+  "Free benefits active": "المزايا المجانية فعالة",
+  "Essential support for everyday parenting.": "دعم أساسي لرحلتك اليومية مع طفلك.",
+  "More room for your family to grow.": "مساحة أوسع لعائلتك لتكبر مع رفيق.",
+  "Find, message and book specialists": "البحث عن المختصين ومراسلتهم وحجز الجلسات",
+  "Compare all features": "قارن جميع المزايا",
+  "Plan comparison": "مقارنة الباقات",
+  "Billing & family": "الفوترة والعائلة",
+  "Billing responsibility accepted.": "تم قبول مسؤولية الفوترة.",
+  "Billing responsibility declined.": "تم رفض مسؤولية الفوترة.",
+  "Billing in this preview is simulated - no real payment is processed.": "الفوترة في هذه النسخة تجريبية - لا يتم تنفيذ أي دفع فعلي.",
+  "Yes. The Free plan includes the core parenting and development tools.": "نعم. تشمل الباقة المجانية أدوات التربية ومتابعة النمو الأساسية.",
+  "No. Specialist consultation fees are separate from the RAFIQ subscription.": "لا. رسوم جلسات المختصين منفصلة عن اشتراك رفيق.",
+  "No. Payment is simulated in the frontend prototype. A production version would use a secure payment provider.": "لا. الدفع محاكاة في هذه النسخة التجريبية. ستستخدم النسخة الفعلية مزود دفع آمنًا."
+});
+Object.assign(window.RafiqHomeArabic, {
+  "Complete your upgrade": "أكمل الترقية",
+  "One family plan. More room to grow together.": "باقة واحدة للعائلة. مساحة أكبر لتنموا معًا.",
+  "Upgrade progress": "خطوات الترقية",
+  "Choose plan": "اختيار الباقة",
+  "Payment details": "تفاصيل الدفع",
+  "Confirmation": "التأكيد",
+  "Demo checkout": "دفع تجريبي",
+  "Use sample details only. No real payment is processed.": "استخدم بيانات تجريبية فقط. لا يتم تنفيذ أي دفع فعلي.",
+  "Payment method": "طريقة الدفع",
+  "Demo card details": "بيانات البطاقة التجريبية",
+  "Card details": "بيانات البطاقة",
+  "Use sample details": "استخدم بيانات تجريبية",
+  "Sample card details are not saved.": "لا تُحفظ بيانات البطاقة التجريبية.",
+  "Sample details added. Review your order to continue.": "أُضيفت البيانات التجريبية. راجع طلبك للمتابعة.",
+  "YOUR UPGRADE": "ترقية باقتك",
+  "Activate Plus · Demo payment": "تفعيل بلس · دفع تجريبي"
+});
+Object.assign(window.RafiqHomeArabic, {
+ "Change photo":"تغيير الصورة",
+ "Choose a photo":"اختر صورة",
+ "Only you and the caregivers you invite can see this photo.":"يمكنك أنت وأولياء الأمر الذين تدعوهم فقط رؤية هذه الصورة.",
+ "Upload":"رفع صورة", "Take photo":"التقاط صورة", "Zoom":"تكبير",
+ "Photo crop: drag or use arrow keys to reposition":"قص الصورة: اسحب أو استخدم أسهم لوحة المفاتيح لتغيير الموضع",
+ "Or choose an avatar":"أو اختر شخصية", "Background color":"لون الخلفية",
+ "Remove":"إزالة", "Cancel":"إلغاء", "Save":"حفظ",
+ "Please choose an image.":"يرجى اختيار ملف صورة.",
+ "Please choose a photo under 8 MB.":"يرجى اختيار صورة حجمها أقل من 8 ميغابايت.",
+ "This image could not be opened. Please choose another.":"تعذر فتح هذه الصورة. يرجى اختيار صورة أخرى.",
+ "Photo will be removed when you save.":"ستُزال الصورة عند الحفظ.",
+ "We could not save this photo. Please try again.":"تعذر حفظ الصورة. حاول مرة أخرى.",
+ "This child profile could not be found.":"تعذر العثور على ملف الطفل.",
+ "Camera unavailable. You can upload a photo instead.":"الكاميرا غير متاحة. يمكنك رفع صورة بدلًا من ذلك.",
+ "Open records":"فتح السجلات", "Following specialists":"المختصون المتابعون",
+ "No following specialists yet.":"لا يوجد مختصون متابعون بعد.", "Caregivers":"أولياء الأمر",
+ "Add first measurement":"إضافة أول قياس",
+ "bear":"دب", "bunny":"أرنب", "cat":"قطة", "fox":"ثعلب", "star":"نجمة", "moon":"قمر",
+ "Pink":"زهري", "Blue":"أزرق", "Mint":"نعناعي", "Peach":"خوخي", "Lavender":"بنفسجي", "Yellow":"أصفر"
+});
+Object.assign(window.RafiqHomeArabic, {
+ "About this chat":"عن هذه المحادثة",
+ "Educational preview · Parenting support":"نسخة تعليمية تجريبية · دعم الوالدين",
+ "Message Rafiq":"رسالتك لرفيق",
+ "Conversation":"المحادثة"
+});
+Object.assign(window.RafiqHomeArabic, {"Before you book":"قبل الحجز"});
+
+Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{
+  "Are you sure you want to log out?":"هل أنت متأكد من تسجيل الخروج؟",
+  "You can sign in again whenever you need.":"يمكنك تسجيل الدخول مجددًا في أي وقت.",
+  "Cancel":"إلغاء",
+  "Log out":"تسجيل الخروج"
+});
+
+Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{
+  "Getting started": "البداية",
+  "Child profiles": "ملفات الأطفال",
+  "Bookings & sessions": "الحجوزات والجلسات",
+  "Reports & follow-up": "التقارير والمتابعة",
+  "Subscription & payments": "الاشتراك والمدفوعات",
+  "Privacy & safety": "الخصوصية والأمان",
+  "Registration & approval": "التسجيل والموافقة",
+  "Availability & schedule": "التوفر والجدول",
+  "Sessions & reports": "الجلسات والتقارير",
+  "Earnings & payouts": "الأرباح والمستحقات",
+  "Messages & follow-up": "الرسائل والمتابعة",
+  "Account": "الحساب",
+  "When can parents book me?": "متى يمكن للأهل الحجز معي؟",
+  "Your specialist profile must be approved before parents can book appointments with you.": "يجب الموافقة على ملفك كمختص قبل أن يتمكن الأهل من حجز المواعيد معك.",
+  "What does needs changes mean?": "ماذا تعني بحاجة إلى تعديلات؟",
+  "Review the feedback, edit your professional information and resubmit your profile for review.": "راجع الملاحظات وعدّل معلوماتك المهنية ثم أعد إرسال ملفك للمراجعة.",
+  "How do I set my working hours?": "كيف أحدد ساعات عملي؟",
+  "Open Availability, enable your working days, choose the hours and session duration, then save your availability.": "افتح التوفر وفعّل أيام العمل وحدد الساعات ومدة الجلسة ثم احفظ إعدادات التوفر.",
+  "Where can I see my schedule?": "أين أجد جدول مواعيدي؟",
+  "Open Schedule to select a day and review booked appointments. Availability controls which times can be offered for future bookings.": "افتح الجدول لاختيار يوم ومراجعة المواعيد المحجوزة. تحدد إعدادات التوفر الأوقات التي يمكن عرضها للحجوزات القادمة.",
+  "When can I join an online session?": "متى يمكنني الانضمام إلى جلسة عبر الإنترنت؟",
+  "The Jitsi room opens 15 minutes before the appointment. Open your booking and join when the meeting window is available.": "تفتح غرفة جيتسي قبل الموعد بـ15 دقيقة. افتح الحجز وانضم عندما تكون نافذة الاجتماع متاحة.",
+  "How do I finish a session and share its report?": "كيف أنهي الجلسة وأشارك تقريرها؟",
+  "End the session yourself, then complete and send the report. Parents can see the report only after you send it; drafts stay private.": "أنه الجلسة بنفسك ثم أكمل التقرير وأرسله. يرى الأهل التقرير بعد إرساله فقط، وتبقى المسودات خاصة.",
+  "How are session earnings calculated?": "كيف تُحسب أرباح الجلسات؟",
+  "Platform commission is deducted per paid session. Review Earnings for the recorded session amounts and completed consultation history.": "تُخصم عمولة المنصة عن كل جلسة مدفوعة. راجع الأرباح للاطلاع على المبالغ المسجلة وسجل الاستشارات المكتملة.",
+  "Are payouts connected in this preview?": "هل تحويل المستحقات متصل في هذه النسخة؟",
+  "Payment and payout records are a local preview. Orange Money and live specialist payouts are not connected.": "سجلات الدفع والمستحقات معاينة محلية. أورنج موني والتحويلات الفعلية للمختصين غير متصلة.",
+  "How does ongoing follow-up work?": "كيف تعمل المتابعة المستمرة؟",
+  "Parents can share growth notes and activity results. You can accept or decline their request, and parents can stop sharing anytime. A booking alone does not grant journal access.": "يمكن للأهل مشاركة ملاحظات النمو ونتائج الأنشطة. يمكنك قبول الطلب أو رفضه، ويستطيع الأهل إيقاف المشاركة في أي وقت. الحجز وحده لا يمنح الوصول إلى السجل.",
+  "Where do I reply to a family?": "أين أرد على الأسرة؟",
+  "Open Messages, select the family conversation and send your reply. Shared notes do not promise continuous monitoring or an instant response.": "افتح الرسائل واختر محادثة الأسرة وأرسل ردك. مشاركة الملاحظات لا تعني مراقبة مستمرة أو رداً فورياً.",
+  "Where do I update my account preferences?": "أين أعدل تفضيلات حسابي؟",
+  "Open Settings to manage contact information, language, notifications and security. Use your profile to review professional information.": "افتح الإعدادات لإدارة معلومات الاتصال واللغة والإشعارات والأمان. استخدم ملفك لمراجعة المعلومات المهنية.",
+  "What if I cannot sign in?": "ماذا أفعل إذا تعذر تسجيل الدخول؟",
+  "Use Forgot password on the login page or contact support. Never share your password or verification codes.": "استخدم نسيت كلمة المرور في صفحة الدخول أو تواصل مع الدعم. لا تشارك كلمة مرورك أو رموز التحقق.",
+  "When can I read a specialist report?": "متى أستطيع قراءة تقرير المختص؟",
+  "Open the appointment to read the report after the specialist sends it. A draft is not visible to parents.": "افتح الموعد لقراءة التقرير بعد أن يرسله المختص. لا تظهر المسودات للأهل.",
+  "Where do I manage my subscription and payments?": "أين أدير اشتراكي ومدفوعاتي؟",
+  "Open My plan & payments from your account menu to review your plan and payment records.": "افتح خطتي والمدفوعات من قائمة حسابك لمراجعة خطتك وسجلات الدفع.",
+  "Who can see shared growth notes and activity results?": "من يمكنه رؤية ملاحظات النمو ونتائج الأنشطة المشتركة؟",
+  "Ongoing sharing starts after a specialist accepts your request. You choose what to share and can stop sharing anytime. Never send passwords or verification codes.": "تبدأ المشاركة المستمرة بعد قبول المختص لطلبك. تختار ما تشاركه ويمكنك إيقاف المشاركة في أي وقت. لا ترسل كلمات المرور أو رموز التحقق.",
+  "Parent Help Center": "مركز مساعدة الأهل",
+  "Specialist Help Center": "مركز مساعدة المختصين",
+  "Parent": "ولي أمر",
+  "Specialist": "مختص",
+  "Popular": "الأكثر شيوعاً",
+  "Back to dashboard": "العودة إلى لوحة التحكم",
+  "Still need help?": "هل ما زلت بحاجة للمساعدة؟",
+  "Contact support": "تواصل مع الدعم",
+  "Close support": "إغلاق الدعم",
+  "You're sending this as a guest. Use an email we can reach you on.": "ترسل هذا الطلب كزائر. استخدم بريداً إلكترونياً يمكننا التواصل معك عبره.",
+  "Open WhatsApp ↗": "افتح واتساب ↗",
+  "Sending as parent": "الإرسال بصفتك ولي أمر",
+  "Sending as specialist": "الإرسال بصفتك مختص",
+  "Sending as admin": "الإرسال بصفتك مسؤولاً",
+  "Help audience": "فئة المساعدة",
+  "Browse topics": "تصفح المواضيع",
+  "Choose a topic or search for an answer.": "اختر موضوعاً أو ابحث عن إجابة."
+});
+(window.RafiqArabicTemplates=window.RafiqArabicTemplates||[]).push({en:"{0} questions",ar:"{0} أسئلة"},{en:"{0} matching answers",ar:"{0} إجابات مطابقة"},{en:"Signed in as {0}",ar:"تم تسجيل الدخول باسم {0}"});
+
+Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{"Signed in as":"تم تسجيل الدخول باسم"});
+
+Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{"How reporting dates work":"كيف تعمل تواريخ التقارير","USER SUPPORT":"دعم المستخدمين","Platform Inquiries":"استفسارات المنصة","TICKET RESOLUTION":"معالجة التذاكر","Manage inquiries & assistance":"إدارة الاستفسارات والمساعدة","across the platform.":"عبر المنصة.","Review requests from parents and specialists, reply directly to resolve inquiries, and manage resolution statuses.":"مراجعة طلبات أولياء الأمور والمختصين، والرد المباشر لحل الاستفسارات وإدارة حالات المعالجة.","PENDING RESOLUTION":"بانتظار المعالجة","Tickets requiring attention":"تذاكر تتطلب المتابعة","Total Requests":"إجمالي الطلبات","All logged inquiries":"كافة الاستفسارات المسجلة","New Requests":"طلبات جديدة","Awaiting response":"بانتظار الرد","Being investigated":"قيد المتابعة","Closed inquiries":"استفسارات مغلقة ومحلولة","INBOX MANAGEMENT":"إدارة صندوق الوارد","All Requests":"جميع الطلبات","Filter, search, inspect conversations, and update statuses.":"تصفية وبحث، والاطلاع على المحادثات وتحديث الحالات.","Search by subject, requester, email, or ticket ID...":"البحث بالعنوان، مقدم الطلب، البريد الإلكتروني أو رقم التذكرة...","Select a Support Request":"اختر طلب دعم للمعاينة","Choose an inquiry from the list on the left to review the requester information, full message history, and send a reply.":"اختر استفساراً من القائمة لمراجعة بيانات مقدم الطلب، وسجل المحادثة، وإرسال الرد.","Reply to Requester":"الرد على مقدم الطلب","Type your response to the user here...":"اكتب ردك للمستخدم هنا...","Send reply":"إرسال الرد","Update status":"تحديث الحالة","Request status":"حالة الطلب","RAFIQ Support Team":"فريق دعم رفيق"});

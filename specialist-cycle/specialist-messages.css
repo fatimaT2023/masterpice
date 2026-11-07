@@ -1,0 +1,103 @@
+/* Specialist inbox: Dashboard type scale, frosted panels and quiet chat accents.
+   Scoped to this cycle so parent conversations retain their existing design. */
+body.specialist-cycle-video.messages-page {
+  --message-accent:var(--sage-deep,#075e5a);
+  --message-tint:var(--sage-tint,#d4f3ea);
+}
+.messages-page .messages-main { padding-block:24px 40px; padding-inline:clamp(16px,3vw,40px); }
+.messages-page .messages-heading { display:flex; align-items:center; gap:16px; padding-block:0 18px; }
+.messages-page .messages-heading-icon {
+  display:grid; place-items:center; flex-shrink:0;
+  inline-size:54px; block-size:54px; border:1px solid #ffffffd9; border-radius:18px;
+  background:linear-gradient(145deg,#ffffffd9,var(--message-tint)); color:var(--message-accent);
+  box-shadow:0 6px 20px #163e3b08;
+}
+.messages-heading-icon svg { inline-size:34px; block-size:34px; }
+.messages-page .messages-heading h1 { margin-block:2px 4px; font-size:24px; line-height:1.25; }
+.messages-page .messages-heading p:not(.messages-eyebrow) { font-size:13px; }
+.messages-page .messages-eyebrow { font-size:9px; letter-spacing:.13em; }
+.messages-page .messages-preview {
+  margin-block:0 16px; padding-block:9px; padding-inline:14px;
+  border-inline-start:2px solid var(--message-tint); border-radius:0;
+  color:var(--ink-soft); font-size:11px; background:#ffffff40;
+}
+.messages-page .messages-layout {
+  grid-template-columns:minmax(240px,300px) minmax(0,1fr);
+  gap:0; min-block-size:580px; border:1px solid #ffffffd9; border-radius:24px;
+  background:#ffffff70; box-shadow:0 14px 40px #163e3b0b; overflow:hidden;
+}
+.messages-page .messages-inbox,.messages-page .messages-detail { border:0; border-radius:0; background:transparent; }
+.messages-page .messages-inbox { padding:20px 14px; background:#ffffff42; border-inline-end:1px solid #ffffffbd; }
+.messages-page .messages-inbox h2 { font-size:20px; margin-block:0 16px; padding-inline:6px; }
+.messages-page .messages-inbox > input {
+  min-block-size:44px; border-color:#163e3b12; border-radius:14px;
+  background:#ffffffa6; font-size:12px;
+}
+.messages-page .conversation-item {
+  min-block-size:88px; padding-block:14px; padding-inline:54px 12px;
+  border-radius:16px; gap:4px; transition:background .18s,border-color .18s;
+}
+.messages-page .conversation-item::before {
+  content:''; position:absolute; inset-inline-start:12px; inset-block-start:17px;
+  inline-size:28px; block-size:28px; border-radius:11px;
+  background:radial-gradient(circle at 35% 45%,var(--message-accent) 1.5px,transparent 2px),
+    radial-gradient(circle at 65% 45%,var(--message-accent) 1.5px,transparent 2px),
+    linear-gradient(135deg,#ffffff,var(--message-tint));
+  border:1px solid #ffffffb3;
+}
+.messages-page .conversation-item[aria-pressed=true] {
+  background:linear-gradient(110deg,var(--message-tint),#ffffff80);
+  border-color:#83b6a247; box-shadow:0 4px 12px #163e3b05;
+}
+.messages-page .conversation-item strong { font-size:14px; overflow-wrap:anywhere; }
+.messages-page .conversation-item span,.messages-page .conversation-item small { font-size:12px; }
+.messages-page .conversation-item .messages-unread { font-size:10px; background:var(--message-accent); }
+.messages-page .messages-welcome { padding-block:100px 60px; padding-inline:24px; }
+.messages-welcome-art { position:relative; display:grid; place-items:center; inline-size:140px; block-size:140px; margin-inline:auto; margin-block-end:24px; color:var(--message-accent); }
+.messages-welcome-art span { position:absolute; inset:0; border:1px solid #ffffff; border-radius:42% 58% 64% 36%; transform:rotate(-12deg); background:linear-gradient(145deg,#ffffffcc,var(--message-tint)); box-shadow:0 18px 35px #163e3b08; }
+.messages-welcome-art svg { position:relative; inline-size:70px; block-size:70px; transform:rotate(-5deg); }
+.messages-page .messages-welcome h2 { font-size:22px; font-weight:600; margin-block:0 10px; }
+.messages-page .messages-welcome p { font-size:13px; margin-block:0 20px; }
+.messages-page .journey-link { min-block-size:44px; border-radius:12px; font-size:13px; }
+.messages-page .conversation-heading { padding:20px 24px; background:#ffffff50; border-block-end:1px solid #163e3b0c; }
+.messages-page .conversation-heading h2 { font-size:20px; }
+.messages-page .conversation-heading p { font-size:12px; }
+.messages-page .conversation-log {
+  block-size:clamp(320px,46dvh,520px); height:auto; padding:24px; gap:16px;
+  background:radial-gradient(ellipse at 100% 0%,#ffffff70,transparent 65%);
+}
+.messages-page .direct-message {
+  max-inline-size:min(82%,480px); border:1px solid #ffffffdb; border-radius:18px;
+  border-end-start-radius:5px; background:#ffffffce; box-shadow:0 4px 12px #163e3b05;
+}
+.messages-page .direct-message.is-mine {
+  border-radius:18px; border-end-end-radius:5px; border-color:#83b6a433;
+  background:linear-gradient(135deg,var(--message-tint),#eaf5ee);
+}
+.messages-page .direct-message > small { display:block; margin-block-end:5px; font-size:11px; font-weight:600; color:var(--message-accent); overflow-wrap:anywhere; }
+.messages-page .direct-message p { font-size:14px; line-height:1.7; }
+.messages-page .direct-message time { font-size:10px; }
+.messages-page #messageCompose { margin:12px; padding:16px; border:1px solid #ffffffdb; border-radius:18px; background:#ffffffa3; box-shadow:0 6px 20px #163e3b05; }
+.messages-page #messageText { min-block-size:90px; border:0; background:transparent; padding:4px 0; font-size:14px; }
+.messages-page #messageCompose > label { font-size:12px; font-weight:600; }
+.messages-page button[type=submit] { min-block-size:44px; border-radius:12px; background:var(--message-accent); border-color:var(--message-accent); font-size:13px; font-weight:600; }
+.messages-page .care-connection-panel { margin:16px 22px; border-radius:16px; }
+.messages-page .messages-empty { font-size:13px; }
+@media(max-width:800px) {
+  .messages-page .messages-layout { grid-template-columns:minmax(0,1fr); }
+  .messages-page .messages-inbox { border-inline-end:0; border-block-end:1px solid #ffffffbd; max-block-size:300px; }
+  .messages-page .messages-welcome { padding-block:40px; }
+  .messages-page .conversation-log { padding:16px; }
+  .messages-page .care-connection-panel { margin:12px 14px; }
+}
+@media(max-width:400px) {
+  .messages-page .messages-heading { gap:10px; }
+  .messages-page .messages-heading-icon { inline-size:44px; block-size:44px; }
+  .messages-page .messages-heading p:not(.messages-eyebrow) { font-size:12px; }
+  .messages-page .conversation-heading { padding:16px; }
+  .messages-page #messageCompose { margin:8px; padding:12px; }
+  .messages-page .direct-message { max-inline-size:90%; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .messages-page .conversation-item { transition:none; }
+}

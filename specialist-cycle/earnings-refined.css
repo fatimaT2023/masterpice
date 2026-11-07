@@ -1,0 +1,99 @@
+/* Earnings follows the illustrated specialist workspace and Dashboard type scale. */
+body.earnings-page .topbar {
+  position:static; padding-block:24px 18px; padding-inline:clamp(16px,3vw,40px); gap:16px;
+  flex-wrap:wrap; border-block-end:0; background:transparent; box-shadow:none;
+  backdrop-filter:none; -webkit-backdrop-filter:none;
+}
+.earnings-page .topbar-left { gap:16px; min-inline-size:0; flex:1; }
+.earnings-page .earnings-heading-icon {
+  display:grid; place-items:center; flex-shrink:0; inline-size:54px; block-size:54px;
+  border:1px solid #ffffffd9; border-radius:18px; color:var(--sage-deep);
+  background:linear-gradient(145deg,#ffffffd9,var(--sage-tint)); box-shadow:0 6px 20px #163e3b08;
+}
+.earnings-heading-icon svg { inline-size:34px; block-size:34px; }
+.earnings-heading-copy { min-inline-size:0; }
+.earnings-page .topbar .page-kicker { margin:0; font-size:9px; letter-spacing:.13em; }
+.earnings-page .topbar h1 { margin-block:2px 4px; font-size:24px; line-height:1.25; }
+.earnings-page .earnings-heading-description { margin:0; color:var(--ink-soft); font-size:13px; line-height:1.6; }
+.earnings-page .topbar-button { display:inline-flex; align-items:center; min-block-size:44px; font-size:13px; font-weight:600; border-radius:12px; }
+.earnings-page .menu-button { min-inline-size:44px; min-block-size:44px; }
+.earnings-page .page-body { padding-block-start:14px; }
+.earnings-page .earnings-hero {
+  grid-template-columns:minmax(0,1fr) auto; gap:24px; padding:24px;
+  border:1px solid #ffffffdb; border-radius:24px;
+  background:radial-gradient(ellipse at 100% 0%,var(--sage-tint),transparent 65%),#ffffff80;
+  box-shadow:0 10px 30px #284e4808;
+}
+.earnings-page .earnings-hero h2 { font-size:22px; font-weight:600; line-height:1.35; letter-spacing:normal; }
+.earnings-page .hero-total { min-inline-size:160px; padding:20px; border:1px solid #ffffffd9; border-radius:18px; background:#ffffff85; box-shadow:0 6px 20px #163e3b05; }
+.earnings-page .hero-total strong { font-size:24px; overflow-wrap:anywhere; }
+.earnings-page .hero-total > span { font-size:9px; }
+.earnings-page .hero-total small { font-size:11px; }
+.earnings-page .earnings-note { border-radius:14px; }
+.earnings-page .earnings-note p { font-size:11px; line-height:1.6; }
+.earnings-page .tabs-card { padding:5px; gap:5px; max-inline-size:100%; flex-wrap:wrap; border-radius:17px; background:#ffffff85; border-color:#ffffffdb; }
+.earnings-page .tab-button { min-block-size:44px; padding-inline:16px; font-size:12px; font-weight:600; border-radius:12px; }
+.earnings-page .tab-button.active { background:var(--sage-deep); color:white; box-shadow:0 3px 10px #163e3b12; }
+.earnings-page .summary-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+.earnings-page .summary-card { min-inline-size:0; padding:14px; gap:10px; border:1px solid #ffffffdb; border-radius:18px; background:#ffffff8c; box-shadow:0 6px 18px #163e3b05; }
+.earnings-page .summary-card > div { min-inline-size:0; }
+.earnings-page .summary-icon { inline-size:32px; block-size:32px; border-radius:11px; }
+.earnings-page .summary-card span { font-size:10px; overflow-wrap:anywhere; }
+.earnings-page .summary-card strong { font-size:24px; overflow-wrap:anywhere; }
+.earnings-page .overview-layout { grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:16px; }
+.earnings-page :is(.content-card,.history-card) { min-inline-size:0; padding:20px; border-color:#ffffffdf; border-radius:24px; background:#ffffff85; }
+.earnings-page :is(.section-heading,.history-heading) { flex-wrap:wrap; gap:14px; }
+.earnings-page :is(.section-heading h2,.breakdown-card h2,.history-heading h2) { font-size:20px; }
+.earnings-page .text-button { min-block-size:44px; font-size:12px; }
+.earnings-page .recent-item { min-inline-size:0; gap:12px; padding:14px; border-radius:16px; background:#ffffff70; }
+.earnings-page .recent-info strong { font-size:14px; overflow-wrap:anywhere; }
+.earnings-page .recent-info span,.earnings-page .recent-amount span { font-size:11px; }
+.earnings-page .recent-amount strong { font-size:16px; }
+.earnings-page .breakdown-item { gap:12px; flex-wrap:wrap; padding-block:16px; }
+.earnings-page .breakdown-item strong { font-size:14px; }
+.earnings-page .breakdown-item small { font-size:11px; }
+.earnings-page .breakdown-total { padding:16px; border-radius:14px; background:var(--sage-tint); }
+.earnings-page .breakdown-total span { font-size:12px; }
+.earnings-page .breakdown-total strong { font-size:20px; }
+.earnings-page .history-heading p { font-size:13px; line-height:1.6; }
+.earnings-page .search-box { min-inline-size:0; border-radius:13px; background:#ffffff9c; border-color:#163e3b14; }
+.earnings-page .search-box input { min-inline-size:0; min-block-size:44px; font-size:12px; font-family:inherit; }
+.earnings-page .search-box:focus-within { outline:2px solid var(--sage); outline-offset:2px; }
+.earnings-page .payment-table th { font-size:11px; text-align:start; }
+.earnings-page .payment-table td { font-size:12px; text-align:start; }
+.earnings-page .table-client strong { font-size:13px; }
+.earnings-page .table-client span { font-size:11px; }
+.earnings-page .payment-status { font-size:10px; }
+.earnings-page .payment-amount { font-size:14px; }
+.earnings-page .payment-mobile-card { border:1px solid #ffffffdf; border-radius:18px; background:#ffffff90; }
+.earnings-page .payment-mobile-meta span { font-size:11px; }
+.earnings-page .payment-mobile-meta strong { font-size:12px; }
+.earnings-page :is(.mini-empty,.history-empty) { border-radius:18px; background:#ffffff40; }
+.earnings-page :is(.mini-empty strong,.history-empty strong,.state-card h2) { font-size:20px; }
+.earnings-page :is(.mini-empty p,.history-empty p,.state-card p) { font-size:13px; line-height:1.65; }
+.earnings-page .sf-panel { padding:20px; margin-block:0 20px; border:1px solid #ffffffdf; border-radius:20px; background:#ffffff8c; box-shadow:0 6px 20px #163e3b05; }
+.earnings-page .sf-panel h2 { font-size:20px; }
+.earnings-page .sf-panel p { font-size:13px; line-height:1.65; }
+.earnings-page .sf-panel :is(th,td) { font-size:12px; text-align:start; }
+.earnings-page .sf-panel button { min-block-size:44px; font-size:13px; border-radius:12px; }
+.earnings-page .main-content :is(button,a,input):focus-visible { outline:2px solid var(--sage); outline-offset:3px; }
+@media(max-width:1000px) {
+  .earnings-page .summary-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .earnings-page .overview-layout { grid-template-columns:minmax(0,1fr); }
+}
+@media(max-width:700px) {
+  .earnings-page .topbar-left { flex-basis:100%; gap:10px; }
+  .earnings-page .topbar-button { margin-inline-start:auto; }
+  .earnings-page .earnings-hero { grid-template-columns:minmax(0,1fr); padding:20px; gap:16px; }
+  .earnings-page .hero-total { min-inline-size:0; text-align:start; }
+  .earnings-page :is(.content-card,.history-card,.sf-panel) { padding:16px; }
+  .earnings-page .recent-item { flex-wrap:wrap; }
+}
+@media(max-width:400px) {
+  .earnings-page .earnings-heading-icon { inline-size:44px; block-size:44px; border-radius:15px; }
+  .earnings-page .earnings-heading-description { font-size:12px; }
+  .earnings-page .summary-grid { grid-template-columns:minmax(0,1fr); }
+}
+
+/* Hide the separate demo settlement card in the Earnings workspace. */
+.earnings-page #earningsView > .sf-panel { display:none; }

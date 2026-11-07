@@ -1,0 +1,128 @@
+/* Professional setup: translucent surfaces, clear steps and restrained teal accents. */
+body.specialist-setup-page .onboarding-page{max-width:980px!important;margin-inline:auto}
+body.specialist-setup-page .main-content{padding:40px 28px 64px}
+.specialist-setup-page .form-panel{padding:0;background:transparent;border:0;box-shadow:none}
+.specialist-setup-page .form-heading{margin-bottom:28px}
+.specialist-setup-page .form-heading h1{font-size:clamp(28px,3.1vw,40px);line-height:1.2;letter-spacing:-.035em;margin:12px 0 14px;max-width:760px}
+.specialist-setup-page .form-heading p{font-size:16px;line-height:1.7;color:#56706d;max-width:650px}
+.specialist-setup-page .form-kicker{font-size:11px;font-weight:700;letter-spacing:.14em;color:#087d77}
+.specialist-setup-page .setup-progress{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:36px;counter-reset:setup-step}
+.specialist-setup-page .setup-progress span{display:flex;flex-direction:column;align-items:flex-start;gap:12px;min-width:0;padding:16px 14px;border:1px solid rgba(255,255,255,.8);border-radius:16px;background:rgba(255,255,255,.28);font-size:12px;line-height:1.5;color:#58716c;counter-increment:setup-step;backdrop-filter:blur(12px)}
+.specialist-setup-page .setup-progress span::before{content:counter(setup-step,decimal-leading-zero);display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:rgba(255,255,255,.65);color:#577c76;font-size:11px;font-weight:700}
+.specialist-setup-page .setup-progress span[aria-current]{background:linear-gradient(135deg,rgba(255,255,255,.8),rgba(187,229,221,.45));border-color:rgba(35,144,130,.3);box-shadow:0 6px 20px #1f655d0a;color:#076b64;font-weight:700}
+.specialist-setup-page .setup-progress span[aria-current]::before{background:#147b72;color:white;box-shadow:0 3px 10px #147b7220}
+.specialist-setup-page .setup-progress .is-complete::before{content:'✓';background:#d4eee6;color:#096c5e}
+.specialist-setup-page .registration-details-note{padding:15px 20px;margin:0 0 20px;border:1px solid rgba(100,178,165,.23);border-inline-start:3px solid #73b7aa;border-radius:14px;background:rgba(231,247,241,.5);color:#3f6c63;font-size:14px;line-height:1.7}
+.specialist-setup-page #specialistForm>.form-section{padding:30px;margin:0;border:1px solid rgba(255,255,255,.95);border-radius:24px;background:linear-gradient(125deg,rgba(255,255,255,.72),rgba(255,255,255,.42));box-shadow:0 16px 44px rgba(33,69,64,.06),inset 0 1px 0 white;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.specialist-setup-page .section-heading{gap:14px;margin-bottom:28px;padding-bottom:22px;border-bottom:1px solid rgba(30,91,80,.08)}
+.specialist-setup-page .section-number{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#d7f1e9b3,#b9e5df66);border:1px solid #ffffffd9;color:#08756b;font-size:12px}
+.specialist-setup-page .section-heading h3{font-size:21px;margin-top:5px;letter-spacing:-.02em}
+.specialist-setup-page .section-heading span{font-size:10px;letter-spacing:.13em}
+.specialist-setup-page .form-grid.two{gap:22px}
+.specialist-setup-page .form-group{margin-bottom:20px}
+.specialist-setup-page .form-group label{font-size:13px;font-weight:600;margin-bottom:9px}
+.specialist-setup-page .form-group :is(input:not([type=checkbox]):not([type=radio]),select,textarea){box-sizing:border-box;min-height:52px;padding:13px 16px;border:1px solid #a5bfba66;border-radius:12px;background:rgba(255,255,255,.52);color:#224b46;font-size:15px;box-shadow:inset 0 1px 2px #285b5103;transition:border-color .2s,box-shadow .2s,background .2s}
+.specialist-setup-page .form-group :is(input,select,textarea):focus{border-color:#4da797;background:rgba(255,255,255,.85);box-shadow:0 0 0 4px #62baa414;outline:none}
+.specialist-setup-page .form-group input[readonly]{background:rgba(224,237,232,.4);color:#627b74}
+.specialist-setup-page .setup-navigation{margin-top:22px;padding:18px 0 0;border-top:1px solid #2a6b5e12}
+.specialist-setup-page .setup-navigation button{min-height:48px;min-width:112px;padding:12px 25px;border-radius:14px;font-size:14px;font-weight:600;transition:background .2s,box-shadow .2s}
+.specialist-setup-page .setup-navigation .draft-button{border:1px solid #ffffffcf;background:#ffffff59;box-shadow:inset 0 1px 0 #fff;color:#436b61}
+.specialist-setup-page :is(#setupNext,#setupBegin){background:linear-gradient(135deg,#b6dfd7b3,#83c0b980);color:#075f57;border:1px solid #83bcb199;box-shadow:inset 0 1px 0 #ffffffcc,0 5px 16px #34776c12;backdrop-filter:blur(12px)}
+.specialist-setup-page :is(#setupNext,#setupBegin):hover{background:linear-gradient(135deg,#b6dfd7e6,#83c0b9b3);box-shadow:0 7px 22px #34776c20}
+html[lang=ar] .specialist-setup-page .form-heading h1{letter-spacing:0;line-height:1.5}
+@media(max-width:700px){
+ body.specialist-setup-page .main-content{padding:24px 16px 40px}
+ .specialist-setup-page .setup-progress{gap:5px;margin-bottom:24px}
+ .specialist-setup-page .setup-progress span{padding:10px 7px;font-size:10px;gap:8px;border-radius:11px;overflow-wrap:anywhere}
+ .specialist-setup-page #specialistForm>.form-section{padding:22px 18px;border-radius:20px}
+ .specialist-setup-page .form-grid.two{grid-template-columns:1fr;gap:0}
+ .specialist-setup-page .form-heading h1{font-size:28px}
+ .specialist-setup-page .setup-navigation button{min-width:100px}
+}
+.proof-upload{margin-top:14px;padding:18px;border:1px dashed #7bafa580;border-radius:14px;background:#ffffff50}
+.proof-upload>p:first-child{font-size:13px;font-weight:600;margin:0 0 8px}
+.proof-upload .proof-help{font-size:12px;line-height:1.8;color:#56766c}
+.proof-actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.proof-upload .proof-button{display:inline-flex;align-items:center;justify-content:center;padding:10px 15px;margin:0;border:1px solid #8dbfb58c;border-radius:10px;background:#e0f2eb80;color:#14695d;cursor:pointer}
+.proof-upload img{display:block;max-width:100%;max-height:180px;border-radius:10px;margin-top:10px;object-fit:contain}
+.proof-upload [data-proof-remove]{background:transparent;border:0;color:#9b4242;padding:8px 0;cursor:pointer}
+.proof-upload [data-proof-preview] p{font-size:12px;overflow-wrap:anywhere}
+.proof-camera-dialog{width:min(640px,calc(100vw - 40px));box-sizing:border-box;max-height:90vh;overflow:auto;padding:24px;border:1px solid #ffffffd9;border-radius:22px;background:#edf7f3f5;color:#224b46;box-shadow:0 24px 80px #123f3833}
+.proof-camera-dialog::backdrop{background:#123f3866;backdrop-filter:blur(8px)}
+.proof-camera-dialog video,.proof-camera-dialog img{width:100%;max-height:52vh;object-fit:contain;border-radius:12px;background:#163e3b}
+.proof-camera-dialog h2{margin:0 0 10px;font-size:22px}.proof-camera-dialog p{font-size:14px;line-height:1.6}
+.proof-camera-dialog button{padding:11px 16px;border:1px solid #8dbfb5;border-radius:10px;background:#d1eae2;color:#14695d;cursor:pointer;font:inherit;font-size:14px}
+.proof-camera-dialog button:disabled{opacity:.5;cursor:wait}
+/* Consistent document actions, independent of native button typography. */
+.specialist-setup-page .proof-upload .proof-actions{align-items:center;gap:10px}
+.specialist-setup-page .proof-upload .proof-button,
+.specialist-setup-page .proof-upload [data-proof-remove]{display:inline-flex;align-items:center;justify-content:center;gap:9px;box-sizing:border-box;min-height:44px;margin:0;padding:11px 16px;border-radius:12px;font-family:inherit;font-size:13px;font-weight:600;line-height:20px;text-decoration:none;cursor:pointer;transition:background .18s,border-color .18s,box-shadow .18s}
+.specialist-setup-page .proof-upload .proof-button{min-width:146px;border:1px solid #8bbeb480;background:linear-gradient(135deg,#ffffffa6,#d8eee759);color:#176c60;box-shadow:inset 0 1px 0 #ffffffcc,0 3px 9px #245e5105;backdrop-filter:blur(10px)}
+.specialist-setup-page .proof-upload .proof-button:hover{background:#e1f3ebcc;border-color:#65a995;box-shadow:0 4px 12px #245e5110}
+.specialist-setup-page .proof-upload [data-proof-remove]{margin-top:12px;min-height:38px;padding:8px 12px;border:1px solid #bc656526;background:#fff5f559;color:#a64949;font-size:12px}
+.specialist-setup-page .proof-upload [data-proof-remove]:hover{background:#fbe5e58c;border-color:#bc656566}
+.proof-upload :is(.proof-button,[data-proof-remove]) svg{width:18px;height:18px;flex-shrink:0}
+.proof-upload .proof-button:focus-within{outline:2px solid #4da797;outline-offset:3px}
+@media(max-width:420px){.specialist-setup-page .proof-upload .proof-button{min-width:0;flex:1;padding-inline:12px}}
+/* Multiple-selection consultation and language cards. */
+.specialist-setup-page .choice-grid{gap:14px;margin-top:12px}
+.specialist-setup-page .form-group .choice-card{box-sizing:border-box;min-height:96px;margin:0;padding:20px;padding-inline-end:50px;gap:15px;border:1px solid rgba(142,182,171,.32);border-radius:16px;background:linear-gradient(125deg,rgba(255,255,255,.65),rgba(229,242,237,.25));box-shadow:inset 0 1px 0 #ffffffd9;backdrop-filter:blur(12px);transition:border-color .2s,background .2s,box-shadow .2s}
+.specialist-setup-page .choice-card::after{content:'';position:absolute;inset-inline-end:18px;top:50%;transform:translateY(-50%);width:19px;height:19px;box-sizing:border-box;border:1.5px solid #9bbab1;border-radius:6px;background:#ffffff66;display:grid;place-items:center;font:600 13px/1 sans-serif;color:white}
+.specialist-setup-page .choice-card:hover{border-color:#64a795;background:#f0faf5b3;box-shadow:0 5px 16px #246c5b0a}
+.specialist-setup-page .choice-card:has(input:checked){border-color:#429982;background:linear-gradient(125deg,#f1fcf7d9,#cce9df80);box-shadow:0 0 0 3px #4299820d,inset 0 1px 0 white}
+.specialist-setup-page .choice-card:has(input:checked)::after{content:'✓';background:#267d69;border-color:#267d69}
+.specialist-setup-page .choice-card:has(input:focus-visible){outline:3px solid #56a992;outline-offset:3px}
+.specialist-setup-page .choice-icon{width:44px;height:44px;border:1px solid #ffffffd9;border-radius:13px;background:#e3f1eb99;color:#287e6b;font-size:15px;font-weight:700;box-shadow:inset 0 1px 0 white}
+.specialist-setup-page .choice-icon svg{width:23px;height:23px}
+.specialist-setup-page .choice-card strong{font-size:15px;font-weight:600;line-height:1.5;color:#244f45}
+.specialist-setup-page .choice-card small{font-size:12px;line-height:1.6;color:#6a8179;margin-top:3px;font-weight:400}
+.specialist-setup-page .choice-card:has(input:checked) .choice-icon{background:#c8e8dc;color:#11684f}
+@media(max-width:600px){.specialist-setup-page .choice-grid{grid-template-columns:1fr}.specialist-setup-page .form-group .choice-card{min-height:84px;padding:16px;padding-inline-end:48px}}
+.specialist-setup-page .setup-progress{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+/* Structured final application review. */
+.specialist-setup-page #setupSummary{display:grid;gap:18px;margin-bottom:28px}
+.specialist-setup-page #setupSummary>section{padding:22px;border:1px solid #ffffffeb;border-radius:18px;background:linear-gradient(125deg,#ffffff99,#e9f3ef40);box-shadow:0 5px 20px #235e5105}
+.review-card-heading{display:flex;align-items:center;gap:12px;padding-bottom:17px;border-bottom:1px solid #2a6b5e12;margin-bottom:18px}
+.review-card-number{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:#d6ede580;color:#267761;font-size:11px;font-weight:700;flex-shrink:0}
+.review-card-heading h4{margin:0;color:#244f45;font-size:16px;font-weight:600;line-height:1.5}
+.specialist-setup-page #setupSummary .review-card-heading button{position:static;margin-inline-start:auto;flex-shrink:0;top:auto;padding:7px 12px;border:1px solid #8bbeb447;border-radius:9px;background:#ffffff80;color:#287a67;text-decoration:none;font-size:12px;line-height:1.5}
+.specialist-setup-page #setupSummary .review-card-heading button:hover{background:#dcefe7a6;border-color:#7ab19f}
+.review-details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 30px;margin:0}
+.review-detail{min-width:0}.review-detail-wide{grid-column:1/-1}
+.review-detail dt{color:#73877f;font-size:11px;font-weight:600;line-height:1.5;margin-bottom:6px}
+.review-detail dd{margin:0;color:#244f45;font-size:14px;line-height:1.7;overflow-wrap:anywhere;white-space:pre-wrap;unicode-bidi:plaintext}
+.review-documents{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;border-top:1px solid #2a6b5e12;margin-top:22px;padding-top:18px}
+.review-document{display:flex;align-items:center;gap:11px;padding:13px;border:1px solid #a8c9bb47;border-radius:12px;background:#f5fbf780;min-width:0}
+.review-document-icon{display:grid;place-items:center;width:30px;height:34px;background:#d5ede2a6;border:1px solid #ffffffb3;color:#287a60;border-radius:8px;flex-shrink:0;font-size:13px}
+.review-document>div{display:grid;gap:4px;min-width:0}.review-document strong{font-size:12px;font-weight:600;color:#345f50}.review-document div>span{font-size:11px;line-height:1.5;color:#75867d;overflow-wrap:anywhere}
+.specialist-setup-page #setupReview>.confirmation-check{display:flex;align-items:flex-start;gap:12px;margin-top:22px;padding:17px;border:1px solid #a8c9bb47;border-radius:12px;background:#e9f4ee66;font-size:13px;line-height:1.8;color:#476c5b}
+.specialist-setup-page #setupReview .confirmation-check input{margin-top:4px;accent-color:#287a67;width:18px;height:18px;flex-shrink:0}
+@media(max-width:600px){.specialist-setup-page #setupSummary>section{padding:17px}.review-details,.review-documents{grid-template-columns:1fr}.review-card-heading{gap:8px;flex-wrap:wrap}.review-card-heading h4{font-size:14px}.review-detail-wide{grid-column:auto}}
+/* Application status: compact glass receipt. */
+body.specialist-setup-page .success-container{box-sizing:border-box;width:100%;max-width:650px;margin:26px auto;padding:38px 42px;border:1px solid #fffffff0;border-radius:28px;background:linear-gradient(140deg,#ffffffbf,#f2faf56b);box-shadow:0 24px 64px #235e5110,inset 0 1px 0 white;backdrop-filter:blur(24px)}
+.specialist-setup-page .success-container .success-icon{display:grid;place-items:center;width:68px;height:68px;margin:0 auto 19px;border-radius:21px;background:linear-gradient(135deg,#e1f6edcc,#b9e1d380);border:1px solid white;box-shadow:0 8px 24px #2577610c;color:#287a67}
+.success-container .success-icon svg{width:34px;height:34px}
+.specialist-setup-page .success-kicker{display:block;font-size:10px;font-weight:700;letter-spacing:.16em;color:#568272;margin-bottom:12px}
+body.specialist-setup-page .success-container h1{font-size:clamp(26px,3vw,34px);line-height:1.25;letter-spacing:-.025em;max-width:460px;margin:0 auto 16px}
+body.specialist-setup-page #applicationStatusCopy{max-width:490px;margin:0 auto 22px;font-size:14px;line-height:1.85;color:#688176}
+.specialist-setup-page .review-status{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:auto;margin:0 0 26px;padding:9px 16px;border-radius:99px;background:#f6edcc66;border:1px solid #c8ac5b38;color:#866d29;font-size:12px;line-height:1.5}
+.review-status .status-dot{width:7px;height:7px;border-radius:50%;background:#b89a46;box-shadow:0 0 0 4px #b89a4612}
+.application-contact{padding:22px 0;border-top:1px solid #376b5412;border-bottom:1px solid #376b5412}
+.application-contact-label{display:block;font-size:9px;font-weight:700;letter-spacing:.13em;color:#7b9286}
+body.specialist-setup-page #applicationEmail{margin:7px 0 10px;font-size:15px;font-weight:600;color:#345b49;overflow-wrap:anywhere}
+body.specialist-setup-page .success-container .application-status-note{max-width:390px;margin:0 auto;font-size:12px;line-height:1.75;color:#7a8c81}
+.specialist-setup-page .setup-status-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px;align-items:stretch}
+.specialist-setup-page .setup-status-actions :is(a,button){display:flex;align-items:center;justify-content:center;gap:9px;box-sizing:border-box;min-height:46px;padding:12px 16px;border-radius:12px;border:1px solid #a4c7b847;background:#ffffff70;box-shadow:inset 0 1px 0 #fff;color:#467461;font-family:inherit;font-size:12px;font-weight:600;line-height:1.5;text-decoration:none;cursor:pointer}
+.specialist-setup-page .setup-status-actions #applicationBackHome{background:linear-gradient(135deg,#cce9ddba,#a8d4c080);border-color:#8db9a680;color:#24644b;order:-1}
+.setup-status-actions svg{width:17px;height:17px;flex-shrink:0}
+.specialist-setup-page .setup-status-actions :is(a,button):hover{background:#d8eee0c9;border-color:#7cae97}
+.success-container:is([data-status=rejected],[data-status=suspended]) .review-status{color:#934e46;background:#f8e6e166;border-color:#ba796a33}
+.success-container:is([data-status=rejected],[data-status=suspended]) .status-dot{background:#b47765}
+@media(max-width:600px){body.specialist-setup-page .success-container{padding:28px 22px;margin:12px auto;border-radius:22px}.specialist-setup-page .setup-status-actions{grid-template-columns:1fr}.specialist-setup-page .success-container h1{font-size:27px}}
+/* Keep status actions aligned regardless of inherited link/button margins. */
+body.specialist-setup-page .success-container .setup-status-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:12px;width:100%;margin:24px 0 0;padding:0}
+body.specialist-setup-page .success-container .setup-status-actions>a{display:flex;align-items:center;justify-content:center;align-self:stretch;gap:9px;box-sizing:border-box;width:100%;min-width:0;height:48px;min-height:48px;margin:0;padding:10px 14px;border-radius:12px;font-family:inherit;font-size:13px;font-weight:600;line-height:1.4;white-space:nowrap;text-decoration:none}
+body.specialist-setup-page .success-container .setup-status-actions>a svg{display:block;width:18px;height:18px;flex:0 0 18px;margin:0}
+body.specialist-setup-page .success-container .setup-status-actions>a span{line-height:1.4}
+@media(max-width:420px){body.specialist-setup-page .success-container .setup-status-actions{gap:8px}body.specialist-setup-page .success-container .setup-status-actions>a{font-size:11px;gap:6px;padding-inline:7px}}

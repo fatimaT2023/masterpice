@@ -1,0 +1,147 @@
+/* Bookings workspace, using the compact Dashboard type hierarchy. */
+.specialist-bookings-page .topbar { min-block-size:64px; padding-block:12px; gap:12px; flex-wrap:wrap; }
+.specialist-bookings-page .topbar h1 { font-size:24px; line-height:1.25; }
+.specialist-bookings-page .availability-button {
+  display:inline-flex; align-items:center; min-block-size:44px;
+  font-size:13px; font-weight:600; border-radius:12px;
+}
+.specialist-bookings-page .menu-button { min-inline-size:44px; min-block-size:44px; }
+.specialist-bookings-page .hero {
+  position:relative; grid-template-columns:minmax(0,1fr) auto;
+  gap:24px; padding:24px; border:1px solid #ffffffdc; border-radius:24px;
+  background:radial-gradient(ellipse at 100% 0%,var(--sage-tint),transparent 65%),#ffffff80;
+  box-shadow:0 10px 30px #284e4808;
+}
+.specialist-bookings-page .hero h2 {
+  font-size:22px; font-weight:600; line-height:1.35; letter-spacing:normal; max-inline-size:560px;
+}
+.specialist-bookings-page .hero p { font-size:13px; margin-block-start:10px; line-height:1.65; }
+.specialist-bookings-page .hero-date {
+  position:relative; min-inline-size:150px; padding:18px 20px;
+  border:1px solid #ffffffd9; border-radius:18px;
+  background:#ffffff85; box-shadow:0 6px 20px #163e3b05;
+}
+.specialist-bookings-page .hero-date::before {
+  content:''; display:block; inline-size:28px; block-size:26px;
+  margin-inline:auto; margin-block-end:12px; border:1.5px solid var(--sage-deep); border-radius:7px;
+  background:linear-gradient(to bottom,transparent 6px,var(--sage-deep) 6px,var(--sage-deep) 7.5px,transparent 7.5px),
+    radial-gradient(circle at 35% 60%,var(--sage-deep) 1.5px,transparent 2px),
+    radial-gradient(circle at 65% 60%,var(--sage-deep) 1.5px,transparent 2px);
+}
+.specialist-bookings-page .hero-date strong { font-size:18px; }
+.specialist-bookings-page .summary-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+.specialist-bookings-page .summary-card {
+  position:relative; min-inline-size:0; padding:14px; gap:10px;
+  border:1px solid #ffffffdb; border-radius:18px; background:#ffffff8c;
+  box-shadow:0 6px 18px #163e3b05; overflow:hidden;
+}
+.specialist-bookings-page .summary-card > div { min-inline-size:0; }
+.specialist-bookings-page .summary-card::after {
+  content:''; position:absolute; inset-inline-end:-10px; inset-block-end:-16px;
+  inline-size:60px; block-size:60px; border:1px solid #163e3b07; border-radius:50%; pointer-events:none;
+}
+.specialist-bookings-page .summary-icon { inline-size:32px; block-size:32px; border-radius:11px; }
+.specialist-bookings-page .summary-card strong { font-size:24px; }
+.specialist-bookings-page .summary-card span { font-size:10px; overflow-wrap:anywhere; }
+.specialist-bookings-page .controls-card {
+  padding:10px; gap:14px; flex-wrap:wrap; border-radius:18px;
+  background:#ffffff85; border-color:#ffffffd9; box-shadow:none;
+}
+.specialist-bookings-page .filter-tabs {
+  gap:4px; min-inline-size:0; padding:4px; border-radius:13px; background:#163e3b05; flex-wrap:wrap; overflow:visible;
+}
+.specialist-bookings-page .filter-button { min-block-size:44px; padding-inline:14px; font-size:12px; font-weight:600; border-radius:10px; }
+.specialist-bookings-page .filter-button.active { background:var(--sage-deep); color:white; box-shadow:0 3px 10px #163e3b12; }
+.specialist-bookings-page .search-box { flex:1; min-inline-size:220px; inline-size:auto; border-color:#163e3b14; border-radius:13px; background:#ffffff9c; }
+.specialist-bookings-page .search-box input { min-inline-size:0; min-block-size:44px; font-size:12px; font-family:inherit; }
+.specialist-bookings-page .search-box:focus-within { outline:2px solid var(--sage); outline-offset:2px; }
+.specialist-bookings-page .bookings-card { padding:20px; border-radius:24px; }
+.specialist-bookings-page .section-heading { flex-wrap:wrap; gap:12px; }
+.specialist-bookings-page .section-heading h2 { font-size:20px; }
+.specialist-bookings-page .result-count { padding:7px 12px; background:var(--sage-tint); border-radius:20px; color:var(--sage-deep); font-size:12px; }
+.specialist-bookings-page .bookings-list { gap:12px; }
+.specialist-bookings-page .booking-item {
+  position:relative; grid-template-columns:44px minmax(140px,1.3fr) repeat(3,minmax(65px,.65fr));
+  gap:14px; padding:18px; border:1px solid #ffffffdf; border-radius:18px;
+  background:linear-gradient(110deg,#ffffffbd,#ffffff70); box-shadow:0 5px 16px #163e3b04;
+}
+.specialist-bookings-page .booking-item::before {
+  content:''; position:absolute; inset-inline-start:0; inset-block:20px;
+  inline-size:3px; border-radius:4px; background:var(--sage-tint);
+}
+.specialist-bookings-page .booking-item:hover { transform:none; border-color:#83b6a480; background:#ffffffcf; }
+.specialist-bookings-page .booking-item > * { min-inline-size:0; }
+.specialist-bookings-page .child-avatar { inline-size:44px; block-size:44px; border-radius:15px; background:linear-gradient(145deg,var(--sage-tint),#ffffff); border:1px solid #ffffff; font-size:16px; }
+.specialist-bookings-page .booking-main h3 { font-size:14px; overflow-wrap:anywhere; }
+.specialist-bookings-page .booking-main p { font-size:12px; line-height:1.5; }
+.specialist-bookings-page .reference { font-size:10px; overflow-wrap:anywhere; }
+.specialist-bookings-page .booking-item .booking-meta { display:grid; grid-column:auto; gap:4px; }
+.specialist-bookings-page .booking-meta span { font-size:10px; }
+.specialist-bookings-page .booking-meta strong { font-size:12px; overflow-wrap:anywhere; }
+.specialist-bookings-page .booking-actions {
+  grid-column:2 / -1; justify-content:flex-end; flex-wrap:wrap; gap:10px;
+  padding-block-start:12px; border-block-start:1px solid #163e3b0a;
+}
+.specialist-bookings-page .status-badge { font-size:10px; padding:7px 12px; font-weight:600; margin-inline-end:auto; }
+.specialist-bookings-page .view-booking-button { min-block-size:44px; padding-inline:16px; font-size:13px; font-weight:600; border-radius:12px; }
+.specialist-bookings-page .booking-actions .care-link { display:inline-flex; align-items:center; min-block-size:44px; font-size:12px; padding-inline:12px; border:1px solid #83b6a447; border-radius:12px; }
+.specialist-bookings-page .empty-state { padding-block:48px; border-color:#83b6a447; background:#ffffff40; border-radius:18px; }
+.specialist-bookings-page .empty-icon { border-radius:18px; background:var(--sage-tint); color:var(--sage-deep); }
+.specialist-bookings-page .empty-state strong,.specialist-bookings-page .locked-view h2 { font-size:20px; }
+.specialist-bookings-page .empty-state p,.specialist-bookings-page .locked-view p { font-size:13px; line-height:1.65; }
+.specialist-bookings-page .locked-view a { min-block-size:44px; font-size:13px; align-items:center; }
+.specialist-bookings-page .main-content :is(button,a,input):focus-visible { outline:2px solid var(--sage); outline-offset:3px; }
+@media(max-width:1100px) {
+  .specialist-bookings-page .booking-item { grid-template-columns:44px minmax(0,1fr) minmax(80px,.7fr); }
+  .specialist-bookings-page .booking-main { grid-column:2 / -1; }
+  .specialist-bookings-page .booking-item .booking-meta { grid-column:auto; }
+  .specialist-bookings-page .booking-item .booking-meta:nth-of-type(3) { grid-column:2; }
+  .specialist-bookings-page .booking-actions { grid-column:2 / -1; }
+}
+@media(max-width:700px) {
+  .specialist-bookings-page .hero { grid-template-columns:minmax(0,1fr); padding:20px; gap:16px; }
+  .specialist-bookings-page .hero-date { display:flex; align-items:center; gap:12px; justify-content:flex-start; padding:12px 16px; }
+  .specialist-bookings-page .hero-date::before { flex-shrink:0; margin:0; }
+  .specialist-bookings-page .hero-date strong { margin:0; font-size:16px; }
+  .specialist-bookings-page .summary-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+  .specialist-bookings-page .controls-card { align-items:stretch; }
+  .specialist-bookings-page .filter-button { flex:1; padding-inline:10px; }
+  .specialist-bookings-page .search-box { min-inline-size:0; }
+  .specialist-bookings-page .bookings-card { padding:14px; }
+  .specialist-bookings-page .booking-item { grid-template-columns:36px minmax(0,1fr); padding:14px; gap:12px; }
+  .specialist-bookings-page .child-avatar { inline-size:36px; block-size:36px; }
+  .specialist-bookings-page .booking-item .booking-meta { grid-column:2; grid-template-columns:80px minmax(0,1fr); align-items:baseline; }
+  .specialist-bookings-page .booking-actions { grid-column:1 / -1; justify-content:flex-start; }
+}
+@media(max-width:380px) {
+  .specialist-bookings-page .summary-grid { grid-template-columns:minmax(0,1fr); }
+}
+
+
+/* Use the same illustrated page heading as the specialist Messages workspace. */
+body.specialist-bookings-page .topbar {
+  position:static; padding-block:24px 18px; padding-inline:clamp(16px,3vw,40px);
+  border-block-end:0; background:transparent; box-shadow:none;
+  backdrop-filter:none; -webkit-backdrop-filter:none;
+}
+.specialist-bookings-page .topbar-left { gap:16px; min-inline-size:0; flex:1; }
+.specialist-bookings-page .bookings-heading-icon {
+  display:grid; place-items:center; flex-shrink:0;
+  inline-size:54px; block-size:54px; border:1px solid #ffffffd9; border-radius:18px;
+  background:linear-gradient(145deg,#ffffffd9,var(--sage-tint)); color:var(--sage-deep);
+  box-shadow:0 6px 20px #163e3b08;
+}
+.bookings-heading-icon svg { inline-size:34px; block-size:34px; }
+.specialist-bookings-page .bookings-heading-copy { min-inline-size:0; }
+.specialist-bookings-page .topbar .page-kicker { font-size:9px; letter-spacing:.13em; margin-block:0; }
+.specialist-bookings-page .topbar h1 { font-size:24px; line-height:1.25; margin-block:2px 4px; }
+.specialist-bookings-page .bookings-heading-description { margin:0; color:var(--ink-soft); font-size:13px; line-height:1.6; }
+.specialist-bookings-page .page-body { padding-block-start:14px; }
+@media(max-width:600px) {
+  .specialist-bookings-page .topbar-left { flex-basis:100%; gap:10px; }
+  .specialist-bookings-page .topbar > .availability-button { margin-inline-start:auto; }
+}
+@media(max-width:400px) {
+  .specialist-bookings-page .bookings-heading-icon { inline-size:44px; block-size:44px; border-radius:15px; }
+  .specialist-bookings-page .bookings-heading-description { font-size:12px; }
+}

@@ -2,41 +2,251 @@ document.addEventListener('DOMContentLoaded',()=>{
 'use strict';
 const get=id=>document.getElementById(id),api=window.RafiqSetup,concerns=window.RafiqConcerns;
 let child,context,state,questions=[],index=0,result;
-function error(message){get('concernError').textContent=message;get('concernError').hidden=false;}
-function newState(topic){return {id:'concern_'+(globalThis.crypto?.randomUUID?.()||Date.now()+'_'+Math.random().toString(36).slice(2)),childId:child.id,topic,answers:{},status:'draft',version:1};}
-try{const children=api.readChildren();child=children.find(c=>c.id===(window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId')))||children[0];if(!child){location.replace('onboarding.html');return;}(window.RafiqFamily ? window.RafiqFamily.select(child.id) : localStorage.setItem('rafiqCurrentChildId',child.id));context=api.childContext(child);const raw=JSON.parse(localStorage.getItem('rafiqConcernJourney_'+child.id)||'null');state=raw&&raw.childId===child.id&&raw.version===1&&Object.hasOwn(concerns.topics,raw.topic)&&raw.answers&&typeof raw.answers==='object'?raw:newState(null);}catch{error('We couldn’t read your saved profile or concern. Check browser storage, then reload. Existing records have not been changed.');return;}
-get('concernChild').textContent=(child.name||'Your child')+' · '+api.formatAge(context.chronological);get('reviewChild').href='onboarding.html?edit='+encodeURIComponent(child.id);
-function view(name){for(const [id,step] of [['topicView','stepConcern'],['questionView','stepQuestions'],['summaryView','stepSummary']]){get(id).hidden=id!==name;get(step).removeAttribute('aria-current');if(id===name)get(step).setAttribute('aria-current','step');}get('concernError').hidden=true;}
-function persist(){localStorage.setItem('rafiqConcernJourney_'+child.id,JSON.stringify({...state,updatedAt:new Date().toISOString()}));}
-for(const [key,topic] of Object.entries(concerns.topics)){const label=document.createElement('label');label.className='concern-topic';const input=document.createElement('input');input.type='radio';input.name='topic';input.value=key;input.checked=state.topic===key;const span=document.createElement('span');span.textContent=topic.label;label.append(input,span);get('topicChoices').append(label);}
+
+function error(message){
+  const el=get('concernError');
+  el.textContent=message;
+  el.hidden=false;
+  el.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function newState(topic){
+  return {id:'concern_'+(globalThis.crypto?.randomUUID?.()||Date.now()+'_'+Math.random().toString(36).slice(2)),childId:child.id,topic,answers:{},status:'draft',version:1};
+}
+
+try{
+  const children=api.readChildren();
+  child=children.find(c=>c.id===(window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId')))||children[0];
+  if(!child){location.replace('onboarding.html');return;}
+  (window.RafiqFamily ? window.RafiqFamily.select(child.id) : localStorage.setItem('rafiqCurrentChildId',child.id));
+  context=api.childContext(child);
+  const raw=JSON.parse(localStorage.getItem('rafiqConcernJourney_'+child.id)||'null');
+  state=raw&&raw.childId===child.id&&raw.version===1&&Object.hasOwn(concerns.topics,raw.topic)&&raw.answers&&typeof raw.answers==='object'?raw:newState(null);
+}catch{
+  error('We couldn’t read your saved profile or concern. Check browser storage, then reload. Existing records have not been changed.');
+  return;
+}
+
+get('concernChild').textContent=(child.name||'Your child')+' · '+api.formatAge(context.chronological);
+get('reviewChild').href='onboarding.html?edit='+encodeURIComponent(child.id);
+
+function view(name){
+  for(const [id,step] of [['topicView','stepConcern'],['questionView','stepQuestions'],['summaryView','stepSummary']]){
+    get(id).hidden=id!==name;
+    get(step).removeAttribute('aria-current');
+    if(id===name)get(step).setAttribute('aria-current','step');
+  }
+  get('concernError').hidden=true;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function persist(){
+  localStorage.setItem('rafiqConcernJourney_'+child.id,JSON.stringify({...state,updatedAt:new Date().toISOString()}));
+}
+
+const topicMeta = {
+  communication: { icon: '🗣️', desc: 'Sounds, gestures, expressing needs or words' },
+  movement: { icon: '🏃‍♂️', desc: 'Body coordination, head balance, sitting or walking' },
+  social: { icon: '🤝', desc: 'Eye contact, smiling, playing and connecting with others' },
+  emotions: { icon: '💛', desc: 'Soothing, tantrums, reactions to changes and daily routines' },
+  unsure: { icon: '❓', desc: 'A general observation you want to explore or describe' }
+};
+
+for(const [key,topic] of Object.entries(concerns.topics)){
+  const label=document.createElement('label');
+  label.className='concern-topic';
+  label.dataset.topic=key;
+
+  const input=document.createElement('input');
+  input.type='radio';
+  input.name='topic';
+  input.value=key;
+  input.checked=state.topic===key;
+
+  const icon=document.createElement('span');
+  icon.className='concern-topic-icon';
+  icon.textContent=topicMeta[key]?.icon || '✨';
+  icon.setAttribute('aria-hidden','true');
+
+  const content=document.createElement('div');
+  content.className='concern-topic-content';
+
+  const title=document.createElement('strong');
+  title.className='concern-topic-title';
+  title.textContent=topic.label;
+
+  const desc=document.createElement('span');
+  desc.className='concern-topic-desc';
+  desc.textContent=topicMeta[key]?.desc || '';
+
+  content.append(title,desc);
+
+  const check=document.createElement('span');
+  check.className='concern-topic-check';
+  check.setAttribute('aria-hidden','true');
+
+  label.append(input,icon,content,check);
+  get('topicChoices').append(label);
+}
+
 function renderQuestion(){
- get('concernError').hidden=true;
- const q=questions[index];get('questionCount').textContent=concerns.topics[state.topic].label+' · '+(index+1)+' of '+questions.length;get('concernQuestionTitle').textContent=q.title;get('concernQuestionHelp').textContent=q.help||'Choose the answer that best describes what you have noticed.';
- const input=document.createElement(q.type==='text'?'textarea':'select');input.id='concernAnswer';input.required=true;input.setAttribute('aria-labelledby','concernQuestionTitle');input.setAttribute('aria-describedby','concernQuestionHelp');
- if(q.type==='text'){input.rows=4;input.maxLength=1200;}else{for(const value of ['',...q.options]){const option=document.createElement('option');option.value=value;option.textContent=value||'Choose an answer';input.append(option);}}
- input.value=state.answers[q.id]||'';get('concernAnswerMount').replaceChildren(input);get('nextQuestion').textContent=index===questions.length-1?'See my next step →':'Save & continue →';get('concernQuestionTitle').focus();
+  get('concernError').hidden=true;
+  const q=questions[index];
+  get('questionCount').textContent=concerns.topics[state.topic].label+' · '+(index+1)+' of '+questions.length;
+  get('concernQuestionTitle').textContent=q.title;
+  get('concernQuestionHelp').textContent=q.help||'Choose the answer that best describes what you have noticed.';
+
+  const input=document.createElement(q.type==='text'?'textarea':'select');
+  input.id='concernAnswer';
+  input.required=true;
+  input.setAttribute('aria-labelledby','concernQuestionTitle');
+  input.setAttribute('aria-describedby','concernQuestionHelp');
+
+  if(q.type==='text'){
+    input.rows=4;
+    input.maxLength=1200;
+    input.placeholder='Describe what you noticed in your own words...';
+  }else{
+    for(const value of ['',...q.options]){
+      const option=document.createElement('option');
+      option.value=value;
+      option.textContent=value||'Choose an answer';
+      input.append(option);
+    }
+  }
+
+  input.value=state.answers[q.id]||'';
+  get('concernAnswerMount').replaceChildren(input);
+  get('nextQuestion').textContent=index===questions.length-1?'See my next step →':'Save & continue →';
+  get('concernQuestionTitle').focus();
 }
+
 function showSummary(saved){
- result=saved||concerns.summary(child,state.topic,state.answers);get('concernSummaryTitle').textContent=result.title;get('concernSummaryNext').textContent=result.next;get('summaryAge').textContent=result.topicLabel+' · '+(child.name||'Your child')+' · '+result.age+(state.completedAt?' · Saved '+new Date(state.completedAt).toLocaleDateString('en'):'');
- get('concernSummaryAnswers').replaceChildren();for(const answer of result.answers){const term=document.createElement('dt'),description=document.createElement('dd');term.textContent=answer.question;description.textContent=answer.answer;get('concernSummaryAnswers').append(term,description);}
- get('directoryExplanation').textContent='Browse a directory topic related to your concern. Check each specialist’s experience with your child’s age, fees and availability before booking.';get('browseConcernSpecialists').href='specialists.html?specialty='+encodeURIComponent(result.specialty);get('includeConcernSummary').checked=false;get('bookingNotePreview').hidden=true;const note=window.RafiqConcernBooking.preview(result,state.answers);get('bookingNoteText').value=note.text;get('bookingNoteHelp').textContent=note.shortened?'This preview is shortened to the 500-character booking limit. Your full answers remain saved above.':'Only this note will be added to the booking draft. You can review it again before confirmation.';
- const tool=window.RafiqScreeningTools.choose(child);get('optionalScreeningText').textContent=tool.form?'An original English SWYC '+tool.form.month+'-month form is available for the selected screening age. It is a broad developmental form, not a test specific to '+result.topicLabel.toLowerCase()+'. Review the choice and completed form with your care team.':'Ask your care team which screening tool is appropriate for this concern and age. The original SWYC form cannot be selected here with the current age details.';get('optionalScreeningLink').href=tool.form?tool.form.url:'https://www.teamupcenter.org/age-specific-forms/';get('optionalScreeningLink').textContent=tool.form?'Open original SWYC form ↗':'Open publisher guidance ↗';view('summaryView');get('concernSummaryTitle').focus();
+  result=saved||concerns.summary(child,state.topic,state.answers);
+  get('concernSummaryTitle').textContent=result.title;
+  get('concernSummaryNext').textContent=result.next;
+  get('summaryAge').textContent=result.topicLabel+' · '+(child.name||'Your child')+' · '+result.age+(state.completedAt?' · Saved '+new Date(state.completedAt).toLocaleDateString('en'):'');
+  get('concernSummaryAnswers').replaceChildren();
+  for(const answer of result.answers){
+    const term=document.createElement('dt'),description=document.createElement('dd');
+    term.textContent=answer.question;
+    description.textContent=answer.answer;
+    get('concernSummaryAnswers').append(term,description);
+  }
+  get('directoryExplanation').textContent='Browse a directory topic related to your concern. Check each specialist’s experience with your child’s age, fees and availability before booking.';
+  get('browseConcernSpecialists').href='specialists.html?specialty='+encodeURIComponent(result.specialty);
+  get('includeConcernSummary').checked=false;
+  get('bookingNotePreview').hidden=true;
+  const note=window.RafiqConcernBooking.preview(result,state.answers);
+  get('bookingNoteText').value=note.text;
+  get('bookingNoteHelp').textContent=note.shortened?'This preview is shortened to the 500-character booking limit. Your full answers remain saved above.':'Only this note will be added to the booking draft. You can review it again before confirmation.';
+  const tool=window.RafiqScreeningTools.choose(child);
+  get('optionalScreeningText').textContent=tool.form?'An original English SWYC '+tool.form.month+'-month form is available for the selected screening age. It is a broad developmental form, not a test specific to '+result.topicLabel.toLowerCase()+'. Review the choice and completed form with your care team.':'Ask your care team which screening tool is appropriate for this concern and age. The original SWYC form cannot be selected here with the current age details.';
+  get('optionalScreeningLink').href=tool.form?tool.form.url:'https://www.teamupcenter.org/age-specific-forms/';
+  get('optionalScreeningLink').textContent=tool.form?'Open original SWYC form ↗':'Open publisher guidance ↗';
+  view('summaryView');
+  get('concernSummaryTitle').focus();
 }
-get('topicForm').addEventListener('submit',event=>{event.preventDefault();if(!context.supported){error('This guided observation flow covers ages 0–6. You can still contact a specialist.');return;}const selected=get('topicChoices').querySelector('input[name="topic"]:checked');if(!selected){error('Choose the area that is worrying you, or select I’m not sure.');return;}if(selected.value!==state.topic)state=newState(selected.value);state.status='draft';state.questionIndex=0;questions=concerns.questions(state.topic,context);index=0;try{persist();view('questionView');renderQuestion();}catch{error('We couldn’t save your starting point. Check browser storage and try again.');}});
-get('previousQuestion').addEventListener('click',()=>{const value=get('concernAnswer').value;state.answers[questions[index].id]=value;if(index>0){index--;renderQuestion();}else view('topicView');});
+
+get('topicForm').addEventListener('submit',event=>{
+  event.preventDefault();
+  if(!context.supported){error('This guided observation flow covers ages 0–6. You can still contact a specialist.');return;}
+  const selected=get('topicChoices').querySelector('input[name="topic"]:checked');
+  if(!selected){error('Choose the area that is worrying you, or select I’m not sure.');return;}
+  if(selected.value!==state.topic)state=newState(selected.value);
+  state.status='draft';
+  state.questionIndex=0;
+  questions=concerns.questions(state.topic,context);
+  index=0;
+  try{
+    persist();
+    view('questionView');
+    renderQuestion();
+  }catch{
+    error('We couldn’t save your starting point. Check browser storage and try again.');
+  }
+});
+
+get('previousQuestion').addEventListener('click',()=>{
+  const value=get('concernAnswer').value;
+  state.answers[questions[index].id]=value;
+  if(index>0){index--;renderQuestion();}
+  else view('topicView');
+});
+
 get('concernQuestionForm').addEventListener('submit',event=>{
- event.preventDefault();const q=questions[index],value=get('concernAnswer').value.trim();if(!value||(q.options&&!q.options.includes(value))){error('Please add your observation or choose an answer.');return;}state.answers[q.id]=value;state.questionIndex=Math.min(index+1,questions.length-1);
- try{persist();if(index<questions.length-1){index++;renderQuestion();return;}
- const summary=concerns.summary(child,state.topic,state.answers),key='rafiqAgeObservations_'+child.id,notes=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(notes))throw Error('Invalid notes');const entry={id:state.id,childId:child.id,type:'concern',sourcePage:'screening.html',topic:state.topic,text:summary.topicLabel+'\n'+summary.answers.map(a=>a.question+' '+a.answer).join('\n'),createdAt:state.completedAt||new Date().toISOString(),ageBandId:summary.ageBandId,ageBasis:summary.ageBasis,chronologicalAgeMonths:context.chronological.totalMonths,ageDays:context.chronological.days};const existing=notes.findIndex(n=>n?.id===state.id);Object.assign(entry,window.RafiqFamily.stamp(entry,existing>=0?notes[existing]:null));if(existing>=0)notes[existing]=entry;else notes.push(entry);localStorage.setItem(key,JSON.stringify(notes));window.RafiqFamily.notify(child.id,'Child concern saved','milestones.html');state={...state,status:'complete',summary,completedAt:new Date().toISOString()};persist();showSummary(summary);
- }catch{error('We couldn’t save this step. Your existing records have not been removed. Please try again.');}
+  event.preventDefault();
+  const q=questions[index],value=get('concernAnswer').value.trim();
+  if(!value||(q.options&&!q.options.includes(value))){
+    error('Please add your observation or choose an answer.');
+    return;
+  }
+  state.answers[q.id]=value;
+  state.questionIndex=Math.min(index+1,questions.length-1);
+  try{
+    persist();
+    if(index<questions.length-1){
+      index++;
+      renderQuestion();
+      return;
+    }
+    const summary=concerns.summary(child,state.topic,state.answers),key='rafiqAgeObservations_'+child.id,notes=JSON.parse(localStorage.getItem(key)||'[]');
+    if(!Array.isArray(notes))throw Error('Invalid notes');
+    const entry={id:state.id,childId:child.id,type:'concern',sourcePage:'screening.html',topic:state.topic,text:summary.topicLabel+'\n'+summary.answers.map(a=>a.question+' '+a.answer).join('\n'),createdAt:state.completedAt||new Date().toISOString(),ageBandId:summary.ageBandId,ageBasis:summary.ageBasis,chronologicalAgeMonths:context.chronological.totalMonths,ageDays:context.chronological.days};
+    const existing=notes.findIndex(n=>n?.id===state.id);
+    Object.assign(entry,window.RafiqFamily.stamp(entry,existing>=0?notes[existing]:null));
+    if(existing>=0)notes[existing]=entry;
+    else notes.push(entry);
+    localStorage.setItem(key,JSON.stringify(notes));
+    window.RafiqFamily.notify(child.id,'Child concern saved','milestones.html');
+    state={...state,status:'complete',summary,completedAt:new Date().toISOString()};
+    persist();
+    showSummary(summary);
+  }catch{
+    error('We couldn’t save this step. Your existing records have not been removed. Please try again.');
+  }
 });
-get('editConcernAnswers').addEventListener('click',()=>{if(!context.supported){error('This child is now outside the guided age range. Their saved summary is still available to discuss with a clinician.');return;}questions=concerns.questions(state.topic,context);index=0;state.status='draft';view('questionView');renderQuestion();});
-get('includeConcernSummary').addEventListener('change',()=>{get('bookingNotePreview').hidden=!get('includeConcernSummary').checked;});
+
+get('editConcernAnswers').addEventListener('click',()=>{
+  if(!context.supported){
+    error('This child is now outside the guided age range. Their saved summary is still available to discuss with a clinician.');
+    return;
+  }
+  questions=concerns.questions(state.topic,context);
+  index=0;
+  state.status='draft';
+  view('questionView');
+  renderQuestion();
+});
+
+get('includeConcernSummary').addEventListener('change',()=>{
+  get('bookingNotePreview').hidden=!get('includeConcernSummary').checked;
+});
+
 get('browseConcernSpecialists').addEventListener('click',event=>{
- if(!result)return;
- try{if(get('includeConcernSummary').checked){window.RafiqConcernBooking.write(child.id,get('bookingNoteText').value);}else{window.RafiqConcernBooking.clear(child.id);}}
- catch{event.preventDefault();error('We couldn’t prepare your booking preference. You can still contact a specialist using the navigation.');}
+  if(!result)return;
+  try{
+    if(get('includeConcernSummary').checked){
+      window.RafiqConcernBooking.write(child.id,get('bookingNoteText').value);
+    }else{
+      window.RafiqConcernBooking.clear(child.id);
+    }
+  }catch{
+    event.preventDefault();
+    error('We couldn’t prepare your booking preference. You can still contact a specialist using the navigation.');
+  }
 });
+
 get('concernContent').hidden=false;
-if(state.status==='complete'&&state.summary?.childId===child.id&&Array.isArray(state.summary.answers)&&state.summary.answers.every(a=>a&&typeof a.question==='string'&&typeof a.answer==='string')&&typeof state.summary.specialty==='string')showSummary(state.summary);else if(context.supported&&state.topic&&Number.isInteger(state.questionIndex)){questions=concerns.questions(state.topic,context);index=Math.max(0,Math.min(state.questionIndex,questions.length-1));view('questionView');renderQuestion();}else view('topicView');
+
+if(state.status==='complete'&&state.summary?.childId===child.id&&Array.isArray(state.summary.answers)&&state.summary.answers.every(a=>a&&typeof a.question==='string'&&typeof a.answer==='string')&&typeof state.summary.specialty==='string'){
+  showSummary(state.summary);
+}else if(context.supported&&state.topic&&Number.isInteger(state.questionIndex)){
+  questions=concerns.questions(state.topic,context);
+  index=Math.max(0,Math.min(state.questionIndex,questions.length-1));
+  view('questionView');
+  renderQuestion();
+}else{
+  view('topicView');
+}
 });

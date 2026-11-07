@@ -1,80 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head><script src="../shared/family-access.js"></script><script src="../shared/account-status.js"></script><script src="../shared/account-access.js" defer></script>
-<script src="../piblic-pages/rafiq-theme.js"></script>
-
+<head>
+  <script src="../shared/family-access.js"></script>
+  <script src="../shared/account-status.js"></script>
+  <script src="../shared/account-access.js" defer></script>
+  <script src="../piblic-pages/rafiq-theme.js"></script>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Child profile | RAFIQ</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="health.css">
-  <link
-  rel="stylesheet"
-  href="notifications.css"
->
-
+  <link rel="stylesheet" href="today.css">
+  <link rel="stylesheet" href="notifications.css">
   <link rel="stylesheet" href="parent-cycle-glass.css">
   <link rel="stylesheet" href="../piblic-pages/rafiq-typography.css">
-<link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
-<link rel="stylesheet" href="parent-sidebar.css">
-<script src="parent-setup-utils.js"></script>
-<script src="age-content.js"></script>
-<script src="age-context.js"></script>
-<link rel="stylesheet" href="age-context.css">
-<link rel="stylesheet" href="screening-flow.css"><link rel="stylesheet" href="child-profile.css">
-<link rel="stylesheet" href="parent-background.css">
-<link rel="stylesheet" href="parent-layout.css">
-<link rel="stylesheet" href="../shared/site-language.css">
-<script src="../shared/membership.js"></script><link rel="stylesheet" href="../shared/membership.css"><script src="child-appearance.js"></script><link rel="stylesheet" href="parent-journey.css"><script src="parent-journey.js" defer></script></head>
+  <link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
+  <link rel="stylesheet" href="parent-sidebar.css">
+  <script src="parent-setup-utils.js"></script>
+  <script src="age-content.js"></script>
+  <script src="age-context.js"></script>
+  <link rel="stylesheet" href="age-context.css">
+  <link rel="stylesheet" href="screening-flow.css">
+  <link rel="stylesheet" href="child-profile.css">
+  <link rel="stylesheet" href="parent-background.css">
+  <link rel="stylesheet" href="parent-layout.css">
+  <link rel="stylesheet" href="../shared/site-language.css">
+  <script src="../shared/membership.js"></script>
+  <link rel="stylesheet" href="../shared/membership.css">
+  <script src="child-appearance.js"></script>
+  <link rel="stylesheet" href="parent-journey.css">
+  <script src="parent-journey.js" defer></script>
+</head>
 
+<body class="parent-cycle-video screening-flow child-profile-page">
+  <div class="parent-static-background" aria-hidden="true"></div>
 
-<body class="parent-cycle-video screening-flow">
-<div class="parent-static-background" aria-hidden="true"></div>
+  <script src="child-avatar.js" data-child-avatar></script>
+  <div id="parentSidebarMount"></div>
+  <script src="parent-sidebar.js"></script>
 
-<div id="parentSidebarMount"></div><script src="parent-sidebar.js"></script>
-<main class="main-content screening-flow-main">
-<p id="profileError" role="alert" hidden></p>
-<div id="profileContent" hidden>
-<section class="screen-flow-card child-profile-hero"><div class="child-profile-avatar" id="profileAvatar"></div><div><p class="screen-flow-eyebrow">CHILD PROFILE</p><h1 id="profileName"></h1><p id="profileAge"></p></div><a id="editChildProfile" class="screen-flow-secondary">Edit child details</a></section>
-<section class="screen-flow-card" id="childCaregivers" aria-labelledby="caregiversHeading"><h2 id="caregiversHeading">Manage caregivers</h2><p>Accounts connected to this child.</p><div class="profile-caregiver"><div><h3 id="caregiverName" data-user-content>Your account</h3><p id="caregiverRelationship"></p></div><strong id="caregiverRole">Primary caregiver</strong></div><p class="screen-flow-small">Shared child records: caregivers use separate accounts and see the same child updates. Invitations are stored in this browser; no email is sent.</p>
-<button type="button" id="caregiverInviteToggle" class="screen-flow-primary" aria-expanded="false" aria-controls="caregiverInviteForm">Invite another caregiver</button>
-<form id="caregiverInviteForm" class="caregiver-invite-form" hidden>
-<label for="caregiverEmail">Caregiver email</label><input id="caregiverEmail" name="email" type="email" autocomplete="email" maxlength="254" required>
-<label for="caregiverRelation">Relationship to the child</label><select id="caregiverRelation" name="relationship" required><option value="">Select relationship</option><option value="mother">Mother</option><option value="father">Father</option><option value="guardian">Guardian</option><option value="other">Other caregiver</option></select>
-<p class="screen-flow-small">The invited caregiver can use the same child workspace: appointments, health records, activities and memories.</p>
-<button type="submit" class="screen-flow-primary">Create preview invitation</button></form>
-<p id="caregiverFeedback" role="status" aria-live="polite"></p><h3>Invitations</h3><div id="caregiverInvitations"></div></section>
-<section class="screen-flow-card"><h2>About your child</h2><dl id="childDetails" class="child-profile-details"></dl><p class="screen-flow-small">These details help Rafiq show content for your child’s age. You can update them at any time.</p></section>
-<section class="screen-flow-card" aria-labelledby="profileMeasurementsHeading"><div class="profile-section-heading"><h2 id="profileMeasurementsHeading">Height &amp; weight</h2><a href="health.html" class="screen-flow-link">Add or update a measurement</a></div><p>Latest recorded values, with the date each was measured.</p><div class="profile-measurement-grid"><div><h3>Weight</h3><strong id="profileWeight">Not recorded yet</strong><p id="profileWeightDate"></p></div><div><h3>Height / length</h3><strong id="profileHeight">Not recorded yet</strong><p id="profileHeightDate"></p></div></div><p class="screen-flow-small">Measurements are parent-entered records. A single value does not describe your child’s growth.</p><details class="profile-record-section"><summary>All measurements <span id="profileGrowthCount"></span></summary><div id="profileGrowthRecords"></div></details></section>
-<section class="screen-flow-card"><h2>Health details</h2><p>Records saved for this child. Add or edit details in <a href="health.html">Health &amp; vaccinations</a>.</p><details class="profile-record-section"><summary>Vaccines received <span id="profileVaccineCount"></span></summary><div id="profileVaccineRecords"></div></details><details class="profile-record-section"><summary>Health notes <span id="profileNoteCount"></span></summary><div id="profileNoteRecords"></div></details><p class="screen-flow-small">An empty vaccine list does not mean a dose was missed. Medication notes are records you entered, not prescribing instructions.</p></section>
-<section class="screen-flow-card"><h2>Your child’s story</h2><p>Open the records and support saved for this child.</p><div class="child-profile-links">
-<a href="milestones.html"><strong>Growth &amp; observations</strong><span>Revisit notes and moments you have recorded.</span></a>
-<a href="health.html"><strong>Health &amp; vaccinations</strong><span>Find measurements, vaccines and health notes.</span></a>
-<a href="bookings.html"><strong>Appointments &amp; reports</strong><span>Review visits and specialist reports.</span></a>
-<a href="album.html"><strong>Memories</strong><span>Keep photos and special moments together.</span></a>
-<a href="screening.html"><strong>Development questions</strong><span>Describe a concern and record your observations.</span></a>
-<a href="parent-dashboard.html"><strong>Today</strong><span>Return to your child’s next step.</span></a>
-</div></section><p class="screen-flow-small">Profile details are saved in this browser.</p></div>
-<a href="parent-dashboard.html" class="screen-flow-link">Back to Home</a>
-</main><script src="health-records.js"></script><script src="child-profile-health.js"></script><script src="child-profile.js"></script><script src="caregiver-invitations.js"></script><script src="caregivers.js"></script><script src="../shared/direct-messages.js"></script><script src="../shared/care-connections.js"></script><script src="child-care-team.js"></script><script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="parent-journey-ar.js" defer></script><script src="../shared/site-language.js" defer></script>
-<script src="notifications.js"></script>
-<script src="../shared/membership-ui.js"></script><script src="family-archive-ui.js"></script></body></html>
+  <main class="main-content screening-flow-main">
+    <p id="profileError" role="alert" hidden></p>
+    
+    <div id="profileContent" hidden>
+      <!-- Hero Section -->
+      <section class="screen-flow-card child-profile-hero">
+        <div class="profile-avatar-control">
+          <div class="child-profile-avatar" id="profileAvatar"></div>
+          <button type="button" id="changeChildPhoto" aria-label="Change photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m8 5 2-2h4l2 2h4v15H4V5Z"/><circle cx="12" cy="12" r="4"/></svg>
+          </button>
+        </div>
+        <div class="profile-hero-info">
+          <h1 id="profileName"></h1>
+          <p id="profileAge"></p>
+        </div>
+        <div class="profile-hero-actions">
+          <button type="button" id="openCaregiversModal" class="screen-flow-secondary profile-action-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Caregivers</span>
+          </button>
+          <a id="editChildProfile" class="screen-flow-secondary profile-action-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            <span>Edit child details</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Center Modal Popup for Caregivers -->
+      <dialog id="caregiversModal" class="caregivers-dialog">
+        <div class="caregivers-dialog-card">
+          <div class="caregivers-dialog-header">
+            <div class="caregivers-dialog-title-group">
+              <div class="dialog-icon-bubble" aria-hidden="true">👥</div>
+              <div>
+                <h2 id="caregiversHeading">Caregivers</h2>
+                <p class="dialog-subtitle">Manage who can view and update this child's profile, health records, and memories.</p>
+              </div>
+            </div>
+            <button type="button" id="closeCaregiversModal" class="dialog-close-btn" aria-label="Close" title="Close">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+
+          <div id="childCaregivers" class="caregivers-dialog-body" aria-labelledby="caregiversHeading">
+            <div class="caregivers-primary-section">
+              <span class="caregivers-section-label">Primary Caregiver</span>
+              <div class="profile-caregiver primary-caregiver-card">
+                <div class="caregiver-avatar-chip">👤</div>
+                <div class="caregiver-info-text">
+                  <h3 id="caregiverName" data-user-content>Your account</h3>
+                  <p id="caregiverRelationship"></p>
+                </div>
+                <strong id="caregiverRole">Primary caregiver</strong>
+              </div>
+            </div>
+
+            <div class="caregiver-invite-trigger-bar">
+              <button type="button" id="caregiverInviteToggle" class="screen-flow-primary" aria-expanded="false" aria-controls="caregiverInviteForm">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <span>Invite another caregiver</span>
+              </button>
+            </div>
+
+            <form id="caregiverInviteForm" class="caregiver-invite-form" hidden>
+              <div class="form-field">
+                <label for="caregiverEmail">Caregiver email</label>
+                <input id="caregiverEmail" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="name@example.com">
+              </div>
+              <div class="form-field">
+                <label for="caregiverRelation">Relationship to the child</label>
+                <select id="caregiverRelation" name="relationship" required>
+                  <option value="">Select relationship</option>
+                  <option value="mother">Mother</option>
+                  <option value="father">Father</option>
+                  <option value="guardian">Guardian</option>
+                  <option value="other">Other caregiver</option>
+                </select>
+              </div>
+              <p class="screen-flow-small invite-hint-note">The invited caregiver can use the same child workspace: appointments, health records, activities and memories.</p>
+              <button type="submit" class="screen-flow-primary full-width">Create preview invitation</button>
+            </form>
+
+            <p id="caregiverFeedback" role="status" aria-live="polite" class="caregiver-feedback-msg"></p>
+            
+            <div class="caregiver-invitations-section">
+              <h3 class="invitations-title">Invitations</h3>
+              <div id="caregiverInvitations"></div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <!-- Section: About your child -->
+      <section class="screen-flow-card">
+        <h2>About your child</h2>
+        <dl id="childDetails" class="child-profile-details"></dl>
+      </section>
+
+      <!-- Section: Height & Weight -->
+      <section class="screen-flow-card" aria-labelledby="profileMeasurementsHeading">
+        <div class="profile-section-heading">
+          <h2 id="profileMeasurementsHeading">Height &amp; weight</h2>
+          <a href="health.html" class="screen-flow-link">Add or update a measurement</a>
+        </div>
+        <div class="profile-measurement-grid">
+          <div>
+            <h3>Weight</h3>
+            <strong id="profileWeight">Not recorded yet</strong>
+            <p id="profileWeightDate"></p>
+          </div>
+          <div>
+            <h3>Height / length</h3>
+            <strong id="profileHeight">Not recorded yet</strong>
+            <p id="profileHeightDate"></p>
+          </div>
+        </div>
+        <details class="profile-record-section">
+          <summary>All measurements <span id="profileGrowthCount"></span></summary>
+          <div id="profileGrowthRecords"></div>
+        </details>
+      </section>
+
+      <!-- Section: Health Details -->
+      <section class="screen-flow-card">
+        <h2>Health details</h2>
+        <details class="profile-record-section">
+          <summary>Vaccines received <span id="profileVaccineCount"></span></summary>
+          <div id="profileVaccineRecords"></div>
+        </details>
+        <details class="profile-record-section">
+          <summary>Health notes <span id="profileNoteCount"></span></summary>
+          <div id="profileNoteRecords"></div>
+        </details>
+      </section>
+
+      <!-- Section: Open Records / Your Child's Story -->
+      <section class="screen-flow-card">
+        <h2>Your child’s story</h2>
+        <p>Open the records and support saved for this child.</p>
+        <div class="child-profile-links">
+          <a href="milestones.html"><strong>Growth &amp; observations</strong><span>Revisit notes and moments you have recorded.</span></a>
+          <a href="health.html"><strong>Health &amp; vaccinations</strong><span>Find measurements, vaccines and health notes.</span></a>
+          <a href="bookings.html"><strong>Appointments &amp; reports</strong><span>Review visits and specialist reports.</span></a>
+          <a href="album.html"><strong>Memories</strong><span>Keep photos and special moments together.</span></a>
+          <a href="screening.html"><strong>Development questions</strong><span>Describe a concern and record your observations.</span></a>
+          <a href="parent-dashboard.html"><strong>Today</strong><span>Return to your child’s next step.</span></a>
+        </div>
+      </section>
+
+      <p class="screen-flow-small">Profile details are saved in this browser.</p>
+    </div>
+
+    <a href="parent-dashboard.html" class="screen-flow-link">Back to Home</a>
+  </main>
+
+  <script src="health-records.js"></script>
+  <script src="child-profile-health.js"></script>
+  <script src="child-profile.js"></script>
+  <script src="caregiver-invitations.js"></script>
+  <script src="caregivers.js"></script>
+  <script src="../shared/direct-messages.js"></script>
+  <script src="../shared/care-connections.js"></script>
+  <script src="child-care-team.js"></script>
+  <script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script>
+  <script src="../shared/site-ar.js" defer></script>
+  <script src="../shared/site-identity.js" defer></script>
+  <script src="parent-journey-ar.js" defer></script>
+  <script src="../shared/site-language.js" defer></script>
+  <script src="notifications.js"></script>
+  <script src="../shared/membership-ui.js"></script>
+  <script src="family-archive-ui.js"></script>
+</body>
+</html>

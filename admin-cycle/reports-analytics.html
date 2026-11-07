@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="admin-cycle-glass.css"><link rel="stylesheet" href="admin-overview.css">
   <link rel="stylesheet" href="admin-sidebar.css">
 <link rel="stylesheet" href="../piblic-pages/rafiq-theme.css">
-<link rel="stylesheet" href="../shared/site-language.css">
+<link rel="stylesheet" href="../shared/site-language.css"><link rel="stylesheet" href="reports-analytics-refined.css">
 </head>
 
 
@@ -268,9 +268,8 @@
         >
           ☰
         </button>
-
-
-        <div>
+        <span class="analytics-heading-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7v34h34M15 32V22m10 10V16m10 16V9"/><path d="m13 15 10-7 10 3 7-7"/></svg></span>
+        <div class="analytics-heading-copy">
 
           <span class="page-kicker">
             PLATFORM INSIGHTS
@@ -278,7 +277,7 @@
 
           <h1>
             Reports & Analytics
-          </h1>
+          </h1><p class="analytics-heading-description">Compare activity across periods. Use the dashboard for requests that need action.</p>
 
         </div>
 
@@ -302,8 +301,8 @@
            HERO
       ====================================== -->
 
-      <section class="operations-intro"><h2>Performance over time</h2><p>Compare activity across periods. Use the dashboard for requests that need action.</p><a href="admin-dashboard.html">Open daily dashboard →</a></section>
-<section class="performance-period"><label>Reporting period<select id="analyticsPeriod"><option value="month">This month</option><option value="30">Last 30 days</option><option value="custom">Custom dates</option><option value="all">All time</option></select></label><label>From date<input type="date" id="analyticsFrom"></label><label>To date<input type="date" id="analyticsTo"></label><p id="analyticsPeriodMessage" role="status"></p><small>Dates refer to specialist registration, scheduled session, report submission and recorded payment. Current content and AI inventory are shown separately. Status charts reflect the current status of records in the selected period.</small></section><section id="analyticsComparison" class="performance-comparisons" aria-label="Period comparison"></section>
+      <section class="operations-intro"><h2>Performance over time</h2><a href="admin-dashboard.html">Open daily dashboard →</a></section>
+<section class="performance-period"><label>Reporting period<select id="analyticsPeriod"><option value="month">This month</option><option value="30">Last 30 days</option><option value="custom">Custom dates</option><option value="all">All time</option></select></label><label>From date<input type="date" id="analyticsFrom"></label><label>To date<input type="date" id="analyticsTo"></label><p id="analyticsPeriodMessage" role="status"></p><details class="reporting-explainer"><summary>How reporting dates work</summary><p>Dates refer to specialist registration, scheduled session, report submission and recorded payment. Current content and AI inventory are shown separately. Status charts reflect the current status of records in the selected period.</p></details></section><section id="analyticsComparison" class="performance-comparisons" aria-label="Period comparison"></section>
 
 
       <!-- =====================================

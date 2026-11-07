@@ -90,16 +90,10 @@ document.addEventListener(
       );
 
 
-    const credentialFile =
-      document.getElementById(
-        "credentialFile"
-      );
 
 
-    const uploadText =
-      document.getElementById(
-        "uploadText"
-      );
+
+
 
 
     const accuracyCheckbox =
@@ -266,27 +260,7 @@ document.addEventListener(
     // FILE
     // ==================================
 
-    credentialFile.addEventListener(
-      "change",
-      () => {
 
-        const file =
-          credentialFile.files[0];
-
-
-        if (!file) {
-
-          uploadText.textContent =
-            "PDF or image — demo only";
-
-          return;
-        }
-
-
-        uploadText.textContent =
-          file.name;
-      }
-    );
 
 
     // ==================================
@@ -584,6 +558,7 @@ document.addEventListener(
       }
 
 
+      if ((!section || section.contains(licenseNumber)) && !window.RafiqValidateCredentialProofs()) valid = false;
       if (section) {
         document.querySelectorAll(".field-error").forEach(error => { if (!section.contains(error)) error.textContent = ""; });
         return !Array.from(section.querySelectorAll(".field-error")).some(error => error.textContent.trim());
@@ -614,8 +589,7 @@ document.addEventListener(
         );
 
 
-      const file =
-        credentialFile.files[0];
+
 
 
       const specialistId = existingProfile?.status === 'needs_changes' ? existingProfile.id : 'specialist_' + Date.now();
@@ -696,10 +670,8 @@ document.addEventListener(
           "JOD",
 
 
-        credentialFileName:
-          file
-            ? file.name
-            : existingProfile?.credentialFileName || null,
+        credentialProofs: window.RafiqCredentialProofs || {},
+
 
 
         /*

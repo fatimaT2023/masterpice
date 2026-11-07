@@ -10,25 +10,63 @@
     helpLink.href = '../piblic-pages/help-center.html?from=specialist';
     helpLink.innerHTML = '<span class="nav-icon" aria-hidden="true">?</span>Help Center';helpNav.append(helpLink);
   }
-  // Keep the language preference next to the profile, away from the brand.
-  const profileLink = document.querySelector('#sidebar .sidebar-bottom a[href="profile.html"]');
-  if (profileLink) {
-    const languageRow = document.createElement('div');
-    languageRow.className = 'specialist-profile-language';
-    const label = document.createElement('span');
-    label.className = 'specialist-language-label';
-    label.textContent = 'Language';
-    const languageMount = document.createElement('div');
-    languageMount.id = 'specialistLanguageMount';
-    languageRow.append(label, languageMount);
-    profileLink.after(languageRow);
-  }
   const sidebar = document.getElementById('sidebar');
+  document.body.dataset.specialistLanguageInSettings='true';
+  const oldProfile=sidebar.querySelector('.sidebar-bottom a[href="profile.html"]');oldProfile?.remove();
+  const mini=sidebar.querySelector('.specialist-mini-card');
+  const profileCard=document.createElement('a');profileCard.className=mini.className;profileCard.href='profile.html';profileCard.title='View your profile';profileCard.setAttribute('aria-label','View your profile');
+  while(mini.firstChild)profileCard.append(mini.firstChild);mini.replaceWith(profileCard);
   const messagesLink=document.createElement('a');messagesLink.href='messages.html';messagesLink.className='nav-link';
   messagesLink.innerHTML='<span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H8l-4 4Z"/></svg></span><span>Messages</span>';
   const bookingsLink=sidebar.querySelector('a[href="specialist-bookings.html"]');if(bookingsLink)bookingsLink.before(messagesLink);
   const careLink=document.createElement('a');careLink.href='follow-up.html';careLink.className='nav-link';careLink.innerHTML='<span class="nav-icon" aria-hidden="true">♡</span><span>Ongoing follow-up</span>';if(bookingsLink)bookingsLink.after(careLink);
   const casesLink=sidebar.querySelector('a[href="clients.html"]');if(casesLink){const label=casesLink.lastChild;if(label&&label.nodeType===3)label.textContent='Consultation history';}
+  // Desktop rail and grouped workspace navigation.
+  sidebar.setAttribute('aria-label','Specialist navigation');
+  sidebar.querySelectorAll('.nav-link').forEach(link=>{
+    const label=link.textContent.trim().replace(/\s+/g,' ');
+    link.setAttribute('aria-label',label);link.title=label;
+    [...link.childNodes].forEach(node=>{if(node.nodeType===3&&node.textContent.trim()){const span=document.createElement('span');span.className='nav-label';span.textContent=node.textContent.trim();node.replaceWith(span);}});
+    link.querySelectorAll(':scope > span:not(.nav-icon)').forEach(span=>span.classList.add('nav-label'));
+  });
+  const logout=sidebar.querySelector('#logoutButton');
+  [...logout.childNodes].forEach(node=>{if(node.nodeType===3&&node.textContent.trim()){const span=document.createElement('span');span.className='nav-label';span.textContent=node.textContent.trim();node.replaceWith(span);}});
+  logout.innerHTML='<span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4M14 8l4 4-4 4M8 12h13"/></svg></span><span class="nav-label">Log out</span>';
+  logout.title='Log out';logout.setAttribute('aria-label','Log out');
+  const toggle=document.createElement('button');toggle.type='button';toggle.className='sidebar-collapse-toggle';toggle.setAttribute('aria-controls','sidebar');
+  toggle.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>';
+  sidebar.querySelector('.sidebar-top').append(toggle);
+  function collapse(value){document.documentElement.classList.toggle('specialist-sidebar-collapsed',value);toggle.setAttribute('aria-expanded',String(!value));toggle.setAttribute('aria-label',value?'Expand navigation':'Collapse navigation');toggle.title=value?'Expand navigation':'Collapse navigation';}
+  let savedCollapsed=false;
+  try{savedCollapsed=localStorage.getItem('rafiqSpecialistSidebarCollapsed')==='true';}catch{}
+  collapse(savedCollapsed);
+  // Hover previews the full navigation without changing the saved rail preference.
+  const hoverRail=window.matchMedia('(min-width:951px) and (hover:hover) and (pointer:fine)');
+  let pointerInside=false;
+  function preview(open){
+    const expanded=open&&savedCollapsed&&hoverRail.matches;
+    document.documentElement.classList.toggle('specialist-sidebar-preview',expanded);
+    collapse(savedCollapsed&&!expanded);
+  }
+  sidebar.addEventListener('pointerenter',event=>{
+    if(event.pointerType==='touch')return;
+    pointerInside=true;preview(true);
+  });
+  sidebar.addEventListener('pointerleave',()=>{
+    pointerInside=false;
+    if(document.activeElement===toggle||!sidebar.contains(document.activeElement))preview(false);
+  });
+  sidebar.addEventListener('focusin',()=>preview(true));
+  sidebar.addEventListener('focusout',event=>{
+    if(!sidebar.contains(event.relatedTarget)&&!pointerInside)preview(false);
+  });
+  hoverRail.addEventListener('change',()=>{pointerInside=false;preview(false);});
+  toggle.addEventListener('click',()=>{
+    savedCollapsed=!savedCollapsed;
+    document.documentElement.classList.remove('specialist-sidebar-preview');
+    collapse(savedCollapsed);
+    try{localStorage.setItem('rafiqSpecialistSidebarCollapsed',String(savedCollapsed));}catch{}
+  });
   const page = location.pathname.split('/').pop();
   const activePage = {'booking-details.html':'specialist-bookings.html','consultation.html':'specialist-bookings.html','report-form.html':'specialist-bookings.html'}[page] || page;
   sidebar.querySelectorAll('a.nav-link').forEach(link => {
@@ -36,22 +74,54 @@
     link.classList.toggle('active', active);
     if (active) link.setAttribute('aria-current','page');
   });
+  if(page==='profile.html')profileCard.setAttribute('aria-current','page');
   function setOpen(open) {
     sidebar.classList.toggle('open',open);
     document.getElementById('sidebarOverlay')?.classList.toggle('show',open);
     document.getElementById('menuButton')?.setAttribute('aria-expanded',String(open));
     if (innerWidth <= 950) sidebar.inert = !open;
   }
+  const logoutDialog=document.createElement('dialog');
+  logoutDialog.className='specialist-logout-dialog';
+  logoutDialog.setAttribute('aria-labelledby','specialistLogoutTitle');
+  logoutDialog.setAttribute('aria-describedby','specialistLogoutDescription');
+  logoutDialog.innerHTML=`<form method="dialog">
+    <span class="specialist-logout-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4m5-12 4 4-4 4M8 12h13"/></svg></span>
+    <h2 id="specialistLogoutTitle">Are you sure you want to log out?</h2>
+    <p id="specialistLogoutDescription">You can sign in again whenever you need.</p>
+    <div class="specialist-logout-actions">
+      <button type="submit" value="cancel" autofocus>Cancel</button>
+      <button type="submit" value="logout" class="specialist-logout-confirm">Log out</button>
+    </div>
+  </form>`;
+  document.body.append(logoutDialog);
+  function showLogoutConfirmation(){
+    if(logoutDialog.open)return;
+    logoutDialog.returnValue='';
+    document.documentElement.classList.add('specialist-logout-open');
+    logoutDialog.showModal();
+  }
+  logoutDialog.addEventListener('close',()=>{
+    document.documentElement.classList.remove('specialist-logout-open');
+    if(logoutDialog.returnValue==='logout'){
+      sessionStorage.clear();location.href='../piblic-pages/login.html';
+    }else logout.focus();
+  });
+  logoutDialog.addEventListener('click',event=>{
+    if(event.target!==logoutDialog)return;
+    const rect=logoutDialog.getBoundingClientRect();
+    if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)logoutDialog.close('cancel');
+  });
   document.addEventListener('click',event => {
     const target = event.target.closest('#menuButton,#sidebarClose,#sidebarOverlay,#logoutButton');
     if (!target) return;
     event.stopImmediatePropagation();
-    if (target.id === 'logoutButton') {sessionStorage.clear();location.href='../piblic-pages/login.html';return;}
+    if (target.id === 'logoutButton') {event.preventDefault();showLogoutConfirmation();return;}
     setOpen(target.id === 'menuButton');
     if (target.id !== 'menuButton') document.getElementById('menuButton')?.focus();
     else document.getElementById('sidebarClose').focus();
   },true);
-  document.addEventListener('keydown',event => {if(event.key==='Escape'&&sidebar.classList.contains('open')){setOpen(false);document.getElementById('menuButton')?.focus();}});
+  document.addEventListener('keydown',event => {if(logoutDialog.open)return;if(event.key==='Escape'&&sidebar.classList.contains('open')){setOpen(false);document.getElementById('menuButton')?.focus();}});
   window.addEventListener('resize',() => {if(innerWidth>950){setOpen(false);sidebar.inert=false;}else sidebar.inert=!sidebar.classList.contains('open');});
   document.addEventListener('DOMContentLoaded',() => {
     const menu=document.getElementById('menuButton');

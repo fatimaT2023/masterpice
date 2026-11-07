@@ -85,6 +85,9 @@ document.addEventListener(
       document.getElementById(
         "sendButton"
       );
+    if (sendButton) {
+      sendButton.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>`;
+    }
 
     const characterCount =
       document.getElementById(
@@ -330,6 +333,13 @@ document.addEventListener(
     let chatHistory =
       getSavedChat();
 
+    if (chatHistory.length === 1 && chatHistory[0].sender === "ai" && chatHistory[0].text.includes("support you with everyday parenting questions")) {
+      const ctx = window.RafiqSetup.childContext(currentChild);
+      const ageText = window.RafiqSetup.formatAge(ctx.chronological);
+      chatHistory[0].text = `Hi! I'm Rafiq AI, your parenting assistant for ${currentChild.name} (${ageText}).\n\nHow can I help you today? You can ask me about sleep routines, feeding, play ideas, or milestones.`;
+      saveChat();
+    }
+
 
     function saveChat() {
 
@@ -374,67 +384,60 @@ document.addEventListener(
     }
 
 
-    function createMessageElement(
-      message
-    ) {
+    function createMessageElement(message) {
+      const row = document.createElement("div");
+      row.className = "message-row " + message.sender;
 
-      const row =
-        document.createElement(
-          "div"
-        );
-
-
-      row.className =
-        "message-row " +
-        message.sender;
-
-
-      if (
-        message.sender === "ai"
-      ) {
-
-        const avatar =
-          document.createElement(
-            "div"
-          );
-
-        avatar.className =
-          "message-avatar ai";
-
-        avatar.textContent =
-          "✦";
-
-        row.appendChild(
-          avatar
-        );
+      if (message.sender === "ai") {
+        const avatar = document.createElement("div");
+        avatar.className = "message-avatar ai";
+        avatar.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>`;
+        row.appendChild(avatar);
       }
 
+      const wrapper = document.createElement("div");
+      wrapper.className = "message-content-wrapper";
 
-      const bubble =
-        document.createElement(
-          "div"
-        );
+      const bubble = document.createElement("div");
+      bubble.className = "message-bubble";
 
-      bubble.className =
-        "message-bubble";
+      const textEl = document.createElement("div");
+      textEl.className = "message-text";
+      textEl.textContent = message.text;
 
+      const meta = document.createElement("div");
+      meta.className = "message-meta";
+      const time = document.createElement("span");
+      time.className = "message-time";
+      time.textContent = message.time;
+      meta.appendChild(time);
 
-      bubble.innerHTML = `
-        ${escapeHTML(message.text)}
+      bubble.append(textEl, meta);
+      wrapper.appendChild(bubble);
 
-        <span class="message-time">
-          ${escapeHTML(message.time)}
-        </span>
-      `;
+      if (message.sender === "ai") {
+        const actions = document.createElement("div");
+        actions.className = "message-actions";
+        const share = document.createElement("button");
+        share.type = "button";
+        share.className = "message-action-btn chat-save-pill";
+        share.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg><span>Save to child record</span>`;
+        share.addEventListener("click", () => {
+          try {
+            if (!confirm("Share this message with the other caregivers linked to this child?")) return;
+            const result = window.RafiqFamily.shareAI(currentChild.id, message);
+            share.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>${result.duplicate ? "Already saved" : "Saved to record"}</span>`;
+            share.disabled = true;
+            share.classList.add("saved");
+          } catch (error) {
+            alert(error.message);
+          }
+        });
+        actions.appendChild(share);
+        wrapper.appendChild(actions);
+      }
 
-
-      row.appendChild(
-        bubble
-      );
-
-
-      const share=document.createElement('button');share.type='button';share.className='screen-flow-secondary';share.textContent='Save to shared child record';
-      share.addEventListener('click',()=>{try{if(!confirm('Share this message with the other caregivers linked to this child?'))return;const result=window.RafiqFamily.shareAI(currentChild.id,message);share.textContent=result.duplicate?'Already shared':'Saved to shared child record';share.disabled=true;}catch(error){alert(error.message);}});row.append(share);
+      row.appendChild(wrapper);
       return row;
     }
 
@@ -506,23 +509,13 @@ document.addEventListener(
     // =====================================
 
     function addInitialGreeting() {
-
-      if (
-        chatHistory.length > 0
-      ) {
+      if (chatHistory.length > 0) {
         return;
       }
-
-
-      const greeting =
-        `Hi! I'm Rafiq AI. I'm here to support you with everyday parenting questions about ${currentChild.name}. ` +
-        `You can ask me about development, behavior, routines, school, communication, or other parenting concerns.`;
-
-
-      addMessage(
-        "ai",
-        greeting
-      );
+      const context = window.RafiqSetup.childContext(currentChild);
+      const ageStr = window.RafiqSetup.formatAge(context.chronological);
+      const greeting = `Hi! I'm Rafiq AI, your parenting assistant for ${currentChild.name} (${ageStr}).\n\nHow can I help you today? You can ask me about sleep routines, feeding, play ideas, or milestones.`;
+      addMessage("ai", greeting);
     }
 
 
@@ -624,10 +617,30 @@ document.addEventListener(
     // =====================================
 
     function generateMockResponse(question) {
- const context=window.RafiqSetup.childContext(currentChild);
- const label=context.basis==='corrected'?'corrected age '+window.RafiqSetup.formatAge(context.development):window.RafiqSetup.formatAge(context.chronological);
- return 'For '+currentChild.name+' ('+label+'), let’s organize what you’ve noticed. What happened, when did you first notice it, and what would you like help understanding? You can save an observation under Growth & milestones or discuss it with a specialist. This preview does not assess development or generate age-specific medical advice.';
- }
+      const context = window.RafiqSetup.childContext(currentChild);
+      const label = context.basis === 'corrected' 
+        ? 'corrected age ' + window.RafiqSetup.formatAge(context.development) 
+        : window.RafiqSetup.formatAge(context.chronological);
+      const q = (question || '').toLowerCase();
+
+      if (q.includes('sleep') || q.includes('نوم') || q.includes('routine') || q.includes('bedtime') || q.includes('nap')) {
+        return `For ${currentChild.name} (${label}), here are gentle sleep recommendations:\n\n• Calming routine: Warm bath, dim lights, or gentle lullabies signal sleep.\n• Watch wake windows: Look for subtle early cues like yawning or looking away.\n• Safe space: Firm, flat, clear sleep area.\n\nWould you like ideas for naps or nighttime soothing?`;
+      }
+      
+      if (q.includes('feed') || q.includes('رضاعة') || q.includes('حليب') || q.includes('eat') || q.includes('food')) {
+        return `Regarding feeding for ${currentChild.name} (${label}):\n\n• Responsive feeding: Follow hunger cues (rooting, hand-to-mouth) and fullness signs.\n• Keep feeds relaxed: Skin-to-skin and gentle eye contact.\n• Daily variations: Slight changes in appetite from day to day are natural.\n\nAlways consult your pediatrician if you have questions about weight gain or digestion.`;
+      }
+
+      if (q.includes('play') || q.includes('لعب') || q.includes('نشاط') || q.includes('activity') || q.includes('motor')) {
+        return `At ${label}, play is simple and bonding for ${currentChild.name}:\n\n• Floor / tummy time: Strengthens neck, shoulders, and core muscles.\n• Vocal play: Mimic their coos, smile, and pause for their turn to "talk".\n• Visual focus: Slowly track high-contrast toys across their line of sight.\n\nYou can also log this moment under Growth & Observations!`;
+      }
+
+      if (q.includes('concern') || q.includes('قلق') || q.includes('doctor') || q.includes('طبيب') || q.includes('fever') || q.includes('sick')) {
+        return `When you're concerned about ${currentChild.name}:\n\n• Keep notes: Record when it began, temperature, and specific behaviors.\n• Check comfort: Hydration, wet diapers, and overall alertness.\n• Professional advice: Always consult your pediatrician or book a session with a specialist for health concerns.`;
+      }
+
+      return `Thank you for sharing that about ${currentChild.name} (${label}).\n\n• Baby steps: Every child develops at their own natural pace.\n• Note patterns: Notice when this behavior happens most often.\n• Track moments: You can save observations directly to your child's profile.\n\nIs there a specific situation you'd like to talk through?`;
+    }
 
 
     // =====================================

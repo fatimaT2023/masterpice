@@ -44,10 +44,10 @@
 <link rel="stylesheet" href="parent-background.css">
 <link rel="stylesheet" href="parent-layout.css">
 <link rel="stylesheet" href="../shared/site-language.css">
-<script src="../shared/membership.js"></script><link rel="stylesheet" href="../shared/membership.css"><script src="child-appearance.js"></script><link rel="stylesheet" href="parent-journey.css"><script src="parent-journey.js" defer></script><link rel="stylesheet" href="screening-flow.css"></head>
+<script src="../shared/membership.js"></script><link rel="stylesheet" href="../shared/membership.css"><script src="child-appearance.js"></script><link rel="stylesheet" href="parent-journey.css"><script src="parent-journey.js" defer></script><link rel="stylesheet" href="screening-flow.css"><link rel="stylesheet" href="settings-refined.css"></head>
 
 
-<body class="parent-cycle-video">
+<body class="parent-cycle-video settings-page">
   <div class="parent-static-background" aria-hidden="true"></div>
 
 
@@ -91,45 +91,20 @@
 
           <h1>
             Settings
-          </h1>
+          </h1><p class="settings-page-intro">Your account, children and preferences.</p>
 
         </div>
 
       </div>
 
-    </header>
+      <a class="settings-home-link" href="parent-dashboard.html">← Home</a></header>
 
 
     <div class="page-body">
 
       <!-- HERO -->
 
-      <section class="settings-hero">
 
-        <div>
-
-          <!-- <span class="hero-kicker">
-            PERSONALIZE RAFIQ
-          </span> -->
-
-          <h2>
-            Manage your account,
-            children and preferences.
-          </h2>
-
-          <p>
-            Keep your parent profile, child profiles,
-            language and plan preferences organized.
-          </p>
-
-        </div>
-
-
-        <!-- <div class="settings-icon">
-          ⚙
-        </div> -->
-
-      </section>
 
 
       <div class="settings-layout">
@@ -208,13 +183,13 @@
             </div>
           </button>
 
-        </aside>
+          <button type="button" class="settings-tab" data-tab="notifications"><div><strong>Notifications</strong><small>Choose your updates</small></div></button></aside>
 
 
 
         <!-- CONTENT -->
 
-        <div class="settings-content">
+        <div class="settings-content"><section class="settings-panel" id="notificationsPanel"><div class="panel-heading"><h2>Notifications</h2><p>Choose the updates you want to receive.</p></div></section>
 
 
           <!-- ========================
@@ -586,23 +561,10 @@
             </div>
 
 
-            <div class="privacy-links">
-
-              <a href="../piblic-pages/index.html">
-                Privacy Policy
-                <span>→</span>
-              </a>
-
-              <a href="../piblic-pages/index.html">
-                Terms of Use
-                <span>→</span>
-              </a>
-
-              <a href="../piblic-pages/index.html">
-                Medical Disclaimer
-                <span>→</span>
-              </a>
-
+                        <div class="privacy-links">
+              <details class="settings-disclosure"><summary>Privacy Policy<span aria-hidden="true">+</span></summary><div class="settings-disclosure-copy"><p>This preview stores account preferences, child records and photos in this browser. Clearing browser data can remove them. Download copies of important records and photos before clearing site data.</p><p>Cloud storage is not connected. This prototype does not provide account-based privacy protection for data stored on this device.</p></div></details>
+              <details class="settings-disclosure"><summary>Terms of Use<span aria-hidden="true">+</span></summary><div class="settings-disclosure-copy"><p>This is a demonstration of Rafiq. Account, family and subscription features use local browser data. Payments and invitations are simulated; no real payment or invitation email is sent.</p><p>Use demo information when exploring this preview. Production terms are not available in this prototype.</p></div></details>
+              <details class="settings-disclosure"><summary>Medical Disclaimer<span aria-hidden="true">+</span></summary><div class="settings-disclosure-copy"><p>Rafiq provides educational content and a place to organize your observations. It does not provide a diagnosis or replace professional medical advice.</p><p>Saved observations and health records are information you enter. Discuss developmental concerns and vaccination plans with a qualified healthcare professional.</p></div></details>
             </div>
 
 

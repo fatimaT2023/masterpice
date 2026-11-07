@@ -42,28 +42,230 @@
 <link rel="stylesheet" href="../shared/site-language.css">
 <script src="../shared/membership.js"></script><link rel="stylesheet" href="../shared/membership.css"><script src="child-appearance.js"></script></head>
 
-<body class="parent-cycle-video parent-today-page">
-<div class="parent-static-background" aria-hidden="true"></div><div id="parentSidebarMount"></div><script src="parent-sidebar.js"></script>
+<body class="parent-cycle-video parent-today-page activity-page-view">
+<div class="parent-static-background" aria-hidden="true"></div>
+<div id="parentSidebarMount"></div>
+<script src="parent-sidebar.js"></script>
+
 <main class="main-content today-main" id="mainContent">
-<header class="topbar today-topbar"><div><a class="today-text-link" href="parent-dashboard.html">← Back to Home</a><p class="today-eyebrow" id="todayDate"></p><h1 id="todayHeading">Your family home</h1><p id="todayChildContext" class="today-meta"></p><p class="today-intro">Try an activity together, then save your child’s reaction.</p></div></header>
+<header class="topbar today-topbar">
+  <div class="today-hero-card">
+    <div class="today-hero-meta-row">
+      <a class="activity-back-link" href="parent-dashboard.html">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        <span>Back to Home</span>
+      </a>
+      <div class="today-date-badge">
+        <svg class="meta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="today-eyebrow" id="todayDate"></span>
+      </div>
+      <div class="today-child-badge">
+        <span class="badge-dot" aria-hidden="true"></span>
+        <span id="todayChildContext" class="today-meta"></span>
+      </div>
+    </div>
+    <h1 id="todayHeading">Activity with my child</h1>
+    <p class="today-intro">Try an age-matched activity together, then save your child’s reaction.</p>
+  </div>
+</header>
+
 <div class="today-alert" id="todayError" role="alert" hidden></div>
+
 <div id="todayContent" hidden>
 
-
+<!-- Main Activity Card -->
 <section class="today-card daily-moment" id="dailyMoment" aria-labelledby="dailyTitle">
-<div class="daily-heading"><div><span class="today-eyebrow">TODAY’S ACTIVITY</span><h2 id="dailyTitle">A little moment together</h2><p id="dailyAge" class="today-meta"></p></div></div>
-<div class="daily-welcome"><span aria-hidden="true">♡</span><div><strong>A little time together is enough</strong><p>No perfect result, no catching up. Follow your child’s pace.</p></div></div><p id="dailyWeek" class="daily-week" role="status"></p><p class="today-activity-guide">1. Open the steps · 2. Try it together · 3. Save your child’s reaction. You can also leave it for later.</p><p id="dailyStatus" role="status" aria-live="polite"></p><nav id="dailyUnavailable" class="daily-unavailable" aria-label="Other ways to continue" hidden><a id="dailyReviewChild" class="today-secondary" href="child-profile.html">Review child details</a><a class="today-text-link" href="milestones.html?filter=daily-moment#savedObservations">View saved observations →</a><a class="today-text-link" href="screening.html">Discuss a concern →</a></nav><section id="dailySaved" class="daily-saved" aria-labelledby="dailySavedTitle" hidden><h3 id="dailySavedTitle">Your saved response</h3><p id="dailySavedOutcome"></p><p id="dailySavedNote" data-user-content></p><p class="today-meta">Saved in this child’s observations. You can return here today to update it.</p><button type="button" class="today-secondary" id="dailyEdit">Edit today’s response</button> <a class="today-text-link" href="milestones.html?filter=daily-moment#savedObservations">View saved observations →</a></section>
-<div id="dailyIdea" hidden><p id="dailyInsight"></p><p id="dailyDuration" class="today-meta"></p><button type="button" class="today-primary" id="dailyStart" aria-expanded="false" aria-controls="dailyDetails">Try this activity</button>
-<div class="daily-supporting"><details class="daily-personalize"><summary>Make these ideas more like my child</summary><p>Select what feels comfortable now. These are your observations, not a skills test. You can change them anytime.</p><form id="playPreferencesForm"><fieldset id="playComfortChoices"><legend>What feels comfortable for your child?</legend></fieldset><button class="today-secondary" type="submit">Save my child’s preferences</button><p id="playPreferencesStatus" role="status"></p></form></details><details class="daily-why"><summary>Why this idea for my child?</summary><ul id="dailyReasons"></ul><p>These play ideas do not use diagnoses or health notes to decide what is safe. Follow your care team’s instructions.</p></details></div>
-<div id="dailyDetails" hidden><div class="play-session" id="playSession" aria-labelledby="playStageTitle"><ol class="play-stages" aria-label="Activity stages"><li id="playStage0">Get ready</li><li id="playStage1">Play together</li><li id="playStage2">Remember</li></ol><div class="play-stage-card"><span class="play-stage-symbol" id="playStageSymbol" aria-hidden="true">♡</span><p id="playStageCount" class="today-eyebrow" role="status"></p><h3 id="playStageTitle" tabindex="-1"></h3><p id="playStageText"></p><div class="play-session-actions"><button type="button" id="playPrevious" class="today-secondary">Back</button><button type="button" id="playNext" class="today-primary">Let’s begin</button></div><button type="button" id="playFinish" class="today-text-link">Stop here &amp; record how it went</button></div></div><details class="play-all-steps"><summary>See all written steps</summary><p id="dailyMaterials" class="today-meta"></p><ol id="dailySteps"></ol></details><p id="dailyCare" class="today-meta"></p><aside class="daily-video"><span aria-hidden="true">▶</span><div><strong>Want a little guidance?</strong><p id="dailyVideoDescription"></p><a id="dailyVideoLink" class="today-text-link" target="_blank" rel="noopener noreferrer">Watch the parent guide ↗</a><p class="today-meta">For the grown-up: opens an external video page. The written steps above explain today’s activity.</p></div></aside>
-<form id="dailyFeedbackForm"><fieldset><legend>How did it go?</legend><label><input type="radio" name="dailyOutcome" value="tried"> We tried it</label><label><input type="radio" name="dailyOutcome" value="later"> Maybe later</label><label><input type="radio" name="dailyOutcome" value="not-for-us"> Not for us</label></fieldset><label for="dailyNote">What did you notice? <span>(optional)</span></label><textarea id="dailyNote" rows="3" maxlength="1000" placeholder="A little reaction or something to remember…"></textarea><button class="today-primary" id="dailySave" type="submit">Save our moment</button></form>
-<p class="today-meta"><a id="dailySource" href="#" target="_blank" rel="noopener noreferrer">Read the source ↗</a> · A play idea, not a developmental test.</p></div></div>
+  <div class="daily-heading">
+    <div>
+      <span class="today-eyebrow">TODAY’S ACTIVITY</span>
+      <h2 id="dailyTitle">A little moment together</h2>
+      <p id="dailyAge" class="today-meta"></p>
+    </div>
+  </div>
+
+  <div class="daily-welcome">
+    <div class="daily-welcome-icon" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+    </div>
+    <div>
+      <strong>A little time together is enough</strong>
+      <p>No perfect result, no catching up. Follow your child’s pace.</p>
+    </div>
+  </div>
+
+  <p id="dailyWeek" class="daily-week" role="status"></p>
+  
+  <div class="activity-guide-steps-row">
+    <div class="guide-step-chip"><span class="step-num">1</span> Open steps</div>
+    <span class="guide-step-divider">·</span>
+    <div class="guide-step-chip"><span class="step-num">2</span> Try it together</div>
+    <span class="guide-step-divider">·</span>
+    <div class="guide-step-chip"><span class="step-num">3</span> Save reaction</div>
+  </div>
+  <p class="today-activity-guide" hidden>1. Open the steps · 2. Try it together · 3. Save your child’s reaction. You can also leave it for later.</p>
+
+  <p id="dailyStatus" role="status" aria-live="polite"></p>
+
+  <nav id="dailyUnavailable" class="daily-unavailable" aria-label="Other ways to continue" hidden>
+    <a id="dailyReviewChild" class="today-secondary" href="child-profile.html">Review child details</a>
+    <a class="today-text-link" href="milestones.html?filter=daily-moment#savedObservations">View saved observations →</a>
+    <a class="today-text-link" href="screening.html">Discuss a concern →</a>
+  </nav>
+
+  <section id="dailySaved" class="daily-saved" aria-labelledby="dailySavedTitle" hidden>
+    <div class="daily-saved-badge">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <h3 id="dailySavedTitle">Your saved response</h3>
+    </div>
+    <p id="dailySavedOutcome"></p>
+    <p id="dailySavedNote" data-user-content></p>
+    <p class="today-meta">Saved in this child’s observations. You can return here today to update it.</p>
+    <div class="daily-saved-actions">
+      <button type="button" class="today-secondary" id="dailyEdit">Edit today’s response</button>
+      <a class="today-text-link" href="milestones.html?filter=daily-moment#savedObservations">View saved observations →</a>
+    </div>
+  </section>
+
+  <!-- Activity Overview / Start Area -->
+  <div id="dailyIdea" hidden>
+    <div class="daily-insight-card">
+      <p id="dailyInsight"></p>
+      <div class="daily-meta-row">
+        <div class="duration-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span id="dailyDuration" class="today-meta"></span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="daily-start-wrap">
+      <button type="button" class="today-primary activity-cta-btn" id="dailyStart" aria-expanded="false" aria-controls="dailyDetails">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        <span>Try this activity</span>
+      </button>
+    </div>
+
+    <div class="daily-supporting">
+      <details class="daily-personalize">
+        <summary>Make these ideas more like my child</summary>
+        <p>Select what feels comfortable now. These are your observations, not a skills test. You can change them anytime.</p>
+        <form id="playPreferencesForm">
+          <fieldset id="playComfortChoices">
+            <legend>What feels comfortable for your child?</legend>
+          </fieldset>
+          <button class="today-secondary" type="submit">Save my child’s preferences</button>
+          <p id="playPreferencesStatus" role="status"></p>
+        </form>
+      </details>
+      <details class="daily-why">
+        <summary>Why this idea for my child?</summary>
+        <ul id="dailyReasons"></ul>
+        <p>These play ideas do not use diagnoses or health notes to decide what is safe. Follow your care team’s instructions.</p>
+      </details>
+    </div>
+
+    <!-- Guided Steps & Interactive Session -->
+    <div id="dailyDetails" hidden>
+      <div class="play-session" id="playSession" aria-labelledby="playStageTitle">
+        <ol class="play-stages" aria-label="Activity stages">
+          <li id="playStage0">Get ready</li>
+          <li id="playStage1">Play together</li>
+          <li id="playStage2">Remember</li>
+        </ol>
+
+        <div class="play-stage-card">
+          <div class="play-stage-symbol-wrap">
+            <span class="play-stage-symbol" id="playStageSymbol" aria-hidden="true">♡</span>
+          </div>
+          <p id="playStageCount" class="today-eyebrow" role="status"></p>
+          <h3 id="playStageTitle" tabindex="-1"></h3>
+          <p id="playStageText"></p>
+          <div class="play-session-actions">
+            <button type="button" id="playPrevious" class="today-secondary">Back</button>
+            <button type="button" id="playNext" class="today-primary">Let’s begin</button>
+          </div>
+          <button type="button" id="playFinish" class="today-text-link">Stop here &amp; record how it went</button>
+        </div>
+      </div>
+
+      <details class="play-all-steps">
+        <summary>See all written steps</summary>
+        <p id="dailyMaterials" class="today-meta"></p>
+        <ol id="dailySteps"></ol>
+      </details>
+
+      <p id="dailyCare" class="today-meta"></p>
+
+      <aside class="daily-video">
+        <div class="video-icon-bubble" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+        </div>
+        <div>
+          <strong>Want a little guidance?</strong>
+          <p id="dailyVideoDescription"></p>
+          <a id="dailyVideoLink" class="today-text-link" target="_blank" rel="noopener noreferrer">Watch the parent guide ↗</a>
+          <p class="today-meta">For the grown-up: opens an external video page. The written steps above explain today’s activity.</p>
+        </div>
+      </aside>
+
+      <!-- Feedback / Recording Form -->
+      <form id="dailyFeedbackForm">
+        <fieldset class="feedback-fieldset">
+          <legend>How did it go?</legend>
+          <div class="feedback-options-grid">
+            <label class="feedback-option-card">
+              <input type="radio" name="dailyOutcome" value="tried">
+              <span class="option-label">We tried it</span>
+            </label>
+            <label class="feedback-option-card">
+              <input type="radio" name="dailyOutcome" value="later">
+              <span class="option-label">Maybe later</span>
+            </label>
+            <label class="feedback-option-card">
+              <input type="radio" name="dailyOutcome" value="not-for-us">
+              <span class="option-label">Not for us</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="feedback-note-group">
+          <label for="dailyNote">What did you notice? <span>(optional)</span></label>
+          <textarea id="dailyNote" rows="3" maxlength="1000" placeholder="A little reaction or something to remember…"></textarea>
+        </div>
+
+        <button class="today-primary activity-submit-btn" id="dailySave" type="submit">Save our moment</button>
+      </form>
+
+      <p class="today-meta activity-source-footnote"><a id="dailySource" href="#" target="_blank" rel="noopener noreferrer">Read the source ↗</a> · A play idea, not a developmental test.</p>
+    </div>
+  </div>
 </section>
-<section class="today-card today-more" id="todayMore" aria-labelledby="todayMoreTitle" hidden><h2 id="todayMoreTitle">Would you like another activity?</h2><p>A little time together is enough. Extra activities are optional and included in Plus.</p><a id="todayMoreAction" class="today-secondary" href="subscription.html">Explore Plus for more activities</a><p id="todayMoreStatus" role="status"></p><h3>Today’s saved activities</h3><div id="todayActivitiesList"></div></section>
-<section class="today-card daily-history" aria-labelledby="dailyHistoryTitle"><h2 id="dailyHistoryTitle">Our previous moments</h2><p>Today has its own activity. Your saved responses from earlier days stay here.</p><p id="dailyHistoryStatus" role="status"></p><div id="dailyHistoryList"></div><a class="today-text-link" href="milestones.html?filter=daily-moment#savedObservations">View all saved observations →</a></section>
+
+<!-- Additional / Plus Activities Section -->
+<section class="today-card today-more" id="todayMore" aria-labelledby="todayMoreTitle" hidden>
+  <h2 id="todayMoreTitle">Would you like another activity?</h2>
+  <p>A little time together is enough. Extra activities are optional and included in Plus.</p>
+  <a id="todayMoreAction" class="today-secondary" href="subscription.html">Explore Plus for more activities</a>
+  <p id="todayMoreStatus" role="status"></p>
+  <h3>Today’s saved activities</h3>
+  <div id="todayActivitiesList"></div>
+</section>
+
+<!-- Previous Moments History -->
+<section class="today-card daily-history" aria-labelledby="dailyHistoryTitle">
+  <div class="history-heading">
+    <h2 id="dailyHistoryTitle">Our previous moments</h2>
+    <p>Today has its own activity. Your saved responses from earlier days stay here.</p>
+  </div>
+  <p id="dailyHistoryStatus" role="status"></p>
+  <div id="dailyHistoryList"></div>
+  <a class="today-text-link" href="milestones.html?filter=daily-moment#savedObservations">View all saved observations →</a>
+</section>
 
 <p class="today-help"><a href="screening.html">Concerned about your child’s development? <span aria-hidden="true">→</span></a></p>
 <p class="today-footnote">Rafiq provides educational support, not a diagnosis or emergency care.</p>
-</div></main>
+</div>
+</main>
+
 <script src="screening-tools.js"></script><script src="today-model.js"></script><script src="activity-matching.js"></script><script src="daily-moments.js"></script><script src="activity-page.js"></script><script src="daily-moment-ui.js"></script><script src="play-personalization.js"></script><script src="activity-profile-ui.js"></script><script src="daily-session-actions.js"></script><script src="parent-journey.js" defer></script><script src="notifications.js"></script><script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="parent-journey-ar.js" defer></script><script src="today-ar.js" defer></script><script src="../shared/site-language.js" defer></script>
 <script src="../shared/membership-ui.js"></script></body></html>
