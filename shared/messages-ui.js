@@ -27,6 +27,32 @@ document.addEventListener('DOMContentLoaded',()=>{
   const log=get('conversationLog');log.replaceChildren();
   if(!thread.messages.length){const p=make('p',role==='parent'?'Say hello and tell the specialist how they can help.':'The parent has not sent a message yet.');p.className='messages-empty';log.append(p);}
   for(const message of thread.messages){const article=make('article');article.className='direct-message'+(message.senderId===viewer.id&&message.senderRole===viewer.role?' is-mine':'');const text=make('p',message.text),time=make('time',format(message.createdAt));text.setAttribute('data-user-content','');time.dateTime=message.createdAt;const sender=make('small',message.senderName||(message.senderRole==='specialist'?thread.specialistName:thread.parentName));sender.setAttribute('data-user-content','');article.append(sender,text,time);log.append(article);}
+  if(role==='parent'&&window.RafiqCareConnections){
+   try{
+    const care=window.RafiqCareConnections,records=care.records(viewer,thread.id);
+    const decisions={reviewed:'Reviewed — no further action',clarification:'Ask the family for clarification',adapt_activity:'Recommend an activity adjustment',appointment:'Recommend a follow-up appointment'};
+    for(const review of care.reviews(viewer,thread.id)){
+     const card=make('article');card.className='conversation-review';card.dataset.reviewId=review.id;
+     const heading=make('div');heading.className='conversation-review-heading';
+     const icon=make('span','✓');icon.setAttribute('aria-hidden','true');icon.className='conversation-review-icon';
+     const title=make('div');title.append(make('strong','Your specialist replied to your observation'),make('small',review.specialistName||thread.specialistName));title.lastChild.dataset.userContent='';
+     heading.append(icon,title);card.append(heading);
+     const record=records.find(r=>r.id===review.recordId);
+     const quote=make('blockquote',record?.text||review.recordTitle||'Parent observation');quote.dataset.userContent='';card.append(quote);
+     const decision=make('span',decisions[review.decision]||review.decision);decision.className='conversation-review-decision';
+     const body=make('p',review.note);body.dataset.userContent='';
+     const time=make('time',format(review.createdAt));time.dateTime=review.createdAt;
+     card.append(decision,body,time);
+     if(review.activityGuidance){
+      const guidance=make('p','This recommendation also guides activity suggestions.');guidance.className='conversation-review-guidance';card.append(guidance);
+     }
+     const reply=make('button','Reply to specialist');reply.type='button';reply.className='conversation-review-reply';reply.disabled=!api.specialists().some(s=>s.id===thread.specialistId&&s.status==='approved');
+     reply.addEventListener('click',()=>{get('messageText').focus();});card.append(reply);
+     const later=[...log.children].find(node=>new Date(node.querySelector('time')?.dateTime).getTime()>new Date(review.createdAt).getTime());
+     log.insertBefore(card,later||null);
+    }
+   }catch{/* Keep the conversation available if review access changed. */}
+  }
   log.scrollTop=log.scrollHeight;
   const available=api.specialists().some(s=>s.id===thread.specialistId&&s.status==='approved');get('messageText').disabled=!available;get('messageSend').disabled=!available;get('conversationUnavailable').hidden=available;
  }
@@ -47,7 +73,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  get('messageText').addEventListener('input',()=>get('messageCount').textContent=get('messageText').value.length+' / 2000');
  get('messagesSearch').addEventListener('input',()=>{const query=get('messagesSearch').value.toLowerCase();get('conversationList').querySelectorAll('button').forEach(button=>button.hidden=!button.textContent.toLowerCase().includes(query));});
  window.addEventListener('rafiq:care-updated',()=>{try{render();}catch(error){setStatus(error.message);}});
- window.addEventListener('storage',event=>{if(['rafiqDirectConversations','rafiqSpecialists','rafiqBookings','rafiqSpecialistReports'].includes(event.key)){try{const active=api.list(viewer).find(t=>t.id===selected);if(!document.hidden&&active&&api.unread(active,viewer))api.markRead(viewer,selected);render();}catch(error){setStatus(error.message);}}});
+ window.addEventListener('storage',event=>{if(['rafiqDirectConversations','rafiqSpecialists','rafiqBookings','rafiqSpecialistReports','rafiqCareReviews','rafiqCareConnections'].includes(event.key)){try{const active=api.list(viewer).find(t=>t.id===selected);if(!document.hidden&&active&&api.unread(active,viewer))api.markRead(viewer,selected);render();}catch(error){setStatus(error.message);}}});
  document.addEventListener('visibilitychange',()=>{if(!document.hidden&&selected){try{api.markRead(viewer,selected);render();}catch(error){setStatus(error.message);}}});
  try{const requestedThread=new URLSearchParams(location.search).get('thread');if(requestedThread){selected=api.list(viewer).find(t=>t.id===requestedThread)?.id||null;if(!selected)setStatus('This conversation is not available to your account.');}const bookingId=new URLSearchParams(location.search).get('booking');if(role==='specialist'&&bookingId){let bookings=[];try{bookings=JSON.parse(localStorage.getItem('rafiqBookings')||'[]');}catch{}const booking=Array.isArray(bookings)?bookings.find(b=>b.id===bookingId&&b.specialistId===viewer.id):null;if(booking)selected=api.list(viewer).find(t=>t.specialistId===viewer.id&&t.childId===booking.childId&&(!booking.parentId||t.parentId===booking.parentId))?.id||null;}if(!selected&&!requestedThread)selected=api.list(viewer)[0]?.id||null;if(selected)api.markRead(viewer,selected);render();}catch(error){setStatus(error.message);}
 });

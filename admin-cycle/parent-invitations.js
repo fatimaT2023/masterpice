@@ -1,6 +1,12 @@
 /* Registration-link preparation only; no account creation or email sending. */
 (()=>{'use strict';
  const get=id=>document.getElementById(id),form=get('parentInviteForm');if(!form)return;
+ const dialog=get('parentInviteDialog'),open=get('openParentInvite');
+ if(dialog&&open){
+  open.addEventListener('click',()=>{if(!dialog.open){dialog.showModal();get('inviteName').focus();}});
+  get('closeParentInvite').addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('close',()=>open.focus());
+ }
  const input=get('invitePublicUrl'),status=get('inviteStatus'),preview=get('invitePreview'),message=get('inviteMessage'),draft=get('inviteEmailDraft');
  const hosted=['https:','http:'].includes(location.protocol)&&!['localhost','127.0.0.1','[::1]'].includes(location.hostname);
  if(hosted)input.value=new URL('../piblic-pages/register.html?role=parent',location.href).href;input.required=true;

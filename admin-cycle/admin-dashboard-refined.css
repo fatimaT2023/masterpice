@@ -75,3 +75,29 @@ body.admin-operations .panel-heading h2 { font-size:20px; }
   .admin-operations .admin-dashboard-heading-icon { inline-size:44px; block-size:44px; border-radius:15px; }
   .admin-operations .operations-actions { grid-template-columns:minmax(0,1fr); }
 }
+
+.admin-invite-button {
+ display:inline-flex; align-items:center; justify-content:center; gap:8px;
+ min-block-size:44px; padding:10px 16px; border:1px solid #ffffffdf; border-radius:13px;
+ background:#075e5a; color:white; font:600 13px var(--font-body); cursor:pointer;
+}
+dialog.admin-invite-dialog {
+ position:fixed; inset:0; margin:auto; inline-size:min(620px,calc(100vw - 32px));
+ max-block-size:calc(100dvh - 32px); box-sizing:border-box; overflow:auto; padding:24px;
+ border:1px solid #ffffff; border-radius:26px; background:#f7fcf9; color:#163e3b;
+ box-shadow:0 24px 80px #163e3b30;
+}
+.admin-invite-dialog::backdrop { background:#163e3b50; backdrop-filter:blur(9px); }
+.admin-invite-heading { display:flex; align-items:center; justify-content:space-between; gap:14px; }
+.admin-invite-heading h2 { margin:0; font-size:22px; }
+.admin-invite-heading button { min-inline-size:44px; min-block-size:44px; border:1px solid #c7dbcf; border-radius:12px; background:white; color:#075e5a; font-size:24px; cursor:pointer; }
+.admin-invite-dialog .users-intro { font-size:13px; line-height:1.7; color:#527169; }
+.admin-invite-dialog .users-tools { display:grid; gap:14px; }
+.admin-invite-dialog label { display:grid; gap:6px; font-size:13px; }
+.admin-invite-dialog :is(input,textarea) { inline-size:100%; min-inline-size:0; min-block-size:44px; box-sizing:border-box; padding:11px 12px; font:inherit; font-size:14px; border:1px solid #bcd3c6; border-radius:12px; background:#ffffffc9; color:inherit; }
+.admin-invite-dialog textarea { resize:vertical; }
+.admin-invite-dialog button[type=submit] { min-block-size:44px; padding:11px 16px; border:0; border-radius:12px; background:#075e5a; color:white; font:600 13px var(--font-body); cursor:pointer; }
+.admin-invite-dialog .invite-actions { display:flex; flex-wrap:wrap; gap:10px; margin-block:12px; }
+.admin-invite-dialog .invite-action { display:inline-flex; align-items:center; min-block-size:44px; padding:10px 14px; border:1px solid #bcd3c6; border-radius:12px; background:white; color:#075e5a; font:inherit; font-size:13px; text-decoration:none; cursor:pointer; }
+.admin-invite-dialog :is(p,small) { font-size:12px; line-height:1.7; }
+.admin-invite-dialog :is(button,a,input,textarea):focus-visible { outline:2px solid #0b7a75; outline-offset:3px; }

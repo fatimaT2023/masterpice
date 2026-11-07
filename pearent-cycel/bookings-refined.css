@@ -1,0 +1,40 @@
+/* Parent appointment list: essentials first; payment history on demand. */
+.parent-bookings-page .bookings-intro { margin-block:0 16px; font-size:14px; line-height:1.6; color:var(--ink-soft,#526b66); }
+.parent-bookings-page .summary-grid { gap:10px; margin-block:0 16px; }
+.parent-bookings-page .summary-card { min-inline-size:0; padding:14px; border:1px solid #ffffffdf; border-radius:20px; background:#ffffffa6; box-shadow:0 5px 18px #61364b05; }
+.parent-bookings-page .summary-card strong { font-size:24px; }
+.parent-bookings-page .summary-card span { font-size:12px; }
+.parent-bookings-page .booking-card { padding:20px; border:1px solid #ffffffdf; border-radius:24px; background:#ffffffb3; box-shadow:0 8px 26px #61364b08; min-inline-size:0; }
+.parent-bookings-page .booking-card-top { gap:12px; padding-block-end:14px; }
+.parent-bookings-page .specialist-info { min-inline-size:0; }
+.parent-bookings-page .specialist-info h3 { font-size:18px; overflow-wrap:anywhere; }
+.parent-bookings-page .specialist-info p { font-size:12px; }
+.parent-bookings-page .status-badge { font-size:11px; border-radius:12px; }
+.parent-bookings-page .booking-details { grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; padding-block:14px; }
+.parent-bookings-page .booking-detail { min-inline-size:0; padding:10px; border-radius:12px; background:#ffffff85; }
+.parent-bookings-page .booking-detail span { font-size:11px; }
+.parent-bookings-page .booking-detail strong { font-size:13px; overflow-wrap:anywhere; }
+.parent-bookings-page .booking-extra { padding-block:0; margin-block:0 8px; border-block-start:1px solid #61364b0c; }
+.parent-bookings-page .booking-extra summary { cursor:pointer; min-block-size:44px; padding-block:12px; font-size:12px; color:var(--sage-deep,#075e5a); }
+.parent-bookings-page .booking-family-payment { padding:12px 14px; border-radius:14px; background:#fcebf380; }
+.parent-bookings-page .booking-family-payment p { margin-block:5px; font-size:12px; line-height:1.6; overflow-wrap:anywhere; }
+.parent-bookings-page .booking-extra-reference { font-size:11px; color:var(--ink-soft,#526b66); overflow-wrap:anywhere; }
+.parent-bookings-page .booking-card-footer { padding-block-start:10px; }
+.parent-bookings-page .booking-actions { display:flex; flex-wrap:wrap; gap:8px; inline-size:100%; }
+.parent-bookings-page .booking-actions :is(button,a) { display:inline-flex; align-items:center; justify-content:center; min-block-size:44px; margin:0; padding:10px 14px; border-radius:12px; font-size:12px; }
+.parent-bookings-page .cancel-button { margin-inline-start:auto!important; }
+.parent-bookings-page .booking-actions .report-pending-note { align-self:center; font-size:12px; }
+.parent-bookings-page .booking-actions .specialist-message-link { background:#ffffff90; }
+.parent-bookings-page .booking-actions .details-button { background:var(--sage-deep,#075e5a); color:white; }
+.parent-bookings-page .main-content :is(a,button,input,select,summary):focus-visible { outline:2px solid #0b7a75; outline-offset:3px; }
+@media(max-width:700px) {
+ .parent-bookings-page .booking-details { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .parent-bookings-page .booking-card { padding:16px; }
+ .parent-bookings-page .cancel-button { margin-inline-start:0!important; }
+}
+@media(max-width:400px) {
+ .parent-bookings-page .booking-actions :is(a,button) { flex:1 1 45%; }
+}
+
+/* Payment information is already available within each booking. */
+.parent-bookings-page .main-content > .sf-panel { display:none; }

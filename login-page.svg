@@ -1,0 +1,288 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 960" width="1440" height="960" fill="none">
+  <!-- ========================================================
+       FIGMA-READY VECTOR UI: RAFIQ LOGIN PAGE
+       Paste directly into Figma (Ctrl+V) or drag & drop .svg file
+       ======================================================== -->
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bg-canvas" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF6F0"/>
+      <stop offset="50%" stop-color="#F3ECE3"/>
+      <stop offset="100%" stop-color="#EBE3DA"/>
+    </linearGradient>
+
+    <radialGradient id="ambient-pink" cx="20%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#FCDAD7" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#FAF6F0" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="ambient-teal" cx="85%" cy="80%" r="55%">
+      <stop offset="0%" stop-color="#D4F3EA" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#EBE3DA" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="halo-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.85"/>
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Glass Card Gradient -->
+    <linearGradient id="glass-card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.45"/>
+    </linearGradient>
+
+    <!-- Button Gradient -->
+    <linearGradient id="btn-primary" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B7A75"/>
+      <stop offset="100%" stop-color="#075E5A"/>
+    </linearGradient>
+
+    <!-- Filters & Shadows -->
+    <filter id="shadow-card" x="-10%" y="-10%" width="125%" height="125%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="24" stdDeviation="30" flood-color="#0F2F2E" flood-opacity="0.08"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#0F2F2E" flood-opacity="0.04"/>
+    </filter>
+
+    <filter id="shadow-btn" x="-10%" y="-20%" width="125%" height="150%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0B7A75" flood-opacity="0.25"/>
+    </filter>
+
+    <filter id="shadow-tab" x="-10%" y="-20%" width="125%" height="150%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#173F3C" flood-opacity="0.08"/>
+    </filter>
+
+    <filter id="floor-blur" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+
+  <style>
+    .font-display { font-family: 'Bricolage Grotesque', 'Figtree', system-ui, -apple-system, sans-serif; font-weight: 700; }
+    .font-body { font-family: 'Figtree', system-ui, -apple-system, sans-serif; }
+    .text-ink { fill: #173F38; }
+    .text-muted { fill: #627C78; }
+    .text-primary { fill: #0B7A75; }
+    .text-white { fill: #FFFFFF; }
+  </style>
+
+  <!-- =====================================
+       LAYER 1: BACKGROUND & AMBIENT
+       ===================================== -->
+  <g id="Background">
+    <rect width="1440" height="960" fill="url(#bg-canvas)"/>
+    <rect width="1440" height="960" fill="url(#ambient-pink)"/>
+    <rect width="1440" height="960" fill="url(#ambient-teal)"/>
+
+    <!-- Decorative Soft Blur Elements -->
+    <circle cx="340" cy="580" r="240" fill="url(#halo-glow)"/>
+    <ellipse cx="360" cy="740" rx="210" ry="26" fill="#4A756E" fill-opacity="0.18" filter="url(#floor-blur)"/>
+  </g>
+
+  <!-- =====================================
+       LAYER 2: TOPBAR NAVIGATION
+       ===================================== -->
+  <g id="Topbar">
+    <!-- Top divider line -->
+    <line x1="80" y1="88" x2="1360" y2="88" stroke="#CDDBC9" stroke-width="1"/>
+
+    <!-- Wordmark / Brand -->
+    <g id="Brand" transform="translate(80, 56)">
+      <text class="font-display" font-size="28" letter-spacing="1.5" fill="#173F38">RAFIQ<tspan fill="#0B7A75">.</tspan></text>
+    </g>
+
+    <!-- Back to Home Button -->
+    <g id="Back-To-Home" transform="translate(1220, 42)">
+      <rect width="140" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.45" stroke="#FFFFFF" stroke-opacity="0.8" stroke-width="1"/>
+      <path d="M1238 61 L1247 52 M1238 52 L1247 52 M1238 52 L1238 61" fill="none" stroke="#365D4E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="38" y="24" class="font-body" font-size="13" font-weight="600" fill="#365D4E">Back to home</text>
+    </g>
+  </g>
+
+  <!-- =====================================
+       LAYER 3: LEFT VISUAL PANEL
+       ===================================== -->
+  <g id="Visual-Panel" transform="translate(110, 150)">
+    <!-- Heading Copy -->
+    <g id="Visual-Copy">
+      <text class="font-display" font-size="56" fill="#173F38" line-height="1.08">
+        <tspan x="0" y="56">Good to have</tspan>
+        <tspan x="0" y="122">you </tspan>
+        <tspan fill="#0B7A75">back.</tspan>
+      </text>
+
+      <text class="font-body" font-size="16" fill="#536E63" line-height="1.7">
+        <tspan x="0" y="172">A familiar place for your family.</tspan>
+        <tspan x="0" y="198">A little support for your next step.</tspan>
+      </text>
+    </g>
+
+    <!-- Character / Mascot Scene -->
+    <g id="Mascot-Scene" transform="translate(40, 240)">
+      <!-- Companion Note Pill -->
+      <g id="Companion-Pill" transform="translate(-10, 310)">
+        <rect width="210" height="64" rx="18" fill="#FFFFFF" fill-opacity="0.75" stroke="#FFFFFF" stroke-width="1.5" filter="url(#shadow-card)"/>
+        <circle cx="34" cy="32" r="16" fill="#D4F3EA"/>
+        <path d="M34 27 C31 24 27 26 27 29 C27 33 34 37 34 37 C34 37 41 33 41 29 C41 26 37 24 34 27 Z" fill="#0B7A75"/>
+        <text x="60" y="27" class="font-body" font-size="12" font-weight="700" fill="#173F38">A friend for every stage.</text>
+        <text x="60" y="44" class="font-body" font-size="10" fill="#627C78">A little guidance. A lot of care.</text>
+      </g>
+
+      <!-- Mascot Sitting Cute Vector -->
+      <g id="Baby-Mascot" transform="translate(140, 10)">
+        <!-- Head / Ears / Hair -->
+        <circle cx="110" cy="110" r="70" fill="#FCE5D8"/>
+        <!-- Ears -->
+        <circle cx="38" cy="112" r="14" fill="#F8D3C1"/>
+        <circle cx="182" cy="112" r="14" fill="#F8D3C1"/>
+        <!-- Tuft of Hair -->
+        <path d="M106 40 C106 28 116 26 118 36 C121 28 128 32 124 42 Z" fill="#99603D"/>
+        <!-- Face Features -->
+        <!-- Eyes (Happy Arches) -->
+        <path d="M84 106 C84 98 96 98 96 106" stroke="#4A3427" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+        <path d="M124 106 C124 98 136 98 136 106" stroke="#4A3427" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+        <!-- Cheeks -->
+        <ellipse cx="78" cy="118" rx="10" ry="6" fill="#F9A8A0" fill-opacity="0.5"/>
+        <ellipse cx="142" cy="118" rx="10" ry="6" fill="#F9A8A0" fill-opacity="0.5"/>
+        <!-- Cute Smile -->
+        <path d="M104 120 Q110 126 116 120" stroke="#87472A" stroke-width="3" stroke-linecap="round" fill="none"/>
+        
+        <!-- Body / Clothes (Sage Teal Jumpsuit) -->
+        <path d="M68 168 C68 150 152 150 152 168 L164 246 C164 256 154 266 142 266 L78 266 C66 266 56 256 56 246 Z" fill="#98D8CF"/>
+        <!-- Collar -->
+        <path d="M92 166 Q110 180 128 166" fill="#FFFFFF"/>
+        <!-- Hands -->
+        <ellipse cx="60" cy="200" rx="14" ry="12" fill="#FCE5D8"/>
+        <ellipse cx="160" cy="200" rx="14" ry="12" fill="#FCE5D8"/>
+        <!-- Legs Sitting Forward -->
+        <ellipse cx="70" cy="265" rx="26" ry="16" fill="#FCE5D8"/>
+        <ellipse cx="150" cy="265" rx="26" ry="16" fill="#FCE5D8"/>
+        <!-- Little Socks -->
+        <ellipse cx="70" cy="266" rx="20" ry="12" fill="#FFFFFF"/>
+        <ellipse cx="150" cy="266" rx="20" ry="12" fill="#FFFFFF"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- =====================================
+       LAYER 4: RIGHT FORM PANEL (GLASS CARD)
+       ===================================== -->
+  <g id="Form-Panel" transform="translate(810, 120)">
+    <!-- Glassmorphic Card Container -->
+    <rect width="490" height="740" rx="26" fill="url(#glass-card)" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" filter="url(#shadow-card)"/>
+
+    <g transform="translate(42, 42)">
+      <!-- Card Brand -->
+      <g id="Card-Brand">
+        <text class="font-display" font-size="16" letter-spacing="1.5" fill="#173F38">RAFIQ</text>
+      </g>
+
+      <!-- Heading -->
+      <g id="Card-Heading" transform="translate(0, 38)">
+        <text class="font-display" font-size="34" letter-spacing="-1" fill="#173F38">Welcome back</text>
+        <text x="0" y="32" class="font-body" font-size="13" fill="#627C78">Log in to continue your journey with RAFIQ.</text>
+      </g>
+
+      <!-- Role Selector Tabs -->
+      <g id="Role-Selector" transform="translate(0, 116)">
+        <!-- Pill Background -->
+        <rect width="406" height="46" rx="23" fill="#FFFFFF" fill-opacity="0.5" stroke="#173F3C" stroke-opacity="0.08" stroke-width="1"/>
+        
+        <!-- Active Tab: Parent -->
+        <g id="Tab-Parent" transform="translate(4, 4)">
+          <rect width="197" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.95" filter="url(#shadow-tab)"/>
+          <text x="98" y="24" text-anchor="middle" class="font-body" font-size="13" font-weight="700" fill="#173F38">Parent</text>
+        </g>
+
+        <!-- Inactive Tab: Specialist -->
+        <g id="Tab-Specialist" transform="translate(205, 4)">
+          <text x="98" y="24" text-anchor="middle" class="font-body" font-size="13" font-weight="600" fill="#627C78">Specialist</text>
+        </g>
+      </g>
+
+      <!-- Field 1: Email or Username -->
+      <g id="Field-Email" transform="translate(0, 186)">
+        <text class="font-body" font-size="12" font-weight="700" fill="#173F38">Email or Username</text>
+        <g transform="translate(0, 10)">
+          <rect width="406" height="52" rx="13" fill="#FFFFFF" fill-opacity="0.65" stroke="#173F3C" stroke-opacity="0.16" stroke-width="1"/>
+          <!-- Email icon -->
+          <path d="M22 21 L34 29 L46 21 M22 19 L46 19 C47.1 19 48 19.9 48 21 L48 33 C48 34.1 47.1 35 46 35 L22 35 C20.9 35 20 34.1 20 33 L20 21 C20 19.9 20.9 19 22 19 Z" fill="none" stroke="#849893" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="60" y="31" class="font-body" font-size="14" fill="#849893">you@example.com</text>
+        </g>
+      </g>
+
+      <!-- Field 2: Password -->
+      <g id="Field-Password" transform="translate(0, 276)">
+        <text class="font-body" font-size="12" font-weight="700" fill="#173F38">Password</text>
+        <g transform="translate(0, 10)">
+          <rect width="406" height="52" rx="13" fill="#FFFFFF" fill-opacity="0.65" stroke="#173F3C" stroke-opacity="0.16" stroke-width="1"/>
+          <!-- Password Dots / Text -->
+          <circle cx="28" cy="26" r="3.5" fill="#849893"/>
+          <circle cx="40" cy="26" r="3.5" fill="#849893"/>
+          <circle cx="52" cy="26" r="3.5" fill="#849893"/>
+          <circle cx="64" cy="26" r="3.5" fill="#849893"/>
+          <circle cx="76" cy="26" r="3.5" fill="#849893"/>
+          <circle cx="88" cy="26" r="3.5" fill="#849893"/>
+          <circle cx="100" cy="26" r="3.5" fill="#849893"/>
+          <circle cx="112" cy="26" r="3.5" fill="#849893"/>
+
+          <!-- Eye Toggle Icon -->
+          <g transform="translate(366, 17)">
+            <path d="M2 9 C5.5 3 14.5 3 18 9 C14.5 15 5.5 15 2 9 Z" stroke="#627C78" stroke-width="1.6" fill="none"/>
+            <circle cx="10" cy="9" r="2.5" fill="#627C78"/>
+            <line x1="3" y1="3" x2="17" y2="15" stroke="#627C78" stroke-width="1.6" stroke-linecap="round"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- Options Row: Remember Me & Forgot Password -->
+      <g id="Form-Options" transform="translate(0, 366)">
+        <!-- Checkbox -->
+        <rect width="16" height="16" rx="4" fill="#0B7A75"/>
+        <path d="M4 8 L7 11 L12 5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <text x="26" y="13" class="font-body" font-size="12" fill="#627C78">Remember me</text>
+
+        <!-- Forgot Password Link -->
+        <text x="406" y="13" text-anchor="end" class="font-body" font-size="12" font-weight="600" fill="#075E5A">Forgot password?</text>
+      </g>
+
+      <!-- Login Submit Button -->
+      <g id="Btn-Login" transform="translate(0, 404)" filter="url(#shadow-btn)">
+        <rect width="406" height="52" rx="26" fill="url(#btn-primary)"/>
+        <text x="203" y="31" text-anchor="middle" class="font-body" font-size="14" font-weight="700" fill="#FFFFFF">Log In  ↗</text>
+      </g>
+
+      <!-- Help Link -->
+      <g id="Help-Link" transform="translate(0, 482)">
+        <text x="203" y="0" text-anchor="middle" class="font-body" font-size="12" fill="#536E63">Trouble logging in? <tspan font-weight="700" fill="#0B7A75">Get help</tspan></text>
+      </g>
+
+      <!-- Divider -->
+      <g id="Divider" transform="translate(0, 506)">
+        <line x1="0" y1="0" x2="175" y2="0" stroke="#173F3C" stroke-opacity="0.12"/>
+        <text x="203" y="4" text-anchor="middle" class="font-body" font-size="12" fill="#627C78">or</text>
+        <line x1="231" y1="0" x2="406" y2="0" stroke="#173F3C" stroke-opacity="0.12"/>
+      </g>
+
+      <!-- Create Account Button -->
+      <g id="Btn-Create-Account" transform="translate(0, 528)">
+        <rect width="406" height="48" rx="24" fill="#FFFFFF" fill-opacity="0.55" stroke="#173F3C" stroke-opacity="0.18" stroke-width="1"/>
+        <text x="203" y="29" text-anchor="middle" class="font-body" font-size="13" font-weight="700" fill="#173F38">Create an account  ↗</text>
+      </g>
+
+      <!-- Privacy & Assurance Note -->
+      <g id="Privacy-Note" transform="translate(0, 608)">
+        <!-- Padlock Icon -->
+        <g transform="translate(86, 0)">
+          <rect x="2" y="5" width="12" height="10" rx="2" stroke="#627C78" stroke-width="1.3" fill="none"/>
+          <path d="M5 5 V3.5 A3 3 0 0 1 11 3.5 V5" stroke="#627C78" stroke-width="1.3" fill="none"/>
+        </g>
+        <text x="108" y="13" class="font-body" font-size="11" fill="#627C78">Your family's next chapter starts here.</text>
+      </g>
+    </g>
+
+    <!-- Sub-card Note -->
+    <text x="245" y="714" text-anchor="middle" class="font-body" font-size="12" fill="#728A86">A little support makes a big difference.</text>
+  </g>
+</svg>

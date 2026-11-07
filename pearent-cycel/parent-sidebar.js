@@ -20,6 +20,15 @@ mount.outerHTML=`<header class="parent-navigation" id="sidebar"><div class="pare
 <nav class="parent-primary-nav" aria-label="Parent navigation"><a class="parent-today${dashboard?' is-active':''}" href="parent-dashboard.html"${dashboard?' aria-current="page"':''}>Home</a><a class="parent-messages-link" href="messages.html"${page==='messages.html'?' aria-current="page"':''}>Messages</a>${groups.map(([title,items],index)=>`<details class="parent-nav-group${items.some(item=>isCurrent(item[0]))?' is-active':''}"><summary>${title}<svg class="parent-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="parent-nav-panel">${items.map(link).join('')}</div></details>`).join('')}</nav></div><button id="sidebarClose" type="button" hidden tabindex="-1">Close</button></header>`;
 document.body.classList.add('has-parent-navigation');
 const header=document.getElementById('sidebar');document.body.prepend(header);
+ // Opt in only this parent Navbar; no sounds on page load or other controls.
+ if(window.RafiqUISounds)window.RafiqUISounds.attachNavigation(header);
+ else{
+  const soundScript=document.createElement('script');
+  soundScript.src=new URL('../shared/ui-sounds.js',document.currentScript.src).href;
+  soundScript.onload=()=>window.RafiqUISounds?.attachNavigation(header);
+  document.head.append(soundScript);
+ }
+
 // Each section opens its first destination; its pages share a tab strip.
 header.querySelectorAll('.parent-nav-group').forEach((menu,index)=>{
  const [title,items]=groups[index],sectionLink=document.createElement('a');

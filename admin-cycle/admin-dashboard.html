@@ -324,7 +324,7 @@
       </div>
 
 
-      <div class="topbar-actions">
+      <div class="topbar-actions"><button type="button" id="openParentInvite" class="admin-invite-button" aria-haspopup="dialog" aria-controls="parentInviteDialog">Invite a parent</button>
 
         <!-- Notifications will later use this -->
 
@@ -847,6 +847,11 @@
 </div>
 
 
+<dialog id="parentInviteDialog" class="admin-invite-dialog" aria-labelledby="parentInviteHeading"><div class="admin-invite-heading"><h2 id="parentInviteHeading">Invite a parent</h2><button type="button" id="closeParentInvite" aria-label="Close invitation">×</button></div><p class="users-intro">Prepare a registration invitation for someone who needs help. They choose their own password. This preview opens an email draft; it does not create or activate an account.</p>
+<form id="parentInviteForm" class="users-tools"><label for="inviteName">Parent name<input id="inviteName" autocomplete="name" maxlength="100" required></label><label for="inviteEmail">Email address<input id="inviteEmail" type="email" autocomplete="email" maxlength="254" required></label><label for="invitePublicUrl">Public registration link<input id="invitePublicUrl" type="url" placeholder="https://your-site.example/register.html"></label><button type="submit">Prepare invitation</button></form>
+<div id="invitePreview" hidden><p id="inviteStatus" role="status" aria-live="polite"></p><label class="invite-message-label" for="inviteMessage">Invitation message</label><textarea id="inviteMessage" rows="7" readonly></textarea><div class="invite-actions"><a id="inviteEmailDraft" class="invite-action">Open email draft</a><button id="copyInvite" type="button" class="invite-action">Copy message</button></div><small id="inviteHostingNote">Use a hosted site address so the recipient can open the registration page.</small></div>
+</dialog>
+<script src="parent-invitations.js"></script>
 <script src="admin-overview.js"></script><script src="admin-dashboard.js"></script>
   <script src="admin-sidebar.js"></script>
 <script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="../shared/site-language.js" defer></script>

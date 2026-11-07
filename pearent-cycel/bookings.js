@@ -583,7 +583,7 @@ document.addEventListener(
 
                 <strong>
                   ${escapeHTML(
-                    booking.dateLabel
+                    booking.dateLabel || booking.date
                   )}
                 </strong>
 
@@ -637,16 +637,9 @@ document.addEventListener(
             </div>
 
 
-            <div class="booking-family-payment"><p>Booked by: ${escapeHTML(window.RafiqFamily?.user(booking.createdBy||booking.parentId)?.fullName||'Caregiver')}</p>${booking.sessionPayment?`<p>Payment: ${escapeHTML(booking.sessionPayment.status)} · ${escapeHTML(booking.sessionPayment.amount)} JOD</p><p>Paid by: ${escapeHTML(booking.sessionPayment.payerName||window.RafiqFamily?.user(booking.sessionPayment.payerId||booking.createdBy||booking.parentId)?.fullName||'Caregiver')}</p><p>Any refund returns to the original payment method.</p>`:''}</div><div class="booking-card-footer">
+            <details class="booking-extra"><summary>Payment & booking details</summary><div class="booking-family-payment"><p>Booked by: ${escapeHTML(window.RafiqFamily?.user(booking.createdBy||booking.parentId)?.fullName||'Caregiver')}</p>${booking.sessionPayment?`<p>Payment: ${escapeHTML(booking.sessionPayment.status)} · ${escapeHTML(booking.sessionPayment.amount)} JOD</p><p>Paid by: ${escapeHTML(booking.sessionPayment.payerName||window.RafiqFamily?.user(booking.sessionPayment.payerId||booking.createdBy||booking.parentId)?.fullName||'Caregiver')}</p><p>Any refund returns to the original payment method.</p>`:''}</div><p class="booking-extra-reference">Reference: ${escapeHTML(booking.id)}</p></details><div class="booking-card-footer">
 
-              <span class="booking-reference">
-                Reference:
-                <strong>
-                  ${escapeHTML(
-                    booking.id
-                  )}
-                </strong>
-              </span>
+
 
 
               <div class="booking-actions">${booking.consultationType==='online'&&status==='upcoming'?`<a class="journey-link" href="../meetingZoom/index.html?booking=${encodeURIComponent(booking.id)}">Open video room</a>`:''}${window.RafiqCareJourney?.reportFor(booking)?`<a class="journey-link report-ready-link" href="specialist-report.html" data-report-booking="${escapeHTML(booking.id)}">Read session report</a>`:status==='completed'?'<span class="report-pending-note">Report awaiting submission</span>':''}<a class="specialist-message-link" href="messages.html?specialist=${encodeURIComponent(booking.specialistId)}&amp;child=${encodeURIComponent(booking.childId||'')}">Message specialist</a>

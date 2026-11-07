@@ -4558,3 +4558,13 @@ Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{
 Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{"Signed in as":"تم تسجيل الدخول باسم"});
 
 Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{"How reporting dates work":"كيف تعمل تواريخ التقارير","USER SUPPORT":"دعم المستخدمين","Platform Inquiries":"استفسارات المنصة","TICKET RESOLUTION":"معالجة التذاكر","Manage inquiries & assistance":"إدارة الاستفسارات والمساعدة","across the platform.":"عبر المنصة.","Review requests from parents and specialists, reply directly to resolve inquiries, and manage resolution statuses.":"مراجعة طلبات أولياء الأمور والمختصين، والرد المباشر لحل الاستفسارات وإدارة حالات المعالجة.","PENDING RESOLUTION":"بانتظار المعالجة","Tickets requiring attention":"تذاكر تتطلب المتابعة","Total Requests":"إجمالي الطلبات","All logged inquiries":"كافة الاستفسارات المسجلة","New Requests":"طلبات جديدة","Awaiting response":"بانتظار الرد","Being investigated":"قيد المتابعة","Closed inquiries":"استفسارات مغلقة ومحلولة","INBOX MANAGEMENT":"إدارة صندوق الوارد","All Requests":"جميع الطلبات","Filter, search, inspect conversations, and update statuses.":"تصفية وبحث، والاطلاع على المحادثات وتحديث الحالات.","Search by subject, requester, email, or ticket ID...":"البحث بالعنوان، مقدم الطلب، البريد الإلكتروني أو رقم التذكرة...","Select a Support Request":"اختر طلب دعم للمعاينة","Choose an inquiry from the list on the left to review the requester information, full message history, and send a reply.":"اختر استفساراً من القائمة لمراجعة بيانات مقدم الطلب، وسجل المحادثة، وإرسال الرد.","Reply to Requester":"الرد على مقدم الطلب","Type your response to the user here...":"اكتب ردك للمستخدم هنا...","Send reply":"إرسال الرد","Update status":"تحديث الحالة","Request status":"حالة الطلب","RAFIQ Support Team":"فريق دعم رفيق"});
+
+Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{"Payment & booking details":"تفاصيل الدفع والحجز"});
+
+Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{"Follow-up & sharing":"المتابعة والمشاركة","Optional":"اختياري"});
+
+Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{"Close profile":"إغلاق الملف الشخصي","View full specialist profile":"عرض الملف الكامل للمختص","This specialist profile is not currently available.":"ملف هذا المختص غير متاح حالياً."});
+
+Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{"Your specialist replied to your observation":"المختص ردّ على ملاحظتك","Reply to specialist":"ردّي على المختص","This recommendation also guides activity suggestions.":"تؤثر هذه التوصية أيضاً على اقتراحات الأنشطة."});
+
+Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{"Invite a parent":"دعوة ولي أمر","Close invitation":"إغلاق الدعوة"});

@@ -277,3 +277,6 @@ html body.parent-cycle-video .parent-logout-dialog p{margin:10px 0 26px;color:#6
 .parent-logout-actions .parent-logout-cancel:hover{background:#edf5f0}
 .parent-logout-actions button:focus-visible{outline:3px solid #0b7a7566;outline-offset:3px}
 @media(max-width:480px){html body.parent-cycle-video dialog.parent-logout-dialog{padding:28px 22px}}
+
+/* Messages keeps the pink navigation treatment when selected. */
+html body.parent-cycle-video .parent-navigation .parent-messages-link[aria-current] { background:transparent; border-color:transparent; box-shadow:none; color:var(--nav-ink); }
