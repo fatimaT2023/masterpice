@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="parent-background.css">
 <link rel="stylesheet" href="parent-layout.css">
 <link rel="stylesheet" href="../shared/site-language.css">
-<script src="../shared/membership.js"></script><link rel="stylesheet" href="../shared/membership.css"><script src="child-appearance.js"></script></head>
+<script src="../shared/membership.js"></script><link rel="stylesheet" href="../shared/membership.css"><script src="child-appearance.js"></script><link rel="stylesheet" href="family-journey.css"><script src="activity-matching.js"></script><script src="child-history-model.js"></script></head>
 
 <body class="parent-cycle-video parent-setup">
   <div class="parent-static-background" aria-hidden="true"></div>
@@ -53,13 +53,13 @@
   <main class="onboarding-page">
     <ol class="setup-steps" aria-label="Setup progress">
       <li aria-current="step"><span>1</span>Your child</li>
-      <li ><span>2</span>Your needs</li>
+      <li><span>2</span>Your child’s story</li><li><span>3</span>How Rafiq helps</li>
 
     </ol><section class="onboarding-layout">
       <div class="intro-panel">
         <span class="setup-eyebrow">A LITTLE INTRODUCTION</span>
         <h1>Let’s meet<br><em>your child.</em></h1>
-        <p class="intro-text">Step 1 of 2: save your child’s details. Next, choose what you need help with. We’ll use their age to personalize the experience.</p>
+        <p class="intro-text">Step 1 of 3: start with your child’s details, add their story and play readiness, then see how Rafiq can support your family.</p>
         <figure class="setup-companion" id="setupCompanion" data-gender="male" aria-label="Your Rafiq companion">
           <img class="companion-boy" src="../rafiq-home-transfer-20261013-211454/assets/hero/sit-front-cutout.png" alt="" width="1122" height="1402">
           <img class="companion-girl" src="assets/onboarding/baby-girl.png" alt="" aria-hidden="true" width="1122" height="1402"></figure>
@@ -70,7 +70,7 @@
             <div class="child-avatar-preview" id="avatarPreview">
               <span id="avatarInitial">+</span>
             </div><div><h2 id="profileTitle">About your child</h2>
-              <p>A few details, then choose what you need.</p></div></div>
+              <p>Start with the basics. Next, we’ll get to know your child’s story.</p></div></div>
               <form id="childForm" novalidate>
                 <div class="form-group" id="nameField">
                   <label for="childName">Child’s first name</label>
@@ -98,33 +98,32 @@
                             <option value="other">Other caregiver</option>
                           </select></div>
                           <small class="field-error" id="relationshipError"></small>
-                        </div><div class="form-group" id="prematurityField"><label for="bornBeforeDueDate">Was your child born before their due date?</label><div class="input-wrapper"><select id="bornBeforeDueDate" name="bornBeforeDueDate" aria-describedby="prematurityHelp"><option value="unknown">Not sure / prefer to skip</option><option value="no">No</option><option value="yes">Yes</option></select></div><small class="setup-help" id="prematurityHelp">Optional. For children under 2, the expected due date can help us select development resources using corrected age.</small><div id="dueDateField" hidden><label for="expectedDueDate">Expected due date (optional)</label><div class="input-wrapper"><input type="date" id="expectedDueDate" aria-describedby="dueDateError"></div><small class="field-error" id="dueDateError"></small><small class="setup-help">Use the date given by your care team. Health records and appointments still use the date of birth.</small></div></div><details class="setup-optional">
-                          <summary>Optional profile detail</summary>
-                          <fieldset class="form-group"><legend>Gender <span class="setup-help">(optional)</span></legend>
-                            <div class="choice-grid">
-                              <label class="choice-card">
-                                <input type="radio" name="gender" value="female">
-                                <span class="choice-content">Female</span></label>
-                                <label class="choice-card">
-                                  <input type="radio" name="gender" value="male">
-                                  <span class="choice-content">Male</span></label>
-                                  <label class="choice-card">
-                                    <input type="radio" name="gender" value="" checked>
-                                    <!-- <span class="choice-content">Prefer not to say</span> -->
-                                  </label>
-                                  </div>
-                                  </fieldset>
-                                  </details>
+                        </div><div class="form-group" id="prematurityField"><label for="bornBeforeDueDate">Was your child born before their due date?</label><div class="input-wrapper"><select id="bornBeforeDueDate" name="bornBeforeDueDate" aria-describedby="prematurityHelp"><option value="unknown">Not sure / prefer to skip</option><option value="no">No</option><option value="yes">Yes</option></select></div><small class="setup-help" id="prematurityHelp">Optional. For children under 2, the expected due date can help us select development resources using corrected age.</small><div id="dueDateField" hidden><label for="expectedDueDate">Expected due date (optional)</label><div class="input-wrapper"><input type="date" id="expectedDueDate" aria-describedby="dueDateError"></div><small class="field-error" id="dueDateError"></small><small class="setup-help">Use the date given by your care team. Health records and appointments still use the date of birth.</small></div></div><fieldset class="form-group gender-field" id="genderField" aria-describedby="genderError"><legend>Gender</legend>
+ <div class="choice-grid">
+  <label class="choice-card"><input type="radio" name="gender" value="female" required aria-describedby="genderError"><span class="choice-content">Female</span></label>
+  <label class="choice-card"><input type="radio" name="gender" value="male" required aria-describedby="genderError"><span class="choice-content">Male</span></label>
+ </div>
+ <small class="field-error" id="genderError" role="alert"></small>
+</fieldset>
                                   <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
                                   <button type="submit" class="primary-button" id="createButton">Continue <span aria-hidden="true">→</span></button>
-                                  <p class="form-footer-text">Next: choose where you’d like to start.<br>This preview saves the profile in this browser.</p>
+                                  <p class="form-footer-text">Next: your child’s story, health and play readiness.<br>This preview saves the profile in this browser.</p>
                                 </form>
                               </section>
                               </section>
-                              </main>
+
+<section id="profileStoryInline" class="family-page child-story-page profile-story-inline" hidden aria-label="Your child’s story">
+ <div class="family-main">
+  <div class="family-story-intro"><div><span class="family-kicker">PART OF YOUR CHILD’S PROFILE</span><h1>Health, family and play</h1><p>Continue setting up your child’s profile. These optional details stay together with their basic information.</p></div><span class="family-child-pill" id="historyChild" data-user-content></span></div>
+  <a id="historyExit" href="child-profile.html">Back to child profile</a>
+  <details class="family-note family-privacy"><summary>You choose what to share</summary><p>Health and family questions are optional. Answers stay in this browser and are not automatically shared with a specialist. Play suggestions use age and reported readiness, not a diagnosis from health history.</p></details>
+  <form id="historyForm"><div id="historyProgress" class="family-kicker" role="status"></div><div id="historyFields"></div><p id="historyStatus" class="family-status" role="alert"></p><div class="family-actions"><button type="button" class="secondary" id="historyPrevious">Previous</button><button type="submit" id="historyNext">Next</button><button type="button" class="secondary" id="historyLater">Save and finish later</button></div></form>
+ </div>
+</section>
+</main>
 
                                   <script src="family-onboarding.js"></script><script src="onboarding.js"></script>
                                   <script src="onboarding-character.js"></script>
-                                <script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="../shared/site-language.js" defer></script>
+                                <script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="parent-journey-ar.js" defer></script><script src="child-history-copy.js" defer></script><script src="child-history-age.js" defer></script><script src="child-history.js" defer></script><script src="../shared/site-language.js" defer></script>
 <script src="../shared/membership-ui.js"></script></body>
 </html>

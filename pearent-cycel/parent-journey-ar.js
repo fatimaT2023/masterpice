@@ -1,5 +1,13 @@
 /* Loaded before the shared translator. */
 Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{
+  "Please select your child’s gender.": "اختاروا جنس الطفل قبل المتابعة.",
+  "Your child’s story": "حكاية طفلكم",
+  "Step 1 of 3: start with your child’s details, add their story and play readiness, then see how Rafiq can support your family.": "الخطوة ١ من ٣: نبدأ ببيانات طفلكم وحكايته وجاهزيته للعب، وبعدين تشوفوا كيف رفيق بقدر يساعد العيلة.",
+  "Start with the basics. Next, we’ll get to know your child’s story.": "نبدأ بالأساسيات، وبعدها نتعرّف على حكاية طفلكم.",
+  "Next: your child’s story, health and play readiness.": "الخطوة الجاي: حكاية طفلكم وصحته وجاهزيته للعب.",
+  "← Back to your child’s story": "الرجوع لحكاية طفلكم ←",
+  "Meet the specialist": "تعرّفوا على المختص",
+  "Review full profile": "شوفوا ملف المختص الكامل",
   "Home": "الرئيسية",
   "Back to Home": "الرجوع للرئيسية",
   "Return to Home": "الرجوع للرئيسية",

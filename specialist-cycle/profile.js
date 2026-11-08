@@ -1089,6 +1089,8 @@ document.addEventListener(
 
 
     function saveProfile() {
+      let publicProfile;
+      try { publicProfile = window.RafiqPublicClinicEditor?.collect(); } catch { return; }
 
       if (
         !validateProfile()
@@ -1132,6 +1134,7 @@ document.addEventListener(
 
       specialist.bio =
         bio.value.trim();
+      if (publicProfile) specialist.publicProfile = publicProfile;
 
 
       specialist.experience =
@@ -1176,15 +1179,21 @@ document.addEventListener(
       */
 
 
-      localStorage.setItem(
-        "rafiqSpecialistProfile",
-        JSON.stringify(
-          specialist
-        )
-      );
-
-
-      syncSpecialistCollection();
+      const previousProfile = localStorage.getItem("rafiqSpecialistProfile");
+      const previousDirectory = localStorage.getItem("rafiqSpecialists");
+      try {
+        localStorage.setItem("rafiqSpecialistProfile", JSON.stringify(specialist));
+        syncSpecialistCollection();
+      } catch {
+        try {
+          if (previousProfile === null) localStorage.removeItem("rafiqSpecialistProfile");
+          else localStorage.setItem("rafiqSpecialistProfile", previousProfile);
+          if (previousDirectory === null) localStorage.removeItem("rafiqSpecialists");
+          else localStorage.setItem("rafiqSpecialists", previousDirectory);
+        } catch { /* Keep the visible error if browser storage remains unavailable. */ }
+        saveStatus.textContent = "Could not save the profile. Browser storage may be full. Try a smaller photo or an image link.";
+        return;
+      }
 
 
       saveStatus.textContent =

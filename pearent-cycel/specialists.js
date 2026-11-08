@@ -1772,7 +1772,7 @@ document.addEventListener(
                   specialist.id
                 )}"
               >
-                View profile
+                Meet the specialist
               </button>
 
 
@@ -1782,7 +1782,7 @@ document.addEventListener(
                 data-id="${escapeHTML(
                   specialist.id
                 )}"
-              >Choose a session</button><a class="specialist-message-link" href="messages.html?specialist=${encodeURIComponent(specialist.id)}">Message specialist</a>
+              >Review full profile</button><a class="specialist-message-link" href="messages.html?specialist=${encodeURIComponent(specialist.id)}">Message specialist</a>
 
             </div>
           `;
@@ -1880,99 +1880,9 @@ document.addEventListener(
       null;
 
 
-    function openProfile(
-      specialist
-    ) {
-
-      activeSpecialist =
-        specialist;
-
-
-      modalAvatar.textContent =
-        specialist.initials;
-
-
-      modalName.textContent =
-        specialist.name;
-
-
-      modalSpecialty.textContent =
-        specialist.specialty;
-
-
-      modalRating.textContent =
-        getRatingLabel(
-          specialist.rating
-        );
-
-
-      modalExperience.textContent =
-        `${specialist.experience} ${
-          specialist.experience === 1
-            ? "year"
-            : "years"
-        } experience`;
-
-
-      modalAbout.textContent =
-        specialist.about;
-
-
-      modalConsultation.textContent =
-        specialist.consultationLabel;
-
-
-      modalLanguages.textContent =
-        specialist.languages;
-
-
-      modalAvailability.textContent =
-        specialist.availability;
-
-
-      modalPrice.textContent =
-        specialist.priceLabel;
-
-
-      modalAreas.innerHTML =
-        "";
-
-
-      specialist.areas.forEach(
-        area => {
-
-          const tag =
-            document.createElement(
-              "span"
-            );
-
-
-          tag.className =
-            "modal-tag";
-
-
-          tag.textContent =
-            area;
-
-
-          modalAreas.appendChild(
-            tag
-          );
-        }
-      );
-
-
-      profileModal.hidden =
-        false;
-
-
-      document.body.style.overflow =
-        "hidden";
-
-
-      modalClose?.focus();
+    function openProfile(specialist) {
+      location.assign("specialist-profile.html?specialist=" + encodeURIComponent(specialist.id));
     }
-
 
     function closeProfile() {
 
@@ -2020,37 +1930,7 @@ document.addEventListener(
     // BOOKING
     // =====================================
 
-    function goToBooking(
-      specialist
-    ) {
-
-      /*
-        Save both the full normalized
-        specialist object and the exact
-        approved specialist ID.
-
-        The ID is the important integration:
-        Parent booking → Specialist account.
-      */
-
-      sessionStorage.setItem(
-        "rafiqSelectedSpecialist",
-        JSON.stringify(
-          specialist
-        )
-      );
-
-
-      sessionStorage.setItem(
-        "rafiqSelectedSpecialistId",
-        specialist.id
-      );
-
-
-      window.location.href =
-        "booking.html";
-    }
-
+    function goToBooking(specialist) { openProfile(specialist); }
 
     bookSpecialistButton?.addEventListener(
       "click",

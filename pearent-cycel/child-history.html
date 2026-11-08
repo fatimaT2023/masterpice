@@ -1,0 +1,5 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Child profile | RAFIQ</title><script>
+// Older story links now open the same child profile setup and editing flow.
+const params=new URLSearchParams(location.search),child=params.get('child');
+location.replace(child?'onboarding.html?edit='+encodeURIComponent(child)+'&section=story'+(params.get('return')==='profile'?'&return=profile':''):'onboarding.html');
+</script></head><body><p>Opening your child’s profile…</p><a href="onboarding.html">Open child profile setup</a></body></html>

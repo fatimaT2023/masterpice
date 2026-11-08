@@ -18,7 +18,9 @@ function isMother(){const account=user();if(!account)return false;return array('
 function selectedKey(){return 'rafiqCurrentChildId_'+owner();}
 function selected(){const saved=localStorage.getItem(selectedKey());if(saved&&canAccessId(saved))return saved;const legacy=localStorage.getItem('rafiqCurrentChildId');return legacy&&canAccessId(legacy)?legacy:null;}
 function select(id){if(!canAccessId(id))throw Error('This child is not linked to your account.');localStorage.setItem(selectedKey(),id);}
-function familyId(childValue){return childValue?.familyId||'family_'+(childValue?.parentId||owner());}
+// Unowned demo profiles belong to the legacy workspace, regardless of who logs in.
+// Using the current viewer here charged every new account for old browser data.
+function familyId(childValue){return childValue?.familyId||'family_'+(childValue?.parentId||'legacy-browser');}
 function currentFamilyId(){const requested=/\/(subscription|payment)\.html$/.test(location.pathname)?new URLSearchParams(location.search||'').get('family'):null;if(requested&&member(requested))return requested;const active=child(selected());return active&&canAccess(active)?familyId(active):'family_'+owner();}
 function family(id=currentFamilyId()){if(!/^family_.+/.test(id))throw Error('Invalid family workspace.');const saved=array('rafiqFamilies').find(f=>f.id===id);return saved||{id,ownerId:id.slice(7),billingOwnerId:id.slice(7),name:'Family workspace'};}
 function saveFamily(record){const records=array('rafiqFamilies'),index=records.findIndex(f=>f.id===record.id);if(index<0)records.push(record);else records[index]=record;localStorage.setItem('rafiqFamilies',JSON.stringify(records));document.dispatchEvent(new CustomEvent('rafiq:family-change'));return record;}

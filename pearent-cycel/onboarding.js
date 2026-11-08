@@ -6,7 +6,16 @@ const form=get('childForm'), name=get('childName'), dob=get('dateOfBirth'), rela
 const today=new Date();
 const earliest=new Date(today.getFullYear()-7,today.getMonth(),today.getDate()+1);dob.min=[earliest.getFullYear(),String(earliest.getMonth()+1).padStart(2,'0'),String(earliest.getDate()).padStart(2,'0')].join('-');
 dob.max=[today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-');
-let profileId=null, savedProfile=null;
+let profileId=null, savedProfile=null, storyController=null;
+function openStory(child){
+ const draft=storyController?.draft();storyController?.dispose();
+ const layout=document.querySelector('.onboarding-layout'),story=get('profileStoryInline');
+ layout.hidden=true;story.hidden=false;
+ const steps=[...document.querySelectorAll('.setup-steps li')];steps.forEach((item,index)=>{if(index===1)item.setAttribute('aria-current','step');else item.removeAttribute('aria-current');});
+ button.disabled=false;button.textContent='Continue to child’s story';form.setAttribute('aria-busy','false');
+ storyController=window.RafiqChildStoryForm.mount({childId:child.id,draft,returnToProfile:new URLSearchParams(location.search).get('return')==='profile',onBack(){story.hidden=true;layout.hidden=false;steps.forEach((item,index)=>{if(index===0)item.setAttribute('aria-current','step');else item.removeAttribute('aria-current');});button.focus();}});
+ story.scrollIntoView({block:'start'});
+}
 function message(text){status.textContent=text;status.className='form-status'+(text?' show error':'');}
 function field(id,error,text){get(id).classList.toggle('has-error',!!text);get(error).textContent=text;const input=get(id).querySelector('input,select');input.setAttribute('aria-invalid',String(!!text));return !text;}
 function preview(){
@@ -18,7 +27,7 @@ function syncDueDate(){get('dueDateField').hidden=bornEarly.value!=='yes';due.mi
 bornEarly.addEventListener('change',syncDueDate);dob.addEventListener('input',syncDueDate);
 const editId=new URLSearchParams(location.search).get('edit');
 if(editId){try{savedProfile=readChildren().find(child=>child.id===editId);if(!savedProfile)throw new Error('Missing profile');profileId=savedProfile.id;bornEarly.value=savedProfile.bornBeforeDueDate||'unknown';due.value=savedProfile.expectedDueDate||'';syncDueDate();name.value=savedProfile.name||'';dob.value=savedProfile.dateOfBirth||'';relationship.value=savedProfile.relationship||'';form.querySelectorAll('input[name="gender"]').forEach(input=>input.checked=input.value===(savedProfile.gender||''));preview();}catch{message('We couldn’t load this child’s details. Please return to your child’s profile and try again.');button.disabled=true;return;}}
-if(editId&&new URLSearchParams(location.search).get('return')==='profile'){button.textContent='Save changes';const heading=document.querySelector('h1');if(heading)heading.textContent='Edit child details';}
+if(editId&&new URLSearchParams(location.search).get('return')==='profile'){button.textContent='Continue to child’s story';const heading=document.querySelector('h1');if(heading)heading.textContent='Edit child profile';}
 name.addEventListener('input',preview);dob.addEventListener('input',preview);
 form.addEventListener('submit',event=>{
  event.preventDefault();if(button.disabled)return;message('');
@@ -26,10 +35,11 @@ form.addEventListener('submit',event=>{
  const validName=field('nameField','nameError',!name.value.trim()?'Please enter your child’s first name.':name.value.trim().length>80?'Please use 80 characters or fewer.':'');
  const validDob=field('dobField','dobError',!age?'Please enter a valid date of birth that is not in the future.':!window.RafiqSetup.isSupported(age)?'Rafiq currently supports children from birth until their seventh birthday.':'');
  const validRelationship=field('relationshipField','relationshipError',!['mother','father','guardian','other'].includes(relationship.value)?'Please select your relationship to the child.':'');
+ const validGender=field('genderField','genderError',!['female','male'].includes(form.querySelector('input[name="gender"]:checked')?.value)?'Please select your child’s gender.':'');
  const dueProvided=bornEarly.value==='yes'&&due.value;
  const validDue=field('prematurityField','dueDateError',dueProvided&&(!window.RafiqSetup.ageFromBirth(due.value,new Date(9999,11,31))||due.value<=dob.value)?'Please enter the expected due date given by your care team, after the date of birth.':'');
  bornEarly.setAttribute('aria-invalid','false');due.setAttribute('aria-invalid',String(!validDue));
- if(!validName||!validDob||!validRelationship||!validDue){form.querySelector('[aria-invalid="true"]').focus();return;}
+ if(!validName||!validDob||!validRelationship||!validGender||!validDue){form.querySelector('[aria-invalid="true"]').focus();return;}
  button.disabled=true;button.textContent='Saving…';form.setAttribute('aria-busy','true');
  try{
  const familyId=savedProfile?window.RafiqFamily.familyId(savedProfile):get('childFamily')?.value||'family_'+window.RafiqSetup.parentOwner();
@@ -40,7 +50,8 @@ form.addEventListener('submit',event=>{
  (window.RafiqFamily ? window.RafiqFamily.select(child.id) : localStorage.setItem('rafiqCurrentChildId',child.id));
  if(!editId||new URLSearchParams(location.search).get('return')!=='profile')localStorage.setItem('rafiqSetupPendingChildId',child.id);
  localStorage.setItem('rafiqParentOnboardingComplete','true');
- location.assign(editId&&new URLSearchParams(location.search).get('return')==='profile'?'child-profile.html?child='+encodeURIComponent(child.id):'getting-started.html?child='+encodeURIComponent(child.id));
+ savedProfile=child;openStory(child);
  }catch{message('We couldn’t save the profile in this browser. Check that browser storage is available, then try again.');button.disabled=false;button.textContent='Continue';form.setAttribute('aria-busy','false');}
 });
+if(savedProfile&&new URLSearchParams(location.search).get('section')==='story')openStory(savedProfile);
 });
