@@ -33,7 +33,7 @@ const layout=document.createElement('div'),main=document.createElement('div'),si
 layout.className='child-profile-layout';main.className='child-profile-main';side.className='child-profile-side';
 sections[0].after(layout);layout.append(main,side);
 // sections[0] is hero; sections[1]=About, sections[2]=Measurements, sections[3]=Health, sections[4]=Open records
-main.append(sections[1],sections[2],sections[3]);
+main.append(sections[1],sections[2],sections[3]);const storyCard=document.createElement('section');storyCard.className='screen-flow-card rafiq-child-story';window.RafiqChildStoryView.render(storyCard,child);sections[1].after(storyCard);
 const careMount=document.createElement('div');careMount.id='childCareTeamMount';
 side.append(careMount,sections[4]);
 const detailList=get('childDetails');for(const dt of [...detailList.querySelectorAll('dt')]){const dd=dt.nextElementSibling,row=document.createElement('div');row.append(dt,dd);detailList.append(row);}

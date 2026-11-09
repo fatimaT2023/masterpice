@@ -27,5 +27,24 @@
   return routes[goal];
  }
  Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},messages);
- window.RafiqSupportGuide={areas,routes,build,preview,saveFocus,finish};
+ function summary(child){
+  const history=child.backgroundHistory||{},answers=history.answers||{},legacy=history.legacy||{};
+  const meaningful=a=>a&&a.value!==undefined&&!['skip','unknown',''].includes(a.value)&&(!Array.isArray(a.value)||a.value.length>0);
+  const labels={yes:'Yes',no:'No',other:'Other',comfortable:'Comfortable for us',support:'We would like support',settled:'Usually settled',varies:'It varies',breast:'Breast milk',formula:'Formula',mixed:'Mixed',review:'We would like to review the record',sleep:'Sleep',feeding:'Feeding',speech:'Speech',behaviour:'Behaviour',play:'Play',growth:'General growth','with_support':'Comfortable with my help','not_yet':'Not comfortable with this right now'};
+  const fieldLabels={allergies:'Allergies',conditions:'Current care',medicines:'Medicines',hospital:'Hospital care',hearing:'Hearing',vision:'Vision',instructions:'Care instructions',milk:'Milk',solids:'Solid foods',meals:'Meals',preferences:'Food preferences',difficulty:'Feeding comfort',pattern:'Sleep',naps:'Naps',helps:'Sleep support',hard:'Sleep comfort',childHealth:'Current care',hospitalCare:'Hospital care',hearingVision:'Hearing and vision',careInstructions:'Care instructions',mealtime:'Meals',sleepRoutine:'Sleep'};
+  for(const [key,area] of Object.entries(areas))labels[key]=area.title;
+  function parts(prefixes,oldKeys){const out=[];for(const [id,a] of Object.entries(answers)){if(!prefixes.some(p=>id.startsWith(p+'.'))||!meaningful(a))continue;const label=fieldLabels[id.split('.')[1]];if(a.details)out.push({text:a.details,user:true,label});else for(const v of (Array.isArray(a.value)?a.value:[a.value]))if(labels[v])out.push({text:labels[v],user:false,label});}for(const key of oldKeys){const value=typeof history[key]==='string'?history[key]:legacy[key];if(value?.trim()&&!out.some(p=>p.text===value))out.push({text:value.trim(),user:true,label:fieldLabels[key]});}return out;}
+  const context=window.RafiqSetup.childContext(child),age=window.RafiqSetup.formatAge(context.chronological);
+  const rows=[{id:'age',icon:'◷',title:'Age and stage',section:'details',parts:age?[{text:age,age:true}]:[]},
+   {id:'health',icon:'♡',title:'Health and allergies',section:'health',parts:parts(['health'],['childHealth','allergies','medicines','hospitalCare','hearingVision','careInstructions'])},
+   {id:'feeding',icon:'☾',title:'Feeding and sleep',section:'feeding,sleep',parts:parts(['feeding','sleep'],['mealtime','sleepRoutine'])},
+   {id:'play',icon:'✧',title:'Play and interests',section:'play',parts:parts(['play'],['interests','dailyLife','communication','everydayParticipation'])},
+   {id:'goals',icon:'◎',title:'What you’d like help with',section:'goals',parts:parts(['goals'],['parentGoal'])}];
+  // Also read structured fields saved by other version-2 clients without answer entries.
+  const health=rows[1];for(const [key,label] of [['allergies','Allergies'],['medication','Medicines']]){const value=history[key];if(value&&typeof value==='object'&&!answers['health.'+(key==='medication'?'medicines':key)]){if(value.details&&!health.parts.some(p=>p.text===value.details))health.parts.push({text:value.details,user:true,label});else if(['yes','no'].includes(value.has))health.parts.push({text:labels[value.has],label});}}
+  if(!rows[4].parts.length){for(const choice of history.goals?.choices||[])if(labels[choice])rows[4].parts.push({text:labels[choice]});if(history.goals?.details)rows[4].parts.push({text:history.goals.details,user:true});}
+  for(const row of rows){row.recorded=row.parts.length>0;row.parts=row.parts.slice(0,2);row.href='onboarding.html?edit='+encodeURIComponent(child.id)+'&return=guide&section='+(row.section==='details'?'details':'story')+(row.section==='details'?'':'&interviewSection='+encodeURIComponent(row.section));}
+  return {rows,answeredSections:rows.filter(row=>row.recorded).length,mostlyEmpty:rows.filter(row=>row.recorded).length<3};
+ }
+ window.RafiqSupportGuide={areas,routes,build,preview,saveFocus,finish,summary};
 })();

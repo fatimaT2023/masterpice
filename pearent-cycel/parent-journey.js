@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   'specialist-report.html':['Specialist support · 4 of 4','Read the report, record your personal follow-up, or ask the specialist a question. Your follow-up stays separate from their original report.'],
   'health.html':['Health records','Choose the record you want to add. After saving, review it in this child’s health record.'],
   'album.html':['Memories','Add a memory, then find it in this child’s album.'],
-  'messages.html':['Messages','Choose a conversation, send your question, then return here to read replies.'],
+  'messages.html':['My specialists','Read your follow-up conversations and reply after the specialist accepts.'],
   'child-profile.html':['Child profile','Review this child’s information or edit it, then return to Home to choose your next action.'],
   'subscription.html':['My plan','Compare Free and Plus before choosing. Your saved records remain accessible after a plan ends.'],
   'settings.html':['Account settings','Choose the setting to change and use its save action. Return to Home when you are done.'],

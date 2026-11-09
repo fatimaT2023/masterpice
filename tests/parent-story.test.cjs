@@ -33,7 +33,7 @@ ctx.RafiqAccountStatus={inactive:()=>true};assert.equal(api.find('approved'),nul
 // Exercise the four-part parent form: back/next retain answers, final save updates
 // the same child's history and readiness, then continues setup.
 class Element{
- constructor(tag){this.tagName=tag;this.children=[];this.value='';this.hidden=false;this.options=[];this.listeners={};}
+ constructor(tag){this.tagName=tag;this.children=[];this.value='';this.hidden=false;this.options=[];this.listeners={};this.dataset={};this.textContent='';}
  append(...children){this.children.push(...children);if(this.tagName==='select')this.options.push(...children);}
  replaceChildren(...children){this.children=[];this.append(...children);}
  setAttribute(){} focus(){} scrollIntoView(){}
@@ -48,52 +48,72 @@ ctx.Option=function(text,value){const option=new Element('option');option.textCo
 ctx.location={pathname:'/pearent-cycel/child-history.html',search:'?child=one',assign:url=>{redirect=url;}};
 const girlProfiles=ctx.RafiqSetup.readChildren();girlProfiles.find(c=>c.id==='one').gender='female';ctx.RafiqSetup.writeChildren(girlProfiles);
 load('pearent-cycel/child-history-copy.js');load('pearent-cycel/child-history-age.js');load('pearent-cycel/child-history.js');initialize();
-const panels=ids.historyFields.children;assert.equal(panels.length,4);assert.equal(panels.filter(p=>!p.hidden).length,1);
+
+// The former four-panel assertions are replaced by interview navigation and autosave checks.
+assert.equal(ids.historyFields.children.length,1);
 assert.equal(ctx.document.documentElement.dataset.childAppearance,'girl');
-assert.equal(panels[0].querySelector('h2').textContent,'Birth and health');
-assert.equal(ids.historyNext.textContent,'Next');
-assert.equal(ctx.RafiqHomeArabic['Birth and health'],'الحمل والولادة وصحّة طفلك');
+assert.equal(ids.historyFields.querySelector('h2').textContent,'How many siblings does your child have?');
 function findId(node,id){if(node.id===id)return node;for(const child of node.children){const found=findId(child,id);if(found)return found;}return null;}
-const healthInput=findId(ids.historyFields,'history-childHealth');healthInput.value='Changed in the parent form';
+function findChoice(node,value){if(node.dataset?.value===value)return node;for(const child of node.children){const found=findChoice(child,value);if(found)return found;}return null;}
 const submit=()=>ids.historyForm.onsubmit({preventDefault(){}});
-submit();assert.equal(panels[1].hidden,false);ids.historyPrevious.onclick();assert.equal(healthInput.value,'Changed in the parent form');
-submit();submit();assert.equal(panels[2].hidden,false);
-const handlingInput=findId(panels[2],'readiness-handling');assert.ok(handlingInput);handlingInput.value='with_support';
-submit();assert.equal(panels[3].hidden,false);assert.ok(panels[3].children.some(node=>node.tagName==='dl'));
-submit();assert.equal(ids.historyStatus.textContent,'');assert.equal(redirect,'getting-started.html?child=one');
-assert.equal(JSON.parse(storage.getItem('rafiqChildren')).find(c=>c.id==='one').backgroundHistory.childHealth,'Changed in the parent form');
-assert.equal(ctx.RafiqActivityMatching.profile(child).abilities.handling,'with_support');
-assert.equal(JSON.parse(storage.getItem('rafiqChildren')).find(c=>c.id==='two').backgroundHistory,undefined);
-// The same form runs inside onboarding without navigating to a separate page.
-ctx.location.pathname='/pearent-cycel/onboarding.html';ctx.location.search='?edit=one&return=profile';redirect=null;
-let returnedToBasics=false;
-let inline=ctx.RafiqChildStoryForm.mount({childId:'one',returnToProfile:true,onBack:()=>{returnedToBasics=true;}});
-findId(ids.historyFields,'history-childHealth').value='Draft kept while editing basic details';
-ids.historyPrevious.onclick();assert.equal(returnedToBasics,true);assert.equal(redirect,null);
-const inlineDraft=inline.draft();inline.dispose();
-inline=ctx.RafiqChildStoryForm.mount({childId:'one',returnToProfile:true,draft:inlineDraft,onBack(){}});
-assert.equal(findId(ids.historyFields,'history-childHealth').value,'Draft kept while editing basic details');
-submit();submit();submit();assert.equal(redirect,null);submit();
-assert.equal(redirect,'getting-started.html?child=one');
-assert.equal(JSON.parse(storage.getItem('rafiqChildren')).find(c=>c.id==='one').backgroundHistory.childHealth,'Draft kept while editing basic details');
-// Moving between age stages changes the questions, while preserving answers
-// and family-reported readiness even when a readiness question is not shown.
-const birthdayAt=months=>{const now=new Date(),birth=new Date(now.getFullYear(),now.getMonth()-months,1);return [birth.getFullYear(),String(birth.getMonth()+1).padStart(2,'0'),'01'].join('-');};
-let ageProfiles=ctx.RafiqSetup.readChildren();ageProfiles.find(c=>c.id==='one').dateOfBirth=birthdayAt(3);ctx.RafiqSetup.writeChildren(ageProfiles);
-inline.dispose();inline=ctx.RafiqChildStoryForm.mount({childId:'one',returnToProfile:true});
-assert.equal(findId(ids.historyFields,'readiness-handling'),null);
-const babyInterest=ids.historyFields.children[2].children.find(n=>n.htmlFor==='history-interests').textContent;
-assert.ok(babyInterest.includes('your baby'));
-findId(ids.historyFields,'history-sleepRoutine').value='Family sleep observation to preserve';
-const ageDraft=inline.draft();inline.dispose();
-ageProfiles=ctx.RafiqSetup.readChildren();ageProfiles.find(c=>c.id==='one').dateOfBirth=birthdayAt(62);ctx.RafiqSetup.writeChildren(ageProfiles);
-inline=ctx.RafiqChildStoryForm.mount({childId:'one',returnToProfile:true,draft:ageDraft});
-const olderInterest=ids.historyFields.children[2].children.find(n=>n.htmlFor==='history-interests').textContent;
-assert.notEqual(olderInterest,babyInterest);assert.ok(olderInterest.includes('friends'));
-assert.equal(findId(ids.historyFields,'history-sleepRoutine').value,'Family sleep observation to preserve');
-submit();submit();submit();submit();
-assert.equal(JSON.parse(storage.getItem('rafiqChildren')).find(c=>c.id==='one').backgroundHistory.sleepRoutine,'Family sleep observation to preserve');
-assert.equal(ctx.RafiqActivityMatching.profile(child).abilities.handling,'with_support');
+findChoice(ids.historyFields,'1').onclick();
+let history=ctx.RafiqSetup.readChildren()[0].backgroundHistory;
+assert.equal(history.version,2);assert.equal(history.answers['about.siblings'].value,'1');assert.equal(history.cursor,'about.caregiver');
+let inline=ctx.RafiqChildStoryForm.mount({childId:'one'});
+assert.equal(ids.historyFields.querySelector('h2').textContent,'Who mainly looks after your child?');
+findChoice(ids.historyFields,'other').onclick();
+let detail=findId(ids.historyFields,'interview-details');assert.equal(detail.hidden,false);detail.value='Grandparent';detail.oninput();
+assert.equal(ctx.RafiqSetup.readChildren()[0].backgroundHistory.answers['about.caregiver'].details,'Grandparent');
+submit();assert.ok(ids.historyFields.querySelector('h2').textContent.includes('Thank you'));submit();
+assert.equal(ids.historyProgress.textContent,'Birth');
+// Concurrent edits must remain intact and stop navigation.
+let rows=ctx.RafiqSetup.readChildren();rows[0].backgroundHistory.parentGoal='Other tab';ctx.RafiqSetup.writeChildren(rows);
+findChoice(ids.historyFields,'term').onclick();assert.ok(ids.historyStatus.textContent.includes('another tab'));
+assert.equal(ctx.RafiqSetup.readChildren()[0].backgroundHistory.parentGoal,'Other tab');
+inline.dispose();inline=ctx.RafiqChildStoryForm.mount({childId:'one'});
+// Walk every optional question to the grouped summary without requiring any health answer.
+for(let n=0;n<140&&ids.historyNext.textContent!=='Save and see next steps';n++)submit();
+assert.equal(ids.historyNext.textContent,'Save and see next steps');assert.equal(ids.historyStatus.textContent,'');
+assert.ok(ids.historyFields.querySelector('dl'));
+submit();assert.equal(redirect,'getting-started.html?child=one');
+assert.equal(ctx.RafiqActivityMatching.profile(child).abilities.handling,'not_yet');
+// Corrected-age selection and complete translation coverage.
+for(const months of [3,9,18,30,48,72]){
+ const now=new Date(),birth=new Date(now.getFullYear(),now.getMonth()-months,1);
+ const dob=[birth.getFullYear(),String(birth.getMonth()+1).padStart(2,'0'),'01'].join('-');
+ const questions=ctx.RafiqChildInterview.questions({...child,dateOfBirth:dob});
+ assert.equal(questions.some(q=>q.id==='feeding.milk'),months<24);
+ assert.equal(questions.some(q=>q.id==='play.ready-handling'),months>=12);
+ for(const q of questions){assert.ok(ctx.RafiqHomeArabic[q.prompt],q.prompt);for(const option of q.options)assert.ok(ctx.RafiqHomeArabic[option.label],option.label);}
+}
+
+// A failed multi-key save rolls back history/readiness/growth and leaves the question available.
+let reset=ctx.RafiqSetup.readChildren();reset[0].backgroundHistory.cursor='play.ready-handling';ctx.RafiqSetup.writeChildren(reset);
+inline.dispose();inline=ctx.RafiqChildStoryForm.mount({childId:'one'});
+const beforeHistory=storage.getItem('rafiqChildren'),beforeReady=storage.getItem('rafiqActivityProfile_one');
+const originalWrite=ctx.RafiqSetup.writeChildren;ctx.RafiqSetup.writeChildren=()=>{throw Error('Simulated quota failure');};
+findChoice(ids.historyFields,'comfortable').onclick();assert.ok(ids.historyStatus.textContent.includes('quota'));
+assert.equal(storage.getItem('rafiqChildren'),beforeHistory);assert.equal(storage.getItem('rafiqActivityProfile_one'),beforeReady);
+ctx.RafiqSetup.writeChildren=originalWrite;
+// Editing reopens just the chosen section and returns to the summary.
+reset=ctx.RafiqSetup.readChildren();reset[0].backgroundHistory.cursor='summary';ctx.RafiqSetup.writeChildren(reset);
+inline.dispose();inline=ctx.RafiqChildStoryForm.mount({childId:'one'});
+ids.historyFields.children[0].children.find(n=>n.tagName==='button').onclick();
+assert.equal(ids.historyProgress.textContent,'About your child');
+findChoice(ids.historyFields,'2').onclick();findChoice(ids.historyFields,'parents').onclick();
+assert.equal(ids.historyNext.textContent,'Save and see next steps');
+let returned=false;reset=ctx.RafiqSetup.readChildren();reset[0].backgroundHistory.cursor='about.siblings';ctx.RafiqSetup.writeChildren(reset);
+inline.dispose();inline=ctx.RafiqChildStoryForm.mount({childId:'one',onBack:()=>{returned=true;}});
+ids.historyPrevious.onclick();assert.equal(returned,true);
+const draft=inline.draft();inline.dispose();inline=ctx.RafiqChildStoryForm.mount({childId:'one',draft});assert.equal(inline.draft().values.answers['about.siblings'].value,'2');
+
+// Confirmation row links open only the requested interview sections.
+inline.dispose();ctx.location.search='?child=one&interviewSection=feeding,sleep';
+const beforeAllergies=JSON.stringify(ctx.RafiqSetup.readChildren()[0].backgroundHistory.allergies);
+inline=ctx.RafiqChildStoryForm.mount({childId:'one'});assert.equal(ids.historyProgress.textContent,'Feeding');
+for(let n=0;n<50&&ids.historyNext.textContent!=='Save and see next steps';n++)submit();
+assert.equal(ids.historyNext.textContent,'Save and see next steps');
+assert.equal(JSON.stringify(ctx.RafiqSetup.readChildren()[0].backgroundHistory.allergies),beforeAllergies);
 // Parent-facing specialist page renders published details and re-checks approval
 // at booking time, rather than trusting an earlier directory snapshot.
 const clinicIds=Object.fromEntries(['clinicStatus','clinicName','clinicSpecialty','clinicExperience','clinicApproval','clinicPhoto','clinicBio','clinicApproach','clinicAges','clinicFirst','clinicCancellation','clinicVideo','clinicCredentials','clinicCertificates','clinicSessionDetails','clinicMessage','clinicBook','clinicBookBottom','clinicContent'].map(id=>[id,new Element('div')]));

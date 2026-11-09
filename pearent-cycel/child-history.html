@@ -2,4 +2,4 @@
 // Older story links now open the same child profile setup and editing flow.
 const params=new URLSearchParams(location.search),child=params.get('child');
 location.replace(child?'onboarding.html?edit='+encodeURIComponent(child)+'&section=story'+(params.get('return')==='profile'?'&return=profile':''):'onboarding.html');
-</script></head><body><p>Opening your child’s profile…</p><a href="onboarding.html">Open child profile setup</a></body></html>
+</script><link rel="stylesheet" href="support-mode.css"><script src="support-services.js" defer></script><script src="support-mode.js" defer></script><script src="support-mode-ui.js" defer></script></head><body><p>Opening your child’s profile…</p><a href="onboarding.html">Open child profile setup</a></body></html>

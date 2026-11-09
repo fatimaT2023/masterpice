@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="parent-background.css">
 <link rel="stylesheet" href="parent-layout.css">
 <link rel="stylesheet" href="../shared/site-language.css">
-<script src="../shared/membership.js"></script><link rel="stylesheet" href="../shared/membership.css"><script src="child-appearance.js"></script><link rel="stylesheet" href="family-journey.css"><script src="activity-matching.js"></script><script src="child-history-model.js"></script></head>
+<script src="../shared/membership.js"></script><link rel="stylesheet" href="../shared/membership.css"><script src="child-appearance.js"></script><link rel="stylesheet" href="family-journey.css"><script src="activity-matching.js"></script><script src="child-history-model.js"></script><link rel="stylesheet" href="support-mode.css"><script src="support-services.js" defer></script><script src="support-mode.js" defer></script><script src="support-mode-ui.js" defer></script></head>
 
 <body class="parent-cycle-video parent-setup">
   <div class="parent-static-background" aria-hidden="true"></div>
@@ -100,8 +100,8 @@
                           <small class="field-error" id="relationshipError"></small>
                         </div><div class="form-group" id="prematurityField"><label for="bornBeforeDueDate">Was your child born before their due date?</label><div class="input-wrapper"><select id="bornBeforeDueDate" name="bornBeforeDueDate" aria-describedby="prematurityHelp"><option value="unknown">Not sure / prefer to skip</option><option value="no">No</option><option value="yes">Yes</option></select></div><small class="setup-help" id="prematurityHelp">Optional. For children under 2, the expected due date can help us select development resources using corrected age.</small><div id="dueDateField" hidden><label for="expectedDueDate">Expected due date (optional)</label><div class="input-wrapper"><input type="date" id="expectedDueDate" aria-describedby="dueDateError"></div><small class="field-error" id="dueDateError"></small><small class="setup-help">Use the date given by your care team. Health records and appointments still use the date of birth.</small></div></div><fieldset class="form-group gender-field" id="genderField" aria-describedby="genderError"><legend>Gender</legend>
  <div class="choice-grid">
-  <label class="choice-card"><input type="radio" name="gender" value="female" required aria-describedby="genderError"><span class="choice-content">Female</span></label>
-  <label class="choice-card"><input type="radio" name="gender" value="male" required aria-describedby="genderError"><span class="choice-content">Male</span></label>
+  <label class="choice-card"><input type="radio" name="gender" value="female" aria-describedby="genderError"><span class="choice-content">Female</span></label>
+  <label class="choice-card"><input type="radio" name="gender" value="male" aria-describedby="genderError"><span class="choice-content">Male</span></label>
  </div>
  <small class="field-error" id="genderError" role="alert"></small>
 </fieldset>

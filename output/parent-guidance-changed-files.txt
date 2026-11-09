@@ -1,0 +1,25 @@
+﻿Changed for Prompt 2a (earlier interview/profile changes are preserved):
+PARENT-JOURNEY.md
+pearent-cycel/PARENT-CYCLE.md
+pearent-cycel/parent-guidance.js (new shared hints, checklist, tour and Help)
+pearent-cycel/parent-guidance.css (new styles using existing palette/tokens)
+pearent-cycel/getting-started.html
+pearent-cycel/getting-started.js
+pearent-cycel/support-guide-copy.js
+pearent-cycel/parent-dashboard.html
+pearent-cycel/parent-dashboard.js
+pearent-cycel/daily-activity.html
+pearent-cycel/activities.html
+pearent-cycel/milestones.html
+pearent-cycel/screening.html
+pearent-cycel/health.html
+pearent-cycel/album.html
+pearent-cycel/specialists.html
+pearent-cycel/bookings.html
+pearent-cycel/specialist-report.html
+pearent-cycel/messages.html
+pearent-cycel/ai-assistant.html
+ tests/parent-guidance.test.cjs (new)
+ tests/support-guide.test.cjs
+output/parent-guidance-test-results.txt
+output/parent-guidance-changed-files.txt

@@ -1,0 +1,17 @@
+﻿const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const memory=new Map(),storage={getItem:k=>memory.get(k)??null,setItem:(k,v)=>memory.set(k,String(v)),removeItem:k=>memory.delete(k)};
+let children=[{id:'one',dateOfBirth:'2025-01-01',backgroundHistory:{version:1,allergies:'Milk',medicines:'Supplement',birthStory:'Family birth note',parentGoal:'Our goal'}},{id:'two'}];
+const ctx={window:null,localStorage:storage,Date};ctx.window=ctx;ctx.RafiqSetup={readChildren:()=>JSON.parse(JSON.stringify(children)),writeChildren:rows=>{children=JSON.parse(JSON.stringify(rows));}};ctx.RafiqFamily={owner:()=> 'parent'};vm.createContext(ctx);vm.runInContext(fs.readFileSync('pearent-cycel/child-history-model.js','utf8'),ctx);
+const api=ctx.RafiqChildHistory,original=JSON.stringify(children[0].backgroundHistory),v2=api.migrate(children[0].backgroundHistory);
+assert.equal(JSON.stringify(children[0].backgroundHistory),original,'Reading never migrates or writes');
+assert.equal(v2.version,2);assert.equal(v2.legacy.birthStory,'Family birth note');assert.equal(v2.allergies.details,'Milk');assert.equal(v2.medication.details,'Supplement');assert.equal(v2.goals.details,'Our goal');
+v2.birth={termStatus:'early',weeks:35,weightGrams:2500,lengthCm:47,delivery:'caesarean',nicu:'yes'};v2.answers['health.allergies']={value:'yes',details:'Milk'};v2.cursor='sleep.naps';
+let saved=api.save('one',v2);assert.equal(saved.birth.weightGrams,2500);assert.equal(saved.answers['health.allergies'].details,'Milk');assert.equal(saved.cursor,'sleep.naps');assert.equal(saved.legacy.birthStory,'Family birth note');assert.equal(children[1].backgroundHistory,undefined);
+saved=api.save('one',saved);assert.equal(saved.legacy.allergies,'Milk');assert.equal(saved.allergies.details,'Milk');
+assert.equal(api.writeBirth(children[0],saved,false),false);assert.equal(storage.getItem('rafiqGrowth_one'),null);
+assert.equal(api.writeBirth(children[0],saved,true),true);let records=JSON.parse(storage.getItem('rafiqGrowth_one'));assert.equal(records.length,1);assert.equal(records[0].date,children[0].dateOfBirth);assert.equal(records[0].weight,2.5);assert.equal(records[0].height,47);
+assert.equal(api.writeBirth(children[0],saved,true),false);assert.equal(JSON.parse(storage.getItem('rafiqGrowth_one')).length,1);
+records[0]._deletedAt='2026-01-01';storage.setItem('rafiqGrowth_one',JSON.stringify(records));assert.equal(api.writeBirth(children[0],saved,true),false,'Never recreate a removed interview record');
+storage.setItem('rafiqGrowth_one',JSON.stringify([{id:'manual',date:children[0].dateOfBirth,weight:2.5}]));assert.equal(api.writeBirth(children[0],saved,true),false,'Keep an existing birth-date record');
+assert.throws(()=>api.writeBirth({id:'private'},saved,true),/unavailable/);assert.equal(storage.getItem('rafiqActivityProfile_one'),null);
+console.log('PASS: structured save, lossless v1 migration, stable v2 saves, explicit birth-record consent, units, per-child isolation and duplicate/removed-record protection.');

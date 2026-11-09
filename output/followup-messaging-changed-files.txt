@@ -1,0 +1,36 @@
+﻿Changed for Prompt 2d:
+FAMILY-WORKSPACE.md
+pearent-cycel/PARENT-CYCLE.md
+pearent-cycel/parent-sidebar.js
+pearent-cycel/parent-sidebar.css
+pearent-cycel/parent-guidance.js
+pearent-cycel/parent-journey.js
+pearent-cycel/guide.js
+pearent-cycel/getting-started.html
+pearent-cycel/support-guide-copy.js
+pearent-cycel/messages.html
+pearent-cycel/follow-up-request.html (new)
+pearent-cycel/follow-up-request.js (new)
+pearent-cycel/follow-up-request.css (new)
+pearent-cycel/follow-up-copy.js (new)
+pearent-cycel/specialists.js
+pearent-cycel/specialists.html
+pearent-cycel/specialist-profile.js
+pearent-cycel/specialist-profile.html
+pearent-cycel/bookings.js
+pearent-cycel/bookings.html
+pearent-cycel/report-followup.js
+pearent-cycel/specialist-report.html
+pearent-cycel/child-care-team.js
+pearent-cycel/child-profile.html
+shared/direct-messages.js
+shared/care-connections.js
+shared/messages-ui.js
+shared/care-connections-ui.js
+shared/care-connections-ar.js
+ tests/family-flow.test.cjs (requires accepted follow-up before messaging)
+ tests/parent-guidance.test.cjs (tour targets match new navigation)
+ tests/followup-messaging.test.cjs (new)
+output/followup-messaging-test-results.txt
+output/followup-messaging-changed-files.txt
+output/followup-specialist-impact.md

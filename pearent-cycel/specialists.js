@@ -1251,6 +1251,7 @@ document.addEventListener(
           ),
 
 
+        supportPublishedText: [profile.specialty, profile.bio, ...(Array.isArray(profile.areas)?profile.areas:[]), profile.publicProfile?.approach].filter(Boolean).join(' '),
         about:
           profile.bio ||
           "Professional profile information is available through RAFIQ.",
@@ -1539,7 +1540,7 @@ document.addEventListener(
               "all" ||
 
             specialist.specialtyKey ===
-              specialty;
+              specialty || (window.RafiqSupportStart?.enabled(currentChild) && window.RafiqSupportStart.matchesSpecialty(specialist,specialty));
 
 
           const matchesType =
@@ -1554,6 +1555,7 @@ document.addEventListener(
 
 
           return (
+            (!document.getElementById('supportMentionsFilter')?.checked || /\bautism\b|\bautistic\b|توحد|التوحد/i.test(specialist.supportPublishedText||'')) &&
             (!requestedId||specialist.id===requestedId) && matchesSearch &&
             matchesSpecialty &&
             matchesType
@@ -1782,7 +1784,7 @@ document.addEventListener(
                 data-id="${escapeHTML(
                   specialist.id
                 )}"
-              >Review full profile</button><a class="specialist-message-link" href="messages.html?specialist=${encodeURIComponent(specialist.id)}">Message specialist</a>
+              >Review full profile</button><a class="specialist-message-link" href="follow-up-request.html?specialist=${encodeURIComponent(specialist.id)}">Request follow-up</a>
 
             </div>
           `;
@@ -2160,7 +2162,12 @@ document.addEventListener(
 
     // A directory topic requested by the parent, not a clinical matching score.
     const requestedTopic=new URLSearchParams(location.search).get('specialty');
-    if(['speech','occupational','development','psychology','pediatrician'].includes(requestedTopic)&&specialtyFilter){
+    const supportType=window.RafiqSupportStart?.enabled(currentChild)&&new URLSearchParams(location.search).get('support')==='1'&&window.RafiqSupportStartContent?.specialists.find(type=>type.filter===requestedTopic);
+    if(supportType&&specialtyFilter){
+      let selectedOption=Array.from(specialtyFilter.options).find(option=>option.value===requestedTopic);if(!selectedOption){selectedOption=document.createElement('option');selectedOption.value=requestedTopic;specialtyFilter.append(selectedOption);}selectedOption.textContent=window.RafiqSupportStartUI.t(supportType,currentChild,'title');
+      specialtyFilter.value=requestedTopic;
+      const notice=document.createElement('p');notice.className='rafiq-age-context';notice.id='startDirectoryTopic';notice.textContent=window.RafiqSupportStartUI.u('selectSpecialty');specialistGrid?.before(notice);
+    }else if(['speech','occupational','development','psychology','pediatrician'].includes(requestedTopic)&&specialtyFilter){
       const available=Array.from(specialtyFilter.options).some(option=>option.value===requestedTopic);
       specialtyFilter.value=available?requestedTopic:'all';
       const notice=document.createElement('p');notice.className='rafiq-age-context';

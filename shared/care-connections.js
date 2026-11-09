@@ -13,12 +13,13 @@
  function state(viewer,id){const thread=threadFor(viewer,id);return read(key).find(c=>c.threadId===id&&c.parentId===thread.parentId&&c.childId===thread.childId&&c.specialistId===thread.specialistId)||null;}
  function change(viewer,id,operation,value=[],metadata={}){
   const thread=threadFor(viewer,id),all=read(key),index=all.findIndex(c=>c.threadId===id&&c.parentId===thread.parentId&&c.childId===thread.childId&&c.specialistId===thread.specialistId),old=index>=0?all[index]:null;
+  if(Object.hasOwn(metadata,'expectedConnection')&&metadata.expectedConnection!==JSON.stringify(old))throw Error('This care request changed in another tab. Reload before sending.');
   if(!window.RafiqDirectMessages.specialists().some(s=>s.id===thread.specialistId&&s.status==='approved'&&s.verificationStatus!=='rejected'))throw Error('This specialist is unavailable.');
   let next;const now=new Date().toISOString();
   let previousRelationshipSince=old?.previousRelationshipSince||null;
   if(['request','sharing'].includes(operation)&&Object.hasOwn(metadata,'previousRelationshipSince')){previousRelationshipSince=metadata.previousRelationshipSince||null;if(previousRelationshipSince){const date=new Date(previousRelationshipSince+'T12:00:00'),child=read('rafiqChildren').find(c=>c.id===thread.childId),birth=child?.dateOfBirth||child?.dob||child?.birthDate;if(!/^\d{4}-\d{2}-\d{2}$/.test(previousRelationshipSince)||Number.isNaN(date.getTime())||date.getFullYear()!==Number(previousRelationshipSince.slice(0,4))||date.getMonth()+1!==Number(previousRelationshipSince.slice(5,7))||date.getDate()!==Number(previousRelationshipSince.slice(8,10))||previousRelationshipSince>new Date().toLocaleDateString('en-CA')||(birth&&previousRelationshipSince<birth))throw Error('Choose a previous follow-up date between the child’s birth and today.');}}
 
-  if(operation==='request'&&viewer.role==='parent'&&!['pending','active'].includes(old?.status))next={...old,status:'pending',scopes:scopes(value),requestedAt:new Date().toISOString()};
+  if(operation==='request'&&viewer.role==='parent'&&!['pending','active'].includes(old?.status))next={...old,status:'pending',requestId:crypto.randomUUID(),scopes:scopes(value),requestedAt:new Date().toISOString()};
   else if(['accept','decline'].includes(operation)&&viewer.role==='specialist'&&old?.status==='pending')next={...old,status:operation==='accept'?'active':'declined',respondedAt:new Date().toISOString(),acceptedAt:operation==='accept'?now:null};
   else if(operation==='revoke'&&viewer.role==='parent'&&['pending','active'].includes(old?.status))next={...old,status:'revoked',scopes:[],revokedAt:new Date().toISOString()};
   else if(operation==='sharing'&&viewer.role==='parent'&&old?.status==='active')next={...old,scopes:scopes(value)};

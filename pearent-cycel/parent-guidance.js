@@ -1,0 +1,71 @@
+/* First-time help reads existing records; it never marks clinical progress or shares data. */
+(() => {
+'use strict';
+const dict=window.RafiqHomeArabic=window.RafiqHomeArabic||{},t=(en,ar)=>(dict[en]=ar,en);
+const hints={
+ 'parent-dashboard.html':t('Start with one small step below, then return here whenever you need.','ابدؤوا بخطوة صغيرة من هون، وارجعوا للرئيسية وقت ما تحتاجوا.'),
+ 'daily-activity.html':t('Try a short activity together, then save how it went.','جرّبوا نشاط قصير سوا، وبعدها سجّلوا كيف كانت التجربة.'),
+ 'activities.html':t('Choose a play idea, try it together and save what you notice.','اختاروا فكرة لعب، جرّبوها سوا وسجّلوا اللي بتلاحظوه.'),
+ 'milestones.html':t('Keep a small note about your child and revisit it as they grow.','سجّلوا ملاحظة صغيرة عن طفلكم وارجعولها مع نموّه.'),
+ 'screening.html':t('Describe what worries you and choose your next step without a diagnosis.','احكوا شو مقلقكم واختاروا خطوتكم الجايّة بدون تشخيص.'),
+ 'health.html':t('Save vaccines, measurements or health notes and find them here later.','احفظوا المطاعيم والقياسات أو الملاحظات الصحية وارجعولها هون.'),
+ 'album.html':t('Save a photo or a special memory for this child.','احفظوا صورة أو ذكرى حلوة لطفلكم.'),
+ 'specialists.html':t('Explore specialists and choose whether to arrange a consultation.','تعرّفوا على المختصين واختاروا إذا بتحبّوا ترتّبوا استشارة.'),
+ 'bookings.html':t('Find your appointments, session details and available reports here.','هون بتلاقوا مواعيدكم وتفاصيل الجلسات والتقارير المتاحة.'),
+ 'specialist-report.html':t('Read the specialist’s report and keep your own follow-up notes.','اقرؤوا تقرير المختص وسجّلوا ملاحظات المتابعة الخاصة فيكم.'),
+ 'messages.html':t('Read your follow-up conversations and reply after the specialist accepts.','اقرؤوا محادثات المتابعة وابعتوا رد بعد قبول المختص.'),
+ 'ai-assistant.html':t('Ask Rafiq an educational question; its answers are not a diagnosis.','اسألوا رفيق سؤال تثقيفي؛ إجاباته مش تشخيص.')
+};
+const steps=[
+ {id:'profile',title:t('Complete your child’s profile','كمّلوا ملف طفلكم'),help:t('Keep their story in one place; you can skip any optional question.','خلّوا حكاية طفلكم بمكان واحد، وبتقدروا تتخطّوا أي سؤال اختياري.'),href:'onboarding.html'},
+ {id:'activity',title:t('Try your first activity','جرّبوا أول نشاط'),help:t('Try a short moment of play and save how it went.','جرّبوا لحظة لعب قصيرة وسجّلوا كيف كانت.'),href:'daily-activity.html'},
+ {id:'note',title:t('Save a first note or memory','سجّلوا أول ملاحظة أو ذكرى'),help:t('Keep one thing you noticed or a photo you love.','احفظوا شغلة لاحظتوها أو صورة بتحبّوها.'),href:'milestones.html#savedObservations'},
+ {id:'health',title:t('Add health information','ضيفوا معلومات صحية'),help:t('Add a vaccine, a measurement or a health note when you have one.','ضيفوا مطعوم أو قياس أو ملاحظة صحية وقت ما تتوفّر عندكم.'),href:'health.html'}
+];
+const copy={start:t('Start here','ابدؤوا من هون'),next:t('Next','التالي'),continue:t('Continue','متابعة'),view:t('Review','مراجعة'),done:t('Done','تم'),of:t('of','من'),all:t('All set','خطواتكم جاهزة'),hide:t('Hide for now','إخفاء هسّا'),show:t('Show the first steps','إظهار خطوات البداية'),tour:t('Take a quick tour','جولة سريعة'),help:t('Help','مساعدة'),skip:t('Skip','تخطّي'),finish:t('Start with the first step','نبدأ بأول خطوة'),optional:t('Meet a specialist when you need one','تعرّفوا على مختص وقت ما تحتاجوا'),calm:t('At your own pace. You can come back anytime.','على راحتكم، بتقدروا ترجعوا بأي وقت.'),mobile:t('On a small screen, use the navigation menu to find these places.','على الشاشة الصغيرة، افتحوا قائمة التنقّل لتلاقوا هالأماكن.')};
+const tourCards=[
+ [t('Home','الرئيسية'),t('Home brings your child’s next steps and saved paths together.','الرئيسية بتجمع خطوات طفلكم الجايّة والمسارات اللي بتحتاجوها.'),'.parent-today'],
+ [t('Messages','الرسائل'),t('Open Messages after Specialists to read your follow-up conversations.','افتحوا الرسائل بعد المختصين لتلاقوا محادثات المتابعة.'),'.parent-messages-link'],
+ [t('Three places to explore','ثلاث مجموعات بتساعدكم'),t('Use My child’s records for health and memories, Activity and growth for activities, and Specialists for appointments and follow-up.','من سجلات طفلي بتلاقوا الصحة والذكريات، ومن الأنشطة والنمو الأنشطة، ومن المختصين المواعيد والمتابعة.'),'.parent-records-link'],
+ [t('Ask Rafiq','اسألوا رفيق'),t('Ask Rafiq offers educational help; Account holds language, privacy and settings.','اسألوا رفيق للمساعدة التثقيفية؛ وبحسابكم بتلاقوا اللغة والخصوصية والإعدادات.'),'.parent-ask']
+];
+function records(storage,key){try{const value=JSON.parse(storage.getItem(key)||'[]');return Array.isArray(value)?value.filter(r=>r&&typeof r==='object'&&!r._deletedAt):[];}catch{return [];}}
+function progress(child,storage=localStorage,memoryCount=0){
+ const notes=records(storage,'rafiqAgeObservations_'+child.id).filter(r=>!r.childId||r.childId===child.id),h=child.backgroundHistory;
+ const profile=!!h&&(!!h.updatedAt||Object.entries(h).some(([k,v])=>!['version','cursor','legacy','answers','birth','allergies','medication','goals'].includes(k)&&typeof v==='string'&&v.trim())||Object.keys(h.answers||{}).length>0);
+ const flags=[profile,notes.some(r=>r.type==='daily-moment'&&r.childId===child.id),notes.some(r=>r.type!=='daily-moment')||memoryCount>0,['rafiqVaccinations_','rafiqGrowth_','rafiqHealthNotes_'].some(key=>records(storage,key+child.id).some(r=>!r.childId||r.childId===child.id))];
+ const rows=steps.map((step,i)=>({...step,done:flags[i],href:step.id==='profile'?'onboarding.html?edit='+encodeURIComponent(child.id)+'&return=profile&section=story':step.href}));
+ return {steps:rows,done:flags.filter(Boolean).length,next:flags.indexOf(false),complete:flags.every(Boolean)};
+}
+const tourKey=account=>'rafiqParentTourSeen_'+account;
+function shouldTour(account,storage=localStorage){if(!account)return false;try{return storage.getItem(tourKey(account))!=='true';}catch{return false;}}
+function seenTour(account,storage=localStorage){if(account)try{storage.setItem(tourKey(account),'true');}catch{}}
+// Album photos already live in IndexedDB. Read only keys, never image blobs or a new completion flag.
+async function memories(childId){if(!window.indexedDB)return 0;try{if(indexedDB.databases&&!(await indexedDB.databases()).some(db=>db.name==='rafiqChildAlbums'))return 0;return await new Promise(resolve=>{const request=indexedDB.open('rafiqChildAlbums');request.onupgradeneeded=()=>request.transaction.abort();request.onerror=request.onblocked=()=>resolve(0);request.onsuccess=()=>{const db=request.result;if(!db.objectStoreNames.contains('photos')){db.close();resolve(0);return;}const tx=db.transaction('photos','readonly'),read=tx.objectStore('photos').index('childId').getAllKeys(childId);read.onsuccess=()=>resolve(read.result.length);read.onerror=()=>resolve(0);tx.oncomplete=tx.onabort=()=>db.close();};});}catch{return 0;}}
+function welcomeRedirect(child,children,storage=localStorage,session=sessionStorage,account=session.getItem('rafiqParentUserId')){if(!account||children.length!==1||child.setupCompletedAt)return null;try{if(session.getItem('rafiqFirstWelcomeChildId_'+account)!==child.id||storage.getItem('rafiqWelcomeSeen_'+account+'_'+child.id)==='true')return null;return 'getting-started.html?child='+encodeURIComponent(child.id);}catch{return null;}}
+window.RafiqParentGuidance={hints,progress,shouldTour,seenTour,memories,welcomeRedirect};
+document.addEventListener('DOMContentLoaded',async()=>{
+ const page=location.pathname.split('/').pop(),main=document.querySelector('main');if(!main)return;
+ const el=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
+ if(hints[page]&&!window.RafiqParentStepGuide?.has(page)){const hint=el('p',hints[page]);hint.className='parent-page-hint';let title=main.querySelector('h1');if(!title&&page==='messages.html'){title=el('h1',tourCards[1][0]);main.prepend(title);}title=title||main.querySelector('h2');if(title)title.after(hint);else main.prepend(hint);}
+ const account=sessionStorage.getItem('rafiqParentUserId');let child;try{child=window.RafiqSetup.readChildren().find(c=>c.id===window.RafiqFamily.selected());}catch{}
+ let checklist=null,checkBody=null,memCount=0;
+ const hiddenKey='rafiqStartHereHidden_'+account+'_'+child?.id;
+ const writeHidden=value=>{try{localStorage.setItem(hiddenKey,String(value));}catch{}};
+ function showChecklist(){if(page!=='parent-dashboard.html'){location.assign('parent-dashboard.html?help=steps');return;}if(!checklist)return;writeHidden(false);checklist.hidden=false;checklist.open=true;checklist.scrollIntoView({block:'center'});checklist.querySelector('summary').focus();}
+ let dialog,previousFocus,index=0,returnToSteps=false;
+ function clearMarks(){document.querySelectorAll('.parent-tour-target').forEach(n=>n.classList.remove('parent-tour-target'));}
+ function openTour(){if(page!=='parent-dashboard.html'){location.assign('parent-dashboard.html?help=tour');return;}if(!dialog){dialog=el('dialog');dialog.className='parent-tour';dialog.setAttribute('aria-labelledby','parentTourTitle');dialog.setAttribute('aria-describedby','parentTourDescription');document.body.append(dialog);dialog.addEventListener('close',()=>{clearMarks();if(returnToSteps){returnToSteps=false;showChecklist();}else if(previousFocus?.getClientRects().length)previousFocus.focus();else document.querySelector('.parent-guidance-help summary')?.focus();});}previousFocus=document.activeElement;returnToSteps=false;index=0;seenTour(account);renderTour();dialog.showModal();dialog.querySelector('button').focus();}
+ function renderTour(){clearMarks();dialog.replaceChildren();const [title,description,selector]=tourCards[index],targets=[...document.querySelectorAll(selector)],visible=targets.filter(n=>n.getClientRects().length&&getComputedStyle(n).visibility!=='hidden'),mobile=window.matchMedia('(max-width: 700px)').matches||!visible.length;
+ if(!mobile)visible.forEach(n=>n.classList.add('parent-tour-target'));
+ const heading=el('h2',title);heading.id='parentTourTitle';heading.tabIndex=-1;const desc=el('p',description);desc.id='parentTourDescription';dialog.append(heading,desc);if(mobile)dialog.append(el('p',copy.mobile));const actions=el('div');actions.className='parent-guide-actions';const next=el('button',index===3?copy.finish:copy.next),skip=el('button',copy.skip);next.type=skip.type='button';next.onclick=()=>{if(index===3){returnToSteps=true;dialog.close();}else {index++;renderTour();dialog.querySelector('h2').focus();}};skip.onclick=()=>dialog.close();actions.append(next,skip);dialog.append(actions);}
+ const navActions=document.querySelector('.parent-account-card')||document.querySelector('.parent-header-actions');if(navActions){const menu=el('details');menu.className='parent-account parent-guidance-help';menu.append(el('summary',copy.help));const panel=el('div');panel.className='parent-nav-panel';const show=el('button',copy.show),tour=el('button',copy.tour);show.type=tour.type='button';show.onclick=()=>{menu.open=false;showChecklist();};tour.onclick=()=>{menu.open=false;openTour();};panel.append(show,tour);menu.append(panel);navActions.append(menu);}
+ if(page!=='parent-dashboard.html'||!child)return;
+ const pathsMount=main.querySelector('.parent-home-paths');const permanent=el('section');permanent.className='parent-permanent-guide today-card';permanent.append(el('h2',t('How to use Rafiq','كيف تستخدموا رفيق')),el('p',t('Learn about the services or revisit the welcome anytime.','تعرّفوا على الخدمات أو ارجعوا للترحيب بأي وقت.')));const guideLink=el('a',t('Open the Rafiq guide','افتحوا دليل رفيق'));guideLink.href='guide.html';permanent.append(guideLink);if(pathsMount)pathsMount.before(permanent);else main.prepend(permanent);
+ if(!progress(child).steps[0].done){const reminder=el('aside');reminder.className='parent-profile-reminder';const p=el('p');p.append(el('span',t('Finish','كمّلوا ملف')),el('span','\u00a0'));const name=el('bdi',child.name);name.setAttribute('data-user-content','');p.append(name,el('span',t('’s profile','')));const link=el('a',copy.continue);link.href='onboarding.html?edit='+encodeURIComponent(child.id)+'&return=profile&section=story';reminder.append(p,link);if(pathsMount)pathsMount.before(reminder);else main.prepend(reminder);}
+ checklist=el('details');checklist.className='parent-start-here today-card';checklist.id='parentStartHere';const summary=el('summary');checkBody=el('div');checklist.append(summary,checkBody);const paths=main.querySelector('.parent-home-paths');if(paths)paths.before(checklist);else main.prepend(checklist);
+ function renderChecklist(){const state=progress(child,localStorage,memCount);summary.replaceChildren(el('strong',state.complete?copy.all:copy.start),el('span',' '),el('span',String(state.done)),el('span',' '),el('span',copy.of),el('span',' 4 '),el('span',copy.done));checkBody.replaceChildren(el('p',copy.calm));const list=el('ol');state.steps.forEach((step,i)=>{const li=el('li');if(i===state.next)li.className='is-next';const body=el('div');const title=el('h3');if(step.done)title.append(el('span','✓ · '));title.append(el('span',step.title));body.append(title,el('p',step.help));const link=el('a',step.done?copy.view:i===state.next?copy.next:copy.continue);link.href=step.href;li.append(body,link);list.append(li);});checkBody.append(list);const specialist=el('a',copy.optional);specialist.href='specialists.html';const hide=el('button',copy.hide);hide.type='button';hide.onclick=()=>{writeHidden(true);checklist.hidden=true;document.querySelector('.parent-guidance-help summary')?.focus();};const actions=el('div');actions.className='parent-guide-actions';actions.append(specialist,hide);checkBody.append(actions);checklist.open=false;try{checklist.hidden=localStorage.getItem(hiddenKey)==='true';}catch{}}
+ window.addEventListener('rafiq:moment-saved',renderChecklist);window.addEventListener('focus',renderChecklist);renderChecklist();memCount=await memories(child.id);renderChecklist();
+ const help=new URLSearchParams(location.search).get('help');if(help==='steps')showChecklist();if(help==='tour')openTour();if(shouldTour(account)){const offer=el('button',copy.tour);offer.type='button';offer.onclick=openTour;permanent.append(offer);}
+ });
+})();

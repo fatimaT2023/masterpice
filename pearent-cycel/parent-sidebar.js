@@ -1,23 +1,23 @@
 /* Shared parent navigation; legacy IDs keep existing page controllers compatible. */
 (() => {
 'use strict';
+const groups=[['My child’s records',[['health.html','Health and vaccines','Keep health notes and measurements'],['album.html','Memories','Save photos and special moments']]],['Activity and growth',[['daily-activity.html','Activity with my child','Try an activity and save their reaction'],['milestones.html','Growth journal','Understand their stage and save observations'],['screening.html','I have a concern','Organize your notes and choose a next step']]],['Specialists',[['specialists.html','Find a specialist','Choose a specialist for a consultation'],['bookings.html','Appointments and reports','View appointments, reports and follow-up']]]];
+// Primary groups open their first page; their sections stay in the page tab strip.
+groups.splice(0,2,groups[1],groups[0]);
+function navigationBadges(account,storage=localStorage,now=new Date()){const read=key=>{try{const a=JSON.parse(storage.getItem(key)||'[]');return Array.isArray(a)?a:[];}catch{return [];}};const accessible=id=>window.RafiqFamily?.canAccessId(id,account)===true;const care=read('rafiqCareConnections'),threads=read('rafiqDirectConversations').filter(t=>accessible(t.childId)&&care.some(c=>c.threadId===t.id&&c.childId===t.childId&&c.specialistId===t.specialistId&&c.parentId===t.parentId&&['pending','active'].includes(c.status)));let messages=0;for(const thread of threads)messages+=(thread.messages||[]).filter((m,i)=>(m.senderRole!=='parent'||m.senderId!==account)&&(Number.isInteger(thread.readCounts?.['parent:'+account])?i>=thread.readCounts['parent:'+account]:m.createdAt>(thread.readAt?.['parent:'+account]||''))).length;messages+=read('rafiqNotifications').filter(n=>n.type!=='message'&&n.title==='Your specialist reviewed a shared entry'&&accessible(n.childId)&&!n.readBy?.[account]&&threads.some(t=>new URLSearchParams(String(n.link||'').split('?')[1]||'').get('thread')===t.id)).length;
+const alerts=new Set();for(const r of read('rafiqSpecialistReports').filter(r=>accessible(r.childId)&&!r._deletedAt)){const key=String(r.id||r.bookingId)+'|'+String(r.createdAt||r.reportDate||'');if(!read('rafiqTodaySeenReports_'+r.childId).includes(key))alerts.add(r.bookingId||key);}for(const booking of read('rafiqBookings').filter(b=>accessible(b.childId)&&['confirmed','upcoming','scheduled','accepted'].includes(b.status)&&!['pending','failed','refunded','refund_pending'].includes(b.sessionPayment?.status))){const match=String(booking.time||'').match(/^(\d{1,2}):(\d{2})\s*(AM|PM)?$/i);let date=new Date(booking.date+'T23:59:00');if(match){let hours=Number(match[1]);if(match[3])hours=hours%12+(match[3].toUpperCase()==='PM'?12:0);date.setHours(hours,Number(match[2]),0,0);}if(date>=now&&date-now<=86400000)alerts.add(booking.id);}return {messages,appointments:alerts.size};}
+window.RafiqParentNavigation={groups,badges:navigationBadges};
 const mount=document.getElementById('parentSidebarMount'); if(!mount)return;
 if(!window.RafiqChildAvatar&&!document.querySelector('script[data-child-avatar]')){const script=document.createElement('script');script.src=new URL('child-avatar.js',document.currentScript.src).href;script.dataset.childAvatar='';document.head.append(script);}
 const page=location.pathname.split('/').pop(), dashboard=page==='parent-dashboard.html', prefix=dashboard?'sidebarChild':'child';
-const groups=[['Activities & growth',[
-['milestones.html','Growth follow-up','Understand their stage and save observations'],['daily-activity.html','Activity with my child','Try an activity and save their reaction'],['screening.html','I have a concern','Organize your notes and choose a next step']]],
-['My child’s records',[
-['health.html','Health & vaccinations','Keep health notes and measurements'],['album.html','Memories','Save photos and special moments']]],
-['Consultations',[
-['specialists.html','Find a specialist','Choose a specialist for a consultation'],['bookings.html','Appointments & reports','View appointments, reports and follow-up']]]];
-const active=({'specialist-report.html':'bookings.html','booking.html':'specialists.html'})[page]||page;
+const active=({'specialist-report.html':'bookings.html','booking.html':'specialists.html','specialist-profile.html':'specialists.html','follow-up-request.html':'messages.html'})[page]||page;
 const isCurrent=href=>href==='daily-activity.html'?(page==='activities.html'||page==='daily-activity.html'):href.split('?')[0]===active;
 const link=([href,title,description])=>`<a href="${href}"${isCurrent(href)?' aria-current="page"':''}><strong>${title}</strong><span>${description}</span></a>`;
 mount.outerHTML=`<header class="parent-navigation" id="sidebar"><div class="parent-navigation-top">
 <a class="parent-brand" href="parent-dashboard.html" aria-label="Rafiq today"><span>R</span> RAFIQ</a>
 <div class="child-switcher"><div class="parent-child-control"><a href="child-profile.html" class="parent-child-button" id="childProfileLink" aria-label="View child profile"><span class="parent-child-avatar" id="${prefix}Avatar">?</span><span class="parent-child-copy"><strong id="${prefix}Name">Your child</strong><span id="${prefix}Age">Choose a child</span></span></a><button type="button" id="childSwitcherButton" class="parent-child-toggle" aria-expanded="false" aria-controls="childDropdown" aria-label="Switch child"><svg class="parent-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><div id="childDropdown" class="parent-child-dropdown" hidden><div id="childDropdownList"></div><a href="onboarding.html">+ Add another child</a></div></div>
-<div class="parent-header-actions"><a class="parent-ask" href="ai-assistant.html"${page==='ai-assistant.html'?' aria-current="page"':''}>Ask Rafiq</a><details class="parent-account"><summary>My account <svg class="parent-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="parent-nav-panel">${link(['settings.html','Settings','Account, language & privacy'])}${link(['subscription.html','My plan & payments','View your subscription options'])}${link(['../piblic-pages/help-center.html?from=parent','Help Center','Guides & registration support'])}<button id="logoutButton" type="button">Log out</button></div></details></div>
-<nav class="parent-primary-nav" aria-label="Parent navigation"><a class="parent-today${dashboard?' is-active':''}" href="parent-dashboard.html"${dashboard?' aria-current="page"':''}>Home</a><a class="parent-messages-link" href="messages.html"${page==='messages.html'?' aria-current="page"':''}>Messages</a>${groups.map(([title,items],index)=>`<details class="parent-nav-group${items.some(item=>isCurrent(item[0]))?' is-active':''}"><summary>${title}<svg class="parent-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="parent-nav-panel">${items.map(link).join('')}</div></details>`).join('')}</nav></div><button id="sidebarClose" type="button" hidden tabindex="-1">Close</button></header>`;
+<div class="parent-header-actions"><a class="parent-ask" href="ai-assistant.html"${page==='ai-assistant.html'?' aria-current="page"':''}>Ask Rafiq</a><details class="parent-account"><summary>My account <svg class="parent-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="parent-nav-panel">${link(['settings.html','Settings','Account, language & privacy'])}${link(['subscription.html','My plan and payments','View your subscription options'])}${link(['../piblic-pages/help-center.html?from=parent','Help Center','Guides & registration support'])}<button id="logoutButton" type="button">Log out</button></div></details></div>
+<nav class="parent-primary-nav" aria-label="Parent navigation"><a class="parent-today${dashboard?' is-active':''}" href="parent-dashboard.html"${dashboard?' aria-current="page"':''}>Home</a>${groups.map(([title,items],index)=>`<a data-nav-group="${index===2?'specialists':index===0?'play':'child'}" class="parent-records-link${items.some(item=>isCurrent(item[0]))?' is-active':''}" href="${items[0][0]}"${page===items[0][0]?' aria-current="page"':''}>${title}</a>`).join('')}<a class="parent-messages-link" href="messages.html"${active==='messages.html'?' aria-current="page"':''}>Messages</a></nav></div><button id="sidebarClose" type="button" hidden tabindex="-1">Close</button></header>`;
 document.body.classList.add('has-parent-navigation');
 const header=document.getElementById('sidebar');document.body.prepend(header);
  // Opt in only this parent Navbar; no sounds on page load or other controls.
@@ -29,24 +29,14 @@ const header=document.getElementById('sidebar');document.body.prepend(header);
   document.head.append(soundScript);
  }
 
-// Each section opens its first destination; its pages share a tab strip.
-header.querySelectorAll('.parent-nav-group').forEach((menu,index)=>{
- const [title,items]=groups[index],sectionLink=document.createElement('a');
- sectionLink.className=`parent-records-link parent-section-${index}`;
- sectionLink.href=items[0][0];
- sectionLink.textContent=title;
- if(items.some(item=>isCurrent(item[0])))sectionLink.classList.add('is-active');
- if(page===items[0][0])sectionLink.setAttribute('aria-current','page');
- menu.replaceWith(sectionLink);
-});
 // Decorative line icons keep the existing links and menu controllers intact.
 const navIcon=paths=>`<svg class="parent-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${paths}</svg>`;
 const icons=[
  ['.parent-today','<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>'],
  ['.parent-messages-link','<path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-2 2V11.5A8.5 8.5 0 0 1 10.5 3h2a8.5 8.5 0 0 1 8.5 8.5Z"/><path d="M7 10h10M7 14h6"/>'],
- ['.parent-section-0','<path d="M4 19h16M6 15v-4m6 4V7m6 8V3"/>'],
- ['.parent-section-1','<rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 5V3h6v2M9 11h6M9 15h6"/>'],
- ['.parent-section-2','<path d="M6 3v5a6 6 0 0 0 12 0V3M4 3h4m8 0h4M12 14v3a4 4 0 0 0 8 0v-2"/><circle cx="20" cy="12" r="3"/>'],
+ ['[data-nav-group="child"]','<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 10h6M9 14h6"/>'],
+ ['[data-nav-group="play"]','<rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 5V3h6v2M9 11h6M9 15h6"/>'],
+ ['[data-nav-group="specialists"]','<path d="M6 3v5a6 6 0 0 0 12 0V3M4 3h4m8 0h4M12 14v3a4 4 0 0 0 8 0v-2"/><circle cx="20" cy="12" r="3"/>'],
  ['.parent-ask','<path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5Z"/>'],
  ['.parent-account>summary','<circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/>']
 ];
@@ -67,6 +57,10 @@ accountPanel.querySelectorAll(':scope > a').forEach((item,index)=>{
  item.insertAdjacentHTML('beforeend',navIcon('<path d="m9 6 6 6-6 6"/>'));
 });
 accountPanel.querySelector('#logoutButton').insertAdjacentHTML('afterbegin',navIcon('<path d="M9 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4M10 12h11m-4-4 4 4-4 4"/>'));
+// Keep the guide available from every parent page, including returning visits.
+(window.RafiqArabicTemplates=window.RafiqArabicTemplates||[]).push({en:'{0} unread messages and recommendations',ar:'{0} رسائل وتوصيات غير مقروءة'},{en:'{0} appointment and report updates',ar:'{0} تحديثات للمواعيد والتقارير'});
+const registerGuideCopy=()=>Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{}, {'How to use Rafiq':'كيف تستخدموا رفيق','Learn about the services anytime':'تعرّفوا على الخدمات بأي وقت','Messages':'الرسائل','My child’s records':'سجلات طفلي','Activity and growth':'الأنشطة والنمو','Specialists':'المختصون','My specialists':'مختصّيني','Child profile':'ملف الطفل','Health and vaccines':'الصحة والمطاعيم','Growth journal':'سجل النمو','Activity with my child':'نشاط مع طفلي','I have a concern':'عندي قلق','Find a specialist':'البحث عن مختص','Appointments and reports':'المواعيد والتقارير','My plan and payments':'خطتي والمدفوعات','My account':'حسابي','Ask Rafiq':'اسألوا رفيق','Review your child’s information':'راجعوا معلومات طفلكم','Follow-up conversations with your specialists':'محادثات المتابعة مع مختصّيكم'});registerGuideCopy();document.addEventListener('DOMContentLoaded',registerGuideCopy);
+const permanentGuide=document.createElement('a');permanentGuide.href='guide.html';permanentGuide.className='parent-guide-link';permanentGuide.innerHTML='<span class="parent-account-item-icon">'+navIcon(accountIcons[2])+'</span><div class="parent-account-item-copy"><strong>How to use Rafiq</strong><span>Learn about the services anytime</span></div>'+navIcon('<path d="m9 6 6 6-6 6"/>');accountPanel.insertBefore(permanentGuide,accountPanel.querySelector('#logoutButton'));
 const dropdown=document.getElementById('childDropdown'),switcher=document.getElementById('childSwitcherButton'),menus=[...header.querySelectorAll('details')];
 const closeMenus=except=>menus.forEach(item=>{if(item!==except)item.open=false;});
 const logoutDialog=document.createElement('dialog');
@@ -99,6 +93,8 @@ if(event.target.closest('#logoutButton, #privacyLogoutButton')){
 },true);
 new MutationObserver(()=>{switcher.setAttribute('aria-expanded',String(!dropdown.hidden));if(!dropdown.hidden)closeMenus();}).observe(dropdown,{attributes:true,attributeFilter:['hidden']});
 document.addEventListener('keydown',event=>{if(event.key!=='Escape')return;const open=menus.find(item=>item.open);if(open){open.open=false;open.querySelector('summary').focus();}if(!dropdown.hidden){dropdown.hidden=true;switcher.focus();}});
+function renderNavigationBadges(){const account=sessionStorage.getItem('rafiqParentUserId');if(!account)return;const counts=navigationBadges(account);document.querySelectorAll('.parent-nav-badge').forEach(n=>n.remove());function badge(selector,count,label){if(!count)return;document.querySelectorAll(selector).forEach(target=>{const b=document.createElement('span');b.className='parent-nav-badge';b.textContent=String(count);b.setAttribute('aria-label',count+' '+label);target.append(b);});}badge('[data-nav-group="specialists"],.parent-primary-nav a[href="messages.html"],.parent-records-tabs a[href="messages.html"]',counts.messages,'unread messages and recommendations');badge('.parent-primary-nav a[href="bookings.html"],.parent-records-tabs a[href="bookings.html"]',counts.appointments,'appointment and report updates');}
+window.addEventListener('storage',renderNavigationBadges);window.addEventListener('focus',renderNavigationBadges);window.addEventListener('rafiq:conversation',renderNavigationBadges);window.addEventListener('rafiq:care-updated',renderNavigationBadges);window.addEventListener('rafiqNotificationsChanged',renderNavigationBadges);document.addEventListener('DOMContentLoaded',renderNavigationBadges);
 document.addEventListener('DOMContentLoaded',()=>{
 const currentGroup=groups.find(([,items])=>items.some(item=>isCurrent(item[0])));
 if(currentGroup){
@@ -109,6 +105,7 @@ if(currentGroup){
  tabs.innerHTML=items.map(([href,label])=>`<a href="${href}"${isCurrent(href)?' aria-current="page"':''}>${label}</a>`).join('');
  document.querySelector('main.main-content')?.prepend(tabs);
 }
+renderNavigationBadges();
 // Existing controllers still bind these controls during the gradual migration.
 if(!document.getElementById('menuButton')){const button=document.createElement('button');button.id='menuButton';button.hidden=true;button.type='button';header.append(button);}
 if(!document.getElementById('sidebarOverlay')){const overlay=document.createElement('div');overlay.id='sidebarOverlay';overlay.hidden=true;document.body.append(overlay);}

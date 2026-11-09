@@ -1,0 +1,15 @@
+﻿PASS: 49 metadata records, age and corrected age, default supported alternatives for 0–83 months, reported readiness, targeted skill, dislike without diagnosis, clinician pause/level, saved record retention, consent, revocation, expiry, stale review and Plus selection.
+PASS: admin family grouping, scoped replacements, deactivation/reactivation, other-parent access, paid period retention, billing consent, unresolved responsibilities, reason/audit, rollback and clinical privacy.
+PASS: local photo/illustration/initial fallback, file validation, JPEG crop, cancellation, removal, existing fields and change events.
+PASS: age prompts across 0–83 months, all stage boundaries, Arabic copy, distinct routines and interests, corrected age and unavailable-age fallback.
+PASS: structured save, lossless v1 migration, stable v2 saves, explicit birth-record consent, units, per-child isolation and duplicate/removed-record protection.
+PASS: five usable parent accounts, three approved specialists, salted password verification, ready/new/partial scenarios, pending privacy, idempotent installation, existing-data preservation, collision rejection and storage rollback.
+PASS: shared family plan/quota, duplicate payment protection, period-end cancellation, expiry retention, consent-based billing transfer, independent notifications, scoped invitations, archive/restore and private support.
+PASS: invitation, separate accounts, shared edits/health/bookings/messages, independent selections/theme, unrelated account isolation and revocation.
+PASS: atomic follow-up request/intro, duplicate prevention, pending privacy and send denial, decline/retry/accept/revoke, read-only past threads, rollback, new navbar groups, Arabic labels, unread/report badges and safe direct-link request action.
+PASS: new parent first-child quota with legacy browser data, stable family ownership, existing limits and preserved records.
+PASS: prior specialist relationship, explicit historical scopes, acceptance, author identity, version-aware review, recommendations visible to both parents, no source edits/automatic booking, unrelated specialist denial and revocation.
+PASS: ordered checklist from existing records, deleted/malformed data, v1/v2 story saves, per-child isolation, album memory progress, account-scoped tour flags, every requested page hint and Arabic/helper coverage.
+PASS: child history ownership, per-child isolation, optional and unknown answers, independent readiness, URL validation, explicit public certificates and approved active specialist lookup.
+PASS: empty/partial/full v1/v2 summaries, optional sections, activity-title Arabic coverage, enabled observation fallback and completion, contextual guide, explicit focus without diagnosis, real eligible activity preview, no automatic Today navigation, preserved readiness, first action completion, rollback and child isolation.
+PASS: readable v1/v2 stories, empty/no/unknown filtering, explicit allergy/medicine negatives, duplicate removal, section edit links, first-visit-only routing, account isolation, six shared services, permanent guide links and documented FAQs.

@@ -15,6 +15,7 @@ function openStory(child){
  button.disabled=false;button.textContent='Continue to child’s story';form.setAttribute('aria-busy','false');
  storyController=window.RafiqChildStoryForm.mount({childId:child.id,draft,returnToProfile:new URLSearchParams(location.search).get('return')==='profile',onBack(){story.hidden=true;layout.hidden=false;steps.forEach((item,index)=>{if(index===0)item.setAttribute('aria-current','step');else item.removeAttribute('aria-current');});button.focus();}});
  story.scrollIntoView({block:'start'});
+ if(!child.supportProfile)window.RafiqSupportUI?.open(child);
 }
 function message(text){status.textContent=text;status.className='form-status'+(text?' show error':'');}
 function field(id,error,text){get(id).classList.toggle('has-error',!!text);get(error).textContent=text;const input=get(id).querySelector('input,select');input.setAttribute('aria-invalid',String(!!text));return !text;}
@@ -35,7 +36,7 @@ form.addEventListener('submit',event=>{
  const validName=field('nameField','nameError',!name.value.trim()?'Please enter your child’s first name.':name.value.trim().length>80?'Please use 80 characters or fewer.':'');
  const validDob=field('dobField','dobError',!age?'Please enter a valid date of birth that is not in the future.':!window.RafiqSetup.isSupported(age)?'Rafiq currently supports children from birth until their seventh birthday.':'');
  const validRelationship=field('relationshipField','relationshipError',!['mother','father','guardian','other'].includes(relationship.value)?'Please select your relationship to the child.':'');
- const validGender=field('genderField','genderError',!['female','male'].includes(form.querySelector('input[name="gender"]:checked')?.value)?'Please select your child’s gender.':'');
+ const validGender=field('genderField','genderError','');
  const dueProvided=bornEarly.value==='yes'&&due.value;
  const validDue=field('prematurityField','dueDateError',dueProvided&&(!window.RafiqSetup.ageFromBirth(due.value,new Date(9999,11,31))||due.value<=dob.value)?'Please enter the expected due date given by your care team, after the date of birth.':'');
  bornEarly.setAttribute('aria-invalid','false');due.setAttribute('aria-invalid',String(!validDue));
@@ -43,14 +44,14 @@ form.addEventListener('submit',event=>{
  button.disabled=true;button.textContent='Saving…';form.setAttribute('aria-busy','true');
  try{
  const familyId=savedProfile?window.RafiqFamily.familyId(savedProfile):get('childFamily')?.value||'family_'+window.RafiqSetup.parentOwner();
- const children=readChildren();if(!profileId&&!window.RafiqMembership.canAdd(children,familyId)){window.RafiqMembership.prompt(window.RafiqMembership.state().active?'Plus supports up to 5 child profiles. Existing profiles remain accessible.':'The free plan includes one child. Upgrade to Plus to add up to 5 children. Existing records stay accessible.');button.disabled=false;button.textContent='Continue';form.setAttribute('aria-busy','false');return;}profileId=profileId||('child_'+(globalThis.crypto?.randomUUID?.()||Date.now()+'_'+Math.random().toString(36).slice(2)));
- const child={...savedProfile,familyId,parentId:savedProfile?.parentId||window.RafiqFamily.family(familyId).ownerId,createdBy:savedProfile?.createdBy||window.RafiqSetup.parentOwner(),id:profileId,name:name.value.trim(),dateOfBirth:dob.value,relationship:relationship.value,gender:form.querySelector('input[name="gender"]:checked')?.value||'',ageBandId:window.RafiqSetup.bandForAge(age).id,ageProfileVersion:2,bornBeforeDueDate:bornEarly.value,expectedDueDate:bornEarly.value==='yes'?due.value:'',createdAt:savedProfile?.createdAt||new Date().toISOString()};
+ const children=readChildren(),firstChildCreation=!profileId&&children.length===0;if(!profileId&&!window.RafiqMembership.canAdd(children,familyId)){window.RafiqMembership.prompt(window.RafiqMembership.state().active?'Plus supports up to 5 child profiles. Existing profiles remain accessible.':'The free plan includes one child. Upgrade to Plus to add up to 5 children. Existing records stay accessible.');button.disabled=false;button.textContent='Continue';form.setAttribute('aria-busy','false');return;}profileId=profileId||('child_'+(globalThis.crypto?.randomUUID?.()||Date.now()+'_'+Math.random().toString(36).slice(2)));
+ const child={...savedProfile,...children.find(item=>item.id===profileId),familyId,parentId:savedProfile?.parentId||window.RafiqFamily.family(familyId).ownerId,createdBy:savedProfile?.createdBy||window.RafiqSetup.parentOwner(),id:profileId,name:name.value.trim(),dateOfBirth:dob.value,relationship:relationship.value,gender:form.querySelector('input[name="gender"]:checked')?.value||'',ageBandId:window.RafiqSetup.bandForAge(age).id,ageProfileVersion:2,bornBeforeDueDate:bornEarly.value,expectedDueDate:bornEarly.value==='yes'?due.value:'',createdAt:savedProfile?.createdAt||new Date().toISOString()};
  const index=children.findIndex(item=>item.id===profileId);if(index<0)children.push(child);else children[index]=child;
- window.RafiqSetup.writeChildren(children);
+ window.RafiqSetup.writeChildren(children);if(firstChildCreation)sessionStorage.setItem('rafiqFirstWelcomeChildId_'+window.RafiqSetup.parentOwner(),child.id);
  (window.RafiqFamily ? window.RafiqFamily.select(child.id) : localStorage.setItem('rafiqCurrentChildId',child.id));
  if(!editId||new URLSearchParams(location.search).get('return')!=='profile')localStorage.setItem('rafiqSetupPendingChildId',child.id);
  localStorage.setItem('rafiqParentOnboardingComplete','true');
- savedProfile=child;openStory(child);
+ savedProfile=child;if(['guide','profile'].includes(new URLSearchParams(location.search).get('return'))&&new URLSearchParams(location.search).get('section')==='details'){location.assign((new URLSearchParams(location.search).get('return')==='profile'?'child-profile.html?child=':'getting-started.html?child=')+encodeURIComponent(child.id));return;}openStory(child);
  }catch{message('We couldn’t save the profile in this browser. Check that browser storage is available, then try again.');button.disabled=false;button.textContent='Continue';form.setAttribute('aria-busy','false');}
 });
 if(savedProfile&&new URLSearchParams(location.search).get('section')==='story')openStory(savedProfile);

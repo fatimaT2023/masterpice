@@ -642,7 +642,7 @@ document.addEventListener(
 
 
 
-              <div class="booking-actions">${booking.consultationType==='online'&&status==='upcoming'?`<a class="journey-link" href="../meetingZoom/index.html?booking=${encodeURIComponent(booking.id)}">Open video room</a>`:''}${window.RafiqCareJourney?.reportFor(booking)?`<a class="journey-link report-ready-link" href="specialist-report.html" data-report-booking="${escapeHTML(booking.id)}">Read session report</a>`:status==='completed'?'<span class="report-pending-note">Report awaiting submission</span>':''}<a class="specialist-message-link" href="messages.html?specialist=${encodeURIComponent(booking.specialistId)}&amp;child=${encodeURIComponent(booking.childId||'')}">Message specialist</a>
+              <div class="booking-actions">${booking.consultationType==='online'&&status==='upcoming'?`<a class="journey-link" href="../meetingZoom/index.html?booking=${encodeURIComponent(booking.id)}">Open video room</a>`:''}${window.RafiqCareJourney?.reportFor(booking)?`<a class="journey-link report-ready-link" href="specialist-report.html" data-report-booking="${escapeHTML(booking.id)}">Read session report</a>`:status==='completed'?'<span class="report-pending-note">Report awaiting submission</span>':''}<span class="followup-invitation">Want ongoing follow-up with this specialist?</span><a class="specialist-message-link" href="follow-up-request.html?specialist=${encodeURIComponent(booking.specialistId)}&amp;child=${encodeURIComponent(booking.childId||'')}">Request follow-up</a>
 
                 <button
                   type="button"
@@ -882,7 +882,7 @@ if (
       modalReference.textContent=booking.id;
  let sessionActions=document.getElementById('modalSessionActions');
  if(!sessionActions){sessionActions=document.createElement('section');sessionActions.id='modalSessionActions';modalReason.after(sessionActions);}
- window.RafiqAppointmentUI.render(sessionActions,booking,'parent');
+ window.RafiqAppointmentUI.render(sessionActions,booking,'parent');const followupPrompt=document.createElement('p');followupPrompt.textContent='Want ongoing follow-up with this specialist?';const followupLink=document.createElement('a');followupLink.className='journey-link';followupLink.href='follow-up-request.html?specialist='+encodeURIComponent(booking.specialistId)+'&child='+encodeURIComponent(booking.childId);followupLink.textContent='Request follow-up';sessionActions.append(followupPrompt,followupLink);
 
 
       detailsModal.hidden =

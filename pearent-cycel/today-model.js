@@ -71,6 +71,12 @@ function build(child,storage=localStorage,now=new Date()){
  else if(unseenReport)next={title:'Your latest specialist report is ready',description:'Read your specialist’s observations and recommendations, then review the next steps they shared.',url:'specialist-report.html',label:'Read specialist report',reason:'FROM YOUR SPECIALIST',report:true};
  else if(dueFollowup)next={title:'A follow-up you wanted to revisit',description:'Your chosen reminder for the visit with '+(dueFollowup.report.specialistName||'your specialist')+' has arrived. Review your own notes alongside the original recommendations.',url:'specialist-report.html',label:'Review my follow-up',reason:'YOUR PERSONAL REMINDER',report:true,reportBookingId:dueFollowup.report.bookingId};
  else if(!screeningJourney&&!concernJourney&&returning&&continuation&&(!child.initialGoal||child.initialGoal==='explore'))next={title:'A little more time for '+(child.name||'your child'),description:continuation.description,url:continuation.url,label:'Return to '+continuation.title,reason:'BASED ON YOUR LAST VISIT'};
+ const supportStep=window.RafiqSupportServices?.next(child);
+ if(supportStep){
+  const title=supportStep.title.replaceAll('{name}',child.name||'');
+  Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{[title]:supportStep.titleAr.replaceAll('{name}',child.name||''),[supportStep.description]:supportStep.descriptionAr,'YOUR SUPPORT TOOLS':'أدوات الدعم إلكم'});
+  next={title,description:supportStep.description,url:supportStep.destination,label:title,reason:'YOUR SUPPORT TOOLS',support:true};
+ }
  return {age,ageContext,resource,observations,legacyObservations,healthCount,upcoming,report,reportKey,unseenReport,continuation,returning,next,warnings,screening,screeningJourney,concernJourney,personalFollowup,dueFollowup};
 }
 window.RafiqToday={build,bookingMoment,services};

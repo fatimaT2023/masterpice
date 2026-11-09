@@ -38,6 +38,8 @@ dad.load('shared/direct-messages.js');mom.load('shared/direct-messages.js');
 const thread=dad.ctx.RafiqDirectMessages.start({role:'parent',id:'dad',name:'Dad'},'doctor','adam');
 assert.equal(mom.ctx.RafiqDirectMessages.list({role:'parent',id:'mom'}).length,1);
 assert.equal(mom.ctx.RafiqDirectMessages.start({role:'parent',id:'mom',name:'Mom'},'doctor','adam').id,thread.id);
+// Messaging now requires a requested and accepted follow-up; family access stays shared.
+dad.load('shared/care-connections.js');mom.load('shared/care-connections.js');dad.ctx.RafiqDirectMessages.requestFollowUp({role:'parent',id:'dad',name:'Dad'},'doctor','adam',[],{},'');dad.ctx.RafiqSpecialistAccess={approved:true,profile:{id:'doctor',fullName:'Doctor',status:'approved'}};dad.ctx.RafiqCareConnections.change({role:'specialist',id:'doctor',name:'Doctor'},thread.id,'accept');
 mom.ctx.RafiqDirectMessages.send({role:'parent',id:'mom',name:'Mom'},thread.id,'Shared message');
 assert.equal(dad.ctx.RafiqDirectMessages.list({role:'parent',id:'dad'})[0].messages[0].senderName,'Mom');
 mom.load('piblic-pages/rafiq-theme.js');dad.load('piblic-pages/rafiq-theme.js');

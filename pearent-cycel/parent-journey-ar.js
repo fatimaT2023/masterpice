@@ -335,3 +335,4 @@ Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{},{
   "PERSONALIZED FOR": "مخصص لطفلك",
   "Your child": "طفلك"
 });
+Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{}, {'View my appointment':'شوفوا موعدكم','Open your appointment details next. The report appears there after the specialist submits it. Messaging needs a separate accepted follow-up request.':'افتحوا تفاصيل موعدكم هسّا. التقرير بيظهر هناك بعد ما يرسله المختص. المراسلة بتحتاج طلب متابعة منفصل ومقبول.'});

@@ -7,7 +7,8 @@ try{
  children=window.RafiqSetup.readChildren();if(!children.length){location.replace('onboarding.html');return;}
  child=children.find(item=>item.id===(window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId')))||children[0];
  (window.RafiqFamily ? window.RafiqFamily.select(child.id) : localStorage.setItem('rafiqCurrentChildId',child.id));
- if(localStorage.getItem('rafiqSetupPendingChildId')===child.id||!child.setupCompletedAt){location.replace('getting-started.html?child='+encodeURIComponent(child.id));return;}
+ // Only the transient first-child creation marker may open Welcome automatically.
+ const welcome=window.RafiqParentGuidance?.welcomeRedirect(child,children);if(welcome){sessionStorage.removeItem('rafiqFirstWelcomeChildId_'+sessionStorage.getItem('rafiqParentUserId'));location.replace(welcome);return;}
  model=window.RafiqToday.build(child);
 }catch{fail('We couldn’t read your saved profile in this browser. Check that browser storage is available, then reload this page.');return;}
 const initial=Array.from(child.name||'?')[0].toUpperCase(), age=window.RafiqSetup.formatAge(model.age);
@@ -17,7 +18,7 @@ text('todayChildContext',age ? age+' · Activities selected for your child’s d
 text('todayDate',new Intl.DateTimeFormat('en',{weekday:'long',day:'numeric',month:'long'}).format(new Date()));
 // Time-sensitive appointments and reports appear first.
 let priority=null;
-if(model.next.report || (model.upcoming && model.upcoming.date.toDateString()===new Date().toDateString())){
+if(model.next.support || model.next.report || (model.upcoming && model.upcoming.date.toDateString()===new Date().toDateString())){
  priority={title:model.next.title,description:model.next.description,label:model.next.label,url:model.next.url,reason:model.next.reason,report:model.next.report};
 }else if(model.upcoming){
  const booking=model.upcoming.booking;

@@ -1995,7 +1995,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.RafiqBookingJourney.step(4);
     document.getElementById('confirmedType').textContent=formatConsultationType(booking.consultationType);
     document.getElementById('confirmedPayment').textContent=formatPrice(booking.sessionPayment.amount);
-    document.getElementById('confirmedMessageLink').href='messages.html?specialist='+encodeURIComponent(booking.specialistId)+'&child='+encodeURIComponent(booking.childId)+'&booking='+encodeURIComponent(booking.id);
+    document.getElementById('confirmedMessageLink').href='bookings.html?booking='+encodeURIComponent(booking.id);document.getElementById('confirmedMessageLink').textContent='View my appointment';
     const appointments=document.querySelector('#successView .success-actions a[href="bookings.html"]');if(appointments)appointments.href='bookings.html?booking='+encodeURIComponent(booking.id);
 
     successMessage.textContent =

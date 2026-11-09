@@ -1,0 +1,23 @@
+﻿Changed for Prompt 2b (previous checklist/tour/page hints remain):
+PARENT-JOURNEY.md
+pearent-cycel/PARENT-CYCLE.md
+pearent-cycel/getting-started.html
+pearent-cycel/getting-started.js
+pearent-cycel/support-guide-copy.js
+pearent-cycel/rafiq-services.js (new shared six-service content/icons/rendering)
+pearent-cycel/guide.html (new permanent guide)
+pearent-cycel/guide.js (new guide content and Arabic copy)
+pearent-cycel/rafiq-guide.css (new styles using existing tokens)
+pearent-cycel/child-story-view.js (new readable v1/v2 story)
+pearent-cycel/child-profile.html
+pearent-cycel/child-profile.js
+pearent-cycel/parent-sidebar.js
+pearent-cycel/parent-guidance.js
+pearent-cycel/parent-dashboard.html
+pearent-cycel/parent-dashboard.js
+pearent-cycel/onboarding.js
+pearent-cycel/child-history.js
+ tests/support-guide.test.cjs
+ tests/welcome-guide.test.cjs (new)
+output/welcome-guide-test-results.txt
+output/welcome-guide-changed-files.txt
