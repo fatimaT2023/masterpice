@@ -1,5 +1,9 @@
 # سايكل الأهل
 
+> تحديث المرحلة الأولى: صفحات الأهل تفتح الآن داخل عرض مؤقت ببيانات وهمية في الذاكرة. التنقّل داخل العرض يحتفظ بالإدخالات، وتحديث صفحة العرض الخارجية يفقدها. السجلات القديمة للقراءة فقط. التفاصيل وخريطة الأسئلة باللغتين في [PARENT-PHASE1.md](PARENT-PHASE1.md).
+>
+> Phase 1: parent pages now run in a temporary fictional-data preview. Inner navigation retains entries; reloading the outer preview loses them. Existing saved records are read-only. See the bilingual [Phase 1 notes](PARENT-PHASE1.md).
+
 ## البداية
 
 تسجيل الدخول ← إضافة بيانات الطفل وحكايته ← الترحيب وشرح خدمات رفيق الست ← أول نشاط أو ملاحظة أو قلق باختيار الأهل.

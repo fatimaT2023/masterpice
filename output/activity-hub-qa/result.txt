@@ -1,0 +1,1 @@
+PASS: 25 test files; 49 activities; bookmarks, detail/start/save/history; age/readiness and Free/Plus gates; unavailable request feedback; activity Arabic copy; AR/EN; 1280/360px; no native child persistence.

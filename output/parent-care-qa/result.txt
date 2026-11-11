@@ -1,0 +1,1 @@
+PASS: 26 test files; four consecutive parent browser suites; eight care pages; correct report source; optional help; AR/EN and RTL/LTR; 1280/360px; no collected runtime exceptions.

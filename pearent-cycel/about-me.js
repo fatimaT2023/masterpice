@@ -14,12 +14,13 @@
  function changeStep(cursor,done=false){const data=M.profile(child),id=C.sections[data.cursor]?.id;const completed=done&&id?[...data.sectionsDone,id]:data.sectionsDone;if(persist({cursor,sectionsDone:completed}))draw();}
  function header(){
   app.replaceChildren();const home=el('a',text('home'));home.href='parent-dashboard.html';app.append(home,el('h1',text('title',{name:name()})),el('p',text('intro')));
+  if(window.RafiqAutismVisual)app.append(button(tr('Back to my child’s card'),()=>{mode='overview';draw();}));
   const data=M.profile(child);app.append(el('p',text('done',{count:data.sectionsDone.length})));
   if(data.updatedAt)app.append(el('small',text('edited',{person:data.updatedByName||text('family'),date:new Date(data.updatedAt).toLocaleDateString(lang())})));
   if(M.due(child)){const box=el('aside',text('review',{name:name()}));box.className='about-card';box.append(button(text('dismiss'),()=>{if(persist({reviewDismissedFor:data.updatedAt}))draw();}),button(text('reviewed'),()=>{if(persist({reviewedAt:new Date().toISOString()}))draw();}));app.append(box);}
  }
  function footer(){if(window.RAFIQ_SHOW_DRAFT_LABELS!==false)app.append(el('small',text('draft')));app.append(el('p',text('footer')));}
- function draw(){header();if(mode==='view')reading();else if(M.profile(child).cursor===9)finish();else builder();footer();}
+ function draw(){if(mode==='overview'&&window.RafiqAutismVisual){app.replaceChildren();window.RafiqAutismVisual.passport(app,child,{edit(id){mode='edit';changeStep(C.sections.findIndex(s=>s.id===id));},share(){mode='view';draw();},photo(updated){child=updated;draw();}});if(M.due(child)){const data=M.profile(child),box=el('aside',text('review',{name:name()}));box.className='about-card';box.append(button(text('dismiss'),()=>{if(persist({reviewDismissedFor:data.updatedAt}))draw();}),button(text('reviewed'),()=>{if(persist({reviewedAt:new Date().toISOString()}))draw();}));app.append(box);}footer();return;}header();if(mode==='view')reading();else if(M.profile(child).cursor===9)finish();else builder();footer();}
  function builder(){
   const data=M.profile(child),section=C.sections[data.cursor],list=el('ol');list.className='about-progress';list.setAttribute('aria-label',text('title',{name:name()}));
   C.sections.forEach((s,i)=>{const li=el('li'),b=button(label(s.title),()=>changeStep(i));if(i===data.cursor)b.setAttribute('aria-current','step');li.append(b);list.append(li);});app.append(list);
@@ -45,7 +46,7 @@
   if(section.id==='people'){
    const active=activeThreads();if(active.length){card.append(el('h3',text('specialists')));for(const t of active){const a=el('a',t.specialistName);a.href='messages.html?thread='+encodeURIComponent(t.id);card.append(a);}}
   }
-  card.append(button(text('back'),()=>{if(data.cursor>0)changeStep(data.cursor-1);}));card.append(button(text('skip'),()=>changeStep(data.cursor+1)),button(text('next'),()=>changeStep(data.cursor+1,true)),button(text('view'),()=>{mode='view';draw();}));app.append(card);h.focus();
+  card.append(button(text('back'),()=>{if(data.cursor>0)changeStep(data.cursor-1);}));card.append(button(text('skip'),()=>changeStep(data.cursor+1)),button(text('next'),()=>changeStep(data.cursor+1,true)),button(text('view'),()=>{mode='view';draw();}));if(window.RafiqAutismVisual)card.append(button(tr('Back to my child’s card'),()=>{mode='overview';draw();}));app.append(card);h.focus();
  }
  function finish(){app.append(el('h2',text('ready',{name:name()})),button(text('view'),()=>{mode='view';draw();}),button(text('edit'),()=>{mode='edit';changeStep(0);}));if(window.RafiqSupportJourneyUI?.afterAboutReady)window.RafiqSupportJourneyUI.afterAboutReady(app,child);else window.RafiqSupportStartUI?.afterAboutReady(app,child);reading();}
  function activeThreads(){try{const api=window.RafiqDirectMessages,viewer=api.identity('parent');return api.list(viewer).filter(t=>t.childId===child.id&&api.canReply(viewer,t));}catch{return [];}}
@@ -81,6 +82,6 @@
   }
   refresh();
  }
- document.addEventListener('DOMContentLoaded',()=>{app=document.getElementById('aboutApp');status=document.getElementById('aboutStatus');document.documentElement.lang=lang();document.documentElement.dir=lang()==='ar'?'rtl':'ltr';document.title=tr(C.ui.title).replaceAll('{name}','')+' | RAFIQ';try{const id=new URLSearchParams(location.search).get('child')||window.RafiqFamily.selected();child=window.RafiqSetup.readChildren().find(c=>c.id===id);if(!child)throw Error('Unavailable');mode=new URLSearchParams(location.search).get('view')==='1'?'view':'edit';draw();}catch{statusText('error');}});
+ document.addEventListener('DOMContentLoaded',()=>{app=document.getElementById('aboutApp');status=document.getElementById('aboutStatus');document.documentElement.lang=lang();document.documentElement.dir=lang()==='ar'?'rtl':'ltr';document.title=tr(C.ui.title).replaceAll('{name}','')+' | RAFIQ';try{const id=new URLSearchParams(location.search).get('child')||window.RafiqFamily.selected();child=window.RafiqSetup.readChildren().find(c=>c.id===id);if(!child)throw Error('Unavailable');document.title=text('title',{name:name()})+' | RAFIQ';mode=new URLSearchParams(location.search).get('view')==='1'?'view':new URLSearchParams(location.search).get('edit')==='1'?'edit':'overview';draw();}catch{statusText('error');}});
  window.addEventListener('storage',e=>{if(e.key==='rafiqChildren'&&child){try{const fresh=window.RafiqSetup.readChildren().find(c=>c.id===child.id);if(!fresh||JSON.stringify(fresh.aboutMe)!==JSON.stringify(child.aboutMe)){blocked=true;statusText('error');}else child=fresh;}catch{blocked=true;statusText('error');}}});
 })();

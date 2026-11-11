@@ -1,0 +1,19 @@
+/* Minimal transactional in-memory implementation for the existing photo album API.
+   No native database is opened in fictional mode. */
+(() => {
+ 'use strict';
+ function memory(){
+  const databases=new Map(),clone=value=>structuredClone(value);
+  const names=map=>({contains:key=>map.has(key),get length(){return map.size;},item:i=>[...map.keys()][i]??null});
+  function dbView(data){return {objectStoreNames:names(data.stores),close(){},createObjectStore(name,{keyPath='id'}={}){const store={keyPath,rows:new Map(),indexes:new Map()};data.stores.set(name,store);return {createIndex:(id,path)=>store.indexes.set(id,path)};},transaction(name,mode='readonly'){
+   const original=data.stores.get(name);if(!original)throw Error('Unknown store');const rows=mode==='readwrite'?new Map([...original.rows].map(([k,v])=>[k,clone(v)])):original.rows;
+   let pending=0,aborted=false,completed=false;const tx={error:null,oncomplete:null,onabort:null,onerror:null,abort(){if(completed||aborted)return;aborted=true;setTimeout(()=>tx.onabort?.({target:tx}),0);}};
+   function complete(){setTimeout(()=>{if(!pending&&!aborted&&!completed){completed=true;if(mode==='readwrite')original.rows=rows;tx.oncomplete?.({target:tx});}},0);}
+   function request(fn){if(aborted||completed)throw Error('Inactive transaction');pending++;const req={result:undefined,error:null,onsuccess:null,onerror:null};setTimeout(()=>{if(aborted)return;try{req.result=clone(fn());req.onsuccess?.({target:req});}catch(error){req.error=error;tx.error=error;req.onerror?.({target:req});tx.abort();}finally{pending--;complete();}},0);return req;}
+   tx.objectStore=()=>({put(value){if(mode!=='readwrite')throw Error('Read-only transaction');return request(()=>{rows.set(value[original.keyPath],clone(value));return value[original.keyPath];});},delete(key){if(mode!=='readwrite')throw Error('Read-only transaction');return request(()=>{rows.delete(key);return undefined;});},index(index){const path=original.indexes.get(index);if(!path)throw Error('Unknown index');return {getAll:query=>request(()=>[...rows.values()].filter(v=>v[path]===query)),getAllKeys:query=>request(()=>[...rows.values()].filter(v=>v[path]===query).map(v=>v[original.keyPath]))};}});complete();return tx;
+  }};}
+  return {databases:async()=>[...databases.keys()].map(name=>({name,version:1})),open(name){const request={result:null,error:null,transaction:null,onupgradeneeded:null,onsuccess:null,onerror:null,onblocked:null};setTimeout(()=>{const fresh=!databases.has(name),data=databases.get(name)||{stores:new Map()};request.result=dbView(data);let aborted=false;request.transaction={abort(){aborted=true;}};if(fresh)request.onupgradeneeded?.({target:request});if(aborted){request.error=Error('Upgrade cancelled');request.onerror?.({target:request});return;}databases.set(name,data);request.onsuccess?.({target:request});},0);return request;}};
+ }
+ function readOnly(native,notify){return {databases:()=>native.databases(),open(name){const result={result:null,error:null,onsuccess:null,onerror:null,onblocked:null,onupgradeneeded:null};native.databases().then(list=>{if(!list.some(db=>db.name===name))throw Error('No saved database');const request=native.open(name);request.onupgradeneeded=()=>request.transaction.abort();request.onerror=()=>{result.error=request.error;result.onerror?.({target:result});};request.onsuccess=()=>{const db=request.result;result.result={objectStoreNames:db.objectStoreNames,close:()=>db.close(),transaction(store,mode){if(mode&&mode!=='readonly'){notify('readonly');throw Error('Saved photos are read-only');}return db.transaction(store,'readonly');}};result.onsuccess?.({target:result});};}).catch(error=>{result.error=error;result.onerror?.({target:result});});return result;}};}
+ window.RafiqParentPreviewDatabase={memory,readOnly};
+})();

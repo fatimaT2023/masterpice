@@ -51,5 +51,5 @@ get('todayContent').hidden=false;
 const calendarDay=new Date().toDateString();
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!window.rafiqTodayHasUnsavedMoment&&new Date().toDateString()!==calendarDay)location.reload();});
 const nextDay=new Date();nextDay.setHours(24,0,1,0);window.setTimeout(()=>{if(!document.hidden&&!window.rafiqTodayHasUnsavedMoment)location.reload();},nextDay-Date.now());
-window.addEventListener('storage',event=>{if(event.key===null||event.key?.startsWith('rafiq')){if(window.rafiqTodayHasUnsavedMoment)fail('Saved information changed in another tab. Finish saving your moment, then reload Today.');else location.reload();}});
+window.addEventListener('storage',event=>{if(event.key?.startsWith('rafiqLanguage'))return;if(event.key===null||event.key?.startsWith('rafiq')){if(window.rafiqTodayHasUnsavedMoment)fail('Saved information changed in another tab. Finish saving your moment, then reload Today.');else location.reload();}});
 });

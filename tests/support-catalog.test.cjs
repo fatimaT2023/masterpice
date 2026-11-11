@@ -1,0 +1,7 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const ctx={window:null,location:{pathname:'/unit.html'}};ctx.window=ctx;vm.createContext(ctx);for(const f of ['parent-experience.js','support-catalog-data.js'])vm.runInContext(fs.readFileSync('pearent-cycel/'+f,'utf8'),ctx);
+const api=ctx.RafiqSupportCatalog,services=ctx.RafiqParentExperience.services;assert.equal(api.categories.length,11);assert.equal(api.topics.length,32);assert.equal(new Set(api.topics.map(t=>t.id)).size,32);
+for(const c of api.categories){assert.ok(c.title.ar&&c.title.en);assert.ok(api.topics.some(t=>t.category===c.id));}
+for(const t of api.topics){assert.ok(api.types[t.type]);assert.ok(t.title.ar&&t.title.en);assert.ok(['speech','development','psychology','pediatrician'].includes(t.specialty));for(const id of t.services){assert.ok(services[id]);assert.ok(fs.existsSync('pearent-cycel/'+services[id][2].split('?')[0]));}}
+assert.equal(api.search({query:'التَّوَحُّد'})[0].id,'autism');assert.equal(api.search({query:'AUTISM'})[0].id,'autism');assert.ok(api.search({category:'sleep'}).every(t=>t.category==='sleep'));assert.equal(api.search({query:'autism',category:'sleep'}).length,0);assert.equal(api.search({query:'<script>'}).length,0);assert.ok(api.search({type:'daily'}).every(t=>t.type==='daily'));assert.equal(api.search({category:'unknown'}).length,0);
+console.log('PASS: 11 categories, 32 bilingual typed topics, Arabic normalization, combined search/filters, valid service destinations and directory topics.');

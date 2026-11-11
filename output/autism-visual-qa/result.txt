@@ -1,0 +1,1 @@
+PASS: 26 regression test files; visual dashboard, three destinations, 4 child-card sections, loaded SVGs, read-only view, real edits, photo cancellation, sharing entry, AR/EN, 1280/360px.

@@ -11,6 +11,8 @@
   const status = document.getElementById('formStatus');
   const roles = [...document.querySelectorAll('[data-role]')];
   const invitationId = new URLSearchParams(location.search).get('invite');
+  const showcaseEmail=new URLSearchParams(location.search).get('demoEmail');
+  if(!invitationId&&/^[a-z-]+\.show@rafiq\.test$/.test(showcaseEmail||''))email.value=showcaseEmail;
   if(invitationId){
     document.querySelector('.role-selector').hidden=true;
     document.querySelector('.create-account').href='register.html?role=parent&invite='+encodeURIComponent(invitationId);
@@ -117,8 +119,14 @@
     }
     if(signInRole==='parent') {
       try{
-        const users=JSON.parse(localStorage.getItem('rafiqUsers')||'[]');
-        const user=Array.isArray(users)?users.find(u=>u?.role==='parent'&&u.email?.toLowerCase()===email.value.trim().toLowerCase()):null;
+        let users=JSON.parse(localStorage.getItem('rafiqUsers')||'[]');
+        let user=Array.isArray(users)?users.find(u=>u?.role==='parent'&&u.email?.toLowerCase()===email.value.trim().toLowerCase()):null;
+        const demoCase=window.RafiqDemoCases?.cases.find(c=>c.email===email.value.trim().toLowerCase());
+        if(!user&&demoCase&&Array.isArray(users)){
+          verifying=true;submit.disabled=true;email.disabled=true;password.disabled=true;toggle.disabled=true;roles.forEach(b=>b.disabled=true);
+          try{await window.RafiqShowcaseAccounts.install(localStorage,window.RafiqPreviewCredentials,demoCase.key);users=JSON.parse(localStorage.getItem('rafiqUsers')||'[]');user=users.find(u=>u.id===demoCase.owner);}
+          finally{verifying=false;submit.disabled=false;email.disabled=false;password.disabled=false;toggle.disabled=false;roles.forEach(b=>b.disabled=false);}
+        }
         if(!user){invalid(email,'No parent account was found for this email. Please register first.');email.focus();return;}
         if(window.RafiqAccountStatus.inactive(user)){invalid(email,'This account is deactivated. Contact support.');email.focus();return;}
         if(!user.previewCredential){invalid(password,'This older preview account has no saved password verifier. Use a new email to create a preview account; existing records remain saved.');password.focus();return;}

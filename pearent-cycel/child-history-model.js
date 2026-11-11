@@ -26,5 +26,10 @@
   records.push({id:'interview-birth-'+child.id,childId:child.id,date:child.dateOfBirth,weight:weight>0?weight/1000:null,height:height>0?height:null,createdAt:new Date().toISOString(),createdBy:window.RafiqFamily.owner(),source:'child-interview'});
   localStorage.setItem(key,JSON.stringify(records));return true;
  }
- window.RafiqChildHistory={fields,normalize,migrate,save:saveStructured,writeBirth};
+ function fromBasics(child,history={}){
+  const values=migrate(history),term=child.bornBeforeDueDate==='yes'?'early':child.bornBeforeDueDate==='no'?'term':null;
+  if(term&&!values.answers['birth.termStatus']&&!values.birth.termStatus){values.answers['birth.termStatus']={value:term,details:'',prefilledFrom:'child.basics'};values.birth.termStatus=term;}
+  return values;
+ }
+ window.RafiqChildHistory={fields,normalize,migrate,fromBasics,save:saveStructured,writeBirth};
 })();
