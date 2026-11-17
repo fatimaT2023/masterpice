@@ -472,6 +472,7 @@ document.addEventListener(
     // =====================================
 
     function getBookingStatus(booking) {
+ if(['requested','pending'].includes(booking.status))return 'requested';
  if(booking.status==='cancelled')return 'cancelled';
  if(booking.status==='completed')return 'completed';
  return 'upcoming';
@@ -531,7 +532,7 @@ document.addEventListener(
     // =====================================
 
     let activeFilter =
-      "all";
+      ["all","requested","upcoming","completed","cancelled"].includes(new URLSearchParams(location.search).get("filter"))?new URLSearchParams(location.search).get("filter"):"all";
 
 
     let searchTerm =
@@ -614,7 +615,9 @@ document.addEventListener(
             getBookingStatus(b);
 
 
+          // Requests need a decision, so they always lead the list.
           const order = {
+            requested: -1,
             upcoming: 0,
             completed: 1,
             cancelled: 2
@@ -634,7 +637,8 @@ document.addEventListener(
 
 
           if (
-            statusA === "upcoming"
+            statusA === "upcoming" ||
+            statusA === "requested"
           ) {
 
             return (
@@ -802,6 +806,14 @@ document.addEventListener(
 
         } else if (
           activeFilter ===
+          "requested"
+        ) {
+          emptyTitle.textContent =
+            "No pending requests";
+          emptyText.textContent =
+            "New booking requests from families will appear here for your decision.";
+        } else if (
+          activeFilter ===
           "upcoming"
         ) {
 
@@ -871,7 +883,7 @@ document.addEventListener(
 
 
           card.className =
-            "booking-item";
+            "booking-item" + (status === "requested" ? " is-request" : "");
 
 
           const childInitial =
@@ -890,7 +902,7 @@ document.addEventListener(
 
 
           card.innerHTML = `
-            <div class="child-avatar">
+            <div class="child-avatar" data-user-content>
               ${escapeHTML(
                 childInitial
               )}
@@ -970,13 +982,15 @@ document.addEventListener(
             </div>
 
 
-            <div class="booking-actions">${booking.consultationType==='online'&&status==='upcoming'?`<a class="care-link" href="../meetingZoom/index.html?booking=${encodeURIComponent(booking.id)}">Open video room</a>`:''}
+            <div class="booking-actions">${status==='requested'?`<div class="booking-decision"><button type="button" class="practice-btn primary" data-decision="accept">Accept</button><button type="button" class="practice-btn ghost" data-decision="decline">Decline</button></div>`:''}${booking.consultationType==='online'&&status==='upcoming'?`<a class="care-link" href="../meetingZoom/index.html?booking=${encodeURIComponent(booking.id)}">Open video room</a>`:''}
 
               <span
                 class="status-badge ${status}"
               >
                 ${
-                  status === "upcoming"
+                  status === "requested"
+                    ? "Awaiting your response"
+                    : status === "upcoming"
                     ? "Upcoming"
                     : status === "completed"
                       ? "Completed"
@@ -1014,6 +1028,15 @@ document.addEventListener(
             );
 
 
+          card.querySelectorAll("[data-decision]").forEach(button => button.addEventListener("click", async () => {
+            const practice = window.RafiqSpecialistPractice;
+            if (!practice) return;
+            try {
+              if (button.dataset.decision === "accept") { practice.respond(booking.id, "accept"); practice.toast("Request accepted. The appointment is now confirmed."); }
+              else { const answer = await practice.askDecline(booking.childName); if (!answer) return; practice.respond(booking.id, "decline", answer.reason); practice.toast("Request declined. The family will see your response."); }
+            } catch (error) { practice.toast(error.message, "error"); }
+            renderSummary(); renderBookings(); practice.badges();
+          }));
           bookingsList.appendChild(
             card
           );
@@ -1198,6 +1221,8 @@ document.addEventListener(
     // =====================================
     // INIT
     // =====================================
+
+    filterButtons.forEach(item => item.classList.toggle("active", item.dataset.filter === activeFilter));
 
     renderSummary();
 

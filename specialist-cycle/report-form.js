@@ -1410,6 +1410,12 @@ document.addEventListener(
           specialistNote.value.trim(),
 
 
+        // Phase 5: areas discussed, suggested home activities, next steps (demonstration content).
+        ...(window.RafiqReportExtras?.collect()||{}),
+        isDemo:
+          !!booking.isDemo,
+
+
         status:
           "submitted",
 

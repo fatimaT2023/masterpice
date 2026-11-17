@@ -121,7 +121,7 @@
       try{
         let users=JSON.parse(localStorage.getItem('rafiqUsers')||'[]');
         let user=Array.isArray(users)?users.find(u=>u?.role==='parent'&&u.email?.toLowerCase()===email.value.trim().toLowerCase()):null;
-        const demoCase=window.RafiqDemoCases?.cases.find(c=>c.email===email.value.trim().toLowerCase());
+        const demoCase=[...(window.RafiqDemoCases?.cases||[]),...(window.RafiqDemoCases?.families||[])].find(c=>c.email===email.value.trim().toLowerCase());
         if(!user&&demoCase&&Array.isArray(users)){
           verifying=true;submit.disabled=true;email.disabled=true;password.disabled=true;toggle.disabled=true;roles.forEach(b=>b.disabled=true);
           try{await window.RafiqShowcaseAccounts.install(localStorage,window.RafiqPreviewCredentials,demoCase.key);users=JSON.parse(localStorage.getItem('rafiqUsers')||'[]');user=users.find(u=>u.id===demoCase.owner);}

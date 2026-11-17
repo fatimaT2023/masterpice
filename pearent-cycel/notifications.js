@@ -621,13 +621,13 @@ document.addEventListener(
 
               <strong>
                 ${escapeNotificationHTML(
-                  notification.title
+                  (document.documentElement.lang==='ar'&&notification.titleAr)||notification.title
                 )}
               </strong>
 
               <p>
                 ${escapeNotificationHTML(
-                  notification.message
+                  (document.documentElement.lang==='ar'&&notification.messageAr)||notification.message
                 )}
               </p>
 

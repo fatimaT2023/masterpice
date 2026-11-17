@@ -1,1 +1,11 @@
 .hub-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-block:18px}.hub-tabs button[aria-pressed=true]{background:var(--catalog-ink);color:white}.activity-hub .catalog-card{gap:7px}.activity-hub .catalog-card p{margin-block:4px}.activity-hub .catalog-card h2{margin-block:7px}.activity-hub .catalog-card small{line-height:1.7}.activity-hub ol{line-height:2}.activity-hub button:disabled{opacity:.5;cursor:default}.activity-hub #hubStatus:empty{display:none}.activity-hub #hubStatus{padding:12px;border-inline-start:3px solid var(--catalog-ink);background:var(--catalog-tint)}.activity-hub .catalog-filters{grid-template-columns:2fr 1fr 1fr 1fr auto}@media(max-width:850px){.activity-hub .catalog-filters{grid-template-columns:1fr 1fr}.activity-hub .catalog-filters label:first-child{grid-column:1/-1}}@media(max-width:520px){.hub-tabs{gap:4px}.hub-tabs button{font-size:12px;padding:8px}.activity-hub .catalog-filters label:first-child{grid-column:1/-1}}
+
+/* Three simple steps at the top of "Play and observe" */
+.hub-how{list-style:none;margin:14px 0 18px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.hub-how-step{display:flex;flex-direction:column;gap:4px;padding:14px;border-radius:18px;border:1px solid rgba(40,103,95,.16);background:rgba(255,255,255,.75)}
+.hub-how-num{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#28675f;color:#fff;font-weight:700;font-size:13px}
+.hub-how-step strong{font-size:15px}
+.hub-how-text{font-size:13px;opacity:.8;line-height:1.55}
+@media(max-width:640px){.hub-how{grid-template-columns:1fr}.hub-how-step{flex-direction:row;flex-wrap:wrap;align-items:center;gap:8px}.hub-how-text{flex-basis:100%}}
+/* The 3-step strip replaces the collapsed page explainer here */
+.activity-hub>#parentServiceContext{display:none}

@@ -463,13 +463,12 @@
               class="confirm-button"
               id="confirmBookingButton"
             >
-              Review appointment
+              Review request
             </button>
 
 
             <p class="summary-note">
-              Pay before confirmation. This is a demo.
-              No real money is collected.
+              Send a request first. You confirm with a demo payment only after the specialist accepts. No real money is collected.
             </p>
 
           </aside>
@@ -534,11 +533,11 @@
           </div>
 
           <span class="success-kicker">
-            APPOINTMENT CONFIRMED
+            REQUEST SENT
           </span>
 
           <h2>
-            Your appointment is confirmed.
+            Your request was sent.
           </h2>
 
           <p id="successMessage">
@@ -615,7 +614,7 @@
           </div>
 
 
-          <section class="booking-next"><h3>What happens next?</h3><p>Your appointment is confirmed after demo payment. No real money was collected.</p><div class="confirmation-details"><div><span>Session type</span><strong id="confirmedType"></strong></div><div><span>Demo payment recorded</span><strong id="confirmedPayment"></strong></div></div><p>Open your appointment details next. The report appears there after the specialist submits it. Messaging needs a separate accepted follow-up request.</p><a id="confirmedMessageLink" class="view-bookings-button" href="bookings.html">View my appointment</a></section>
+          <section class="booking-next"><h3>What happens next?</h3><p>The specialist can accept, suggest another time, or decline. After acceptance you confirm with a demo payment. Nothing is emailed and no real money is collected.</p><div class="confirmation-details"><div><span>Session type</span><strong id="confirmedType"></strong></div><div><span>Session fee (demo, after acceptance)</span><strong id="confirmedPayment"></strong></div></div><p>Track the request in My appointments. You will see the specialist's reply there and in your notifications.</p><a id="confirmedMessageLink" class="view-bookings-button" href="bookings.html">View my appointment</a></section>
 <div class="success-actions">
 
             <a
@@ -646,16 +645,16 @@
 
 
 <dialog id="appointmentReview" class="appointment-review" aria-labelledby="reviewHeading">
-  <h2 id="reviewHeading" tabindex="-1">Review your appointment</h2>
+  <h2 id="reviewHeading" tabindex="-1">Review your request</h2>
   <p>Check these details before continuing.</p>
   <dl id="reviewDetails"></dl>
   <h3>Note shared with your specialist</h3><p id="reviewReason" class="review-reason"></p>
-  <p class="review-demo">Demo payment only. No real money is collected. Your appointment is saved after successful demo payment.</p>
-  <div class="review-actions"><button type="button" id="reviewEdit">Back to edit</button><button type="button" id="reviewContinue">Continue to demo payment</button></div>
+  <p class="review-demo">Nothing is paid now. The specialist replies first; if they accept, you confirm with a demo payment. No real money is collected.</p>
+  <div class="review-actions"><button type="button" id="reviewEdit">Back to edit</button><button type="button" id="reviewContinue">Send request</button></div>
 </dialog>
 <script src="booking-review.js"></script>
-<script src="concern-booking.js"></script><script src="booking.js"></script>
+<script src="concern-booking.js"></script><script src="../shared/appointments.js"></script><script src="booking.js"></script>
 <script src="notifications.js"></script>
-<script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="parent-journey-ar.js" defer></script><script src="parent-step-guide.js" defer></script><script src="parent-care-ar.js" defer></script><script src="../shared/site-language.js" defer></script>
+<script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="parent-journey-ar.js" defer></script><script src="parent-step-guide.js" defer></script><script src="parent-care-ar.js" defer></script><script src="parent-services-ar.js" defer></script><script src="../shared/site-language.js" defer></script>
 <script src="../shared/membership-ui.js"></script><script src="parent-care-context.js" defer></script></body>
 </html>

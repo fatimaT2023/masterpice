@@ -9,6 +9,9 @@
   window.stop();document.open();document.write('<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><title>RAFIQ</title><body><p>جاري فتح العرض التجريبي المؤقت · Opening temporary preview</p></body></html>');document.close();location.replace(destination);return;
  }
  try{
+  // Inside the preview all data lives in the in-memory store, which sends its own (untrusted) storage events.
+  // Real browser storage events (e.g. the shell saving rafiqPreviewState) must not make pages reload in a loop.
+  window.addEventListener('storage',event=>{if(event.isTrusted)event.stopImmediatePropagation();},true);
   const store=host.connect(window);Object.defineProperty(window,'localStorage',{value:store.local,configurable:true});Object.defineProperty(window,'sessionStorage',{value:store.session,configurable:true});Object.defineProperty(window,'indexedDB',{value:store.indexedDB,configurable:true});window.RafiqParentPreview=host;window.RafiqParentStorage=store.local;window.RafiqParentPreviewMode={active:true,readOnly:store.readOnly};
   document.addEventListener('click',event=>{const target=event.target.closest?.('a,button');if(target?.matches('#logoutButton,[data-setup-exit]')){host.signOut();return;}const link=target?.closest('a');if(!link)return;const url=new URL(link.href,location.href);if(url.origin===location.origin&&!host.isParentURL(url.href)&&!link.hasAttribute('download')&&!url.pathname.match(/\.(?:pdf|png|jpg|jpeg|webp|svg|ics)$/i)){event.preventDefault();event.stopImmediatePropagation();host.boundary(url.href);}},true);
   document.addEventListener('DOMContentLoaded',()=>{const language=()=>host.languageChanged(document.documentElement.lang);language();new MutationObserver(language).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});if(store.readOnly)document.addEventListener('submit',event=>{event.preventDefault();event.stopImmediatePropagation();host.notify('readonly');},true);});

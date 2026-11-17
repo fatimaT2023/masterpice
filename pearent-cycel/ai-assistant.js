@@ -313,33 +313,19 @@ document.addEventListener(
       window.RafiqFamily.privateChatKey(currentChild.id);
 
 
-    function getSavedChat() {
-
-      try {
-
-        return JSON.parse(
-          localStorage.getItem(
-            chatStorageKey
-          )
-        ) || [];
-
-      } catch (error) {
-
-        return [];
-      }
+    let chatReadFailed=false;
+    function chatStorageError(){
+      let status=document.getElementById('parentAIStorageError');
+      if(!status){status=document.createElement('p');status.id='parentAIStorageError';status.className='parent-ai-storage-error';status.setAttribute('role','alert');status.dataset.noTranslate='';chatForm.before(status);}
+      status.textContent=(window.RafiqLanguage?.getLanguage?.()||document.documentElement.lang)==='ar'?'تعذّر حفظ المحادثة. سجلاتكم السابقة ما انمسحت. أعيدوا المحاولة أو امسحوا المحادثة بإرادتكم.':'The conversation could not be saved. Existing records were not removed. Retry, or explicitly clear this conversation.';
     }
-
+    function getSavedChat(){
+      try{const saved=JSON.parse(localStorage.getItem(chatStorageKey)||'[]');if(!Array.isArray(saved)||saved.some(message=>!message||!['user','ai'].includes(message.sender)||typeof message.text!=='string'))throw Error('Invalid conversation');return saved;}
+      catch{chatReadFailed=true;return [];}
+    }
 
     let chatHistory =
       getSavedChat();
-
-    if (chatHistory.length === 1 && chatHistory[0].sender === "ai" && chatHistory[0].text.includes("support you with everyday parenting questions")) {
-      const ctx = window.RafiqSetup.childContext(currentChild);
-      const ageText = window.RafiqSetup.formatAge(ctx.chronological);
-      chatHistory[0].text = `Hi! I'm Rafiq AI, your parenting assistant for ${currentChild.name} (${ageText}).\n\nHow can I help you today? You can ask me about sleep routines, feeding, play ideas, or milestones.`;
-      saveChat();
-    }
-
 
     function saveChat() {
 
@@ -403,7 +389,8 @@ document.addEventListener(
 
       const textEl = document.createElement("div");
       textEl.className = "message-text";
-      textEl.textContent = message.text;
+      textEl.dataset.noTranslate='';
+      textEl.textContent = message.demoText?.[(window.RafiqLanguage?.getLanguage?.()||document.documentElement.lang)==='ar'?'ar':'en']||message.text;
 
       const meta = document.createElement("div");
       meta.className = "message-meta";
@@ -414,6 +401,9 @@ document.addEventListener(
 
       bubble.append(textEl, meta);
       wrapper.appendChild(bubble);
+      const service=window.RafiqParentAIDemo.services[message.demoServiceKey];
+      if(message.sender==='ai'&&service){const a=document.createElement('a');a.className='parent-ai-service-link';a.dataset.noTranslate='';a.href=service.href;a.textContent=service.label[(window.RafiqLanguage?.getLanguage?.()||document.documentElement.lang)==='ar'?'ar':'en'];wrapper.append(a);}
+
 
       if (message.sender === "ai") {
         const actions = document.createElement("div");
@@ -425,7 +415,7 @@ document.addEventListener(
         share.addEventListener("click", () => {
           try {
             if (!confirm("Share this message with the other caregivers linked to this child?")) return;
-            const result = window.RafiqFamily.shareAI(currentChild.id, message);
+            const result = window.RafiqFamily.shareAI(currentChild.id, message.demoText?{...message,text:textEl.textContent}:message);
             share.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>${result.duplicate ? "Already saved" : "Saved to record"}</span>`;
             share.disabled = true;
             share.classList.add("saved");
@@ -464,38 +454,15 @@ document.addEventListener(
     }
 
 
-    function addMessage(
-      sender,
-      text
-    ) {
-
-      const message = {
-        id:crypto.randomUUID(),
-        sender,
-        text,
-        time:
-          formatTime()
-      };
-
-
-      chatHistory.push(
-        message
-      );
-
-
-      saveChat();
-
-
-      messages.appendChild(
-        createMessageElement(
-          message
-        )
-      );
-
-
-      scrollToBottom();
+    function addMessage(sender,text,metadata={}){
+      if(chatReadFailed){chatStorageError();return false;}
+      const message={id:crypto.randomUUID(),sender,text,time:formatTime()};
+      if(metadata.demoText)message.demoText=metadata.demoText;
+      if(window.RafiqParentAIDemo.services[metadata.demoServiceKey])message.demoServiceKey=metadata.demoServiceKey;
+      chatHistory.push(message);
+      try{saveChat();}catch{chatHistory.pop();chatStorageError();return false;}
+      messages.appendChild(createMessageElement(message));scrollToBottom();return true;
     }
-
 
     function scrollToBottom() {
 
@@ -508,16 +475,11 @@ document.addEventListener(
     // INITIAL GREETING
     // =====================================
 
-    function addInitialGreeting() {
-      if (chatHistory.length > 0) {
-        return;
-      }
-      const context = window.RafiqSetup.childContext(currentChild);
-      const ageStr = window.RafiqSetup.formatAge(context.chronological);
-      const greeting = `Hi! I'm Rafiq AI, your parenting assistant for ${currentChild.name} (${ageStr}).\n\nHow can I help you today? You can ask me about sleep routines, feeding, play ideas, or milestones.`;
-      addMessage("ai", greeting);
+    function addInitialGreeting(){
+      if(chatHistory.length>0||chatReadFailed)return;
+      const text=window.RafiqParentAIDemo.greeting;
+      addMessage('ai',text[(window.RafiqLanguage?.getLanguage?.()||document.documentElement.lang)==='ar'?'ar':'en'],{demoText:text,demoServiceKey:'explore'});
     }
-
 
     // =====================================
     // SAFETY RULES
@@ -616,32 +578,7 @@ document.addEventListener(
     // MOCK AI RESPONSE
     // =====================================
 
-    function generateMockResponse(question) {
-      const context = window.RafiqSetup.childContext(currentChild);
-      const label = context.basis === 'corrected' 
-        ? 'corrected age ' + window.RafiqSetup.formatAge(context.development) 
-        : window.RafiqSetup.formatAge(context.chronological);
-      const q = (question || '').toLowerCase();
-
-      if (q.includes('sleep') || q.includes('نوم') || q.includes('routine') || q.includes('bedtime') || q.includes('nap')) {
-        return `For ${currentChild.name} (${label}), here are gentle sleep recommendations:\n\n• Calming routine: Warm bath, dim lights, or gentle lullabies signal sleep.\n• Watch wake windows: Look for subtle early cues like yawning or looking away.\n• Safe space: Firm, flat, clear sleep area.\n\nWould you like ideas for naps or nighttime soothing?`;
-      }
-      
-      if (q.includes('feed') || q.includes('رضاعة') || q.includes('حليب') || q.includes('eat') || q.includes('food')) {
-        return `Regarding feeding for ${currentChild.name} (${label}):\n\n• Responsive feeding: Follow hunger cues (rooting, hand-to-mouth) and fullness signs.\n• Keep feeds relaxed: Skin-to-skin and gentle eye contact.\n• Daily variations: Slight changes in appetite from day to day are natural.\n\nAlways consult your pediatrician if you have questions about weight gain or digestion.`;
-      }
-
-      if (q.includes('play') || q.includes('لعب') || q.includes('نشاط') || q.includes('activity') || q.includes('motor')) {
-        return `At ${label}, play is simple and bonding for ${currentChild.name}:\n\n• Floor / tummy time: Strengthens neck, shoulders, and core muscles.\n• Vocal play: Mimic their coos, smile, and pause for their turn to "talk".\n• Visual focus: Slowly track high-contrast toys across their line of sight.\n\nYou can also log this moment under Growth & Observations!`;
-      }
-
-      if (q.includes('concern') || q.includes('قلق') || q.includes('doctor') || q.includes('طبيب') || q.includes('fever') || q.includes('sick')) {
-        return `When you're concerned about ${currentChild.name}:\n\n• Keep notes: Record when it began, temperature, and specific behaviors.\n• Check comfort: Hydration, wet diapers, and overall alertness.\n• Professional advice: Always consult your pediatrician or book a session with a specialist for health concerns.`;
-      }
-
-      return `Thank you for sharing that about ${currentChild.name} (${label}).\n\n• Baby steps: Every child develops at their own natural pace.\n• Note patterns: Notice when this behavior happens most often.\n• Track moments: You can save observations directly to your child's profile.\n\nIs there a specific situation you'd like to talk through?`;
-    }
-
+    function generateMockResponse(question){return window.RafiqParentAIDemo.build(question);}
 
     // =====================================
     // SEND MESSAGE
@@ -658,16 +595,14 @@ document.addEventListener(
       if (!cleanText) {
         return;
       }
+      if(chatReadFailed){chatStorageError();return;}
 
 
       if(!containsEmergencySignal(cleanText)){
         try{if(!window.RafiqMembership.consumeAI()){window.RafiqMembership.prompt(window.RafiqMembership.state().active?'You have used your 30 questions for today. Your allowance resets tomorrow.':'You have used your 3 free questions today. Plus includes up to 30 questions per day.');return;}}
         catch{window.RafiqMembership.prompt('Your usage could not be saved. Please try again.');return;}
       }
-      addMessage(
-        "user",
-        cleanText
-      );
+      if(!addMessage("user",cleanText))return;
 
 
       messageInput.value =
@@ -724,10 +659,8 @@ document.addEventListener(
             );
 
 
-          addMessage(
-            "ai",
-            response
-          );
+          const lang=(window.RafiqLanguage?.getLanguage?.()||document.documentElement.lang)==='ar'?'ar':'en';
+          addMessage('ai',response.text[lang],{demoText:response.text,demoServiceKey:response.key});
 
 
           sendButton.disabled =
@@ -822,37 +755,11 @@ document.addEventListener(
     // CLEAR CHAT
     // =====================================
 
-    clearChatButton.addEventListener(
-      "click",
-      () => {
-
-        const confirmed =
-          window.confirm(
-            "Clear this conversation?"
-          );
-
-
-        if (!confirmed) {
-          return;
-        }
-
-
-        chatHistory = [];
-
-
-        localStorage.removeItem(
-          chatStorageKey
-        );
-
-
-        messages.innerHTML = "";
-
-
-        addInitialGreeting();
-
-      }
-    );
-
+    clearChatButton.addEventListener('click',()=>{
+      if(!window.confirm((window.RafiqLanguage?.getLanguage?.()||document.documentElement.lang)==='ar'?'تمسحوا هالمحادثة؟':'Clear this conversation?'))return;
+      try{localStorage.removeItem(chatStorageKey);}catch{chatStorageError();return;}
+      chatHistory=[];chatReadFailed=false;messages.replaceChildren();document.getElementById('parentAIStorageError')?.remove();addInitialGreeting();
+    });
 
     // =====================================
     // SIDEBAR
@@ -946,6 +853,8 @@ if (aiPrefill) {
     // INITIALIZE
     // =====================================
 
+    new MutationObserver(()=>renderMessages()).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+    if(chatReadFailed)chatStorageError();
     renderPrompts();
 
     renderMessages();

@@ -75,7 +75,8 @@ inline.dispose();inline=ctx.RafiqChildStoryForm.mount({childId:'one'});
 for(let n=0;n<140&&ids.historyNext.textContent!=='Save and see next steps';n++)submit();
 assert.equal(ids.historyNext.textContent,'Save and see next steps');assert.equal(ids.historyStatus.textContent,'');
 assert.ok(ids.historyFields.querySelector('dl'));
-submit();assert.equal(redirect,'getting-started.html?child=one');
+// Phase 2: a first-time story continues to support discovery (which then offers the welcome activity).
+submit();assert.equal(redirect,'support-discovery.html?first=1&child=one');
 assert.equal(ctx.RafiqActivityMatching.profile(child).abilities.handling,'not_yet');
 // Corrected-age selection and complete translation coverage.
 for(const months of [3,9,18,30,48,72]){

@@ -1,0 +1,61 @@
+/* Phase 5 parent appointment tracking, recommendations and report activities.
+   Colours follow the dynamic child theme (pink girl / blue boy). */
+:root,body{--ap-accent:var(--child-theme-accent,#28675f);--ap-rgb:var(--child-theme-rgb,40,103,95);--ap-border:var(--child-theme-border,#d9e6e1);--ap-ink:#22313a;--ap-muted:#5b6670}
+.appt-next{display:grid;gap:10px;margin:12px 0 4px;padding:14px 16px;border:1px solid var(--ap-border);border-radius:18px;background:rgba(255,255,255,.62);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--ap-ink)}
+.appt-next:empty{display:none}
+.appt-steps{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none;counter-reset:s}
+.appt-steps li{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;background:rgba(var(--ap-rgb),.08);color:var(--ap-muted);font-size:.8rem;font-weight:650}
+.appt-steps li::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#fff;font-size:.7rem}
+.appt-steps li.is-done{color:var(--ap-accent)}.appt-steps li.is-done::before{content:"✓";background:var(--ap-accent);color:#fff}
+.appt-steps li.is-current{background:var(--ap-accent);color:#fff}.appt-steps li.is-current::before{color:var(--ap-accent)}
+.appt-help{margin:0;line-height:1.5}
+.appt-proposal{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;padding:10px 12px;border-radius:14px;background:rgba(var(--ap-rgb),.1)}
+.appt-proposal p{flex-basis:100%;margin:0;color:var(--ap-muted)}
+.appt-reason{margin:0;color:var(--ap-muted)}
+.appt-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.appt-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:999px;font:inherit;font-weight:700;font-size:.92rem;text-decoration:none;cursor:pointer;border:1px solid var(--ap-border)}
+.appt-btn.is-primary{background:var(--ap-accent);border-color:var(--ap-accent);color:#fff}
+.appt-btn.is-ghost{background:#fff;color:var(--ap-accent)}
+.appt-btn.is-danger{background:#a3324d;border-color:#a3324d;color:#fff}
+.appt-btn:focus-visible{outline:3px solid var(--ap-accent);outline-offset:3px}
+.appt-btn:disabled{opacity:.55;cursor:progress}
+.appt-small,.appt-ask{margin:0;font-size:.82rem;color:var(--ap-muted)}
+.appt-ask{flex-basis:100%;font-size:.92rem;color:var(--ap-ink);font-weight:650}
+.appt-status{min-height:1.2em;margin:0;font-weight:650;color:var(--ap-accent)}
+.appt-status:empty{display:none}
+.appt-demo-note{margin:0 0 12px;font-size:.85rem;color:var(--ap-muted)}
+.booking-card.is-focus{outline:3px solid var(--ap-accent);outline-offset:4px}
+.status-badge.state-pending{background:#fff4d6;color:#7a5200}
+.status-badge.state-reschedule_proposed{background:#e9e3fb;color:#4b3a8c}
+.status-badge.state-rejected{background:#fbe3e8;color:#8d2741}
+.status-badge.state-accepted{background:#e3f3ec;color:#1d5c46}
+
+/* Specialist recommendations on the directory */
+.match-panel{display:grid;gap:12px;margin:0 0 18px;padding:18px;border:1px solid var(--ap-border);border-radius:22px;background:rgba(255,255,255,.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:var(--ap-ink)}
+.match-panel h2{margin:0;font-size:1.15rem}
+.match-panel p{margin:0}
+.match-lead{color:var(--ap-muted)}
+.match-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.match-card{display:flex;flex-direction:column;gap:8px;padding:14px;border:1px solid var(--ap-border);border-radius:16px;background:#fff}
+.match-card strong{font-size:1rem}
+.match-card ul{margin:0;padding-inline-start:18px;font-size:.88rem;color:var(--ap-muted);line-height:1.45}
+.match-card button{align-self:flex-start;margin-top:auto}
+.match-card[aria-current="true"]{border-color:var(--ap-accent);box-shadow:0 0 0 2px rgba(var(--ap-rgb),.25)}
+.match-links{display:flex;flex-wrap:wrap;gap:8px 16px}
+.match-links a,.match-links button{color:var(--ap-accent);font-weight:700;background:none;border:0;padding:0;font:inherit;cursor:pointer;text-decoration:underline}
+.match-filter{display:flex;flex-direction:column;gap:4px;font-size:.88rem}
+.match-filter select{min-height:44px;padding:0 12px;border:1px solid var(--ap-border);border-radius:12px;background:#fff;font:inherit}
+.demo-profile-badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;background:#fff4d6;color:#7a5200;border:1px solid #f0d58a;font-size:.74rem;font-weight:700}
+.match-hidden{display:none!important}
+
+/* Report: suggested activities and next steps */
+.report-plus{display:grid;gap:12px;margin:18px 0;padding:18px;border:1px solid var(--ap-border);border-radius:20px;background:rgba(255,255,255,.62);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.report-plus h2{margin:0;font-size:1.1rem}
+.report-plus ul{margin:0;padding-inline-start:18px;line-height:1.55}
+.report-activity-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;padding:0!important;list-style:none}
+.report-activity-list li{display:flex;flex-direction:column;gap:6px;padding:12px 14px;border:1px solid var(--ap-border);border-radius:14px;background:#fff}
+.report-activity-list a{color:var(--ap-accent);font-weight:700}
+.report-demo-banner{margin:0 0 14px;padding:10px 14px;border-radius:14px;background:#fff4d6;color:#7a5200;border:1px solid #f0d58a;font-weight:650}
+.report-chips{display:flex;flex-wrap:wrap;gap:6px}
+.report-chips span{padding:4px 10px;border-radius:999px;background:rgba(var(--ap-rgb),.1);color:var(--ap-accent);font-size:.82rem;font-weight:650}
+@media (max-width:560px){.appt-actions{flex-direction:column;align-items:stretch}.appt-btn{width:100%}}

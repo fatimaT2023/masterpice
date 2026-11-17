@@ -1,3 +1,12 @@
+/* Frontend demo-card validation only; no payment details are sent externally. */
+window.RafiqParentPayment={
+ validExpiry(value,now=new Date()){
+  const match=String(value||'').match(/^(\d{2})\/(\d{2})$/);if(!match)return false;
+  const month=Number(match[1]),year=2000+Number(match[2]);
+  return month>=1&&month<=12&&(year>now.getFullYear()||(year===now.getFullYear()&&month>=now.getMonth()+1));
+ }
+};
+Object.assign(window.RafiqHomeArabic=window.RafiqHomeArabic||{}, {'Enter a current or future expiry date.':'أدخلوا تاريخ انتهاء حالي أو مستقبلي.'});
 document.addEventListener(
   "DOMContentLoaded",
   () => {
@@ -549,12 +558,11 @@ document.addEventListener(
 
 
         if (
-          month < 1 ||
-          month > 12
+          !window.RafiqParentPayment.validExpiry(expiryDate.value)
         ) {
 
           expiryError.textContent =
-            "Enter a valid month.";
+            "Enter a current or future expiry date.";
 
           valid =
             false;

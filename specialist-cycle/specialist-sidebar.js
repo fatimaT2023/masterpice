@@ -21,6 +21,23 @@
   const bookingsLink=sidebar.querySelector('a[href="specialist-bookings.html"]');if(bookingsLink)bookingsLink.before(messagesLink);
   const careLink=document.createElement('a');careLink.href='follow-up.html';careLink.className='nav-link';careLink.innerHTML='<span class="nav-icon" aria-hidden="true">♡</span><span>Ongoing follow-up</span>';if(bookingsLink)bookingsLink.after(careLink);
   const casesLink=sidebar.querySelector('a[href="clients.html"]');if(casesLink){const label=casesLink.lastChild;if(label&&label.nodeType===3)label.textContent='Consultation history';}
+  // Group navigation by the job each page does: today's work, families, and practice setup.
+  const nav=sidebar.querySelector('.sidebar-nav');
+  if(nav){
+    const pick=href=>nav.querySelector('a.nav-link[href="'+href+'"]')||sidebar.querySelector('a.nav-link[href="'+href+'"]');
+    const profileLink=document.createElement('a');profileLink.href='profile.html';profileLink.className='nav-link';
+    profileLink.innerHTML='<span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8M4 21v-2a8 8 0 0 1 16 0v2"/></svg></span><span>Public profile</span>';
+    const help=nav.querySelector('a[href*="help-center"]');
+    const groups=[['TODAY',['specialist-dashboard.html','schedule.html']],['FAMILIES',['specialist-bookings.html','messages.html','follow-up.html','clients.html']],['MY PRACTICE',['availability.html',profileLink,'earnings.html']]]
+      .map(([title,items])=>[title,items.map(item=>typeof item==='string'?pick(item):item)]);
+    nav.replaceChildren();
+    groups.forEach(([title,links],index)=>{
+      const heading=document.createElement('span');heading.className='nav-section-title'+(index?' second':'');heading.textContent=title;nav.append(heading);
+      links.forEach(link=>{if(link)nav.append(link);});
+    });
+    const bottom=sidebar.querySelector('.sidebar-bottom');
+    if(help&&bottom){help.querySelector('.nav-icon').innerHTML='<svg viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm-2.5-11.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14m0 3h.01"/></svg>';bottom.prepend(help);}
+  }
   // Desktop rail and grouped workspace navigation.
   sidebar.setAttribute('aria-label','Specialist navigation');
   sidebar.querySelectorAll('.nav-link').forEach(link=>{

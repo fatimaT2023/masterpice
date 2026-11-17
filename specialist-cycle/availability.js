@@ -356,7 +356,8 @@ document.addEventListener(
 
 
       availabilityStatus.textContent =
-        "Configured";
+        "Live for booking";
+      availabilityStatus.dataset.ready = "true";
 
 
       if (
@@ -373,7 +374,8 @@ document.addEventListener(
     } else {
 
       availabilityStatus.textContent =
-        "Not configured";
+        "Not saved yet";
+      availabilityStatus.dataset.ready = "false";
     }
 
 
@@ -1054,7 +1056,8 @@ document.addEventListener(
 
 
       availabilityStatus.textContent =
-        "Configured";
+        "Live for booking";
+      availabilityStatus.dataset.ready = "true";
 
 
       lastUpdated.textContent =

@@ -13,9 +13,13 @@ function openStory(child){
  layout.hidden=true;story.hidden=false;
  const steps=[...document.querySelectorAll('.setup-steps li')];steps.forEach((item,index)=>{if(index===1)item.setAttribute('aria-current','step');else item.removeAttribute('aria-current');});
  button.disabled=false;button.textContent='Continue to child’s story';form.setAttribute('aria-busy','false');
- storyController=window.RafiqChildStoryForm.mount({childId:child.id,draft,returnToProfile:new URLSearchParams(location.search).get('return')==='profile',onBack(){story.hidden=true;layout.hidden=false;steps.forEach((item,index)=>{if(index===0)item.setAttribute('aria-current','step');else item.removeAttribute('aria-current');});button.focus();}});
+ const returnToProfile=new URLSearchParams(location.search).get('return')==='profile';
+ storyController=window.RafiqChildStoryForm.mount({childId:child.id,draft,returnToProfile,onBack(){story.hidden=true;layout.hidden=false;steps.forEach((item,index)=>{if(index===0)item.setAttribute('aria-current','step');else item.removeAttribute('aria-current');});document.dispatchEvent(new CustomEvent('rafiq:basics-reopen'));button.focus();}});
+ // First-time setup has no profile to return to yet; Previous goes back to the basics.
+ get('historyExit').hidden=!returnToProfile;
  story.scrollIntoView({block:'start'});
- if(!child.supportProfile)window.RafiqSupportUI?.open(child);
+ // The optional support question stays on Home and the child profile. It no longer
+ // opens over the first story question; Phase 2 places discovery after the story.
 }
 function message(text){status.textContent=text;status.className='form-status'+(text?' show error':'');}
 function field(id,error,text){get(id).classList.toggle('has-error',!!text);get(error).textContent=text;const input=get(id).querySelector('input,select');input.setAttribute('aria-invalid',String(!!text));return !text;}

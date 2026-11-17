@@ -2,6 +2,10 @@
 html body.parent-cycle-video{
  --parent-glass:rgba(255,255,255,.48);
  --parent-glass-border:rgba(255,255,255,.82);
+ --child-theme-accent:#28675f;
+ --child-theme-rgb:40,103,95;
+ --child-theme-tint:#f0f7f3;
+ --child-theme-border:#d5e4dc;
  --child-wallpaper:#fff5e5;
  background:var(--child-wallpaper);isolation:isolate;
 }
@@ -12,8 +16,9 @@ body.parent-cycle-video>.parent-static-background{
  background-position:center;background-size:cover;
  background-repeat:no-repeat;
 }
-html[data-child-appearance="boy"] body.parent-cycle-video{--child-wallpaper:#dceefb}
-html[data-child-appearance="girl"] body.parent-cycle-video{--child-wallpaper:#fce1eb}
+/* Original profile palette from the pre-redesign checkpoint, shared by surfaces and navigation. */
+html[data-child-appearance="boy"] body.parent-cycle-video{--child-wallpaper:#dceefb;--child-theme-accent:#225f87;--child-theme-rgb:34,95,135;--child-theme-tint:#edf6ff;--child-theme-border:#caddf0}
+html[data-child-appearance="girl"] body.parent-cycle-video{--child-wallpaper:#fce1eb;--child-theme-accent:#944367;--child-theme-rgb:148,67,103;--child-theme-tint:#fff0f7;--child-theme-border:#efd4e3}
 html[data-child-appearance="boy"] body.parent-cycle-video>.parent-static-background{background-image:url('assets/dashboard/baby-blue.jpg')}
 html[data-child-appearance="girl"] body.parent-cycle-video>.parent-static-background{background-image:url('assets/dashboard/baby-pink.jpg')}
 body.parent-cycle-video .background-playback-toggle{display:none!important}
@@ -36,6 +41,11 @@ html body.parent-cycle-video :is(.today-shortcuts a,.child-info,.booking-summary
 html body.parent-cycle-video :is(input:not([type=radio]):not([type=checkbox]):not([type=range]):not([type=hidden]),select,textarea){background:rgba(255,255,255,.65);border-color:#35596630;color:var(--ink,#163e3b)}
 html body.parent-cycle-video :is(input,select,textarea):focus{background:rgba(255,255,255,.9)}
 body.parent-cycle-video .today-priority{border-inline-start:4px solid var(--theme-primary,#0b7a75)}
+/* The small support workspaces use the same selected-child wallpaper and glass. */
+.family-page.parent-cycle-video{--fj-green:var(--child-theme-accent);--fj-line:var(--child-theme-border)}
+.family-page.parent-cycle-video :is(.sj-card,.start-card,.start-inline,.av-hero,.av-service,.av-day,.av-follow,.av-more,.av-passport-card){background:var(--parent-glass);border-color:var(--parent-glass-border);backdrop-filter:blur(16px) saturate(120%);-webkit-backdrop-filter:blur(16px) saturate(120%);box-shadow:0 12px 36px #35596612,inset 0 1px 0 #ffffffb3}
+.family-page.parent-cycle-video .autism-visual{--av-accent:var(--child-theme-accent);--av-tint:var(--child-theme-tint);--av-line:var(--child-theme-border)}
+.family-page.parent-cycle-video :is(.sj-main,.start-main) :is(a,button):not(.sj-primary){background:rgba(255,255,255,.45);color:var(--child-theme-accent);border-color:var(--child-theme-border)}
 @media print{
  body.parent-cycle-video>.parent-static-background{display:none}
  html body.parent-cycle-video{background:white}
