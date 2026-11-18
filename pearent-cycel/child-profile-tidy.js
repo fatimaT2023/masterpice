@@ -58,11 +58,66 @@
       head.dataset.noTranslate = '';
       head.textContent = (ar() ? 'الدعم: ' : 'Support: ') + sitText + (focusText ? ' · ' + focusText[ar() ? 1 : 0] : '');
     }
+
+    // 7. Rebuild the body as: header facts · child story (wide) · measurements + care team (side).
+    const mainCol = document.querySelector('.child-profile-main'), side = document.querySelector('.child-profile-side');
+    if (!mainCol || !side) return;
+    const byTitle = (root, re) => [...root.querySelectorAll(':scope > section, :scope > div')].find(s => re.test(s.querySelector('h2')?.textContent || ''));
+
+    // "About your child" -> small fact chips in the header.
+    const aboutCard = byTitle(mainCol, /عن طفلك|About your child/i);
+    if (aboutCard && info && !info.querySelector('.profile-facts')) {
+      const facts = document.createElement('ul'); facts.className = 'profile-facts'; facts.dataset.noTranslate = '';
+      const dts = [...aboutCard.querySelectorAll('dt')];
+      for (const dt of dts) {
+        const dd = dt.nextElementSibling; if (!dd) continue;
+        const label = dt.textContent.trim(), value = dd.textContent.trim();
+        if (!value || /^(—|-|Not provided)$/i.test(value)) continue;
+        let text = value;
+        if (/تاريخ الميلاد|Date of birth/i.test(label)) text = (ar() ? 'مواليد ' : 'Born ') + value;
+        else if (/قبل الموعد|before the expected/i.test(label)) { const girl = child?.gender === 'female'; text = /^(نعم|yes)$/i.test(value) ? (ar() ? (girl ? 'انولدت قبل موعدها' : 'انولد قبل موعده') : 'Born early') : /^(لا|no)$/i.test(value) ? (ar() ? (girl ? 'انولدت بموعدها' : 'انولد بموعده') : 'Born on time') : ''; }
+        else if (/المعدل|corrected/i.test(label)) text = (ar() ? 'العمر المصحّح: ' : 'Corrected age: ') + value;
+        else if (/موعد الولادة المتوقع|due date/i.test(label)) continue;
+        if (!text) continue;
+        const li = document.createElement('li'); li.textContent = text; facts.append(li);
+      }
+      const age = info.querySelector('#profileAge');
+      (age || info.firstElementChild).after(facts);
+    }
+    if (aboutCard) aboutCard.hidden = true;
+
+    // Sections that repeat the tabs, the Health page or the navigation.
+    byTitle(mainCol, /التفاصيل الصحية|Health details/i)?.setAttribute('hidden', '');
+    byTitle(side, /السجلات المفتوحة|Open records/i)?.setAttribute('hidden', '');
+    document.getElementById('questionFeatureSummary')?.setAttribute('hidden', '');
+
+    // Measurements go to the side column, above the care team.
+    const measures = byTitle(mainCol, /الطول والوزن|Height and weight|Growth measurements/i);
+    if (measures && measures.parentElement !== side) side.prepend(measures);
+
+    // Child story with progress.
+    const story = mainCol.querySelector('.rafiq-child-story');
+    if (story && child) {
+      const title = story.querySelector('h2');
+      if (title) { title.dataset.noTranslate = ''; title.textContent = (ar() ? 'حكاية ' : 'About ') + (child.name || ''); }
+      const rows = [...story.querySelectorAll('.rafiq-story-row')];
+      let done = 0;
+      rows.forEach(row => { const empty = /لسّه ما|لسا ما|لسه ما|not (yet )?(added|recorded)|no information|nothing recorded/i.test(row.querySelector('p')?.textContent || ''); row.classList.toggle('is-empty', empty); row.classList.toggle('is-done', !empty); if (!empty) done++; });
+      let bar = story.querySelector('.story-progress');
+      if (!bar) { bar = document.createElement('div'); bar.className = 'story-progress'; bar.dataset.noTranslate = ''; title?.after(bar); }
+      bar.replaceChildren();
+      const label = document.createElement('span'); label.textContent = ar() ? (done + ' من ' + rows.length + ' مكتملة') : (done + ' of ' + rows.length + ' complete');
+      const track = document.createElement('span'); track.className = 'story-progress-track';
+      const fill = document.createElement('span'); fill.style.width = (rows.length ? Math.round(done / rows.length * 100) : 0) + '%'; track.append(fill);
+      const hint = document.createElement('small'); hint.textContent = ar() ? 'كل ما كمّلتوا الحكاية، رفيق بيقترح أنشطة وخطوات أدق لطفلكم.' : 'The more you add, the better Rafiq can suggest activities and next steps.';
+      bar.append(label, track, hint);
+    }
   }
 
   const run = () => { try { tidy(); } catch { /* keep the original layout */ } };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
   window.addEventListener('load', () => { run(); setTimeout(run, 400); });
+  new MutationObserver(() => { document.querySelector('.profile-facts')?.remove(); setTimeout(run, 150); }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   new MutationObserver(() => { if (document.getElementById('supportModeCard')?.parentElement?.classList.contains('profile-hero-info') === false) run(); })
     .observe(document.documentElement, { childList: true, subtree: true });
 })();

@@ -31,3 +31,31 @@
  .profile-tidy #supportModeCard.is-compact{justify-content:center!important}
 }
 .profile-tidy .question-feature-summary{border-radius:22px!important;margin-top:20px!important}
+
+/* Header facts (replace the "About your child" card) */
+.profile-tidy .profile-facts{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:2px 0 0;padding:0}
+.profile-tidy .profile-facts li{padding:4px 12px;border-radius:999px;background:rgba(255,255,255,.75);border:1px solid rgba(40,103,95,.14);font-size:13px;color:#3f5357}
+.profile-tidy #profileAge{display:inline-block}
+/* Body layout: story wide, side column narrow */
+@media(min-width:900px){.profile-tidy .child-profile-layout{display:grid!important;grid-template-columns:minmax(0,1.7fr) minmax(280px,1fr)!important;align-items:start!important}}
+.profile-tidy .child-profile-main,.profile-tidy .child-profile-side{display:flex!important;flex-direction:column!important;gap:20px!important}
+/* Child story card */
+.profile-tidy .rafiq-child-story{padding:24px!important}
+.profile-tidy .rafiq-child-story>h2{margin:0 0 10px!important;font-size:22px!important}
+.profile-tidy .story-progress{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:6px 12px;margin:0 0 16px;padding:12px 14px;border-radius:16px;background:rgba(40,103,95,.06)}
+.profile-tidy .story-progress>span:first-child{font-weight:800;color:#28675f;font-size:14px}
+.profile-tidy .story-progress-track{height:8px;border-radius:999px;background:rgba(40,103,95,.12);overflow:hidden}
+.profile-tidy .story-progress-track>span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#5fd3b8,#28675f)}
+.profile-tidy .story-progress small{grid-column:1/-1;font-size:12.5px;opacity:.75}
+.profile-tidy .rafiq-story-row{position:relative;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:14px!important;padding:14px 14px 14px 16px!important;padding-inline-start:52px!important;margin:0 0 8px!important;border-radius:16px!important;border:1px solid rgba(40,103,95,.1)!important;background:rgba(255,255,255,.7)!important}
+.profile-tidy .rafiq-story-row::before{content:"";position:absolute;inset-inline-start:16px;top:50%;width:22px;height:22px;margin-top:-11px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800}
+.profile-tidy .rafiq-story-row.is-done::before{content:"✓";background:#28675f;color:#fff}
+.profile-tidy .rafiq-story-row.is-empty::before{content:"";border:2px dashed rgba(40,103,95,.35)}
+.profile-tidy .rafiq-story-row h3{margin:0 0 2px!important;font-size:15.5px!important}
+.profile-tidy .rafiq-story-row p{margin:0!important;font-size:13.5px!important;opacity:.8}
+.profile-tidy .rafiq-story-row.is-empty p{opacity:.55}
+.profile-tidy .rafiq-story-row>a{flex:none;display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border-radius:999px;font-weight:700;font-size:13px;text-decoration:none;border:1px solid rgba(40,103,95,.25);color:#28675f;background:#fff}
+.profile-tidy .rafiq-story-row.is-empty>a{background:#28675f;color:#fff;border-color:#28675f}
+/* Side cards */
+.profile-tidy .child-profile-side>.screen-flow-card,.profile-tidy #childCareTeamMount>*{padding:20px!important}
+.profile-tidy .child-profile-side h2{margin-top:0!important}
