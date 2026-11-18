@@ -151,3 +151,12 @@ html[dir=rtl] .hm-sibling{padding:4px 4px 4px 14px}
 .hm-journey-note{margin:12px 0 0;font-size:13px;opacity:.85}
 @media(max-width:760px){.hm-journey-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:380px){.hm-journey-step a{padding:12px 10px}.hm-journey-step strong{font-size:14px}}
+
+/* This week summary */
+.hm-week .hm-kicker{margin:0 0 4px}.hm-week h2{margin:0 0 12px}
+.hm-week-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.hm-week-tile{display:flex;flex-direction:column;gap:2px;padding:14px;border-radius:18px;border:1px solid rgba(40,103,95,.16);background:rgba(255,255,255,.75);color:inherit;text-decoration:none}
+.hm-week-tile b{font-size:28px;line-height:1.1;color:#28675f}.hm-week-tile span{font-size:13px;opacity:.8}
+.hm-week-tile:hover{box-shadow:0 8px 20px rgba(36,62,67,.1)}.hm-week-tile:focus-visible{outline:3px solid #28675f;outline-offset:2px}
+.hm-week-latest{margin:12px 0 0;font-size:14px;line-height:1.7}
+@media(max-width:420px){.hm-week-tiles{gap:6px}.hm-week-tile{padding:10px}.hm-week-tile b{font-size:22px}}

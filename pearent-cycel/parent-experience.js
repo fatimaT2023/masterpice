@@ -140,7 +140,7 @@
   }
   // 1b. The family journey: four stations, so parents always see where they are.
   {const diagnosed=journey==='diagnosed',href=String(step.href||'');
-   const current=(['appointment','report'].includes(action.kind)||step.report||/bookings|report|follow-up/.test(href))?3:/activit|milestones|play|growth/.test(href)?1:/child-profile|about-me|onboarding|health/.test(href)?0:(diagnosed||model.concernJourney||journey==='concerns'||/screening|support-|specialist|discovery/.test(href))?2:journey==='none'?0:1;
+   const current=(['appointment','report'].includes(action.kind)||step.report||/bookings|report|follow-up/.test(href))?3:(journey==='none'&&/discovery/.test(href))?0:/activit|milestones|play|growth/.test(href)?1:/child-profile|about-me|onboarding|health/.test(href)?0:(diagnosed||model.concernJourney||journey==='concerns'||/screening|support-|specialist|discovery/.test(href))?2:journey==='none'?0:1;
    const stations=[[p('Get to know','نتعرّف'),p('Who is '+child.name+'?','مين '+child.name+'؟'),'child-profile.html'],[p('Play and observe','نلعب ونلاحظ'),p('What do we do today?','شو نعمل اليوم؟'),'activities.html'],diagnosed?[p('Diagnosis support','دعم التشخيص'),p('Tools for daily life','أدوات لحياتكم اليومية'),'support-journey.html']:[p('Ask for support','نطلب دعم'),p('Something worries us','في إشي مقلقنا'),'support-areas.html'],[p('Follow up','نتابع'),p('What did the specialist say?','شو قال المختص؟'),'bookings.html']];
    const bar=section('familyJourney','hm-journey');bar.append(n('p',t(p('Your journey with Rafiq','رحلتكم مع رفيق')),'hm-kicker'));
    const list=n('ol',undefined,'hm-journey-steps');stations.forEach(([title,question,url],i)=>{const li=n('li',undefined,'hm-journey-step'+(i===current?' is-current':i<current?' is-past':''));const a=n('a');a.href=url;if(i===current){a.setAttribute('aria-current','step');a.dataset.here=t(p('You are here','أنتم هون'));}a.append(n('span',String(i+1),'hm-journey-num'),n('strong',t(title)),n('span',t(question),'hm-journey-q'));li.append(a);list.append(li);});
@@ -149,6 +149,19 @@
   const reasons=n('ul',undefined,'hm-reasons');for(const [key,label] of [['why',C.why],['what',C.what],['where',C.where]]){const li=n('li');li.dataset.reason=key;li.append(icon(key,'hm-reason-icon'),n('strong',t(label)),n('span',step[key]));reasons.append(li);}next.append(reasons);
   const cta=step.report?reportLink(step.label,step.report,'hm-primary'):link(step.label,step.href,'hm-primary');cta.append(icon('arrow','hm-mini hm-flip'));next.append(cta);
 
+  // 2b. This week: a small, honest summary of what the family recorded (proof that the effort adds up).
+  try{const DAY=86400000,since=Date.now()-7*DAY,recent=r=>Date.parse(r&&(r.updatedAt||r.createdAt)||'')>=since;
+   const rows=(()=>{try{const v=JSON.parse(localStorage.getItem('rafiqAgeObservations_'+child.id)||'[]');return Array.isArray(v)?v:[];}catch{return [];}})().filter(recent);
+   const reports=(()=>{try{const v=JSON.parse(localStorage.getItem('rafiqSpecialistReports')||'[]');return Array.isArray(v)?v:[];}catch{return [];}})().filter(r=>r.childId===child.id&&recent(r));
+   const moments=rows.filter(r=>r.type==='daily-moment'),notes=rows.filter(r=>r.type!=='daily-moment');
+   const week=section('weekSummary','hm-week');week.append(n('p',t(p('This week','هالأسبوع')),'hm-kicker'));const wh=n('h2',t(p('What happened with '+child.name,'شو صار مع '+child.name)));week.append(wh);
+   const tiles=n('div',undefined,'hm-week-tiles');const fmt=v=>new Intl.NumberFormat(lang()).format(v);
+   for(const [value,label,href] of [[moments.length,p('activities together','أنشطة سوا'),'activities.html'],[notes.length,p('notes from home','ملاحظات من البيت'),'milestones.html'],[reports.length,p('specialist reports','تقارير مختص'),'bookings.html']]){const a=n('a',undefined,'hm-week-tile');a.href=href;a.append(n('b',fmt(value)),n('span',t(label)));tiles.append(a);}
+   week.append(tiles);
+   const latest=[...rows].sort((a,b)=>String(b.updatedAt||b.createdAt).localeCompare(String(a.updatedAt||a.createdAt)))[0];
+   if(latest){const line=n('p',undefined,'hm-week-latest');line.append(n('strong',t(p('Latest: ','آخر إشي: '))),n('span',String(latest.activityTitle||latest.text||'').split(/\r?\n/)[0].slice(0,140)));week.append(line);}
+   else week.append(n('p',t(p('Nothing recorded yet this week. One small activity or note is enough to start.','لسا ما في إشي مسجّل هالأسبوع. نشاط صغير أو ملاحظة وحدة بكفّوا للبداية.')),'hm-week-latest'));
+  }catch{}
   // 3. Today together (the original activity player, moved intact) and Coming up.
   const row=n('div',undefined,'hm-row');root.append(row);
   const today=n('section',undefined,'hm-section hm-today');today.id='todayPlan';const todayHead=n('h2',t(C.todayTitle));todayHead.dataset.noTranslate='';today.append(todayHead);
