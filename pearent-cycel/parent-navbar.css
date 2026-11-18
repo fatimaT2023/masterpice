@@ -1,0 +1,50 @@
+/* Parent navbar, tidy version. Loaded last by parent-sidebar.js.
+   Wide screens: one row (logo · links · child · actions).
+   Medium screens: two aligned rows. Phones (<=760px) keep the existing menu. */
+@media (min-width:761px){
+  html body header.parent-navigation{position:sticky!important;top:10px!important;z-index:40!important;margin:10px auto 18px!important;max-width:1480px!important;padding:0 16px!important;background:none!important;border:0!important;box-shadow:none!important}
+  html body header.parent-navigation .parent-navigation-top{display:grid!important;align-items:center!important;column-gap:14px!important;row-gap:8px!important;padding:8px 14px!important;min-height:0!important;border-radius:22px!important;background:rgba(255,255,255,.86)!important;border:1px solid rgba(40,103,95,.12)!important;box-shadow:0 8px 26px rgba(36,62,67,.08)!important;backdrop-filter:blur(10px)}
+  html body header.parent-navigation .parent-brand{grid-area:brand!important;margin:0!important;align-self:center!important}
+  html body header.parent-navigation .child-switcher{grid-area:child!important;margin:0!important;justify-self:end!important;align-self:center!important}
+  html body header.parent-navigation .parent-header-actions{grid-area:actions!important;margin:0!important;display:flex!important;align-items:center!important;gap:6px!important;justify-self:end!important;align-self:center!important}
+  html body header.parent-navigation .parent-primary-nav{grid-area:nav!important;display:flex!important;flex-wrap:nowrap!important;align-items:center!important;gap:4px!important;margin:0!important;padding:0!important;border:0!important;background:none!important;box-shadow:none!important;min-height:0!important;width:auto!important}
+  /* Links: icon beside label, compact pill */
+  html body header.parent-navigation .parent-primary-nav>a{flex:0 0 auto!important;display:inline-flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:7px!important;height:40px!important;min-height:0!important;width:auto!important;min-width:0!important;padding:0 13px!important;margin:0!important;border-radius:999px!important;border:0!important;background:transparent!important;box-shadow:none!important;color:#3f5357!important;font-size:14px!important;font-weight:600!important;line-height:1!important;white-space:nowrap!important;text-decoration:none!important;transform:none!important}
+  html body header.parent-navigation .parent-primary-nav>a::before,html body header.parent-navigation .parent-primary-nav>a::after{display:none!important}
+  html body header.parent-navigation .parent-primary-nav>a:hover{background:rgba(40,103,95,.07)!important;color:#28675f!important}
+  html body header.parent-navigation .parent-primary-nav>a.is-active,html body header.parent-navigation .parent-primary-nav>a[aria-current]{background:#28675f!important;color:#fff!important}
+  html body header.parent-navigation .parent-primary-nav>a:focus-visible{outline:3px solid #28675f!important;outline-offset:2px!important}
+  html body header.parent-navigation .parent-primary-nav .parent-nav-icon{width:18px!important;height:18px!important;margin:0!important;flex:none!important;position:static!important}
+  html body header.parent-navigation .parent-primary-nav .parent-nav-icon+.parent-nav-icon{display:none!important}
+  html body header.parent-navigation .parent-primary-nav .parent-nav-badge{position:static!important;margin:0!important;min-width:18px!important;height:18px!important;padding:0 5px!important;border-radius:999px!important;font-size:11px!important;line-height:18px!important;transform:none!important}
+  html body header.parent-navigation .parent-primary-nav>a.is-active .parent-nav-badge{background:#fff!important;color:#28675f!important}
+  /* Child picker and actions, smaller */
+  html body header.parent-navigation .parent-child-control{height:44px!important;min-height:0!important;border-radius:14px!important;max-width:220px!important}
+  html body header.parent-navigation .parent-child-button{padding:0 8px!important;gap:8px!important;min-height:0!important}
+  html body header.parent-navigation .parent-child-copy strong{font-size:14px!important}
+  html body header.parent-navigation .parent-child-copy span{font-size:11.5px!important;max-width:120px!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+  html body header.parent-navigation .parent-ask,html body header.parent-navigation .parent-account>summary,html body header.parent-navigation .notification-bell{height:40px!important;min-height:0!important;border-radius:12px!important;padding:0 10px!important;font-size:14px!important;box-shadow:none!important}
+  html body header.parent-navigation .notification-bell{width:40px!important;padding:0!important}
+}
+/* Wide: everything in one row */
+@media (min-width:1280px){
+  html body header.parent-navigation .parent-navigation-top{grid-template-columns:auto 1fr auto auto!important;grid-template-areas:"brand nav child actions"!important}
+  html body header.parent-navigation .parent-primary-nav{justify-content:center!important}
+}
+/* Very wide but not huge: hide the Ask Rafiq / account words, keep icons */
+@media (min-width:1280px) and (max-width:1499px){
+  html body header.parent-navigation .parent-ask>:not(svg),html body header.parent-navigation .parent-account-label{display:none!important}
+  html body header.parent-navigation .parent-ask{width:40px!important;padding:0!important;justify-content:center!important}
+}
+/* Medium: two aligned rows, links as one even bar */
+@media (min-width:761px) and (max-width:1279px){
+  html body header.parent-navigation .parent-navigation-top{grid-template-columns:auto 1fr auto!important;grid-template-areas:"brand child actions" "nav nav nav"!important}
+  html body header.parent-navigation .parent-primary-nav{justify-content:space-between!important;padding:4px!important;border-radius:16px!important;background:rgba(40,103,95,.05)!important}
+  html body header.parent-navigation .parent-primary-nav>a{flex:1 1 0!important;padding:0 8px!important}
+  html body header.parent-navigation .child-switcher{justify-self:start!important}
+}
+@media (min-width:761px) and (max-width:960px){
+  html body header.parent-navigation .parent-primary-nav>a{font-size:13px!important;gap:5px!important}
+  html body header.parent-navigation .parent-ask>:not(svg),html body header.parent-navigation .parent-account-label{display:none!important}
+}
+@media (prefers-reduced-motion:reduce){html body header.parent-navigation *{transition:none!important}}
