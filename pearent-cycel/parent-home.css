@@ -160,3 +160,11 @@ html[dir=rtl] .hm-sibling{padding:4px 4px 4px 14px}
 .hm-week-tile:hover{box-shadow:0 8px 20px rgba(36,62,67,.1)}.hm-week-tile:focus-visible{outline:3px solid #28675f;outline-offset:2px}
 .hm-week-latest{margin:12px 0 0;font-size:14px;line-height:1.7}
 @media(max-width:420px){.hm-week-tiles{gap:6px}.hm-week-tile{padding:10px}.hm-week-tile b{font-size:22px}}
+
+/* Next step: one clear sentence and the button (the why / what / where rows were too long) */
+.hm-next .hm-reasons{list-style:none;padding:0;margin:6px 0 14px}
+.hm-next .hm-reasons li:not([data-reason="what"]){display:none}
+.hm-next .hm-reasons li[data-reason="what"]{display:block}
+.hm-next .hm-reasons li[data-reason="what"]>strong,.hm-next .hm-reasons li[data-reason="what"]>svg,.hm-next .hm-reasons li[data-reason="what"] .hm-reason-icon{display:none}
+.hm-next .hm-reasons li[data-reason="what"]>span{font-size:15px;line-height:1.7}
+.hm-week-actions{margin-top:12px}

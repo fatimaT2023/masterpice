@@ -161,6 +161,7 @@
    const latest=[...rows].sort((a,b)=>String(b.updatedAt||b.createdAt).localeCompare(String(a.updatedAt||a.createdAt)))[0];
    if(latest){const line=n('p',undefined,'hm-week-latest');line.append(n('strong',t(p('Latest: ','آخر إشي: '))),n('span',String(latest.activityTitle||latest.text||'').split(/\r?\n/)[0].slice(0,140)));week.append(line);}
    else week.append(n('p',t(p('Nothing recorded yet this week. One small activity or note is enough to start.','لسا ما في إشي مسجّل هالأسبوع. نشاط صغير أو ملاحظة وحدة بكفّوا للبداية.')),'hm-week-latest'));
+   const weekActs=n('div',undefined,'hm-actions hm-week-actions');weekActs.append(link(t(p('Add a note','أضيفوا ملاحظة')),'milestones.html','hm-button'),link(t(p('All notes','كل الملاحظات')),'milestones.html#savedObservations'));week.append(weekActs);
   }catch{}
   // 3. Today together (the original activity player, moved intact) and Coming up.
   const row=n('div',undefined,'hm-row');root.append(row);
@@ -211,6 +212,8 @@
   const shortcuts=section('homeShortcuts','hm-shortcuts');shortcuts.append(n('h2',t(C.shortcuts)));const nav=n('nav',undefined,'hm-shortcut-grid');nav.setAttribute('aria-label',t(C.shortcuts));
   for(const [key,label,href] of [['health',p('Health records','السجل الصحي'),'health.html'],['memories',p('Memories','الذكريات'),'album.html'],['topics',p('Support topics','مواضيع الدعم'),'support-areas.html?child='+encodeURIComponent(child.id)],['guide',p('How to use Rafeeq','كيف تستخدموا رفيق'),'guide.html']]){const a=link('',href,'hm-shortcut');a.replaceChildren(icon(key,'hm-shortcut-icon'),n('span',t(label)));a.dataset.shortcut=key;nav.append(a);}
   shortcuts.append(nav);
+  // Keep Home short: these sections repeated the cards above or links already in the navigation.
+  for(const id of ['supportFocus','growthNotes','stageGuide','homeShortcuts'])root.querySelector('#'+id)?.remove();if(!row3.children.length)row3.remove();
   const footer=n('footer',t(C.footer),'hm-footer');footer.dataset.noTranslate='';root.append(footer);
   if(model.warnings.length){const warning=n('p',t(C.warning),'hm-warning');warning.setAttribute('role','status');root.prepend(warning);}
   old?.remove();document.getElementById('parentDashboardView').append(root);document.documentElement.dataset.parentExperience='services';
