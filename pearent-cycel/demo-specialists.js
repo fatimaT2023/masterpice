@@ -83,5 +83,7 @@
  }
  // Demo logins: each opens the shared 'Saja' demo in that specialist's view (password = RafiqDemoCases.password).
  const logins=[['rami.speech@rafiq.test','showcase_speech_specialist'],['lina.development@rafiq.test','showcase_development_specialist'],['omar.family@rafiq.test','showcase_psychology_specialist']].map(([email,id])=>({email,id}));
- window.RafiqDemoSpecialists={build,ids:rows.map(r=>r.id),logins};
+ // Posts/reviews for a demo specialist even when older saved demo data has none.
+ const showcaseFor=(id,language='ar')=>build(language).specialists.find(s=>s.id===id)?.showcase||null;
+ window.RafiqDemoSpecialists={build,ids:rows.map(r=>r.id),logins,showcaseFor};
 })();

@@ -15,12 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const x = (en, arText) => (ar() ? arText : en);
   const make = (tag, cls, text) => { const el = document.createElement(tag); if (cls) el.className = cls; if (text !== undefined) el.textContent = text; return el; };
   const num = v => new Intl.NumberFormat(ar() ? 'ar-JO' : 'en-GB').format(v);
-  const show = profile.showcase || {};
-  const posts = Array.isArray(show.posts) ? show.posts : [];
-  const reviews = Array.isArray(show.reviews) ? show.reviews : [];
-  const credentials = Array.isArray(show.credentials) ? show.credentials : [];
+  let show, posts, reviews, credentials, avg;
+  const loadShowcase = () => { show = profile.showcase || window.RafiqDemoSpecialists?.showcaseFor?.(profile.id, ar() ? 'ar' : 'en') || {}; posts = Array.isArray(show.posts) ? show.posts : []; reviews = Array.isArray(show.reviews) ? show.reviews : []; credentials = Array.isArray(show.credentials) ? show.credentials : []; avg = reviews.length ? reviews.reduce((s, r) => s + Number(r.stars || 0), 0) / reviews.length : 0; };
+  loadShowcase();
   const name = profile.fullName || profile.name || x('Specialist', 'مختص');
-  const avg = reviews.length ? reviews.reduce((s, r) => s + Number(r.stars || 0), 0) / reviews.length : 0;
   const ago = days => days <= 0 ? x('today', 'اليوم') : days === 1 ? x('yesterday', 'مبارح') : days < 7 ? x(days + ' days ago', 'قبل ' + num(days) + ' أيام') : days < 30 ? (w => x(w + (w === 1 ? ' week ago' : ' weeks ago'), w === 1 ? 'قبل أسبوع' : w === 2 ? 'قبل أسبوعين' : 'قبل ' + num(w) + ' أسابيع'))(Math.round(days / 7)) : x(Math.round(days / 30) + ' months ago', 'قبل ' + num(Math.round(days / 30)) + ' شهر');
   const stars = n => '★★★★★'.slice(0, Math.round(n)) + '☆☆☆☆☆'.slice(0, 5 - Math.round(n));
 
@@ -35,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let activeTab = 'posts';
 
   function render() {
+    loadShowcase();
     document.getElementById('igProfile')?.remove();
     const root = make('section', 'ig-profile'); root.id = 'igProfile'; root.dataset.noTranslate = '';
 
