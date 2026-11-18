@@ -52,7 +52,7 @@
   for(const card of grid.querySelectorAll('.specialist-card')){
    const id=card.querySelector('[data-id]')?.dataset.id,s=list.find(x=>x.id===id);if(!s)continue;card.dataset.specialistId=id;
    const hide=!!area&&!areasOf(s).includes(area);card.classList.toggle('match-hidden',hide);if(!hide)shown++;
-   if(s.isDemo){const badge=card.querySelector('.verified-badge');if(badge){badge.className='demo-profile-badge';badge.dataset.noTranslate='';badge.textContent=t(copy.demo);}card.querySelector('.rating')?.remove();const hours=[...card.querySelectorAll('.detail-box span')].find(x=>/Published hours|الساعات|ساعات/.test(x.textContent));if(hours){hours.dataset.noTranslate='';hours.textContent=t(copy.demoHours);}}
+   if(s.isDemo){const badge=card.querySelector('.verified-badge');const rich=Array.isArray(s.showcase?.reviews)&&s.showcase.reviews.length;if(badge){if(rich){badge.dataset.noTranslate='';badge.textContent=t({en:'✓ Verified by Rafiq',ar:'✓ موثّق من رفيق'});}else{badge.className='demo-profile-badge';badge.dataset.noTranslate='';badge.textContent=t(copy.demo);}}if(rich){const r=card.querySelector('.rating');if(r){r.dataset.noTranslate='';r.textContent='★ '+(s.showcase.reviews.reduce((a,b)=>a+Number(b.stars||0),0)/s.showcase.reviews.length).toFixed(1)+' ('+s.showcase.reviews.length+')';}}else card.querySelector('.rating')?.remove();const hours=[...card.querySelectorAll('.detail-box span')].find(x=>/Published hours|الساعات|ساعات/.test(x.textContent));if(hours){hours.dataset.noTranslate='';hours.textContent=t(copy.demoHours);}}
    const req=card.querySelector('.card-book-button');if(req&&!req.dataset.requestReady){req.dataset.requestReady='1';req.dataset.noTranslate='';}
    if(req)req.textContent=t(copy.request);
   }

@@ -1190,7 +1190,9 @@ document.addEventListener(
 
         rating:
           profile.rating ??
-          null,
+          (Array.isArray(profile.showcase?.reviews) && profile.showcase.reviews.length
+            ? profile.showcase.reviews.reduce((sum, review) => sum + Number(review.stars || 0), 0) / profile.showcase.reviews.length
+            : null),
 
 
         reviews:
