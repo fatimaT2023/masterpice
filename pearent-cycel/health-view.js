@@ -7,7 +7,7 @@
  const K=window.RafiqServicesKit,{p,t,num,el}=K;
  const copy={
   title:p('{0}’s health at a glance','صحة {0} بلمحة'),
-  lead:p('Only what your family saved. Rafiq does not create medical records or a vaccination schedule.','بس اللي حفظته عيلتكم. رفيق ما بيعمل سجلات طبية ولا جدول مطاعيم.'),
+  lead:p('Only what your family saved. The vaccination schedule below follows the Jordan Ministry of Health programme; it is a guide, not a medical record.','بس اللي حفظته عيلتكم. جدول المطاعيم تحت حسب برنامج وزارة الصحة الأردنية، وهو دليل مش سجل طبي.'),
   vaccines:p('Vaccines received','المطاعيم اللي أخذها'),noVaccine:p('None saved yet. An empty list does not mean a vaccine was missed.','لسه ما في ولا وحدة محفوظة. القائمة الفاضية ما بتعني إنه فات مطعوم.'),lastVaccine:p('Latest: {0}','آخر واحد: {0}'),
   measure:p('Height and weight','الطول والوزن'),noMeasure:p('No measurement saved yet.','لسه ما في قياس محفوظ.'),measuredOn:p('Measured {0}','انقاس {0}'),
   notes:p('Health notes','ملاحظات صحية'),noNotes:p('Visits, questions, symptoms or medicine notes in your words.','زيارات أو أسئلة أو أعراض أو أدوية، بكلامكم.'),notesHelp:p('{0} checkup · {1} symptom · {2} medicine','{0} فحص · {1} أعراض · {2} أدوية'),
