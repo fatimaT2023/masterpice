@@ -126,8 +126,8 @@ if(currentGroup){
  const tabs=document.createElement('nav');
  tabs.className='parent-records-tabs';
  tabs.setAttribute('aria-label',title);
- tabs.innerHTML=items.map(([href,label])=>`<a href="${href}"${tabCurrent(href)?' aria-current="page"':''}>${label}</a>`).join('');
- document.querySelector('main.main-content')?.prepend(tabs);
+ tabs.innerHTML=items.map(([href,label])=>`<a href="${href}"${tabCurrent(href)?' aria-current="page"':''}>${label}</a>`).join('');tabs.dataset.noTranslate='';const tabLabels=[...tabs.querySelectorAll('a')].map(x=>x.textContent);const paintTabs=()=>{const ar=document.documentElement.lang==='ar',dict=window.RafiqHomeArabic||{};tabs.querySelectorAll('a').forEach((x,i)=>{const badge=x.querySelector('.parent-nav-badge');x.textContent=ar?(dict[tabLabels[i]]||tabLabels[i]):tabLabels[i];if(badge)x.append(badge);});};paintTabs();new MutationObserver(paintTabs).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+ (document.querySelector('main.main-content')||document.querySelector('main'))?.prepend(tabs);
 }
 renderNavigationBadges();
 // Existing controllers still bind these controls during the gradual migration.

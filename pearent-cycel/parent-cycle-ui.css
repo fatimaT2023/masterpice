@@ -13,3 +13,7 @@
 .catalog-result{font-size:13px;line-height:1.7;border-inline-start:2px solid var(--child-theme-border,#d5e4dc);padding-inline-start:10px;color:#4c6663}
 @media(max-width:800px){.parent-service-context,.parent-cycle-help{padding-inline:12px}.parent-service-context nav a{flex:1 1 140px}.parent-cycle-video .main-content>.topbar h1{font-size:25px}.parent-cycle-video .main-content .booking-main{min-width:0}}
 @media print{.parent-service-context,.parent-journey-result,.parent-cycle-help{display:none!important}}
+
+/* One navigation, less noise: the collapsed page explainer repeated what the
+   station tabs and page title already say, so it is hidden on parent pages. */
+#parentServiceContext{display:none!important}
