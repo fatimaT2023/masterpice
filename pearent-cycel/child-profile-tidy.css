@@ -1,0 +1,33 @@
+/* "My child" page: a calmer, clearer header and sections */
+.profile-tidy .child-profile-hero{display:grid!important;grid-template-columns:auto 1fr auto!important;align-items:center!important;gap:24px!important;padding:24px 28px!important;border-radius:26px!important;background:linear-gradient(135deg,rgba(255,255,255,.88),rgba(255,255,255,.66))!important;box-shadow:0 12px 32px rgba(36,62,67,.08)!important;border:1px solid rgba(255,255,255,.85)!important}
+.profile-tidy .profile-avatar-control{position:relative}
+.profile-tidy #profileAvatar{width:112px!important;height:112px!important;border-radius:50%!important;border:4px solid #fff!important;box-shadow:0 0 0 3px rgba(40,103,95,.15),0 8px 20px rgba(36,62,67,.12)!important;font-size:40px!important}
+.profile-tidy #profileAvatar.has-illustration{background-size:cover!important;background-position:center 20%!important;color:transparent!important}
+.profile-tidy #profileAvatar.has-illustration.is-girl{background-color:#fce1eb!important;background-image:url("assets/onboarding/baby-girl.png")!important}
+.profile-tidy #profileAvatar.has-illustration.is-boy{background-color:#dceefb!important;background-image:url("../rafiq-home-transfer-20261013-211454/assets/hero/sit-front-cutout.png")!important}
+.profile-tidy #changeChildPhoto{position:absolute!important;bottom:2px!important;inset-inline-end:2px!important}
+.profile-tidy .profile-hero-info{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:8px!important}
+.profile-tidy #profileName{margin:0!important;font-size:clamp(26px,2.6vw,34px)!important;line-height:1.2!important}
+.profile-tidy #profileAge{margin:0!important;padding:4px 12px!important;border-radius:999px!important;background:#e8f1ee!important;color:#28675f!important;font-weight:700!important;font-size:13.5px!important}
+.profile-tidy .profile-hero-actions{display:flex!important;flex-direction:column!important;gap:8px!important;align-self:center!important}
+.profile-tidy .profile-hero-actions .profile-action-btn{min-height:42px!important;justify-content:center!important}
+/* Support choice as a small row inside the header */
+.profile-tidy #supportModeCard.is-compact{display:flex!important;align-items:center!important;flex-wrap:wrap!important;gap:10px!important;margin:4px 0 0!important;padding:6px 8px 6px 12px!important;border-radius:16px!important;background:rgba(40,103,95,.06)!important;border:0!important;box-shadow:none!important;min-height:0!important;width:auto!important}
+.profile-tidy #supportModeCard.is-compact h2{margin:0!important;font-size:14px!important;font-weight:700!important;color:#1f3b40!important}
+.profile-tidy #supportModeCard.is-compact p{margin:0!important;font-size:13px!important}
+.profile-tidy #supportModeCard.is-compact button{min-height:32px!important;padding:0 14px!important;border-radius:999px!important;font-size:13px!important}
+/* Sections */
+.profile-tidy .child-profile-layout{gap:20px!important;margin-top:20px!important}
+.profile-tidy .child-profile-main>.screen-flow-card,.profile-tidy .child-profile-side>.screen-flow-card,.profile-tidy #childCareTeamMount>*{border-radius:22px!important;box-shadow:0 8px 24px rgba(36,62,67,.06)!important}
+.profile-tidy .child-profile-main>.screen-flow-card h2,.profile-tidy .child-profile-side h2{font-size:19px!important}
+/* Quiet footer: storage note + archive */
+.profile-tidy .profile-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:24px 0 10px;padding:14px 18px;border-radius:18px;border:1px dashed rgba(40,103,95,.25)}
+.profile-tidy .profile-footer p{margin:0!important}
+.profile-tidy .profile-footer button{min-height:38px!important;font-size:13px!important;color:#9b3d3d!important;border-color:rgba(155,61,61,.3)!important;background:transparent!important}
+@media(max-width:760px){
+ .profile-tidy .child-profile-hero{grid-template-columns:1fr!important;justify-items:center!important;text-align:center!important;padding:20px!important}
+ .profile-tidy .profile-hero-info{align-items:center!important}
+ .profile-tidy .profile-hero-actions{flex-direction:row!important;flex-wrap:wrap!important;justify-content:center!important}
+ .profile-tidy #supportModeCard.is-compact{justify-content:center!important}
+}
+.profile-tidy .question-feature-summary{border-radius:22px!important;margin-top:20px!important}
