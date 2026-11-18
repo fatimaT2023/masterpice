@@ -81,5 +81,7 @@
   const availability=Object.fromEntries(rows.map(r=>['rafiqAvailability_'+r.id,{specialistId:r.id,slotDuration:60,isDemo:true,weeklySchedule:Array.from({length:7},(_,dayIndex)=>({dayIndex,enabled:r.days.includes(dayIndex),start:r.start,end:r.end}))}]));
   return {specialists,availability};
  }
- window.RafiqDemoSpecialists={build,ids:rows.map(r=>r.id)};
+ // Demo logins: each opens the shared 'Saja' demo in that specialist's view (password = RafiqDemoCases.password).
+ const logins=[['rami.speech@rafiq.test','showcase_speech_specialist'],['lina.development@rafiq.test','showcase_development_specialist'],['omar.family@rafiq.test','showcase_psychology_specialist']].map(([email,id])=>({email,id}));
+ window.RafiqDemoSpecialists={build,ids:rows.map(r=>r.id),logins};
 })();

@@ -97,6 +97,9 @@
     else if (password.value.length < 6) {invalid(password,'Password must be at least 6 characters.');firstInvalid ||= password;}
     if (firstInvalid) {firstInvalid.focus();return;}
     const signInRole = email.value.trim().toLowerCase() === 'admin@rafiq.com' ? 'admin' : role;
+    // Demo specialists (Rami, Lina, Omar): open the shared Saja demo in their specialist view.
+    const demoDoctor=(window.RafiqDemoSpecialists?.logins||[]).find(x=>x.email===email.value.trim().toLowerCase());
+    if(demoDoctor){if(password.value!==window.RafiqDemoCases?.password){invalid(password,'Incorrect password. Please try again.');password.focus();return;}submitting=true;submit.disabled=true;status.textContent='Preview mode: opening your workspace…';sessionStorage.setItem('rafiqRole','specialist');sessionStorage.setItem('rafiqSpecialistId',demoDoctor.id);location.href='../pearent-cycel/parent-preview.html?demo=mother&as='+encodeURIComponent('specialist:'+demoDoctor.id)+'&page='+encodeURIComponent('parent-dashboard.html');return;}
     if(signInRole==='admin'){
       if(email.value.trim().toLowerCase()!=='admin@rafiq.com'||password.value!=='RafiqAdmin2026!'){
         invalid(password,'Incorrect administrator preview credentials.');password.focus();return;

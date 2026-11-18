@@ -59,4 +59,6 @@
  get('previewExit').onclick=()=>{if(!runtime?.changed||confirm(t('leave'))){allowLeave=true;location.assign('../rafiq-home-transfer-20261013-211454/index.html');}};
  window.addEventListener('beforeunload',e=>{if(runtime?.changed&&!allowLeave){e.preventDefault();e.returnValue='';}});
  paint();start(requested);
+ /* ?as=specialist:<id> opens the shared demo directly in that specialist's view (used by the demo specialist logins). */
+ {const as=params.get('as');if(as&&as.startsWith('specialist:')&&role!=='specialist')setTimeout(()=>{try{switchRole(as);}catch{}},0);}
 })();

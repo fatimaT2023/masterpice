@@ -19,6 +19,21 @@
    values.rafiqUsers=[{id:owner,role:'parent',fullName:name('Saja','سجى'),email:'mother@rafiq.example',status:'active',isDemo:true}];
    values.rafiqFamilies=[{id:familyId,ownerId:owner,billingOwnerId:owner,name:name('Saja’s family','عيلة سجى')}];
    values.rafiqFamilyMemberships={[familyId]:{id:'demo-mother-plus',familyId,parentId:owner,plan:'plus',status:'active',expiresAt:new Date(now.getTime()+30*86400000).toISOString(),isDemo:true}};
+   // A realistic week for the three demo specialists, using Saja's children (sample data only).
+   {const kid=k=>values.rafiqChildren.find(c=>c.id.includes(k)),day=n=>{const d=new Date(now.getTime()+n*86400000);return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');};
+    const docs=Object.fromEntries((values.rafiqSpecialists||[]).map(s=>[s.id,s])),paid=(price,days)=>({status:'paid',amount:price,commissionRate:10,commission:price/10,specialistNet:price*0.9,payoutStatus:'pending',payerId:owner,paidAt:ago(days)});
+    const book=(id,child,docId,dayOffset,time,type,status,reason,createdDays)=>{const s=docs[docId];if(!child||!s)return null;const price=Number(s.price)||20;return {id,parentId:owner,createdBy:owner,childId:child.id,childName:child.name,specialistId:s.id,specialistName:s.fullName,specialty:s.specialty,date:day(dayOffset),dateLabel:day(dayOffset),time,consultationType:type,status,price,currency:'JOD',sessionPayment:paid(price,createdDays),reason,createdAt:ago(createdDays),isDemo:true};};
+    const noor=kid('premature'),salma=kid('speech'),mustafa=kid('autism');
+    const extra=[
+     book('demo-salma-speech-next',salma,'showcase_speech_specialist',1,'11:00','online','confirmed',name('Few words at 2½ years; would like a plan for home.','كلمات قليلة بعمر سنتين ونص؛ بدنا خطة للبيت.'),2),
+     book('demo-noor-development-past',noor,'showcase_development_specialist',-8,'10:00','in-person','completed',name('Born early; checking milestones with corrected age.','انولدت بدري؛ بدنا نتطمّن على مراحل النمو بالعمر المصحّح.'),12),
+     book('demo-noor-development-next',noor,'showcase_development_specialist',6,'10:00','in-person','confirmed',name('Follow-up visit after the first session.','زيارة متابعة بعد الجلسة الأولى.'),3),
+     book('demo-mustafa-psychology-request',mustafa,'showcase_psychology_specialist',3,'16:00','online','requested',name('Hard transitions after nursery; ideas for calmer evenings.','الانتقالات صعبة بعد الروضة؛ بدنا أفكار لمسا أهدى.'),0)
+    ].filter(Boolean);
+    values.rafiqBookings=[...(values.rafiqBookings||[]),...extra];
+    const lina=docs.showcase_development_specialist;
+    if(noor&&lina)values.rafiqSpecialistReports=[...(values.rafiqSpecialistReports||[]),{id:'demo-noor-development-report',bookingId:'demo-noor-development-past',childId:noor.id,childName:noor.name,parentId:owner,specialistId:lina.id,specialistName:lina.fullName,specialty:lina.specialty,consultationType:'in-person',consultationDate:day(-8),reportDate:day(-7),createdAt:ago(7),summary:name('Noor is progressing well for her corrected age. Head control and social smiles are on track.','نور ماشية منيح حسب عمرها المصحّح. التحكم بالراس والابتسامة الاجتماعية بمكانهم.'),observations:[name('Enjoys face-to-face play and follows voices.','بتحب اللعب وجه لوجه وبتلحق الأصوات.'),name('Tummy time is still short; she tires quickly.','وقت اللعب ع البطن لسا قصير وبتتعب بسرعة.')],recommendations:[name('Tummy time 1–2 minutes, several times a day.','لعب ع البطن دقيقة أو دقيقتين، كذا مرة باليوم.'),name('Talk and sing during nappy changes.','احكوا وغنّوا وقت تغيير الحفاض.')],followUp:name('Review in 4 weeks.','مراجعة بعد ٤ أسابيع.'),status:'submitted',submittedAt:ago(7),isDemo:true}];
+   }
    const start=values.rafiqChildren.find(c=>c.id.includes('speech'))||values.rafiqChildren[0];
    values['rafiqCurrentChildId_'+owner]=start.id;values.rafiqCurrentChildId=start.id;
    return {owner,values,session:{rafiqRole:'parent',rafiqParentUserId:owner}};
