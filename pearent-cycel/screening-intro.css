@@ -1,0 +1,20 @@
+/* "I have a concern": compact header so the five choices show first */
+.concern-compact .screening-hero .today-hero-meta-row{display:none!important}
+.concern-compact .screening-hero{padding-block:18px!important;min-height:0!important}
+.concern-compact .screening-hero h1{font-size:clamp(22px,2.4vw,30px)!important;line-height:1.35!important;margin:4px 0 6px!important;letter-spacing:0!important}
+.concern-compact .screening-hero p{margin:0 0 8px;line-height:1.7;max-width:70ch}
+.concern-compact .screening-hero .screen-flow-eyebrow,.concern-compact .screening-hero .today-eyebrow{display:none}
+.concern-promise{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:6px 0 0;padding:0}
+.concern-promise li{padding:4px 12px;border-radius:999px;background:#e8f1ee;color:#28675f;font-size:12.5px;font-weight:700}
+.concern-promise li:last-child{background:#fdf0e7;color:#8a4b22}
+/* The page already shows its own 1-2-3 steps, so the collapsed helper is noise here */
+.concern-compact .parent-cycle-help{display:none!important}
+.concern-compact .screen-flow-steps{margin-block:10px!important}
+.concern-compact .flow-card-head .flow-card-desc{display:none}
+.concern-compact .flow-card-head{padding-bottom:6px!important}
+.concern-compact .screen-flow-steps{padding:6px 10px!important}
+.concern-compact .screen-flow-steps li{min-height:0!important;padding-block:6px!important}
+.concern-compact .flow-card-head .flow-step-tag{display:none}
+.concern-compact .flow-card-head{margin-bottom:12px!important}
+.concern-compact .flow-card-head h2{margin:0!important}
+.concern-compact .screening-topbar{margin-bottom:0!important}
