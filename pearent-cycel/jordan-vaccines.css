@@ -58,3 +58,24 @@
 .vx-visit-top::after{content:"▾";flex:none;font-size:14px;opacity:.5;transition:transform .2s ease}
 .vx-visit.is-open .vx-visit-top::after{transform:rotate(180deg)}
 .vx-visit:not(.is-open) .vx-doses,.vx-visit:not(.is-open) .vx-form{display:none}
+
+/* Health page layout: schedule wide, growth + notes on the side, full log below */
+.health-layout .hx-layout{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(260px,1fr);gap:20px;align-items:start;margin:20px 0}
+.health-layout .hx-main>.vx{margin:0}
+.health-layout .hx-side #healthOverview{margin:0!important;padding:0!important;background:none!important;border:0!important;box-shadow:none!important}
+.health-layout #healthOverview>header,.health-layout #healthOverview>.ps-source{display:none!important}
+.health-layout #healthOverview .ps-tiles{display:flex!important;flex-direction:column!important;gap:16px!important;margin:0!important;padding:0!important}
+.health-layout #healthOverview .ps-tiles>li:nth-child(1),.health-layout #healthOverview .ps-tiles>li:nth-child(4){display:none!important}
+.health-layout #healthOverview .ps-tile{padding:20px!important;border-radius:22px!important;background:rgba(255,255,255,.86)!important;border:1px solid rgba(255,255,255,.9)!important;box-shadow:0 10px 30px rgba(36,62,67,.07)!important}
+.health-layout #healthOverview .ps-value{font-size:30px!important}
+.health-layout #healthOverview .ps-tile-actions button,.health-layout #healthOverview .ps-tile-actions a{min-height:36px!important;border-radius:999px!important}
+.health-layout #healthOverview .ps-tile-actions button:first-child{background:#28675f!important;color:#fff!important;border-color:#28675f!important}
+.health-layout .health-actions-card,.health-layout .health-consult-card{display:none!important}
+.health-layout #healthHistory{margin-top:4px}
+@media(max-width:900px){.health-layout .hx-layout{grid-template-columns:1fr}}
+.health-layout #healthHistory:not(.is-open) #healthRecordList,.health-layout #healthHistory:not(.is-open) #healthEmpty,.health-layout #healthHistory:not(.is-open) .health-history-header>*:not(:first-child):not(.hx-log-toggle){display:none!important}
+.health-layout .hx-log-toggle{min-height:38px;padding:0 16px;border-radius:999px;border:1px solid rgba(40,103,95,.25);background:#fff;color:#28675f;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;margin-top:8px}
+.health-layout .hx-log-toggle:focus-visible{outline:2px solid #28675f;outline-offset:2px}
+.health-layout #healthOverview .ps-tile-actions{display:flex!important;flex-wrap:wrap!important;gap:8px!important;margin-top:10px!important}
+.health-layout #healthOverview .ps-tile-actions button,.health-layout #healthOverview .ps-tile-actions a{padding:0 16px!important;white-space:nowrap!important;font-weight:700!important;font-size:13.5px!important;display:inline-flex!important;align-items:center!important;border:1px solid rgba(40,103,95,.25)!important;background:#fff!important;color:#28675f!important}
+.health-layout #healthOverview .ps-tile-actions button:first-child{background:#28675f!important;color:#fff!important;border-color:#28675f!important}

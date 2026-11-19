@@ -130,8 +130,9 @@
     }
     box.append(list);
     box.append(make('p', 'vx-source', t(p('Based on the Jordan Ministry of Health national immunization programme (PCV added 2025, chickenpox added 2026 for children born from 2025). Always confirm with the child’s vaccination card or health centre. Rafiq does not give medical advice.', 'حسب البرنامج الوطني للتطعيم – وزارة الصحة الأردنية (المكورات الرئوية من ٢٠٢٥، وجدري الماء من ٢٠٢٦ لمواليد ٢٠٢٥ وبعد). تأكدوا دايمًا من بطاقة التطعيم أو المركز الصحي. رفيق ما بيعطي نصيحة طبية.'))));
-    const overview = document.getElementById('healthOverview');
-    if (overview) overview.after(box); else host.prepend(box);
+    const slot = document.querySelector('.hx-main'), overview = document.getElementById('healthOverview');
+    if (slot) slot.prepend(box); else if (overview) overview.after(box); else host.prepend(box);
+    window.RafiqHealthLayout?.run?.();
   }
 
   function openForm(row, c, d, v) {
