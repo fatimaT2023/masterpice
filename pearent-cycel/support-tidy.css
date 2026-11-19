@@ -1,0 +1,36 @@
+/* Support areas page */
+.support-tidy .sa-hero{padding:24px 26px;border-radius:26px;background:rgba(255,255,255,.84);border:1px solid rgba(255,255,255,.9);box-shadow:0 10px 30px rgba(36,62,67,.07);margin:6px 0 22px}
+.support-tidy .sa-hero h1{margin:0!important;font-size:clamp(24px,2.6vw,32px)!important;letter-spacing:0!important}
+.support-tidy .sa-hero>p{margin:8px 0 16px!important;font-size:14.5px;line-height:1.7;max-width:70ch;opacity:.85}
+.support-tidy .sa-hero .support-doors{margin:0!important;gap:14px!important}
+.support-tidy .support-door{position:relative;padding:20px 22px!important;border-radius:20px!important;min-height:120px;justify-content:flex-start;box-shadow:0 6px 18px rgba(36,62,67,.06)}
+.support-tidy .support-door strong{font-size:18px!important}
+.support-tidy .support-door.is-worry{background:linear-gradient(135deg,#fff,#fff4ee)!important}
+.support-tidy .support-door.is-diagnosis{background:linear-gradient(135deg,#fff,#eef8f4)!important}
+.support-tidy .sa-go{margin-top:auto;padding-top:10px;font-weight:800;font-size:13.5px;color:#28675f}
+.support-tidy .support-door.is-worry .sa-go{color:#a2502f}
+.support-tidy .sa-areas-title{margin:4px 0 10px!important;font-size:19px!important}
+.support-tidy #catalogAreaPicker{margin:0 0 14px!important;padding:0!important;border:0!important;background:none!important;box-shadow:none!important}
+.support-tidy #catalogAreaPicker>summary{display:none!important}
+.support-tidy .catalog-categories{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(170px,1fr))!important;gap:10px!important}
+.support-tidy .catalog-categories button{display:flex!important;align-items:center!important;gap:10px!important;min-height:56px!important;padding:10px 14px!important;border-radius:16px!important;border:1px solid rgba(40,103,95,.14)!important;background:rgba(255,255,255,.85)!important;color:#1f3b40!important;font-weight:700!important;font-size:14px!important;text-align:start!important;box-shadow:none!important;cursor:pointer}
+.support-tidy .catalog-categories button:hover{border-color:rgba(40,103,95,.35)!important}
+.support-tidy .catalog-categories button[aria-pressed="true"]{background:#28675f!important;border-color:#28675f!important;color:#fff!important}
+.support-tidy .sa-ic{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:10px;background:rgba(40,103,95,.08);font-size:17px;flex:none}
+.support-tidy .catalog-categories button[aria-pressed="true"] .sa-ic{background:rgba(255,255,255,.2)}
+/* Filters: search + topic type + clear on one light row (the area dropdown repeats the tiles) */
+.support-tidy form.catalog-filters{display:flex!important;flex-wrap:wrap!important;align-items:flex-end!important;gap:10px!important;margin:0 0 6px!important;padding:12px 14px!important;border-radius:16px!important;background:rgba(255,255,255,.6)!important}
+.support-tidy form.catalog-filters label[for="catalogCategory"]{display:none!important}
+.support-tidy form.catalog-filters label{flex:1 1 220px;font-size:12.5px!important;font-weight:700}
+.support-tidy form.catalog-filters input,.support-tidy form.catalog-filters select{min-height:42px!important;border-radius:12px!important}
+.support-tidy .sa-count{margin:14px 0 8px!important;font-weight:800!important;font-size:15px!important;color:#1f3b40}
+/* Topic cards */
+.support-tidy #catalogResults{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))!important;gap:14px!important}
+.support-tidy .catalog-card{display:flex!important;flex-direction:column!important;gap:6px!important;padding:18px!important;border-radius:20px!important;background:rgba(255,255,255,.88)!important;border:1px solid rgba(40,103,95,.1)!important;box-shadow:0 6px 18px rgba(36,62,67,.05)!important}
+.support-tidy .catalog-card h2{margin:4px 0 0!important;font-size:17px!important}
+.support-tidy .catalog-card .catalog-about{margin:0!important;font-size:13.5px!important;line-height:1.65!important;opacity:.85}
+.support-tidy .catalog-card .catalog-area{margin:0!important;font-size:12px!important;font-weight:700;color:#28675f}
+.support-tidy .catalog-card .catalog-kind{padding:2px 10px;border-radius:999px;background:#f3f0f6;color:#5b4b6b;font-size:11.5px!important;font-weight:700}
+.support-tidy .catalog-card .catalog-action{margin-top:auto!important;align-self:flex-start;min-height:38px!important;padding:0 16px!important;border-radius:999px!important;display:inline-flex!important;align-items:center!important;font-weight:700!important;font-size:13.5px!important}
+@media(max-width:640px){.support-tidy .sa-hero{padding:18px}.support-tidy .catalog-categories{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+.support-tidy #supportCatalog>a.catalog-action[href*="parent-dashboard"],.support-tidy #supportCatalog>.catalog-notice{display:none!important}
