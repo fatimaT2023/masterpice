@@ -43,13 +43,23 @@
     // Results heading
     const count = document.getElementById('catalogCount');
     if (count) count.classList.add('sa-count');
+    // Selected area -> start 'I have a concern' with this area already chosen.
+    const active = root.querySelector('.catalog-categories button[aria-pressed="true"]');
+    let link = root.querySelector(':scope > .sa-concern-link');
+    if (active && count) {
+      const label = [...active.childNodes].filter(n => !(n.classList && n.classList.contains('sa-ic'))).map(n => n.textContent).join('').trim();
+      if (!link) { link = document.createElement('a'); link.className = 'sa-concern-link'; link.dataset.noTranslate = ''; }
+      link.href = 'screening.html?area=' + encodeURIComponent(active.dataset.category);
+      link.replaceChildren(); const s1 = document.createElement('strong'); s1.textContent = x('Worried about ' + label.toLowerCase() + '?', 'عندكم قلق بـ' + label + '؟'); const s2 = document.createElement('span'); s2.textContent = x('Answer 4 short questions and get a clear next step →', 'جاوبوا ٤ أسئلة قصيرة وخدوا خطوة واضحة ←'); link.append(s1, s2);
+      if (link.nextElementSibling !== count || link.parentElement !== root) count.before(link);
+    } else if (link) link.remove();
   }
 
   function run() { if (busy) { setTimeout(run, 40); return; } busy = true; try { apply(); } catch { /* keep the page as it was */ } finally { setTimeout(() => { busy = false; }, 0); } }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
   window.addEventListener('load', () => { run(); setTimeout(run, 300); });
   const root = () => document.getElementById('supportCatalog');
-  const start = () => { const r = root(); if (r && !r.dataset.saWatch) { r.dataset.saWatch = '1'; new MutationObserver(() => setTimeout(run, 0)).observe(r, { childList: true }); } };
+  const start = () => { const r = root(); if (r && !r.dataset.saWatch) { r.dataset.saWatch = '1'; r.addEventListener('click', e => { if (e.target.closest('.catalog-categories button, form.catalog-filters button')) setTimeout(run, 60); }); r.addEventListener('change', () => setTimeout(run, 60)); new MutationObserver(() => setTimeout(run, 0)).observe(r, { childList: true }); } };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
   new MutationObserver(() => setTimeout(run, 60)).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 })();

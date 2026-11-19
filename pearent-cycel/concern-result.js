@@ -28,7 +28,7 @@
     if (/أشهر|طويلة|months|long/i.test(since)) { if (level === 'watch') level = 'consult'; reasons.push(x('You have noticed this for months.', 'لاحظتوها من أشهر.')); }
     if (/شخص آخر|someone else|other/i.test(where)) { if (level === 'watch') level = 'consult'; reasons.push(x('Someone else also pointed it out.', 'في حدا ثاني كمان لفت انتباهكم.')); }
     try {
-      const area = areaOf[topic]; const checks = JSON.parse(localStorage.getItem('rafiqMilestoneChecks_' + c.id) || '{}');
+      const chosen = window.RafiqConcernAreas?.current?.(); const byArea = { speech: 'language', development: '', learning: 'cognitive', everyday: 'social', genetic: '', sensory: 'movement', behaviour: 'social', emotional: 'social', sleep: null, feeding: null, medical: null }; const area = chosen ? byArea[chosen.id] : areaOf[topic]; if (area === null) throw 0; const checks = JSON.parse(localStorage.getItem('rafiqMilestoneChecks_' + c.id) || '{}');
       const notYet = Object.entries(checks).filter(([k, v]) => v?.state === 'not_yet' && (!area || k.includes(':' + area + ':'))).length;
       if (notYet >= 2) { if (level === 'watch') level = 'consult'; reasons.push(x(notYet + ' skills for this age are marked “not yet” in the growth journal.', notYet + ' مهارات لهالعمر معلّمة «لسا» بسجل النمو.')); }
     } catch {}
@@ -42,6 +42,8 @@
     const c = child(); if (!c) return;
     document.body.classList.add('concern-result-on');
     const topic = topicKey(), list = answers(view), { level, reasons } = assess(list, c, topic);
+    const area = window.RafiqConcernAreas?.current?.() || null;
+    const whoEn = area ? area.who.en : whoEn, whoAr = area ? area.who.ar : whoAr;
     view.querySelector('.cr')?.remove();
     const box = make('section', 'cr is-' + level); box.dataset.noTranslate = ''; box.setAttribute('aria-live', 'polite');
     const head = make('div', 'cr-head');
@@ -49,7 +51,7 @@
     const titles = { soon: x('Talk to your paediatrician or a specialist soon', 'احكوا مع طبيب الأطفال أو مختص بأقرب وقت'), consult: x('A consultation with a specialist could help', 'استشارة مع مختص ممكن تفيدكم'), watch: x('Keep watching at home for two weeks', 'راقبوا بالبيت أسبوعين') };
     const leads = {
       soon: x('Losing a skill is a reason to check early. This does not mean something is wrong — it means it is worth asking now.', 'لما الطفل يبطّل يعمل مهارة كان بيعرفها، بيستاهل نسأل بدري. هاد ما بيعني إنه في مشكلة — بيعني إنه منيح نسأل هلّق.'),
-      consult: x('What you described is worth talking through with ' + who[topic][0] + '. Your summary is ready to share.', 'اللي وصفتوه بيستاهل تحكوه مع ' + who[topic][1] + '. ملخصكم جاهز تشاركوه.'),
+      consult: x('What you described is worth talking through with ' + whoEn + '. Your summary is ready to share.', 'اللي وصفتوه بيستاهل تحكوه مع ' + whoAr + '. ملخصكم جاهز تشاركوه.'),
       watch: x('Try a short activity each day, note what you see, and come back in two weeks. If it is the same or more worrying, book a consultation.', 'جرّبوا نشاط قصير كل يوم، سجّلوا شو بتشوفوا، وارجعوا بعد أسبوعين. إذا ضلّت نفسها أو صارت مقلقة أكثر، احجزوا استشارة.')
     };
     head.append(make('h2', 'cr-title', titles[level]), make('p', 'cr-lead', leads[level]));
@@ -62,10 +64,11 @@
     const specialistHref = document.getElementById('browseConcernSpecialists')?.getAttribute('href') || 'specialists.html';
     const card = (cls, title, text, label, href, onClick) => { const a = make('a', 'cr-action ' + cls); a.href = href; a.append(make('strong', '', title), make('span', '', text), make('em', '', label)); if (onClick) a.addEventListener('click', onClick); return a; };
     const includeBox = document.getElementById('includeConcernSummary');
-    const book = card('is-book', x('Talk to ' + who[topic][0], 'احكوا مع ' + who[topic][1]), x('Your summary can be attached to the booking — you review it first.', 'ملخصكم بينضاف لطلب الحجز — وبتراجعوه قبل ما تأكدوا.'), x('Find a specialist →', 'لاقوا مختص ←'), specialistHref, e => { const original = document.getElementById('browseConcernSpecialists'); if (includeBox && !includeBox.checked) includeBox.click(); if (original) { e.preventDefault(); original.click(); } });
+    const book = card('is-book', x('Talk to ' + whoEn, 'احكوا مع ' + whoAr), x('Your summary can be attached to the booking — you review it first.', 'ملخصكم بينضاف لطلب الحجز — وبتراجعوه قبل ما تأكدوا.'), x('Find a specialist →', 'لاقوا مختص ←'), specialistHref, e => { const original = document.getElementById('browseConcernSpecialists'); if (includeBox && !includeBox.checked) includeBox.click(); const note = document.getElementById('bookingNoteText'); if (area && note && !note.value.startsWith('[')) { note.value = ('[' + area.label.en + ' / ' + area.label.ar + '] ' + note.value).slice(0, 500); } if (original) { e.preventDefault(); original.click(); } });
     const watch = card('is-watch', x('Try today’s activity', 'جرّبوا نشاط اليوم'), x('5–10 minutes of play matched to ' + c.name + '’s age.', '٥–١٠ دقايق لعب على قد عمر ' + c.name + '.'), x('Start →', 'ابدأوا ←'), 'daily-activity.html');
     const notes = card('is-notes', x('Note what you see', 'سجّلوا اللي بتشوفوه'), x('Short notes and the age checklist help you and the specialist.', 'ملاحظات قصيرة وقائمة مهارات العمر بتساعدكم وبتساعد المختص.'), x('Growth journal →', 'سجل النمو ←'), 'milestones.html');
     if (level === 'watch') actions.append(watch, notes, book); else actions.append(book, notes);
+    if (area) actions.append(card('is-topics', x('More about ' + area.label.en.toLowerCase(), 'مواضيع ' + area.label.ar), x('Guides and services for this area on Rafiq.', 'أدلة وخدمات هالمجال على رفيق.'), x('See topics →', 'شوفوا المواضيع ←'), 'support-areas.html?category=' + encodeURIComponent(area.id)));
     box.append(actions);
 
     // The summary that would reach the specialist, folded
