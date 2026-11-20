@@ -1190,18 +1190,3 @@ button {
   }
 
 }
-/* From home: what the family tried since the last report (home-followup.js) */
-.home-followup{margin-top:18px;padding:20px 22px;border-radius:22px;border:1px solid rgba(40,103,95,.2);background:linear-gradient(180deg,#f3faf7,#fff)}
-.home-followup .hf-kicker{margin:0 0 4px;font-size:12px;font-weight:700;color:#28675f}
-.home-followup h2{margin:0 0 12px;font-size:19px}
-.home-followup h3{margin:16px 0 8px;font-size:15px}
-.hf-date{margin:0 0 6px;font-size:12px;color:#6b7f7b}
-.hf-list,.hf-notes{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.hf-list li{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:10px 12px;border-radius:14px;background:#fff;border:1px solid rgba(40,103,95,.12)}
-.hf-status{flex:none;font-size:12px;padding:3px 10px;border-radius:999px;background:#eef3f2;color:#4c625e}
-.hf-list li.is-tried .hf-status{background:#e2f3ea;color:#1f7a4c}
-.hf-list li.is-question .hf-status{background:#fff3dc;color:#8a5a00}
-.hf-note{margin:10px 0 0;padding:10px 14px;border-inline-start:3px solid #28675f;background:#fff;border-radius:10px;line-height:1.7}
-.hf-notes li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid rgba(40,103,95,.1)}
-.hf-notes small{flex:none;color:#6b7f7b}
-.hf-foot{margin:12px 0 0;font-size:12px;color:#6b7f7b}

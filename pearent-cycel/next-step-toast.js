@@ -27,8 +27,31 @@
   ['pointerdown', 'keydown', 'submit', 'change'].forEach(e => addEventListener(e, () => { lastUser = Date.now(); }, true));
   const size = v => { try { const j = JSON.parse(v); if (Array.isArray(j)) return j.filter(r => !r?._deletedAt).length; if (j && typeof j === 'object') return Object.keys(j).length; } catch {} return -1; };
 
+  // Specialist workspace: messages in the specialist's (formal) wording.
+  const isSpecialist = /\/specialist-cycle\//.test(location.pathname);
+  const count = (v, fn) => { try { const j = JSON.parse(v || '[]'); return Array.isArray(j) ? j.filter(fn).length : 0; } catch { return 0; } };
+  function specialistMessage(key, value, before) {
+    const me = sessionStorage.getItem('rafiqSpecialistId');
+    if (key === 'rafiqSpecialistReports' && count(value, r => r?.specialistId === me && r.status !== 'draft') > count(before, r => r?.specialistId === me && r.status !== 'draft'))
+      return { title: x('Report sent ✓', 'أُرسل التقرير ✓'), text: x('The family can read it now, and each recommendation is a checklist item for them.', 'تستطيع العائلة قراءته الآن، وكل توصية أصبحت بندًا عندها.'), next: { href: 'specialist-dashboard.html', label: x('Dashboard', 'اللوحة الرئيسية') } };
+    if (key !== 'rafiqBookings') return null;
+    const mine = s => r => r?.specialistId === me && r.status === s;
+    if (count(value, mine('completed')) > count(before, mine('completed'))) return { title: x('Session completed ✓', 'اكتملت الجلسة ✓'), text: x('Write the report while it is fresh — the family is waiting for it.', 'اكتب التقرير الآن والتفاصيل حاضرة — العائلة تنتظره.'), next: { href: 'report-form.html', label: x('Write the report', 'اكتب التقرير') } };
+    if (count(value, mine('requested')) < count(before, mine('requested'))) {
+      const accepted = count(value, r => r?.specialistId === me && ['confirmed', 'accepted'].includes(r.status)) > count(before, r => r?.specialistId === me && ['confirmed', 'accepted'].includes(r.status));
+      return accepted ? { title: x('Request accepted ✓', 'قبلت الطلب ✓'), text: x('The appointment is in your schedule and the family has been told.', 'أصبح الموعد في جدولك وتم إبلاغ العائلة.'), next: { href: 'schedule.html', label: x('Schedule', 'الجدول') } } : { title: x('Reply sent ✓', 'أُرسل الرد ✓'), text: x('The family has been told.', 'تم إبلاغ العائلة.'), next: null };
+    }
+    return null;
+  }
+
   function onWrite(store, key, value, before) {
     if (Date.now() - lastUser > 2500 || before === value) return;
+    if (isSpecialist) {
+      const msg = specialistMessage(key, value, before); if (!msg || (msg.title === lastShown && Date.now() - lastAt < 3000)) return;
+      lastShown = msg.title; lastAt = Date.now();
+      try { sessionStorage.setItem('rafiqPendingStep', JSON.stringify({ at: Date.now(), msg })); } catch {}
+      setTimeout(() => show(msg), 250); return;
+    }
     let rule = RULES.find(([p]) => key === p || key.startsWith(p)); if (!rule) return;
     // On the report page every save is the home follow-up for the specialist.
     if (page === 'specialist-report.html' && /^rafiq(AgeObservations|ReportFollowup)_/.test(key)) rule = RULES.find(([p]) => p === 'rafiqReportFollowup_');

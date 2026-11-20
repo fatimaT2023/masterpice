@@ -11,7 +11,7 @@
   const when = iso => { const t = Date.parse(iso || ''); if (!t) return ''; return new Date(t).toLocaleDateString(ar() ? 'ar' : 'en-GB', { day: 'numeric', month: 'long' }); };
 
   function render() {
-    const view = document.getElementById('detailsView'); if (!view || view.hidden) return;
+    const view = document.getElementById('detailsView') || document.getElementById('consultationView'); if (!view || view.hidden) return;
     const id = sessionStorage.getItem('rafiqSelectedSpecialistBooking'); if (!id) return;
     const bookings = J('rafiqBookings', []); const booking = bookings.find(b => b.id === id); if (!booking?.childId) return;
     const me = sessionStorage.getItem('rafiqSpecialistId') || booking.specialistId;
@@ -31,12 +31,12 @@
     if (!follow.length && !notes.length) { card?.remove(); return; }
     if (!card) {
       card = el('section', 'details-card home-followup'); card.id = 'homeFollowupCard'; card.dataset.noTranslate = '';
-      const anchor = document.getElementById('bookingReason')?.closest('section, article, .details-card') || view.firstElementChild;
+      const anchor = (document.getElementById('bookingReason') || document.getElementById('parentConcern'))?.closest('section, article, .details-card, .consultation-card') || view.firstElementChild;
       anchor ? anchor.after(card) : view.prepend(card);
     }
     card.replaceChildren();
-    card.append(el('p', 'hf-kicker', x('From home', 'من البيت')), el('h2', '', x('What the family tried since your report', 'شو جرّبت العيلة من بعد تقريرك')));
-    const statusText = s => ({ tried: x('Tried ✓', 'جرّبوها ✓'), planned: x('Not tried yet', 'لسّا'), question: x('Has a question', 'عندهم سؤال') }[s] || s);
+    card.append(el('p', 'hf-kicker', x('From home', 'من البيت')), el('h2', '', x('What the family tried since your report', 'ما جرّبته العائلة منذ تقريرك')));
+    const statusText = s => ({ tried: x('Tried ✓', 'جرّبوها ✓'), planned: x('Not tried yet', 'لم تُجرَّب بعد'), question: x('Has a question', 'لديهم سؤال') }[s] || s);
     follow.slice(0, 2).forEach(f => {
       const box = el('div', 'hf-block');
       box.append(el('p', 'hf-date', x('Updated ', 'آخر تحديث ') + when(f.updatedAt)));
@@ -52,13 +52,14 @@
       notes.forEach(n => { const li = el('li'); li.append(el('span', '', n.text), el('small', '', when(n.createdAt))); ul.append(li); });
       card.append(ul);
     }
-    card.append(el('p', 'hf-foot', x('Shared by the family for this child. Use it to plan the session — it is not a clinical record.', 'العيلة شاركتها عن هالطفل. استعملها لتخطيط الجلسة — مش سجل سريري.')));
+    card.append(el('p', 'hf-foot', x('Shared by the family for this child. Use it to plan the session — it is not a clinical record.', 'شاركتها العائلة عن هذا الطفل. استخدمها لتخطيط الجلسة — ليست سجلًا سريريًا.')));
   }
 
+  if (!document.querySelector('link[href*="home-followup.css"]')) { const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = new URL('home-followup.css', document.currentScript.src).href; document.head.append(l); }
   const run = () => { try { render(); } catch { /* leave the page as it was */ } };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(run, 50)); else setTimeout(run, 50);
   window.addEventListener('load', () => { setTimeout(run, 150); setTimeout(run, 800); });
   new MutationObserver(() => setTimeout(run, 120)).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
-  const watch = () => { const v = document.getElementById('detailsView'); if (v) new MutationObserver(() => setTimeout(run, 60)).observe(v, { attributes: true, attributeFilter: ['hidden'] }); };
+  const watch = () => { const v = document.getElementById('detailsView') || document.getElementById('consultationView'); if (v) new MutationObserver(() => setTimeout(run, 60)).observe(v, { attributes: true, attributeFilter: ['hidden'] }); };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watch); else watch();
 })();

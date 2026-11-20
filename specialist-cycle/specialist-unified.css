@@ -1,0 +1,7 @@
+/* Specialist workspace: section tabs and one header style (specialist-tabs.js) */
+.sp-tabs{display:flex;flex-wrap:wrap;gap:6px;width:max-content;max-width:100%;margin:0 0 16px;padding:5px;border-radius:999px;background:rgba(255,255,255,.75);border:1px solid rgba(40,103,95,.14);box-shadow:0 6px 18px rgba(40,103,95,.06)}
+.sp-tabs a{display:inline-flex;align-items:center;min-height:38px;padding:6px 16px;border-radius:999px;color:#28675f;font-weight:700;font-size:14px;text-decoration:none}
+.sp-tabs a[aria-current="page"]{background:#28675f;color:#fff}
+.sp-tabs a:focus-visible{outline:3px solid #28675f;outline-offset:2px}
+.sp-code{display:none!important}
+#bookingReference{display:none!important}
