@@ -44,10 +44,26 @@
     return null;
   }
 
+  // Admin area
+  const isAdmin = /\/admin-cycle\//.test(location.pathname);
+  function adminMessage(key, value, before) {
+    if (key === 'rafiqSpecialists') {
+      if (count(value, r => r?.status === 'approved') > count(before, r => r?.status === 'approved')) return { title: x('Specialist approved ✓', 'تم اعتماد الأخصائي ✓'), text: x('Families can now find and book them in the specialist search.', 'أصبح ظاهرًا للعائلات في البحث ويمكنهم الحجز معه.'), next: { href: 'specialists-management.html', label: x('Specialists', 'الأخصائيون') } };
+      if (count(value, r => r?.status === 'pending') < count(before, r => r?.status === 'pending')) return { title: x('Decision saved ✓', 'تم حفظ القرار ✓'), text: x('The applicant has been told.', 'تم إبلاغ المتقدّم.'), next: null };
+    }
+    if (key === 'rafiqSupportTickets') {
+      const msgs = v => { try { return JSON.parse(v || '[]').reduce((n, t) => n + (t?.messages?.length || 0), 0); } catch { return 0; } };
+      if (msgs(value) > msgs(before)) return { title: x('Reply sent ✓', 'أُرسل الرد ✓'), text: x('The requester will see it in their help centre.', 'سيراه صاحب الطلب في مركز المساعدة.'), next: null };
+      if (count(value, t => t?.status === 'resolved') > count(before, t => t?.status === 'resolved')) return { title: x('Request closed ✓', 'أُغلق الطلب ✓'), text: '', next: null };
+    }
+    if (key === 'rafiqBookings' && count(value, b => b?.sessionPayment?.payoutStatus === 'transferred') > count(before, b => b?.sessionPayment?.payoutStatus === 'transferred')) return { title: x('Transfer recorded ✓', 'سُجّل التحويل ✓'), text: x('The specialist sees it in their earnings.', 'يظهر للأخصائي في صفحة الأرباح.'), next: null };
+    return null;
+  }
+
   function onWrite(store, key, value, before) {
     if (Date.now() - lastUser > 2500 || before === value) return;
-    if (isSpecialist) {
-      const msg = specialistMessage(key, value, before); if (!msg || (msg.title === lastShown && Date.now() - lastAt < 3000)) return;
+    if (isSpecialist || isAdmin) {
+      const msg = isAdmin ? adminMessage(key, value, before) : specialistMessage(key, value, before); if (!msg || (msg.title === lastShown && Date.now() - lastAt < 3000)) return;
       lastShown = msg.title; lastAt = Date.now();
       try { sessionStorage.setItem('rafiqPendingStep', JSON.stringify({ at: Date.now(), msg })); } catch {}
       setTimeout(() => show(msg), 250); return;
