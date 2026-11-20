@@ -17,3 +17,13 @@
 /* One navigation, less noise: the collapsed page explainer repeated what the
    station tabs and page title already say, so it is hidden on parent pages. */
 #parentServiceContext{display:none!important}
+
+/* One header style for every parent page that still uses the older top bar
+   (same look as the tidied Appointments and Report pages). */
+body.has-parent-navigation header.topbar{align-items:flex-end;gap:16px;margin-bottom:16px;padding:22px 24px!important;border-radius:24px;background:linear-gradient(135deg,#f3faf7,#fff 70%)!important;border:1px solid rgba(40,103,95,.16);box-shadow:0 10px 30px rgba(40,103,95,.08)}
+body.has-parent-navigation header.topbar .page-kicker{display:inline-block;font-size:12px!important;font-weight:700;letter-spacing:0!important;text-transform:none!important;color:#28675f!important}
+body.has-parent-navigation header.topbar h1{margin:4px 0 6px!important;font-size:clamp(24px,3vw,30px)!important;color:#173b37}
+body.has-parent-navigation header.topbar .menu-button{display:none}
+body.has-parent-navigation header.topbar > a:not(.back-button),body.has-parent-navigation header.topbar .new-booking-button{min-height:46px;display:inline-flex;align-items:center;padding:10px 20px!important;border-radius:999px!important;background:#28675f!important;color:#fff!important;font-weight:700;text-decoration:none;white-space:nowrap}
+body.has-parent-navigation header.topbar .back-button{display:inline-flex;align-items:center;min-height:42px;padding:8px 16px!important;border-radius:999px!important;border:1px solid rgba(40,103,95,.3)!important;background:#fff!important;color:#28675f!important;font-weight:700;text-decoration:none}
+@media(max-width:600px){body.has-parent-navigation header.topbar{flex-direction:column;align-items:stretch}}

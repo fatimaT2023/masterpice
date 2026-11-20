@@ -168,3 +168,8 @@ html[dir=rtl] .hm-sibling{padding:4px 4px 4px 14px}
 .hm-next .hm-reasons li[data-reason="what"]>strong,.hm-next .hm-reasons li[data-reason="what"]>svg,.hm-next .hm-reasons li[data-reason="what"] .hm-reason-icon{display:none}
 .hm-next .hm-reasons li[data-reason="what"]>span{font-size:15px;line-height:1.7}
 .hm-week-actions{margin-top:12px}
+/* Journey progress: "2 of 3" under each station, ✓ when the station is finished */
+.hm-journey-prog{display:block;margin-top:4px;font-size:12px;font-weight:700;color:#6b7f7b}
+.hm-journey-step.is-done .hm-journey-num{background:#2f8f5b;color:#fff}
+.hm-journey-step.is-done .hm-journey-prog{color:#2f8f5b}
+.hm-journey-step.is-current .hm-journey-prog{color:#28675f}
