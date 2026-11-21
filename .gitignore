@@ -1,0 +1,2 @@
+# Local QA artefacts: automated browser profiles must never be committed
+output/**/browser-profile/

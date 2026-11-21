@@ -275,7 +275,9 @@ document.addEventListener(
     // STATUS
     // =============================
 
+    // Phase 5: summary buckets from the shared lifecycle (pending/accepted/new time = upcoming; rejected = cancelled).
     function getBookingStatus(booking) {
+ const state=window.RafiqAppointments?.stateOf(booking);if(state)return state==='completed'?'completed':['cancelled','rejected'].includes(state)?'cancelled':'upcoming';
  if(booking.status==='cancelled')return 'cancelled';
  if(booking.status==='completed')return 'completed';
  return 'upcoming';
@@ -549,7 +551,7 @@ document.addEventListener(
               </div>
 
 
-              <span class="status-badge ${status}">
+              <span class="status-badge ${status}" data-appt-state="${escapeHTML(booking.id)}">
                 ${getStatusLabel(
                   status
                 )}
@@ -637,12 +639,12 @@ document.addEventListener(
             </div>
 
 
-            <details class="booking-extra"><summary>Payment & booking details</summary><div class="booking-family-payment"><p>Booked by: ${escapeHTML(window.RafiqFamily?.user(booking.createdBy||booking.parentId)?.fullName||'Caregiver')}</p>${booking.sessionPayment?`<p>Payment: ${escapeHTML(booking.sessionPayment.status)} · ${escapeHTML(booking.sessionPayment.amount)} JOD</p><p>Paid by: ${escapeHTML(booking.sessionPayment.payerName||window.RafiqFamily?.user(booking.sessionPayment.payerId||booking.createdBy||booking.parentId)?.fullName||'Caregiver')}</p><p>Any refund returns to the original payment method.</p>`:''}</div><p class="booking-extra-reference">Reference: ${escapeHTML(booking.id)}</p></details><div class="booking-card-footer">
+            <details class="booking-extra"><summary>Payment & booking details</summary><div class="booking-family-payment"><p>Booked by: ${escapeHTML(window.RafiqFamily?.user(booking.createdBy||booking.parentId)?.fullName||'Caregiver')}</p>${booking.sessionPayment?`<p>Payment: ${escapeHTML(booking.sessionPayment.status)} · ${escapeHTML(booking.sessionPayment.amount)} JOD</p><p>Paid by: ${escapeHTML(booking.sessionPayment.payerName||window.RafiqFamily?.user(booking.sessionPayment.payerId||booking.createdBy||booking.parentId)?.fullName||'Caregiver')}</p><p>Any refund returns to the original payment method.</p>`:''}</div><p class="booking-extra-reference">Reference: ${escapeHTML(booking.id)}</p></details><div class="appt-next" data-appt="${escapeHTML(booking.id)}"></div><div class="booking-card-footer">
 
 
 
 
-              <div class="booking-actions">${booking.consultationType==='online'&&status==='upcoming'?`<a class="journey-link" href="../meetingZoom/index.html?booking=${encodeURIComponent(booking.id)}">Open video room</a>`:''}${window.RafiqCareJourney?.reportFor(booking)?`<a class="journey-link report-ready-link" href="specialist-report.html" data-report-booking="${escapeHTML(booking.id)}">Read session report</a>`:status==='completed'?'<span class="report-pending-note">Report awaiting submission</span>':''}<span class="followup-invitation">Want ongoing follow-up with this specialist?</span><a class="specialist-message-link" href="follow-up-request.html?specialist=${encodeURIComponent(booking.specialistId)}&amp;child=${encodeURIComponent(booking.childId||'')}">Request follow-up</a>
+              <div class="booking-actions">${booking.consultationType==='online'&&(window.RafiqAppointments?window.RafiqAppointments.stateOf(booking)==='accepted'&&window.RafiqAppointments.isPaid(booking):status==='upcoming')?`<a class="journey-link" href="../meetingZoom/index.html?booking=${encodeURIComponent(booking.id)}">Open video room</a>`:''}${window.RafiqCareJourney?.reportFor(booking)?`<a class="journey-link report-ready-link" href="specialist-report.html" data-report-booking="${escapeHTML(booking.id)}">Read session report</a>`:status==='completed'?'<span class="report-pending-note">Report awaiting submission</span>':''}<span class="followup-invitation">Want ongoing follow-up with this specialist?</span><a class="specialist-message-link" href="follow-up-request.html?specialist=${encodeURIComponent(booking.specialistId)}&amp;child=${encodeURIComponent(booking.childId||'')}">Request follow-up</a>
 
                 <button
                   type="button"
@@ -653,7 +655,7 @@ document.addEventListener(
                 </button>
 
                 ${
-                  status === "upcoming"
+                  !window.RafiqAppointments && status === "upcoming"
                     ? `
                       <button
                         type="button"
@@ -683,6 +685,7 @@ document.addEventListener(
       addBookingListeners();
 
       updateSummary();
+      window.RafiqAppointmentTracker?.paint();
     }
 
 
@@ -1073,6 +1076,7 @@ if (
     // =============================
 
     renderBookings();
+    window.addEventListener('rafiq:appointments-changed',()=>{bookings=getBookings();renderBookings();});
     window.addEventListener('storage',event=>{if(['rafiqBookings','rafiqSpecialistReports'].includes(event.key)){bookings=getBookings();renderBookings();}});
     const requestedBooking=new URLSearchParams(location.search).get('booking');
     const requested=bookings.find(b=>b.id===requestedBooking&&b.childId===currentChild.id);

@@ -320,7 +320,8 @@ document.addEventListener(
       return allBookings.filter(
         booking =>
           booking.specialistId ===
-          specialist.id
+          specialist.id &&
+          !["requested", "pending"].includes(booking.status)
       );
     }
 
@@ -1180,7 +1181,7 @@ document.addEventListener(
 
               <div class="case-client">
 
-                <div class="case-avatar">
+                <div class="case-avatar" data-user-content>
                   ${escapeHTML(
                     childInitial
                   )}

@@ -22,28 +22,13 @@
  function text(key,name=''){return copy[key][ar()?1:0].replaceAll('{name}',name);}
  function node(tag,value){const el=document.createElement(tag);if(value)el.textContent=value;return el;}
  function button(key,fn,name){const el=node('button',text(key,name));el.type='button';el.className='today-secondary';el.onclick=fn;return el;}
- function open(child,trigger){
-  const dialog=node('dialog');dialog.className='support-dialog';dialog.dir=ar()?'rtl':'ltr';let step=0,focus=null;
-  const done=answer=>{try{child=window.RafiqSupportMode.save(child,answer);renderMessage(answer);}catch{const e=node('p',text('error'));e.role='alert';dialog.append(e);}};
-  function heading(key){dialog.replaceChildren();const h=node('h2',text(key,child.name));h.id='supportQuestion';h.tabIndex=-1;dialog.setAttribute('aria-labelledby',h.id);dialog.append(h);h.focus();}
-  function finish(){dialog.close();dialog.remove();trigger?.focus();if(location.pathname.endsWith('/parent-dashboard.html')){location.reload();return;}window.dispatchEvent(new Event('rafiq-support-change'));}
-  function renderMessage(answer){heading('saved');dialog.append(node('p',text(answer.situation==='worried'?'coming':window.RafiqSupportServices.active(child)?'on':'thanks',child.name)));if(answer.situation==='worried'){const a=node('a',text('concern'));a.href='screening.html';dialog.append(a);}dialog.append(button('close',finish));}
-  function show(){
-   heading(['question','diagnosis','where'][step]);
-   const option=(key,fn)=>dialog.append(button(key,fn,child.name));
-   if(step===0){option('diagnosed',()=>{step=1;show();});option('worried',()=>done({situation:'worried',focus:null}));option('dismiss',()=>done({situation:'none',focus:null}));}
-   if(step===1){option('autism',()=>{focus='autism';step=2;show();});for(const [key,value] of [['speech','speech_language'],['other','other'],['private','not_said']])option(key,()=>done({situation:'diagnosed_no_followup',focus:value}));}
-   if(step===2){option('noFollow',()=>done({situation:'diagnosed_no_followup',focus}));option('following',()=>done({situation:'diagnosed_following',focus}));}
-   option('skip',()=>done({situation:'skipped',focus:null}));option('back',()=>{if(step){step--;show();}else finish();});if(child.supportProfile)option('clear',()=>done({situation:'none',focus:null}));
-   dialog.append(node('small',text('footer')));
-  }
-  document.body.append(dialog);dialog.addEventListener('cancel',()=>{setTimeout(()=>dialog.remove(),0);});dialog.showModal();show();
- }
+ // Phase 2: support choices are made in the guided discovery page, which also handles edits.
+ function open(child){const page=location.pathname.split('/').pop();location.assign('support-discovery.html?child='+encodeURIComponent(child.id)+'&return='+(page==='child-profile.html'?'profile':'home'));}
  function mount(){
   const page=location.pathname.split('/').pop();if(!['parent-dashboard.html','child-profile.html','getting-started.html','specialists.html','child-history.html'].includes(page))return;
   const children=window.RafiqSetup.readChildren(),id=new URLSearchParams(location.search).get('child')||window.RafiqFamily.selected(),child=children.find(c=>c.id===id)||children[0];if(!child)return;
   if(page==='specialists.html'){directory(child);return;}
-  if(page==='child-history.html'){if(!child.supportProfile&&!document.querySelector('.support-dialog'))open(child);return;}
+  if(page==='child-history.html')return;
   document.getElementById('supportModeCard')?.remove();
   const home=page==='parent-dashboard.html',active=window.RafiqSupportServices.active(child);if(home&&child.supportProfile&&!active)return;
   const card=node('section');card.id='supportModeCard';card.className='today-card family-card support-mode-card';card.dir=ar()?'rtl':'ltr';

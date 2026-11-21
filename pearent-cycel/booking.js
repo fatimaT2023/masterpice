@@ -1924,8 +1924,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if(!accepted){window.RafiqBookingJourney.step(1);return;}
       if(!validateBooking()){window.RafiqBookingJourney.step(1);bookingError.focus();return;}
 
+      // Phase 5: send a request (status Pending). The demo payment happens only after the
+      // specialist accepts, from My appointments. The shared module validates and de-duplicates.
       confirmBookingButton.disabled = true;
-      let sessionPayment;
+      let confirmedBooking;
       try {
         const latest = getApprovedSpecialistProfile();
         if (!latest) {
@@ -1934,21 +1936,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         const price = Number(latest.price);
         if (latest.price === null || latest.price === undefined || String(latest.price).trim() === '' || !Number.isFinite(price) || price !== reviewedFee) {
-          bookingError.textContent = 'The session fee changed. Please review your appointment again before payment.';
+          bookingError.textContent = 'The session fee changed. Please review your request again.';
           bookingError.focus();return;
         }
         window.RafiqBookingJourney.step(3);
-        if(JSON.parse(localStorage.getItem('rafiqBookings')||'[]').some(b=>b.childId===currentChild.id&&b.specialistId===specialist.id&&b.date===selectedDate&&b.time===selectedTime&&!['cancelled','canceled'].includes(b.status))){bookingError.textContent='This child already has this appointment. No second payment is needed.';return;}
-        sessionPayment = await window.RafiqFinance.checkout(price,{Child:currentChild.name,Specialist:latest.fullName||specialist.name,Date:selectedDateLabel,Time:selectedTime});
+        confirmedBooking=window.RafiqAppointments.request({child:currentChild,specialist:latest,consultationType:selectedType,date:selectedDate,time:selectedTime,note:bookingReason.value,parentId:currentChild.parentId||sessionStorage.getItem('rafiqParentUserId')||null,createdBy:sessionStorage.getItem('rafiqParentUserId')||null});
       } catch (error) {
-        window.RafiqBookingJourney.step(1);bookingError.textContent = 'Demo payment could not be completed. Please try again.';
+        window.RafiqBookingJourney.step(1);bookingError.textContent=error?.message||'We could not send your request. Please try again.';bookingError.focus();
         return;
       } finally {
         confirmBookingButton.disabled = false;
       }
-      if (!sessionPayment) {window.RafiqBookingJourney.step(1);bookingError.textContent='Payment was cancelled. Your appointment has not been booked. Your selections are still here.';bookingError.focus();return;}
-      let confirmedBooking;
-      try {confirmedBooking=createBooking(sessionPayment);} catch {bookingError.textContent='We could not save your appointment. No real money was collected. Please try again.';bookingError.focus();return;}
       if(confirmedBooking){try{window.RafiqConcernBooking.clear(currentChild.id);}catch{/* Confirmed booking already holds the reviewed note. */}}
 
 
@@ -1999,7 +1997,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const appointments=document.querySelector('#successView .success-actions a[href="bookings.html"]');if(appointments)appointments.href='bookings.html?booking='+encodeURIComponent(booking.id);
 
     successMessage.textContent =
-      `Your appointment with ${booking.specialistName} has been saved for ${booking.childName}.`;
+      `Your request to ${booking.specialistName} for ${booking.childName} is waiting for a reply. Status: Pending.`;
 
 
     confirmedSpecialist.textContent =

@@ -10,7 +10,7 @@
   try{
    const children=window.RafiqSetup?.readChildren?.()||JSON.parse(localStorage.getItem('rafiqChildren')||'[]');
    const params=new URLSearchParams(location.search);
-   const id=(location.pathname.endsWith('/child-profile.html')?params.get('child'):null)||(window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId'));
+   const id=(/\/(child-profile|parent-dashboard)\.html$/.test(location.pathname)?params.get('child'):null)||(window.RafiqFamily ? window.RafiqFamily.selected() : localStorage.getItem('rafiqCurrentChildId'));
    const profiles=Array.isArray(children)?children:[];
    apply((profiles.find(child=>child.id===id)||profiles[0])?.gender);
   }catch{apply('');}
@@ -18,6 +18,8 @@
  apply('');sync();
  document.addEventListener('DOMContentLoaded',()=>{sync();const form=document.getElementById('childForm');form?.addEventListener('change',event=>{if(event.target.matches('input[name="gender"]'))sync();});form?.addEventListener('reset',()=>queueMicrotask(sync));});
  window.addEventListener('pageshow',sync);
- window.addEventListener('storage',event=>{if(event.key===null||['rafiqChildren','rafiqCurrentChildId'].includes(event.key))sync();});
+ window.addEventListener('storage',event=>{if(event.key===null||['rafiqChildren','rafiqCurrentChildId'].includes(event.key)||event.key===('rafiqCurrentChildId_'+sessionStorage.getItem('rafiqParentUserId')))sync();});
+ // The preview and family workspace retain account-scoped selection, including BFCache returns.
+ document.addEventListener('rafiq:family-change',sync);
  document.addEventListener('rafiq-child-change',sync);
 })();

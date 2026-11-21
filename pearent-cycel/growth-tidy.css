@@ -1,0 +1,43 @@
+/* Growth journal: shorter header, actionable CDC skills, notes side by side */
+.growth-tidy header.growth-heading a.screen-flow-link,.growth-tidy header.growth-heading .growth-jump,.growth-tidy .parent-cycle-help,.growth-tidy #growthProgress{display:none!important}
+.growth-tidy header.growth-heading{padding:22px 26px!important;border-radius:24px!important;background:rgba(255,255,255,.82)!important;box-shadow:0 10px 30px rgba(36,62,67,.07)!important;margin-bottom:18px!important}
+.growth-tidy header.growth-heading h1{margin:0!important;font-size:clamp(24px,2.6vw,32px)!important;letter-spacing:0!important}
+.growth-tidy #growthChild{margin:6px 0 0!important;display:inline-block;padding:3px 12px;border-radius:999px;background:#e8f1ee;color:#28675f;font-weight:700;font-size:13px}
+.growth-tidy .growth-lead{margin:10px 0 0;max-width:70ch;line-height:1.7;font-size:14.5px}
+/* Stage card */
+.growth-tidy #growthStageSection{padding:24px!important;border-radius:24px!important}
+.growth-tidy .stage-hero-header{padding-bottom:6px!important}
+.growth-tidy #growthStage{font-size:clamp(22px,2.4vw,28px)!important;letter-spacing:0!important}
+.growth-tidy .gx-summary{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:8px 14px;margin:6px 0 16px;padding:12px 16px;border-radius:16px;background:rgba(40,103,95,.06)}
+.growth-tidy .gx-summary strong{font-size:14.5px;color:#1f3b40}
+.growth-tidy .gx-bar{height:8px;border-radius:999px;background:rgba(40,103,95,.12);overflow:hidden}
+.growth-tidy .gx-bar>span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#5fd3b8,#28675f)}
+.growth-tidy .gx-note,.growth-tidy .gx-hint{grid-column:1/-1;margin:2px 0 0;font-size:13px;line-height:1.7}
+.growth-tidy .gx-note{color:#8a4b22}
+.growth-tidy .gx-note a{font-weight:800;color:#28675f;white-space:nowrap}
+.growth-tidy #stageSkillsGrid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
+.growth-tidy .ps-domain{padding:16px!important;border-radius:18px!important}
+.growth-tidy .ps-domain ul{list-style:none!important;margin:10px 0!important;padding:0!important;display:grid;gap:8px}
+.growth-tidy .ps-domain li{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.75);border:1px solid rgba(40,103,95,.12);line-height:1.5}
+.growth-tidy .ps-domain li.is-yes{background:#eaf6f0;border-color:rgba(40,103,95,.3)}
+.growth-tidy .ps-domain li.is-not-yet{background:#fff6ec;border-color:rgba(200,130,60,.35)}
+.growth-tidy .gx-skill{font-size:14px}
+.growth-tidy .gx-tick{display:flex;gap:4px;flex:none}
+.growth-tidy .gx-tick button{min-height:32px;padding:0 10px;border-radius:999px;border:1px solid rgba(40,103,95,.22);background:#fff;color:#3f5357;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;white-space:nowrap}
+.growth-tidy .gx-tick button[data-value="yes"][aria-pressed="true"]{background:#28675f;border-color:#28675f;color:#fff}
+.growth-tidy .gx-tick button[data-value="not_yet"][aria-pressed="true"]{background:#f3c48e;border-color:#e0a35c;color:#5a3410}
+.growth-tidy .gx-tick button:focus-visible{outline:2px solid #28675f;outline-offset:2px}
+.growth-tidy .ps-domain .ps-count{font-size:12.5px!important;opacity:.7}
+.growth-tidy .ps-domain>button{min-height:36px!important;border-radius:999px!important;font-size:13px!important}
+.growth-tidy #growthSourceBox{padding:12px 16px!important;margin-top:16px!important;border-radius:14px!important}
+.growth-tidy #growthSourceBox .growth-source-info{font-size:12.5px!important;opacity:.8}
+/* Notes: timeline wide, write-a-note on the side */
+.growth-tidy .gx-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);gap:20px;align-items:start;margin-top:20px}
+.growth-tidy .gx-side .growth-compose{margin:0!important;padding:20px!important;border-radius:22px!important;position:sticky;top:16px}
+.growth-tidy .gx-side .growth-section-label{display:none!important}
+.growth-tidy .gx-side #growthComposeTitle{font-size:19px!important}
+.growth-tidy .gx-main #savedObservations{margin:0!important;padding:22px!important;border-radius:22px!important}
+.growth-tidy .growth-entry{padding:14px 16px!important;margin-bottom:10px!important;border-radius:16px!important;min-height:0!important}
+@media(max-width:900px){.growth-tidy .gx-layout{grid-template-columns:1fr}.growth-tidy .gx-side .growth-compose{position:static}.growth-tidy .gx-side{order:-1}}
+@media(max-width:640px){.growth-tidy #stageSkillsGrid{grid-template-columns:1fr!important}.growth-tidy .ps-domain li{flex-direction:column;align-items:flex-start}}
+.growth-tidy #growthStage,.growth-tidy #growthStageSection .stage-tag-badge{display:none!important}.growth-tidy #growthStageDescription{margin-top:0!important;font-size:14px!important}

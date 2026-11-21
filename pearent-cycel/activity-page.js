@@ -7,8 +7,11 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(!child.setupCompletedAt||localStorage.getItem('rafiqSetupPendingChildId')===child.id){location.replace('getting-started.html?child='+encodeURIComponent(child.id));return;}
   (window.RafiqFamily ? window.RafiqFamily.select(child.id) : localStorage.setItem('rafiqCurrentChildId',child.id));
   get('todayHeading').textContent='Activity with my child';
-  get('todayChildContext').textContent=child.name+' · '+window.RafiqSetup.formatAge(window.RafiqSetup.childContext(child).chronological);
-  get('todayDate').textContent=new Intl.DateTimeFormat(document.documentElement.lang==='ar'?'ar-JO':'en',{weekday:'long',day:'numeric',month:'long'}).format(new Date());
+  const K=window.RafiqServicesKit,pill=get('todayChildContext');
+  if(K){pill.dataset.noTranslate='';const paint=()=>pill.replaceChildren(K.name(child),document.createTextNode(' · '+K.ageLabel(window.RafiqSetup.childContext(child).chronological)));paint();K.onLang(paint);}
+  else pill.textContent=child.name+' · '+window.RafiqSetup.formatAge(window.RafiqSetup.childContext(child).chronological);
+  const paintDate=()=>{get('todayDate').dataset.noTranslate='';get('todayDate').textContent=new Intl.DateTimeFormat(document.documentElement.lang==='ar'?'ar-JO':'en',{weekday:'long',day:'numeric',month:'long'}).format(new Date());};
+  paintDate();K?.onLang(paintDate);
   get('todayContent').hidden=false;
  }catch{get('todayError').textContent='We couldn’t read your child’s profile. Check browser storage and try again.';get('todayError').hidden=false;}
 });

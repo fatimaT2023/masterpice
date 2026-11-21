@@ -1,0 +1,317 @@
+/* Phase 1 onboarding: visual step-by-step setup on Rafeeq's own glass identity.
+   Colour always comes from the selected child's theme (parent-background.css):
+   girl = pink, boy = blue. Before a choice, a lilac blend of both is used.
+   Layout: one glass "child card" beside one glass form card; the story is a
+   single centred card with a nine-bead map of the topics. */
+
+/* ---------- Theme tokens ---------- */
+html[data-child-appearance="cream"] body.parent-setup{
+ --child-wallpaper:#f6eef7;--child-theme-accent:#6d4f86;--child-theme-rgb:109,79,134;
+ --child-theme-tint:#f5effa;--child-theme-border:#e4d8ef;
+}
+html[data-child-appearance="cream"] body.parent-setup>.parent-static-background{
+ background-image:linear-gradient(115deg,#fce1eb 0%,#f4e8f6 48%,#dceefb 100%);
+}
+body.parent-setup{
+ --ob-accent:var(--child-theme-accent);--ob-rgb:var(--child-theme-rgb);
+ --ob-tint:var(--child-theme-tint);--ob-line:var(--child-theme-border);
+ --ob-ink:color-mix(in srgb,var(--child-theme-accent) 22%,#1f1a24);
+ --ob-muted:color-mix(in srgb,var(--child-theme-accent) 30%,#6a6470);
+ --ob-glass:rgba(255,255,255,.5);--ob-glass-strong:rgba(255,255,255,.74);--ob-edge:rgba(255,255,255,.86);
+ --ob-shadow:0 22px 60px rgba(var(--child-theme-rgb),.13),inset 0 1px 0 rgba(255,255,255,.8);
+ --ob-girl:#944367;--ob-girl-tint:#fce1eb;--ob-boy:#225f87;--ob-boy-tint:#dceefb;
+ --ob-check:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.2 4.2L19 7'/%3E%3C/svg%3E");
+ /* Older onboarding tokens now follow the child theme instead of the generic green. */
+ --sage:var(--ob-accent);--sage-deep:var(--ob-accent);--sage-tint:var(--ob-tint);--theme-primary-rgb:var(--ob-rgb);--mint-ink:var(--ob-accent);
+ --theme-primary-deep:var(--ob-accent);
+ color:var(--ob-ink);
+}
+.parent-setup .profile-story-inline{--fj-green:var(--ob-accent);--fj-accent:var(--ob-accent);--fj-line:var(--ob-line);--fj-ink:var(--ob-ink);--fj-soft:var(--ob-tint);--fj-muted:var(--ob-muted);--fj-selected:var(--ob-tint)}
+
+/* Section icons, shared by the story track, card header and summary. */
+.parent-setup [class*="story-icon-"]{--icon:none}
+.parent-setup .story-icon-about{--icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8'/%3E%3Cpath d='M9 14c1.6 1.5 4.4 1.5 6 0M9.5 10.2h.01M14.5 10.2h.01M12 4c-1.2 1-1.2 2.2 0 3'/%3E%3C/svg%3E")}
+.parent-setup .story-icon-birth{--icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 11h18M5 11v4a5 5 0 0 0 5 5h4a5 5 0 0 0 5-5v-4M8 11V7.5a4 4 0 0 1 8 0V11'/%3E%3C/svg%3E")}
+.parent-setup .story-icon-health{--icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12h4l2-5 4 10 2-5h6'/%3E%3C/svg%3E")}
+.parent-setup .story-icon-vaccinations{--icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m15 3 6 6M18 6l-9 9M12.5 5.5l6 6M7 11l6 6M9 15l-2.5-2.5L4 15v5h5l2.5-2.5Z'/%3E%3C/svg%3E")}
+.parent-setup .story-icon-feeding{--icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 3v5a2.5 2.5 0 0 0 5 0V3M8.5 10.5V21M8.5 3v4M16.5 3c-1.9 0-2.5 2.4-2.5 4.5S15 11 16.5 11 19 9.6 19 7.5 18.4 3 16.5 3ZM16.5 11v10'/%3E%3C/svg%3E")}
+.parent-setup .story-icon-sleep{--icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19.5 14.5A7.5 7.5 0 1 1 9.5 4.5a6 6 0 0 0 10 10Z'/%3E%3Cpath d='M15 3h4l-4 4h4'/%3E%3C/svg%3E")}
+.parent-setup .story-icon-play{--icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 13h7v7H4ZM13 13h7v7h-7ZM8.5 4h7v7h-7Z'/%3E%3C/svg%3E")}
+.parent-setup .story-icon-family{--icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='8' r='3'/%3E%3Cpath d='M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 5.5a2.5 2.5 0 0 1 0 5M17.5 14c2.2.5 3.5 2.6 3.5 6'/%3E%3C/svg%3E")}
+.parent-setup .story-icon-goals{--icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9Z'/%3E%3C/svg%3E")}
+
+/* ---------- Header and journey steps ---------- */
+/* Shared site header controls take the child's colour on this page only. */
+body.parent-setup .topbar .site-languages{background:var(--ob-glass-strong);border-color:var(--ob-edge)}
+body.parent-setup .topbar .site-languages button[aria-pressed=true]{background:var(--ob-accent);color:#fff;transition:background .4s}
+body.parent-setup .topbar .site-languages button[aria-pressed=false]{color:var(--ob-accent)}
+.parent-setup .setup-exit{color:var(--ob-muted)}
+.parent-setup .setup-steps{display:flex;gap:6px;max-width:680px;margin:0 auto 28px;padding:8px;border-radius:999px;background:var(--ob-glass);border:1px solid var(--ob-edge);backdrop-filter:blur(20px) saturate(130%);-webkit-backdrop-filter:blur(20px) saturate(130%);box-shadow:var(--ob-shadow)}
+.parent-setup .setup-steps li{flex:1;justify-content:center;gap:10px;padding:6px 10px;border-radius:999px;font-size:14px;color:var(--ob-muted);transition:background .3s}
+.parent-setup .setup-steps li b{font-weight:600}
+.parent-setup .setup-steps li>span{position:relative;width:36px;height:36px;flex:none;background:rgba(255,255,255,.75);border:1px solid var(--ob-line);color:var(--ob-muted)}
+.parent-setup .setup-steps svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.parent-setup .setup-steps li[aria-current=step]{background:var(--ob-glass-strong);color:var(--ob-accent)}
+.parent-setup .setup-steps li[aria-current=step] b{font-weight:700}
+.parent-setup .setup-steps li[aria-current=step]>span{background:var(--ob-accent);color:#fff;border-color:transparent;box-shadow:0 6px 16px rgba(var(--ob-rgb),.32)}
+.parent-setup .setup-steps li:has(~ li[aria-current=step]){color:var(--ob-ink)}
+.parent-setup .setup-steps li:has(~ li[aria-current=step])>span{background:var(--ob-tint);color:var(--ob-accent);border-color:rgba(var(--ob-rgb),.35)}
+.parent-setup .setup-steps li:has(~ li[aria-current=step])>span::after{content:'';position:absolute;inset-inline-end:-4px;bottom:-4px;width:16px;height:16px;border-radius:50%;border:2px solid #fff;background:var(--ob-accent) var(--ob-check) center/10px no-repeat}
+
+/* ---------- Basics: child card + form card ---------- */
+.parent-setup .journey-basics{grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:clamp(24px,3.5vw,48px);align-items:start}
+.parent-setup .child-preview{position:sticky;top:20px;display:grid;justify-items:center;gap:12px;padding:28px 24px 24px;text-align:center;border-radius:32px;background:var(--ob-glass);border:1px solid var(--ob-edge);backdrop-filter:blur(22px) saturate(130%);-webkit-backdrop-filter:blur(22px) saturate(130%);box-shadow:var(--ob-shadow)}
+.parent-setup .child-preview .setup-eyebrow{margin:0;color:var(--ob-accent)}
+.parent-setup .child-preview h1{margin:0;font-size:clamp(32px,3.6vw,46px);line-height:1.05;letter-spacing:-.04em;color:var(--ob-ink)}
+.parent-setup .child-preview h1 em{color:var(--ob-accent);font-style:normal}
+.parent-setup .child-preview .setup-companion{width:100%;max-width:320px;height:220px;margin:4px auto 0}
+.parent-setup .setup-companion img{transition:opacity .35s ease,transform .5s cubic-bezier(.2,.7,.2,1);height:230px;width:184px}
+html[data-child-appearance="cream"] .parent-setup .setup-companion .companion-boy,
+html[data-child-appearance="cream"] .parent-setup .setup-companion .companion-girl{opacity:1}
+html[data-child-appearance="cream"] .parent-setup .setup-companion .companion-boy{transform:translateX(-96%) scale(.82)}
+html[data-child-appearance="cream"] .parent-setup .setup-companion .companion-girl{transform:translateX(-4%) scale(.82)}
+.parent-setup .preview-card{display:grid;justify-items:center;gap:6px;width:100%;padding:16px 18px;border-radius:22px;background:var(--ob-glass-strong);border:1px solid var(--ob-edge)}
+.parent-setup .preview-name,.parent-setup .preview-name-empty{font-family:var(--font-display,"Bricolage Grotesque",sans-serif);font-size:26px;line-height:1.15;font-weight:600;color:var(--ob-ink);overflow-wrap:anywhere;unicode-bidi:plaintext}
+.parent-setup .preview-name-empty{color:var(--ob-muted);opacity:.7}
+.parent-setup .preview-age{font-size:14px;color:var(--ob-muted)}
+.parent-setup .preview-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:4px 0 0;padding:0;list-style:none}
+.parent-setup .preview-chips[hidden]{display:none}
+.parent-setup .preview-chip{padding:4px 12px;border-radius:999px;font-size:12.5px;font-weight:600;background:var(--ob-tint);color:var(--ob-accent);border:1px solid rgba(var(--ob-rgb),.2)}
+.parent-setup .child-preview .setup-reassurance{margin:0;font-size:13px;color:var(--ob-muted)}
+
+.parent-setup .journey-basics .form-card{padding:28px 32px 26px;border-radius:32px;background:var(--ob-glass);border:1px solid var(--ob-edge);backdrop-filter:blur(22px) saturate(130%);-webkit-backdrop-filter:blur(22px) saturate(130%);box-shadow:var(--ob-shadow)}
+.parent-setup .journey-basics .form-heading{display:flex;align-items:center;gap:14px;padding:0 0 18px;margin:0 0 18px;border-bottom:1px solid var(--ob-line)}
+.parent-setup .journey-basics .form-heading h2{margin:0;font-size:24px;color:var(--ob-ink)}
+.parent-setup .journey-basics .form-heading p{margin:3px 0 0;font-size:13.5px;color:var(--ob-muted)}
+.parent-setup .child-avatar-preview{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--ob-tint);border:2px solid #fff;color:var(--ob-accent);font-size:22px;font-weight:700;box-shadow:0 6px 18px rgba(var(--ob-rgb),.18)}
+.parent-setup .membership-access-note{margin:0 0 16px;padding:9px 14px;border-radius:14px;font-size:12.5px;line-height:1.5;background:rgba(255,255,255,.55);border:1px solid var(--ob-line);color:var(--ob-muted)}
+
+/* Three-screen tabs: number, then a check once done. */
+.parent-setup .basics-tabs{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 22px;padding:0;counter-reset:basics}
+.parent-setup .basics-tabs li{counter-increment:basics}
+.parent-setup .basics-tabs button{width:100%;display:flex;align-items:center;gap:8px;min-height:44px;padding:6px 4px 10px;border:0;border-bottom:3px solid var(--ob-line);background:none;color:var(--ob-muted);font:600 13.5px/1.2 inherit;cursor:pointer;text-align:start}
+.parent-setup .basics-tabs button:disabled{cursor:default;opacity:.7}
+.parent-setup .basics-tabs i{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.75);border:1px solid var(--ob-line);font-style:normal;font-size:12px;font-weight:700}
+.parent-setup .basics-tabs i::before{content:counter(basics)}
+.parent-setup .basics-tabs li.is-current button{border-bottom-color:var(--ob-accent);color:var(--ob-accent)}
+.parent-setup .basics-tabs li.is-current i{background:var(--ob-accent);border-color:transparent;color:#fff}
+.parent-setup .basics-tabs li.is-done button{border-bottom-color:rgba(var(--ob-rgb),.45);color:var(--ob-ink)}
+.parent-setup .basics-tabs li.is-done i{background:var(--ob-accent) var(--ob-check) center/13px no-repeat;border-color:transparent}
+.parent-setup .basics-tabs li.is-done i::before{content:''}
+
+.parent-setup .basics-page{border:0;margin:0;padding:0;min-width:0;animation:ob-in .35s cubic-bezier(.2,.7,.2,1)}
+.parent-setup .basics-page[hidden]{display:none}
+.parent-setup .page-title{display:block;padding:0;margin:0 0 18px;font-family:var(--font-display,"Bricolage Grotesque",sans-serif);font-size:25px;font-weight:600;letter-spacing:-.02em;line-height:1.2;color:var(--ob-ink);outline:none}
+.parent-setup .journey-basics .form-group{margin-bottom:18px}
+.parent-setup .journey-basics .form-group>label,.parent-setup .journey-basics .gender-field>legend,.parent-setup .card-choices>legend,.parent-setup .workspace-field{display:block;margin:0 0 8px;padding:0;font-size:14px;font-weight:600;color:var(--ob-ink)}
+.parent-setup .journey-basics .input-wrapper input,.parent-setup .journey-basics .input-wrapper select,.parent-setup .workspace-field select{width:100%;height:54px;padding:0 16px;border-radius:16px;font-size:16px;background:rgba(255,255,255,.72);border:1.5px solid var(--ob-line);color:var(--ob-ink)}
+.parent-setup .journey-basics .input-wrapper input:focus,.parent-setup .workspace-field select:focus{outline:none;border-color:var(--ob-accent);box-shadow:0 0 0 4px rgba(var(--ob-rgb),.14)}
+.parent-setup .journey-basics .has-error .input-wrapper input{border-color:#b4434f}
+.parent-setup .journey-basics .field-error{display:block;color:#a3303d;font-weight:600}
+.parent-setup .journey-basics .field-error:empty{display:none}
+.parent-setup .journey-basics .setup-help{color:var(--ob-muted)}
+.parent-setup .workspace-field{margin-top:4px}.parent-setup .workspace-field+p{font-size:12.5px;color:var(--ob-muted);margin:-2px 0 16px}
+.parent-setup .journey-basics .age-preview{display:inline-flex;margin-top:10px;padding:8px 14px;border-radius:999px;background:var(--ob-tint);border:1px solid rgba(var(--ob-rgb),.25)}
+.parent-setup .journey-basics .age-preview[hidden]{display:none}
+.parent-setup .journey-basics .age-preview div{display:flex;gap:8px;align-items:baseline}
+.parent-setup .journey-basics .age-preview span{font-size:12.5px;color:var(--ob-muted)}
+.parent-setup .journey-basics .age-preview strong{font-size:14px;color:var(--ob-accent)}
+
+/* Girl / boy cards: each shows its own colour so the choice previews the theme. */
+.parent-setup .gender-field{margin:6px 0 4px}
+.parent-setup .gender-field .choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.parent-setup .gender-card{position:relative;cursor:pointer;--card:var(--ob-girl);--card-tint:var(--ob-girl-tint)}
+.parent-setup .gender-boy{--card:var(--ob-boy);--card-tint:var(--ob-boy-tint)}
+.parent-setup .gender-card input,.parent-setup .icon-card input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.parent-setup .gender-card .choice-content{display:grid;justify-items:center;gap:6px;height:auto;min-height:0;padding:12px 10px 12px;border-radius:22px;background:rgba(255,255,255,.62);border:2px solid rgba(255,255,255,.9);font-size:16px;font-weight:700;color:var(--card);transition:transform .2s,box-shadow .2s,border-color .2s,opacity .2s}
+.parent-setup .gender-card img{width:112px;height:112px;object-fit:cover;object-position:50% 18%;border-radius:50%;background:var(--card-tint);border:3px solid #fff;box-shadow:0 8px 20px rgba(0,0,0,.06)}
+.parent-setup .gender-card:hover .choice-content{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.07)}
+.parent-setup .gender-card input:checked+.choice-content{border-color:var(--card);background:var(--card-tint);box-shadow:0 12px 30px color-mix(in srgb,var(--card) 22%,transparent)}
+.parent-setup .gender-card input:checked+.choice-content::after{content:'';position:absolute;top:10px;inset-inline-end:10px;width:24px;height:24px;border-radius:50%;background:var(--card) var(--ob-check) center/14px no-repeat;border:2px solid #fff}
+.parent-setup .gender-field .choice-grid:has(input:checked) .gender-card:not(:has(input:checked)) .choice-content{opacity:.62}
+.parent-setup .gender-card input:focus-visible+.choice-content{outline:3px solid var(--card);outline-offset:3px}
+
+/* Icon cards for birth timing and relationship. */
+.parent-setup .card-choices{border:0;margin:0;padding:0;min-width:0}
+.parent-setup .icon-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.parent-setup .icon-cards.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.parent-setup .icon-card{position:relative;cursor:pointer}
+.parent-setup .icon-card>span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:104px;height:100%;padding:12px 8px;border-radius:20px;background:rgba(255,255,255,.62);border:2px solid rgba(255,255,255,.9);font-size:14px;font-weight:600;text-align:center;color:var(--ob-ink);transition:transform .2s,border-color .2s,background .2s}
+.parent-setup .icon-card svg{width:46px;height:46px;padding:10px;border-radius:50%;background:var(--ob-tint);fill:none;stroke:var(--ob-accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:background .2s,stroke .2s}
+.parent-setup .icon-card:hover>span{transform:translateY(-2px)}
+.parent-setup .icon-card input:checked+span{border-color:var(--ob-accent);background:var(--ob-tint);color:var(--ob-accent)}
+.parent-setup .icon-card input:checked+span svg{background:var(--ob-accent);stroke:#fff}
+.parent-setup .icon-card input:focus-visible+span{outline:3px solid var(--ob-accent);outline-offset:3px}
+.parent-setup #relationshipField.has-error .icon-card>span{border-color:rgba(180,67,79,.45)}
+.parent-setup #prematurityField .setup-help{margin-top:8px}
+.parent-setup #dueDateField{margin-top:14px;padding:14px;border-radius:18px;background:rgba(255,255,255,.5);border:1px dashed var(--ob-line)}
+.parent-setup #dueDateField>label{display:block;font-size:14px;font-weight:600;margin-bottom:8px}
+
+/* Screen navigation: one obvious forward action. */
+.parent-setup .basics-nav{display:flex;align-items:center;gap:12px;margin-top:22px}
+.parent-setup .journey-basics .primary-button{width:auto;min-width:168px;height:auto;min-height:52px;margin-inline-start:auto;padding:13px 28px;border:0;border-radius:999px;background:linear-gradient(135deg,var(--ob-accent),color-mix(in srgb,var(--ob-accent) 78%,#fff));color:#fff;font-size:15.5px;font-weight:700;box-shadow:0 12px 28px rgba(var(--ob-rgb),.3),inset 0 1px 0 rgba(255,255,255,.3);cursor:pointer;transition:transform .2s,box-shadow .2s}
+.parent-setup .journey-basics .primary-button:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 16px 32px rgba(var(--ob-rgb),.36)}
+html[dir=rtl] .parent-setup .primary-button span[aria-hidden],html[dir=rtl] .parent-setup .setup-back-button span[aria-hidden]{display:inline-block;transform:scaleX(-1)}
+.parent-setup .setup-back-button{min-height:48px;padding:10px 16px;border:1px solid var(--ob-line);border-radius:999px;background:rgba(255,255,255,.6);color:var(--ob-ink);font:600 14px inherit;cursor:pointer}
+.parent-setup .journey-basics .form-status:empty{display:none}
+.parent-setup .journey-basics .form-footer-text{margin:14px 0 0;text-align:center;font-size:12.5px;line-height:1.6;color:var(--ob-muted)}
+.parent-setup .next-hint{display:block;font-weight:700;color:var(--ob-accent)}
+
+/* ---------- Story: one question at a time ---------- */
+.parent-setup .profile-story-inline .family-main{max-width:880px;margin:0 auto;padding-top:0}
+.parent-setup .profile-story-inline .family-story-intro{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:6px}
+.parent-setup .profile-story-inline .family-story-intro h1{margin:6px 0 6px;font-size:clamp(28px,3.4vw,38px);color:var(--ob-ink)}
+.parent-setup .profile-story-inline .family-story-intro p{font-size:15px;line-height:1.6;color:var(--ob-muted)}
+.parent-setup .profile-story-inline .family-kicker{color:var(--ob-accent);font-size:12px;letter-spacing:.12em}
+.parent-setup .story-child{display:flex;align-items:center;gap:10px;flex:none;padding:6px 16px 6px 6px;border-radius:999px;background:var(--ob-glass-strong);border:1px solid var(--ob-edge);box-shadow:0 8px 22px rgba(var(--ob-rgb),.12)}
+html[dir=rtl] .parent-setup .story-child{padding:6px 6px 6px 16px}
+.parent-setup .story-avatar{width:46px;height:46px;flex:none;border-radius:50%;border:2px solid #fff;background:var(--ob-tint) url("../rafiq-home-transfer-20261013-211454/assets/hero/sit-front-cutout.png") 50% 6%/128% auto no-repeat}
+html[data-child-appearance="girl"] .parent-setup .story-avatar{background-image:url("assets/onboarding/baby-girl.png")}
+.parent-setup .story-child .family-child-pill{max-width:240px;padding:0;border:0;background:none;font-size:13.5px;font-weight:600;color:var(--ob-accent)}
+.parent-setup .profile-story-inline #historyExit[hidden]{display:none}
+.parent-setup .profile-story-inline .family-privacy{margin:12px 0 14px;padding:0;background:none;border:0}
+.parent-setup .profile-story-inline .family-privacy summary{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:4px 14px;border-radius:999px;background:rgba(255,255,255,.55);border:1px solid var(--ob-line);font-size:13px;font-weight:600;color:var(--ob-accent);cursor:pointer;list-style:none}
+.parent-setup .profile-story-inline .family-privacy summary::-webkit-details-marker{display:none}
+.parent-setup .profile-story-inline .family-privacy summary::before{content:'';width:15px;height:15px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Crect x='5' y='10' width='14' height='10' rx='3'/%3E%3Cpath d='M8 10V7.5a4 4 0 0 1 8 0V10'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Crect x='5' y='10' width='14' height='10' rx='3'/%3E%3Cpath d='M8 10V7.5a4 4 0 0 1 8 0V10'/%3E%3C/svg%3E") center/contain no-repeat}
+.parent-setup .profile-story-inline .family-privacy p{margin:10px 0 0;padding:12px 16px;border-radius:16px;background:rgba(255,255,255,.55);font-size:13.5px;line-height:1.6;color:var(--ob-muted)}
+/* The section name is shown inside the card; the live label stays for screen readers. */
+.parent-setup #historyProgress{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.parent-setup .child-story-page .interview-card{position:relative;padding:22px 30px 26px;border-radius:30px;background:var(--ob-glass-strong);border:1px solid var(--ob-edge);backdrop-filter:blur(22px) saturate(130%);-webkit-backdrop-filter:blur(22px) saturate(130%);box-shadow:var(--ob-shadow);animation:ob-in .35s cubic-bezier(.2,.7,.2,1)}
+
+/* Nine-bead map of the story. */
+.parent-setup .story-track{--story-fill:0;position:relative;display:flex;gap:2px;margin:0 0 20px;padding:0 0 16px;list-style:none;border-bottom:1px solid var(--ob-line)}
+.parent-setup .story-track::before,.parent-setup .story-track::after{content:'';position:absolute;top:17px;inset-inline-start:calc(100% / 18);height:3px;border-radius:3px}
+.parent-setup .story-track::before{inset-inline-end:calc(100% / 18);background:var(--ob-line)}
+.parent-setup .story-track::after{width:calc((100% - 100% / 9) * var(--story-fill));background:var(--ob-accent);transition:width .5s ease}
+.parent-setup .story-bead{position:relative;z-index:1;flex:1 1 0;min-width:0;display:grid;justify-items:center;gap:6px;font-size:11.5px;line-height:1.2;color:var(--ob-muted);text-align:center}
+.parent-setup .story-bead::before{content:'';width:36px;height:36px;border-radius:50%;background:#fff;border:1.5px solid var(--ob-line);box-sizing:border-box;transition:transform .3s,background .3s}
+.parent-setup .story-bead::after{content:'';position:absolute;top:9px;left:50%;width:18px;height:18px;margin-left:-9px;background:currentColor;-webkit-mask:var(--icon) center/contain no-repeat;mask:var(--icon) center/contain no-repeat}
+.parent-setup .story-bead span{display:block;max-width:100%;padding-inline:2px;overflow-wrap:anywhere}
+.parent-setup .story-bead.is-done{color:var(--ob-accent)}
+.parent-setup .story-bead.is-done::before{background:color-mix(in srgb,var(--ob-accent) 16%,#fff);border:2px solid var(--ob-accent)}
+.parent-setup .story-bead.is-current{color:var(--ob-accent);font-weight:700}
+.parent-setup .story-bead.is-current::before{background:var(--ob-accent);border-color:var(--ob-accent);transform:scale(1.14);box-shadow:0 0 0 5px rgba(var(--ob-rgb),.16)}
+.parent-setup .story-bead.is-current::after{background:#fff}
+
+.parent-setup .story-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.parent-setup .story-section-icon{position:relative;width:46px;height:46px;flex:none;border-radius:16px;background:#fff;border:1.5px solid var(--ob-line);box-shadow:0 6px 16px rgba(var(--ob-rgb),.12)}
+.parent-setup .story-section-icon::after{content:'';position:absolute;inset:12px;background:var(--ob-accent);-webkit-mask:var(--icon) center/contain no-repeat;mask:var(--icon) center/contain no-repeat}
+.parent-setup .interview-card[class*="story-icon-"] .story-section-icon{--icon:inherit}
+.parent-setup .story-section-name{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ob-accent)}
+.parent-setup .story-count{margin-inline-start:auto;padding:4px 12px;border-radius:999px;background:rgba(255,255,255,.75);border:1px solid var(--ob-line);font-size:13px;font-weight:600;color:var(--ob-muted);font-variant-numeric:tabular-nums}
+.parent-setup .child-story-page .interview-card h2{margin:10px 0 4px;font-size:clamp(21px,2.4vw,25px);line-height:1.35;color:var(--ob-ink);outline:none;text-wrap:balance}
+.parent-setup .child-story-page .interview-card>p{font-size:14px;line-height:1.6;color:var(--ob-muted)}
+
+/* Answers: big tap cards; Not sure and Skip sit quietly on their own row. */
+.parent-setup .interview-choices{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 6px}
+.parent-setup .interview-choices::after{content:'';order:1;flex-basis:100%;height:0}
+.parent-setup .interview-card .interview-choices button{flex:1 1 calc(50% - 10px);min-width:min(200px,100%);display:flex;align-items:center;gap:12px;min-height:58px;padding:12px 18px;border-radius:18px;background:rgba(255,255,255,.8);border:1.5px solid var(--ob-line);color:var(--ob-ink);font-size:15.5px;font-weight:600;text-align:start;transition:border-color .15s,background .15s,transform .15s}
+.parent-setup .interview-card .interview-choices button::before{content:'';flex:none;width:22px;height:22px;border-radius:50%;border:2px solid var(--ob-line);background:#fff;box-sizing:border-box}
+.parent-setup .interview-card .interview-choices.is-multi button::before{border-radius:7px}
+.parent-setup .interview-card .interview-choices button:hover{border-color:rgba(var(--ob-rgb),.55);transform:translateY(-1px)}
+.parent-setup .interview-card .interview-choices button[aria-pressed=true]{background:var(--ob-tint);border-color:var(--ob-accent);color:var(--ob-accent)}
+.parent-setup .interview-card .interview-choices button[aria-pressed=true]::before{border-color:var(--ob-accent);background:var(--ob-accent) var(--ob-check) center/13px no-repeat}
+.parent-setup .interview-card .interview-choices button.is-minor{order:2;flex:0 0 auto;min-width:0;min-height:40px;padding:8px 16px;border-radius:999px;border-style:dashed;background:transparent;font-size:13.5px;font-weight:500;color:var(--ob-muted)}
+.parent-setup .interview-card .interview-choices button.is-minor::before{display:none}
+.parent-setup .interview-card .interview-choices button.is-minor[aria-pressed=true]{border-style:solid;background:var(--ob-tint);color:var(--ob-accent)}
+.parent-setup .interview-card>label{display:grid;gap:8px;margin-top:14px;font-size:14px;font-weight:600}
+.parent-setup .interview-card>label input:not([type=checkbox]){min-height:50px;padding:0 14px;border-radius:14px;border:1.5px solid var(--ob-line)!important;background:rgba(255,255,255,.85);font:inherit;font-weight:400}
+.parent-setup .interview-card .question-feature-hint{margin-top:14px;padding:0;border:0;background:none;font-size:13.5px}
+.parent-setup .interview-card .question-feature-hint summary{display:inline-flex;gap:8px;min-height:36px;font-weight:600;color:var(--ob-muted);list-style:none}
+.parent-setup .interview-card .question-feature-hint summary::-webkit-details-marker{display:none}
+.parent-setup .interview-card .question-feature-hint summary::before{content:'i';display:grid;place-items:center;width:20px;height:20px;border-radius:50%;border:1.5px solid currentColor;font:700 12px/1 Georgia,serif}
+.parent-setup .interview-card .question-feature-hint[open]{padding:12px 16px;border-radius:16px;background:rgba(255,255,255,.6);border:1px solid var(--ob-line)}
+.parent-setup .interview-card .interview-health-link{margin-top:12px;padding:8px 16px;border-radius:999px;background:var(--ob-tint);color:var(--ob-accent);font-weight:600;text-decoration:none}
+
+/* Section finished: a calm checkpoint before the next topic. */
+.parent-setup .interview-card.story-done{text-align:center}
+.parent-setup .story-done-badge{display:block;width:84px;height:84px;margin:6px auto 4px;border-radius:50%;background:var(--ob-accent) var(--ob-check) center/40px no-repeat;box-shadow:0 0 0 10px rgba(var(--ob-rgb),.12),0 16px 36px rgba(var(--ob-rgb),.3);animation:ob-pop .45s cubic-bezier(.2,.9,.3,1.3)}
+.parent-setup .story-done h2{margin-top:18px!important}
+.parent-setup .story-next-up{display:inline-flex;align-items:center;gap:8px;margin:12px 0 0;padding:8px 16px;border-radius:999px;background:var(--ob-tint);color:var(--ob-accent)!important;font-size:14px}
+.parent-setup .story-next-up::before{content:'';width:18px;height:18px;background:currentColor;-webkit-mask:var(--icon) center/contain no-repeat;mask:var(--icon) center/contain no-repeat}
+
+/* Review: one compact block per topic, only answered rows shown. */
+.parent-setup .interview-card.story-summary{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:12px;align-items:center}
+.parent-setup .story-summary>:is(.story-track,h2,dl,.story-sum-empty,label){grid-column:1/-1}
+.parent-setup .story-sum-title{display:flex;align-items:center;gap:10px;margin:16px 0 8px!important;font-size:16.5px;color:var(--ob-ink)}
+.parent-setup .story-sum-title::before{content:'';width:22px;height:22px;flex:none;background:var(--ob-accent);-webkit-mask:var(--icon) center/contain no-repeat;mask:var(--icon) center/contain no-repeat}
+.parent-setup .story-sum-count{white-space:nowrap;padding:2px 10px;border-radius:999px;background:var(--ob-tint);font-size:12px;font-weight:600;color:var(--ob-accent);font-variant-numeric:tabular-nums}
+.parent-setup .child-story-page .story-summary .story-edit{min-height:36px;padding:6px 16px;border-radius:999px;font-size:13px;background:rgba(255,255,255,.75);color:var(--ob-accent);border:1px solid var(--ob-line)}
+.parent-setup .story-summary .family-summary{grid-template-columns:minmax(140px,1fr) minmax(0,1.3fr);gap:6px 16px;padding:12px 16px;border-radius:16px;background:rgba(255,255,255,.55);border:1px solid var(--ob-line);font-size:14px}
+.parent-setup .story-summary .family-summary dt{font-weight:500;color:var(--ob-muted)}
+.parent-setup .story-summary .family-summary dd{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:baseline;font-weight:600;color:var(--ob-ink)}
+.parent-setup .story-summary .story-answer+.story-answer{padding-inline-start:6px;border-inline-start:1px solid var(--ob-line)}
+.parent-setup .story-summary .story-answer-detail{flex-basis:100%;font-weight:400;color:var(--ob-muted);unicode-bidi:plaintext}
+.parent-setup .story-summary .family-summary .is-empty{display:none}
+.parent-setup .story-summary .family-summary:not(:has(dt:not(.is-empty))){display:none}
+.parent-setup .story-sum-empty{margin:0;font-size:13.5px;color:var(--ob-muted)}
+
+/* Footer: Previous, quiet "finish later", and the obvious Next. */
+.parent-setup .child-story-page .family-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin-top:14px;padding:12px 14px;border:1px solid var(--ob-edge);border-radius:24px;background:var(--ob-glass);backdrop-filter:blur(20px) saturate(130%);-webkit-backdrop-filter:blur(20px) saturate(130%);box-shadow:0 12px 30px rgba(var(--ob-rgb),.1)}
+.parent-setup .child-story-page #historyPrevious{order:1;min-height:48px;padding:10px 20px;border-radius:999px;background:rgba(255,255,255,.75);border:1px solid var(--ob-line);color:var(--ob-ink)}
+.parent-setup .child-story-page #historyPrevious[hidden],.parent-setup .child-story-page #historyLater[hidden]{display:none}
+.parent-setup .child-story-page #historyLater{order:2;min-height:44px;padding:8px 6px;border:0;background:none;color:var(--ob-accent);font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.parent-setup .child-story-page #historyNext{order:3;margin-inline-start:auto;min-width:150px;min-height:52px;padding:12px 28px;border:0;border-radius:999px;background:linear-gradient(135deg,var(--ob-accent),color-mix(in srgb,var(--ob-accent) 78%,#fff));color:#fff;font-size:15.5px;font-weight:700;box-shadow:0 12px 26px rgba(var(--ob-rgb),.3)}
+.parent-setup .story-autosave{order:4;flex-basis:100%;display:flex;align-items:center;gap:8px;margin:0;font-size:12.5px;color:var(--ob-muted)}
+.parent-setup .story-autosave::before{content:'';flex:none;width:16px;height:16px;border-radius:50%;background:var(--ob-accent) var(--ob-check) center/9px no-repeat}
+.parent-setup .child-story-page .family-status:not(:empty){padding:10px 14px;border-radius:14px;background:#fff1f2;border:1px solid #f1c3c8;color:#a3303d!important;font-weight:600}
+
+.parent-setup :is(a,button,summary,input,select):focus-visible{outline:3px solid rgba(var(--ob-rgb),.55);outline-offset:3px}
+
+@keyframes ob-in{from{opacity:.35;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes ob-pop{from{transform:scale(.6)}to{transform:scale(1)}}
+
+/* ---------- Tablet and phone ---------- */
+@media(max-width:900px){
+ .parent-setup .journey-basics{grid-template-columns:1fr;max-width:620px;margin-inline:auto;gap:16px}
+ .parent-setup .child-preview{position:static;grid-template-columns:112px minmax(0,1fr);grid-template-areas:"art title" "art card";justify-items:start;align-items:center;gap:6px 16px;padding:14px 18px;text-align:start;border-radius:26px}
+ .parent-setup .child-preview .setup-eyebrow,.parent-setup .child-preview .setup-reassurance{display:none}
+ .parent-setup .child-preview h1{grid-area:title;font-size:22px;line-height:1.15;align-self:end}
+ .parent-setup .preview-name-empty{display:none}
+ .parent-setup .child-preview .setup-companion{grid-area:art;width:112px;height:118px;margin:0}
+ .parent-setup .child-preview .setup-companion::before{inset:4px 0 2px}
+ .parent-setup .setup-companion img{height:128px;width:102px}
+ .parent-setup .preview-card{grid-area:card;justify-items:start;padding:0;background:none;border:0;gap:2px;align-self:start}
+ .parent-setup .preview-name,.parent-setup .preview-name-empty{font-size:19px}
+ .parent-setup .preview-age{font-size:13px}
+ .parent-setup .preview-chips{justify-content:flex-start}
+}
+@media(max-width:640px){
+ .parent-setup .setup-steps{margin-bottom:16px;padding:6px;gap:4px}
+ .parent-setup .setup-steps li{padding:4px;gap:6px;font-size:12.5px}
+ .parent-setup .setup-steps li:not([aria-current=step]) b{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+ .parent-setup .setup-steps li[aria-current=step]{flex:2.4}
+ .parent-setup .setup-steps li>span{width:32px;height:32px}
+ .parent-setup .journey-basics .form-card{padding:20px 18px 18px;border-radius:26px}
+ .parent-setup .journey-basics .form-heading{display:none}
+ .parent-setup .page-title{font-size:22px}
+ .parent-setup .gender-card img{width:88px;height:88px}
+ .parent-setup .icon-card>span{min-height:92px;font-size:13px}
+ .parent-setup .icon-card svg{width:40px;height:40px;padding:8px}
+ .parent-setup .basics-nav{position:sticky;bottom:max(10px,env(safe-area-inset-bottom,0px));z-index:3;padding:10px;margin-inline:-6px;border-radius:999px;background:var(--ob-glass-strong);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 10px 26px rgba(var(--ob-rgb),.18)}
+ .parent-setup .journey-basics .primary-button{flex:1;min-width:0}
+ .parent-setup .profile-story-inline .family-story-intro{flex-direction:column;align-items:flex-start;gap:10px}
+ .parent-setup .profile-story-inline .family-story-intro p{font-size:14px}
+ .parent-setup .child-story-page .interview-card{padding:16px 16px 20px;border-radius:24px}
+ .parent-setup .story-track{gap:0;margin-bottom:14px;padding-bottom:12px}
+ .parent-setup .story-track::before,.parent-setup .story-track::after{top:13px}
+ .parent-setup .story-bead::before{width:28px;height:28px}
+ .parent-setup .story-bead::after{top:7px;width:14px;height:14px;margin-left:-7px}
+ .parent-setup .story-bead span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+ .parent-setup .story-section-icon{width:40px;height:40px;border-radius:14px}
+ .parent-setup .story-section-icon::after{inset:10px}
+ .parent-setup .interview-card .interview-choices button{flex-basis:100%;min-height:54px}
+ .parent-setup .child-story-page .family-actions{position:sticky;bottom:max(8px,env(safe-area-inset-bottom,0px));z-index:3;background:var(--ob-glass-strong)}
+ /* The forward action gets its own full-width row; Previous and "finish later" sit below. */
+ .parent-setup .child-story-page #historyNext{order:0;flex:1 1 100%;min-width:0;margin:0}
+ .parent-setup .child-story-page #historyPrevious{order:1}
+ .parent-setup .child-story-page #historyLater{order:2;margin-inline-start:auto}
+ .parent-setup .story-autosave{display:none}
+ .parent-setup .story-summary .family-summary{grid-template-columns:1fr;gap:2px}
+ .parent-setup .story-summary .family-summary dd{margin-bottom:8px}
+}
+@media(prefers-reduced-motion:reduce){
+ .parent-setup .basics-page,.parent-setup .child-story-page .interview-card,.parent-setup .story-done-badge{animation:none}
+ .parent-setup .setup-companion img,.parent-setup .story-track::after,.parent-setup :is(.gender-card,.icon-card) *{transition:none}
+}

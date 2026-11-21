@@ -1,0 +1,131 @@
+{
+  "passed": true,
+  "checks": [
+    "girl-en-1280: lilac→girl theme, validation/focus, Enter safety, live card, en age, saved record, no pop-up, 9-topic story, Previous to basics, checkpoint, review hides skipped answers, continues to support discovery",
+    "boy-ar-360: lilac→boy theme, validation/focus, Enter safety, live card, ar age, saved record, no pop-up, 9-topic story, Previous to basics, checkpoint, review hides skipped answers, continues to support discovery",
+    "girl-en-360: lilac→girl theme, validation/focus, Enter safety, live card, en age, saved record, no pop-up, 9-topic story, Previous to basics, checkpoint, review hides skipped answers, continues to support discovery",
+    "boy-ar-1280: lilac→boy theme, validation/focus, Enter safety, live card, ar age, saved record, no pop-up, 9-topic story, Previous to basics, checkpoint, review hides skipped answers, continues to support discovery",
+    "Edit mode: unlocked screens, cards prefilled from the saved child, change saved, returns to child profile",
+    "Unfinished setup: Home opens the welcome page, which still offers the optional support question"
+  ],
+  "themes": [
+    {
+      "label": "girl-en-1280 before choice",
+      "appearance": "cream",
+      "wallpaper": "#f6eef7",
+      "accent": "#6d4f86",
+      "image": "linear-gradient(115deg, rgb(252, 225, 235) 0%, rgb(244, 232, 246) 48%, rgb(220, 238, 251) 100%)",
+      "mark": "rgb(109, 79, 134)",
+      "blur": "blur(22px) saturate(1.3)"
+    },
+    {
+      "label": "girl-en-1280 after choice",
+      "appearance": "girl",
+      "wallpaper": "#fce1eb",
+      "accent": "#944367",
+      "image": "url(\"http://127.0.0.1:62197/pearent-cycel/assets/dashboard/baby-pink.jpg\")",
+      "mark": "rgb(148, 67, 103)",
+      "blur": "blur(22px) saturate(1.3)"
+    },
+    {
+      "label": "girl-en-1280 story",
+      "appearance": "girl",
+      "wallpaper": "#fce1eb",
+      "accent": "#944367",
+      "image": "url(\"http://127.0.0.1:62197/pearent-cycel/assets/dashboard/baby-pink.jpg\")",
+      "mark": "rgb(148, 67, 103)",
+      "blur": "blur(22px) saturate(1.3)"
+    },
+    {
+      "label": "boy-ar-360 before choice",
+      "appearance": "cream",
+      "wallpaper": "#f6eef7",
+      "accent": "#6d4f86",
+      "image": "linear-gradient(115deg, rgb(252, 225, 235) 0%, rgb(244, 232, 246) 48%, rgb(220, 238, 251) 100%)",
+      "mark": "rgb(109, 79, 134)",
+      "blur": "blur(22px) saturate(1.3)"
+    },
+    {
+      "label": "boy-ar-360 after choice",
+      "appearance": "boy",
+      "wallpaper": "#dceefb",
+      "accent": "#225f87",
+      "image": "url(\"http://127.0.0.1:62197/pearent-cycel/assets/dashboard/baby-blue.jpg\")",
+      "mark": "rgb(34, 95, 135)",
+      "blur": "blur(22px) saturate(1.3)"
+    },
+    {
+      "label": "boy-ar-360 story",
+      "appearance": "boy",
+      "wallpaper": "#dceefb",
+      "accent": "#225f87",
+      "image": "url(\"http://127.0.0.1:62197/pearent-cycel/assets/dashboard/baby-blue.jpg\")",
+      "mark": "rgb(34, 95, 135)",
+      "blur": "blur(22px) saturate(1.3)"
+    },
+    {
+      "label": "girl-en-360 before choice",
+      "appearance": "cream",
+      "wallpaper": "#f6eef7",
+      "accent": "#6d4f86",
+      "image": "linear-gradient(115deg, rgb(252, 225, 235) 0%, rgb(244, 232, 246) 48%, rgb(220, 238, 251) 100%)",
+      "mark": "rgb(109, 79, 134)",
+      "blur": "blur(22px) saturate(1.3)"
+    },
+    {
+      "label": "girl-en-360 after choice",
+      "appearance": "girl",
+      "wallpaper": "#fce1eb",
+      "accent": "#944367",
+      "image": "url(\"http://127.0.0.1:62197/pearent-cycel/assets/dashboard/baby-pink.jpg\")",
+      "mark": "rgb(148, 67, 103)",
+      "blur": "blur(22px) saturate(1.3)"
+    },
+    {
+      "label": "girl-en-360 story",
+      "appearance": "girl",
+      "wallpaper": "#fce1eb",
+      "accent": "#944367",
+      "image": "url(\"http://127.0.0.1:62197/pearent-cycel/assets/dashboard/baby-pink.jpg\")",
+      "mark": "rgb(148, 67, 103)",
+      "blur": "blur(22px) saturate(1.3)"
+    },
+    {
+      "label": "boy-ar-1280 before choice",
+      "appearance": "cream",
+      "wallpaper": "#f6eef7",
+      "accent": "#6d4f86",
+      "image": "linear-gradient(115deg, rgb(252, 225, 235) 0%, rgb(244, 232, 246) 48%, rgb(220, 238, 251) 100%)",
+      "mark": "rgb(109, 79, 134)",
+      "blur": "blur(22px) saturate(1.3)"
+    },
+    {
+      "label": "boy-ar-1280 after choice",
+      "appearance": "boy",
+      "wallpaper": "#dceefb",
+      "accent": "#225f87",
+      "image": "url(\"http://127.0.0.1:62197/pearent-cycel/assets/dashboard/baby-blue.jpg\")",
+      "mark": "rgb(34, 95, 135)",
+      "blur": "blur(22px) saturate(1.3)"
+    },
+    {
+      "label": "boy-ar-1280 story",
+      "appearance": "boy",
+      "wallpaper": "#dceefb",
+      "accent": "#225f87",
+      "image": "url(\"http://127.0.0.1:62197/pearent-cycel/assets/dashboard/baby-blue.jpg\")",
+      "mark": "rgb(34, 95, 135)",
+      "blur": "blur(22px) saturate(1.3)"
+    },
+    {
+      "label": "edit",
+      "appearance": "boy",
+      "wallpaper": "#dceefb",
+      "accent": "#225f87",
+      "image": "url(\"http://127.0.0.1:62197/pearent-cycel/assets/dashboard/baby-blue.jpg\")",
+      "mark": "rgb(34, 95, 135)",
+      "blur": "blur(22px) saturate(1.3)"
+    }
+  ],
+  "runtimeErrors": []
+}

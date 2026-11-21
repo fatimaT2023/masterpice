@@ -505,7 +505,7 @@ document.addEventListener(
     // STATUS
     // =====================================
 
-    function getBookingStatus(booking){if(booking.status==='cancelled')return 'cancelled';if(booking.status==='completed')return 'completed';return 'upcoming';}
+    function getBookingStatus(booking){if(['requested','pending'].includes(booking.status))return 'requested';if(booking.status==='cancelled')return 'cancelled';if(booking.status==='completed')return 'completed';return 'upcoming';}
 
 
     // =====================================
@@ -932,7 +932,7 @@ document.addEventListener(
             </div>
 
 
-            <div class="child-avatar">
+            <div class="child-avatar" data-user-content>
               ${escapeHTML(
                 childName
                   .charAt(0)
@@ -956,12 +956,6 @@ document.addEventListener(
                 )}
               </p>
 
-              <small>
-                ${escapeHTML(
-                  booking.id
-                )}
-              </small>
-
             </div>
 
 
@@ -984,7 +978,9 @@ document.addEventListener(
                 class="status-pill ${status}"
               >
                 ${
-                  status === "upcoming"
+                  status === "requested"
+                    ? "Awaiting your response"
+                    : status === "upcoming"
                     ? "Upcoming"
                     : status === "completed"
                       ? "Completed"

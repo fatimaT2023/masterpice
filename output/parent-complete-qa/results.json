@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "checks": [
+    "11 category filters, empty search, all 32 topic details and existing service destinations",
+    "Topic → health note → saved record → exact result and next service",
+    "Development observation is saved to the selected child and visible in history",
+    "Concern questions → saved non-diagnostic summary and specialist action",
+    "Play steps → real saved activity response → activity library/history",
+    "Directory empty/reset → specialist → date/time → review/edit → failed/cancelled/retried demo payment → exact saved appointment",
+    "Simulated AI response with real activity link; generated reply translates, user draft remains intact",
+    "Select Plus → review/sample details → terms validation → simulated activation → preserved family subscription status, cleared card fields",
+    "Account form persists valid changes using existing account storage",
+    "Original report preserved; personal follow-up saved; request pending blocks sending; accepted demo fixture allows a real saved parent message",
+    "New child form → optional nine-section interview → save for later → correct child profile and girl theme",
+    "24 parent destinations at desktop/tablet/mobile, both languages and both child themes"
+  ],
+  "runtimeErrors": []
+}

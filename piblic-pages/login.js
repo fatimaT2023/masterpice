@@ -97,6 +97,9 @@
     else if (password.value.length < 6) {invalid(password,'Password must be at least 6 characters.');firstInvalid ||= password;}
     if (firstInvalid) {firstInvalid.focus();return;}
     const signInRole = email.value.trim().toLowerCase() === 'admin@rafiq.com' ? 'admin' : role;
+    // Demo specialists (Rami, Lina, Omar): open the shared Saja demo in their specialist view.
+    const demoDoctor=(window.RafiqDemoSpecialists?.logins||[]).find(x=>x.email===email.value.trim().toLowerCase());
+    if(demoDoctor){if(password.value!==window.RafiqDemoCases?.password){invalid(password,'Incorrect password. Please try again.');password.focus();return;}submitting=true;submit.disabled=true;status.textContent='Preview mode: opening your workspace…';sessionStorage.setItem('rafiqRole','specialist');sessionStorage.setItem('rafiqSpecialistId',demoDoctor.id);location.href='../pearent-cycel/parent-preview.html?demo=mother&as='+encodeURIComponent('specialist:'+demoDoctor.id)+'&page='+encodeURIComponent('parent-dashboard.html');return;}
     if(signInRole==='admin'){
       if(email.value.trim().toLowerCase()!=='admin@rafiq.com'||password.value!=='RafiqAdmin2026!'){
         invalid(password,'Incorrect administrator preview credentials.');password.focus();return;
@@ -121,7 +124,7 @@
       try{
         let users=JSON.parse(localStorage.getItem('rafiqUsers')||'[]');
         let user=Array.isArray(users)?users.find(u=>u?.role==='parent'&&u.email?.toLowerCase()===email.value.trim().toLowerCase()):null;
-        const demoCase=window.RafiqDemoCases?.cases.find(c=>c.email===email.value.trim().toLowerCase());
+        const demoCase=[...(window.RafiqDemoCases?.cases||[]),...(window.RafiqDemoCases?.families||[])].find(c=>c.email===email.value.trim().toLowerCase());
         if(!user&&demoCase&&Array.isArray(users)){
           verifying=true;submit.disabled=true;email.disabled=true;password.disabled=true;toggle.disabled=true;roles.forEach(b=>b.disabled=true);
           try{await window.RafiqShowcaseAccounts.install(localStorage,window.RafiqPreviewCredentials,demoCase.key);users=JSON.parse(localStorage.getItem('rafiqUsers')||'[]');user=users.find(u=>u.id===demoCase.owner);}
@@ -150,7 +153,7 @@
     form.setAttribute('aria-busy','false');
     await new Promise(resolve => setTimeout(resolve,1000));
     if(invitationId && signInRole==='parent'){location.href='caregiver-invitation.html?invite='+encodeURIComponent(invitationId);return;}
-    location.href = signInRole === 'admin' ? '../admin-cycle/specialist-approvals.html' : signInRole === 'parent' ? '../pearent-cycel/parent-dashboard.html' : '../specialist-cycle/specialist-dashboard.html';
+    location.href = signInRole === 'admin' ? '../admin-cycle/admin-dashboard.html' : signInRole === 'parent' ? '../pearent-cycel/parent-dashboard.html' : '../specialist-cycle/specialist-dashboard.html';
   });
   reduced.addEventListener('change', () => { clearTimeout(poseTimer); if (assetsReady) showPose(privatePoses.has(targetState) ? targetState : 'idle'); });
   const year = document.getElementById('year');

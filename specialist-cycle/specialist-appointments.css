@@ -1,0 +1,22 @@
+/* Phase 5 specialist next steps (booking details) and report additions. */
+.sa-panel,.rx-panel{display:grid;gap:12px;margin:18px 0;padding:20px;border:1px solid rgba(40,103,95,.18);border-radius:22px;background:rgba(255,255,255,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:#21363a}
+.sa-panel h3,.rx-panel h3{margin:0;font-size:1.05rem}
+.sa-state{margin:0;padding:10px 12px;border-radius:14px;background:rgba(40,103,95,.08);font-weight:650}
+.sa-help,.rx-help{margin:0;font-size:.85rem;color:#5b6a6c}
+.sa-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.sa-ask{flex-basis:100%;margin:0;font-weight:650}
+.sa-propose summary{cursor:pointer;font-weight:700;color:#1f5a52;min-height:40px;display:flex;align-items:center}
+.sa-form{display:grid;gap:8px;max-width:420px;margin-top:6px}
+.sa-form label,.rx-panel label{font-weight:650;font-size:.9rem}
+.sa-form input,.sa-form select,.sa-form textarea,.rx-panel textarea{min-height:42px;padding:8px 12px;border:1px solid #cfe0da;border-radius:12px;font:inherit;background:#fff}
+.sa-form .practice-btn{justify-self:start}
+.sa-msg{min-height:1.2em;margin:0;font-weight:650;color:#1f5a52}.sa-msg[data-tone="error"]{color:#a3324d}.sa-msg:empty{display:none}
+.rx-chips{display:flex;flex-wrap:wrap;gap:8px}
+.rx-chip{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 12px;border:1px solid #cfe0da;border-radius:999px;background:#fff;font:inherit;font-size:.88rem;cursor:pointer}
+.rx-chip[aria-pressed="true"]{background:#28675f;border-color:#28675f;color:#fff}
+.rx-chip:focus-visible,.sa-propose summary:focus-visible{outline:3px solid #28675f;outline-offset:2px}
+.rx-activities{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;max-height:320px;overflow:auto;padding:2px}
+.rx-activities label{display:flex;gap:8px;align-items:flex-start;padding:10px;border:1px solid #e2ece8;border-radius:12px;background:#fff;font-weight:500;cursor:pointer}
+.rx-activities input{width:20px;height:20px;flex:none;accent-color:#28675f}
+.rx-activities small{display:block;color:#5b6a6c}
+.rx-demo{margin:0;padding:10px 14px;border-radius:12px;background:#fff4d6;color:#7a5200;border:1px solid #f0d58a;font-weight:650}

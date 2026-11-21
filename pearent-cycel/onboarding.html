@@ -40,6 +40,7 @@
 <link rel="stylesheet" href="../shared/site-language.css">
 <script src="../shared/membership.js"></script><link rel="stylesheet" href="../shared/membership.css"><script src="child-appearance.js"></script><link rel="stylesheet" href="family-journey.css"><script src="activity-matching.js"></script><script src="child-history-model.js"></script><link rel="stylesheet" href="support-mode.css"><script src="support-services.js" defer></script><script src="support-mode.js" defer></script><script src="support-mode-ui.js" defer></script><link rel="stylesheet" href="parent-question-map.css">
 <script src="parent-question-map.js" defer></script>
+<link rel="stylesheet" href="onboarding-journey.css">
 </head>
 
 <body class="parent-cycle-video parent-setup">
@@ -54,79 +55,131 @@
     <a class="setup-exit" href="../piblic-pages/login.html" data-setup-exit>Save & exit</a>
   </header>
   <main class="onboarding-page">
+    <!-- The whole setup journey: icons carry meaning, labels stay short. -->
     <ol class="setup-steps" aria-label="Setup progress">
-      <li aria-current="step"><span>1</span>Your child</li>
-      <li><span>2</span>Your child’s story</li><li><span>3</span>How Rafiq helps</li>
+      <li aria-current="step"><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M9 14c1.6 1.5 4.4 1.5 6 0M9.5 10.2h.01M14.5 10.2h.01M12 4c-1.2 1-1.2 2.2 0 3"/></svg></span><b>Your child</b></li>
+      <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5C6.5 4.5 9.5 4.6 12 6.5c2.5-1.9 5.5-2 8-1v13c-2.5-1-5.5-.9-8 1-2.5-1.9-5.5-2-8-1Z"/><path d="M12 6.5v13"/></svg></span><b>Your child’s story</b></li>
+      <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 13.9 9l5.6 1.9-5.6 1.9L12 18.5l-1.9-5.7-5.6-1.9L10.1 9Z"/><path d="M19 17v4M17 19h4"/></svg></span><b>How Rafiq helps</b></li>
+    </ol>
 
-    </ol><section class="onboarding-layout">
-      <div class="intro-panel">
+    <section class="onboarding-layout journey-basics">
+      <!-- A live card of the child, built as the parent answers. -->
+      <aside class="intro-panel child-preview" aria-labelledby="introTitle">
         <span class="setup-eyebrow">A LITTLE INTRODUCTION</span>
-        <h1>Let’s meet<br><em>your child.</em></h1>
-        <p class="intro-text">Step 1 of 3: start with your child’s details, add their story and play readiness, then see how Rafiq can support your family.</p>
-        <figure class="setup-companion" id="setupCompanion" data-gender="male" aria-label="Your Rafiq companion">
+        <h1 id="introTitle">Let’s meet<br><em>your child.</em></h1>
+        <figure class="setup-companion" id="setupCompanion" data-gender="male" aria-hidden="true">
           <img class="companion-boy" src="../rafiq-home-transfer-20261013-211454/assets/hero/sit-front-cutout.png" alt="" width="1122" height="1402">
-          <img class="companion-girl" src="assets/onboarding/baby-girl.png" alt="" aria-hidden="true" width="1122" height="1402"></figure>
-          <p class="setup-reassurance">One child at a time. You can add more children later.</p>
+          <img class="companion-girl" src="assets/onboarding/baby-girl.png" alt="" aria-hidden="true" width="1122" height="1402">
+        </figure>
+        <div class="preview-card" aria-live="polite">
+          <strong class="preview-name" id="previewName" data-user-content></strong>
+          <span class="preview-name-empty" id="previewNameEmpty">Your child</span>
+          <span class="preview-age" id="previewAge">Add a birthday to see their age</span>
+          <ul class="preview-chips" id="previewChips" aria-label="Details so far"></ul>
         </div>
-        <section class="form-card" aria-labelledby="profileTitle">
-          <div class="form-heading">
-            <div class="child-avatar-preview" id="avatarPreview">
-              <span id="avatarInitial">+</span>
-            </div><div><h2 id="profileTitle">About your child</h2>
-              <p>Start with the basics. Next, we’ll get to know your child’s story.</p></div></div>
-              <form id="childForm" novalidate>
-                <div class="form-group" id="nameField">
-                  <label for="childName">Child’s first name</label>
-                  <div class="input-wrapper">
-                    <input id="childName" name="childName" placeholder="e.g. Layan" autocomplete="off" maxlength="80" required aria-describedby="nameError"></div>
-                    <small class="field-error" id="nameError"></small></div>
-                    <div class="form-group" id="dobField">
-                      <label for="dateOfBirth">Date of birth</label>
-                      <div class="input-wrapper">
-                        <input type="date" id="dateOfBirth" name="dateOfBirth" required aria-describedby="dobHelp dobError"></div>
-                        <small id="dobHelp" class="setup-help">For children from birth until their seventh birthday. Their exact age helps us choose relevant resources.</small>
-                        <small class="field-error" id="dobError"></small>
-                        <div class="age-preview" id="agePreview" hidden role="status">
-                          <div><span>Your child’s age</span><strong id="ageText"></strong></div>
-                        </div>
-                      </div>
-                      <div class="form-group" id="relationshipField">
-                        <label for="relationship">Your relationship to the child</label>
-                        <div class="input-wrapper">
-                          <select id="relationship" name="relationship" required aria-describedby="relationshipError">
-                            <option value="">Select relationship</option>
-                            <option value="mother">Mother</option>
-                            <option value="father">Father</option>
-                            <option value="guardian">Guardian</option>
-                            <option value="other">Other caregiver</option>
-                          </select></div>
-                          <small class="field-error" id="relationshipError"></small>
-                        </div><div class="form-group" id="prematurityField"><label for="bornBeforeDueDate">Was your child born before their due date?</label><div class="input-wrapper"><select id="bornBeforeDueDate" name="bornBeforeDueDate" aria-describedby="prematurityHelp"><option value="unknown">Not sure / prefer to skip</option><option value="no">No</option><option value="yes">Yes</option></select></div><small class="setup-help" id="prematurityHelp">Optional. For children under 2, the expected due date can help us select development resources using corrected age.</small><div id="dueDateField" hidden><label for="expectedDueDate">Expected due date (optional)</label><div class="input-wrapper"><input type="date" id="expectedDueDate" aria-describedby="dueDateError"></div><small class="field-error" id="dueDateError"></small><small class="setup-help">Use the date given by your care team. Health records and appointments still use the date of birth.</small></div></div><fieldset class="form-group gender-field" id="genderField" aria-describedby="genderError"><legend>Gender</legend>
- <div class="choice-grid">
-  <label class="choice-card"><input type="radio" name="gender" value="female" aria-describedby="genderError"><span class="choice-content">Female</span></label>
-  <label class="choice-card"><input type="radio" name="gender" value="male" aria-describedby="genderError"><span class="choice-content">Male</span></label>
- </div>
- <small class="field-error" id="genderError" role="alert"></small>
-</fieldset>
-                                  <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
-                                  <button type="submit" class="primary-button" id="createButton">Continue <span aria-hidden="true">→</span></button>
-                                  <p class="form-footer-text">Next: your child’s story, health and play readiness.<br>This preview saves the profile in this browser.</p>
-                                </form>
-                              </section>
-                              </section>
+        <p class="setup-reassurance">One child at a time. You can add more children later.</p>
+      </aside>
+
+      <section class="form-card" aria-labelledby="profileTitle">
+        <div class="form-heading">
+          <div class="child-avatar-preview" id="avatarPreview" aria-hidden="true"><span id="avatarInitial">+</span></div>
+          <div><h2 id="profileTitle">About your child</h2><p>Three quick screens. You can change anything later.</p></div>
+        </div>
+        <ol class="basics-tabs" id="basicsTabs" aria-label="About your child">
+          <li><button type="button" data-goto="0"><i aria-hidden="true"></i><span>Name</span></button></li>
+          <li><button type="button" data-goto="1"><i aria-hidden="true"></i><span>Birthday</span></button></li>
+          <li><button type="button" data-goto="2"><i aria-hidden="true"></i><span>You</span></button></li>
+        </ol>
+        <form id="childForm" novalidate>
+          <!-- Screen 1: name and the girl/boy look -->
+          <fieldset class="basics-page" data-page="0">
+            <legend class="page-title" tabindex="-1">Who are we meeting?</legend>
+            <div class="form-group" id="nameField">
+              <label for="childName">Child’s first name</label>
+              <div class="input-wrapper">
+                <input id="childName" name="childName" placeholder="e.g. Layan" autocomplete="off" maxlength="80" required aria-describedby="nameError"></div>
+              <small class="field-error" id="nameError"></small>
+            </div>
+            <fieldset class="form-group gender-field" id="genderField" aria-describedby="genderHelp genderError"><legend>Girl or boy?</legend>
+              <div class="choice-grid">
+                <label class="choice-card gender-card gender-girl"><input type="radio" name="gender" value="female" aria-describedby="genderError"><span class="choice-content"><img src="assets/onboarding/baby-girl.png" alt="" width="1122" height="1402"><span>Girl</span></span></label>
+                <label class="choice-card gender-card gender-boy"><input type="radio" name="gender" value="male" aria-describedby="genderError"><span class="choice-content"><img src="../rafiq-home-transfer-20261013-211454/assets/hero/sit-front-cutout.png" alt="" width="1122" height="1402"><span>Boy</span></span></label>
+              </div>
+              <small class="setup-help" id="genderHelp">Optional. It sets the pink or blue look of your child’s space.</small>
+              <small class="field-error" id="genderError" role="alert"></small>
+            </fieldset>
+            <div class="basics-nav"><button type="button" class="primary-button" data-next>Next <span aria-hidden="true">→</span></button></div>
+          </fieldset>
+
+          <!-- Screen 2: birthday and birth timing -->
+          <fieldset class="basics-page" data-page="1" hidden>
+            <legend class="page-title" tabindex="-1">When was your child born?</legend>
+            <div class="form-group" id="dobField">
+              <label for="dateOfBirth">Date of birth</label>
+              <div class="input-wrapper">
+                <input type="date" id="dateOfBirth" name="dateOfBirth" required aria-describedby="dobHelp dobError"></div>
+              <small id="dobHelp" class="setup-help">For children from birth until their seventh birthday. Their exact age helps us choose relevant resources.</small>
+              <small class="field-error" id="dobError"></small>
+              <div class="age-preview" id="agePreview" hidden role="status">
+                <div><span>Your child’s age</span><strong id="ageText"></strong></div>
+              </div>
+            </div>
+            <div class="form-group" id="prematurityField">
+              <select id="bornBeforeDueDate" name="bornBeforeDueDate" class="visually-hidden" tabindex="-1" aria-hidden="true"><option value="unknown">Not sure / prefer to skip</option><option value="no">No</option><option value="yes">Yes</option></select>
+              <fieldset class="card-choices" aria-describedby="prematurityHelp"><legend>Was your child born before their due date?</legend>
+                <div class="icon-cards three">
+                  <label class="icon-card"><input type="radio" name="bornEarlyChoice" value="no"><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 12.3 2.4 2.4 4.8-5"/></svg>On time</span></label>
+                  <label class="icon-card"><input type="radio" name="bornEarlyChoice" value="yes"><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="7.5"/><path d="M12 9v4l2.5 1.5M9.5 3h5M12 3v2.5"/></svg>Early</span></label>
+                  <label class="icon-card"><input type="radio" name="bornEarlyChoice" value="unknown"><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9.7 9.5a2.4 2.4 0 1 1 3.3 2.2c-.6.3-1 .8-1 1.5v.5M12 16.5h.01"/></svg>Not sure</span></label>
+                </div>
+              </fieldset>
+              <small class="setup-help" id="prematurityHelp">Optional. For children under 2, the expected due date can help us select development resources using corrected age.</small>
+              <div id="dueDateField" hidden><label for="expectedDueDate">Expected due date (optional)</label><div class="input-wrapper"><input type="date" id="expectedDueDate" aria-describedby="dueDateError"></div><small class="field-error" id="dueDateError"></small><small class="setup-help">Use the date given by your care team. Health records and appointments still use the date of birth.</small></div>
+            </div>
+            <div class="basics-nav"><button type="button" class="setup-back-button" data-back><span aria-hidden="true">←</span> Back</button><button type="button" class="primary-button" data-next>Next <span aria-hidden="true">→</span></button></div>
+          </fieldset>
+
+          <!-- Screen 3: who the parent is, then save -->
+          <fieldset class="basics-page" data-page="2" hidden>
+            <legend class="page-title" tabindex="-1">And you are…</legend>
+            <div class="form-group" id="relationshipField">
+              <select id="relationship" name="relationship" required class="visually-hidden" tabindex="-1" aria-hidden="true">
+                <option value="">Select relationship</option>
+                <option value="mother">Mother</option>
+                <option value="father">Father</option>
+                <option value="guardian">Guardian</option>
+                <option value="other">Other caregiver</option>
+              </select>
+              <fieldset class="card-choices" aria-describedby="relationshipError"><legend>Your relationship to the child</legend>
+                <div class="icon-cards">
+                  <label class="icon-card"><input type="radio" name="relationshipChoice" value="mother"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9.5a4 4 0 0 1 8 0c0 2.5-.6 3.6-1.2 4.2H9.2C8.6 13.1 8 12 8 9.5Z"/><path d="M5 21c.6-3.6 3.4-5.6 7-5.6s6.4 2 7 5.6"/></svg>Mother</span></label>
+                  <label class="icon-card"><input type="radio" name="relationshipChoice" value="father"><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="4"/><path d="M5 21c.6-3.6 3.4-5.6 7-5.6s6.4 2 7 5.6"/></svg>Father</span></label>
+                  <label class="icon-card"><input type="radio" name="relationshipChoice" value="guardian"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2 19 6v5.3c0 4.6-2.9 7.8-7 9.5-4.1-1.7-7-4.9-7-9.5V6Z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>Guardian</span></label>
+                  <label class="icon-card"><input type="radio" name="relationshipChoice" value="other"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.4C19 15.7 12 20 12 20Z"/></svg>Other caregiver</span></label>
+                </div>
+              </fieldset>
+              <small class="field-error" id="relationshipError"></small>
+            </div>
+            <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+            <div class="basics-nav"><button type="button" class="setup-back-button" data-back><span aria-hidden="true">←</span> Back</button><button type="submit" class="primary-button" id="createButton">Continue <span aria-hidden="true">→</span></button></div>
+            <p class="form-footer-text"><span class="next-hint">Next: your child’s story</span> This preview saves the profile in this browser.</p>
+          </fieldset>
+        </form>
+      </section>
+    </section>
 
 <section id="profileStoryInline" class="family-page child-story-page profile-story-inline" hidden aria-label="Your child’s story">
  <div class="family-main">
-  <div class="family-story-intro"><div><span class="family-kicker">PART OF YOUR CHILD’S PROFILE</span><h1>Health, family and play</h1><p>Continue setting up your child’s profile. These optional details stay together with their basic information.</p></div><span class="family-child-pill" id="historyChild" data-user-content></span></div>
+  <div class="family-story-intro"><div><span class="family-kicker">STEP 2 OF 3</span><h1>Your child’s story</h1><p>Short topics, one question at a time. Skip anything you prefer not to answer.</p></div><span class="story-child"><span class="story-avatar" aria-hidden="true"></span><span class="family-child-pill" id="historyChild" data-user-content></span></span></div>
   <a id="historyExit" href="child-profile.html">Back to child profile</a>
   <details class="family-note family-privacy"><summary>You choose what to share</summary><p>Health and family questions are optional. Answers stay in this browser and are not automatically shared with a specialist. Play suggestions use age and reported readiness, not a diagnosis from health history.</p></details>
-  <form id="historyForm"><div id="historyProgress" class="family-kicker" role="status"></div><div id="historyFields"></div><p id="historyStatus" class="family-status" role="alert"></p><div class="family-actions"><button type="button" class="secondary" id="historyPrevious">Previous</button><button type="submit" id="historyNext">Next</button><button type="button" class="secondary" id="historyLater">Save and finish later</button></div></form>
+  <form id="historyForm"><div id="historyProgress" class="family-kicker" role="status"></div><div id="historyFields"></div><p id="historyStatus" class="family-status" role="alert"></p><div class="family-actions"><button type="button" class="secondary" id="historyPrevious">Previous</button><button type="submit" id="historyNext">Next</button><button type="button" class="secondary" id="historyLater">Save and finish later</button><p class="story-autosave">Saved as you go. You can finish any time from your child’s profile.</p></div></form>
  </div>
 </section>
 </main>
 
                                   <script src="family-onboarding.js"></script><script src="onboarding.js"></script>
                                   <script src="onboarding-character.js"></script>
-                                <script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="parent-journey-ar.js" defer></script><script src="child-history-copy.js" defer></script><script src="child-history-age.js" defer></script><script src="child-history.js" defer></script><script src="../shared/site-language.js" defer></script>
+                                <script src="../rafiq-home-transfer-20261013-211454/home-ar.js" defer></script><script src="../shared/site-ar.js" defer></script><script src="../shared/site-identity.js" defer></script><script src="parent-journey-ar.js" defer></script><script src="child-history-copy.js" defer></script><script src="child-history-age.js" defer></script><script src="child-history.js" defer></script><script src="onboarding-journey.js" defer></script><script src="../shared/site-language.js" defer></script>
 <script src="../shared/membership-ui.js"></script></body>
 </html>

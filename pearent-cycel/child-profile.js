@@ -14,7 +14,7 @@ get('changeChildPhoto').onclick=()=>window.RafiqChildAvatar.pick(window.RafiqFam
 document.addEventListener('rafiq-child-change',()=>{const updated=window.RafiqSetup.readChildren().find(c=>c.id===child.id);if(updated)window.RafiqChildAvatar.render(get('profileAvatar'),updated);});
 get('profileAge').textContent=window.RafiqSetup.formatAge(context.chronological)||'Review date of birth';
 get('editChildProfile').href='onboarding.html?edit='+encodeURIComponent(child.id)+'&return=profile';
-const date=value=>{if(!window.RafiqSetup.ageFromBirth(value,new Date(9999,11,31)))return 'Not provided';return new Date(value+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});};
+const date=value=>{if(!window.RafiqSetup.ageFromBirth(value,new Date(9999,11,31)))return 'Not provided';return new Date(value+'T00:00:00').toLocaleDateString(document.documentElement.lang==='ar'?'ar-JO':'en-GB',{day:'numeric',month:'long',year:'numeric'});};
 const early={yes:'Yes',no:'No',unknown:'Not sure'};
 const details={'Date of birth':date(child.dateOfBirth||child.dob||child.birthDate),'Your relationship':({mother:'Mother',father:'Father',guardian:'Guardian',other:'Other'})[child.relationship]||'Not provided','Gender':({male:'Male',female:'Female',boy:'Boy',girl:'Girl'})[child.gender]||'Not provided','Born before the expected due date':early[child.bornBeforeDueDate]||'Not provided'};
 if(child.bornBeforeDueDate==='yes'){details['Expected due date']=date(child.expectedDueDate);if(context.basis==='corrected')details['Adjusted age for development']=window.RafiqSetup.formatAge(context.development);}

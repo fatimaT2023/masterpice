@@ -1,0 +1,23 @@
+/* Appointments page, tidy layout (see bookings-tidy.js) */
+.bk-tidy .bookings-intro,.bk-tidy .summary-grid,.bk-tidy .parent-cycle-help,.bk-tidy .booking-tools .section-kicker,.bk-tidy .booking-tools h2{display:none!important}
+.bk-tidy header.topbar{align-items:flex-end;gap:16px;padding:22px 24px!important;border-radius:24px;background:linear-gradient(135deg,#f3faf7,#fff 70%)!important;border:1px solid rgba(40,103,95,.16);box-shadow:0 10px 30px rgba(40,103,95,.08)}
+.bk-tidy header.topbar .page-kicker{display:inline-block;font-size:12px!important;font-weight:700;letter-spacing:0!important;color:#28675f!important;text-transform:none!important}
+.bk-tidy header.topbar h1{margin:4px 0 6px!important;font-size:clamp(24px,3vw,30px)!important;color:#173b37}
+.bk-lead{margin:0;max-width:56ch;color:#4c625e;line-height:1.7;font-size:15px}
+.bk-tidy .new-booking-button{min-height:46px;display:inline-flex;align-items:center;padding:10px 20px!important;border-radius:999px!important;background:#28675f!important;color:#fff!important;font-weight:700;white-space:nowrap;box-shadow:0 8px 20px rgba(40,103,95,.22)}
+.bk-tidy .booking-tools{margin-top:8px}
+.bk-tidy .filter-button{display:inline-flex;align-items:center;gap:6px}
+.bk-count{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:rgba(40,103,95,.12);color:#28675f;font-size:12px;font-weight:700}
+.bk-count:empty{display:none}
+.filter-button.active .bk-count{background:rgba(255,255,255,.3);color:inherit}
+.bk-next{margin:18px 0 10px;padding:20px 22px;border-radius:22px;background:#28675f;color:#fff;box-shadow:0 14px 34px rgba(40,103,95,.25)}
+.bk-next-kicker{margin:0 0 4px;font-size:13px;font-weight:700;opacity:.85}
+.bk-next h2{margin:0 0 6px;font-size:22px;color:#fff}
+.bk-next p{margin:0;line-height:1.7;opacity:.95}
+.bk-next-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.bk-btn{display:inline-flex;align-items:center;min-height:44px;padding:8px 18px;border-radius:999px;border:0;background:#fff;color:#1f524c;font:inherit;font-weight:700;font-size:14px;text-decoration:none;cursor:pointer}
+.bk-btn.is-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6)}
+.bk-btn:focus-visible{outline:3px solid #ffd27a;outline-offset:2px}
+.bk-tidy .booking-card .journey-link.bk-primary{background:#28675f;color:#fff!important;border-radius:999px;padding:8px 16px}
+.bk-tidy .booking-detail.bk-date strong{color:#173b37}
+@media(max-width:600px){.bk-tidy header.topbar{flex-direction:column;align-items:stretch}.bk-tidy .new-booking-button{justify-content:center}.bk-next-actions .bk-btn{flex:1 1 100%;justify-content:center}}

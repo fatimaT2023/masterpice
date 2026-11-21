@@ -1,0 +1,191 @@
+/* Specialist practice layer — requests inbox, decisions, badges, toast. Uses Rafiq glass tokens. */
+:root{--px-ink:#0f2f2e;--px-soft:#3f5c5a;--px-sage:var(--theme-primary,#0b7a75);--px-sage-deep:var(--theme-primary-deep,#075e5a);--px-sage-tint:var(--theme-primary-tint,#d4f3ea);--px-lav:var(--theme-secondary-tint,#e7dfff);--px-lav-ink:var(--theme-secondary-deep,#4330b0);--px-sun:#ffe7a3;--px-sun-ink:#6e4a00;--px-peach:#ffdccb;--px-peach-ink:#a63a17;--px-glass:rgba(255,255,255,.62);--px-line:rgba(255,255,255,.88)}
+
+/* Readability: dashboard metric labels were 8px */
+body.specialist-cycle-video .metric-card span{font-size:12.5px;line-height:1.3}
+
+/* Sidebar count badges */
+#sidebar .nav-link{position:relative}
+#sidebar .nav-badge{margin-inline-start:auto;min-width:20px;height:20px;padding:0 6px;border-radius:999px;display:inline-grid;place-items:center;font-size:11px;font-weight:700;line-height:1;background:var(--px-sage);color:#fff;box-shadow:0 4px 10px rgba(11,122,117,.25)}
+#sidebar.collapsed .nav-badge,.sidebar-collapsed #sidebar .nav-badge{position:absolute;inset-block-start:4px;inset-inline-end:6px;min-width:16px;height:16px;font-size:10px;padding:0 4px}
+
+/* Requests inbox */
+.practice-inbox{padding:22px 24px;margin-block:18px}
+.practice-inbox .card-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-block-end:14px}
+.practice-inbox h2{display:flex;align-items:center;gap:10px;margin:2px 0 0}
+.practice-inbox-count{min-width:26px;height:26px;padding:0 8px;border-radius:999px;display:inline-grid;place-items:center;background:var(--px-sun);color:var(--px-sun-ink);font-size:13px;font-weight:700}
+.practice-inbox-sub{margin:4px 0 0;color:var(--px-soft);font-size:13.5px}
+.practice-inbox-list{display:grid;gap:12px}
+.practice-inbox-empty{display:flex;align-items:center;gap:12px;padding:16px 18px;border:1px dashed rgba(11,122,117,.28);border-radius:18px;color:var(--px-soft);font-size:14px}
+.practice-inbox-empty b{color:var(--px-ink)}
+.practice-request{display:grid;grid-template-columns:auto 1fr auto;gap:14px 16px;align-items:center;padding:16px 18px;border-radius:20px;background:rgba(255,255,255,.72);border:1px solid var(--px-line);box-shadow:0 6px 18px rgba(40,78,72,.06);transition:transform .18s ease,box-shadow .18s ease}
+.practice-request:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(40,78,72,.1)}
+.practice-request-avatar{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;font-weight:700;font-size:18px;background:var(--px-sage-tint);color:var(--px-sage-deep)}
+.practice-request-avatar.lav{background:var(--px-lav);color:var(--px-lav-ink)}
+.practice-request-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.practice-request-top small{color:var(--px-soft);font-size:12px}
+.practice-request h3{margin:6px 0 2px;font-size:16.5px;color:var(--px-ink)}
+.practice-request h3 small{font-weight:500;color:var(--px-soft);font-size:13px}
+.practice-dot::before{content:"·";margin-inline:2px 6px}
+.practice-request-reason{margin:2px 0 6px;color:var(--px-soft);font-size:13.5px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.practice-request-meta{display:flex;flex-wrap:wrap;gap:6px;margin:0}
+.practice-request-meta span{padding:3px 9px;border-radius:999px;background:rgba(15,47,46,.05);font-size:12px;color:var(--px-ink);font-weight:600}
+.practice-chip{padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:700;letter-spacing:.02em}
+.practice-chip.booking{background:var(--px-sun);color:var(--px-sun-ink)}
+.practice-chip.follow{background:var(--px-lav);color:var(--px-lav-ink)}
+.practice-request-actions{display:flex;flex-direction:column;gap:8px;align-items:stretch;min-width:118px}
+.practice-btn{appearance:none;border:1px solid transparent;border-radius:13px;padding:9px 16px;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;transition:background .15s,transform .15s,box-shadow .15s}
+.practice-btn:focus-visible,.practice-link:focus-visible{outline:3px solid rgba(11,122,117,.35);outline-offset:2px}
+.practice-btn.primary{background:var(--px-sage);color:#fff;box-shadow:0 8px 18px rgba(11,122,117,.22)}
+.practice-btn.primary:hover{background:var(--px-sage-deep);transform:translateY(-1px)}
+.practice-btn.ghost{background:rgba(255,255,255,.8);border-color:rgba(15,47,46,.14);color:var(--px-ink)}
+.practice-btn.ghost:hover{background:#fff}
+.practice-btn.danger{background:var(--px-peach-ink);color:#fff}
+.practice-link{text-align:center;font-size:12.5px;font-weight:700;color:var(--px-sage-deep);text-decoration:none}
+.practice-link:hover{text-decoration:underline}
+.practice-sim{font-size:12px;color:var(--px-soft);background:rgba(255,231,163,.35);border-radius:10px;padding:6px 10px;margin:8px 0}
+
+/* Sample-data strip */
+.practice-sample{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-block:16px 4px;padding:12px 16px;border-radius:16px;background:rgba(255,255,255,.45);border:1px dashed rgba(15,47,46,.18);font-size:13px;color:var(--px-soft)}
+.practice-sample strong{color:var(--px-ink);margin-inline-end:6px}
+.practice-sample button{font-size:12.5px;padding:7px 12px}
+
+/* Decline dialog */
+.practice-dialog{border:0;border-radius:24px;padding:0;width:min(460px,calc(100vw - 32px));background:rgba(255,255,255,.94);backdrop-filter:blur(18px);box-shadow:0 30px 80px rgba(15,47,46,.25);color:var(--px-ink)}
+.practice-dialog::backdrop{background:rgba(15,47,46,.28);backdrop-filter:blur(3px)}
+.practice-dialog form{padding:24px;display:grid;gap:8px}
+.practice-dialog h2{margin:0;font-size:19px}
+.practice-dialog-child{margin:0 0 6px;color:var(--px-soft);font-weight:600}
+.practice-dialog label{font-size:13px;font-weight:700}
+.practice-dialog textarea{width:100%;box-sizing:border-box;border-radius:14px;border:1px solid rgba(15,47,46,.16);padding:10px 12px;font:inherit;font-size:14px;resize:vertical;background:#fff}
+.practice-dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:6px}
+
+/* Toast */
+.practice-toast{position:fixed;inset-block-end:24px;inset-inline-start:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:2000;max-width:min(520px,calc(100vw - 32px));padding:12px 18px;border-radius:16px;background:rgba(15,47,46,.92);color:#fff;font-size:14px;font-weight:600;box-shadow:0 18px 40px rgba(15,47,46,.28);transition:opacity .25s,transform .25s}
+[dir=rtl] .practice-toast{transform:translate(50%,20px)}
+.practice-toast.show{opacity:1;transform:translate(-50%,0)}
+[dir=rtl] .practice-toast.show{transform:translate(50%,0)}
+.practice-toast[data-tone=error]{background:var(--px-peach-ink)}
+
+/* Bookings page: request status + inline decisions */
+.status-badge.requested,.status-pill.requested{background:var(--px-sun)!important;color:var(--px-sun-ink)!important}
+.booking-card.is-request{border-inline-start:4px solid #e6b94a!important}
+.booking-decision{display:flex;gap:8px;flex-wrap:wrap}
+.booking-decision .practice-btn{padding:8px 14px}
+.decision-card{display:grid;gap:10px}
+.decision-card .practice-btn{width:100%}
+
+@media (max-width:720px){
+  .practice-inbox{padding:18px 16px}
+  .practice-request{grid-template-columns:auto 1fr;padding:14px}
+  .practice-request-actions{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;min-width:0}
+  .practice-request-actions .practice-btn{flex:1 1 120px}
+  .practice-request-actions .practice-link{flex-basis:100%}
+}
+@media (prefers-reduced-motion:reduce){.practice-request,.practice-btn,.practice-toast{transition:none}}
+
+/* ---------- Structure pass (UX) ---------- */
+/* Keep the hidden attribute authoritative for practice components. */
+.practice-inbox-empty[hidden],.practice-inbox-count[hidden],.practice-picker[hidden]{display:none!important}
+
+/* Arabic names inside English sentences (and the reverse) keep their own direction. */
+body.specialist-cycle-video :is(span,strong,small,h3,h4,b,a)[data-user-content],.practice-dot{unicode-bidi:isolate}
+
+/* One clear purpose per page: the slogan heroes repeated the page title and the KPI row. */
+.specialist-bookings-page .hero,
+.schedule-hero,.clients-hero,.earnings-hero,.settings-hero,.availability-hero{display:none!important}
+
+/* Availability status moves next to the page title. */
+.practice-status-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--px-glass);border:1px solid var(--px-line);font-size:12.5px;font-weight:700;color:var(--px-ink);white-space:nowrap}
+.practice-status-chip span{font-size:10.5px;letter-spacing:.08em;color:var(--px-soft)}
+.practice-status-chip strong{font-size:13px}
+.practice-status-chip::before{content:"";width:8px;height:8px;border-radius:50%;background:#e6b94a}
+.practice-status-chip[data-ready=true]::before{background:var(--px-sage)}
+
+/* Sidebar: help sits with account actions at the bottom. */
+#sidebar .sidebar-bottom a[href*="help-center"] .nav-icon svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+/* Dashboard: "now" first, then decisions, then what's next. */
+.specialist-dashboard-page .dashboard-grid{margin-block-start:18px}
+.specialist-dashboard-page .practice-inbox{margin-block:18px}
+.attention-row a{color:var(--px-ink);font-weight:600;text-decoration:none}
+.attention-row a::after{content:" →";color:var(--px-sage)}
+.attention-row a:hover{color:var(--px-sage-deep)}
+
+/* Detail-page picker (replaces "not found" dead ends) */
+.state-card.has-picker{max-width:720px;text-align:start}
+.state-card.has-picker > .state-icon{display:none}
+.practice-picker{display:grid;gap:10px;margin:18px 0 14px;text-align:start}
+.practice-pick{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;width:100%;padding:14px 16px;border-radius:18px;border:1px solid var(--px-line);background:rgba(255,255,255,.75);font:inherit;color:var(--px-ink);cursor:pointer;text-align:start;transition:transform .15s,box-shadow .15s,border-color .15s}
+.practice-pick:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(40,78,72,.1);border-color:rgba(11,122,117,.3)}
+.practice-pick:focus-visible{outline:3px solid rgba(11,122,117,.35);outline-offset:2px}
+.practice-pick-body{display:grid;gap:2px;min-width:0}
+.practice-pick-body strong{font-size:15.5px}
+.practice-pick-body small{font-size:12.5px;color:var(--px-soft);font-weight:600}
+.practice-pick-body em{font-style:normal;font-size:13px;color:var(--px-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.practice-pick-status{padding:4px 10px;border-radius:999px;font-size:11.5px;font-weight:700;white-space:nowrap;background:var(--px-sage-tint);color:var(--px-sage-deep)}
+.practice-pick-status[data-tone=request],.practice-pick-status[data-tone=due]{background:var(--px-sun);color:var(--px-sun-ink)}
+.practice-pick-status[data-tone=done]{background:rgba(15,47,46,.06);color:var(--px-soft)}
+@media (max-width:560px){.practice-pick{grid-template-columns:auto 1fr}.practice-pick-status{grid-column:2;justify-self:start}}
+
+/* Profile tabs */
+.profile-tabs{display:flex;flex-wrap:wrap;gap:6px;padding:8px;border-radius:22px;background:var(--px-glass);border:1px solid var(--px-line);backdrop-filter:blur(14px);box-shadow:0 8px 24px rgba(40,78,72,.06);margin-block-end:16px}
+.profile-tab{flex:1 1 auto;justify-content:center;position:relative;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:16px;border:1px solid transparent;background:transparent;font:inherit;color:var(--px-soft);cursor:pointer;text-align:start;min-width:0;transition:background .15s,color .15s}
+.profile-tab:hover{background:rgba(255,255,255,.6);color:var(--px-ink)}
+.profile-tab:focus-visible{outline:3px solid rgba(11,122,117,.35);outline-offset:2px}
+.profile-tab[aria-selected=true]{background:#fff;color:var(--px-ink);border-color:rgba(11,122,117,.18);box-shadow:0 6px 16px rgba(40,78,72,.08)}
+.profile-tab-step{flex:none;width:26px;height:26px;border-radius:9px;display:grid;place-items:center;font-size:12.5px;font-weight:800;background:rgba(15,47,46,.06)}
+.profile-tab[aria-selected=true] .profile-tab-step{background:var(--px-sage);color:#fff}
+.profile-tab-copy{display:grid;min-width:0}
+.profile-tab-copy strong{font-size:13.5px;white-space:nowrap}
+.profile-tab-copy small{display:none}
+.profile-tab.has-error .profile-tab-flag{position:absolute;inset-block-start:8px;inset-inline-end:8px;width:8px;height:8px;border-radius:50%;background:var(--px-peach-ink)}
+.profile-tab-panel{display:grid;gap:18px}
+.profile-tab-panel[hidden]{display:none!important}
+.specialist-profile-page .profile-main{display:flex;flex-direction:column;gap:0}
+.specialist-profile-page .profile-tab-panel + .profile-tab-panel{margin:0}
+.specialist-profile-page .save-bar{position:sticky;inset-block-end:14px;z-index:5;margin-block-start:18px;backdrop-filter:blur(16px)}
+.specialist-profile-page .profile-side{position:sticky;inset-block-start:18px;align-self:start}
+
+/* Public clinic cards follow the profile-card language */
+.clinic-card .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+.clinic-card .form-group.full{grid-column:1/-1}
+.clinic-card textarea{min-height:84px;resize:vertical}
+.clinic-card .field-hint{display:block;margin-top:4px;font-size:12px;color:var(--px-soft)}
+.clinic-card .clinic-status:empty{display:none}
+.clinic-card .clinic-status{margin:10px 0 0}
+.clinic-cert-head{margin-block:20px 10px;padding-block-start:16px;border-top:1px solid rgba(15,47,46,.08)}
+.clinic-cert-head h3{margin:0;font-size:15.5px;color:var(--px-ink)}
+.clinic-cert-head p{margin:4px 0 0;font-size:13px;color:var(--px-soft)}
+.clinic-cert-list{display:grid;gap:10px}
+.clinic-cert-row{display:grid;grid-template-columns:1fr 1.3fr auto;gap:12px;align-items:end;padding:12px;border-radius:16px;background:rgba(255,255,255,.55);border:1px solid var(--px-line)}
+.clinic-cert-row[hidden]{display:none}
+.clinic-cert-row .form-group{margin:0}
+.clinic-card .text-button{appearance:none;border:0;background:none;font:inherit;font-size:12.5px;font-weight:700;color:var(--px-peach-ink);cursor:pointer;padding:10px 4px}
+.clinic-card .secondary-button{appearance:none;justify-self:start;margin-top:12px;border:1px dashed rgba(11,122,117,.4);background:rgba(255,255,255,.7);color:var(--px-sage-deep);border-radius:13px;padding:9px 14px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.clinic-card .secondary-button[hidden]{display:none}
+.clinic-upload input[type=file]{font-size:13px}
+.clinic-preview-link{display:inline-block;margin-top:16px;font-weight:700;color:var(--px-sage-deep)}
+
+@media (max-width:720px){
+  .profile-tabs{display:flex;overflow-x:auto;scrollbar-width:none;padding:6px;border-radius:18px}
+  .profile-tabs::-webkit-scrollbar{display:none}
+  .profile-tab{flex:0 0 auto}
+  .profile-tab-copy small{display:none}
+  .clinic-card .form-grid{grid-template-columns:1fr}
+  .clinic-cert-row{grid-template-columns:1fr}
+  .specialist-profile-page .profile-side{position:static}
+}
+
+/* Follow-up request context */
+.care-request-context{display:grid;gap:6px;margin:14px 0 16px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.66);border:1px solid var(--px-line)}
+.care-request-context h3{margin:6px 0 0;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--px-soft)}
+.care-request-context blockquote{margin:0;padding:10px 14px;border-inline-start:3px solid var(--px-lav-ink);border-radius:10px;background:var(--px-lav);color:var(--px-ink);font-size:14.5px;line-height:1.55}
+.care-request-context small{font-size:12.5px;color:var(--px-soft)}
+.care-scope-chips{display:flex;flex-wrap:wrap;gap:6px;margin:0}
+.care-scope-chips span{padding:4px 10px;border-radius:999px;background:var(--px-sage-tint);color:var(--px-sage-deep);font-size:12.5px;font-weight:700}
+body.specialist-cycle-video .care-request-context h3{margin:6px 0 0;font-size:11.5px;line-height:1.3;letter-spacing:.07em;font-weight:800;text-transform:uppercase;color:var(--px-soft)}
+@media (max-width:720px){
+  body.specialist-cycle-video .metrics-grid,body.specialist-cycle-video .summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  body.specialist-cycle-video .metric-card{padding:12px}
+}

@@ -1,0 +1,15 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+let selected='girl',reads=0;
+const children=[{id:'girl',gender:'female'},{id:'boy',gender:'male'},{id:'other'}],events={},documentEvents={};
+const ctx={window:null,document:{documentElement:{dataset:{}},getElementById(){return null;},addEventListener(type,fn){documentEvents[type]=fn;}},location:{pathname:'/pearent-cycel/parent-dashboard.html',search:''},URLSearchParams,queueMicrotask,sessionStorage:{getItem:()=> 'parent-a'},localStorage:{getItem:()=>null},addEventListener(type,fn){events[type]=fn;},RafiqSetup:{readChildren(){reads++;return children;}},RafiqFamily:{selected:()=>selected}};
+ctx.window=ctx;vm.createContext(ctx);vm.runInContext(fs.readFileSync('pearent-cycel/child-appearance.js','utf8'),ctx);
+const appearance=()=>ctx.document.documentElement.dataset.childAppearance;
+assert.equal(appearance(),'girl');
+selected='boy';events.storage({key:'rafiqCurrentChildId_parent-a'});assert.equal(appearance(),'boy','Account-scoped selection refreshes theme');
+const previousReads=reads;selected='girl';events.storage({key:'rafiqCurrentChildId_someone-else'});assert.equal(reads,previousReads,'Another account does not change current appearance');
+events.pageshow();assert.equal(appearance(),'girl','Back/forward restoration uses selected child');
+selected='boy';documentEvents['rafiq-child-change']();assert.equal(appearance(),'boy');
+selected='girl';documentEvents['rafiq:family-change']();assert.equal(appearance(),'girl');
+ctx.location.pathname='/pearent-cycel/child-profile.html';ctx.location.search='?child=boy';events.pageshow();assert.equal(appearance(),'boy','Direct child-profile link uses that accessible child');
+ctx.location.search='?child=other';events.pageshow();assert.equal(appearance(),'cream','Unspecified gender retains original neutral fallback');
+console.log('PASS: girl/boy themes, account-scoped selection, other-account isolation, pageshow, child/family events, profile route and neutral fallback.');

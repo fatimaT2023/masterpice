@@ -1,0 +1,11 @@
+/* "Now, practise at home" card under a specialist report */
+.report-next-step{margin-top:20px;padding:18px 20px;border-radius:20px;border:1px solid rgba(40,103,95,.22);background:linear-gradient(180deg,#f3faf7,#fff)}
+.report-next-kicker{margin:0 0 4px;font-size:12px;font-weight:700;color:#28675f}
+.report-next-step h2{margin:0 0 6px;font-size:19px}
+.report-next-step p{line-height:1.7}
+.report-next-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.report-next-actions a{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:700;font-size:14px}
+.report-next-primary{background:#28675f;color:#fff}
+.report-next-secondary{border:1px solid #9cc9b5;color:#28675f;background:#fff}
+.report-next-actions a:focus-visible{outline:3px solid #28675f;outline-offset:2px}
+@media(max-width:480px){.report-next-actions a{flex:1 1 100%;justify-content:center}}

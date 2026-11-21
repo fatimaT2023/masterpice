@@ -504,6 +504,7 @@ document.addEventListener(
 
 
     function getStatus() {
+ if(['requested','pending'].includes(booking.status))return 'requested';
  if(booking.status==='cancelled')return 'cancelled';
  if(booking.status==='completed')return 'completed';
  return 'upcoming';
@@ -779,7 +780,9 @@ document.addEventListener(
 
 
       heroStatus.textContent =
-        status === "upcoming"
+        status === "requested"
+          ? "Awaiting your response"
+          : status === "upcoming"
           ? "Upcoming"
           : status === "completed"
             ? "Completed"
@@ -866,6 +869,12 @@ document.addEventListener(
 
         cancelledCard.hidden =
           false;
+        if (booking.cancelledBy === "specialist") {
+          cancelledCard.querySelector("h3").textContent = "You declined this request";
+          cancelledCard.querySelector("p").textContent = booking.declineReason ? "Your note to the family: " + booking.declineReason : "No note was added. The family can book another time or specialist.";
+        } else if (booking.cancelledBy === "parent") {
+          cancelledCard.querySelector("h3").textContent = "Cancelled by the family";
+        }
 
 
         return;
@@ -878,6 +887,26 @@ document.addEventListener(
 
       cancelledCard.hidden =
         true;
+      if (status === "requested") {
+        actionTitle.textContent = "Respond to this request";
+        actionDescription.textContent = "The family asked for this time. Accept to confirm the appointment, or decline with an optional note. Simulated: no email or payment is processed.";
+        consultationButton.hidden = true;
+        const box = document.createElement("div");
+        box.className = "decision-card";
+        box.innerHTML = '<button type="button" class="practice-btn primary" data-decision="accept">Accept request</button><button type="button" class="practice-btn ghost" data-decision="decline">Decline request</button>';
+        box.querySelectorAll("[data-decision]").forEach(button => button.addEventListener("click", async () => {
+          const practice = window.RafiqSpecialistPractice;
+          if (!practice) return;
+          try {
+            if (button.dataset.decision === "accept") practice.respond(booking.id, "accept");
+            else { const answer = await practice.askDecline(booking.childName); if (!answer) return; practice.respond(booking.id, "decline", answer.reason); }
+            location.reload();
+          } catch (error) { practice.toast(error.message, "error"); }
+        }));
+        consultationButton.after(box);
+        return;
+      }
+
 
 
       if (

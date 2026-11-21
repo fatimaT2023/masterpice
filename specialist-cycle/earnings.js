@@ -790,7 +790,7 @@ document.addEventListener(
 
 
           item.innerHTML = `
-            <div class="recent-icon">
+            <div class="recent-icon" data-user-content>
               ${escapeHTML(
                 child
                   .charAt(0)
@@ -811,10 +811,7 @@ document.addEventListener(
                 ${escapeHTML(
                   type
                 )}
-                consultation •
-                ${escapeHTML(
-                  booking.id
-                )}
+                consultation
               </span>
 
             </div>

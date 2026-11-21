@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checks": [
+    "Arabic desktop hierarchy, original activity player, 3 recommendations, 11 areas and single active navigation",
+    "Explicit sleep, feeding, typical, prematurity and attention recommendations unchanged",
+    "360px AR/EN without overflow, header <=90px, mobile disclosure, Escape and focus restoration",
+    "Activity form identity and unsaved input survive language switch",
+    "Original inline player saves an actual demo activity response and refreshes dashboard status",
+    "Today appointment precedes new report; new report opens exact child/booking",
+    "Child switcher opens the selected child profile with active navigation",
+    "Original girl/boy wallpaper assets, exact original palette and true glass blur verified in AR/EN at 360/1280px; same-family child switching, five-page navigation, reload and switch-back preserve theme",
+    "Five standalone support workspaces retain selected-child wallpaper and glass surfaces across AR/EN switches",
+    "Appointments and support navigation, 11 categories/32 topics, no persistent child writes, no JavaScript exceptions"
+  ],
+  "runtimeErrors": []
+}

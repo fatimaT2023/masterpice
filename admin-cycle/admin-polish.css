@@ -1,0 +1,19 @@
+/* Admin polish: grouped menu, section tabs, next-step card (admin-polish.js) */
+.ap-hidden{display:none!important}
+.sidebar-nav a.nav-link{position:relative}
+.ap-badge{margin-inline-start:auto;display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#c2410c;color:#fff;font-size:11px;font-weight:700}
+.ap-tabs{display:flex;flex-wrap:wrap;gap:6px;width:max-content;max-width:100%;margin:0 0 18px;padding:5px;border-radius:999px;background:rgba(255,255,255,.75);border:1px solid rgba(40,103,95,.14);box-shadow:0 6px 18px rgba(40,103,95,.06)}
+.ap-tabs a{display:inline-flex;align-items:center;min-height:38px;padding:6px 16px;border-radius:999px;color:#28675f;font-weight:700;font-size:14px;text-decoration:none}
+.ap-tabs a[aria-current="page"]{background:#28675f;color:#fff}
+.ap-tabs a:focus-visible,.ap-btn:focus-visible{outline:3px solid #ffd27a;outline-offset:2px}
+.ap-next{margin:0 0 20px;padding:22px 24px;border-radius:24px;background:#28675f;color:#fff;box-shadow:0 14px 34px rgba(40,103,95,.25)}
+.ap-kicker{margin:0 0 4px;font-size:13px;font-weight:700;opacity:.85}
+.ap-next h2{margin:0 0 6px;font-size:22px;color:#fff}
+.ap-text{margin:0;line-height:1.7;opacity:.95;max-width:64ch}
+.ap-btn{margin-top:14px;min-height:46px;padding:10px 22px;border:0;border-radius:999px;background:#fff;color:#1f524c;font:inherit;font-weight:700;cursor:pointer}
+@media(max-width:600px){.ap-btn{width:100%}}
+/* RTL: keep the content beside the menu (an older rule pushed it under the menu at ~1000px) */
+@media(min-width:951px){
+  html[dir=rtl] body.admin-cycle-video main.main-content{margin-left:0!important;margin-right:288px!important;width:calc(100% - 288px)!important}
+  html[dir=rtl].admin-sidebar-collapsed body.admin-cycle-video main.main-content{margin-right:100px!important;width:calc(100% - 100px)!important}
+}

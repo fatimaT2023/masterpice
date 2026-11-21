@@ -1190,7 +1190,9 @@ document.addEventListener(
 
         rating:
           profile.rating ??
-          null,
+          ((reviews) => Array.isArray(reviews) && reviews.length
+            ? reviews.reduce((sum, review) => sum + Number(review.stars || 0), 0) / reviews.length
+            : null)(profile.showcase?.reviews || window.RafiqDemoSpecialists?.showcaseFor?.(profile.id)?.reviews),
 
 
         reviews:

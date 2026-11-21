@@ -30,6 +30,17 @@ document.addEventListener('DOMContentLoaded',()=>{
    const title=make('h2',row.thread.childName);title.setAttribute('data-user-content','');detail.append(title,make('p',({pending:'Awaiting your decision. Journal access starts only after acceptance and only for categories allowed by the parent.',active:'Accepted ongoing follow-up. The parent controls which entries you can see.',declined:'You declined ongoing follow-up. One-time consultation remains available.',revoked:'The parent stopped ongoing sharing. Live journal entries are no longer available.'})[row.state.status]),link('Open family conversation',conversation(row.thread)));
    if(row.state.previousRelationshipSince)detail.append(make('p','Followed before RAFIQ (family-reported): '+row.state.previousRelationshipSince));
    if(row.state.acceptedAt||row.state.respondedAt)detail.append(make('p','Sharing accepted on RAFIQ: '+String(row.state.acceptedAt||row.state.respondedAt).slice(0,10)));
+   if(row.state.status==='pending'){
+    // Give the decision its context: what the family asked and what they offer to share.
+    const intro=(row.thread.messages||[]).find(m=>m.senderRole==='parent');
+    const box=make('div');box.className='care-request-context';
+    if(intro){const quote=make('blockquote',intro.text);quote.setAttribute('data-user-content','');const who=make('small',row.thread.parentName);who.setAttribute('data-user-content','');box.append(make('h3','Message from the family'),quote,who);}
+    box.append(make('h3','If you accept, the family will share'));
+    const chips=make('p');chips.className='care-scope-chips';for(const scope of row.state.scopes||[]){chips.append(make('span',scope==='activities'?'Activity results and reactions':'Growth observations and concerns'));}
+    if(!(row.state.scopes||[]).length)chips.append(make('span','No journal categories yet'));
+    box.append(chips,make('small',row.state.includeEarlierRecords?'Includes entries recorded before today.':'Only new entries from the day you accept.'));
+    detail.append(box);
+   }
    if(row.state.status==='pending')for(const [op,text] of [['accept','Accept follow-up'],['decline','Decline follow-up']]){const b=make('button',text);b.type='button';b.addEventListener('click',()=>{try{api.change(viewer,row.thread.id,op);followUps(op==='accept'?'Request accepted. Find this child under Children I follow.':'Request declined. The parent can see the response in their conversation.');}catch(error){followUps(error.message);}});detail.append(b);}
    if(row.state.status==='active'){
     detail.append(make('h3','Parent sharing permissions'),make('p',row.state.scopes?.length?row.state.scopes.map(scope=>scope==='activities'?'Activity results and reactions':'Growth observations and concerns').join(' · '):'No journal categories are shared. Use the conversation to ask the parent.'));

@@ -18,6 +18,12 @@ function ageFromBirth(value, today = new Date()) {
 function formatAge(age) {
  if(!age||!Number.isInteger(age.totalMonths))return '';
  const parts=[];
+ let ar=false;try{ar=typeof document!=='undefined'&&(document.documentElement.lang||'')==='ar';}catch{}
+ if(ar){
+  const word=(n,one,two,few,many)=>n===1?one:n===2?two:(n>=3&&n<=10?n+' '+few:n+' '+many);
+  for(const [value,forms] of [[age.years,['سنة','سنتين','سنين','سنة']],[age.months,['شهر','شهرين','أشهر','شهر']],[age.days,['يوم','يومين','أيام','يوم']]]) if(value)parts.push(word(value,...forms));
+  return parts.length?parts.join(' و'):'٠ يوم';
+ }
  for(const [value,unit] of [[age.years,'year'],[age.months,'month'],[age.days,'day']]) if(value)parts.push(value+' '+unit+(value===1?'':'s'));
  return (parts.length?parts.join(', '):'0 days')+' old';
 }

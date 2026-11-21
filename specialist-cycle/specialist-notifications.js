@@ -481,8 +481,27 @@ document.addEventListener(
           // ==============================
 
           if (
+            settings.notifications.newBooking &&
+            ["requested", "pending"].includes(booking.status)
+          ) {
+            addNotification(notifications, {
+              id: `booking_request_${booking.id}`,
+              type: "booking",
+              title: "New booking request",
+              message: `${childName} • ${formatBookingDate(booking)} • ${booking.time || "Time not set"}`,
+              bookingId: booking.id,
+              read: false,
+              createdAt: booking.requestedAt || booking.createdAt || now.toISOString(),
+              destination: "booking-details.html"
+            });
+          }
+
+          if (
             settings.notifications
-              .newBooking
+              .newBooking &&
+            !booking.acceptedAt &&
+            !["requested", "pending"].includes(booking.status) &&
+            booking.cancelledBy !== "specialist"
           ) {
 
             addNotification(
@@ -588,6 +607,7 @@ document.addEventListener(
           // ==============================
 
           if (
+            !["requested", "pending"].includes(booking.status) &&
             booking.status !==
               "cancelled" &&
             booking.status !==
@@ -1308,13 +1328,13 @@ document.addEventListener(
 
                 <strong>
                   ${escapeHTML(
-                    notification.title
+                    (document.documentElement.lang==='ar'&&notification.titleAr)||notification.title
                   )}
                 </strong>
 
                 <p>
                   ${escapeHTML(
-                    notification.message
+                    (document.documentElement.lang==='ar'&&notification.messageAr)||notification.message
                   )}
                 </p><span class="notification-time">${escapeHTML(
                   formatRelativeTime(

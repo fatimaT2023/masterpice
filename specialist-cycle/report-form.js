@@ -499,7 +499,7 @@ document.addEventListener(
     }
 
 
-    const consultation =
+    let consultation =
       getConsultations()
         .find(
           item =>
@@ -509,6 +509,13 @@ document.addEventListener(
             item.specialistId ===
               specialist.id
         );
+    // A completed session opened straight from the dashboard may not have a notes record yet:
+    // create an empty one (as the session page does) instead of sending the specialist back.
+    if (!consultation && booking.status === "completed") {
+      const now = new Date().toISOString();
+      consultation = { id: "consultation_" + Date.now(), bookingId: booking.id, specialistId: specialist.id, childId: booking.childId, childName: booking.childName, status: "completed", sessionNotes: "", observations: "", nextSteps: "", createdAt: now, updatedAt: now, completedAt: now };
+      try { localStorage.setItem("rafiqConsultations", JSON.stringify([...getConsultations(), consultation])); } catch (error) { /* the form still opens */ }
+    }
 
 
     if (!consultation) {
@@ -1408,6 +1415,12 @@ document.addEventListener(
 
         specialistNote:
           specialistNote.value.trim(),
+
+
+        // Phase 5: areas discussed, suggested home activities, next steps (demonstration content).
+        ...(window.RafiqReportExtras?.collect()||{}),
+        isDemo:
+          !!booking.isDemo,
 
 
         status:

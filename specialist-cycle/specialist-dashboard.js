@@ -217,17 +217,19 @@ document.addEventListener(
       fullName
     ) {
 
+      // Drop honorifics (EN + AR) and any "— note" suffix so "د. لينا — تجريبي" greets "لينا".
       const cleaned =
         String(fullName || "")
+          .split(/\s[—–-]\s/)[0]
           .replace(
-            /^(Dr\.?|Mr\.?|Mrs\.?|Ms\.?)\s+/i,
+            /^(Dr\.?|Mr\.?|Mrs\.?|Ms\.?|د\.|أ\.|م\.)\s*/i,
             ""
           )
           .trim();
 
 
       return (
-        cleaned.split(" ")[0] ||
+        cleaned.split(/\s+/)[0] ||
         "Specialist"
       );
     }
@@ -593,7 +595,7 @@ document.addEventListener(
     }
 
 
-    function getBookingStatus(booking){if(booking.status==='cancelled')return 'cancelled';if(booking.status==='completed')return 'completed';return 'upcoming';}
+    function getBookingStatus(booking){if(["requested","pending"].includes(booking.status))return "requested";if(booking.status==="cancelled")return "cancelled";if(booking.status==='completed')return 'completed';return 'upcoming';}
 
 
     function isToday(
@@ -930,7 +932,10 @@ document.addEventListener(
                 "cancelled" &&
               getBookingStatus(
                 booking
-              ) === "upcoming"
+              ) === "upcoming" &&
+              !isToday(
+                booking
+              )
           )
           .sort(
             (a,b) =>
@@ -1145,7 +1150,7 @@ document.addEventListener(
 
     renderMetrics();
     const count=Number(todayCount.textContent)||0;
-    heroMessage.textContent=count ? 'You have '+count+' sessions today.' : 'No sessions today';
+    heroMessage.textContent=count===1 ? 'You have 1 session today.' : count ? 'You have '+count+' sessions today.' : 'No sessions today';
     document.getElementById('dashboardDate').textContent=new Date().toLocaleDateString(document.documentElement.lang==='ar'?'ar-JO':'en-GB',{weekday:'long',month:'short',day:'numeric'});
     const fields=[specialist.specialty,specialist.bio,Number(specialist.price)>0,(specialist.languages||[]).length,specialist.licenseNumber];
     const completeness=fields.filter(value=>typeof value==='string'?value.trim():value).length*20;
