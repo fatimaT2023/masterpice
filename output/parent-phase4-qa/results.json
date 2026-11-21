@@ -1,0 +1,281 @@
+{
+  "passed": 38,
+  "failed": 0,
+  "total": 38,
+  "results": [
+    {
+      "area": "Activities",
+      "name": "EN: name, age range, time, materials, skill, purpose and illustrated steps shown",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Activities",
+      "name": "Girl theme: pink accent on the activity card",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Activities",
+      "name": "Complete activity: guided steps → “We tried it” → saved record and completion state",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Activities",
+      "name": "Update response to “Maybe later” changes the completion state",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Activities",
+      "name": "EN desktop: no overflow",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Activities",
+      "name": "AR 390: activity page has no English (instructions, facts, steps, footnote)",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Activities",
+      "name": "AR: step text comes from the Arabic library copy",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Activities",
+      "name": "Boy theme: blue accent; no overflow at 390",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Activities",
+      "name": "Home AR: inline activity player has no English (Phase 3 defect fixed)",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Activities",
+      "name": "Home: the card is present inside the original player",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Growth",
+      "name": "Four CDC areas with the checklist examples for the child’s checkpoint",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Growth",
+      "name": "Source link is the matching CDC checklist, opens externally",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Growth",
+      "name": "No “delay” label or score in the stage and progress views",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Growth",
+      "name": "Parent observations vs professional assessments are labelled",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Growth",
+      "name": "Record observation by area → saved with the area, counts and badge update",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Growth",
+      "name": "Previously recorded information is listed with date and age",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Growth",
+      "name": "Girl theme pink; no overflow",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Growth",
+      "name": "AR 390 (premature, corrected age): no English, no overflow",
+      "ok": true,
+      "detail": {
+        "l": [
+          "Development resources use corrected age: 3 months, 13 days old. The profile age "
+        ],
+        "o": false
+      }
+    },
+    {
+      "area": "Health",
+      "name": "Overview: vaccines, measurements, notes, appointments",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Health",
+      "name": "Demo fixture records are labelled “demo example”",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Health",
+      "name": "Add a measurement → saved for this child and shown in the overview",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Health",
+      "name": "Add a vaccine → count in the overview matches saved records",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Health",
+      "name": "AR 390: no English, boy theme blue, no overflow",
+      "ok": true,
+      "detail": {
+        "l": [
+          "آخر واحد: QA vaccine (demo) · 14 نوفمبر 2026",
+          "QA vaccine (demo)"
+        ],
+        "a": "#225f87",
+        "o": false
+      }
+    },
+    {
+      "area": "Health",
+      "name": "EN desktop (girl): overview present, pink, no overflow",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Topics",
+      "name": "en: 11 areas and topic cards show icon + meaning",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Topics",
+      "name": "en 1280: all 32 topic pages (meaning, status, services, destinations)",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "area": "Topics",
+      "name": "All 8 service destinations load (HTTP 200)",
+      "ok": true,
+      "detail": [
+        [
+          "daily-activity.html",
+          200
+        ],
+        [
+          "milestones.html",
+          200
+        ],
+        [
+          "health.html",
+          200
+        ],
+        [
+          "specialists.html?specialty=speech",
+          200
+        ],
+        [
+          "screening.html",
+          200
+        ],
+        [
+          "specialists.html",
+          200
+        ],
+        [
+          "health.html?record=note",
+          200
+        ],
+        [
+          "bookings.html",
+          200
+        ]
+      ]
+    },
+    {
+      "area": "Topics",
+      "name": "ar: 11 areas and topic cards show icon + meaning",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Topics",
+      "name": "ar 390: all 32 topic pages (meaning, status, services, destinations, Arabic)",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "area": "Journeys",
+      "name": "A diagnosed autism: autism tools open; topic marked as the child’s support",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Journeys",
+      "name": "B autism as a concern: autism-only tools stay locked and lead to the support questions; play stays open",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Journeys",
+      "name": "C general development: browsing a topic needs no diagnosis; status says browsing only",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Children",
+      "name": "Girl: record saved to her, pink theme",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Children",
+      "name": "Boy: sister’s vaccine not shown or counted; blue theme",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Children",
+      "name": "Growth: brother’s note absent from girl’s journal and counts",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Children",
+      "name": "Growth: each child gets their own CDC checkpoint",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Regression",
+      "name": "Home (Phase 3) renders next step and support focus",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Stability",
+      "name": "No JavaScript errors during the run",
+      "ok": true,
+      "detail": true
+    }
+  ],
+  "errors": []
+}

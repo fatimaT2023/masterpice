@@ -1,0 +1,2781 @@
+[
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "saved: diagnosed + autism + following",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "journey = diagnosed, status = reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "autism tools shown (eligible)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "unread report is the next step",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "report listed under Coming up",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "All 27 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/; external https://www.unicef.org/parenting/child-care/screen-free-activities"
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "English: no Arabic text (outside names and family notes)",
+    "ok": false,
+    "detail": "مختص نطق وهمي مصطفى مصطفى مختص نطق وهمي"
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-1280",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "saved: diagnosed + autism + following",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "journey = diagnosed, status = reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "autism tools shown (eligible)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "unread report is the next step",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "report listed under Coming up",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "All 27 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/; external https://www.unicef.org/parenting/child-care/screen-free-activities"
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "English: no Arabic text (outside names and family notes)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "en-360",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "saved: diagnosed + autism + following",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "journey = diagnosed, status = reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "autism tools shown (eligible)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "unread report is the next step",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "report listed under Coming up",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "All 27 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/; external https://www.unicef.org/parenting/child-care/screen-free-activities"
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "Arabic: Home text (outside the activity player) has no English",
+    "ok": false,
+    "detail": "Fictional speech specialist Mustafa Fictional speech specialist"
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "Arabic: original activity player has no English",
+    "ok": false,
+    "detail": "Fictional speech specialist Mustafa Only suitable items mentioned steps minutes less play idea developmental test"
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-1280",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "saved: diagnosed + autism + following",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "journey = diagnosed, status = reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "autism tools shown (eligible)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "unread report is the next step",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "report listed under Coming up",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "All 27 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/; external https://www.unicef.org/parenting/child-care/screen-free-activities"
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "Arabic: Home text (outside the activity player) has no English",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "Arabic: original activity player has no English",
+    "ok": false,
+    "detail": "Only suitable items mentioned steps minutes less play idea developmental test"
+  },
+  {
+    "scenario": "1 Diagnosed (autism)",
+    "combo": "ar-360",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "saved: concerns + speech-delay + priority speech",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "journey = concerns",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "priority (speech directory) is the next step",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "no diagnosis label",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "empty care links to speech directory",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "All 24 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/"
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "English: no Arabic text (outside names and family notes)",
+    "ok": false,
+    "detail": "سلمى"
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-1280",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "saved: concerns + speech-delay + priority speech",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "journey = concerns",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "priority (speech directory) is the next step",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "no diagnosis label",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "empty care links to speech directory",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "All 24 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/"
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "English: no Arabic text (outside names and family notes)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "en-360",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "saved: concerns + speech-delay + priority speech",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "journey = concerns",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "priority (speech directory) is the next step",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "no diagnosis label",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "empty care links to speech directory",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "All 24 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/"
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "Arabic: Home text (outside the activity player) has no English",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "Arabic: original activity player has no English",
+    "ok": false,
+    "detail": "Salma Only suitable items mentioned below minutes less play idea developmental test"
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-1280",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "saved: concerns + speech-delay + priority speech",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "journey = concerns",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "priority (speech directory) is the next step",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "no diagnosis label",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "empty care links to speech directory",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "All 24 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/"
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "Arabic: Home text (outside the activity player) has no English",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "Arabic: original activity player has no English",
+    "ok": false,
+    "detail": "Only suitable items mentioned below minutes less play idea developmental test"
+  },
+  {
+    "scenario": "2 Concerns (speech delay)",
+    "combo": "ar-360",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "saved: monitoring",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "journey = development",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "only growth / play / health",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "next step is activity or observation",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "no topics, no diagnosis label",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "All 25 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/; external https://www.unicef.org/parenting/child-care/screen-free-activities"
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "English: no Arabic text (outside names and family notes)",
+    "ok": false,
+    "detail": "ليان ليان ليان"
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-1280",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "saved: monitoring",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "journey = development",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "only growth / play / health",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "next step is activity or observation",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "no topics, no diagnosis label",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "All 25 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/; external https://www.unicef.org/parenting/child-care/screen-free-activities"
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "English: no Arabic text (outside names and family notes)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "en-360",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "saved: monitoring",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "journey = development",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "only growth / play / health",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "next step is activity or observation",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "no topics, no diagnosis label",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "All 25 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/; external https://www.unicef.org/parenting/child-care/screen-free-activities"
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "Arabic: Home text (outside the activity player) has no English",
+    "ok": false,
+    "detail": "Layan Layan"
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "Arabic: original activity player has no English",
+    "ok": false,
+    "detail": "Layan Only suitable items mentioned steps minutes less play idea developmental test"
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-1280",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "saved: monitoring",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "journey = development",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "only growth / play / health",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "next step is activity or observation",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "no topics, no diagnosis label",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "All 25 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/; external https://www.unicef.org/parenting/child-care/screen-free-activities"
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "Arabic: Home text (outside the activity player) has no English",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "Arabic: original activity player has no English",
+    "ok": false,
+    "detail": "Only suitable items mentioned steps minutes less play idea developmental test"
+  },
+  {
+    "scenario": "3 General development",
+    "combo": "ar-360",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-1280",
+    "check": "saved: no supportDiscovery; support mode \"skipped\"",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-1280",
+    "check": "journey = none",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-1280",
+    "check": "next step opens the support questions",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-1280",
+    "check": "no topics, no diagnosis label",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-1280",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-1280",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-1280",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-1280",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-1280",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-1280",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-1280",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-1280",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-1280",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-1280",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-1280",
+    "check": "All 24 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/; external https://www.unicef.org/parenting/child-care/screen-free-activities"
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-1280",
+    "check": "English: no Arabic text (outside names and family notes)",
+    "ok": false,
+    "detail": "ليان ليان"
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-1280",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-360",
+    "check": "saved: no supportDiscovery; support mode \"skipped\"",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-360",
+    "check": "journey = none",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-360",
+    "check": "next step opens the support questions",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-360",
+    "check": "no topics, no diagnosis label",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-360",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-360",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-360",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-360",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-360",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-360",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-360",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-360",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-360",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-360",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-360",
+    "check": "All 24 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/; external https://www.unicef.org/parenting/child-care/screen-free-activities"
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-360",
+    "check": "English: no Arabic text (outside names and family notes)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "en-360",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "saved: no supportDiscovery; support mode \"skipped\"",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "journey = none",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "next step opens the support questions",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "no topics, no diagnosis label",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "All 24 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/; external https://www.unicef.org/parenting/child-care/screen-free-activities"
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "Arabic: Home text (outside the activity player) has no English",
+    "ok": false,
+    "detail": "Layan"
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "Arabic: original activity player has no English",
+    "ok": false,
+    "detail": "Layan Only suitable items mentioned steps minutes less play idea developmental test"
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-1280",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "saved: no supportDiscovery; support mode \"skipped\"",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "journey = none",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "next step opens the support questions",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "no topics, no diagnosis label",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "All 24 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/; external https://www.unicef.org/parenting/child-care/screen-free-activities"
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "Arabic: Home text (outside the activity player) has no English",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "Arabic: original activity player has no English",
+    "ok": false,
+    "detail": "Only suitable items mentioned steps minutes less play idea developmental test"
+  },
+  {
+    "scenario": "4 Skipped Phase 2",
+    "combo": "ar-360",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280",
+    "check": "نور (baby): heading, theme and pressed sibling are this child",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280",
+    "check": "نور (baby): journey and topics are this child’s own",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280",
+    "check": "نور (baby): appointment shown only for the boy",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280",
+    "check": "نور (baby): observation count is this child’s",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 baby",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 baby",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 baby",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 baby",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 baby",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 baby",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 baby",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 baby",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 baby",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 baby",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 baby",
+    "check": "All 25 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://www.unicef.org/lac/en/parenting-lac/early-learning/building-babies-brains-through-play-video; external https://www2.hse.ie/babies-children/play/0-6-months/"
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 baby",
+    "check": "English: no Arabic text (outside names and family notes)",
+    "ok": false,
+    "detail": "نور نور نور"
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 baby",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280",
+    "check": "ليان (toddler): heading, theme and pressed sibling are this child",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280",
+    "check": "ليان (toddler): journey and topics are this child’s own",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280",
+    "check": "ليان (toddler): appointment shown only for the boy",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280",
+    "check": "ليان (toddler): observation count is this child’s",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 toddler",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 toddler",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 toddler",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 toddler",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 toddler",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 toddler",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 toddler",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 toddler",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 toddler",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 toddler",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 toddler",
+    "check": "All 24 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/; external https://www.unicef.org/parenting/child-care/screen-free-activities"
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 toddler",
+    "check": "English: no Arabic text (outside names and family notes)",
+    "ok": false,
+    "detail": "ليان"
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 toddler",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280",
+    "check": "آدم (child): heading, theme and pressed sibling are this child",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280",
+    "check": "آدم (child): journey and topics are this child’s own",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280",
+    "check": "آدم (child): appointment shown only for the boy",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280",
+    "check": "آدم (child): observation count is this child’s",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 child",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 child",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 child",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 child",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 child",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 child",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 child",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 child",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 child",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 child",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 child",
+    "check": "All 27 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/; external https://www.unicef.org/parenting/child-care/screen-free-activities"
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 child",
+    "check": "English: no Arabic text (outside names and family notes)",
+    "ok": false,
+    "detail": "آدم آدم آدم"
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "en-1280 child",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360",
+    "check": "Noor (baby): heading, theme and pressed sibling are this child",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360",
+    "check": "Noor (baby): journey and topics are this child’s own",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360",
+    "check": "Noor (baby): appointment shown only for the boy",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360",
+    "check": "Noor (baby): observation count is this child’s",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 baby",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 baby",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 baby",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 baby",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 baby",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 baby",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 baby",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 baby",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 baby",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 baby",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 baby",
+    "check": "All 25 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://www.unicef.org/lac/en/parenting-lac/early-learning/building-babies-brains-through-play-video; external https://www2.hse.ie/babies-children/play/0-6-months/"
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 baby",
+    "check": "Arabic: Home text (outside the activity player) has no English",
+    "ok": false,
+    "detail": "Noor Noor"
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 baby",
+    "check": "Arabic: original activity player has no English",
+    "ok": false,
+    "detail": "Noor Your attention hold book yourself minutes less play idea developmental test"
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 baby",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360",
+    "check": "Layan (toddler): heading, theme and pressed sibling are this child",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360",
+    "check": "Layan (toddler): journey and topics are this child’s own",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360",
+    "check": "Layan (toddler): appointment shown only for the boy",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360",
+    "check": "Layan (toddler): observation count is this child’s",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 toddler",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 toddler",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 toddler",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 toddler",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 toddler",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 toddler",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 toddler",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 toddler",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 toddler",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 toddler",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 toddler",
+    "check": "All 24 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/; external https://www.unicef.org/parenting/child-care/screen-free-activities"
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 toddler",
+    "check": "Arabic: Home text (outside the activity player) has no English",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 toddler",
+    "check": "Arabic: original activity player has no English",
+    "ok": false,
+    "detail": "Layan Only suitable items mentioned steps minutes less play idea developmental test"
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 toddler",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360",
+    "check": "Adam (child): heading, theme and pressed sibling are this child",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360",
+    "check": "Adam (child): journey and topics are this child’s own",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360",
+    "check": "Adam (child): appointment shown only for the boy",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360",
+    "check": "Adam (child): observation count is this child’s",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 child",
+    "check": "Next step has why / what / where",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 child",
+    "check": "Theme matches child (girl=pink, boy=blue)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 child",
+    "check": "No horizontal overflow",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 child",
+    "check": "Direction matches language",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 child",
+    "check": "Support topics match saved data",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 child",
+    "check": "Services come from saved choices (or story goals if skipped)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 child",
+    "check": "Next-step service not repeated below",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 child",
+    "check": "Autism-only tools only when eligible",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 child",
+    "check": "Diagnosis label only for a reported diagnosis",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 child",
+    "check": "Observation count = this child’s records",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 child",
+    "check": "All 27 destinations exist and are reachable",
+    "ok": false,
+    "detail": "external https://sesameworkshop.org/resources/spending-time-together-2/; external https://www.unicef.org/parenting/child-care/screen-free-activities"
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 child",
+    "check": "Arabic: Home text (outside the activity player) has no English",
+    "ok": false,
+    "detail": "Adam Adam specialist"
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 child",
+    "check": "Arabic: original activity player has no English",
+    "ok": false,
+    "detail": "Adam Only suitable items mentioned steps minutes less play idea developmental test specialist"
+  },
+  {
+    "scenario": "5 Multiple children",
+    "combo": "ar-360 child",
+    "check": "No JavaScript errors",
+    "ok": true,
+    "detail": ""
+  }
+]

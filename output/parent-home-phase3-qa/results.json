@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "A diagnosed autism: reported-diagnosis status, diagnosis chip, unread report first, then the eligible autism tool; existing autism tools and journey; CDC checklist external; blue theme; no overflow",
+    "Autism as a concern: no diagnosis label, autism-only tools and journey not shown",
+    "B concerns: \"your concerns\" status, no diagnosis label, chosen priority (speech directory) as next step and not repeated, topic chip, relevant empty-state link, fully Arabic, pink, 360px",
+    "C general development: status, growth/play/health only, activity or observation next step, stage checklist, growth counts and recent observations",
+    "D skipped discovery: invitation as next step; completed discovery changes Home; sibling switch updates theme, name, journey, topics and services with no data from the other child; switch back restores"
+  ],
+  "runtimeErrors": []
+}

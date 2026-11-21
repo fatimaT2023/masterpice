@@ -1,0 +1,188 @@
+{
+  "passed": 30,
+  "failed": 0,
+  "total": 30,
+  "results": [
+    {
+      "area": "Together",
+      "name": "Clear “Start activity” button; older toggle hidden; sound off by default",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Together",
+      "name": "Intro: title, age range, time, optional 3-item preparation checklist, sound toggle off",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Together",
+      "name": "Preparation is optional: Start works with items unticked",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Together",
+      "name": "One instruction per screen with large visual, progress and Next/Back/Pause",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Together",
+      "name": "Next then Back returns to the previous instruction",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Together",
+      "name": "Pause keeps the place; closing and reopening offers “Resume at step N”",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Together",
+      "name": "Escape during a step pauses instead of losing the session",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Together",
+      "name": "Sound is optional: toggling turns it on and off and is remembered",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Together",
+      "name": "Last step leads to “How did it go?” with outcomes and optional observations",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Together",
+      "name": "Save is blocked until an outcome is chosen",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Together",
+      "name": "Save → encouraging completion; record saved with outcome, note and noticed chips; pause cleared",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Together",
+      "name": "After saving, the page button offers “Play it again” (not a stale resume)",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Together",
+      "name": "Girl theme: pink accent inside the session",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Together",
+      "name": "Saved result visible in activity history with “Played together”, note and noticed chips",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Together",
+      "name": "AR 390: intro and step fully Arabic, RTL, full-screen on mobile, blue",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Together",
+      "name": "Home: today’s activity panel opens the same session",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Screen",
+      "name": "Game list: 3 games; age-unsuitable game is shown but not playable",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Screen",
+      "name": "Intro explains: sit together, 4 short rounds, sound off by default",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Screen",
+      "name": "Wrong tap: gentle wiggle and “try another”, no progress, no penalty",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Screen",
+      "name": "Right tap: visual confirmation, name of the shape, Next appears; all 4 rounds play",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Screen",
+      "name": "Save → completion counts rounds played, never correct answers",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Screen",
+      "name": "Screen play does not change today’s Play together idea",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Screen",
+      "name": "History shows “Played on screen · Shape match” with chips and Play again",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Screen",
+      "name": "Growth journal lists it as “Played on screen” (family observation, no score)",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Screen",
+      "name": "Activities hub offers two ways to play; library cards say “Play together”",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Screen",
+      "name": "AR 390 Feelings: Arabic prompt and labels, RTL, blue, no overflow",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Screen",
+      "name": "Feelings: after a match, a parent talking prompt appears (no score)",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Screen",
+      "name": "Stop here → save “stopped early” records rounds actually played",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Screen",
+      "name": "Under 2 years: no screen games, points to Play together instead",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Stability",
+      "name": "No JavaScript errors during the run",
+      "ok": true,
+      "detail": true
+    }
+  ],
+  "errors": []
+}

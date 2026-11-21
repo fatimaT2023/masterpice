@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": [
+    "A girl/en/1280: required status, 7+25 diagnosis topics, note and follow-up, 12 tiles with story hint (never emotional/sensory/genetic), language switch keeps answers, fixed diagnosis chip, 6 autism areas without duplicates, saved record mapped to existing autism mode, autism tools unlocked and prioritised, psychology filter, Home without welcome redirect",
+    "Edit later from the child profile: summary first, edit to \"concerns\", revision 2, autism-only tools locked without links, returns to the profile",
+    "B boy/ar/360: concerns path, speech + sensory topics, priorities first, topic services and directory, fully Arabic summary, no overflow",
+    "C monitoring: general development pre-selected, growth/play/health only, support mode \"none\"",
+    "D Back on the first question returns to the story",
+    "D Skip for now: nothing saved, setup completed, Home opens and still offers the support question",
+    "E prefer not to answer: saved as private/skipped, no diagnosis data, general resources shown"
+  ],
+  "runtimeErrors": []
+}

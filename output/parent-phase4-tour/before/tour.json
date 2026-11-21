@@ -1,0 +1,141 @@
+[
+  {
+    "demo": "case-speech",
+    "lang": "en",
+    "page": "activities.html",
+    "title": "Activities and tools | RAFIQ",
+    "h1": "Activities and tools",
+    "len": 1431,
+    "overflow": false,
+    "url": "/pearent-cycel/activities.html"
+  },
+  {
+    "demo": "case-speech",
+    "lang": "en",
+    "page": "daily-activity.html",
+    "title": "Activity with my child | RAFIQ",
+    "h1": "Activity with my child",
+    "len": 1334,
+    "overflow": false,
+    "url": "/pearent-cycel/daily-activity.html"
+  },
+  {
+    "demo": "case-speech",
+    "lang": "en",
+    "page": "milestones.html",
+    "title": "Understand my child’s stage | RAFIQ",
+    "h1": "My child’s observations",
+    "len": 2781,
+    "overflow": false,
+    "url": "/pearent-cycel/milestones.html"
+  },
+  {
+    "demo": "case-speech",
+    "lang": "en",
+    "page": "health.html",
+    "title": "Health & Vaccinations | RAFIQ",
+    "h1": "Health & vaccinations",
+    "len": 1554,
+    "overflow": false,
+    "url": "/pearent-cycel/health.html"
+  },
+  {
+    "demo": "case-speech",
+    "lang": "en",
+    "page": "support-areas.html",
+    "title": "Support areas | RAFIQ",
+    "h1": "Support areas",
+    "len": 1816,
+    "overflow": false,
+    "url": "/pearent-cycel/support-areas.html"
+  },
+  {
+    "demo": "case-speech",
+    "lang": "en",
+    "page": "support-detail.html?topic=sleep",
+    "title": "This topic was not found. Your child’s records were not changed. | RAFIQ",
+    "h1": "This topic was not found. Your child’s records were not changed.",
+    "len": 289,
+    "overflow": false,
+    "url": "/pearent-cycel/support-detail.html?topic=sleep"
+  },
+  {
+    "demo": "case-speech",
+    "lang": "en",
+    "page": "support-detail.html?topic=autism",
+    "title": "Autism support | RAFIQ",
+    "h1": "Autism support",
+    "len": 2106,
+    "overflow": false,
+    "url": "/pearent-cycel/support-detail.html?topic=autism"
+  },
+  {
+    "demo": "case-autism",
+    "lang": "ar",
+    "page": "activities.html",
+    "title": "الأنشطة والأدوات | رفيق",
+    "h1": "الأنشطة والأدوات",
+    "len": 1132,
+    "overflow": false,
+    "url": "/pearent-cycel/activities.html"
+  },
+  {
+    "demo": "case-autism",
+    "lang": "ar",
+    "page": "daily-activity.html",
+    "title": "Activity مع my child | RAFIQ",
+    "h1": "نشاط مع طفلي",
+    "len": 978,
+    "overflow": false,
+    "url": "/pearent-cycel/daily-activity.html"
+  },
+  {
+    "demo": "case-autism",
+    "lang": "ar",
+    "page": "milestones.html",
+    "error": "Not ready: ar"
+  },
+  {
+    "demo": "case-autism",
+    "lang": "ar",
+    "page": "health.html",
+    "title": "الصحة والمطاعيم | رفيق",
+    "h1": "الصحة واللقاحات",
+    "len": 1246,
+    "overflow": false,
+    "url": "/pearent-cycel/health.html"
+  },
+  {
+    "demo": "case-autism",
+    "lang": "ar",
+    "page": "support-areas.html",
+    "title": "مجالات الدعم | رفيق",
+    "h1": "مجالات الدعم",
+    "len": 1215,
+    "overflow": false,
+    "url": "/pearent-cycel/support-areas.html"
+  },
+  {
+    "demo": "case-autism",
+    "lang": "ar",
+    "page": "support-detail.html?topic=sleep",
+    "title": "ما لقينا هالموضوع. سجلات طفلكم ما تغيّرت. | رفيق",
+    "h1": "ما لقينا هالموضوع. سجلات طفلكم ما تغيّرت.",
+    "len": 132,
+    "overflow": false,
+    "url": "/pearent-cycel/support-detail.html?topic=sleep"
+  },
+  {
+    "demo": "case-autism",
+    "lang": "ar",
+    "page": "support-detail.html?topic=autism",
+    "title": "دعم التوحد | رفيق",
+    "h1": "دعم التوحد",
+    "len": 1269,
+    "overflow": false,
+    "url": "/pearent-cycel/support-detail.html?topic=autism"
+  },
+  {
+    "errors": []
+  }
+]

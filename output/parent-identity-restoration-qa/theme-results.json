@@ -1,0 +1,346 @@
+[
+  {
+    "gender": "girl",
+    "label": "1280px ar",
+    "id": "demo-phase1-toddler",
+    "appearance": "girl",
+    "background": "#fce1eb",
+    "accent": "#944367",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-pink.jpg\")",
+    "card": {
+      "background": "rgba(255, 255, 255, 0.48)",
+      "blur": "blur(16px) saturate(1.2)"
+    },
+    "nextBlur": "blur(20px) saturate(1.45)",
+    "headingSize": 29,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "girl",
+    "label": "1280px en",
+    "id": "demo-phase1-toddler",
+    "appearance": "girl",
+    "background": "#fce1eb",
+    "accent": "#944367",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-pink.jpg\")",
+    "card": {
+      "background": "rgba(255, 255, 255, 0.48)",
+      "blur": "blur(16px) saturate(1.2)"
+    },
+    "nextBlur": "blur(20px) saturate(1.45)",
+    "headingSize": 29,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "girl",
+    "label": "360px ar",
+    "id": "demo-phase1-toddler",
+    "appearance": "girl",
+    "background": "#fce1eb",
+    "accent": "#944367",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-pink.jpg\")",
+    "card": {
+      "background": "rgba(255, 255, 255, 0.48)",
+      "blur": "blur(16px) saturate(1.2)"
+    },
+    "nextBlur": "blur(20px) saturate(1.45)",
+    "headingSize": 23,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "girl",
+    "label": "360px en",
+    "id": "demo-phase1-toddler",
+    "appearance": "girl",
+    "background": "#fce1eb",
+    "accent": "#944367",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-pink.jpg\")",
+    "card": {
+      "background": "rgba(255, 255, 255, 0.48)",
+      "blur": "blur(16px) saturate(1.2)"
+    },
+    "nextBlur": "blur(20px) saturate(1.45)",
+    "headingSize": 23,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "girl",
+    "label": "navigate child-profile.html",
+    "id": "demo-phase1-toddler",
+    "appearance": "girl",
+    "background": "#fce1eb",
+    "accent": "#944367",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-pink.jpg\")",
+    "card": null,
+    "nextBlur": null,
+    "headingSize": null,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "girl",
+    "label": "navigate activities.html",
+    "id": "demo-phase1-toddler",
+    "appearance": "girl",
+    "background": "#fce1eb",
+    "accent": "#944367",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-pink.jpg\")",
+    "card": null,
+    "nextBlur": null,
+    "headingSize": null,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "girl",
+    "label": "navigate bookings.html",
+    "id": "demo-phase1-toddler",
+    "appearance": "girl",
+    "background": "#fce1eb",
+    "accent": "#944367",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-pink.jpg\")",
+    "card": null,
+    "nextBlur": null,
+    "headingSize": null,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "girl",
+    "label": "navigate support-areas.html",
+    "id": "demo-phase1-toddler",
+    "appearance": "girl",
+    "background": "#fce1eb",
+    "accent": "#944367",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-pink.jpg\")",
+    "card": null,
+    "nextBlur": null,
+    "headingSize": null,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "girl",
+    "label": "navigate parent-dashboard.html",
+    "id": "demo-phase1-toddler",
+    "appearance": "girl",
+    "background": "#fce1eb",
+    "accent": "#944367",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-pink.jpg\")",
+    "card": {
+      "background": "rgba(255, 255, 255, 0.48)",
+      "blur": "blur(16px) saturate(1.2)"
+    },
+    "nextBlur": "blur(20px) saturate(1.45)",
+    "headingSize": 23,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "boy",
+    "label": "profile after switch",
+    "id": "demo-phase1-child",
+    "appearance": "boy",
+    "background": "#dceefb",
+    "accent": "#225f87",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-blue.jpg\")",
+    "card": null,
+    "nextBlur": null,
+    "headingSize": null,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "boy",
+    "label": "1280px ar",
+    "id": "demo-phase1-child",
+    "appearance": "boy",
+    "background": "#dceefb",
+    "accent": "#225f87",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-blue.jpg\")",
+    "card": {
+      "background": "rgba(255, 255, 255, 0.48)",
+      "blur": "blur(16px) saturate(1.2)"
+    },
+    "nextBlur": "blur(20px) saturate(1.45)",
+    "headingSize": 29,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "boy",
+    "label": "1280px en",
+    "id": "demo-phase1-child",
+    "appearance": "boy",
+    "background": "#dceefb",
+    "accent": "#225f87",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-blue.jpg\")",
+    "card": {
+      "background": "rgba(255, 255, 255, 0.48)",
+      "blur": "blur(16px) saturate(1.2)"
+    },
+    "nextBlur": "blur(20px) saturate(1.45)",
+    "headingSize": 29,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "boy",
+    "label": "360px ar",
+    "id": "demo-phase1-child",
+    "appearance": "boy",
+    "background": "#dceefb",
+    "accent": "#225f87",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-blue.jpg\")",
+    "card": {
+      "background": "rgba(255, 255, 255, 0.48)",
+      "blur": "blur(16px) saturate(1.2)"
+    },
+    "nextBlur": "blur(20px) saturate(1.45)",
+    "headingSize": 23,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "boy",
+    "label": "360px en",
+    "id": "demo-phase1-child",
+    "appearance": "boy",
+    "background": "#dceefb",
+    "accent": "#225f87",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-blue.jpg\")",
+    "card": {
+      "background": "rgba(255, 255, 255, 0.48)",
+      "blur": "blur(16px) saturate(1.2)"
+    },
+    "nextBlur": "blur(20px) saturate(1.45)",
+    "headingSize": 23,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "boy",
+    "label": "navigate child-profile.html",
+    "id": "demo-phase1-child",
+    "appearance": "boy",
+    "background": "#dceefb",
+    "accent": "#225f87",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-blue.jpg\")",
+    "card": null,
+    "nextBlur": null,
+    "headingSize": null,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "boy",
+    "label": "navigate activities.html",
+    "id": "demo-phase1-child",
+    "appearance": "boy",
+    "background": "#dceefb",
+    "accent": "#225f87",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-blue.jpg\")",
+    "card": null,
+    "nextBlur": null,
+    "headingSize": null,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "boy",
+    "label": "navigate bookings.html",
+    "id": "demo-phase1-child",
+    "appearance": "boy",
+    "background": "#dceefb",
+    "accent": "#225f87",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-blue.jpg\")",
+    "card": null,
+    "nextBlur": null,
+    "headingSize": null,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "boy",
+    "label": "navigate support-areas.html",
+    "id": "demo-phase1-child",
+    "appearance": "boy",
+    "background": "#dceefb",
+    "accent": "#225f87",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-blue.jpg\")",
+    "card": null,
+    "nextBlur": null,
+    "headingSize": null,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "boy",
+    "label": "navigate parent-dashboard.html",
+    "id": "demo-phase1-child",
+    "appearance": "boy",
+    "background": "#dceefb",
+    "accent": "#225f87",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-blue.jpg\")",
+    "card": {
+      "background": "rgba(255, 255, 255, 0.48)",
+      "blur": "blur(16px) saturate(1.2)"
+    },
+    "nextBlur": "blur(20px) saturate(1.45)",
+    "headingSize": 23,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "boy",
+    "label": "reload dashboard",
+    "id": "demo-phase1-child",
+    "appearance": "boy",
+    "background": "#dceefb",
+    "accent": "#225f87",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-blue.jpg\")",
+    "card": {
+      "background": "rgba(255, 255, 255, 0.48)",
+      "blur": "blur(16px) saturate(1.2)"
+    },
+    "nextBlur": "blur(20px) saturate(1.45)",
+    "headingSize": 23,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "girl",
+    "label": "switch back profile",
+    "id": "demo-phase1-toddler",
+    "appearance": "girl",
+    "background": "#fce1eb",
+    "accent": "#944367",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-pink.jpg\")",
+    "card": null,
+    "nextBlur": null,
+    "headingSize": null,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  },
+  {
+    "gender": "girl",
+    "label": "return girl dashboard",
+    "id": "demo-phase1-toddler",
+    "appearance": "girl",
+    "background": "#fce1eb",
+    "accent": "#944367",
+    "wallpaper": "url(\"http://127.0.0.1:54123/pearent-cycel/assets/dashboard/baby-pink.jpg\")",
+    "card": {
+      "background": "rgba(255, 255, 255, 0.48)",
+      "blur": "blur(16px) saturate(1.2)"
+    },
+    "nextBlur": "blur(20px) saturate(1.45)",
+    "headingSize": 23,
+    "nav": "linear-gradient(125deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.35))",
+    "overflow": false
+  }
+]

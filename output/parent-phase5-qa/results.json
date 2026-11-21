@@ -1,0 +1,258 @@
+{
+  "passed": 40,
+  "failed": 1,
+  "total": 41,
+  "results": [
+    {
+      "area": "Parent",
+      "name": "1–3 Recommended specialists: speech first, reasons from the family’s own answers, not a diagnosis",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Parent",
+      "name": "Directory: all 3 fictional specialists browsable; demo labels instead of verified/ratings; filter by support area",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Parent",
+      "name": "Recommendation button filters to speech specialists",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Parent",
+      "name": "Invalid input rejected: past date, wrong session type, missing child",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Parent",
+      "name": "4 Request submitted through the real booking flow: confirmation shown",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Parent",
+      "name": "Request saved with unique id, child/specialist references, Pending, no payment taken",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Parent",
+      "name": "Duplicate prevented: a second pending request to the same specialist is refused",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Parent",
+      "name": "5 My appointments: Pending badge, progress, specialist/child/date/time/type and Cancel action",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Parent",
+      "name": "Notification created for the submitted request",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Specialist",
+      "name": "Another specialist does NOT see the request",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Specialist",
+      "name": "6–7 Correct specialist receives the request with child, age, note, date and type",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Specialist",
+      "name": "Specialist notification for the new request",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Specialist",
+      "name": "8 Accept: status Accepted (confirmed), payment now due, request leaves the inbox",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Parent",
+      "name": "10 Status Accepted after switching back; notification “Request accepted”",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Parent",
+      "name": "Demo payment after acceptance confirms the session",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Data",
+      "name": "Browser refresh keeps the demo data (this tab) and role",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Specialist",
+      "name": "Booking details: child information shared for the request and accepted/paid state",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Specialist",
+      "name": "12 Mark completed: status Completed and consultation record created",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Specialist",
+      "name": "Report form offers age-suitable activities from the real library + labelled as demonstration",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Specialist",
+      "name": "13 Report submitted with child/session reference, areas, activities, guidance and next steps",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Specialist",
+      "name": "No diagnosis or score fields in the saved report",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Parent",
+      "name": "14 Completed + report notification; “Read the follow-up report” action",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Parent",
+      "name": "15 Correct report opens: summary, guidance, demo label, areas, next steps",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Parent",
+      "name": "16 Suggested activities link to real pages (HTTP 200) and open the right activity",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Parent",
+      "name": "Report → back to the child’s home works",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Flows",
+      "name": "Rejection with reason: parent sees Rejected, the note, and “Request another time”",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Flows",
+      "name": "Specialist cannot propose a past date",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Flows",
+      "name": "Reschedule proposed: status and waiting message on specialist side",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Flows",
+      "name": "Parent sees “New time proposed” with date/time/note and accepts it",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Flows",
+      "name": "Specialist is notified that the family accepted the new time",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Flows",
+      "name": "Declining a proposed time closes the request (and only the parent can answer it)",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Flows",
+      "name": "Parent cancels an accepted appointment (inline confirm) → Cancelled, specialist notified",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Flows",
+      "name": "Specialist cannot act on a cancelled request; another specialist cannot act on it either",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Integration",
+      "name": "Home shows an open request card linking to the appointment",
+      "ok": false,
+      "detail": {
+        "href": "http://127.0.0.1:62125/pearent-cycel/parent-dashboard.html",
+        "html": "<html lang=\"en\" data-child-appearance=\"girl\" dir=\"ltr\" data-parent-experience=\"services\"><head>\n<script src=\"parent-preview-bootstrap.js\"></script><script src=\"../shared/family-access.js\"></script><script src=\"../shared/account-status.js\"></script><script src=\"../shared/account-access.js\" defer=\"\"></script>\n<script src=\"../piblic-pages/rafiq-theme.js\"></script>\n  <meta charset=\"UTF-8\">\n\n  <meta na",
+        "care": true
+      }
+    },
+    {
+      "area": "Integration",
+      "name": "Support topic → related specialists link opens the filtered directory",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Language",
+      "name": "AR 390 directory: no English, RTL, no overflow; suggestions empty state invites support questions",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Language",
+      "name": "AR 390 request for the boy: confirmation in Arabic, blue theme",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Language",
+      "name": "AR 390 My appointments: Arabic status, actions, no overflow",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Children",
+      "name": "Multiple children: the girl’s appointments do not show the boy’s request; pink theme",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Language",
+      "name": "AR specialist inbox shows the boy’s request; child data limited to that request",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "area": "Stability",
+      "name": "No JavaScript errors during the run",
+      "ok": true,
+      "detail": true
+    }
+  ],
+  "errors": []
+}
